@@ -1,0 +1,8 @@
+
+
+http://wen060.settrade.com/login.jsp?txtBrokerId=013
+
+//txtLogin  //txtPassword  //butGo
+
+//To handle pop up windows
+https://stackoverflow.com/questions/19403949/how-to-handle-pop-up-in-selenium-webdriver-using-java
