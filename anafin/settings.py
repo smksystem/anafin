@@ -129,5 +129,5 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 # my_project/settings.py
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/anaform'
 LOGIN_URL = '/login/'

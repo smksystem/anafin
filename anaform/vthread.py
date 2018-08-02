@@ -8,7 +8,7 @@ class imonitor(Thread):
         
         self.start()
     def run(self):
-        login= pinkystart()
+        login= pinkybot()
         login.mypinkylogin(self.loginParams)
         
 

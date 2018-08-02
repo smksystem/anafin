@@ -5,6 +5,5 @@ class EmailForm(forms.Form):
 	username = forms.CharField(label="Username",initial="0147500")
 	password = forms.CharField(label="Password")
 
-class LoginForm(forms.Form):
-	pass
+
 	
