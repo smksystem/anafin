@@ -16,12 +16,23 @@ Including another URLconf
 from django.conf.urls import url
 from django.urls import  path,include
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 from anaform import views
+from django.contrib.auth.decorators import login_required
 # from anafin import anaform
 # admin.autodiscover()
 urlpatterns = [
 	path('dashboard/', include('dashboard.urls')),
-	
+	url(r'^login/$', auth_views.LoginView.as_view(template_name='register/login.html'), name='login'),
+    url(r'^logout/$', auth_views.LogoutView, name='logout'),
     url(r'^admin/', admin.site.urls),
     url(r'^anaform/',views.home,name='home'),
+
+    # url(r'^$', login_required(BoardView.as_view()), name='boards'),
+    
+    # url(r'^login/$', auth_views.LoginView.as_view(
+    #     template_name='login.html'), name='login'),
+    # url(r'^logout/$', auth_views.LogoutView.as_view(
+    #     template_name='login.html'), name='logout'),
+
 ]

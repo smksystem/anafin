@@ -42,8 +42,8 @@ def home(request):
 	template="home.html"
 	return render(request,template,context)
 
-def loginsucceed(request):
-	form=EmailForm()
+def login(request):
+	form=LoginForm()
 	context={"form":form,"hello":"this is hello"+ myuser ,"brokeid":mybrokeId}
 	template="home.html"
 	return render(request,template,context)	

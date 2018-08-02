@@ -1,5 +1,5 @@
 from threading import Thread
-from pinkybot.monitor import pinkystart
+from pinkybot.monitor import pinkybot
 class imonitor(Thread):
     def __init__(self,loginParams):
         Thread.__init__(self)
