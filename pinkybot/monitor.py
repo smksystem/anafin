@@ -20,13 +20,18 @@ class pinkybot(packselenium):
 		# exit()
 
 		handlewin=self.login(loginParams)
-		buysellorder.orderbuy(handlewin)
+		# buysellorder.orderbuy(handlewin)
 		
 
 		# test here to pass thrue the handlewin
 
 
-		exit()
+		# exit()
 		# handlewin="test"
 		print("login is called")
-		self.monitoring(handlewin)
+		while True:
+			i=0
+			for i in range(0,10):
+
+				self.monitoring(handlewin,str(i))
+

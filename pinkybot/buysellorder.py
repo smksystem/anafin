@@ -74,3 +74,6 @@ class buysellorder(packselenium):
 		# print(stock)
 		while 1:
 			pass
+	def ordersell(handlewin):
+		pass
+		

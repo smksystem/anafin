@@ -26,7 +26,7 @@ login.mypinkylogin(LoginParams)
 try:
 
 	while True:
-		passb
+		pass
 except KeyboardInterrupt:
 	pass
 

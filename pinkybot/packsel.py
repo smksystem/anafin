@@ -63,7 +63,7 @@ class packselenium():
 		element = wait.until(EC.presence_of_element_located((By.XPATH, "//*[@id='place-order-form']/refresh-ui-component/button/span[1]")))
 		return driver
 
-	def monitoring(self,handlewin):
+	def monitoring(self,handlewin,fav_no):
 
 		# for test data
 		# stock='TEST'
@@ -84,10 +84,16 @@ class packselenium():
 
 
 		driver=handlewin
-		chkstock=driver.find_elements_by_xpath("//*[@id='favourite-0']/ul/li[1]/editable-symbol-input/p")[0]
+		chkstock=driver.find_elements_by_xpath("//*[@id='favourite-"+fav_no+"']/ul/li[1]/editable-symbol-input/p")[0]
+												# //*[@id="favourite-1"]/ul/li[1]/editable-symbol-input/p
 		chkstock.click()
-		stock = driver.find_elements_by_xpath("//*[@id='favourite-0']/ul/li[1]/editable-symbol-input/p")[0].text
+		stock = driver.find_elements_by_xpath("//*[@id='favourite-"+fav_no+"']/ul/li[1]/editable-symbol-input/p")[0].text
 		print(stock)
+
+		wait = WebDriverWait(driver, 10)
+		elementClose = wait.until(EC.presence_of_element_located((By.XPATH, "//*[@id='page-0-container']/li[3]/mini-quote/div[1]/mini-quote-overview/div[5]/label")))
+		print("wait finished")
+		# wait.close()
 
 		# monitortime = dt.datetime.now()
 		# testtimezone=timezone.now()
@@ -109,20 +115,22 @@ class packselenium():
 		# timerecord = timestamp.strftime('%Y-%m-%d %H:%M:%S')
 
 		try:
-			while True:
-				delta=datetime.utcnow()-timestamp
-				if delta.seconds >= 5:
-					for line in range(1,6):
-							bid["bid"+str(line)]=float(driver.find_elements_by_xpath("//*[@id='bid-"+str(line)+"']")[0].text.replace(",",""))
-							offer["offer"+str(line)]=float(driver.find_elements_by_xpath("//*[@id='offer-"+str(line)+"']")[0].text.replace(",",""))
-							bidvolumn["bidvolumn"+ str(line)]=float(driver.find_elements_by_xpath("//*[@id='bid-volume-"+str(line)+"']")[0].text.replace(",",""))
-							offervolumn["offervolumn"+str(line)]=float(driver.find_elements_by_xpath("//*[@id='offer-volume-"+str(line)+"']")[0].text.replace(",",""))
-					# timestamp = timezone.now()
-					timestamp = datetime.utcnow()
-					timestampELS = timestamp.isoformat(' ','seconds')
-					print("Time record is =" + timestampELS)
-					# exit()
-					PackSelModel.InsertMonitorBidOffer(stock,timestampELS,bid,offer,bidvolumn,offervolumn)
+			# while True:
+				# delta=datetime.utcnow()-timestamp
+				# if delta.seconds >= 5:
+				for line in range(1,6):
+						test=driver.find_elements_by_xpath("//*[@id='bid-"+str(line)+"']")[0].text.replace(",","")
+						print(test)
+						bid["bid"+str(line)]=float(driver.find_elements_by_xpath("//*[@id='bid-"+str(line)+"']")[0].text.replace(",",""))
+						offer["offer"+str(line)]=float(driver.find_elements_by_xpath("//*[@id='offer-"+str(line)+"']")[0].text.replace(",",""))
+						bidvolumn["bidvolumn"+ str(line)]=float(driver.find_elements_by_xpath("//*[@id='bid-volume-"+str(line)+"']")[0].text.replace(",",""))
+						offervolumn["offervolumn"+str(line)]=float(driver.find_elements_by_xpath("//*[@id='offer-volume-"+str(line)+"']")[0].text.replace(",",""))
+				# timestamp = timezone.now()
+				timestamp = datetime.utcnow()
+				timestampELS = timestamp.isoformat(' ','seconds')
+				print("Time record is =" + timestampELS)
+				# exit()
+				PackSelModel.InsertMonitorBidOffer(stock,timestampELS,bid,offer,bidvolumn,offervolumn)
 
 				bidvolumn.clear()
 				bid.clear()
@@ -131,6 +139,6 @@ class packselenium():
 
 		except KeyboardInterrupt:
 			pass
-		print("exit program")
-		exit()
+		# print("exit program")
+		# exit()
 
