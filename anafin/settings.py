@@ -126,8 +126,15 @@ USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR,'anaform/static')
+print(STATIC_ROOT)
+STATICFILES_DIRS = (
+    #normpath(join(SITE_ROOT, 'static')),
+    os.path.join(BASE_DIR, "anaform/static/images"),
+    
+)
+
 # my_project/settings.py
 LOGIN_REDIRECT_URL = '/anaform'
 LOGIN_URL = '/login/'
