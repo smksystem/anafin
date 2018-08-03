@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <style>
+    body{
+      margin: 0px;
+    }
+      .my-container {
+        border: 1px solid green;
+
+        margin-top: 5px;
+        margin-bottom: 5px;
+        alignment-baseline: auto
+
+      }  
+
+      .my-row {
+        border: 1px solid red;
+        height: 300px
+      }
+      .my-col{ 
+        border: 1px dotted blue;
+      }
+      .x_panel {
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px 17px;
+    display: inline-block;
+    background: #fff;
+    border: 1px solid #E6E9ED;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    column-break-inside: avoid;
+    opacity: 1;
+    transition: all .2s ease
+}
+
+.x_title {
+    border-bottom: 2px solid #E6E9ED;
+    padding: 1px 5px 6px;
+    margin-bottom: 10px
+}
+.x_title h2 {
+    margin: 5px 0 6px;
+    float: left;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap
+}
+.x_content {
+    padding: 0 5px 6px;
+    position: relative;
+    width: 100%;
+    float: left;
+    clear: both;
+    margin-top: 5px
+}
+
+.panel_toolbox {
+    float: right;
+    min-width: 70px
+}
+
+.panel_toolbox>li {
+    float: left;
+    cursor: pointer
+}
+
+.panel_toolbox>li>a {
+    padding: 5px;
+    color: #C5C7CB;
+    font-size: 14px
+}
+
+.panel_toolbox>li>a:hover {
+    background: #F5F7FA
+}
+
+
+    </style>
+    
+
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  
+    <a href="#" title="" class="navbar-brand">PingkyBot</a>
+
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarMenu">
+      <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a href="#" class="nav-link">Users</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Products</a>
+      </li>
+    </ul>
+
+    </div>
+    
+</nav>
+
+
+
+    <div class="container my-container">
+      <div class="row my-row">
+        <div class="col-md-8 my-col">
+          Row 1 Col 1 table here
+        </div>
+        <div class="col-md-4 my-col">
+          RealTime Login
+
+        <div class="x_panel fixed_height_320">
+          <form method="POST" action=""> 
+            {% csrf_token %}
+            {{form.as_p}}
+          <input type='submit' value='Start Monitor' class='btn' />
+          </form>
+        </div>
+
+
+
+
+
+
+
+
+
+        </div>
+
+      </div>
+      <div class="row my-row">
+        <div class="col">
+          Row 2 Col1
+        </div>
+
+
+      </div>
+    </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html> 

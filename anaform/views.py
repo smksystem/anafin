@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import EmailForm
+from .forms import RTLoginForm
 
 from anaform.vthread import imonitor
 
@@ -13,8 +13,13 @@ from anaform.vthread import imonitor
 # t.start()
 # return HttpResponse()
 
+def mainpage(request):
 
+	form=RTLoginForm()
+	context={"form":form}
 
+	template="mainpage.html"
+	return render(request,template,context)
 def home(request):
 	
 	# print(re

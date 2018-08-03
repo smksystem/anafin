@@ -22,11 +22,12 @@ from django.contrib.auth.decorators import login_required
 # from anafin import anaform
 # admin.autodiscover()
 urlpatterns = [
-	path('dashboard/', include('dashboard.urls')),
+	path('protodashboard/', include('dashboard.urls')),
 	url(r'^login/$', auth_views.LoginView.as_view(template_name='register/login.html'), name='login'),
     url(r'^logout/$', auth_views.LogoutView, name='logout'),
     url(r'^admin/', admin.site.urls),
-    url(r'^anaform/',views.home,name='home'),
+    url(r'^dashboard/',views.home,name='home'),
+    url(r'^main/',views.mainpage,name='main'),
 
     # url(r'^$', login_required(BoardView.as_view()), name='boards'),
     
