@@ -1,3 +1,45 @@
+body {
+    background-color: #F7F7F7;
+}
+
+.my-container {
+    border: 1px solid green;
+
+    margin-top: 5px;
+    margin-bottom: 5px;
+    alignment-baseline: auto
+
+}  
+
+.my-row {
+    border: 1px solid red;
+    height: 300px
+}
+.my-col{ 
+    border: 1px dotted blue;
+}
+
+/*About Panel*/
+.panel_toolbox {
+    float: right;
+    min-width: 70px
+}
+
+.panel_toolbox>li {
+    float: left;
+    cursor: pointer
+}
+
+.panel_toolbox>li>a {
+    padding: 5px;
+    color: #C5C7CB;
+    font-size: 14px
+}
+
+.panel_toolbox>li>a:hover {
+    background: #F5F7FA
+}
+
 .x_panel {
     position: relative;
     width: 100%;
@@ -11,4 +53,25 @@
     column-break-inside: avoid;
     opacity: 1;
     transition: all .2s ease;
+}
+.x_title {
+    border-bottom: 2px solid #E6E9ED;
+    padding: 1px 5px 6px;
+    margin-bottom: 10px
+}
+.x_title h2 {
+    margin: 5px 0 6px;
+    float: left;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap
+}
+.x_content {
+    padding: 0 5px 6px;
+    position: relative;
+    width: 100%;
+    float: left;
+    clear: both;
+    margin-top: 5px
 }
