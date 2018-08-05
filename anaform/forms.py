@@ -6,4 +6,5 @@ class RTLoginForm(forms.Form):
 	password = forms.CharField(label="Password")
 
 
-	
+class InitValCalForm(forms.Form):
+	InitValue = forms.CharField(label='Initial Value',initial='10000')	

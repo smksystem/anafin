@@ -32,15 +32,20 @@
       
       <div class="x_panel fixed_height_320">
       <div class="row x_title"><h2><small>Initial Calulate</small></h2></div>
+      <div class="clearfix"></div>
       <div class="x_content">
       <form action="" method="POST" accept-charset="utf-8">
-        POST
-        get
+        {%csrf_token%}
+        {{initvalform.as_p}}
+        <input type='submit' value='Start Calculate' class='btn' />
+        
       </form>
       </div>
       </div>
 
     </div>
+  </div>
+  <div class="row my-row">
   </div>
 </div>
 {% endblock %}

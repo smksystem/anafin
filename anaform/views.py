@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import RTLoginForm
+from .forms import RTLoginForm,InitValCalForm
 
 from anaform.vthread import imonitor
 
@@ -16,7 +16,8 @@ from anaform.vthread import imonitor
 def mainpage(request):
 
 	form=RTLoginForm()
-	context={"form":form}
+	initvalform=InitValCalForm()
+	context={"form":form,"initvalform":initvalform}
 
 	template="mainpage.html"
 	return render(request,template,context)

@@ -59,6 +59,7 @@ body {
     padding: 1px 5px 6px;
     margin-bottom: 10px
 }
+
 .x_title h2 {
     margin: 5px 0 6px;
     float: left;
@@ -67,6 +68,9 @@ body {
     overflow: hidden;
     white-space: nowrap
 }
+.x_title h2 small {
+    margin-left: 10px;
+}
 .x_content {
     padding: 0 5px 6px;
     position: relative;
@@ -74,4 +78,13 @@ body {
     float: left;
     clear: both;
     margin-top: 5px
+}
+h2 {
+    display: block;
+    font-size: 1.5em;
+    -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
 }
