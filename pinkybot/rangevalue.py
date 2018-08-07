@@ -50,16 +50,17 @@ class rangevalue():
 			series.append(round(i,2))
 			i+=data[idx][2]
 		# print(series)
-		print( self.rangeline(series))
+		self.rangestock= self.rangeline(series)
 
 	def rangeline(self,series):
 		linedic={}
-		print(series)
+		# print(series)
 		for v in series:
-			print(v)
-			linedic[v]={"vol":0,"order":"wait","state":"wait"}
-		print ( linedic)
-
+			# print(v)
+			linedic[str(v)]={"vol":"0","order":"W","state":"W"}
+		return linedic
+	def getRangeSeries(self):
+		return self.rangestock
 	def update():
 		pass
 		
@@ -69,5 +70,8 @@ if __name__=="__main__":
 	# c=np.arange(2,5,0.02)
 	# print (c)
 	test1=rangevalue("A")
+	a=test1.getRangeSeries()
+	# print(a)
+	# print(a["1.86"])
 	# test2=rangevalue("B")
 	# test3=rangevalue("C")
