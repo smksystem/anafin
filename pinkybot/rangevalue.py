@@ -47,7 +47,15 @@ class rangevalue():
 		series=[]
 		i=data[idx][0]
 		while i < data[idx][1]:
-			series.append(round(i,2))
+			chkpad=str(round(i,2)).split(".")
+			# print(len(chkpad))
+			if len(chkpad)==1:
+				stval=str(round(i,2))+".00"
+			elif len(chkpad)==2:
+				tempval=chkpad[1]+"0"
+				stval=chkpad[0]+"." +tempval[:2]
+
+			series.append(stval)
 			i+=data[idx][2]
 		# print(series)
 		self.rangestock= self.rangeline(series)
@@ -69,7 +77,7 @@ if __name__=="__main__":
 
 	# c=np.arange(2,5,0.02)
 	# print (c)
-	test1=rangevalue("A")
+	test1=rangevalue("E")
 	a=test1.getRangeSeries()
 	# print(a)
 	# print(a["1.86"])
