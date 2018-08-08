@@ -3,7 +3,7 @@
 import django
 import sys
 import os
-
+from Tkinter import tkinter
 sys.path.append('D:\workspace\anafin')
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'anafin.settings')
@@ -19,6 +19,9 @@ LoginParams={
 					"mypassword":"25191976",
 					"mybrokeId":"013",
 					}
+
+
+
 
 login= pinkybot()
 login.mypinkylogin(LoginParams)
