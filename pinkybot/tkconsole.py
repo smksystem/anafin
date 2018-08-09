@@ -8,13 +8,34 @@ class outputlog(tk.Tk):
 
       tk.Tk.__init__(self)
       self.title("Output Log")
-      self.resizable(0,0)
+      # self.resizable(0,0)
+      self.geometry('500x500')
+      # self.pack_propagate(0)
 
-      self.output = tk.Text( width=60, height=40, background = 'black', fg='white')
+      self.frameOutput = tk.Frame(self, width=400, height =400,background = 'blue')
+      self.frameOutput.pack_propagate(0)
+      self.frameOutput.pack(side = "left" )
+      
+      self.framebutton = tk.Frame(self, width=400, height =400,background = 'green')
+      self.framebutton.pack_propagate(0)
+      self.framebutton.pack(side="right")
+
+
+      self.output = tk.Text(self.frameOutput,wrap='word', width=47, height=400, background = 'black', fg='white')
+
       self.output.pack(side=tk.LEFT)
+      
+      self.LoginBtnInFrame=tk.Button(self.framebutton,text="Start Login")
+      self.LoginBtnInFrame.pack(side=tk.TOP)
 
-      self.scrollbar = tk.Scrollbar(orient="vertical", command = self.output.yview)
+
+      self.scrollbar = tk.Scrollbar(self.frameOutput,orient="vertical", command = self.output.yview)
+      
       self.scrollbar.pack(side=tk.RIGHT, fill="y")
+
+
+      self.LoginBtnInFrame=tk.Button(self.framebutton,text="Start Login")
+      self.LoginBtnInFrame.pack(side=tk.LEFT)
 
       self.output['yscrollcommand'] = self.scrollbar.set
 
@@ -50,7 +71,7 @@ class outputlog(tk.Tk):
       txtmsg=self.output.get("1.0","end")
       # print (txtmsg)
       countVar = tk.StringVar()
-      self.output.tag_config("test", background="green", foreground="white")
+      self.output.tag_config("test", background="black", foreground="green")
       if txtmsg:
         pos = '1.0'
         while 1:
@@ -61,37 +82,15 @@ class outputlog(tk.Tk):
           pos = lastidx
 
       self.output.see(tk.END)
-      # self.output.tag_config("vol", background="white", foreground="red")
-      
-  # def highlight_pattern(self, pattern, tag, start="1.0", end="end",
-  #                         regexp=False):
-  #       '''Apply the given tag to all text that matches the given pattern
-
-  #       If 'regexp' is set to True, pattern will be treated as a regular
-  #       expression according to Tcl's regular expression syntax.
-  #       '''
-
-  #       start = self.index(start)
-  #       end = self.index(end)
-  #       self.mark_set("matchStart", start)
-  #       self.mark_set("matchEnd", start)
-  #       self.mark_set("searchLimit", end)
-
-  #       count = tk.IntVar()
-  #       while True:
-  #           index = self.search(pattern, "matchEnd","searchLimit",
-  #                               count=count, regexp=regexp)
-  #           if index == "": break
-  #           if count.get() == 0: break # degenerate pattern which matches zero-length strings
-  #           self.mark_set("matchStart", index)
-  #           self.mark_set("matchEnd", "%s+%sc" % (index, count.get()))
-  #           self.tag_add(tag, "matchStart", "matchEnd")
-
+     
   def Refresher(self):
-      # global mycount
+
       self.mycount+=1
-      print("refreshing " + str(self.mycount))
-      self.txtout("Hello" + str(self.mycount))
+      step=10+(self.mycount/10)
+      print (step)
+
+      self.output.tag_config("testb", background="white", foreground="red")
+      self.output.tag_add('testb', 10.0, step)
       self.after(1000, self.Refresher) # every second...
 
 
