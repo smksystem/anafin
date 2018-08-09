@@ -12,14 +12,18 @@ if __name__=="__main__":
 
 	for eachval,data in myrange.items():
 		# print (eachval)
-		# print (data["vol"])
-		afilter=eachval.split(".") 
-		print (afilter)
+		# print (data)
+		# afilter=eachval.split(".") 
+		# print (afilter)
 		# print (len(afilter[1]))
 		# if len(afilter[1])==1: print (eachval)
-		console.txtout(eachval+" | vol="+data["vol"])
+		console.txtout(eachval+" | Vol="+data["vol"] +  
+							   " | Order=" +data["order"] + 
+							   " | State=" + data["state"]
 
-	
+						)
+
+		console.highlight_text("Vol")
 
 
 	console.mainloop()

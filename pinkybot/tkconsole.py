@@ -5,11 +5,12 @@ import sys
 
 class outputlog(tk.Tk):
   def __init__(self):
+
       tk.Tk.__init__(self)
       self.title("Output Log")
       self.resizable(0,0)
 
-      self.output = tk.Text( width=80, height=20, background = 'black', fg='white')
+      self.output = tk.Text( width=60, height=40, background = 'black', fg='white')
       self.output.pack(side=tk.LEFT)
 
       self.scrollbar = tk.Scrollbar(orient="vertical", command = self.output.yview)
@@ -19,25 +20,49 @@ class outputlog(tk.Tk):
 
       self.update_idletasks()
       self.mycount = 0
+
   def txtout(self,txtmsg):
+
       self.timenow = datetime.datetime.now()
       
 
       self.output.configure(state='normal')
-      
-      self.output.tag_config("test", background="white", foreground="red")
-      self.output.tag_add("test", "2.8", "2.13")
-      # self.highlight_pattern("vol","red")
-      
-      self.output.insert(tk.END,self.timenow.strftime("%Y-%m-%d %H:%M:%S ") + str(txtmsg + "\n"))
-      self.output.see(tk.END)
-      self.output.tag_config("vol", background="white", foreground="red")
-      self.output.configure(state='disabled')
+      # print (txtmsg)
 
+      
+      # self.highlight_pattern("vol","red")
+
+      self.output.insert(tk.END,self.timenow.strftime("%Y-%m-%d %H:%M:%S ") + str(txtmsg + "\n"))
+      
+
+      
+      # pos = self.output.search( "Vol","1.0",stopindex="end", count=countVar)
+      # print (pos)
+      # self.highlight_text("Vol",txtmsg)
+      # self.highlight_text("Order",txtmsg)
+      # self.highlight_text("Stat",txtmsg)
+      self.output.configure(state='disabled')
       
       # self.output.tag_config("a", foreground="blue")
       # self.output.insert(contents, ("n", "a"))
+  def highlight_text(self,word):
+      # word="Vol"
+      txtmsg=self.output.get("1.0","end")
+      # print (txtmsg)
+      countVar = tk.StringVar()
+      self.output.tag_config("test", background="green", foreground="white")
+      if txtmsg:
+        pos = '1.0'
+        while 1:
+          pos = self.output.search( word,pos,stopindex="end", count=countVar)
+          if not pos: break
+          lastidx = '%s+%dc' % (pos, int(countVar.get()))
+          self.output.tag_add('test', pos, lastidx)
+          pos = lastidx
 
+      self.output.see(tk.END)
+      # self.output.tag_config("vol", background="white", foreground="red")
+      
   # def highlight_pattern(self, pattern, tag, start="1.0", end="end",
   #                         regexp=False):
   #       '''Apply the given tag to all text that matches the given pattern
