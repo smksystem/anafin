@@ -13,16 +13,16 @@ if __name__=="__main__":
 
 
 	# work ok for hightlight
-	# for eachval,data in myrange.items():console.txtout("|"+eachval+" | Vol="+data["vol"] +  
-														#    " | Order=" +data["order"] + 
-														#    " | State=" + data["state"]
+	for eachval,data in myrange.items():console.txtout("|"+eachval+" | Vol="+data["vol"] +  
+														   " | Order=" +data["order"] + 
+														   " | State=" + data["state"]
 
-														# )
+														)
 	
-	# console.highlight_text("Vol")
-	# console.highlight_text("Order")
-	# console.highlight_text("State")
-	# console.highlight_text("7.05")
+	console.highlight_text("Vol")
+	console.highlight_text("Order")
+	console.highlight_text("State")
+	console.highlight_text("7.05")
 
 
 	console.Refresher()

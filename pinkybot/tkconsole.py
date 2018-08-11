@@ -9,35 +9,58 @@ class outputlog(tk.Tk):
       tk.Tk.__init__(self)
       self.title("Output Log")
       # self.resizable(0,0)
-      self.geometry('500x500')
+      self.geometry('800x500+20+20')
       # self.pack_propagate(0)
 
-      self.frameOutput = tk.Frame(self, width=400, height =400,background = 'blue')
-      self.frameOutput.pack_propagate(0)
-      self.frameOutput.pack(side = "left" )
-      
-      self.framebutton = tk.Frame(self, width=400, height =400,background = 'green')
-      self.framebutton.pack_propagate(0)
-      self.framebutton.pack(side="right")
+      self.frameOutput = tk.Frame(self, width=500, height =300,background = 'blue')
+      # self.frameOutput.grid_propagate(0)
+      self.frameOutput.grid(row=0,column=0,rowspan = 2, columnspan = 1,sticky = "n"+"s" )
 
-
-      self.output = tk.Text(self.frameOutput,wrap='word', width=47, height=400, background = 'black', fg='white')
-
-      self.output.pack(side=tk.LEFT)
-      
-      self.LoginBtnInFrame=tk.Button(self.framebutton,text="Start Login")
-      self.LoginBtnInFrame.pack(side=tk.TOP)
-
+      self.output = tk.Text(self.frameOutput,wrap='word', width=60, height=24, background = 'black', fg='white')
+      # self.output.grid_propagate(0)
+      self.output.grid(row=0,column=0)
+      # self.output.pack(side=tk.LEFT)
 
       self.scrollbar = tk.Scrollbar(self.frameOutput,orient="vertical", command = self.output.yview)
-      
-      self.scrollbar.pack(side=tk.RIGHT, fill="y")
-
-
-      self.LoginBtnInFrame=tk.Button(self.framebutton,text="Start Login")
-      self.LoginBtnInFrame.pack(side=tk.LEFT)
-
+      # self.scrollbar.grid_propagate(0)
+      self.scrollbar.grid(row=0,column=1,sticky="n"+"s")
+      # self.scrollbar.pack(side=tk.RIGHT, fill="y")
       self.output['yscrollcommand'] = self.scrollbar.set
+
+      
+      self.frameLoginRT = tk.Frame(self)# ,background = 'green')
+      # self.framebutton.grid_propagate(0)
+      self.frameLoginRT.grid(row=0,column=1,rowspan = 1, columnspan = 1)
+    
+      self.labelnamebrokeid=tk.Label(self.frameLoginRT, text="Broke ID")
+      self.labelnamebrokeid.grid(row=0,column=0)
+      self.enterbrokeid=tk.Entry(self.frameLoginRT)
+      self.enterbrokeid.grid(row=0,column=1)      
+
+      self.labelnamelogin=tk.Label(self.frameLoginRT, text="Login ID")
+      self.labelnamelogin.grid(row=1,column=0)
+      self.enterloginid=tk.Entry(self.frameLoginRT)
+      self.enterloginid.grid(row=1,column=1)
+
+      self.labelnamepassword=tk.Label(self.frameLoginRT, text="Password")
+      self.labelnamepassword.grid(row=2,column=0)
+      self.enterpassword=tk.Entry(self.frameLoginRT)
+      self.enterpassword.grid(row=2,column=1)
+
+      self.LoginBtnInFrame=tk.Button(self.frameLoginRT,text="Start Login RT")
+      self.LoginBtnInFrame.grid(row=3,column=1 )
+
+      
+
+
+      self.frameInitValue=tk.Frame(self, width=100, height =300,background = 'yellow')
+      self.frameInitValue.grid(row=1,column=1,rowspan = 1, columnspan = 1)      
+
+      self.LoginBtnInFrame=tk.Button(self.frameInitValue,text="Start Login")
+      self.LoginBtnInFrame.grid(row=1,column=0 )
+
+
+
 
       self.update_idletasks()
       self.mycount = 0
