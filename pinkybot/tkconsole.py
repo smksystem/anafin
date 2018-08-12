@@ -1,3 +1,4 @@
+
 import tkinter as tk
 import datetime
 import sys
@@ -11,6 +12,17 @@ class outputlog(tk.Tk):
       # self.resizable(0,0)
       self.geometry('800x500+20+20')
       # self.pack_propagate(0)
+      usertxt=tk.StringVar()
+      passtxt=tk.StringVar()
+      broketxt=tk.StringVar()
+      self.loginSet=[
+              broketxt,
+              usertxt,
+              passtxt,
+              
+              ]
+
+      # print(loginSet[0].get())
 
       self.frameOutput = tk.Frame(self, width=500, height =300,background = 'blue')
       # self.frameOutput.grid_propagate(0)
@@ -34,20 +46,20 @@ class outputlog(tk.Tk):
     
       self.labelnamebrokeid=tk.Label(self.frameLoginRT, text="Broke ID")
       self.labelnamebrokeid.grid(row=0,column=0)
-      self.enterbrokeid=tk.Entry(self.frameLoginRT)
+      self.enterbrokeid=tk.Entry(self.frameLoginRT,textvariable=broketxt)
       self.enterbrokeid.grid(row=0,column=1)      
 
       self.labelnamelogin=tk.Label(self.frameLoginRT, text="Login ID")
       self.labelnamelogin.grid(row=1,column=0)
-      self.enterloginid=tk.Entry(self.frameLoginRT)
+      self.enterloginid=tk.Entry(self.frameLoginRT,textvariable=usertxt)
       self.enterloginid.grid(row=1,column=1)
 
       self.labelnamepassword=tk.Label(self.frameLoginRT, text="Password")
       self.labelnamepassword.grid(row=2,column=0)
-      self.enterpassword=tk.Entry(self.frameLoginRT)
+      self.enterpassword=tk.Entry(self.frameLoginRT,show="*",textvariable=passtxt)
       self.enterpassword.grid(row=2,column=1)
 
-      self.LoginBtnInFrame=tk.Button(self.frameLoginRT,text="Start Login RT")
+      self.LoginBtnInFrame=tk.Button(self.frameLoginRT,text="Start Login RT",command=self.executeLogin)
       self.LoginBtnInFrame.grid(row=3,column=1 )
 
       
@@ -55,9 +67,15 @@ class outputlog(tk.Tk):
 
       self.frameInitValue=tk.Frame(self, width=100, height =300,background = 'yellow')
       self.frameInitValue.grid(row=1,column=1,rowspan = 1, columnspan = 1)      
+      self.labelinitialvalue=tk.Label(self.frameInitValue, text="Input Initial Value")
+      self.labelinitialvalue.grid(row=0,column=0)
 
-      self.LoginBtnInFrame=tk.Button(self.frameInitValue,text="Start Login")
-      self.LoginBtnInFrame.grid(row=1,column=0 )
+      self.enterloginid=tk.Entry(self.frameInitValue) #,textvariable=usertxt)
+      self.enterloginid.grid(row=0,column=1)
+
+
+      self.LoginBtnInFrame=tk.Button(self.frameInitValue,text="Start Login",command=self.executeLogin)
+      self.LoginBtnInFrame.grid(row=1,column=1 )
 
 
 
@@ -89,6 +107,15 @@ class outputlog(tk.Tk):
       
       # self.output.tag_config("a", foreground="blue")
       # self.output.insert(contents, ("n", "a"))
+  
+  def executeLogin(self):
+
+      print("hello button Login " + self.loginSet[0].get())
+      print("hello button Login " + self.loginSet[1].get())
+      print("hello button Login " + self.loginSet[2].get())
+      # print(self.TempVar)
+
+
   def highlight_text(self,word):
       # word="Vol"
       txtmsg=self.output.get("1.0","end")
