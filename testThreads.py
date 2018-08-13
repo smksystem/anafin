@@ -9,7 +9,7 @@ print_lock = threading.Lock()
 
 class MyThread(threading.Thread):
     def __init__(self, queue, args=(), kwargs=None):
-        threading.Thread.__init__(self, args=(), kwargs=None)
+        threading.Thread.__init__(self,target=(), args=(), kwargs=None)
         self.queue = queue
         self.daemon = True
         self.receive_messages = args[0]
