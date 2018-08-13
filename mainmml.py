@@ -1,10 +1,19 @@
+import django
+import sys
+import os
+
+sys.path.append('D:\workspace\anafin')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'anafin.settings')
+django.setup()
+
 from pinkybot.rangevalue import rangevalue
 from pinkybot.tkconsole import outputlog
-
-
+from pinkybot.monitor import pinkybot
 
 if __name__=="__main__":
 	print("Welcom Main Pinkybot by MML") 
+
+	
 
 	console=outputlog()
 	chooserange=rangevalue("C")
@@ -16,9 +25,11 @@ if __name__=="__main__":
 	for eachval,data in myrange.items():console.txtout("|"+eachval+" | Vol="+data["vol"] +  
 														   " | Order=" +data["order"] + 
 														   " | State=" + data["state"]
+													)
 
-														)
 	
+	# login= pinkybot()
+ #    login.mypinkylogin(LoginParams)
 	console.highlight_text("Vol")
 	console.highlight_text("Order")
 	console.highlight_text("State")

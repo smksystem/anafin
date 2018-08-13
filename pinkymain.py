@@ -4,6 +4,7 @@ import django
 import sys
 import os
 from Tkinter import tkinter
+
 sys.path.append('D:\workspace\anafin')
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'anafin.settings')
