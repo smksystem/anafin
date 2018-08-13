@@ -63,12 +63,12 @@ class MyThread(threading.Thread):
         self.daemon = True
         print(args)
         self.parameter=args[0]
-        # self.receive_messages = args[0]
+        self.receive_messages=args[0]
         self.fnrun=fnrun
 
     def run(self):
         print("start run")
-        # print (threading.currentThread().getName(), self.receive_messages)
+        print (threading.currentThread().getName(),self.receive_messages)
         
         self.fnrun.mypinkylogin(self.parameter)
 
