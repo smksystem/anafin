@@ -15,7 +15,22 @@ class packselenium():
 		pass
 		
 
-	def login(self,loginParams):
+	def login(self,loginParams,myqueue):
+		self.myqueue=myqueue
+		# for i in iter(self.myqueue.get(),'STOP'):
+			
+		# for i in iter(self.myqueue):
+		# print( self.myqueue.display())
+
+		# print (self.myqueue.get())
+		self.myqueue.put("monitoring")
+
+		# for job in iter(self.myqueue.get, None):
+			# print (job)
+		
+		exit()
+
+
 		driver = webdriver.Chrome()
 		# put url here
 		# exit()

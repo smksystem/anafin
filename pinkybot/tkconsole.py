@@ -7,6 +7,8 @@ class outputlog(tk.Tk):
 	def __init__(self):
 
 			tk.Tk.__init__(self)
+			self.mybot=pinkybot()
+
 			self.title("Output Log")
 			# self.resizable(0,0)
 			self.geometry('800x500+20+20')
@@ -112,8 +114,8 @@ class outputlog(tk.Tk):
 			# print("hello button Login " + self.loginSet[0].get())
 			# print("hello button Login " + self.loginSet[1].get())
 			# print("hello button Login " + self.loginSet[2].get())
-			mybot=pinkybot()
-			mybot.threadlogin(self.loginSet)
+			
+			self.mybot.threadlogin(self.loginSet)
 
 			# print(self.TempVar)
 
@@ -149,7 +151,13 @@ class outputlog(tk.Tk):
 			self.mycount+=1
 			step=10+(self.mycount/10)
 			print (step)
+			# print (dir(self))
+			if not self.mybot.myqueue.empty():
 
+				print(self.mybot.myqueue.get())
+				# self.mybot.myqueue.join()
+
+				
 			self.output.tag_config("testb", background="white", foreground="red")
 			self.output.tag_add('testb', 10.0, step)
 			self.after(1000, self.Refresher) # every second...

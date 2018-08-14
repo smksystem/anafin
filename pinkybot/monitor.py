@@ -10,7 +10,8 @@ from multiprocessing import Queue
 class pinkybot(packselenium):
     """docstring for firstlogin"""
     def __init__(self):
-        pass
+        # pass
+        self.myqueue = Queue()
 
 
         
@@ -28,19 +29,19 @@ class pinkybot(packselenium):
           }
         print (LoginParams)
         # self.mypinkylogin(LoginParams)
-        q = Queue()
-        mthread=MyThread(q,self,args=(LoginParams,))
+        
+        mthread=MyThread(self.myqueue,self,args=(LoginParams,))
         mthread.start()
+        # mthread.join()
 
 
-
-    def mypinkylogin(self,loginParams):
+    def mypinkylogin(self,loginParams,myqueue):
         # self.monitoring("test")
         # print (username)
         print (loginParams)
         # exit()
 
-        handlewin=self.login(loginParams)
+        handlewin=self.login(loginParams,myqueue)
         # buysellorder.orderbuy(handlewin)
         
 
@@ -69,8 +70,12 @@ class MyThread(threading.Thread):
     def run(self):
         print("start run")
         print (threading.currentThread().getName(),self.receive_messages)
+
+        # self.queue.put("hello1",block=True)
+        # self.queue.put("hello2",block=True)
+        # self.queue.put("hello3",block=True)
         
-        self.fnrun.mypinkylogin(self.parameter)
+        self.fnrun.mypinkylogin(self.parameter,self.queue)
 
         val = self.queue.get()
         self.do_thing_with_message(val)
