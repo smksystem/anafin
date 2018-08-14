@@ -4,9 +4,10 @@ import datetime
 import sys
 from pinkybot.monitor import pinkybot
 class outputlog(tk.Tk):
-	def __init__(self):
+	def __init__(self,selrange):
 
 			tk.Tk.__init__(self)
+			self.selrange=selrange
 			self.mybot=pinkybot()
 
 			self.title("Output Log")
@@ -25,11 +26,13 @@ class outputlog(tk.Tk):
 
 			# print(loginSet[0].get())
 
-			self.frameOutput = tk.Frame(self, width=500, height =300,background = 'blue')
+			self.frameOutput = tk.Frame(self, width=500, height =200,background = 'blue')
 			# self.frameOutput.grid_propagate(0)
 			self.frameOutput.grid(row=0,column=0,rowspan = 2, columnspan = 1,sticky = "n"+"s" )
 
-			self.output = tk.Text(self.frameOutput,wrap='word', width=60, height=24, background = 'black', fg='white')
+
+
+			self.output = tk.Text(self.frameOutput,wrap='word', width=60, height=14, background = 'black', fg='white')
 			# self.output.grid_propagate(0)
 			self.output.grid(row=0,column=0)
 			# self.output.pack(side=tk.LEFT)
@@ -79,8 +82,31 @@ class outputlog(tk.Tk):
 			self.LoginBtnInFrame.grid(row=1,column=1 )
 
 
+			self.frameGroupOutput = tk.Frame(self, width=500, height =200,background = 'red')
+			self.frameGroupOutput.grid_propagate(0)
+			self.frameGroupOutput.grid(row=2,column=0) # start row 2 since text output occupied 2 rows with 0,1.
 
 
+
+
+			for x,y in enumerate(self.selrange):
+				print(x)
+				print(y)
+			exit()
+
+			myvar=[]			
+			for i in range(0,5):
+				myvar.append(tk.StringVar())
+				self.labelnamepassword=tk.Label(self.frameGroupOutput,name="name", text="Initial" + str(i) , textvariable=myvar[i])
+
+				self.labelnamepassword.grid(row=0,column=i)
+
+
+			# dir(self.labelnamepassword)
+			myvar[0].set("hello1")
+			myvar[1].set("hello2")
+			# ["text"]="testhello4"
+			# self.labelnamepassword["name"].configure("text")="test"
 			self.update_idletasks()
 			self.mycount = 0
 
