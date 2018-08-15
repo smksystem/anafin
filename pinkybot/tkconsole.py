@@ -7,7 +7,9 @@ class outputlog(tk.Tk):
 	def __init__(self,selrange):
 
 			tk.Tk.__init__(self)
-			self.selrange=selrange
+			self.initRangeValue(selrange)
+
+
 			self.mybot=pinkybot()
 
 			self.title("Output Log")
@@ -87,27 +89,6 @@ class outputlog(tk.Tk):
 			self.frameGroupOutput.grid(row=2,column=0) # start row 2 since text output occupied 2 rows with 0,1.
 
 
-			varasso={}
-			varline={}
-			# print (self.selrange)
-			for stockname,data in enumerate(self.selrange):
-				varasso["stockname"]=tk.StringVar(value=data)
-				# print(data)
-				
-				# print(self.selrange[data])
-				valueparams=self.selrange[data]
-				for value,infodata in enumerate(valueparams):
-					# print (infodata)
-					varline[value]=infodata
-					# tk.StringVar(value=infodata)
-				# 		test[value]=tk.StringVar()
-
-						# print (valueparams[infodata]["update"])
-				# print (data)
-				# print(y)
-			varasso["stockname"]{}=varline
-			print (varasso)
-			exit()
 
 			myvar=[]			
 			for i in range(0,5):
@@ -124,6 +105,102 @@ class outputlog(tk.Tk):
 			# self.labelnamepassword["name"].configure("text")="test"
 			self.update_idletasks()
 			self.mycount = 0
+
+	def initRangeValue(self,idx):
+		data={
+		"A":[0,2,0.01],  # 0 to 2 step 0.01
+		"B":[2,4.98,0.02], # 2 up to less than 5	0.02
+		"C":[5,10,0.05],
+		"D":[10,25,0.10],
+		"E":[25,100,0.25],
+		"F":[100,200,0.5],
+		"G":[200,400,1],
+		"H":[400,1000,2],
+		}
+		series=[]
+		i=data[idx][0]
+		while i < data[idx][1]:
+			chkpad=str(round(i,2)).split(".")
+			# print(len(chkpad))
+			if len(chkpad)==1:
+				stval=str(round(i,2))+".00"
+			elif len(chkpad)==2:
+				tempval=chkpad[1]+"0"
+				stval=chkpad[0]+"." +tempval[:2]
+
+			series.append(stval)
+			i+=data[idx][2]
+		# print(series)
+		self.rangestock= self.rangeline(series)
+
+	def rangeline(self,series):
+		i=0
+		mystock={}
+		linedic={}
+		stockdata={}
+		rowid={}
+		timenow = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+		
+
+		vardatetime=tk.StringVar(value="datetime")
+		# print(series)
+		# mystock["BEAUTY"]=linedic
+
+		varasso={}
+		varstep={}
+		varinfo={}
+		# print (self.selrange)
+		for stockname,data in enumerate(self.selrange):
+			# print (stockname)
+			# print (data)
+			# exit()
+			valueparams=self.selrange[data]
+			for value,infodata in enumerate(valueparams):
+				print (value)
+				print(infodata)
+				exit()
+				vardatetime=tk.StringVar(value="datetime")
+				varorder=tk.StringVar(value="wait")
+				varstatus=tk.StringVar(value="wait")
+				varvolumn=tk.StringVar(value="wait")
+				varvalue=tk.StringVar(value=data)
+
+				varinfo={"volumn":varvolumn,"update":vardatetime,"order":varorder,"state":varstatus}
+				# varstep={"value":varvalue}
+				varasso={"valustep":varvalue,"info":varinfo}
+
+		print (varasso[varvalue])
+
+		exit()
+
+
+
+
+
+
+		for v in series:
+			# print(v)
+			
+			# rowid[i]=tk.StringVar()
+			# i+=1
+			# stockdata[i]=Rowid+str(i)
+			linedic[str(v)]={"vol":"0","order":"W","state":"W"}
+			linedic[str(v)]["update"]=timenow
+
+		mystock["BEAUTY"]=linedic
+		# print (rowid)
+		# exit()
+		return mystock
+	def getRangeSeries(self):
+		return self.rangestock
+	def update():
+		pass
+
+
+
+
+
+
 
 	def txtout(self,txtmsg):
 

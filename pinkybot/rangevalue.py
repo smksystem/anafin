@@ -35,7 +35,7 @@ import datetime
 class rangevalue():
 	"""docstring for ClassName"""
 	def __init__(self,idx):  
-
+		# root=tk()
 		data={
 		"A":[0,2,0.01],  # 0 to 2 step 0.01
 		"B":[2,4.98,0.02], # 2 up to less than 5	0.02
@@ -70,6 +70,8 @@ class rangevalue():
 		rowid={}
 		timenow = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 		
+
+		vardatetime=tk.StringVar(value="datetime")
 		# print(series)
 		# mystock["BEAUTY"]=linedic
 		for v in series:

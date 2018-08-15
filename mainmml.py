@@ -13,9 +13,9 @@ from pinkybot.monitor import pinkybot
 if __name__=="__main__":
 	print("Welcom Main Pinkybot by MML") 
 
-	chooserange=rangevalue("C")
-	myrange=chooserange.getRangeSeries()
-	console=outputlog(myrange)
+	# chooserange=rangevalue("C")
+	# myrange=chooserange.getRangeSeries()
+	console=outputlog("C")
 	
 	
 
