@@ -29,7 +29,9 @@
 
 #    def setNextNode(self,val):
 #        self.nextNode = val
+import tkinter as tk
 from decimal import Decimal
+import datetime
 class rangevalue():
 	"""docstring for ClassName"""
 	def __init__(self,idx):  
@@ -61,12 +63,28 @@ class rangevalue():
 		self.rangestock= self.rangeline(series)
 
 	def rangeline(self,series):
+		i=0
+		mystock={}
 		linedic={}
+		stockdata={}
+		rowid={}
+		timenow = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+		
 		# print(series)
+		# mystock["BEAUTY"]=linedic
 		for v in series:
 			# print(v)
+			
+			# rowid[i]=tk.StringVar()
+			# i+=1
+			# stockdata[i]=Rowid+str(i)
 			linedic[str(v)]={"vol":"0","order":"W","state":"W"}
-		return linedic
+			linedic[str(v)]["update"]=timenow
+
+		mystock["BEAUTY"]=linedic
+		# print (rowid)
+		# exit()
+		return mystock
 	def getRangeSeries(self):
 		return self.rangestock
 	def update():
@@ -77,9 +95,9 @@ if __name__=="__main__":
 
 	# c=np.arange(2,5,0.02)
 	# print (c)
-	test1=rangevalue("E")
+	test1=rangevalue("C")
 	a=test1.getRangeSeries()
-	# print(a)
+	print(a)
 	# print(a["1.86"])
 	# test2=rangevalue("B")
 	# test3=rangevalue("C")

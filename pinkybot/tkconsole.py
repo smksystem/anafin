@@ -87,11 +87,26 @@ class outputlog(tk.Tk):
 			self.frameGroupOutput.grid(row=2,column=0) # start row 2 since text output occupied 2 rows with 0,1.
 
 
+			varasso={}
+			varline={}
+			# print (self.selrange)
+			for stockname,data in enumerate(self.selrange):
+				varasso["stockname"]=tk.StringVar(value=data)
+				# print(data)
+				
+				# print(self.selrange[data])
+				valueparams=self.selrange[data]
+				for value,infodata in enumerate(valueparams):
+					# print (infodata)
+					varline[value]=infodata
+					# tk.StringVar(value=infodata)
+				# 		test[value]=tk.StringVar()
 
-
-			for x,y in enumerate(self.selrange):
-				print(x)
-				print(y)
+						# print (valueparams[infodata]["update"])
+				# print (data)
+				# print(y)
+			varasso["stockname"]{}=varline
+			print (varasso)
 			exit()
 
 			myvar=[]			
