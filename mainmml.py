@@ -11,7 +11,7 @@ from pinkybot.tkconsole import outputlog
 from pinkybot.monitor import pinkybot
 
 if __name__=="__main__":
-	print("Welcom Main Pinkybot by MML") 
+	print("Welcome Main Pinkybot by MML") 
 
 	# chooserange=rangevalue("C")
 	# myrange=chooserange.getRangeSeries()
@@ -21,19 +21,19 @@ if __name__=="__main__":
 
 
 	# work ok for hightlight
-	for eachval,data in myrange.items():console.txtout("|"+eachval+" | Vol="+data["vol"] +  
-														   " | Order=" +data["order"] + 
-														   " | State=" + data["state"]
-													)
-	# login= pinkybot()
+	# for eachval,data in myrange.items():console.txtout("|"+eachval+" | Vol="+data["vol"] +  
+	# 													   " | Order=" +data["order"] + 
+	# 													   " | State=" + data["state"]
+	# 												)
+	# # login= pinkybot()
  #    login.mypinkylogin(LoginParams)
  
-	console.highlight_text("Vol")
-	console.highlight_text("Order")
-	console.highlight_text("State")
-	console.highlight_text("7.05")
+	# console.highlight_text("Vol")
+	# console.highlight_text("Order")
+	# console.highlight_text("State")
+	# console.highlight_text("7.05")
 
 
-	console.Refresher()
+	# console.Refresher()
 
 	console.mainloop()

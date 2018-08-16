@@ -7,7 +7,7 @@ class outputlog(tk.Tk):
 	def __init__(self,selrange):
 
 			tk.Tk.__init__(self)
-			self.initRangeValue(selrange)
+			self.myvarasso=self.initRangeValue(selrange)
 
 
 			self.mybot=pinkybot()
@@ -84,23 +84,43 @@ class outputlog(tk.Tk):
 			self.LoginBtnInFrame.grid(row=1,column=1 )
 
 
-			self.frameGroupOutput = tk.Frame(self, width=500, height =200,background = 'red')
+			self.frameGroupOutput = tk.Frame(self, width=500, height =400,background = 'red')
 			self.frameGroupOutput.grid_propagate(0)
 			self.frameGroupOutput.grid(row=2,column=0) # start row 2 since text output occupied 2 rows with 0,1.
 
+			self.scrollbarGroupOutPut = tk.Scrollbar(self.frameGroupOutput,orient="vertical", command = self.output.yview)
+			# self.scrollbar.grid_propagate(0)
+			self.scrollbarGroupOutPut.grid(sticky="w"+"n"+"s")
+			# self.scrollbar.pack(side=tk.RIGHT, fill="y")
+			# self.output['yscrollcommand'] = self.scrollbar.set
 
 
-			myvar=[]			
-			for i in range(0,5):
-				myvar.append(tk.StringVar())
-				self.labelnamepassword=tk.Label(self.frameGroupOutput,name="name", text="Initial" + str(i) , textvariable=myvar[i])
+			myvar=[]	
+			# {0: {'volumn': <tkinter.StringVar object at 0x04331FB0>, 'update': <tkinter.StringVar object at 0x04331F10>, 'order': <tkinter.StringVar object at 0x04331F30>, 'state': <tkinter.StringVar object at 0x04331F70>}}	
+			for i,varvalue in enumerate(self.myvarasso):
+				print ("i="+str(i))
+				# print (self.myvarasso[varvalue]["volumn"])
+				# myvar.append(tk.StringVar())
+				rowvalue=self.myvarasso[varvalue]
 
-				self.labelnamepassword.grid(row=0,column=i)
+				self.labeldisplay=tk.Label(self.frameGroupOutput, text=varvalue)
+				self.labeldisplay.grid(row=i,column=0)
+
+				for j,varinfo in enumerate(rowvalue):
+					print ("j="+str(j))
+					print (varinfo)
+					# exit()
+
+					# self.labeldisplay=tk.Label(self.frameGroupOutput, text=varvalue)
+					# self.labeldisplay.grid(row=i,column=j)
+
+					self.labeldisplay=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo])
+					self.labeldisplay.grid(row=i,column=j+1)
 
 
 			# dir(self.labelnamepassword)
-			myvar[0].set("hello1")
-			myvar[1].set("hello2")
+			# myvar[0].set("hello1")
+			# myvar[1].set("hello2")
 			# ["text"]="testhello4"
 			# self.labelnamepassword["name"].configure("text")="test"
 			self.update_idletasks()
@@ -131,66 +151,49 @@ class outputlog(tk.Tk):
 			series.append(stval)
 			i+=data[idx][2]
 		# print(series)
-		self.rangestock= self.rangeline(series)
+		return self.rangeline(series)
 
 	def rangeline(self,series):
-		i=0
-		mystock={}
-		linedic={}
-		stockdata={}
-		rowid={}
+
+		# mystock={}
+		# linedic={}
+		# stockdata={}
+		# rowid={}
 		timenow = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 		
 
-		vardatetime=tk.StringVar(value="datetime")
+		# vardatetime=tk.StringVar(value="datetime")
 		# print(series)
 		# mystock["BEAUTY"]=linedic
 
 		varasso={}
 		varstep={}
 		varinfo={}
-		# print (self.selrange)
-		for stockname,data in enumerate(self.selrange):
-			# print (stockname)
-			# print (data)
+		# print (series)
+		for rowid,varvalue in enumerate(series):
+			# print (rowid)
+			# print (varvalue)
 			# exit()
-			valueparams=self.selrange[data]
-			for value,infodata in enumerate(valueparams):
-				print (value)
-				print(infodata)
-				exit()
-				vardatetime=tk.StringVar(value="datetime")
-				varorder=tk.StringVar(value="wait")
-				varstatus=tk.StringVar(value="wait")
-				varvolumn=tk.StringVar(value="wait")
-				varvalue=tk.StringVar(value=data)
 
-				varinfo={"volumn":varvolumn,"update":vardatetime,"order":varorder,"state":varstatus}
-				# varstep={"value":varvalue}
-				varasso={"valustep":varvalue,"info":varinfo}
+			vardatetime=tk.StringVar(value=timenow)
+			varorder=tk.StringVar(value="wait")
+			varstatus=tk.StringVar(value="wait")
+			varvolumn=tk.StringVar(value="wait")
+			# varvalue=tk.StringVar(value=data)
 
-		print (varasso[varvalue])
-
-		exit()
+			varinfo={"volumn":varvolumn,"update":vardatetime,"order":varorder,"state":varstatus}
+			# varstep={"value":varvalue}
+			varasso[varvalue]=varinfo
 
 
-
-
-
-
-		for v in series:
-			# print(v)
-			
-			# rowid[i]=tk.StringVar()
-			# i+=1
-			# stockdata[i]=Rowid+str(i)
-			linedic[str(v)]={"vol":"0","order":"W","state":"W"}
-			linedic[str(v)]["update"]=timenow
-
-		mystock["BEAUTY"]=linedic
+		# print (varasso)
+	
+	
+		# mystock["BEAUTY"]=linedic
 		# print (rowid)
 		# exit()
-		return mystock
+		return varasso
+
 	def getRangeSeries(self):
 		return self.rangestock
 	def update():
