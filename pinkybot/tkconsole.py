@@ -84,19 +84,27 @@ class outputlog(tk.Tk):
 			self.LoginBtnInFrame.grid(row=1,column=1 )
 
 
-			self.frameGroupOutput = tk.Frame(self, width=500, height =400,background = 'red')
-			self.frameGroupOutput.grid_propagate(0)
+
+
+			self.canvas=tk.Canvas(self,background="blue")
+			# self.canvas.grid_propagate(0)
+			self.canvas.grid(row=2,column=0)
+
+
+			self.frameGroupOutput = tk.Frame(self.canvas,background = 'red')
+			# self.frameGroupOutput.grid_propagate(0)
 			self.frameGroupOutput.grid(row=2,column=0) # start row 2 since text output occupied 2 rows with 0,1.
 
-			self.scrollbarGroupOutPut = tk.Scrollbar(self.frameGroupOutput,orient="vertical", command = self.output.yview)
+			self.scrollbarGroupOutPut = tk.Scrollbar(self,orient="vertical", command = self.canvas.yview)
 			# self.scrollbar.grid_propagate(0)
-			self.scrollbarGroupOutPut.grid(sticky="w"+"n"+"s")
+			self.scrollbarGroupOutPut.grid(row=2,column=1,sticky="w"+"n"+"s")
 			# self.scrollbar.pack(side=tk.RIGHT, fill="y")
-			# self.output['yscrollcommand'] = self.scrollbar.set
+			self.canvas['yscrollcommand'] = self.scrollbarGroupOutPut.set
+			self.canvas.bind('<Configure>', self.on_configure)
+			self.canvas.create_window((0,0), window=self.frameGroupOutput, anchor='center')
 
-
-			myvar=[]	
-			# {0: {'volumn': <tkinter.StringVar object at 0x04331FB0>, 'update': <tkinter.StringVar object at 0x04331F10>, 'order': <tkinter.StringVar object at 0x04331F30>, 'state': <tkinter.StringVar object at 0x04331F70>}}	
+			myvar=[]  
+			# {0: {'volumn': <tkinter.StringVar object at 0x04331FB0>, 'update': <tkinter.StringVar object at 0x04331F10>, 'order': <tkinter.StringVar object at 0x04331F30>, 'state': <tkinter.StringVar object at 0x04331F70>}} 
 			for i,varvalue in enumerate(self.myvarasso):
 				print ("i="+str(i))
 				# print (self.myvarasso[varvalue]["volumn"])
@@ -106,18 +114,21 @@ class outputlog(tk.Tk):
 				self.labeldisplay=tk.Label(self.frameGroupOutput, text=varvalue)
 				self.labeldisplay.grid(row=i,column=0)
 
+				self.labelseparate=tk.Label(self.frameGroupOutput, text=" | ")
+				self.labelseparate.grid(row=i,column=1)
+				
 				for j,varinfo in enumerate(rowvalue):
 					print ("j="+str(j))
 					print (varinfo)
 					# exit()
-
+					# col+=j
 					# self.labeldisplay=tk.Label(self.frameGroupOutput, text=varvalue)
 					# self.labeldisplay.grid(row=i,column=j)
+					
 
-					self.labeldisplay=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo])
-					self.labeldisplay.grid(row=i,column=j+1)
-
-
+					self.labeldisplay=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo] )
+					# self.labeldisplay.grid_propagate(0)
+					self.labeldisplay.grid(row=i,column=j+2)
 			# dir(self.labelnamepassword)
 			# myvar[0].set("hello1")
 			# myvar[1].set("hello2")
@@ -125,11 +136,15 @@ class outputlog(tk.Tk):
 			# self.labelnamepassword["name"].configure("text")="test"
 			self.update_idletasks()
 			self.mycount = 0
-
+			self.myvarasso["5.00"]["order"].set("buy")
+	def on_configure(self,event):
+		# update scrollregion after starting 'mainloop'
+		# when all widgets are in canvas
+		self.canvas.configure(scrollregion=self.canvas.bbox('all'))
 	def initRangeValue(self,idx):
 		data={
 		"A":[0,2,0.01],  # 0 to 2 step 0.01
-		"B":[2,4.98,0.02], # 2 up to less than 5	0.02
+		"B":[2,4.98,0.02], # 2 up to less than 5  0.02
 		"C":[5,10,0.05],
 		"D":[10,25,0.10],
 		"E":[25,100,0.25],
@@ -159,8 +174,8 @@ class outputlog(tk.Tk):
 		# linedic={}
 		# stockdata={}
 		# rowid={}
-		timenow = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-		
+		datenow = datetime.datetime.now().strftime("%Y-%m-%d")
+		timenow = datetime.datetime.now().strftime("%H:%M:%S")
 
 		# vardatetime=tk.StringVar(value="datetime")
 		# print(series)
@@ -175,13 +190,20 @@ class outputlog(tk.Tk):
 			# print (varvalue)
 			# exit()
 
-			vardatetime=tk.StringVar(value=timenow)
+			vardate=tk.StringVar(value=datenow)
+			vartime=tk.StringVar(value=timenow)
 			varorder=tk.StringVar(value="wait")
 			varstatus=tk.StringVar(value="wait")
 			varvolumn=tk.StringVar(value="wait")
 			# varvalue=tk.StringVar(value=data)
 
-			varinfo={"volumn":varvolumn,"update":vardatetime,"order":varorder,"state":varstatus}
+			varinfo={
+				"updatedate":vardate,
+				"updatetime":vartime,
+				"volumn":varvolumn,
+				"order":varorder,
+				"state":varstatus
+			}
 			# varstep={"value":varvalue}
 			varasso[varvalue]=varinfo
 
