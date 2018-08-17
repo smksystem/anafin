@@ -30,7 +30,7 @@ canvas.create_window((0,0), window=frame, anchor='nw')
 
 # --- add widgets in frame ---
 
-l = tk.Label(frame, text="Hello", font="-size 50")
+l = tk.Label(frame, text="Hello",name="hello", font="-size 50",background="red")
 l.pack()
 
 l = tk.Label(frame, text="World", font="-size 50")
@@ -39,6 +39,7 @@ l.pack()
 l = tk.Label(frame, text="Test text 1\nTest text 2\nTest text 3\nTest text 4\nTest text 5\nTest text 6\nTest text 7\nTest text 8\nTest text 9", font="-size 20")
 l.pack()
 
+l.configure(background="blue")
 # --- start program ---
 
 root.mainloop()

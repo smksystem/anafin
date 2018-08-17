@@ -104,31 +104,53 @@ class outputlog(tk.Tk):
 			self.canvas.create_window((0,0), window=self.frameGroupOutput, anchor='center')
 
 			myvar=[]  
+			labelvar={}
+			labelinfo={}
 			# {0: {'volumn': <tkinter.StringVar object at 0x04331FB0>, 'update': <tkinter.StringVar object at 0x04331F10>, 'order': <tkinter.StringVar object at 0x04331F30>, 'state': <tkinter.StringVar object at 0x04331F70>}} 
+
+			self.labeldisplay={}
 			for i,varvalue in enumerate(self.myvarasso):
 				print ("i="+str(i))
 				# print (self.myvarasso[varvalue]["volumn"])
 				# myvar.append(tk.StringVar())
-				rowvalue=self.myvarasso[varvalue]
-
-				self.labeldisplay=tk.Label(self.frameGroupOutput, text=varvalue)
-				self.labeldisplay.grid(row=i,column=0)
-
-				self.labelseparate=tk.Label(self.frameGroupOutput, text=" | ")
-				self.labelseparate.grid(row=i,column=1)
 				
+				
+				labelvar[varvalue]=tk.Label(self.frameGroupOutput, text=varvalue)
+				labelvar[varvalue].grid(row=i,column=0)
+
+				labelseparate=tk.Label(self.frameGroupOutput, text=" | ")
+				labelseparate.grid(row=i,column=1)
+				
+				# myinfo={}
+				# self.labeldisplay[varvalue]["info"]=myinfo
+
+				rowvalue=self.myvarasso[varvalue]
 				for j,varinfo in enumerate(rowvalue):
-					print ("j="+str(j))
-					print (varinfo)
+					# print ("j="+str(j))
 					# exit()
 					# col+=j
 					# self.labeldisplay=tk.Label(self.frameGroupOutput, text=varvalue)
 					# self.labeldisplay.grid(row=i,column=j)
-					
 
-					self.labeldisplay=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo] )
+					# tempvar=self.myvarasso[varvalue][varinfo].get()
+					# print("tempvar="+varinfo)
+					labelinfo[varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo])
+					# print (myinfo)
+					# self.labeldisplay[varvalue][self.myvarasso[varvalue][varinfo].get()]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo] )
+
 					# self.labeldisplay.grid_propagate(0)
-					self.labeldisplay.grid(row=i,column=j+2)
+					labelinfo[varinfo].grid(row=i,column=j+2)
+			# print(myinfo)
+				self.labeldisplay[varvalue]={"var":labelvar,"info":labelinfo}
+
+			print (self.labeldisplay["5.00"])
+			exit()
+			self.labeldisplay["5.00"]["info"]["order"].configure(background="red")
+			# exit()
+			# self.labeldisplay["5.00"]["info"]["order"].configure(background="red")
+
+					# self.labeldisplay[varvalue][self.myvarasso[varvalue][varinfo].get()].grid(row=i,column=j+2)
+
 			# dir(self.labelnamepassword)
 			# myvar[0].set("hello1")
 			# myvar[1].set("hello2")
@@ -137,6 +159,10 @@ class outputlog(tk.Tk):
 			self.update_idletasks()
 			self.mycount = 0
 			self.myvarasso["5.00"]["order"].set("buy")
+
+			
+
+
 	def on_configure(self,event):
 		# update scrollregion after starting 'mainloop'
 		# when all widgets are in canvas
