@@ -6,162 +6,164 @@ from pinkybot.monitor import pinkybot
 class outputlog(tk.Tk):
 	def __init__(self,selrange):
 
-			tk.Tk.__init__(self)
-			self.myvarasso=self.initRangeValue(selrange)
+		tk.Tk.__init__(self)
+		self.myvarasso=self.initRangeValue(selrange)
 
 
-			self.mybot=pinkybot()
+		self.mybot=pinkybot()
 
-			self.title("Output Log")
-			# self.resizable(0,0)
-			self.geometry('800x500+20+20')
-			# self.pack_propagate(0)
-			usertxt=tk.StringVar(value="0147500")
-			passtxt=tk.StringVar()
-			broketxt=tk.StringVar(value="013")
-			self.loginSet=[
-							broketxt,
-							usertxt,
-							passtxt,
-							
-							]
+		self.title("Output Log")
+		# self.resizable(0,0)
+		self.geometry('800x500+20+20')
+		# self.pack_propagate(0)
+		usertxt=tk.StringVar(value="0147500")
+		passtxt=tk.StringVar()
+		broketxt=tk.StringVar(value="013")
+		self.loginSet=[
+						broketxt,
+						usertxt,
+						passtxt,
+						
+						]
 
-			# print(loginSet[0].get())
+		# print(loginSet[0].get())
 
-			self.frameOutput = tk.Frame(self, width=500, height =200,background = 'blue')
-			# self.frameOutput.grid_propagate(0)
-			self.frameOutput.grid(row=0,column=0,rowspan = 2, columnspan = 1,sticky = "n"+"s" )
+		self.frameOutput = tk.Frame(self, width=500, height =200,background = 'blue')
+		# self.frameOutput.grid_propagate(0)
+		self.frameOutput.grid(row=0,column=0,rowspan = 2, columnspan = 1,sticky = "n"+"s" )
 
 
 
-			self.output = tk.Text(self.frameOutput,wrap='word', width=60, height=14, background = 'black', fg='white')
-			# self.output.grid_propagate(0)
-			self.output.grid(row=0,column=0)
-			# self.output.pack(side=tk.LEFT)
+		self.output = tk.Text(self.frameOutput,wrap='word', width=60, height=14, background = 'black', fg='white')
+		# self.output.grid_propagate(0)
+		self.output.grid(row=0,column=0)
+		# self.output.pack(side=tk.LEFT)
 
-			self.scrollbar = tk.Scrollbar(self.frameOutput,orient="vertical", command = self.output.yview)
-			# self.scrollbar.grid_propagate(0)
-			self.scrollbar.grid(row=0,column=1,sticky="n"+"s")
-			# self.scrollbar.pack(side=tk.RIGHT, fill="y")
-			self.output['yscrollcommand'] = self.scrollbar.set
+		self.scrollbar = tk.Scrollbar(self.frameOutput,orient="vertical", command = self.output.yview)
+		# self.scrollbar.grid_propagate(0)
+		self.scrollbar.grid(row=0,column=1,sticky="n"+"s")
+		# self.scrollbar.pack(side=tk.RIGHT, fill="y")
+		self.output['yscrollcommand'] = self.scrollbar.set
 
-			
-			self.frameLoginRT = tk.Frame(self)# ,background = 'green')
-			# self.framebutton.grid_propagate(0)
-			self.frameLoginRT.grid(row=0,column=1,rowspan = 1, columnspan = 1)
 		
-			self.labelnamebrokeid=tk.Label(self.frameLoginRT, text="Broke ID")
-			self.labelnamebrokeid.grid(row=0,column=0)
-			self.enterbrokeid=tk.Entry(self.frameLoginRT,textvariable=broketxt)
-			self.enterbrokeid.grid(row=0,column=1)      
+		self.frameLoginRT = tk.Frame(self)# ,background = 'green')
+		# self.framebutton.grid_propagate(0)
+		self.frameLoginRT.grid(row=0,column=1,rowspan = 1, columnspan = 1)
+	
+		self.labelnamebrokeid=tk.Label(self.frameLoginRT, text="Broke ID")
+		self.labelnamebrokeid.grid(row=0,column=0)
+		self.enterbrokeid=tk.Entry(self.frameLoginRT,textvariable=broketxt)
+		self.enterbrokeid.grid(row=0,column=1)      
 
-			self.labelnamelogin=tk.Label(self.frameLoginRT, text="Login ID")
-			self.labelnamelogin.grid(row=1,column=0)
-			self.enterloginid=tk.Entry(self.frameLoginRT,textvariable=usertxt)
-			self.enterloginid.grid(row=1,column=1)
+		self.labelnamelogin=tk.Label(self.frameLoginRT, text="Login ID")
+		self.labelnamelogin.grid(row=1,column=0)
+		self.enterloginid=tk.Entry(self.frameLoginRT,textvariable=usertxt)
+		self.enterloginid.grid(row=1,column=1)
 
-			self.labelnamepassword=tk.Label(self.frameLoginRT, text="Password")
-			self.labelnamepassword.grid(row=2,column=0)
-			self.enterpassword=tk.Entry(self.frameLoginRT,show="*",textvariable=passtxt)
-			self.enterpassword.grid(row=2,column=1)
+		self.labelnamepassword=tk.Label(self.frameLoginRT, text="Password")
+		self.labelnamepassword.grid(row=2,column=0)
+		self.enterpassword=tk.Entry(self.frameLoginRT,show="*",textvariable=passtxt)
+		self.enterpassword.grid(row=2,column=1)
 
-			self.LoginBtnInFrame=tk.Button(self.frameLoginRT,text="Start Login RT",command=self.executeLogin)
-			self.LoginBtnInFrame.grid(row=3,column=1 )
+		self.LoginBtnInFrame=tk.Button(self.frameLoginRT,text="Start Login RT",command=self.executeLogin)
+		self.LoginBtnInFrame.grid(row=3,column=1 )
 
+		
+
+
+		self.frameInitValue=tk.Frame(self, width=100, height =300,background = 'yellow')
+		self.frameInitValue.grid(row=1,column=1,rowspan = 1, columnspan = 1)      
+		self.labelinitialvalue=tk.Label(self.frameInitValue, text="Input Initial Value")
+		self.labelinitialvalue.grid(row=0,column=0)
+
+		self.enterloginid=tk.Entry(self.frameInitValue) #,textvariable=usertxt)
+		self.enterloginid.grid(row=0,column=1)
+
+
+		self.LoginBtnInFrame=tk.Button(self.frameInitValue,text="Start Login",command=self.executeLogin)
+		self.LoginBtnInFrame.grid(row=1,column=1 )
+
+
+
+
+		self.canvas=tk.Canvas(self,background="blue")
+		# self.canvas.grid_propagate(0)
+		self.canvas.grid(row=2,column=0)
+
+
+		self.frameGroupOutput = tk.Frame(self.canvas,background = 'red')
+		# self.frameGroupOutput.grid_propagate(0)
+		self.frameGroupOutput.grid(row=2,column=0) # start row 2 since text output occupied 2 rows with 0,1.
+
+		self.scrollbarGroupOutPut = tk.Scrollbar(self,orient="vertical", command = self.canvas.yview)
+		# self.scrollbar.grid_propagate(0)
+		self.scrollbarGroupOutPut.grid(row=2,column=1,sticky="w"+"n"+"s")
+		# self.scrollbar.pack(side=tk.RIGHT, fill="y")
+		self.canvas['yscrollcommand'] = self.scrollbarGroupOutPut.set
+		self.canvas.bind('<Configure>', self.on_configure)
+		self.canvas.create_window((0,0), window=self.frameGroupOutput, anchor='center')
+
+		myvar=[]  
+		labelvar={}
+		labelinfo={}
+		# {0: {'volumn': <tkinter.StringVar object at 0x04331FB0>, 'update': <tkinter.StringVar object at 0x04331F10>, 'order': <tkinter.StringVar object at 0x04331F30>, 'state': <tkinter.StringVar object at 0x04331F70>}} 
+
+		self.labeldisplay={}
+		for i,varvalue in enumerate(self.myvarasso):
+
+			# print ("i="+str(i))
+			# print (self.myvarasso[varvalue]["volumn"])
+			# myvar.append(tk.StringVar())
+			self.labeldisplay[varvalue]={}
+			self.labeldisplay[varvalue][varvalue]=tk.Label(self.frameGroupOutput, text=varvalue)
+			# labelvar[varvalue]=tk.Label(self.frameGroupOutput, text=varvalue)
+			self.labeldisplay[varvalue][varvalue].grid(row=i,column=0)
+
+			labelseparate=tk.Label(self.frameGroupOutput, text=" | ")
+			labelseparate.grid(row=i,column=1)
 			
+			# myinfo={}
+			# self.labeldisplay[varvalue]["info"]=myinfo
+
+			rowvalue=self.myvarasso[varvalue]
+
+			for j,varinfo in enumerate(rowvalue):
+				print (varinfo)
+				self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo])
+				# self.labeldisplay.grid_propagate(0)
+				self.labeldisplay[varvalue][varinfo].grid(row=i,column=j+2)
+
+		# print(myinfo)
+			# self.labeldisplay[varvalue]={"value":labelvar,"info":labelinfo}
+
+		# print (self.labeldisplay["5.00"]["5.00"])
+		# exit()
+		self.labeldisplay["5.00"]["order"].configure(background="red")
+		self.labeldisplay["8.00"]["state"].configure(background="white")
+		self.labeldisplay["8.10"]["order"].configure(background="red",foreground="green")
+		self.myvarasso["8.10"]["order"].set("buy")
+		self.flash(self.labeldisplay["8.10"]["order"],10)
 
 
-			self.frameInitValue=tk.Frame(self, width=100, height =300,background = 'yellow')
-			self.frameInitValue.grid(row=1,column=1,rowspan = 1, columnspan = 1)      
-			self.labelinitialvalue=tk.Label(self.frameInitValue, text="Input Initial Value")
-			self.labelinitialvalue.grid(row=0,column=0)
-
-			self.enterloginid=tk.Entry(self.frameInitValue) #,textvariable=usertxt)
-			self.enterloginid.grid(row=0,column=1)
+		self.labeldisplay["8.15"]["order"].configure(background="red",foreground="green")
+		self.myvarasso["8.15"]["order"].set("buy")
+		self.flash(self.labeldisplay["8.15"]["order"],10)
 
 
-			self.LoginBtnInFrame=tk.Button(self.frameInitValue,text="Start Login",command=self.executeLogin)
-			self.LoginBtnInFrame.grid(row=1,column=1 )
+		self.labeldisplay["8.25"]["state"].configure(background="red",foreground="green")
+		self.myvarasso["8.25"]["state"].set("buy")
+		self.flash(self.labeldisplay["8.25"]["state"],10)
 
+		# exit()
 
-
-
-			self.canvas=tk.Canvas(self,background="blue")
-			# self.canvas.grid_propagate(0)
-			self.canvas.grid(row=2,column=0)
-
-
-			self.frameGroupOutput = tk.Frame(self.canvas,background = 'red')
-			# self.frameGroupOutput.grid_propagate(0)
-			self.frameGroupOutput.grid(row=2,column=0) # start row 2 since text output occupied 2 rows with 0,1.
-
-			self.scrollbarGroupOutPut = tk.Scrollbar(self,orient="vertical", command = self.canvas.yview)
-			# self.scrollbar.grid_propagate(0)
-			self.scrollbarGroupOutPut.grid(row=2,column=1,sticky="w"+"n"+"s")
-			# self.scrollbar.pack(side=tk.RIGHT, fill="y")
-			self.canvas['yscrollcommand'] = self.scrollbarGroupOutPut.set
-			self.canvas.bind('<Configure>', self.on_configure)
-			self.canvas.create_window((0,0), window=self.frameGroupOutput, anchor='center')
-
-			myvar=[]  
-			labelvar={}
-			labelinfo={}
-			# {0: {'volumn': <tkinter.StringVar object at 0x04331FB0>, 'update': <tkinter.StringVar object at 0x04331F10>, 'order': <tkinter.StringVar object at 0x04331F30>, 'state': <tkinter.StringVar object at 0x04331F70>}} 
-
-			self.labeldisplay={}
-			for i,varvalue in enumerate(self.myvarasso):
-				print ("i="+str(i))
-				# print (self.myvarasso[varvalue]["volumn"])
-				# myvar.append(tk.StringVar())
-				
-				
-				labelvar[varvalue]=tk.Label(self.frameGroupOutput, text=varvalue)
-				labelvar[varvalue].grid(row=i,column=0)
-
-				labelseparate=tk.Label(self.frameGroupOutput, text=" | ")
-				labelseparate.grid(row=i,column=1)
-				
-				# myinfo={}
-				# self.labeldisplay[varvalue]["info"]=myinfo
-
-				rowvalue=self.myvarasso[varvalue]
-				for j,varinfo in enumerate(rowvalue):
-					# print ("j="+str(j))
-					# exit()
-					# col+=j
-					# self.labeldisplay=tk.Label(self.frameGroupOutput, text=varvalue)
-					# self.labeldisplay.grid(row=i,column=j)
-
-					# tempvar=self.myvarasso[varvalue][varinfo].get()
-					# print("tempvar="+varinfo)
-					labelinfo[varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo])
-					# print (myinfo)
-					# self.labeldisplay[varvalue][self.myvarasso[varvalue][varinfo].get()]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo] )
-
-					# self.labeldisplay.grid_propagate(0)
-					labelinfo[varinfo].grid(row=i,column=j+2)
-			# print(myinfo)
-				self.labeldisplay[varvalue]={"var":labelvar,"info":labelinfo}
-
-			print (self.labeldisplay["5.00"])
-			exit()
-			self.labeldisplay["5.00"]["info"]["order"].configure(background="red")
-			# exit()
-			# self.labeldisplay["5.00"]["info"]["order"].configure(background="red")
-
-					# self.labeldisplay[varvalue][self.myvarasso[varvalue][varinfo].get()].grid(row=i,column=j+2)
-
-			# dir(self.labelnamepassword)
-			# myvar[0].set("hello1")
-			# myvar[1].set("hello2")
-			# ["text"]="testhello4"
-			# self.labelnamepassword["name"].configure("text")="test"
-			self.update_idletasks()
-			self.mycount = 0
-			self.myvarasso["5.00"]["order"].set("buy")
-
-			
-
+		# dir(self.labelnamepassword)
+		# myvar[0].set("hello1")
+		# myvar[1].set("hello2")
+		# ["text"]="testhello4"
+		# self.labelnamepassword["name"].configure("text")="test"
+		self.update_idletasks()
+		self.mycount = 0
+		self.myvarasso["5.00"]["order"].set("buy")
 
 	def on_configure(self,event):
 		# update scrollregion after starting 'mainloop'
@@ -196,16 +198,8 @@ class outputlog(tk.Tk):
 
 	def rangeline(self,series):
 
-		# mystock={}
-		# linedic={}
-		# stockdata={}
-		# rowid={}
 		datenow = datetime.datetime.now().strftime("%Y-%m-%d")
 		timenow = datetime.datetime.now().strftime("%H:%M:%S")
-
-		# vardatetime=tk.StringVar(value="datetime")
-		# print(series)
-		# mystock["BEAUTY"]=linedic
 
 		varasso={}
 		varstep={}
@@ -248,7 +242,13 @@ class outputlog(tk.Tk):
 		pass
 
 
-
+	def flash(self,Label,count=0):
+		bg = Label.cget('background')
+		fg = Label.cget('foreground')
+		Label.configure(background=fg,foreground=bg)
+		count +=1
+		if (count < 31):
+			self.after(1000,self.flash,Label,count)
 
 
 
