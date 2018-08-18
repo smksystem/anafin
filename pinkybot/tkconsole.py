@@ -65,14 +65,14 @@ class outputlog(tk.Tk):
 		self.enterpassword=tk.Entry(self.frameLoginRT,show="*",textvariable=passtxt)
 		self.enterpassword.grid(row=2,column=1)
 
-		self.LoginBtnInFrame=tk.Button(self.frameLoginRT,text="Start Login RT",command=self.executeLogin)
-		self.LoginBtnInFrame.grid(row=3,column=1 )
+		self.btnLoginRT=tk.Button(self.frameLoginRT,text="Start Login RT",command=self.executeLogin)
+		self.btnLoginRT.grid(row=3,column=1 )
 
 		
 
 
 		self.frameInitValue=tk.Frame(self, width=100, height =300,background = 'yellow')
-		self.frameInitValue.grid(row=1,column=1,rowspan = 1, columnspan = 1)      
+		self.frameInitValue.grid(row=2,column=1,rowspan = 1, columnspan = 1)      
 		self.labelinitialvalue=tk.Label(self.frameInitValue, text="Input Initial Value")
 		self.labelinitialvalue.grid(row=0,column=0)
 
@@ -80,28 +80,28 @@ class outputlog(tk.Tk):
 		self.enterloginid.grid(row=0,column=1)
 
 
-		self.LoginBtnInFrame=tk.Button(self.frameInitValue,text="Start Login",command=self.executeLogin)
-		self.LoginBtnInFrame.grid(row=1,column=1 )
+		self.btnStartInitCal=tk.Button(self.frameInitValue,text="Start Login",command=self.executeLogin)
+		self.btnStartInitCal.grid(row=1,column=1 )
 
 
 
 
-		self.canvas=tk.Canvas(self,background="blue")
+		self.canvas=tk.Canvas(self,background="black")
 		# self.canvas.grid_propagate(0)
-		self.canvas.grid(row=2,column=0)
+		self.canvas.grid(row=2,column=0,sticky="nsew")
 
 
-		self.frameGroupOutput = tk.Frame(self.canvas,background = 'red')
-		# self.frameGroupOutput.grid_propagate(0)
-		self.frameGroupOutput.grid(row=2,column=0) # start row 2 since text output occupied 2 rows with 0,1.
+		self.frameGroupOutput = tk.Frame(self.canvas,background = 'gray')
+		self.canvas.grid_propagate(0)
+		self.frameGroupOutput.grid(row=0,column=0) # start row 2 since text output occupied 2 rows with 0,1.
 
 		self.scrollbarGroupOutPut = tk.Scrollbar(self,orient="vertical", command = self.canvas.yview)
 		# self.scrollbar.grid_propagate(0)
-		self.scrollbarGroupOutPut.grid(row=2,column=1,sticky="w"+"n"+"s")
+		self.scrollbarGroupOutPut.grid(row=2,column=0,sticky="e"+"n"+"s")
 		# self.scrollbar.pack(side=tk.RIGHT, fill="y")
 		self.canvas['yscrollcommand'] = self.scrollbarGroupOutPut.set
 		self.canvas.bind('<Configure>', self.on_configure)
-		self.canvas.create_window((0,0), window=self.frameGroupOutput, anchor='center')
+		self.canvas.create_window((0,0), window=self.frameGroupOutput, anchor='nw')
 
 		myvar=[]  
 		labelvar={}
@@ -136,7 +136,12 @@ class outputlog(tk.Tk):
 				if varinfo=="buy" or varinfo=="sell" or varinfo=="cancel":
 					self.buyBtnInFrame=tk.Button(self.frameGroupOutput,textvariable=self.myvarasso[varvalue][varinfo],command=self.executeLogin)
 					self.buyBtnInFrame.grid(row=i,column=j+3 )
-			
+				
+				if varinfo=="targetvalue" or varinfo =="profit":
+					self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo])
+					# self.labeldisplay.grid_propagate(0)
+					self.labeldisplay[varvalue][varinfo].grid(row=i,column=j+4)
+
 		# print(myinfo)
 			# self.labeldisplay[varvalue]={"value":labelvar,"info":labelinfo}
 
@@ -171,7 +176,7 @@ class outputlog(tk.Tk):
 		self.update_idletasks()
 		self.mycount = 0
 		self.myvarasso["5.00"]["order"].set("buy")
-		self.txtout("Hello")
+		self.txtout("!!! Welcome , Please login !!!")
 	def on_configure(self,event):
 		# update scrollregion after starting 'mainloop'
 		# when all widgets are in canvas
@@ -219,12 +224,14 @@ class outputlog(tk.Tk):
 
 			vardate=tk.StringVar(value=datenow)
 			vartime=tk.StringVar(value=timenow)
-			varorder=tk.StringVar(value="wait")
-			varstatus=tk.StringVar(value="wait")
-			varvolumn=tk.StringVar(value="wait")
+			varorder=tk.StringVar(value="order")
+			varstatus=tk.StringVar(value="state")
+			varvolumn=tk.StringVar(value="volumn")
 			varbuy=tk.StringVar(value="buy")
 			varsell=tk.StringVar(value="sell")
 			varcancel=tk.StringVar(value="cancel")
+			vartargetvalue=tk.StringVar(value="target")
+			varprofit=tk.StringVar(value="profit")
 			# varvalue=tk.StringVar(value=data)
 
 			varinfo={
@@ -236,6 +243,8 @@ class outputlog(tk.Tk):
 				"buy":varbuy,
 				"sell":varsell,
 				"cancel":varcancel,
+				"targetvalue":vartargetvalue,
+				"profit":varprofit,
 			}
 			# varstep={"value":varvalue}
 			varasso[varvalue]=varinfo
@@ -294,23 +303,12 @@ class outputlog(tk.Tk):
 	def executeLogin(self):
 
 			# print("hello button Login " + self.loginSet[0].get())
-			# print("hello button Login " + self.loginSet[1].get())
-			# print("hello button Login " + self.loginSet[2].get())
-			
+			for child in self.frameLoginRT.winfo_children():
+				child.configure(state='disable')
+			# exit()
 			self.mybot.threadlogin(self.loginSet)
 
-			# print(self.TempVar)
-
-			
 			# return LoginParams
-
-
-
-			
-
-
-
-
 	def highlight_text(self,word):
 			# word="Vol"
 			txtmsg=self.output.get("1.0","end")
@@ -330,19 +328,23 @@ class outputlog(tk.Tk):
 		 
 	def Refresher(self):
 
-			self.mycount+=1
-			step=10+(self.mycount/10)
-			print (step)
+			# self.mycount+=1
+			# step=10+(self.mycount/10)
+			# print (step)
 			# print (dir(self))
 			if not self.mybot.myqueue.empty():
-
-				print(self.mybot.myqueue.get())
+				tempdict=self.mybot.myqueue.get()
+				print (tempdict["textout"])
+				if tempdict["textout"]:
+						self.txtout(tempdict["textout"])
 				# self.mybot.myqueue.join()
 
+
+
 				
-			self.output.tag_config("testb", background="white", foreground="red")
-			self.output.tag_add('testb', 10.0, step)
-			self.after(1000, self.Refresher) # every second...
+			# self.output.tag_config("testb", background="white", foreground="red")
+			# self.output.tag_add('testb', 10.0, step)
+			self.after(500, self.Refresher) # every second...
 
 
 # if __name__ == '__main__':

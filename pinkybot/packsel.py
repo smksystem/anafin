@@ -23,12 +23,25 @@ class packselenium():
 		# print( self.myqueue.display())
 
 		# print (self.myqueue.get())
-		self.myqueue.put("monitoring")
+		# dataqueue={"textout":"Starting to login ... please wait ... "}
+
+		self.myqueue.put({"textout":"Starting to login ... please wait ... "})
 
 		# for job in iter(self.myqueue.get, None):
 			# print (job)
 		
-		exit()
+
+
+
+
+		# exit()
+
+
+
+
+
+
+
 
 
 		driver = webdriver.Chrome()
@@ -71,11 +84,20 @@ class packselenium():
 					signin_window_handle = handle
 					break
 		driver.switch_to.window(signin_window_handle)
-		print(signin_window_handle)
+		# print(signin_window_handle)
 		
 		# wait until second pop up is complete loaded
 		wait = WebDriverWait(driver, 30)
 		element = wait.until(EC.presence_of_element_located((By.XPATH, "//*[@id='place-order-form']/refresh-ui-component/button/span[1]")))
+
+		stock = driver.find_elements_by_xpath("//*[@id='favourite-0']/ul/li[1]/editable-symbol-input/p")[0].text
+		print ("stock is below found check login")
+		print(stock)
+
+		if (stock):
+			# print("element is below")
+			# print (element)
+			self.myqueue.put({"textout":"Login success contiue monitoring"})
 		return driver
 
 	def monitoring(self,handlewin,fav_no):
