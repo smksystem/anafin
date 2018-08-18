@@ -129,15 +129,22 @@ class outputlog(tk.Tk):
 
 			for j,varinfo in enumerate(rowvalue):
 				print (varinfo)
-				self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo])
-				# self.labeldisplay.grid_propagate(0)
-				self.labeldisplay[varvalue][varinfo].grid(row=i,column=j+2)
-
+				if varinfo=="updatedate" or varinfo=="updatetime" or varinfo=="volumn" or varinfo=="order" or varinfo=="state" :
+					self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo])
+					# self.labeldisplay.grid_propagate(0)
+					self.labeldisplay[varvalue][varinfo].grid(row=i,column=j+2)
+				if varinfo=="buy" or varinfo=="sell" or varinfo=="cancel":
+					self.buyBtnInFrame=tk.Button(self.frameGroupOutput,textvariable=self.myvarasso[varvalue][varinfo],command=self.executeLogin)
+					self.buyBtnInFrame.grid(row=i,column=j+3 )
+			
 		# print(myinfo)
 			# self.labeldisplay[varvalue]={"value":labelvar,"info":labelinfo}
 
 		# print (self.labeldisplay["5.00"]["5.00"])
 		# exit()
+
+		
+
 		self.labeldisplay["5.00"]["order"].configure(background="red")
 		self.labeldisplay["8.00"]["state"].configure(background="white")
 		self.labeldisplay["8.10"]["order"].configure(background="red",foreground="green")
@@ -164,7 +171,7 @@ class outputlog(tk.Tk):
 		self.update_idletasks()
 		self.mycount = 0
 		self.myvarasso["5.00"]["order"].set("buy")
-
+		self.txtout("Hello")
 	def on_configure(self,event):
 		# update scrollregion after starting 'mainloop'
 		# when all widgets are in canvas
@@ -215,6 +222,9 @@ class outputlog(tk.Tk):
 			varorder=tk.StringVar(value="wait")
 			varstatus=tk.StringVar(value="wait")
 			varvolumn=tk.StringVar(value="wait")
+			varbuy=tk.StringVar(value="buy")
+			varsell=tk.StringVar(value="sell")
+			varcancel=tk.StringVar(value="cancel")
 			# varvalue=tk.StringVar(value=data)
 
 			varinfo={
@@ -222,7 +232,10 @@ class outputlog(tk.Tk):
 				"updatetime":vartime,
 				"volumn":varvolumn,
 				"order":varorder,
-				"state":varstatus
+				"state":varstatus,
+				"buy":varbuy,
+				"sell":varsell,
+				"cancel":varcancel,
 			}
 			# varstep={"value":varvalue}
 			varasso[varvalue]=varinfo

@@ -119,12 +119,6 @@ class packselenium():
 		offer={}
 		offervolumn={}
 
-		# Test number 
-		# stock="test"
-		# bidvolumn=[1,2,3,4,5]
-		# bid=[6,7,8,9,10]
-		# offer=[11,12,13,14,15]
-		# offervolumn=[16,17,18,19,20]
 
 		timestamp = datetime.utcnow()
 		# timerecord = timestamp.strftime('%Y-%m-%d %H:%M:%S')

@@ -34,6 +34,6 @@ if __name__=="__main__":
 	# console.highlight_text("7.05")
 
 
-	# console.Refresher()
+	console.Refresher()
 
 	console.mainloop()
