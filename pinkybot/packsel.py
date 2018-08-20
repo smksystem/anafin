@@ -94,6 +94,20 @@ class packselenium():
 		print ("stock is below found check login")
 		print(stock)
 
+
+		chkstock=driver.find_elements_by_xpath("//*[@id='favourite-0']/ul/li[1]/editable-symbol-input/p")[0]
+		chkstock.click()
+
+		wait = WebDriverWait(driver, 10)
+		elementClose = wait.until(EC.presence_of_element_located((By.XPATH, "//*[@id='page-0-container']/li[3]/mini-quote/div[1]/mini-quote-overview/div[5]/label")))
+		print("wait finished")
+
+
+
+
+
+
+
 		if (stock):
 			# print("element is below")
 			# print (element)
@@ -121,15 +135,11 @@ class packselenium():
 
 
 		driver=handlewin
-		chkstock=driver.find_elements_by_xpath("//*[@id='favourite-"+fav_no+"']/ul/li[1]/editable-symbol-input/p")[0]
-												# //*[@id="favourite-1"]/ul/li[1]/editable-symbol-input/p
-		chkstock.click()
-		stock = driver.find_elements_by_xpath("//*[@id='favourite-"+fav_no+"']/ul/li[1]/editable-symbol-input/p")[0].text
-		print(stock)
 
-		wait = WebDriverWait(driver, 10)
-		elementClose = wait.until(EC.presence_of_element_located((By.XPATH, "//*[@id='page-0-container']/li[3]/mini-quote/div[1]/mini-quote-overview/div[5]/label")))
-		print("wait finished")
+		# add stock value here
+		# stockvalue=driver.find_elements_by_xpath("")[0].text
+
+
 		# wait.close()
 
 		# monitortime = dt.datetime.now()
@@ -150,8 +160,8 @@ class packselenium():
 				# delta=datetime.utcnow()-timestamp
 				# if delta.seconds >= 5:
 				for line in range(1,6):
-						test=driver.find_elements_by_xpath("//*[@id='bid-"+str(line)+"']")[0].text.replace(",","")
-						print(test)
+						# test=driver.find_elements_by_xpath("//*[@id='bid-"+str(line)+"']")[0].text.replace(",","")
+						# print(test)
 						bid["bid"+str(line)]=float(driver.find_elements_by_xpath("//*[@id='bid-"+str(line)+"']")[0].text.replace(",",""))
 						offer["offer"+str(line)]=float(driver.find_elements_by_xpath("//*[@id='offer-"+str(line)+"']")[0].text.replace(",",""))
 						bidvolumn["bidvolumn"+ str(line)]=float(driver.find_elements_by_xpath("//*[@id='bid-volume-"+str(line)+"']")[0].text.replace(",",""))
@@ -159,9 +169,13 @@ class packselenium():
 				# timestamp = timezone.now()
 				timestamp = datetime.utcnow()
 				timestampELS = timestamp.isoformat(' ','seconds')
+				
 				print("Time record is =" + timestampELS)
 				# exit()
-				PackSelModel.InsertMonitorBidOffer(stock,timestampELS,bid,offer,bidvolumn,offervolumn)
+				#
+
+				# face to problem with float to string while ATO,ATC
+				# PackSelModel.InsertMonitorBidOffer(stock,timestampELS,bid,offer,bidvolumn,offervolumn)
 
 				bidvolumn.clear()
 				bid.clear()

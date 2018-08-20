@@ -150,21 +150,21 @@ class outputlog(tk.Tk):
 
 		
 
-		self.labeldisplay["5.00"]["order"].configure(background="red")
-		self.labeldisplay["8.00"]["state"].configure(background="white")
-		self.labeldisplay["8.10"]["order"].configure(background="red",foreground="green")
-		self.myvarasso["8.10"]["order"].set("buy")
-		self.flash(self.labeldisplay["8.10"]["order"],10)
+		# self.labeldisplay["5.00"]["order"].configure(background="red")
+		# self.labeldisplay["8.00"]["state"].configure(background="white")
+		# self.labeldisplay["8.10"]["order"].configure(background="red",foreground="green")
+		# self.myvarasso["8.10"]["order"].set("buy")
+		# self.flash(self.labeldisplay["8.10"]["order"],10)
 
 
-		self.labeldisplay["8.15"]["order"].configure(background="red",foreground="green")
-		self.myvarasso["8.15"]["order"].set("buy")
-		self.flash(self.labeldisplay["8.15"]["order"],10)
+		# self.labeldisplay["8.15"]["order"].configure(background="red",foreground="green")
+		# self.myvarasso["8.15"]["order"].set("buy")
+		# self.flash(self.labeldisplay["8.15"]["order"],10)
 
 
-		self.labeldisplay["8.25"]["state"].configure(background="red",foreground="green")
-		self.myvarasso["8.25"]["state"].set("buy")
-		self.flash(self.labeldisplay["8.25"]["state"],10)
+		# self.labeldisplay["8.25"]["state"].configure(background="red",foreground="green")
+		# self.myvarasso["8.25"]["state"].set("buy")
+		# self.flash(self.labeldisplay["8.25"]["state"],10)
 
 		# exit()
 
@@ -174,8 +174,9 @@ class outputlog(tk.Tk):
 		# ["text"]="testhello4"
 		# self.labelnamepassword["name"].configure("text")="test"
 		self.update_idletasks()
-		self.mycount = 0
-		self.myvarasso["5.00"]["order"].set("buy")
+		# self.mycount = 0
+		
+		# self.myvarasso["5.00"]["order"].set("buy")
 		self.txtout("!!! Welcome , Please login !!!")
 	def on_configure(self,event):
 		# update scrollregion after starting 'mainloop'

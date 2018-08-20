@@ -15,7 +15,7 @@ if __name__=="__main__":
 
 	# chooserange=rangevalue("C")
 	# myrange=chooserange.getRangeSeries()
-	console=outputlog("C")
+	console=outputlog("B")
 	
 	
 

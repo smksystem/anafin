@@ -53,9 +53,9 @@ class pinkybot(packselenium):
         print("login is called")
         while True:
             i=0
-            for i in range(0,10):
+            # for i in range(0,10):
 
-                self.monitoring(handlewin,str(i))
+            self.monitoring(handlewin,str(i))
 
 class MyThread(threading.Thread):
     def __init__(self, queue,fnrun, args=(), kwargs=None):
