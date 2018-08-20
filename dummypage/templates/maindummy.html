@@ -1,0 +1,545 @@
+
+<html>
+<head>
+<title>
+Login
+</title>
+<meta http-equiv='Content-Type' content='text/html; charset=windows-874'>
+<LINK href="/brokerpage/013/website.css" rel=stylesheet type=text/css>
+<style type="text/css">
+<!--
+.date {
+	FONT-FAMILY: Arial, Helvetica, sans-serif; FONT-SIZE: 10px; FONT-WEIGHT: bold; COLOR: #000000; BACKGROUND-COLOR: #FFFFFF; TEXT-ALIGN: right
+}
+.disclaimer {
+	font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #FFFFFF; background-color: #0E1B5D; text-align: center
+}
+-->
+</style>
+<!-- Read MYLIB.JS -->
+<script language='javascript' src='/mylib.js'></script>
+<script language='javascript' src='/mylib.jsp?txtBrokerId=013'></script>
+<script type='text/javascript'>
+var __txtBrokerId= '013';
+var __txtUserRef= '-1';
+</script>
+<script language='javascript'>
+function validate() {    	if (checkfield(document.frmLogin.txtLogin,'s',0,true,'Login')==false) {  			return false;     }    	if (checkpassword(document.frmLogin.txtPassword,'s',true,'Password')==false) {        		return false     }     return true}function validate2() {    if (document.frmFastQuote.txtSymbol.value=="" || document.frmFastQuote.txtSymbol.value==null) {        alert ('You need to enter stock name');        return false    }    else {        return true    }}function alertWindow(url){    aWindow = window.open(url,'symbolWindow', 'scrollbars=1,menubar=no,                          width=380,height=140,titlebar=no,alwaysRaised=yes, left=0,top=0,screenX=0,screenY=0')}
+	function onOpenDerivative(){	
+		window.open('/C16_MktRepDerivativesRedirect.jsp', 'MarketRepD');	
+	}	
+</script>
+<!-- Read ###/top_panel/javascript.js -->
+<!-- Read ###/top_panel/javascript.js -->
+<script language='JavaScript1.2'>
+<!--
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf('#')!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v3.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf('?'))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+var Qflag; 
+var Tflag;
+var Poflag;
+var Prflag;
+function MM_ToRestoreOrNot(){
+	if(Qflag)
+	{
+		MM_swapImage('sub_menu_quotewizard','','/brokerpage/013/top_panel/e_images/sub_menu_quotewizard1.gif',1);
+		MM_swapImage('sub_menu_trading','','/brokerpage/013/top_panel/e_images/sub_menu_trading0.gif',1);
+		MM_swapImage('sub_menu_portfolio','','/brokerpage/013/top_panel/e_images/sub_menu_portfolio0.gif',1);
+		MM_swapImage('sub_menu_preference','','/brokerpage/013/top_panel/e_images/sub_menu_preference0.gif',1);
+	}
+	if(Tflag)
+	{
+		MM_swapImage('sub_menu_quotewizard','','/brokerpage/013/top_panel/e_images/sub_menu_quotewizard0.gif',1);
+		MM_swapImage('sub_menu_trading','','/brokerpage/013/top_panel/e_images/sub_menu_trading1.gif',1);
+		MM_swapImage('sub_menu_portfolio','','/brokerpage/013/top_panel/e_images/sub_menu_portfolio0.gif',1);
+		MM_swapImage('sub_menu_preference','','/brokerpage/013/top_panel/e_images/sub_menu_preference0.gif',1);
+	}
+	if(Poflag)
+	{
+		MM_swapImage('sub_menu_quotewizard','','/brokerpage/013/top_panel/e_images/sub_menu_quotewizard0.gif',1);
+		MM_swapImage('sub_menu_trading','','/brokerpage/013/top_panel/e_images/sub_menu_trading0.gif',1);
+		MM_swapImage('sub_menu_portfolio','','/brokerpage/013/top_panel/e_images/sub_menu_portfolio1.gif',1);
+		MM_swapImage('sub_menu_preference','','/brokerpage/013/top_panel/e_images/sub_menu_preference0.gif',1);
+	}
+	if(Prflag)
+	{
+		MM_swapImage('sub_menu_quotewizard','','/brokerpage/013/top_panel/e_images/sub_menu_quotewizard0.gif',1);
+		MM_swapImage('sub_menu_trading','','/brokerpage/013/top_panel/e_images/sub_menu_trading0.gif',1);
+		MM_swapImage('sub_menu_portfolio','','/brokerpage/013/top_panel/e_images/sub_menu_portfolio0.gif',1);
+		MM_swapImage('sub_menu_preference','','/brokerpage/013/top_panel/e_images/sub_menu_preference1.gif',1);
+	}
+}
+
+	MM_preloadImages('/brokerpage/013/top_panel/e_images/top_menu_research1.gif',
+		'/brokerpage/013/top_panel/e_images/top_menu_productservice1.gif',
+		'/brokerpage/013/top_panel/e_images/top_menu_tradepoint1.gif',
+		'/brokerpage/013/top_panel/e_images/top_menu_financial1.gif',
+		'/brokerpage/013/top_panel/e_images/top_menu_olt1.gif',
+		'/brokerpage/013/top_panel/e_images/sub_menu_trading1.gif',
+		'/brokerpage/013/top_panel/e_images/sub_menu_portfolio1.gif',
+		'/brokerpage/013/top_panel/e_images/sub_menu_preference1.gif');
+	MM_swapImage('sub_menu_trading','','/brokerpage/013/top_panel/e_images/sub_menu_trading1.gif',1);
+	Qflag=false;
+	Tflag=true;
+	Poflag=false;
+	Prflag=false;
+-->	
+</script>
+<SCRIPT language=JavaScript>
+<!--
+var mouseopencontrol;
+function MM_imageRes() {
+   MM_swapImgRestore2();
+   mouseopencontrol = 1;
+}
+function MM_swapImgRestore2() { //v3.0
+  if (mouseopencontrol!=0)
+  {	
+   var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+  }
+  else
+  {
+   return false;
+  }
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+//-->
+</SCRIPT>
+</head>
+<body bgcolor='white' aLink=#000000 link=#000000 text=#000000 vLink=#000000>
+<table width='765' border='0' cellpadding='0' cellspacing='0'>
+<tr>
+<STYLE type="text/css">
+.MenuKGI{
+	background-image:url(/brokerpage/013/top_panel/images/bg_Menu.jpg);
+	background-repeat:no-repeat;
+	background-position:top;
+}
+.ENtext{
+	font-family : "Tahoma", Arial, Verdana;
+	font-size : 7.5pt;
+}
+a.white{
+	text-decoration:none;
+}
+a:active.white{
+	text-decoration:none;
+	color : #FFFFFF;
+	border:none;
+}
+a:link.white{
+	text-decoration:none;
+	color : #FFFFFF;
+	border:none;
+}
+a:visited.white{
+	text-decoration:none;
+	color : #FFFFFF;
+	border:none;
+}
+a:hover.white{
+	text-decoration:none;
+	color : #242424;
+	border:none;
+}
+a.control{
+	text-decoration:none;
+}
+a:active.control{
+	text-decoration:none;
+	color : #434343;
+	border:none;
+}
+a:link.control{
+	text-decoration:none;
+	color : #434343;
+	border:none;
+}
+a:visited.control{
+	text-decoration:none;
+	color : #434343;
+	border:none;
+}
+a:hover.control{
+	text-decoration:none;
+	color : #A6A6A6;
+	border:none;
+}
+.rightLine{
+	border-right-color:#D9D9D9;
+	border-right-style:solid;
+	border-right-width:1px;
+}
+.leftLine{
+	border-left-color:#D9D9D9;
+	border-left-style:solid;
+	border-left-width:1px;
+}
+.bgLanguage{
+	background-image:url(/brokerpage/013/top_panel/images/bg_Language.gif);
+	background-repeat:no-repeat;
+	height:17px;
+}
+</style>
+<table width="770" border="0" cellpadding="0" cellspacing="0" class="THtext LightrightLine" style="color:#434343; ">
+ <tr> 
+    <td height="72" valign="top">
+	<table width="770" height="72" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="137" valign="bottom" style="padding:0px 0px 9px 17px;"><a href="http://www.kgieworld.co.th/th/index.asp" target="_blank"><img  src="/brokerpage/013/top_panel/images/logo.gif" alt="Home" width="114" height="52" border="0" /></a></td>
+        <td width="229" valign="bottom" style="padding:0px 0px 10px 23px;"><img  src="/brokerpage/013/top_panel/images/imgTxt_KGIHeadOffice.gif" width="169" height="10" class="imgTxt" /><br />
+          <img  src="/brokerpage/013/top_panel/images/imgTxt_InternetTrading.gif" width="169" height="9" /></td>
+        <td width="364" valign="bottom" class="ENtext" style="padding:0px 0px 5px 0px;"><table width="362"  border="0" cellpadding="0" cellspacing="0" class="ENtext" style="color:#434343; ">
+          <tr>
+            <td width="58" height="17" class="rightLine"><!--a href="http://www.kgieworld.co.th/th/sitemap.asp" class="control"><SITEMAP</a--></td>
+            <td width="116" align="center" class="rightLine"><!--TEXT SIZE ><img  src="/brokerpage/013/top_panel/images/Textsize_Arrow.gif" width="6" height="6" style="margin:0px 5px 1px 5px; " /><a href="javascript:ts('body',-1)" class="s">A</a>  <a href="javascript:ts('body',1)" class="l">A</a--></td>
+            <td width="8" align="center">&nbsp;</td>
+			
+            <td width="60" align="center">&nbsp;</td>
+			<td width="60" align="center"><a href="http://www.kgieworld.co.th/en/index.asp" target="_blank" class="control">ENGLISH</a></td>
+            <td width="60" align="center" class="bgLanguage"><a href="http://www.kgieworld.co.th/th/index.asp" target="_blank" class="white">THAI</a></td>
+          </tr>
+        </table></td>
+      </tr>
+    </table>
+		<table width="770" border="0" cellspacing="0" cellpadding="0">          
+		 <tr class="MenuKGI">
+        <td height="33" colspan="7"><table width="625" height="19" border="0" cellpadding="0" cellspacing="0" style="margin:0px 0px 0px 103px; ">
+          <tr>
+            <td width="55" align="center" class="rightDotted"><a href="http://www.kgieworld.co.th/th/index.asp" target="_blank"><img  src="/brokerpage/013/top_panel/images/nav_Home.gif" alt="หน้าหลัก" width="50" height="19" border="0" /></a></td>
+            <td width="101" align="center" class="rightDotted"><a href="http://www.kgieworld.co.th/th/Research/ResearchPaper_main.asp" target="_blank"  id="menu0"><img  src="/brokerpage/013/top_panel/images/nav_ResearchPaper.gif" alt="สถาบันวิจัย" width="63" height="19" border="0" /></a></td>
+            <td width="96" align="center" class="rightDotted"><a href="http://www.kgieworld.co.th/th/Howto/Howto_FAQs.asp" target="_blank" id="menu1"><img  src="/brokerpage/013/top_panel/images/nav_HowtoTrade.gif" alt="แนะนำการใช้" width="68" height="19" border="0" /></a></td>
+            <td width="113" align="center" class="rightDotted"><a href="http://www.kgieworld.co.th/th/Equity/Equity_main.asp" target="_blank" id="menu2"><img  src="/brokerpage/013/top_panel/images/nav_ProductandService.gif" alt="บริการของเรา" width="76" height="19" border="0" /></a></td>
+            <td width="103" align="center" class="rightDotted"><a href="http://www.kgieworld.co.th/th/Corporate/Corporate_main.asp" target="_blank" id="menu3"><img  src="/brokerpage/013/top_panel/images/nav_Corporate.gif" alt="เกี่ยวกับบริษัท" width="75" height="19" border="0" /></a></td>
+            <td width="74" align="center" class="rightDotted"><a href="http://www.kgieworld.co.th/en/careers/careers_main.asp " target="_blank"><img  src="/brokerpage/013/top_panel/images/nav_Career.gif" alt="สมัครงาน" width="56" height="19" border="0" /></a></td>
+            <td width="83" align="center"><a href="http://www.kgieworld.co.th/th/contactus/contactus_main.asp" target="_blank"><img  src="/brokerpage/013/top_panel/images/nav_Contact.gif" alt="ติดต่อเรา" width="54" height="19" border="0" /></a></td>
+          </tr>
+        </table></td>
+        </tr> 
+      </table>
+
+</td>
+  </tr>
+  </table>
+</tr>
+</table>
+<table width='765' border='0' cellpadding='0' cellspacing='0'>
+<TBODY>
+<tr>
+<td width='14%' bgcolor='#BFD3F9'>&nbsp;</td>
+<td width='35%' colspan='2' bgcolor='#FFCC66' class='bodyTitle'>
+&nbsp;Login
+</td>
+<td width='51%' class='date' bgcolor='#ffffff' align='right'><b>Last Updated : Tue Aug 21 02:51:02 2018</b></td>
+</tr>
+</TBODY>
+</table>
+<table width='765' border='0' cellpadding='0' cellspacing='0'>
+<tr>
+<td width='127' valign='top' bgcolor='#BFD3F9'>
+<table width='127' border='0' cellspacing='0' cellpadding='0' bgcolor='#BFD3F9'>
+<tr>
+<td width='5%'>&nbsp;</td>
+<td width='95%'>
+<font class='platheader'><b></b></font>
+</td>
+</tr>
+<tr>
+<td width='5%'>&nbsp;</td>
+<td width='95%'>&nbsp;</td>
+</tr>
+</table>
+<table width='127' border='0' cellspacing='0' cellpadding='0'>
+<!-- ROLE: INVESTOR Read from file depend on Role -->
+<!-- ROLE: INVESTOR  Free Trial -->
+<SCRIPT language=JavaScript>
+<!--
+content = new Array ();
+
+content [1] = new Array (
+false,
+new Array('sub_1_1','sub_1_2','sub_1_3')
+);
+content [2] = new Array (
+false,
+new Array('sub_2_1','sub_2_2','sub_2_3')
+);
+content [3] = new Array (
+false,
+new Array('sub_3_1','sub_3_2','sub_3_3')
+);
+content [4] = new Array (
+false,
+new Array('sub_4_1','sub_4_2','sub_4_3','sub_4_4')
+);
+content [5] = new Array (
+false,
+new Array('sub_5_1','sub_5_2','sub_5_3','sub_5_4','sub_5_5')
+);
+content [8] = new Array (
+false,
+new Array('sub_8_1','sub_8_2','sub_8_3')
+);
+content [9] = new Array (
+false,
+new Array('sub_9_1','sub_9_2')
+);
+
+isOPERA = (navigator.userAgent.indexOf('Opera') >= 0)? true : false;
+isIE    = (document.all && !isOPERA)? true : false;
+isDOM   = (document.getElementById && !isIE && !isOPERA)? true : false;
+
+function processTree (id)
+{
+
+	if (content [id][0])
+	{
+		for (i = 0; i < content [id][1].length; i++)
+			hide (content [id][1][i]);
+		mouseopencontrol = 1;
+		content [id][0] = false;
+	}
+	else
+	{
+		for (i = 0; i < content [id][1].length; i++)
+			show (content [id][1][i], 'table-row');
+		mouseopencontrol = 0;
+
+		content [id][0] = true;
+	}
+
+	return false;
+}
+
+function show (id, displayValue)
+{
+	if (isDOM)
+		document.getElementById(id).style.display = (displayValue)? displayValue : "block";
+	else if (isIE)
+		document.all[id].style.display = "block";
+}
+
+function hide (id)
+{
+	if (isDOM)
+		document.getElementById(id).style.display = "none";
+	else if (isIE)
+		document.all[id].style.display = "none";
+}
+if (isDOM || isIE)
+{
+	document.writeln('<style type="text/css">');
+	document.writeln('.SubItemRow \{ display: none; \}');
+	document.writeln('</style>');
+}
+// -->
+  </SCRIPT>
+<TR bgColor=#04368c>
+          <TD class=Item height=9><A class=Item 
+            onmouseover="MM_swapImage('Image31','','/brokerpage/013/left_panel/images/side_stock_g.gif',1)" 
+            onclick="processTree (1); return false;" onmouseout=MM_imageRes() 
+            ><IMG 
+            height=16 src="/brokerpage/013/left_panel/images/side_stock.gif" width=127 border=0 
+            name=Image31></A></TD></TR>
+        <TR class=SubItemRow id=sub_1_1 bgColor=#508fdf>
+          <TD class=SubItem bgColor=#508fdf  height=16 onmouseover="this.className='cell_over1';" onmouseout="this.className='cell_out1';" bgcolor="#508fdf">&nbsp;<IMG 
+            src="/brokerpage/013/left_panel/images/bullet.jpg"
+            border=0 >&nbsp;Real Time Plus</TD></A></TR>
+        <TR class=SubItemRow id=sub_1_2 bgColor=#508fdf>
+          <TD class=SubItem bgColor=#508fdf  height=16 onmouseover="this.className='cell_over1';" onmouseout="this.className='cell_out1';" bgcolor="#508fdf">&nbsp;<IMG 
+            src="/brokerpage/013/left_panel/images/bullet.jpg"
+            border=0 >&nbsp;Real Time</TD></A></TR>
+        <TR class=SubItemRow id=sub_1_3 bgColor=#508fdf>
+          <TD class=SubItem bgColor=#508fdf  height=16 onmouseover="this.className='cell_over1';" onmouseout="this.className='cell_out1';" bgcolor="#508fdf">&nbsp;<IMG 
+            src="/brokerpage/013/left_panel/images/bullet.jpg"
+            border=0 >&nbsp;Fast Quote</TD></A></TR>
+        <TR>
+          <TD class=Item bgColor=#04368c height=7><A class=Item 
+            onmouseover="MM_swapImage('Image411','','/brokerpage/013/left_panel/images/side_market_g.gif',1)" 
+            onclick="processTree (2); return false;" onmouseout=MM_imageRes() 
+            ><IMG 
+            height=16 src="/brokerpage/013/left_panel/images/side_market.gif" width=127 border=0 
+            name=Image411></A></TD></TR>
+        <TR class=SubItemRow id=sub_2_1>
+          <TD class=SubItem bgColor=#508fdf  height=16 onmouseover="this.className='cell_over1';" onmouseout="this.className='cell_out1';" bgcolor="#508fdf">&nbsp;<IMG 
+            src="/brokerpage/013/left_panel/images/bullet.jpg"
+            border=0 >&nbsp;Market Summary</TD></A></TR>
+        <TR class=SubItemRow id=sub_2_2>
+          <TD class=SubItem bgColor=#508fdf  height=16 onmouseover="this.className='cell_over1';" onmouseout="this.className='cell_out1';" bgcolor="#508fdf">&nbsp;<IMG 
+            src="/brokerpage/013/left_panel/images/bullet.jpg"
+            border=0 >&nbsp;Sectorial Index</TD></A></TR>
+        <TR class=SubItemRow id=sub_2_3>
+          <TD class=SubItem bgColor=#508fdf  height=16 onmouseover="this.className='cell_over1';" onmouseout="this.className='cell_out1';" bgcolor="#508fdf">&nbsp;<IMG 
+            src="/brokerpage/013/left_panel/images/bullet.jpg"
+            border=0 >&nbsp;Market Ticker</TD></A></TR>
+        <TR>
+          <TD class=Item bgColor=#04368c height=2><A class=Item 
+            onmouseover="MM_swapImage('Image421','','/brokerpage/013/left_panel/images/side_interact_g.gif',1)" 
+            onclick="processTree (3); return false;" onmouseout=MM_imageRes() 
+           ><IMG 
+            height=16 src="/brokerpage/013/left_panel/images/side_interact.gif" width=127 
+            border=0 name=Image421></A></TD></TR>
+        <TR class=SubItemRow id=sub_3_1>
+          <TD class=SubItem bgColor=#508fdf  height=16 onmouseover="this.className='cell_over1';" onmouseout="this.className='cell_out1';" bgcolor="#508fdf">&nbsp;<IMG 
+            src="/brokerpage/013/left_panel/images/bullet.jpg"
+            border=0 >&nbsp;Intraday Chart</TD></A></TR>
+        <TR class=SubItemRow id=sub_3_2>
+          <TD class=SubItem bgColor=#508fdf  height=16 onmouseover="this.className='cell_over1';" onmouseout="this.className='cell_out1';" bgcolor="#508fdf">&nbsp;<IMG 
+            src="/brokerpage/013/left_panel/images/bullet.jpg"
+            border=0 >&nbsp;Historical Chart</TD></A></TR>
+        <TR class=SubItemRow id=sub_3_3>
+          <TD class=SubItem bgColor=#508fdf  height=16 onmouseover="this.className='cell_over1';" onmouseout="this.className='cell_out1';" bgcolor="#508fdf">&nbsp;<IMG 
+            src="/brokerpage/013/left_panel/images/bullet.jpg"
+            border=0 >&nbsp;Technical Analysis</TD></A></TR>
+        <TR>
+          <TD class=Item bgColor=#04368c height=2><A class=Item 
+            onmouseover="MM_swapImage('Image431','','/brokerpage/013/left_panel/images/side_news_g.gif',1)" 
+            onclick="processTree (4); return false;" onmouseout=MM_imageRes() ><IMG 
+            height=16 src="/brokerpage/013/left_panel/images/side_news.gif" width=127 border=0 
+            name=Image431></A></TD></TR>
+        <TR class=SubItemRow id=sub_4_1>
+          <TD class=SubItem bgColor=#508fdf  height=16 onmouseover="this.className='cell_over1';" onmouseout="this.className='cell_out1';" bgcolor="#508fdf">&nbsp;<IMG 
+            src="/brokerpage/013/left_panel/images/bullet.jpg"
+            border=0 >&nbsp;Company News (Thaiquest)</TD></A></TR>
+        <TR class=SubItemRow id=sub_4_2>
+          <TD class=SubItem bgColor=#508fdf  height=16 onmouseover="this.className='cell_over1';" onmouseout="this.className='cell_out1';" bgcolor="#508fdf">&nbsp;<IMG 
+            src="/brokerpage/013/left_panel/images/bullet.jpg"
+            border=0 >&nbsp;SET News</TD></A></TR>
+        <TR class=SubItemRow id=sub_4_3>
+            <TD class=SubItem bgColor=#508fdf  height=16 onmouseover="this.className='cell_over1';" onmouseout="this.className='cell_out1';" bgcolor="#508fdf">&nbsp;<IMG 
+            src="/brokerpage/013/left_panel/images/bullet.jpg"
+            border=0 >&nbsp;Qthai</TD></A></TR>
+        <TR class=SubItemRow id=sub_4_4>
+          <TD class=SubItem bgColor=#508fdf  height=16 onmouseover="this.className='cell_over1';" onmouseout="this.className='cell_out1';" bgcolor="#508fdf">&nbsp;<IMG 
+            src="/brokerpage/013/left_panel/images/bullet.jpg"
+            border=0 >&nbsp;Historical News</TD></A></TR>
+        <TR>
+          <TD class=Item bgColor=#04368c height=2><A class=Item 
+            onmouseover="MM_swapImage('Image441','','/brokerpage/013/left_panel/images/side_decision_g.gif',1)" 
+            onclick="processTree (5); return false;" onmouseout=MM_imageRes() 
+            ><IMG 
+            height=16 src="/brokerpage/013/left_panel/images/side_decision.gif" width=127 
+            border=0 name=Image441></A></TD></TR>
+        <TR class=SubItemRow id=sub_5_1>
+          <TD class=SubItem bgColor=#508fdf  height=16 onmouseover="this.className='cell_over1';" onmouseout="this.className='cell_out1';" bgcolor="#508fdf">&nbsp;<IMG 
+            src="/brokerpage/013/left_panel/images/bullet.jpg"
+            border=0 >&nbsp;X-Calendar</TD></A></TR>
+        <TR class=SubItemRow id=sub_5_2>
+          <TD class=SubItem bgColor=#508fdf  height=16 onmouseover="this.className='cell_over1';" onmouseout="this.className='cell_out1';" bgcolor="#508fdf">&nbsp;<IMG 
+            src="/brokerpage/013/left_panel/images/bullet.jpg"
+            border=0 >&nbsp;Broker Trading</TD></A></TR>
+        <TR class=SubItemRow id=sub_5_3>
+          <TD class=SubItem bgColor=#508fdf  height=16 onmouseover="this.className='cell_over1';" onmouseout="this.className='cell_out1';" bgcolor="#508fdf">&nbsp;<IMG 
+            src="/brokerpage/013/left_panel/images/bullet.jpg"
+            border=0 >&nbsp;Customer Type</TD></A></TR>
+        <TR class=SubItemRow id=sub_5_4>
+          <TD class=SubItem bgColor=#508fdf  height=16 onmouseover="this.className='cell_over1';" onmouseout="this.className='cell_out1';" bgcolor="#508fdf">&nbsp;<IMG 
+            src="/brokerpage/013/left_panel/images/bullet.jpg"
+            border=0 >&nbsp;Consult Analysts</TD></A></TR>
+        <TR class=SubItemRow id=sub_5_5>
+          <TD class=SubItem bgColor=#508fdf  height=16 onmouseover="this.className='cell_over1';" onmouseout="this.className='cell_out1';" bgcolor="#508fdf">&nbsp;<IMG 
+            src="/brokerpage/013/left_panel/images/bullet.jpg"
+            border=0 >&nbsp;Adviser Corner</TD></A></TR>
+        <TR>
+          <TD class=Item bgColor=#04368c height=2><A class=Item 
+            onmouseover="MM_swapImage('Image471','','/brokerpage/013/left_panel/images/side_alert_g.gif',1)" 
+            onclick="processTree (8); return false;" onmouseout=MM_imageRes() 
+          ><IMG 
+            height=16 src="/brokerpage/013/left_panel/images/side_alert.gif" width=127 border=0 
+            name=Image471></A></TD></TR>
+        <TR class=SubItemRow id=sub_8_1>
+          <TD class=SubItem bgColor=#508fdf  height=16 onmouseover="this.className='cell_over1';" onmouseout="this.className='cell_out1';" bgcolor="#508fdf">&nbsp;<IMG 
+            src="/brokerpage/013/left_panel/images/bullet.jpg"
+            border=0 >&nbsp;Set channel</TD></A></TR>
+        <TR class=SubItemRow id=sub_8_2>
+          <TD  bgColor=#508fdf  height=16 onmouseover="this.className='cell_over1';" onmouseout="this.className='cell_out1';" bgcolor="#508fdf">&nbsp;<IMG 
+            src="/brokerpage/013/left_panel/images/bullet.jpg"
+            border=0 >&nbsp;Set Alert Rule</TD></A></TR>
+        <TR class=SubItemRow id=sub_8_3>
+          <TD  bgColor=#508fdf  height=16 onmouseover="this.className='cell_over1';" onmouseout="this.className='cell_out1';" bgcolor="#508fdf">&nbsp;<IMG 
+            src="/brokerpage/013/left_panel/images/bullet.jpg"
+            border=0 >&nbsp;Mobile Alert Record</TD></A></TR>
+        <TR>
+          <TD class=Item bgColor=#04368c height=15><A class=Item 
+            onmouseover="MM_swapImage('Image48','','/brokerpage/013/left_panel/images/side_mycorner_g.gif',1)" 
+            onclick="processTree (9); return false;" onmouseout=MM_imageRes() 
+            ><IMG 
+            height=16 src="/brokerpage/013/left_panel/images/side_mycorner.gif" width=127 
+            border=0 name=Image48></A></TD></TR>
+        <TR class=SubItemRow id=sub_9_1>
+          <TD class=SubItem bgColor=#508fdf  height=16 onmouseover="this.className='cell_over1';" onmouseout="this.className='cell_out1';" bgcolor="#508fdf">&nbsp;<IMG 
+            src="/brokerpage/013/left_panel/images/bullet.jpg"
+            border=0 >&nbsp;Change Login Password</TD></A></TR>
+        <TR class=SubItemRow id=sub_9_2>
+          <TD class=SubItem bgColor=#508fdf  height=16 onmouseover="this.className='cell_over1';" onmouseout="this.className='cell_out1';" bgcolor="#508fdf">&nbsp;<IMG 
+            src="/brokerpage/013/left_panel/images/bullet.jpg"
+            border=0 >&nbsp;Change E-mail</TD></A></TR>
+<!-- END ROLE: INVESTOR Free Trial -->
+<!-- END ROLE: INVESTOR Read from file depend on Role -->
+</table>
+</td>
+<td valign='top'>
+<table width='638' border='0' cellspacing='0' cellpadding='0'>
+<tr>
+<td width='1%'>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td valign='top' colspan=3>
+<!-- START: Print Body of JSP pages -->
+<META HTTP-EQUIV='Refresh' CONTENT='600;URL=login.jsp?txtBrokerId=013'><table width='100%' border='0' cellspacing='0' cellpadding='0'>   <tr>       <td width='1%' >&nbsp;</td>      <td width='48%' valign='top' >        
+ <form name='frmLogin' method='post' onSubmit='return validate()' action='http://localhost:8000/dummysuccess/'>   {% csrf_token %}         <table width='100%' border='0' cellspacing='0' cellpadding='0'>               <tr bgcolor='#3D7878'>                   <td width='1%'>&nbsp;</td>                  <td width='99%' colspan='2' height='17'><font class='loginTitle'><b>Registered User					 </b></font></td>               </tr>               <tr bgcolor='#f0efd0'>                   <td width='1%'>&nbsp;</td>                  <td width='44%'><font class='quoteBody'><b><font color='#E97A4B'>Login</font></b></font></td>                  <td width='55%'><font class='quoteBody'><b><font color='#E97A4B'>Password</font></b></font></td>               </tr>               <tr bgcolor='#f0efd0'>                   <td width='1%'>&nbsp;</td>                  <td width='44%'><font class='favouBody'> 						<input type='hidden' name='txtSecureKey' value='NONE'>						<input type='hidden' name='txtBrokerId' value='013'>                     <input type='text' name='txtLogin' size='10' maxlength='10' value='' ></font></td>                  <td width='55%'><font class='favouBody'>                      <input type='password' name='txtPassword' size='10' maxlength='10'>                     <input type='submit' name='butGo' value='Go'>                  </font></td>               </tr>               <tr bgcolor='#f0efd0'>                  <td width='1%'>&nbsp;</td>                  <td width='99%' colspan='2'>                     <a href='http://wen060.settrade.com/S02_ForgetPswd.jsp?txtBrokerId=013'><font class='favouBody'><font color='blue'><u>Forgotten your password?</u></font></font></a>                  </td>               </tr>            </table>         </form>      </td>      <td width='3%' >&nbsp;</td>      <td width='48%' valign='top' >          <table width='100%' border='0'  cellpadding='0' cellspacing='0'              <tr>                  <td colspan='2' align=right valign=top> <table border=0 cellpadding=0 cellspacing=0><tr><td><img src=image/Intraday_Chart_Logo.gif></td></tr><tr><td><img src=image/SETIndex.gif?1534794662411></td></tr></table><br>                 </td>              </tr>         </table>      </td>   </tr></table><table width='100%' border='0' cellspacing='1' cellpadding='0'>      <td width='1%' >&nbsp;</td>	     <td><table width=625 border='0' cellspacing='0' cellpadding='0' bgcolor='#EEEEEE'><tr bgcolor=#FFFFFF>  <td width='15%' bgcolor='#7090B0'><b><font class='msBody'><font color='#DDDDDD'>SET Index</font></b></td>  <td width='18%' bgcolor='#000000'>    <div align='right'><b><font class='msGreen'>1,701.42 &nbsp;&nbsp; 11.38</font></b></div>  </td>  <td width='1%'></td>  <td width='15%' bgcolor='#7090B0'><b><font class='msBody'><font color='#DDDDDD'>Value(M)</font></b></td>  <td width='18%' bgcolor='#000000'>    <div align='right'><b><font class='msBody'><font color='#FFFFFF'>44,920.439</font></b></div>  </td>  <td width='1%'></td>  <td width='15%' bgcolor='#7090B0'><b><font class='msBody'><font color='#DDDDDD'>Volume('000)</font></b></td>  <td width='18%' bgcolor='#000000'>    <div align='right'><b><font class='msBody'><font color='#FFFFFF'>11,129,407</font></b></div>  </td></tr><tr bgcolor=#FFFFFF>  <td width='15%' bgcolor='#7090B0'><b><font class='msBody'><font color='#DDDDDD'>Gainers</font></b></td>  <td width='18%' bgcolor='#000000'>     <div align='right'><b><font class='msGreen'>699</font></b></div>  </td>  <td width='1%'></td>  <td width='15%' bgcolor='#7090B0'><b><font class='msBody'><font color='#DDDDDD'>Losers</font></b></td>  <td width='18%' bgcolor='#000000'>      <div align='right'><b><font class='msRed'>577</font></b></div>   </td>   <td width='1%'></td>   <td width='15%' bgcolor='#7090B0'><b><font class='msBody'><font color='#DDDDDD'>Unchanged</font></b></td>   <td width='18%' bgcolor='#000000'>     <div align='right'><b><font class='msYellow'>441</font></b></div>   </td></tr></table><table width=625 border='0' cellspacing='0' cellpadding='0' bgcolor='#EEEEEE'><tr>  <td>  <table width='100%' border='0' cellpadding='0' cellspacing='1'>  <tr bgcolor='#98CCFF'>    <td width='100%' height='15' colspan='4'><b><font class='msBodyTitle'>Most Active Value</font></b></td>  </tr>  <tr bgcolor='#006498'>    <td width='25%'><b><font class='msBody'><font color='#FFFFFF'>Stock</font></b></td>    <td width='25%'><div align='right'><b><font class='msBody'><font color='#FFFFFF'>Value(M)</font></b></div></td>    <td width='25%'><div align='right'><b><font class='msBody'><font color='#FFFFFF'>Last Done</font></b></div></td>    <td width='25%'><div align='right'><b><font class='msBody'><font color='#FFFFFF'>Change</font></b></div></td>  </tr>  <tr bgcolor='#FFFFFF'>    <td width='25%' bgcolor='#B4B4B4'><b><font class='msBody'>TMB</font></b></td>    <td width='25%' bgcolor='#333366'>       <div align='right'><b><font class='msRed'>2,912,610</font></b></div>    </td>    <td width='25%' bgcolor='#333366'>       <div align='right' bgcolor='#333366'><b><font class='msRed'>2.160</font></b></div>    </td>    <td width='25%' bgcolor='#333366'>       <div align='right' bgcolor='#333366'><b><font class='msRed'>-0.080</font></b></div>    </td>  </tr>  		  <tr bgcolor='#FFFFFF'>    <td width='25%' bgcolor='#B4B4B4'><b><font class='msBody'>BEAUTY</font></b></td>    <td width='25%' bgcolor='#333366'>       <div align='right'><b><font class='msGreen'>2,258,576</font></b></div>    </td>    <td width='25%' bgcolor='#333366'>       <div align='right' bgcolor='#333366'><b><font class='msGreen'>9.450</font></b></div>    </td>    <td width='25%' bgcolor='#333366'>       <div align='right' bgcolor='#333366'><b><font class='msGreen'>0.350</font></b></div>    </td>  </tr>  		  <tr bgcolor='#FFFFFF'>    <td width='25%' bgcolor='#B4B4B4'><b><font class='msBody'>PTT</font></b></td>    <td width='25%' bgcolor='#333366'>       <div align='right'><b><font class='msGreen'>1,807,871</font></b></div>    </td>    <td width='25%' bgcolor='#333366'>       <div align='right' bgcolor='#333366'><b><font class='msGreen'>52.250</font></b></div>    </td>    <td width='25%' bgcolor='#333366'>       <div align='right' bgcolor='#333366'><b><font class='msGreen'>0.750</font></b></div>    </td>  </tr>  		  </table>  </td>  <td>  <table width='100%' border='0'  cellpadding='0' cellspacing='1'>  <tr bgcolor='#98CCFF'>     <td width='100%' height='15' colspan='4'><b><font class='msBodyTitle'>Top Gainers</font></b></td>  </tr>  <tr bgcolor='#006498'>    <td width='25%'><b><font class='msBody'><font color='#FFFFFF'>Stock</font></b></td>    <td width='25%'><div align='right'><b><font class='msBody'><font color='#FFFFFF'>Volume</font></b></div></td>    <td width='25%'><div align='right'><b><font class='msBody'><font color='#FFFFFF'>Last Done</font></b></div></td>    <td width='25%'><div align='right'><b><font class='msBody'><font color='#FFFFFF'>%Change</font></b></div></td>  </tr>  <tr bgcolor='#FFFFFF'>    <td width='25%' bgcolor='#B4B4B4'><b><font class='msBody'>PTTG06C1809A</font></b></td>    <td width='25%' bgcolor='#333366'>       <div align='right'><b><font class='msGreen'>2,855,000</font></b></div>    </td>    <td width='25%' bgcolor='#333366'>       <div align='right' bgcolor='#333366'><b><font class='msGreen'>0.030</font></b></div>    </td>    <td width='25%' bgcolor='#333366'>       <div align='right' bgcolor='#333366'><b><font class='msGreen'>200.000</font></b></div>    </td>  </tr>  		  <tr bgcolor='#FFFFFF'>    <td width='25%' bgcolor='#B4B4B4'><b><font class='msBody'>BEAU08C1901A</font></b></td>    <td width='25%' bgcolor='#333366'>       <div align='right'><b><font class='msGreen'>2,848,000</font></b></div>    </td>    <td width='25%' bgcolor='#333366'>       <div align='right' bgcolor='#333366'><b><font class='msGreen'>0.040</font></b></div>    </td>    <td width='25%' bgcolor='#333366'>       <div align='right' bgcolor='#333366'><b><font class='msGreen'>100.000</font></b></div>    </td>  </tr>  		  <tr bgcolor='#FFFFFF'>    <td width='25%' bgcolor='#B4B4B4'><b><font class='msBody'>BEAU24C1902A</font></b></td>    <td width='25%' bgcolor='#333366'>       <div align='right'><b><font class='msGreen'>5,011,900</font></b></div>    </td>    <td width='25%' bgcolor='#333366'>       <div align='right' bgcolor='#333366'><b><font class='msGreen'>0.040</font></b></div>    </td>    <td width='25%' bgcolor='#333366'>       <div align='right' bgcolor='#333366'><b><font class='msGreen'>100.000</font></b></div>    </td>  </tr>  		  </table>  </td></tr></table>        <p>	     </td></table>
+<br>
+<!-- END: Print Body of JSP pages -->
+</td>
+</tr>
+<tr>
+<td width='1%'>&nbsp;</td>
+<td bgcolor='#0E1B5D' align='center' colspan=2>
+<font face='Arial, Helvetica, sans-serif' size='-2' color='#FFFFFF'>System response and all information may vary due to system performance, market conditions and other factors<br>
+&#153; SETTRADE.COM. All rights reserved.
+<a href='/brokerpage/IPO/StaticPage/Disclaimer/disclaimer.html' target='_blank'>
+<u><font color='#FFFFFF'>Terms of Use</font></u></a></font>
+</td>
+</tr>
+</body>
+</html>

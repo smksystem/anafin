@@ -1,0 +1,1 @@
+div[loading-page]{position:absolute;top:0;bottom:0;left:0;right:0;background:no-repeat center center fixed;-webkit-background-size:cover;background-size:cover;background-color:#090909;z-index:1200}div[loading-page] .preload-img{margin:auto;position:fixed;top:0;bottom:300px;left:0;right:0;height:250px}

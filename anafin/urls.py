@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from anaform import views
 from django.contrib.auth.decorators import login_required
+from dummypage import views as dummyviews
 # from anafin import anaform
 # admin.autodiscover()
 urlpatterns = [
@@ -28,6 +29,10 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^dashboard/',views.home,name='home'),
     url(r'^main/',views.mainpage,name='main'),
+    url(r'^dummy/',dummyviews.dummypage,name='dummy'),
+    url(r'^dummysuccess/',dummyviews.dummysuccess,name='dummysuccess'),
+    url(r'^dummyrt/',dummyviews.dummyrt,name='dummyrt'),
+
 
     # url(r'^$', login_required(BoardView.as_view()), name='boards'),
     

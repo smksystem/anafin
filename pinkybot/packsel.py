@@ -47,7 +47,10 @@ class packselenium():
 		driver = webdriver.Chrome()
 		# put url here
 		# exit()
-		driver.get("http://wen060.settrade.com/login.jsp?txtBrokerId="+loginParams["mybrokeId"])
+
+		# driver.get("http://wen060.settrade.com/login.jsp?txtBrokerId="+loginParams["mybrokeId"])
+		driver.get("http://localhost:8000/dummy/")
+		
 		wait = WebDriverWait(driver, 10)
 		element = wait.until(EC.presence_of_element_located((By.XPATH, "/html/body/table[4]/tbody/tr/td[2]/table/tbody/tr[2]/td/table[1]/tbody/tr/td[2]/form/table/tbody/tr[3]/td[3]/font/input[2]")))
 
@@ -88,7 +91,13 @@ class packselenium():
 		
 		# wait until second pop up is complete loaded
 		wait = WebDriverWait(driver, 30)
-		element = wait.until(EC.presence_of_element_located((By.XPATH, "//*[@id='place-order-form']/refresh-ui-component/button/span[1]")))
+		# element = wait.until(EC.presence_of_element_located((By.XPATH, "//*[@id='place-order-form']/refresh-ui-component/button/span[1]")))
+
+		element = wait.until(EC.presence_of_element_located((By.XPATH, "/html/body/p[2]")))
+		print("detect web load success")
+
+
+
 
 		stock = driver.find_elements_by_xpath("//*[@id='favourite-0']/ul/li[1]/editable-symbol-input/p")[0].text
 		print ("stock is below found check login")
