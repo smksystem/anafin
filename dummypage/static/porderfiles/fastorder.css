@@ -1,0 +1,609 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	background-color:#fff;
+    font-family:Arial, Helvetica, sans-serif;  
+	color:#333333;
+	font-size: 12px;
+	padding:0px;
+	margin:0px;
+}
+a {  
+    text-decoration:none;  
+    color:#FFF;  
+    font-size:12px;  
+    font-weight:bold;  
+	outline:none;
+}
+form {
+	/* ie bug */
+	margin:0px;
+}
+div#header {
+	background-color:#d4d6d7;
+	background-repeat:repeat-x;
+	padding-top:10px;
+	padding-bottom:10px;
+	position:relative;
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src='images/thead.png');	/* hack for ie, ff ignores this */
+	_height: 0;		/* hack for ie lt 8 */
+	zoom: 1;		/* hack for ie lt 8 */
+}
+div[id="header"] {
+	background-image:url('images/thead.png');
+}
+#mktStatus {
+	bottom:1px;
+	font-weight:bold;
+	position:absolute;
+	right: 220px;
+	text-align:right;
+	/*width:690px;*/
+	width:80%;
+}
+div.menu {
+	bottom:0px;
+	position:absolute;
+	right:40px;
+}
+ul#menu {  
+	margin:0px; padding:0px;
+}
+ul#menu li {
+	background-image:url('images/menu.png');
+	background-repeat:no-repeat; 
+    display:inline-block;
+	line-height:27px;
+	height: 27px;
+	width: 86px;
+	text-align:center;
+	/*to hack ie6&7 for display:inline-block*/
+	zoom: 1;
+	*display: inline;
+}  
+ul#menu li a { 
+	/*line-height:13px;*/
+    text-decoration:none;
+    font-size:14px;  
+    font-weight:bold;
+}  
+ul#menu li.selected {  
+	background-image:url('images/menu_selected.png');
+	background-repeat:no-repeat; 
+}
+input#refreshQuoteBtn {
+	bottom: 0px;
+	margin: 3px 3px 3px 3px;
+	position: absolute;
+	right: 0px;
+}
+.even {
+	color:#FF0;
+}
+.gain {
+	color:#3D7D3C;
+}
+.lose {
+	color:#E11E2D;
+}
+.unchg {
+	color:#9A812F;
+}
+.buy {
+	color:#68A4B1;
+}
+.sell {
+	color:#E25B89;
+}
+.vol {
+	color:#9A812F;
+}
+select.system {
+	width: 85px;
+}
+#accInfo {
+	background-color:#e8e9ea;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-right:10px;
+	border-top:1px solid #999;
+	border-bottom:1px solid #999;
+}
+#accEq {
+	width:100px;
+}
+#accDeriv {
+	width:100px;
+}
+#accName {
+	width:170px;
+	margin:0px; padding:0px;
+	margin-left:5px;
+	font-weight:bold;
+	color:#9A812F;
+}
+div.accCredit {
+	margin-top:5px;
+	margin-bottom:5px;
+}
+ul.accCredit {
+	margin:0px; padding:0px;
+	float:right;
+	font-weight:bold;
+}
+ul.accCredit li {
+	display:inline-block;
+	padding:0px 5px 0px 0px;
+	width:55px;
+	/*to hack ie6&7 for display:inline-block*/
+	zoom: 1;
+	*display: inline;
+}
+ul.accCredit li.credit,
+ul.accCredit li.line,
+ul.accCredit li.cash,
+ul.accCredit li.ee,
+ul.accCredit li.pp,
+ul.accCredit li.cashAvail,
+ul.accCredit li.equity{
+	color:#9A812F;
+}
+ul.accCredit li.credit,
+ul.accCredit li.line,
+ul.accCredit li.cash,
+ul.accCredit li.ee,
+ul.accCredit li.equity{
+	width:80px;
+}
+ul.accCredit li.pp,
+ul.accCredit li.cashAvail{
+	width:80px;
+}
+ul.accCredit li.ppLabel {
+	width:120px;
+}
+ul.accCredit li.cashAvailLabel {
+	width:135px;
+}
+input#symbol {
+	width: 80px;
+}
+input#vol {
+	width: 70px;
+}
+input#price {
+	width: 70px;
+}
+input#pin {
+	width: 55px;
+}
+div#accountNo {
+	float:left;
+}
+div#order_ctrl {
+	text-align:right;
+	margin-right:42px;
+	margin-top:3px;
+}
+div#mkt_watch_left {
+	float: left;
+	width: 100%;
+}
+.instQuote {
+	height:215px;
+	width:100%;
+	background-repeat:repeat-x;
+	font-weight:bold;
+	/*margin-bottom:10px;*/
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src='images/thead.png');	/* hack for ie, ff ignores this */
+}
+div[class="instQuote"] {	/* ignore from ie6 */
+	background-image:url('images/thead.png');
+}
+.instQuote input.symbol{
+	color:#999;
+}
+.bgwhite {
+	background-color:white;
+}
+.instQuote input.symbol {
+	width:160px;
+}
+table.instInfo {
+	height:82px;
+	width:100%;
+	border-collapse:collapse;
+	background-color:#f3f2f2;
+}
+table.instInfo tr {
+	height:25px;
+	width:100%;
+	border-collapse:collapse;
+}
+table.instInfo th{
+	/*border-right:solid 1px #999;*/
+	text-align:center;
+}
+table.instInfo td{
+	/*border-right:solid 1px #999;*/
+	padding-right:5px;
+	text-align:right;
+}
+table.instInfo td.symbol{
+	width:20%;
+	text-align:center;
+}
+table.instInfo h1.symbol{
+	font-size:21px;
+	margin-top:10px;
+	margin-bottom:0px;
+}
+table.instBidOffer {
+	border-spacing:0px;
+	border-collapse:collapse;
+	width:50%;
+	float:left;
+	font-weight:bold;
+}
+table.instBidOffer th {
+	background-color:#d9dbdc;
+	width:25%;
+}
+table.instBidOffer td {
+	padding-right:5px;
+	text-align:right;
+}
+table.instTicker {
+	border-spacing:0px;
+	border-collapse:collapse;
+	width:49.6%;
+	padding-left:5px;
+	font-weight:bold;
+}
+table.instTicker th {
+	background-color:#d9dbdc;
+}
+table.instTicker td.time {
+	padding-left:5px;
+}
+table.instTicker td.side,
+table.instTicker td.price {
+	text-align:center;
+}
+table.instTicker td.volume {
+	text-align:right;
+}
+
+/*portfolio*/
+#portEq, #portDeriv {
+	font-weight: bold;
+}
+table.port {
+	border-spacing:0px;
+	border-collapse:collapse;
+	height:200px;
+	width:100%;
+	background-repeat:repeat-x;
+	border-spacing:0px;
+	/*margin-bottom:7px;*/
+	font-weight:bold;
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src='images/thead.png');	/* hack for ie, ff ignores this */
+}
+table[class="port"] {	/* ignore from ie6 */
+	background-image:url('images/thead.png');
+}
+table.port th{
+	background-color:#e2e3e4;
+}
+table.port td.symbol{
+	padding-left:5px;
+}
+div.portFoot {
+	padding-right:16px;
+	background:#D9DBDC;
+}
+div.portFoot table {
+	width:100%;
+	border-collapse:collapse;
+}
+div.portFoot table tfoot tr {
+	width:100%;
+	background-color:#d9dbdc;
+	padding:5px 0px 5px 0px;
+}
+table.port div.body{
+	width:100%;
+    height: 133px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+table.port table.body{
+    width:100%;
+	border-collapse:collapse;
+}
+#portEq table.port thead tr th {
+	width:9.2%;
+}
+#portEq table.port thead tr th.symbol {
+	width:17.2%;
+}
+#portEq table.port table tr td{
+    width:9.2%;
+	text-align:right;
+}
+#portEq table.port table tr td.symbol{
+    width:17.2%;
+	text-align:left;
+}
+#portDeriv table.port thead tr th {
+	width:7.6%;
+}
+#portDeriv table.port table tr td{
+    width:7.6%;
+	text-align:right;
+}
+#portDeriv table.port table tr td.symbol{
+    width:7.6%;
+	text-align:left;
+}
+/*
+table.port table tr td.symbol{
+    text-align:left;
+}
+*/
+div.portFoot tfoot td.amtPrice,
+div.portFoot tfoot td.mktVal,
+div.portFoot tfoot td.unrealizedPL,
+div.portFoot tfoot td.pUnrealizedPL,
+div.portFoot tfoot td.realizedPL,
+div.portFoot tfoot td.optVal{
+    text-align:right;
+}
+div.portFoot tfoot td.symbol {
+    width: 17.2%;
+}
+
+
+/*place*/
+.placeContainer {
+	position:relative;
+	height:60px;
+}
+.place {
+	width:100%;
+	background-color:#d8d9db;
+	background-repeat:repeat-x;
+	border-spacing:0px;
+	margin-bottom:5px;
+	padding-top:5px;
+	padding-bottom:2px;
+	border-bottom:1px solid #999;
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src='images/thead.png');	/* hack for ie, ff ignores this */
+}
+div[class="place"] {	/* ignore from ie6 */
+	background-image:url('images/thead.png');
+}
+.place .status {
+	display: inline-block;
+	font-size:11px;
+	font-weight:bold;
+	width:88px;
+	/*
+	background-color:#d9dbdc;
+	color:#9A812F;
+	*/
+	padding:3px 5px 3px 5px;
+	/*border:solid 1px #333333;*/
+}
+.place input.symbol {
+	width:60px;
+}
+.place input.volume,
+.place input.price,
+.place input.publishVolume,
+.place input.stopPrice,
+.place input.pin {
+	width:60px;
+}
+#placeDeriv input.symbol {
+	width:100px;
+}
+#placeDeriv table.table1 {
+	border-collapse:collapse;
+}
+#placeDeriv table.table1 td.col1 {
+	width:130px;
+}
+#placeDeriv table.table1 td.col3 {
+	width:70px;
+	text-align:right;
+}
+#placeDeriv table.table1 td.col4 {
+	width:150px;
+}
+#placeDeriv input.volume {
+	width:128px;
+}
+#placeDeriv select.optionText{
+	font-size: 0.9em;
+}
+#placeDeriv select.stopCond,
+#placeDeriv select.validityType {
+	width:110px;
+}
+#placeEq input.symbol {
+	width:100px;
+}
+
+#condBtn {
+	width:50px;
+}
+.submitBtn,
+.detailBtn,
+.cancelBtn,
+.refreshBtn,
+.clearBtn {
+	width:60px;
+}
+.buyLabel, .sellLabel {
+	font-weight:bold;
+}
+/*orderStatus*/
+div.orderHead{
+	padding-right:16px;
+	background:#e2e3e4;
+}
+div.order{
+	width:100%;
+    height: 175px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+table.order tr{
+    height:22px
+}
+table.order, table.orderHead{
+	border:0px;
+	width:100%;
+	border-collapse:collapse;
+}
+table#orderHeadEq thead tr th{
+	background-color:#e2e3e4;
+    width:7.9%;
+}
+table#orderHeadEq thead tr th.cancelBox{
+    width:4%;
+}
+table#orderHeadEq thead tr th.symbol{
+    width:17.7%;
+}
+table#orderHeadEq thead tr th.status{
+    width:15.0%;
+}
+table#orderHeadDeriv thead tr th{
+	background-color:#e2e3e4;
+    width:6.25%;
+}
+table#orderHeadDeriv thead tr th.status{
+    width:12.5%;
+}
+table.order tr.b {
+	background-color:#f3f9fb;
+}
+table.order tr.b.hover {
+	background-color:#daeef3;
+}
+/*table.order tr.bhover {
+	background-color:#daeef3;
+}*/
+table.order tr.s {
+	background-color:#ffe9f2;
+}
+table.order tr.s.hover {
+	background-color:#f2c7c7;
+}
+/*table.order tr.shover {
+	background-color:#f2c7c7;
+}*/
+table.order td buy {
+	color:#04a3fe;
+}
+table.order tr sell {
+	color:#e3428e;
+}
+table.order tr td.orderNo {
+	text-align:left;
+}
+
+table.order tr td.price
+table.order tr td.volume,
+table.order tr td.matchedVol,
+table.order tr td.balanceVol,
+table.order tr td.cancelledVol {
+	text-align:right;
+}
+table.order tr td.symbol,
+table.order tr td.seriesId {
+	padding-left:10px;
+	text-align:left;
+}
+table.order tr td.cancelBox,
+table.order tr td.time, 
+table.order tr td.side, 
+table.order tr td.status, 
+table.order tr td.validity, 
+table.order tr td.position,
+table.order tr td.stop, 
+table.order tr td.date {
+	text-align:center;
+}
+table#orderBodyEq tr td{
+    width:7.9%;
+	border-top:1px solid white;
+    font-weight:bold;  
+}
+table#orderBodyEq tr td.cancelBox{
+    width:4%;
+}
+table#orderBodyEq tr td.symbol{
+    width:17.7%;
+}
+table#orderBodyEq tr td.status{
+    width:15%;
+}
+
+table#orderBodyDeriv tr td{
+    width:6.25%;
+	border-top:1px solid white;
+    font-weight:bold;  
+}
+table#orderBodyDeriv tr td.status{
+    width:12.5%;
+    font-size: 0.9em;
+}
+
+/* percent buy sell */
+.instBuySell {
+	position:relative;
+	_height: 0;		/* hack for ie lt 8 */
+	zoom: 1;		/* hack for ie lt 8 */
+}
+.instBuySell .label {
+	left:0;
+	position:absolute;
+	width:100%;
+}
+.instBuySell .label .pBuy {
+	color:#68A4B1;
+	padding-left:5px;
+}
+.instBuySell .label .pSell {
+	color:#E25B89;
+	padding-right:5px;
+	text-align:right;
+}
+table.bar {
+	left:0;
+	position:absolute;
+	width:100%;
+}
+.instBuySell .bar .pBuy {
+	border:solid 1px #68A4B1;
+	width:1%;
+}
+.instBuySell .bar .pSell {
+	border:solid 1px #E25B89;
+	width:1%;
+}
+.lastUpdate {
+	text-align: right;
+	padding-right: 10px;
+	background: #8cc641;	
+	font-weight: bold;
+}
+iframe.disclaimerFrame {
+	width: 100%;
+	border: 0px;
+	margin: 0px;
+	padding: 0px;
+}

@@ -336,8 +336,9 @@ class outputlog(tk.Tk):
 			if not self.mybot.myqueue.empty():
 				tempdict=self.mybot.myqueue.get()
 				print (tempdict["textout"])
-				if tempdict["textout"]:
+				if "textout" in tempdict:
 						self.txtout(tempdict["textout"])
+
 				# self.mybot.myqueue.join()
 
 
@@ -345,7 +346,7 @@ class outputlog(tk.Tk):
 				
 			# self.output.tag_config("testb", background="white", foreground="red")
 			# self.output.tag_add('testb', 10.0, step)
-			self.after(500, self.Refresher) # every second...
+			self.after(1000, self.Refresher) # every second...
 
 
 # if __name__ == '__main__':

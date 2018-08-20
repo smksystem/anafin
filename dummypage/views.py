@@ -16,7 +16,8 @@ def dummysuccess(request):
 
 def dummyrt(request):
 	print("dummypage")
+	# print (STATIC_URL)
 	context={}
-	template="dummyrt.html"
+	template="porder.html"
 	return render(request,template,context)
 

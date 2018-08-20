@@ -91,24 +91,35 @@ class packselenium():
 		
 		# wait until second pop up is complete loaded
 		wait = WebDriverWait(driver, 30)
-		# element = wait.until(EC.presence_of_element_located((By.XPATH, "//*[@id='place-order-form']/refresh-ui-component/button/span[1]")))
 
-		element = wait.until(EC.presence_of_element_located((By.XPATH, "/html/body/p[2]")))
+
+
+		# detect refresh button
+
+		# element = wait.until(EC.presence_of_element_located((By.XPATH, "//*[@id='place-order-form']/refresh-ui-component/button/span[1]")))
+		element = wait.until(EC.presence_of_element_located((By.XPATH, "//*[@id='order_ctrl']/input[3]"))) 
+
 		print("detect web load success")
 
 
 
 
-		stock = driver.find_elements_by_xpath("//*[@id='favourite-0']/ul/li[1]/editable-symbol-input/p")[0].text
+		# stock = driver.find_elements_by_xpath("//*[@id='favourite-0']/ul/li[1]/editable-symbol-input/p")[0].text
+		stock = driver.find_elements_by_xpath("//*[@id='eqQuoteSymbol']")[0]
+
 		print ("stock is below found check login")
 		print(stock)
 
-
-		chkstock=driver.find_elements_by_xpath("//*[@id='favourite-0']/ul/li[1]/editable-symbol-input/p")[0]
+		# one click to the first of favorite stock then wait
+		# chkstock=driver.find_elements_by_xpath("//*[@id='favourite-0']/ul/li[1]/editable-symbol-input/p")[0]
+		chkstock=driver.find_elements_by_xpath("//*[@id='favourite-0']/ul/li[1]")[0]
 		chkstock.click()
 
 		wait = WebDriverWait(driver, 10)
-		elementClose = wait.until(EC.presence_of_element_located((By.XPATH, "//*[@id='page-0-container']/li[3]/mini-quote/div[1]/mini-quote-overview/div[5]/label")))
+
+		# wait until value of stock is up and could see
+		# elementClose = wait.until(EC.presence_of_element_located((By.XPATH, "//*[@id='page-0-container']/li[3]/mini-quote/div[1]/mini-quote-overview/div[5]/label")))
+		elementClose = wait.until(EC.presence_of_element_located((By.XPATH, "//*[@id='instInfoEq']/tbody/tr[1]/td[2]/h2/span")))
 		print("wait finished")
 
 
@@ -168,13 +179,21 @@ class packselenium():
 			# while True:
 				# delta=datetime.utcnow()-timestamp
 				# if delta.seconds >= 5:
-				for line in range(1,6):
+
+				# for line in range(1,6):
+
+
 						# test=driver.find_elements_by_xpath("//*[@id='bid-"+str(line)+"']")[0].text.replace(",","")
 						# print(test)
-						bid["bid"+str(line)]=float(driver.find_elements_by_xpath("//*[@id='bid-"+str(line)+"']")[0].text.replace(",",""))
-						offer["offer"+str(line)]=float(driver.find_elements_by_xpath("//*[@id='offer-"+str(line)+"']")[0].text.replace(",",""))
-						bidvolumn["bidvolumn"+ str(line)]=float(driver.find_elements_by_xpath("//*[@id='bid-volume-"+str(line)+"']")[0].text.replace(",",""))
-						offervolumn["offervolumn"+str(line)]=float(driver.find_elements_by_xpath("//*[@id='offer-volume-"+str(line)+"']")[0].text.replace(",",""))
+						
+
+						# bid["bid"+str(line)]=float(driver.find_elements_by_xpath("//*[@id='bid-"+str(line)+"']")[0].text.replace(",",""))
+						# offer["offer"+str(line)]=float(driver.find_elements_by_xpath("//*[@id='offer-"+str(line)+"']")[0].text.replace(",",""))
+						# bidvolumn["bidvolumn"+ str(line)]=float(driver.find_elements_by_xpath("//*[@id='bid-volume-"+str(line)+"']")[0].text.replace(",",""))
+						# offervolumn["offervolumn"+str(line)]=float(driver.find_elements_by_xpath("//*[@id='offer-volume-"+str(line)+"']")[0].text.replace(",",""))
+
+
+
 				# timestamp = timezone.now()
 				timestamp = datetime.utcnow()
 				timestampELS = timestamp.isoformat(' ','seconds')

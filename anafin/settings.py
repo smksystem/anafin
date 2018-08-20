@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'pinkybot',
     'dashboard',
     'anaform',
+    'dummypage',
 ]
 
 MIDDLEWARE = [
