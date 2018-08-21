@@ -30,3 +30,8 @@ class monitorbidoffer(models.Model):
 	offer5 = models.FloatField(unique=False)
 	bidvolumn5 = models.FloatField(unique=False)
 	offervolumn5 = models.FloatField(unique=False)
+
+class udpatestockvalue(models.Model):
+	datetime=models.DateTimeField()
+	stockvalue=models.CharField()
+	 

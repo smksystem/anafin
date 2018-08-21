@@ -179,7 +179,7 @@ class packselenium():
 			# find the stock value
 			stockvalue = driver.find_elements_by_xpath("//*[@id='instInfoEq']/tbody/tr[1]/td[2]/h2/span")[0].text
 			print (stockvalue)
-			
+			PackSelModel.updatestockvalue(1,2)
 			self.myqueue.put({"stockvalue":stockvalue})
 
 
