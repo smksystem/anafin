@@ -51,15 +51,18 @@ class pinkybot(packselenium):
 
         # exit()
         # handlewin="test"
-        timestamp = datetime.utcnow()
+        timestamp = datetime.now()
         print("login is called")
+        
+        # Monitor loop here
         while True:
             i=0
-            delta=datetime.utcnow()-timestamp
+            delta=datetime.now()-timestamp
             if delta.seconds >= 2:
             # for i in range(0,10):
-
+                print ("monitor period=" +str(delta.seconds))
                 self.monitoring(handlewin,str(i))
+                timestamp=datetime.now()
 
 class MyThread(threading.Thread):
     def __init__(self, queue,fnrun, args=(), kwargs=None):

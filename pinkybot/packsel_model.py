@@ -7,6 +7,11 @@ class PackSelModel:
 	createdFlag=""
 	def __init__(self):
 		pass
+
+	def updatestockvalue(stockvalue,updatetime):
+		print("model of update value is called")
+		pass
+
 	def InsertMonitorBidOffer(stock,timestamp,bid,offer,bidvolumn,offervolumn):
 		print ("Insert value into els system")
 		

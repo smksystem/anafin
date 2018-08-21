@@ -176,39 +176,45 @@ class packselenium():
 		# timerecord = timestamp.strftime('%Y-%m-%d %H:%M:%S')
 
 		try:
-			# while True:
-				# delta=datetime.utcnow()-timestamp
-				# if delta.seconds >= 5:
+			# find the stock value
+			stockvalue = driver.find_elements_by_xpath("//*[@id='instInfoEq']/tbody/tr[1]/td[2]/h2/span")[0].text
+			print (stockvalue)
+			
+			self.myqueue.put({"stockvalue":stockvalue})
+
+
+
+
+
 
 				# for line in range(1,6):
-
-
 						# test=driver.find_elements_by_xpath("//*[@id='bid-"+str(line)+"']")[0].text.replace(",","")
 						# print(test)
-						
 
 						# bid["bid"+str(line)]=float(driver.find_elements_by_xpath("//*[@id='bid-"+str(line)+"']")[0].text.replace(",",""))
 						# offer["offer"+str(line)]=float(driver.find_elements_by_xpath("//*[@id='offer-"+str(line)+"']")[0].text.replace(",",""))
 						# bidvolumn["bidvolumn"+ str(line)]=float(driver.find_elements_by_xpath("//*[@id='bid-volume-"+str(line)+"']")[0].text.replace(",",""))
 						# offervolumn["offervolumn"+str(line)]=float(driver.find_elements_by_xpath("//*[@id='offer-volume-"+str(line)+"']")[0].text.replace(",",""))
 
-
-
 				# timestamp = timezone.now()
-				timestamp = datetime.utcnow()
-				timestampELS = timestamp.isoformat(' ','seconds')
+				# timestamp = datetime.utcnow()
+				# timestampELS = timestamp.isoformat(' ','seconds')
 				
-				print("Time record is =" + timestampELS)
+				# print("Time record is =" + timestampELS)
 				# exit()
 				#
 
 				# face to problem with float to string while ATO,ATC
 				# PackSelModel.InsertMonitorBidOffer(stock,timestampELS,bid,offer,bidvolumn,offervolumn)
 
-				bidvolumn.clear()
-				bid.clear()
-				offer.clear()
-				offervolumn.clear()
+
+
+
+
+				# bidvolumn.clear()
+				# bid.clear()
+				# offer.clear()
+				# offervolumn.clear()
 
 		except KeyboardInterrupt:
 			pass

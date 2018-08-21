@@ -128,7 +128,7 @@ class outputlog(tk.Tk):
 			rowvalue=self.myvarasso[varvalue]
 
 			for j,varinfo in enumerate(rowvalue):
-				print (varinfo)
+				# print (varinfo)
 				if varinfo=="updatedate" or varinfo=="updatetime" or varinfo=="volumn" or varinfo=="order" or varinfo=="state" :
 					self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo])
 					# self.labeldisplay.grid_propagate(0)
@@ -296,6 +296,7 @@ class outputlog(tk.Tk):
 			# self.highlight_text("Vol",txtmsg)
 			# self.highlight_text("Order",txtmsg)
 			# self.highlight_text("Stat",txtmsg)
+
 			self.output.configure(state='disabled')
 			
 			# self.output.tag_config("a", foreground="blue")
@@ -335,10 +336,14 @@ class outputlog(tk.Tk):
 			# print (dir(self))
 			if not self.mybot.myqueue.empty():
 				tempdict=self.mybot.myqueue.get()
-				print (tempdict["textout"])
+				# print (tempdict["textout"])
 				if "textout" in tempdict:
 						self.txtout(tempdict["textout"])
-
+				if "stockvalue" in tempdict:
+						self.txtout(tempdict["stockvalue"])
+						lblstockvalue=tempdict["stockvalue"] # get value from queue
+						if lblstockvalue in self.labeldisplay:
+							self.flash(self.labeldisplay[lblstockvalue][lblstockvalue],10)
 				# self.mybot.myqueue.join()
 
 
