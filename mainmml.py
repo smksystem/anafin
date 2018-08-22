@@ -11,6 +11,7 @@ from pinkybot.tkconsole import outputlog
 from pinkybot.monitor import pinkybot
 
 if __name__=="__main__":
+	
 	print("Welcome Main Pinkybot by MML") 
 
 	# chooserange=rangevalue("C")
