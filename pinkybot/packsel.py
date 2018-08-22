@@ -132,6 +132,7 @@ class packselenium():
 			# print("element is below")
 			# print (element)
 			self.myqueue.put({"textout":"Login success contiue monitoring"})
+			self.stockcompare="0.00"
 		return driver
 
 	def monitoring(self,handlewin,fav_no):
@@ -179,8 +180,25 @@ class packselenium():
 			# find the stock value
 			stockvalue = driver.find_elements_by_xpath("//*[@id='instInfoEq']/tbody/tr[1]/td[2]/h2/span")[0].text
 			print (stockvalue)
-			PackSelModel.updatestockvalue(1,2)
-			self.myqueue.put({"stockvalue":stockvalue})
+			
+			if self.stockcompare=="0.00":
+				self.stockcompare=stockvalue
+			elif (self.stockcompare!=stockvalue) and (self.stockcompare!="0.00"):
+				print("update stock compare")
+				self.stockcompare=stockvalue
+				self.myqueue.put({"stockvalue":stockvalue})
+				PackSelModel.updatestockvalue(1,2)
+				print ("stockcompare="+self.stockcompare)
+
+			# stockvalue=tempvalue
+
+			# print (tempvalue)
+			
+			
+
+			
+
+
 
 
 

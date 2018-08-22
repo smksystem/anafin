@@ -33,5 +33,5 @@ class monitorbidoffer(models.Model):
 
 class udpatestockvalue(models.Model):
 	datetime=models.DateTimeField()
-	stockvalue=models.CharField()
+	stockvalue=models.CharField(max_length=50,unique=False,default="")
 	 

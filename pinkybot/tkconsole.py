@@ -265,14 +265,25 @@ class outputlog(tk.Tk):
 		pass
 
 
-	def flash(self,Label,count=0):
+	def flash(self,Label,count=0,colormode=""):
+
+		if colormode=="green":
+			# print ("select color"+colormode)
+			Label.configure(foreground="white")
+			Label.configure(background="lime")
+			colormode=""
+
 		bg = Label.cget('background')
 		fg = Label.cget('foreground')
 		Label.configure(background=fg,foreground=bg)
 		count +=1
+		# print ("Count="+str(count))
 		if (count < 31):
 			self.after(1000,self.flash,Label,count)
-
+		elif (count>=31):
+			# print ( "enter count > 31")
+			Label.configure(foreground="black")
+			Label.configure(background="silver")
 
 
 
@@ -343,7 +354,7 @@ class outputlog(tk.Tk):
 						self.txtout(tempdict["stockvalue"])
 						lblstockvalue=tempdict["stockvalue"] # get value from queue
 						if lblstockvalue in self.labeldisplay:
-							self.flash(self.labeldisplay[lblstockvalue][lblstockvalue],10)
+							self.flash(self.labeldisplay[lblstockvalue][lblstockvalue],9,"green")
 				# self.mybot.myqueue.join()
 
 
