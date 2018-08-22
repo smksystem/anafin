@@ -15,6 +15,10 @@ class outputlog(tk.Tk):
 		self.title("Output Log")
 		# self.resizable(0,0)
 		self.geometry('800x500+20+20')
+
+		# self.grid_columnconfigure(1, weight=1)
+
+
 		# self.pack_propagate(0)
 		usertxt=tk.StringVar(value="0147500")
 		passtxt=tk.StringVar()
@@ -46,9 +50,9 @@ class outputlog(tk.Tk):
 		self.output['yscrollcommand'] = self.scrollbar.set
 
 		
-		self.frameLoginRT = tk.Frame(self)# ,background = 'green')
-		# self.framebutton.grid_propagate(0)
-		self.frameLoginRT.grid(row=0,column=1,rowspan = 1, columnspan = 1)
+		self.frameLoginRT = tk.Frame(self ,background = 'green')
+		# self.frameLoginRT.grid_propagate(0)
+		self.frameLoginRT.grid(row=0,column=1,sticky="e"+"n"+"s"+"w")
 	
 		self.labelnamebrokeid=tk.Label(self.frameLoginRT, text="Broke ID")
 		self.labelnamebrokeid.grid(row=0,column=0)
@@ -71,17 +75,43 @@ class outputlog(tk.Tk):
 		
 
 
-		self.frameInitValue=tk.Frame(self, width=100, height =300,background = 'yellow')
-		self.frameInitValue.grid(row=2,column=1,rowspan = 1, columnspan = 1)      
-		self.labelinitialvalue=tk.Label(self.frameInitValue, text="Input Initial Value")
-		self.labelinitialvalue.grid(row=0,column=0)
-
-		self.enterloginid=tk.Entry(self.frameInitValue) #,textvariable=usertxt)
-		self.enterloginid.grid(row=0,column=1)
 
 
-		self.btnStartInitCal=tk.Button(self.frameInitValue,text="Start Login",command=self.executeLogin)
-		self.btnStartInitCal.grid(row=1,column=1 )
+
+
+
+
+
+
+
+
+
+
+
+		self.frameSetValue=tk.Frame(self,background = 'blue')
+		# self.frameSetValue.grid_propagate(0)
+		self.frameSetValue.grid(row=2,column=1,sticky="e"+"n"+"s"+"w")      
+		
+
+
+		self.labelinitialvalue=tk.Label(self.frameSetValue, text="Initial Invest")
+		self.labelinitialvalue.grid(row=1,column=0)
+
+
+
+		optionList = ["Yes","No"]
+		self.rangeplanVar=tk.StringVar()
+		self.rangeplanVar.set("Select range plan") # default choice
+		self.rangeplanMenu1 = tk.OptionMenu(self.frameSetValue, self.rangeplanVar, *optionList,command=self.doMenuRange)
+		self.rangeplanMenu1.grid(row=0,column=0,sticky="w")
+
+
+		self.enterloginid=tk.Entry(self.frameSetValue) #,textvariable=usertxt)
+		self.enterloginid.grid(row=1,column=1)
+
+
+		self.btnStartInitCal=tk.Button(self.frameSetValue,text="Start Login",command=self.executeLogin)
+		self.btnStartInitCal.grid(row=2,column=1 )
 
 
 
@@ -178,6 +208,10 @@ class outputlog(tk.Tk):
 		
 		# self.myvarasso["5.00"]["order"].set("buy")
 		self.txtout("!!! Welcome , Please login !!!")
+
+	def doMenuRange(self,value):
+		print ("menurange selected" + value)
+
 	def on_configure(self,event):
 		# update scrollregion after starting 'mainloop'
 		# when all widgets are in canvas
