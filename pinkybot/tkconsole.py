@@ -7,7 +7,7 @@ class outputlog(tk.Tk):
 	def __init__(self,selrange):
 
 		tk.Tk.__init__(self)
-		self.myvarasso=self.initRangeValue(selrange)
+		
 
 
 		self.mybot=pinkybot()
@@ -23,6 +23,8 @@ class outputlog(tk.Tk):
 		usertxt=tk.StringVar(value="0147500")
 		passtxt=tk.StringVar()
 		broketxt=tk.StringVar(value="013")
+		investtxt=tk.StringVar(value="10000")
+		volumntxt=tk.StringVar(value="100")
 		self.loginSet=[
 						broketxt,
 						usertxt,
@@ -97,6 +99,20 @@ class outputlog(tk.Tk):
 		self.labelinitialvalue=tk.Label(self.frameSetValue, text="Initial Invest")
 		self.labelinitialvalue.grid(row=1,column=0)
 
+		self.enterInvest=tk.Entry(self.frameSetValue,textvariable=investtxt) #,textvariable=usertxt)
+		self.enterInvest.grid(row=1,column=1)
+
+
+		self.labelinitialvalue=tk.Label(self.frameSetValue, text="Initial volumn")
+		self.labelinitialvalue.grid(row=2,column=0)
+
+		self.enterVolumn=tk.Entry(self.frameSetValue,textvariable=volumntxt) #,textvariable=usertxt)
+		self.enterVolumn.grid(row=2,column=1)
+
+
+
+
+
 		self.rangeData={
 		"A":[0,2,0.01],  # 0 to 2 step 0.01
 		"B":[2,4.98,0.02], # 2 up to less than 5  0.02
@@ -130,12 +146,21 @@ class outputlog(tk.Tk):
 		self.rangeplanMenu1.grid(row=0,column=0,sticky="w")
 
 
-		self.enterloginid=tk.Entry(self.frameSetValue) #,textvariable=usertxt)
-		self.enterloginid.grid(row=1,column=1)
+		
 
 
-		self.btnStartInitCal=tk.Button(self.frameSetValue,text="Start Login",command=self.executeLogin)
-		self.btnStartInitCal.grid(row=2,column=1 )
+
+
+
+
+
+
+
+		self.btnStartInitCal=tk.Button(self.frameSetValue,text="Start Login",command=self.startcalculate)
+		self.btnStartInitCal.grid(row=3,column=1 )
+
+
+
 
 
 
@@ -146,60 +171,65 @@ class outputlog(tk.Tk):
 
 
 		self.frameGroupOutput = tk.Frame(self.canvas,background = 'gray')
-		self.canvas.grid_propagate(0)
+		# self.frameGroupOutput.grid_propagate(0)
 		self.frameGroupOutput.grid(row=0,column=0) # start row 2 since text output occupied 2 rows with 0,1.
 
-		self.scrollbarGroupOutPut = tk.Scrollbar(self,orient="vertical", command = self.canvas.yview)
-		# self.scrollbar.grid_propagate(0)
-		self.scrollbarGroupOutPut.grid(row=2,column=0,sticky="e"+"n"+"s")
-		# self.scrollbar.pack(side=tk.RIGHT, fill="y")
-		self.canvas['yscrollcommand'] = self.scrollbarGroupOutPut.set
-		self.canvas.bind('<Configure>', self.on_configure)
-		self.canvas.create_window((0,0), window=self.frameGroupOutput, anchor='nw')
+
+
+
+
+
+		# self.scrollbarGroupOutPut = tk.Scrollbar(self,orient="vertical", command = self.canvas.yview)
+		# # self.scrollbarGroupOutPut.grid_propagate(0)
+		# self.scrollbarGroupOutPut.grid(row=2,column=0,sticky="n"+"s"+"e")
+		# # self.scrollbar.pack(side=tk.RIGHT, fill="y")
+		# self.canvas['yscrollcommand'] = self.scrollbarGroupOutPut.set
+		# self.canvas.bind('<Configure>', self.on_configure)
+		# self.canvas.create_window((0,0), window=self.frameGroupOutput, anchor='center')
 
 
 
 
 
 
-		myvar=[]  
-		labelvar={}
-		labelinfo={}
-		# {0: {'volumn': <tkinter.StringVar object at 0x04331FB0>, 'update': <tkinter.StringVar object at 0x04331F10>, 'order': <tkinter.StringVar object at 0x04331F30>, 'state': <tkinter.StringVar object at 0x04331F70>}} 
+		# myvar=[]  
+		# labelvar={}
+		# labelinfo={}
+		# # {0: {'volumn': <tkinter.StringVar object at 0x04331FB0>, 'update': <tkinter.StringVar object at 0x04331F10>, 'order': <tkinter.StringVar object at 0x04331F30>, 'state': <tkinter.StringVar object at 0x04331F70>}} 
 
-		self.labeldisplay={}
-		for i,varvalue in enumerate(self.myvarasso):
+		# self.labeldisplay={}
+		# for i,varvalue in enumerate(self.myvarasso):
 
-			# print ("i="+str(i))
-			# print (self.myvarasso[varvalue]["volumn"])
-			# myvar.append(tk.StringVar())
-			self.labeldisplay[varvalue]={}
-			self.labeldisplay[varvalue][varvalue]=tk.Label(self.frameGroupOutput, text=varvalue)
-			# labelvar[varvalue]=tk.Label(self.frameGroupOutput, text=varvalue)
-			self.labeldisplay[varvalue][varvalue].grid(row=i,column=0)
+		# 	# print ("i="+str(i))
+		# 	# print (self.myvarasso[varvalue]["volumn"])
+		# 	# myvar.append(tk.StringVar())
+		# 	self.labeldisplay[varvalue]={}
+		# 	self.labeldisplay[varvalue][varvalue]=tk.Label(self.frameGroupOutput, text=varvalue)
+		# 	# labelvar[varvalue]=tk.Label(self.frameGroupOutput, text=varvalue)
+		# 	self.labeldisplay[varvalue][varvalue].grid(row=i,column=0)
 
-			labelseparate=tk.Label(self.frameGroupOutput, text=" | ")
-			labelseparate.grid(row=i,column=1)
+		# 	labelseparate=tk.Label(self.frameGroupOutput, text=" | ")
+		# 	labelseparate.grid(row=i,column=1)
 			
-			# myinfo={}
-			# self.labeldisplay[varvalue]["info"]=myinfo
+		# 	# myinfo={}
+		# 	# self.labeldisplay[varvalue]["info"]=myinfo
 
-			rowvalue=self.myvarasso[varvalue]
+		# 	rowvalue=self.myvarasso[varvalue]
 
-			for j,varinfo in enumerate(rowvalue):
-				# print (varinfo)
-				if varinfo=="updatedate" or varinfo=="updatetime" or varinfo=="volumn" or varinfo=="order" or varinfo=="state" :
-					self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo])
-					# self.labeldisplay.grid_propagate(0)
-					self.labeldisplay[varvalue][varinfo].grid(row=i,column=j+2)
-				if varinfo=="buy" or varinfo=="sell" or varinfo=="cancel":
-					self.buyBtnInFrame=tk.Button(self.frameGroupOutput,textvariable=self.myvarasso[varvalue][varinfo],command=self.executeLogin)
-					self.buyBtnInFrame.grid(row=i,column=j+3 )
+		# 	for j,varinfo in enumerate(rowvalue):
+		# 		# print (varinfo)
+		# 		if varinfo=="updatedate" or varinfo=="updatetime" or varinfo=="volumn" or varinfo=="order" or varinfo=="state" :
+		# 			self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo])
+		# 			# self.labeldisplay.grid_propagate(0)
+		# 			self.labeldisplay[varvalue][varinfo].grid(row=i,column=j+2)
+		# 		if varinfo=="buy" or varinfo=="sell" or varinfo=="cancel":
+		# 			self.buyBtnInFrame=tk.Button(self.frameGroupOutput,textvariable=self.myvarasso[varvalue][varinfo],command=self.executeLogin)
+		# 			self.buyBtnInFrame.grid(row=i,column=j+3 )
 				
-				if varinfo=="targetvalue" or varinfo =="profit":
-					self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo])
-					# self.labeldisplay.grid_propagate(0)
-					self.labeldisplay[varvalue][varinfo].grid(row=i,column=j+4)
+		# 		if varinfo=="targetvalue" or varinfo =="profit":
+		# 			self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo])
+		# 			# self.labeldisplay.grid_propagate(0)
+		# 			self.labeldisplay[varvalue][varinfo].grid(row=i,column=j+4)
 
 	
 
@@ -238,9 +268,35 @@ class outputlog(tk.Tk):
 		# self.myvarasso["5.00"]["order"].set("buy")
 		self.txtout("!!! Welcome , Please login !!!")
 
-	def doMenuRange(self,value):
-		print ("menurange selected" + value)
 
+	def startcalculate(self):
+		print("calculate here")
+
+	def doMenuRange(self,value):
+
+
+		plansel=value.split(' ')[0]
+		
+		self.myvarasso=self.initRangeValue(plansel[-1])
+
+		if plansel=="PlanA":
+			# self.myvarasso=self.initRangeValue(selrange)
+			print("planA selected")
+		elif plansel=="PlanB":
+			# self.myvarasso=self.initRangeValue(selrange)
+			print("planB selected")
+		elif plansel=="PlanC":
+			# self.myvarasso=self.initRangeValue(selrange)
+			print("planC selected")
+
+
+
+		# print ("menurange selected" + value)
+		children = self.frameGroupOutput.winfo_children()
+		for child in children:
+			# print (str(type(child)))
+			if str(type(child)) == "<class 'tkinter.scroll'>":
+				print ("found scroll")
 		children = self.frameGroupOutput.winfo_children()
 		for child in children:
 			# print (str(type(child)))
@@ -248,6 +304,20 @@ class outputlog(tk.Tk):
 				# if str(type(child)) == "<class 'tkinter.Message'>":
 						# print("Here Message widget will destroy")
 		
+
+
+
+
+
+
+		self.scrollbarGroupOutPut = tk.Scrollbar(self,orient="vertical", command = self.canvas.yview)
+		# self.scrollbar.grid_propagate(0)
+		self.scrollbarGroupOutPut.grid(row=2,column=0,sticky="e"+"n"+"s")
+		# self.scrollbar.pack(side=tk.RIGHT, fill="y")
+		self.canvas['yscrollcommand'] = self.scrollbarGroupOutPut.set
+		self.canvas.bind('<Configure>', self.on_configure)
+		self.canvas.create_window((0,0), window=self.frameGroupOutput, anchor='nw')
+
 
 
 		myvar=[]  
@@ -290,6 +360,9 @@ class outputlog(tk.Tk):
 					self.labeldisplay[varvalue][varinfo].grid(row=i,column=j+4)
 
 
+		self.canvas['yscrollcommand'] = self.scrollbarGroupOutPut.set
+		self.canvas.bind('<Configure>', self.on_configure)
+		self.canvas.create_window((0,0), window=self.frameGroupOutput, anchor='nw')
 
 					
 		return
