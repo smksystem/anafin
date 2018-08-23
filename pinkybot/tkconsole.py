@@ -97,9 +97,33 @@ class outputlog(tk.Tk):
 		self.labelinitialvalue=tk.Label(self.frameSetValue, text="Initial Invest")
 		self.labelinitialvalue.grid(row=1,column=0)
 
+		self.rangeData={
+		"A":[0,2,0.01],  # 0 to 2 step 0.01
+		"B":[2,4.98,0.02], # 2 up to less than 5  0.02
+		"C":[5,10,0.05],
+		"D":[10,25,0.10],
+		"E":[25,100,0.25],
+		"F":[100,200,0.5],
+		"G":[200,400,1],
+		"H":[400,1000,2],
+		}
+		optionList=[]
+		for planName,myrange in enumerate(self.rangeData):
+			startfrom=str(self.rangeData[myrange][0])
+			stopfrom=str(self.rangeData[myrange][1])
+			stepfrom=str(self.rangeData[myrange][2])
+			# print (self.rangeData[myrange][0])
+			optionList.append("Plan" + myrange +" "+ startfrom+"-"+stopfrom + " step " +stepfrom)
+		# print (optionlist)
+		# optionList = ["Plan A 0-2 step 0.01",
+		# 							"Plan B 2-4.98 step ",
+		# 							"Plan C",
+		# 							]
 
+		# print ("hello this is menu")
+		# print (optionList)
+		# exit()
 
-		optionList = ["Yes","No"]
 		self.rangeplanVar=tk.StringVar()
 		self.rangeplanVar.set("Select range plan") # default choice
 		self.rangeplanMenu1 = tk.OptionMenu(self.frameSetValue, self.rangeplanVar, *optionList,command=self.doMenuRange)
@@ -132,6 +156,11 @@ class outputlog(tk.Tk):
 		self.canvas['yscrollcommand'] = self.scrollbarGroupOutPut.set
 		self.canvas.bind('<Configure>', self.on_configure)
 		self.canvas.create_window((0,0), window=self.frameGroupOutput, anchor='nw')
+
+
+
+
+
 
 		myvar=[]  
 		labelvar={}
@@ -172,11 +201,7 @@ class outputlog(tk.Tk):
 					# self.labeldisplay.grid_propagate(0)
 					self.labeldisplay[varvalue][varinfo].grid(row=i,column=j+4)
 
-		# print(myinfo)
-			# self.labeldisplay[varvalue]={"value":labelvar,"info":labelinfo}
-
-		# print (self.labeldisplay["5.00"]["5.00"])
-		# exit()
+	
 
 		
 
@@ -203,6 +228,10 @@ class outputlog(tk.Tk):
 		# myvar[1].set("hello2")
 		# ["text"]="testhello4"
 		# self.labelnamepassword["name"].configure("text")="test"
+
+
+
+
 		self.update_idletasks()
 		# self.mycount = 0
 		
@@ -212,12 +241,65 @@ class outputlog(tk.Tk):
 	def doMenuRange(self,value):
 		print ("menurange selected" + value)
 
+		children = self.frameGroupOutput.winfo_children()
+		for child in children:
+			# print (str(type(child)))
+			child.destroy()
+				# if str(type(child)) == "<class 'tkinter.Message'>":
+						# print("Here Message widget will destroy")
+		
+
+
+		myvar=[]  
+		labelvar={}
+		labelinfo={}
+		# {0: {'volumn': <tkinter.StringVar object at 0x04331FB0>, 'update': <tkinter.StringVar object at 0x04331F10>, 'order': <tkinter.StringVar object at 0x04331F30>, 'state': <tkinter.StringVar object at 0x04331F70>}} 
+
+		self.labeldisplay={}
+		for i,varvalue in enumerate(self.myvarasso):
+
+			# print ("i="+str(i))
+			# print (self.myvarasso[varvalue]["volumn"])
+			# myvar.append(tk.StringVar())
+			self.labeldisplay[varvalue]={}
+			self.labeldisplay[varvalue][varvalue]=tk.Label(self.frameGroupOutput, text=varvalue)
+			# labelvar[varvalue]=tk.Label(self.frameGroupOutput, text=varvalue)
+			self.labeldisplay[varvalue][varvalue].grid(row=i,column=0)
+
+			labelseparate=tk.Label(self.frameGroupOutput, text=" | ")
+			labelseparate.grid(row=i,column=1)
+			
+			# myinfo={}
+			# self.labeldisplay[varvalue]["info"]=myinfo
+
+			rowvalue=self.myvarasso[varvalue]
+
+			for j,varinfo in enumerate(rowvalue):
+				# print (varinfo)
+				if varinfo=="updatedate" or varinfo=="updatetime" or varinfo=="volumn" or varinfo=="order" or varinfo=="state" :
+					self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo])
+					# self.labeldisplay.grid_propagate(0)
+					self.labeldisplay[varvalue][varinfo].grid(row=i,column=j+2)
+				if varinfo=="buy" or varinfo=="sell" or varinfo=="cancel":
+					self.buyBtnInFrame=tk.Button(self.frameGroupOutput,textvariable=self.myvarasso[varvalue][varinfo],command=self.executeLogin)
+					self.buyBtnInFrame.grid(row=i,column=j+3 )
+				
+				if varinfo=="targetvalue" or varinfo =="profit":
+					self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo])
+					# self.labeldisplay.grid_propagate(0)
+					self.labeldisplay[varvalue][varinfo].grid(row=i,column=j+4)
+
+
+
+					
+		return
+
 	def on_configure(self,event):
 		# update scrollregion after starting 'mainloop'
 		# when all widgets are in canvas
 		self.canvas.configure(scrollregion=self.canvas.bbox('all'))
 	def initRangeValue(self,idx):
-		data={
+		self.rangeData={
 		"A":[0,2,0.01],  # 0 to 2 step 0.01
 		"B":[2,4.98,0.02], # 2 up to less than 5  0.02
 		"C":[5,10,0.05],
@@ -228,8 +310,8 @@ class outputlog(tk.Tk):
 		"H":[400,1000,2],
 		}
 		series=[]
-		i=data[idx][0]
-		while i < data[idx][1]:
+		i=self.rangeData[idx][0]
+		while i < self.rangeData[idx][1]:
 			chkpad=str(round(i,2)).split(".")
 			# print(len(chkpad))
 			if len(chkpad)==1:
@@ -239,7 +321,7 @@ class outputlog(tk.Tk):
 				stval=chkpad[0]+"." +tempval[:2]
 
 			series.append(stval)
-			i+=data[idx][2]
+			i+=self.rangeData[idx][2]
 		# print(series)
 		return self.rangeline(series)
 
@@ -293,8 +375,14 @@ class outputlog(tk.Tk):
 		# exit()
 		return varasso
 
-	def getRangeSeries(self):
-		return self.rangestock
+	def getRangeData(self):
+		print("print rangedata")
+
+
+
+
+
+		return self.rangeData
 	def update():
 		pass
 
