@@ -25,6 +25,9 @@ class outputlog(tk.Tk):
 		broketxt=tk.StringVar(value="013")
 		investtxt=tk.StringVar(value="10000")
 		volumntxt=tk.StringVar(value="100")
+
+		profitsteptxt=tk.StringVar(value="2")
+		initbuytxt=tk.StringVar(value="0.00")
 		self.loginSet=[
 						broketxt,
 						usertxt,
@@ -96,19 +99,35 @@ class outputlog(tk.Tk):
 		
 
 
-		self.labelinitialvalue=tk.Label(self.frameSetValue, text="Initial Invest")
+		self.labelinitialvalue=tk.Label(self.frameSetValue, text="Invest")
 		self.labelinitialvalue.grid(row=1,column=0)
 
 		self.enterInvest=tk.Entry(self.frameSetValue,textvariable=investtxt) #,textvariable=usertxt)
 		self.enterInvest.grid(row=1,column=1)
 
 
-		self.labelinitialvalue=tk.Label(self.frameSetValue, text="Initial volumn")
+		self.labelinitialvalue=tk.Label(self.frameSetValue, text="Volumn")
 		self.labelinitialvalue.grid(row=2,column=0)
 
 		self.enterVolumn=tk.Entry(self.frameSetValue,textvariable=volumntxt) #,textvariable=usertxt)
 		self.enterVolumn.grid(row=2,column=1)
 
+		self.labelinitialvalue=tk.Label(self.frameSetValue, text="Profit Step")
+		self.labelinitialvalue.grid(row=3,column=0)
+
+		self.enterVolumn=tk.Entry(self.frameSetValue,textvariable=profitsteptxt) 
+		self.enterVolumn.grid(row=3,column=1)
+
+
+		self.labelinitialvalue=tk.Label(self.frameSetValue, text="InitBuy")
+		self.labelinitialvalue.grid(row=4,column=0)
+
+		self.enterVolumn=tk.Entry(self.frameSetValue,textvariable=initbuytxt) 
+		self.enterVolumn.grid(row=4,column=1)
+
+
+		self.btnStartInitCal=tk.Button(self.frameSetValue,text="Set Parameters",command=self.startcalculate)
+		self.btnStartInitCal.grid(row=5,column=1 )
 
 
 
@@ -156,9 +175,7 @@ class outputlog(tk.Tk):
 
 
 
-		self.btnStartInitCal=tk.Button(self.frameSetValue,text="Start Login",command=self.startcalculate)
-		self.btnStartInitCal.grid(row=3,column=1 )
-
+		
 
 
 
