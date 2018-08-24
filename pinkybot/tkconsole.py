@@ -4,7 +4,7 @@ import datetime
 import sys
 from pinkybot.monitor import pinkybot
 class outputlog(tk.Tk):
-	def __init__(self,selrange):
+	def __init__(self):
 
 		tk.Tk.__init__(self)
 		
@@ -280,16 +280,19 @@ class outputlog(tk.Tk):
 		self.myvarasso=self.initRangeValue(plansel[-1])
 
 		if plansel=="PlanA":
+			# put on queue here
+
 			# self.myvarasso=self.initRangeValue(selrange)
 			print("planA selected")
+
+
+
 		elif plansel=="PlanB":
 			# self.myvarasso=self.initRangeValue(selrange)
 			print("planB selected")
 		elif plansel=="PlanC":
 			# self.myvarasso=self.initRangeValue(selrange)
 			print("planC selected")
-
-
 
 		# print ("menurange selected" + value)
 		children = self.frameGroupOutput.winfo_children()
@@ -364,6 +367,10 @@ class outputlog(tk.Tk):
 		self.canvas.bind('<Configure>', self.on_configure)
 		self.canvas.create_window((0,0), window=self.frameGroupOutput, anchor='nw')
 
+
+		# update database at the first time select range
+		# print (self.myvarasso)
+		# self.mybot.dbqueue.put({"varasso":self.myvarasso})
 					
 		return
 
@@ -546,6 +553,7 @@ class outputlog(tk.Tk):
 				if "textout" in tempdict:
 						self.txtout(tempdict["textout"])
 				if "stockvalue" in tempdict:
+						print ("stock has been updated !!!!!!!!!!!!")
 						self.txtout(tempdict["stockvalue"])
 						lblstockvalue=tempdict["stockvalue"] # get value from queue
 						if lblstockvalue in self.labeldisplay:

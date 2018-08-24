@@ -32,6 +32,16 @@ class monitorbidoffer(models.Model):
 	offervolumn5 = models.FloatField(unique=False)
 
 class udpatestockvalue(models.Model):
-	datetime=models.DateTimeField()
-	stockvalue=models.CharField(max_length=50,unique=False,default="")
+	
+	valuefield=models.CharField(max_length=10,unique=False,default="")
+	datefield=models.DateTimeField(0)
+	timefield=models.DateTimeField(0)
+	orderfield=models.CharField(max_length=5,unique=False,default="")
+	statusfield=models.CharField(max_length=5,unique=False,default="")
+	volumnfield=models.CharField(max_length=10,unique=False,default="")
+	buyfield=models.CharField(max_length=5,unique=False,default="")
+	sellfield=models.CharField(max_length=5,unique=False,default="")
+	cancelfield=models.CharField(max_length=5,unique=False,default="")
+	targetvalue=models.CharField(max_length=10,unique=False,default="")
+	profitfield=models.CharField(max_length=10,unique=False,default="")
 	 

@@ -13,6 +13,7 @@ class pinkybot(packselenium):
     def __init__(self):
         # pass
         self.myqueue = Queue()
+        self.dbqueue=Queue()
 
 
         
