@@ -7,27 +7,33 @@ class outputlog(tk.Tk):
 	def __init__(self):
 
 		tk.Tk.__init__(self)
-		
-
-
 		self.mybot=pinkybot()
-
 		self.title("Output Log")
 		# self.resizable(0,0)
-		self.geometry('800x500+20+20')
+		self.geometry('780x620+20+20')
 
 		# self.grid_columnconfigure(1, weight=1)
-
-
 		# self.pack_propagate(0)
 		usertxt=tk.StringVar(value="0147500")
 		passtxt=tk.StringVar()
 		broketxt=tk.StringVar(value="013")
+		
 		investtxt=tk.StringVar(value="10000")
 		volumntxt=tk.StringVar(value="100")
-
 		profitsteptxt=tk.StringVar(value="2")
 		initbuytxt=tk.StringVar(value="0.00")
+
+
+		self.configval={
+			"invest":investtxt,
+			"volumnstep":volumntxt,
+			"profitstep":profitsteptxt,
+			"Initvaluebuy":initbuytxt,		
+
+		}
+
+		
+
 		self.loginSet=[
 						broketxt,
 						usertxt,
@@ -35,20 +41,16 @@ class outputlog(tk.Tk):
 						
 						]
 
-		# print(loginSet[0].get())
-
-		self.frameOutput = tk.Frame(self, width=500, height =200,background = 'blue')
+		frameOutput = tk.Frame(self, width=500, height =200,background = 'blue')
 		# self.frameOutput.grid_propagate(0)
-		self.frameOutput.grid(row=0,column=0,rowspan = 2, columnspan = 1,sticky = "n"+"s" )
+		frameOutput.grid(row=0,column=0,rowspan = 2, columnspan = 1,sticky = "n"+"s" )
 
-
-
-		self.output = tk.Text(self.frameOutput,wrap='word', width=60, height=14, background = 'black', fg='white')
+		self.output = tk.Text(frameOutput,wrap='word', width=60, height=14, background = 'black', fg='white')
 		# self.output.grid_propagate(0)
 		self.output.grid(row=0,column=0)
 		# self.output.pack(side=tk.LEFT)
 
-		self.scrollbar = tk.Scrollbar(self.frameOutput,orient="vertical", command = self.output.yview)
+		self.scrollbar = tk.Scrollbar(frameOutput,orient="vertical", command = self.output.yview)
 		# self.scrollbar.grid_propagate(0)
 		self.scrollbar.grid(row=0,column=1,sticky="n"+"s")
 		# self.scrollbar.pack(side=tk.RIGHT, fill="y")
@@ -59,68 +61,50 @@ class outputlog(tk.Tk):
 		# self.frameLoginRT.grid_propagate(0)
 		self.frameLoginRT.grid(row=0,column=1,sticky="e"+"n"+"s"+"w")
 	
-		self.labelnamebrokeid=tk.Label(self.frameLoginRT, text="Broke ID")
-		self.labelnamebrokeid.grid(row=0,column=0)
+		labelnamebrokeid=tk.Label(self.frameLoginRT, text="Broke ID")
+		labelnamebrokeid.grid(row=0,column=0)
 		self.enterbrokeid=tk.Entry(self.frameLoginRT,textvariable=broketxt)
 		self.enterbrokeid.grid(row=0,column=1)      
 
-		self.labelnamelogin=tk.Label(self.frameLoginRT, text="Login ID")
-		self.labelnamelogin.grid(row=1,column=0)
+		labelnamelogin=tk.Label(self.frameLoginRT, text="Login ID")
+		labelnamelogin.grid(row=1,column=0)
 		self.enterloginid=tk.Entry(self.frameLoginRT,textvariable=usertxt)
 		self.enterloginid.grid(row=1,column=1)
 
-		self.labelnamepassword=tk.Label(self.frameLoginRT, text="Password")
-		self.labelnamepassword.grid(row=2,column=0)
+		labelnamepassword=tk.Label(self.frameLoginRT, text="Password")
+		labelnamepassword.grid(row=2,column=0)
 		self.enterpassword=tk.Entry(self.frameLoginRT,show="*",textvariable=passtxt)
 		self.enterpassword.grid(row=2,column=1)
 
 		self.btnLoginRT=tk.Button(self.frameLoginRT,text="Start Login RT",command=self.executeLogin)
 		self.btnLoginRT.grid(row=3,column=1 )
 
-		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		self.frameSetValue=tk.Frame(self,background = 'blue')
 		# self.frameSetValue.grid_propagate(0)
 		self.frameSetValue.grid(row=2,column=1,sticky="e"+"n"+"s"+"w")      
-		
 
-
-		self.labelinitialvalue=tk.Label(self.frameSetValue, text="Invest")
-		self.labelinitialvalue.grid(row=1,column=0)
+		labelinitialvalue=tk.Label(self.frameSetValue, text="Invest")
+		labelinitialvalue.grid(row=1,column=0)
 
 		self.enterInvest=tk.Entry(self.frameSetValue,textvariable=investtxt) #,textvariable=usertxt)
 		self.enterInvest.grid(row=1,column=1)
 
 
-		self.labelinitialvalue=tk.Label(self.frameSetValue, text="Volumn")
-		self.labelinitialvalue.grid(row=2,column=0)
+		labelinitialvalue=tk.Label(self.frameSetValue, text="Volumn")
+		labelinitialvalue.grid(row=2,column=0)
 
 		self.enterVolumn=tk.Entry(self.frameSetValue,textvariable=volumntxt) #,textvariable=usertxt)
 		self.enterVolumn.grid(row=2,column=1)
 
-		self.labelinitialvalue=tk.Label(self.frameSetValue, text="Profit Step")
-		self.labelinitialvalue.grid(row=3,column=0)
+		labelinitialvalue=tk.Label(self.frameSetValue, text="Profit Step")
+		labelinitialvalue.grid(row=3,column=0)
 
 		self.enterVolumn=tk.Entry(self.frameSetValue,textvariable=profitsteptxt) 
 		self.enterVolumn.grid(row=3,column=1)
 
 
-		self.labelinitialvalue=tk.Label(self.frameSetValue, text="InitBuy")
-		self.labelinitialvalue.grid(row=4,column=0)
+		labelinitialvalue=tk.Label(self.frameSetValue, text="InitValueBuy")
+		labelinitialvalue.grid(row=4,column=0)
 
 		self.enterVolumn=tk.Entry(self.frameSetValue,textvariable=initbuytxt) 
 		self.enterVolumn.grid(row=4,column=1)
@@ -128,6 +112,18 @@ class outputlog(tk.Tk):
 
 		self.btnStartInitCal=tk.Button(self.frameSetValue,text="Set Parameters",command=self.startcalculate)
 		self.btnStartInitCal.grid(row=5,column=1 )
+
+
+		self.framePutValue=tk.Frame(self,background = 'yellow')
+		# self.frameSetValue.grid_propagate(0)
+		self.framePutValue.grid(row=3,column=1,sticky="e"+"n"+"s"+"w")      
+
+
+
+
+
+
+
 
 
 
@@ -165,26 +161,10 @@ class outputlog(tk.Tk):
 		self.rangeplanMenu1.grid(row=0,column=0,sticky="w")
 
 
-		
-
-
-
-
-
-
-
-
-
-		
-
-
-
-
-
 
 		self.canvas=tk.Canvas(self,background="black")
 		# self.canvas.grid_propagate(0)
-		self.canvas.grid(row=2,column=0,sticky="nsew")
+		self.canvas.grid(row=2,column=0,rowspan=2,sticky="nsew")
 
 
 		self.frameGroupOutput = tk.Frame(self.canvas,background = 'gray')
@@ -289,6 +269,27 @@ class outputlog(tk.Tk):
 	def startcalculate(self):
 		print("calculate here")
 
+		print(self.configval["invest"].get())
+		i=0
+		for label in self.configval:
+			configlabel=tk.Label(self.framePutValue,text=label)
+			configlabel.grid(row=i,column=1)   
+			i+=1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	def doMenuRange(self,value):
 
 
@@ -332,7 +333,7 @@ class outputlog(tk.Tk):
 
 		self.scrollbarGroupOutPut = tk.Scrollbar(self,orient="vertical", command = self.canvas.yview)
 		# self.scrollbar.grid_propagate(0)
-		self.scrollbarGroupOutPut.grid(row=2,column=0,sticky="e"+"n"+"s")
+		self.scrollbarGroupOutPut.grid(row=2,column=0,rowspan=2,sticky="e"+"n"+"s")
 		# self.scrollbar.pack(side=tk.RIGHT, fill="y")
 		self.canvas['yscrollcommand'] = self.scrollbarGroupOutPut.set
 		self.canvas.bind('<Configure>', self.on_configure)
@@ -529,6 +530,8 @@ class outputlog(tk.Tk):
 
 			self.output.configure(state='disabled')
 			
+			self.output.see("end")
+
 			# self.output.tag_config("a", foreground="blue")
 			# self.output.insert(contents, ("n", "a"))
 	
