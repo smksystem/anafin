@@ -19,16 +19,16 @@ class outputlog(tk.Tk):
 		broketxt=tk.StringVar(value="013")
 		
 		investtxt=tk.StringVar(value="10000")
-		volumntxt=tk.StringVar(value="100")
+		volumntxt=tk.StringVar(value="1000")
 		profitsteptxt=tk.StringVar(value="2")
-		initbuytxt=tk.StringVar(value="0.00")
+		startvaluerangetxt=tk.StringVar(value="2.06")
 
 
 		self.configval={
 			"invest":investtxt,
 			"volumnstep":volumntxt,
 			"profitstep":profitsteptxt,
-			"Initvaluebuy":initbuytxt,		
+			"startvaluerangetxt":startvaluerangetxt,		
 
 		}
 
@@ -103,10 +103,10 @@ class outputlog(tk.Tk):
 		self.enterVolumn.grid(row=3,column=1)
 
 
-		labelinitialvalue=tk.Label(self.frameSetValue, text="InitValueBuy")
+		labelinitialvalue=tk.Label(self.frameSetValue, text="StartValueRange")
 		labelinitialvalue.grid(row=4,column=0)
 
-		self.enterVolumn=tk.Entry(self.frameSetValue,textvariable=initbuytxt) 
+		self.enterVolumn=tk.Entry(self.frameSetValue,textvariable=startvaluerangetxt) 
 		self.enterVolumn.grid(row=4,column=1)
 
 
@@ -277,8 +277,37 @@ class outputlog(tk.Tk):
 			i+=1
 
 
+		startvaluerange=self.configval["startvaluerangetxt"].get()
+
+		invest=int(self.configval["invest"].get())
+		volumnstep=int(self.configval["volumnstep"].get())
+
+		totalstep=invest/volumnstep
+
+		print ("Totalstep="+str(totalstep))
+
+		looprange=0
+		for i,valuelabel in enumerate(self.labeldisplay):
+
+			if (float(startvaluerange)<=float(valuelabel)):
+				looprange+=1
+				print ("start value " + valuelabel)
+				self.labeldisplay[valuelabel][valuelabel].configure(background="white")
+				self.labeldisplay[valuelabel]["updatedate"].configure(background="white")
+				self.labeldisplay[valuelabel]["updatetime"].configure(background="white")
+				self.labeldisplay[valuelabel]["volumn"].configure(background="white")
+
+				self.labeldisplay[valuelabel]["order"].configure(background="white")
+				self.labeldisplay[valuelabel]["state"].configure(background="white")
+				self.labeldisplay[valuelabel]["targetvalue"].configure(background="white")
+				self.labeldisplay[valuelabel]["profit"].configure(background="white")
+
+				if looprange==totalstep:
+					break
 
 
+		self.canvas.yview_moveto(0.01)
+		# self.canvas.yview_moveto(0.5)
 
 
 
@@ -396,6 +425,8 @@ class outputlog(tk.Tk):
 		# update scrollregion after starting 'mainloop'
 		# when all widgets are in canvas
 		self.canvas.configure(scrollregion=self.canvas.bbox('all'))
+
+
 	def initRangeValue(self,idx):
 		self.rangeData={
 		"A":[0,2,0.01],  # 0 to 2 step 0.01
