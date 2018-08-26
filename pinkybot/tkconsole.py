@@ -22,14 +22,16 @@ class outputlog(tk.Tk):
 		volumntxt=tk.StringVar(value="1000")
 		profitsteptxt=tk.StringVar(value="2")
 		startvaluerangetxt=tk.StringVar(value="2.06")
-
+		startvaluebuytxt=tk.StringVar(value="0.00")
+		commonstep=tk.StringVar(value="0.00")
 
 		self.configval={
 			"invest":investtxt,
 			"volumnstep":volumntxt,
 			"profitstep":profitsteptxt,
 			"startvaluerangetxt":startvaluerangetxt,		
-
+			"commonstep":commonstep,
+			"startvaluebuy":startvaluebuytxt,
 		}
 
 		
@@ -40,6 +42,9 @@ class outputlog(tk.Tk):
 						passtxt,
 						
 						]
+
+
+		self.myvarasso={}
 
 		frameOutput = tk.Frame(self, width=500, height =200,background = 'blue')
 		# self.frameOutput.grid_propagate(0)
@@ -113,6 +118,20 @@ class outputlog(tk.Tk):
 		self.btnStartInitCal=tk.Button(self.frameSetValue,text="Set Parameters",command=self.startcalculate)
 		self.btnStartInitCal.grid(row=5,column=1 )
 
+		labelvaluebuy=tk.Label(self.frameSetValue, text="StartValueBuy")
+		labelvaluebuy.grid(row=6,column=0)
+
+		self.entervaluebuy=tk.Entry(self.frameSetValue,textvariable=startvaluebuytxt) 
+		self.entervaluebuy.grid(row=6,column=1)
+
+		self.btnStartvaluebuy=tk.Button(self.frameSetValue,text="Set Value Buy",command=self.setvaluebuy)
+		self.btnStartvaluebuy.grid(row=7,column=1 )
+
+
+
+
+
+
 
 		self.framePutValue=tk.Frame(self,background = 'yellow')
 		# self.frameSetValue.grid_propagate(0)
@@ -128,7 +147,7 @@ class outputlog(tk.Tk):
 
 
 
-		self.rangeData={
+		rangeData={
 		"A":[0,2,0.01],  # 0 to 2 step 0.01
 		"B":[2,4.98,0.02], # 2 up to less than 5  0.02
 		"C":[5,10,0.05],
@@ -139,10 +158,10 @@ class outputlog(tk.Tk):
 		"H":[400,1000,2],
 		}
 		optionList=[]
-		for planName,myrange in enumerate(self.rangeData):
-			startfrom=str(self.rangeData[myrange][0])
-			stopfrom=str(self.rangeData[myrange][1])
-			stepfrom=str(self.rangeData[myrange][2])
+		for planName,myrange in enumerate(rangeData):
+			startfrom=str(rangeData[myrange][0])
+			stopfrom=str(rangeData[myrange][1])
+			stepfrom=str(rangeData[myrange][2])
 			# print (self.rangeData[myrange][0])
 			optionList.append("Plan" + myrange +" "+ startfrom+"-"+stopfrom + " step " +stepfrom)
 		# print (optionlist)
@@ -159,6 +178,16 @@ class outputlog(tk.Tk):
 		self.rangeplanVar.set("Select range plan") # default choice
 		self.rangeplanMenu1 = tk.OptionMenu(self.frameSetValue, self.rangeplanVar, *optionList,command=self.doMenuRange)
 		self.rangeplanMenu1.grid(row=0,column=0,sticky="w")
+
+		self.btnSave=tk.Button(self.frameSetValue,text="Save",command=self.executeSave)
+		self.btnSave.grid(row=0,column=1,sticky="w")
+		self.btnSave.update()
+
+		self.btnLoad=tk.Button(self.frameSetValue,text="Load",command=self.executeLoad)
+		self.btnLoad.grid(row=0,column=1,sticky="w",padx=self.btnSave.winfo_width())
+
+
+
 
 
 
@@ -266,6 +295,34 @@ class outputlog(tk.Tk):
 		self.txtout("!!! Welcome , Please login !!!")
 
 
+
+	def executeSave(self):
+		print("saveAllvalue")
+	def executeLoad(self):
+		print("LoadAllValue")
+
+	def setvaluebuy(self):
+
+		print("start value buy=" + self.configval["startvaluebuy"].get())
+		valuebuy=self.configval["startvaluebuy"].get()
+
+		self.labeldisplay[valuebuy][valuebuy].configure(fg='white',background='orange')
+		self.labeldisplay[valuebuy]["updatedate"].configure(fg='white',background='orange')
+		self.labeldisplay[valuebuy]["updatetime"].configure(fg='white',background='orange')
+		self.labeldisplay[valuebuy]["volumn"].configure(fg='white',background='orange')
+		self.labeldisplay[valuebuy]["price"].configure(fg='white',background='orange')
+		self.labeldisplay[valuebuy]["order"].configure(fg='white',background='orange')
+		self.labeldisplay[valuebuy]["state"].configure(fg='white',background='orange')
+		self.labeldisplay[valuebuy]["targetvalue"].configure(fg='white',background='orange')
+		self.labeldisplay[valuebuy]["profit"].configure(fg='white',background='orange')
+
+
+
+
+
+
+
+
 	def startcalculate(self):
 		print("calculate here")
 
@@ -281,12 +338,14 @@ class outputlog(tk.Tk):
 
 		invest=int(self.configval["invest"].get())
 		volumnstep=int(self.configval["volumnstep"].get())
+		profitstep=int(self.configval["profitstep"].get())
 
-		totalstep=invest/volumnstep
+		totalstep=(invest/volumnstep)
 
 		print ("Totalstep="+str(totalstep))
 
 		looprange=0
+
 		for i,valuelabel in enumerate(self.labeldisplay):
 
 			if (float(startvaluerange)<=float(valuelabel)):
@@ -296,11 +355,32 @@ class outputlog(tk.Tk):
 				self.labeldisplay[valuelabel]["updatedate"].configure(background="white")
 				self.labeldisplay[valuelabel]["updatetime"].configure(background="white")
 				self.labeldisplay[valuelabel]["volumn"].configure(background="white")
+				self.labeldisplay[valuelabel]["price"].configure(background="white")
 
 				self.labeldisplay[valuelabel]["order"].configure(background="white")
 				self.labeldisplay[valuelabel]["state"].configure(background="white")
 				self.labeldisplay[valuelabel]["targetvalue"].configure(background="white")
 				self.labeldisplay[valuelabel]["profit"].configure(background="white")
+
+				self.myvarasso[valuelabel]["volumn"].set(volumnstep)
+
+
+
+
+				stcost=str(round(float(valuelabel) * float(volumnstep))) 
+
+				self.myvarasso[valuelabel]["price"].set(stcost)
+
+				target=round((float(self.configval["commonstep"].get()) * profitstep) + float(valuelabel),2)
+				# print ("target value="+str(target))
+				# exit()
+				self.myvarasso[valuelabel]["targetvalue"].set(target)
+				# print("common step print in calculate="+self.commonstep)
+
+
+
+
+
 
 				if looprange==totalstep:
 					break
@@ -325,6 +405,7 @@ class outputlog(tk.Tk):
 		plansel=value.split(' ')[0]
 		
 		self.myvarasso=self.initRangeValue(plansel[-1])
+
 
 		if plansel=="PlanA":
 			# put on queue here
@@ -376,6 +457,7 @@ class outputlog(tk.Tk):
 		# {0: {'volumn': <tkinter.StringVar object at 0x04331FB0>, 'update': <tkinter.StringVar object at 0x04331F10>, 'order': <tkinter.StringVar object at 0x04331F30>, 'state': <tkinter.StringVar object at 0x04331F70>}} 
 
 		self.labeldisplay={}
+		# print(self.myvarasso)
 		for i,varvalue in enumerate(self.myvarasso):
 
 			# print ("i="+str(i))
@@ -396,7 +478,7 @@ class outputlog(tk.Tk):
 
 			for j,varinfo in enumerate(rowvalue):
 				# print (varinfo)
-				if varinfo=="updatedate" or varinfo=="updatetime" or varinfo=="volumn" or varinfo=="order" or varinfo=="state" :
+				if varinfo=="updatedate" or varinfo=="updatetime" or varinfo=="volumn" or varinfo=="order" or varinfo=="state" or varinfo=="price":
 					self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo])
 					# self.labeldisplay.grid_propagate(0)
 					self.labeldisplay[varvalue][varinfo].grid(row=i,column=j+2)
@@ -428,7 +510,7 @@ class outputlog(tk.Tk):
 
 
 	def initRangeValue(self,idx):
-		self.rangeData={
+		rangeData={
 		"A":[0,2,0.01],  # 0 to 2 step 0.01
 		"B":[2,4.98,0.02], # 2 up to less than 5  0.02
 		"C":[5,10,0.05],
@@ -439,8 +521,8 @@ class outputlog(tk.Tk):
 		"H":[400,1000,2],
 		}
 		series=[]
-		i=self.rangeData[idx][0]
-		while i < self.rangeData[idx][1]:
+		i=rangeData[idx][0]
+		while i < rangeData[idx][1]:
 			chkpad=str(round(i,2)).split(".")
 			# print(len(chkpad))
 			if len(chkpad)==1:
@@ -450,8 +532,13 @@ class outputlog(tk.Tk):
 				stval=chkpad[0]+"." +tempval[:2]
 
 			series.append(stval)
-			i+=self.rangeData[idx][2]
+			i+=rangeData[idx][2]
+		
+		# print ("Range step="+str(rangeData[idx][2]))
+		
 		# print(series)
+		self.configval["commonstep"].set(str(rangeData[idx][2]))
+
 		return self.rangeline(series)
 
 	def rangeline(self,series):
@@ -473,6 +560,7 @@ class outputlog(tk.Tk):
 			varorder=tk.StringVar(value="order")
 			varstatus=tk.StringVar(value="state")
 			varvolumn=tk.StringVar(value="volumn")
+			varprice=tk.StringVar(value="price")
 			varbuy=tk.StringVar(value="buy")
 			varsell=tk.StringVar(value="sell")
 			varcancel=tk.StringVar(value="cancel")
@@ -484,6 +572,7 @@ class outputlog(tk.Tk):
 				"updatedate":vardate,
 				"updatetime":vartime,
 				"volumn":varvolumn,
+				"price":varprice,
 				"order":varorder,
 				"state":varstatus,
 				"buy":varbuy,
@@ -498,10 +587,6 @@ class outputlog(tk.Tk):
 
 		# print (varasso)
 	
-	
-		# mystock["BEAUTY"]=linedic
-		# print (rowid)
-		# exit()
 		return varasso
 
 	def getRangeData(self):
@@ -602,7 +687,7 @@ class outputlog(tk.Tk):
 				tempdict=self.mybot.myqueue.get()
 				# print (tempdict["textout"])
 				if "textout" in tempdict:
-						self.txtout(tempdict["textout"])
+						self.txtout("value change to:" + tempdict["textout"])
 				if "stockvalue" in tempdict:
 						print ("stock has been updated !!!!!!!!!!!!")
 						self.txtout(tempdict["stockvalue"])
