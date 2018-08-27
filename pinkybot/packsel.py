@@ -11,9 +11,50 @@ from datetime import datetime
 
 class packselenium():
 	"""docstring for packselenium"""
-	def __init__(self):
-		pass
+	def __init__(self,mode):
+		self.mode=mode
+		print ("running mode=" + mode)
+	def xpathreturn(self,xplace=""):
+
+		debugpath={
+				# "xpathvaluemonitor":"//*[@id='instInfoEq']/tbody/tr[1]/td[2]/h2/span",
+				"xpathlogin" : "/html/body/table[4]/tbody/tr/td[2]/table/tbody/tr[2]/td/table[1]/tbody/tr/td[2]/form/table/tbody/tr[3]/td[3]/font/input[2]",
+				"xpathrealtime":"//*[@id='trading']/table/tbody/tr[1]/td/a/img",
+				"xrtrefresh":"//*[@id='order_ctrl']/input[3]",
+				"xfavorchk":"//*[@id='favourite-0']/ul/li[1]",
+				"xstockup":"//*[@id='instInfoEq']/tbody/tr[1]/td[2]/h2/span",
+				"xstockname":"//*[@id='eqQuoteSymbol']",
+				"xstockvalue":"//*[@id='instInfoEq']/tbody/tr[1]/td[2]/h2/span",
+				
+		}
+		livepath={"valuemonitor":"",
+				"xpathlogin":"/html/body/table[4]/tbody/tr/td[2]/table/tbody/tr[2]/td/table[1]/tbody/tr/td[2]/form/table/tbody/tr[3]/td[3]/font/input[2]",
+				"xpathrealtime":"//*[@id='trading']/table/tbody/tr[1]/td/a/img",
+				"xrtrefresh":"//*[@id='place-order-form']/refresh-ui-component/button/span[1]",
+				"xfavorchk":"//*[@id='favourite-0']/ul/li[1]/editable-symbol-input/p",
+				"xstockup":"//*[@id='page-0-container']/li[3]/mini-quote/div[1]/mini-quote-overview/div[5]/label",
+				"xstockname":"//*[@id='favourite-0']/ul/li[1]/editable-symbol-input/p",
+				"xstockvalue":"//*[@id='mini-quote-symbol']/div[2]/div[1]",
+
+
+
+		}
+
+		xpath={"xdebug":debugpath,
+				"xlive":livepath,
+		}
 		
+
+
+
+
+
+
+
+		# print (xpath[self.mode]["xpathlogin"])
+		# exit()
+		return xpath[self.mode][xplace]
+
 
 	def login(self,loginParams,myqueue):
 		self.myqueue=myqueue
@@ -31,28 +72,23 @@ class packselenium():
 			# print (job)
 		
 
-
-
-
 		# exit()
-
-
-
-
-
-
-
-
 
 		driver = webdriver.Chrome()
 		# put url here
 		# exit()
 
-		# driver.get("http://wen060.settrade.com/login.jsp?txtBrokerId="+loginParams["mybrokeId"])
-		driver.get("http://localhost:8000/dummy/")
-		
+		if self.mode=="xdebug":
+			driver.get("http://localhost:8000/dummy/")
+		elif self.mode=="xlive":
+			driver.get("http://wen060.settrade.com/login.jsp?txtBrokerId="+loginParams["mybrokeId"])
+
 		wait = WebDriverWait(driver, 10)
-		element = wait.until(EC.presence_of_element_located((By.XPATH, "/html/body/table[4]/tbody/tr/td[2]/table/tbody/tr[2]/td/table[1]/tbody/tr/td[2]/form/table/tbody/tr[3]/td[3]/font/input[2]")))
+
+		# element = wait.until(EC.presence_of_element_located((By.XPATH, "")))
+
+		element = wait.until(EC.presence_of_element_located((By.XPATH, self.xpathreturn("xpathlogin"))))
+
 
 		print("super selenium class is called")
 
@@ -71,7 +107,7 @@ class packselenium():
 		elem.send_keys(Keys.RETURN)
 
 
-		myclick=driver.find_elements_by_xpath("//*[@id='trading']/table/tbody/tr[1]/td/a/img")[0]
+		myclick=driver.find_elements_by_xpath(self.xpathreturn("xpathrealtime"))[0]
 		myclick.click()
 
 
@@ -97,7 +133,7 @@ class packselenium():
 		# detect refresh button
 
 		# element = wait.until(EC.presence_of_element_located((By.XPATH, "//*[@id='place-order-form']/refresh-ui-component/button/span[1]")))
-		element = wait.until(EC.presence_of_element_located((By.XPATH, "//*[@id='order_ctrl']/input[3]"))) 
+		element = wait.until(EC.presence_of_element_located((By.XPATH, self.xpathreturn("xrtrefresh")))) 
 
 		print("detect web load success")
 
@@ -105,21 +141,21 @@ class packselenium():
 
 
 		# stock = driver.find_elements_by_xpath("//*[@id='favourite-0']/ul/li[1]/editable-symbol-input/p")[0].text
-		stock = driver.find_elements_by_xpath("//*[@id='eqQuoteSymbol']")[0]
+		stock = driver.find_elements_by_xpath(self.xpathreturn("xstockname"))[0]
 
-		print ("stock is below found check login")
-		print(stock)
+		# print ("stock is below found check login")
+		# print(stock)
 
 		# one click to the first of favorite stock then wait
 		# chkstock=driver.find_elements_by_xpath("//*[@id='favourite-0']/ul/li[1]/editable-symbol-input/p")[0]
-		chkstock=driver.find_elements_by_xpath("//*[@id='favourite-0']/ul/li[1]")[0]
+		chkstock=driver.find_elements_by_xpath(self.xpathreturn("xfavorchk"))[0]
 		chkstock.click()
 
 		wait = WebDriverWait(driver, 10)
 
 		# wait until value of stock is up and could see
 		# elementClose = wait.until(EC.presence_of_element_located((By.XPATH, "//*[@id='page-0-container']/li[3]/mini-quote/div[1]/mini-quote-overview/div[5]/label")))
-		elementClose = wait.until(EC.presence_of_element_located((By.XPATH, "//*[@id='instInfoEq']/tbody/tr[1]/td[2]/h2/span")))
+		elementClose = wait.until(EC.presence_of_element_located((By.XPATH, self.xpathreturn("xstockup"))))
 		print("wait finished")
 
 
@@ -179,7 +215,9 @@ class packselenium():
 
 		try:
 			# find the stock value
-			stockvalue = driver.find_elements_by_xpath("//*[@id='instInfoEq']/tbody/tr[1]/td[2]/h2/span")[0].text
+			stockvalue = driver.find_elements_by_xpath(self.xpathreturn("xstockvalue"))[0].text
+			
+
 			# print ("stock value="+stockvalue)
 			# print ( "stock compare="+ self.stockcompare)
 			if self.stockcompare=="0.00" and stockvalue !="0.00":
