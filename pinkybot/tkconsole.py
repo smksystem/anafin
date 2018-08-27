@@ -17,6 +17,14 @@ class outputlog(tk.Tk):
 		usertxt=tk.StringVar(value="0147500")
 		passtxt=tk.StringVar()
 		broketxt=tk.StringVar(value="013")
+
+
+		self.loginSet=[
+						broketxt,
+						usertxt,
+						passtxt,
+						
+						]
 		
 		investtxt=tk.StringVar(value="10000")
 		volumntxt=tk.StringVar(value="1000")
@@ -24,6 +32,7 @@ class outputlog(tk.Tk):
 		startvaluerangetxt=tk.StringVar(value="2.06")
 		startvaluebuytxt=tk.StringVar(value="0.00")
 		commonstep=tk.StringVar(value="0.00")
+		totalcostbuy=tk.StringVar(value="0000000000")
 
 		self.configval={
 			"invest":investtxt,
@@ -32,16 +41,11 @@ class outputlog(tk.Tk):
 			"startvaluerangetxt":startvaluerangetxt,		
 			"commonstep":commonstep,
 			"startvaluebuy":startvaluebuytxt,
+			"totalcostbuy":totalcostbuy
 		}
 
 		
 
-		self.loginSet=[
-						broketxt,
-						usertxt,
-						passtxt,
-						
-						]
 
 
 		self.myvarasso={}
@@ -127,6 +131,11 @@ class outputlog(tk.Tk):
 		self.btnStartvaluebuy=tk.Button(self.frameSetValue,text="Set Value Buy",command=self.setvaluebuy)
 		self.btnStartvaluebuy.grid(row=7,column=1 )
 
+		labelvaluebuy=tk.Label(self.frameSetValue, text="Cost:")
+		labelvaluebuy.grid(row=7,column=0,sticky="w")
+
+		labelvaluebuy=tk.Label(self.frameSetValue, textvariable=totalcostbuy)
+		labelvaluebuy.grid(row=7,column=0,sticky="e")
 
 
 
