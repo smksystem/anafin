@@ -12,9 +12,11 @@ class pinkybot(packselenium):
     """docstring for firstlogin"""
     def __init__(self):
         # pass
+
+
         self.myqueue = Queue()
         self.dbqueue=Queue()
-
+        super().__init__("xdebug")
 
         
 
