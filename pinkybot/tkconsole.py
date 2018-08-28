@@ -73,75 +73,75 @@ class outputlog(tk.Tk):
 		self.output['yscrollcommand'] = self.scrollbar.set
 
 		
-		self.frameLoginRT = tk.Frame(self ,background = 'green')
+		frameLoginRT = tk.Frame(self ,background = 'green')
 		# self.frameLoginRT.grid_propagate(0)
-		self.frameLoginRT.grid(row=0,column=1,sticky="e"+"n"+"s"+"w")
+		frameLoginRT.grid(row=0,column=1,sticky="e"+"n"+"s"+"w")
 	
-		labelnamebrokeid=tk.Label(self.frameLoginRT, text="Broke ID")
+		labelnamebrokeid=tk.Label(frameLoginRT, text="Broke ID")
 		labelnamebrokeid.grid(row=0,column=0)
-		self.enterbrokeid=tk.Entry(self.frameLoginRT,textvariable=broketxt)
+		self.enterbrokeid=tk.Entry(frameLoginRT,textvariable=broketxt)
 		self.enterbrokeid.grid(row=0,column=1)      
 
-		labelnamelogin=tk.Label(self.frameLoginRT, text="Login ID")
+		labelnamelogin=tk.Label(frameLoginRT, text="Login ID")
 		labelnamelogin.grid(row=1,column=0)
-		self.enterloginid=tk.Entry(self.frameLoginRT,textvariable=usertxt)
+		self.enterloginid=tk.Entry(frameLoginRT,textvariable=usertxt)
 		self.enterloginid.grid(row=1,column=1)
 
-		labelnamepassword=tk.Label(self.frameLoginRT, text="Password")
+		labelnamepassword=tk.Label(frameLoginRT, text="Password")
 		labelnamepassword.grid(row=2,column=0)
-		self.enterpassword=tk.Entry(self.frameLoginRT,show="*",textvariable=passtxt)
+		self.enterpassword=tk.Entry(frameLoginRT,show="*",textvariable=passtxt)
 		self.enterpassword.grid(row=2,column=1)
 
-		self.btnLoginRT=tk.Button(self.frameLoginRT,text="Start Login RT",command=self.executeLogin)
+		self.btnLoginRT=tk.Button(frameLoginRT,text="Start Login RT",command=self.executeLogin)
 		self.btnLoginRT.grid(row=3,column=1 )
 
-		self.frameSetValue=tk.Frame(self,background = 'blue')
-		# self.frameSetValue.grid_propagate(0)
-		self.frameSetValue.grid(row=2,column=1,sticky="e"+"n"+"s"+"w")      
+		frameSetValue=tk.Frame(self,background = 'blue')
+		# frameSetValue.grid_propagate(0)
+		frameSetValue.grid(row=2,column=1,sticky="e"+"n"+"s"+"w")      
 
-		labelinitialvalue=tk.Label(self.frameSetValue, text="Invest")
+		labelinitialvalue=tk.Label(frameSetValue, text="Invest")
 		labelinitialvalue.grid(row=1,column=0)
 
-		self.enterInvest=tk.Entry(self.frameSetValue,textvariable=investtxt) #,textvariable=usertxt)
+		self.enterInvest=tk.Entry(frameSetValue,textvariable=investtxt) #,textvariable=usertxt)
 		self.enterInvest.grid(row=1,column=1)
 
 
-		labelinitialvalue=tk.Label(self.frameSetValue, text="Volumn")
+		labelinitialvalue=tk.Label(frameSetValue, text="Volumn")
 		labelinitialvalue.grid(row=2,column=0)
 
-		self.enterVolumn=tk.Entry(self.frameSetValue,textvariable=volumntxt) #,textvariable=usertxt)
+		self.enterVolumn=tk.Entry(frameSetValue,textvariable=volumntxt) #,textvariable=usertxt)
 		self.enterVolumn.grid(row=2,column=1)
 
-		labelinitialvalue=tk.Label(self.frameSetValue, text="Profit Step")
+		labelinitialvalue=tk.Label(frameSetValue, text="Profit Step")
 		labelinitialvalue.grid(row=3,column=0)
 
-		self.enterVolumn=tk.Entry(self.frameSetValue,textvariable=profitsteptxt) 
+		self.enterVolumn=tk.Entry(frameSetValue,textvariable=profitsteptxt) 
 		self.enterVolumn.grid(row=3,column=1)
 
 
-		labelinitialvalue=tk.Label(self.frameSetValue, text="StartValueRange")
+		labelinitialvalue=tk.Label(frameSetValue, text="StartValueRange")
 		labelinitialvalue.grid(row=4,column=0)
 
-		self.enterVolumn=tk.Entry(self.frameSetValue,textvariable=startvaluerangetxt) 
+		self.enterVolumn=tk.Entry(frameSetValue,textvariable=startvaluerangetxt) 
 		self.enterVolumn.grid(row=4,column=1)
 
 
-		self.btnStartInitCal=tk.Button(self.frameSetValue,text="Set Parameters",command=self.startcalculate)
+		self.btnStartInitCal=tk.Button(frameSetValue,text="Set Parameters",command=self.startcalculate)
 		self.btnStartInitCal.grid(row=5,column=1 )
 
-		labelvaluebuy=tk.Label(self.frameSetValue, text="StartValueBuy")
+		labelvaluebuy=tk.Label(frameSetValue, text="StartValueBuy")
 		labelvaluebuy.grid(row=6,column=0)
 
-		self.entervaluebuy=tk.Entry(self.frameSetValue,textvariable=startvaluebuytxt) 
+		self.entervaluebuy=tk.Entry(frameSetValue,textvariable=startvaluebuytxt) 
 		self.entervaluebuy.grid(row=6,column=1)
 
-		self.btnStartvaluebuy=tk.Button(self.frameSetValue,text="Set Value Buy",command=self.setvaluebuy)
+		self.btnStartvaluebuy=tk.Button(frameSetValue,text="Set Value Buy",command=self.setvaluebuy)
 		self.btnStartvaluebuy.grid(row=7,column=1 )
 
-		labelvaluebuy=tk.Label(self.frameSetValue, text="Cost:")
+		labelvaluebuy=tk.Label(frameSetValue, text="Cost:")
 		labelvaluebuy.grid(row=7,column=0,sticky="w")
 
-		labelvaluebuy=tk.Label(self.frameSetValue, textvariable=totalcostbuy)
+		labelvaluebuy=tk.Label(frameSetValue, textvariable=totalcostbuy)
 		labelvaluebuy.grid(row=7,column=0,sticky="e")
 
 
@@ -150,7 +150,7 @@ class outputlog(tk.Tk):
 
 
 		self.framePutValue=tk.Frame(self,background = 'yellow')
-		# self.frameSetValue.grid_propagate(0)
+		# frameSetValue.grid_propagate(0)
 		self.framePutValue.grid(row=3,column=1,sticky="e"+"n"+"s"+"w")      
 
 
@@ -192,14 +192,14 @@ class outputlog(tk.Tk):
 
 		self.rangeplanVar=tk.StringVar()
 		self.rangeplanVar.set("Select range plan") # default choice
-		self.rangeplanMenu1 = tk.OptionMenu(self.frameSetValue, self.rangeplanVar, *optionList,command=self.doMenuRange)
+		self.rangeplanMenu1 = tk.OptionMenu(frameSetValue, self.rangeplanVar, *optionList,command=self.doMenuRange)
 		self.rangeplanMenu1.grid(row=0,column=0,sticky="w")
 
-		self.btnSave=tk.Button(self.frameSetValue,text="Save",command=self.executeSave)
+		self.btnSave=tk.Button(frameSetValue,text="Save",command=self.executeSave)
 		self.btnSave.grid(row=0,column=1,sticky="w")
 		self.btnSave.update()
 
-		self.btnLoad=tk.Button(self.frameSetValue,text="Load",command=self.executeLoad)
+		self.btnLoad=tk.Button(frameSetValue,text="Load",command=self.executeLoad)
 		self.btnLoad.grid(row=0,column=1,sticky="w",padx=self.btnSave.winfo_width())
 
 
