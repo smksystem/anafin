@@ -31,8 +31,10 @@ class outputlog(tk.Tk):
 		profitsteptxt=tk.StringVar(value="2")
 		startvaluerangetxt=tk.StringVar(value="2.06")
 		startvaluebuytxt=tk.StringVar(value="0.00")
+		stopvaluerangetxt=tk.StringVar(value="0.00")
 		commonstep=tk.StringVar(value="0.00")
 		totalcostbuy=tk.StringVar(value="0000000000")
+
 
 		self.configval={
 			"invest":investtxt,
@@ -41,7 +43,12 @@ class outputlog(tk.Tk):
 			"startvaluerangetxt":startvaluerangetxt,		
 			"commonstep":commonstep,
 			"startvaluebuy":startvaluebuytxt,
-			"totalcostbuy":totalcostbuy
+			"stopvaluerangetxt":stopvaluerangetxt,
+			"totalcostbuy":totalcostbuy,
+
+
+
+
 		}
 
 		
@@ -392,6 +399,8 @@ class outputlog(tk.Tk):
 
 
 				if looprange==totalstep:
+					print ( "end of value range = " + valuelabel)
+					self.configval["stopvaluerangetxt"].set(valuelabel)
 					break
 
 
