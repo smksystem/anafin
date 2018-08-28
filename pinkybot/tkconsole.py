@@ -333,6 +333,9 @@ class outputlog(tk.Tk):
 		self.labeldisplay[valuebuy]["profit"].configure(fg='white',background='orange')
 
 
+		print (self.configval["stopvaluerangetxt"].get())
+
+		print (self.configval["commonstep"].get())
 
 
 
@@ -359,6 +362,9 @@ class outputlog(tk.Tk):
 		totalstep=(invest/volumnstep)
 
 		print ("Totalstep="+str(totalstep))
+
+
+		commonvaluestep=self.configval["commonstep"].get()
 
 		looprange=0
 
@@ -387,7 +393,7 @@ class outputlog(tk.Tk):
 
 				self.myvarasso[valuelabel]["price"].set(stcost)
 
-				target=round((float(self.configval["commonstep"].get()) * profitstep) + float(valuelabel),2)
+				target=round((float(commonvaluestep) * profitstep) + float(valuelabel),2)
 				# print ("target value="+str(target))
 				# exit()
 				self.myvarasso[valuelabel]["targetvalue"].set(target)
@@ -411,6 +417,7 @@ class outputlog(tk.Tk):
 
 		self.txtout("Set Invest = " +str(invest))
 		self.txtout("Set Step Volumn = " +str(volumnstep))
+		self.txtout("Set Step Common Value = " +str(commonvaluestep))
 		self.txtout("Set Step Profit = " +str(profitstep))
 		self.txtout("Set Start Value Range = " +str(startvaluerange))
 		self.txtout("Set Stop Value Range = " +str(stopvaluerange))
