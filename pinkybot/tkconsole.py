@@ -73,26 +73,26 @@ class outputlog(tk.Tk):
 		self.output['yscrollcommand'] = self.scrollbar.set
 
 		
-		frameLoginRT = tk.Frame(self ,background = 'green')
-		# self.frameLoginRT.grid_propagate(0)
-		frameLoginRT.grid(row=0,column=1,sticky="e"+"n"+"s"+"w")
+		self.frameLoginRT = tk.Frame(self ,background = 'green')
+		# self.self.frameLoginRT.grid_propagate(0)
+		self.frameLoginRT.grid(row=0,column=1,sticky="e"+"n"+"s"+"w")
 	
-		labelnamebrokeid=tk.Label(frameLoginRT, text="Broke ID")
+		labelnamebrokeid=tk.Label(self.frameLoginRT, text="Broke ID")
 		labelnamebrokeid.grid(row=0,column=0)
-		self.enterbrokeid=tk.Entry(frameLoginRT,textvariable=broketxt)
+		self.enterbrokeid=tk.Entry(self.frameLoginRT,textvariable=broketxt)
 		self.enterbrokeid.grid(row=0,column=1)      
 
-		labelnamelogin=tk.Label(frameLoginRT, text="Login ID")
+		labelnamelogin=tk.Label(self.frameLoginRT, text="Login ID")
 		labelnamelogin.grid(row=1,column=0)
-		self.enterloginid=tk.Entry(frameLoginRT,textvariable=usertxt)
+		self.enterloginid=tk.Entry(self.frameLoginRT,textvariable=usertxt)
 		self.enterloginid.grid(row=1,column=1)
 
-		labelnamepassword=tk.Label(frameLoginRT, text="Password")
+		labelnamepassword=tk.Label(self.frameLoginRT, text="Password")
 		labelnamepassword.grid(row=2,column=0)
-		self.enterpassword=tk.Entry(frameLoginRT,show="*",textvariable=passtxt)
+		self.enterpassword=tk.Entry(self.frameLoginRT,show="*",textvariable=passtxt)
 		self.enterpassword.grid(row=2,column=1)
 
-		self.btnLoginRT=tk.Button(frameLoginRT,text="Start Login RT",command=self.executeLogin)
+		self.btnLoginRT=tk.Button(self.frameLoginRT,text="Start Login RT",command=self.executeLogin)
 		self.btnLoginRT.grid(row=3,column=1 )
 
 		frameSetValue=tk.Frame(self,background = 'blue')
@@ -401,6 +401,7 @@ class outputlog(tk.Tk):
 				if looprange==totalstep:
 					print ( "end of value range = " + valuelabel)
 					self.configval["stopvaluerangetxt"].set(valuelabel)
+					stopvaluerange=valuelabel
 					break
 
 
@@ -408,8 +409,11 @@ class outputlog(tk.Tk):
 		# self.canvas.yview_moveto(0.5)
 
 
-
-
+		self.txtout("Set Invest = " +str(invest))
+		self.txtout("Set Step Volumn = " +str(volumnstep))
+		self.txtout("Set Step Profit = " +str(profitstep))
+		self.txtout("Set Start Value Range = " +str(startvaluerange))
+		self.txtout("Set Stop Value Range = " +str(stopvaluerange))
 
 
 
@@ -518,7 +522,7 @@ class outputlog(tk.Tk):
 		# update database at the first time select range
 		# print (self.myvarasso)
 		# self.mybot.dbqueue.put({"varasso":self.myvarasso})
-					
+		self.txtout("Set Plan = " +value)		
 		return
 
 	def on_configure(self,event):
