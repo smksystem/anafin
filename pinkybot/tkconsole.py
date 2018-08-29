@@ -333,9 +333,42 @@ class outputlog(tk.Tk):
 		self.labeldisplay[valuebuy]["profit"].configure(fg='white',background='orange')
 
 
-		print (self.configval["stopvaluerangetxt"].get())
+		# print (self.configval["stopvaluerangetxt"].get())
+		stopvaluerange=float(self.configval["stopvaluerangetxt"].get())
+		# print (self.configval["commonstep"].get())
+		commonstep=float(self.configval["commonstep"].get())
+		runvalue=round(float(valuebuy),2)
+		print ("runvalue=" +str(runvalue))
+		# print (self.myvarasso)
+		while (runvalue<=stopvaluerange):
 
-		print (self.configval["commonstep"].get())
+			chkpad=str(runvalue).split(".")
+			# print(chkpad)
+			# print(len(chkpad))
+			
+			if len(chkpad[1])==1:
+			# 	stval=str(round(i,2))+".00"
+			# elif len(chkpad)==2:
+				tempval=chkpad[1]+"0"
+				stval=chkpad[0]+"." +tempval
+				runvalue=stval
+				# print(self.myvarasso[runvalue])
+				priceaccume=self.myvarasso[runvalue]["price"].get()
+
+				runvalue= round(float(stval),2)
+
+				print (str(runvalue)+" need price = " + priceaccume)
+				
+				
+			else:
+				# print(self.myvarasso[str(runvalue)])
+				priceaccume=self.myvarasso[str(runvalue)]["price"].get()
+
+				print (str(runvalue) +" need price = " + priceaccume)
+			runvalue+=commonstep
+			
+
+			
 
 
 
