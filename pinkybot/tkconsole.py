@@ -441,76 +441,70 @@ class outputlog(tk.Tk):
 		profitstep=int(self.configval["profitstep"].get())
 		commonvaluestep=float(self.configval["commonstep"].get())
 
-		for i,valuelabel in enumerate(self.labeldisplay):
-
-			if (startvaluerange<=float(valuelabel)):
-				print("start value range = " + str(startvaluerange))
-				remaininvest=invest -(startvaluerange*volumnstep)
-				print ("remain invest = " +  str(remaininvest))
-				exit()
-
-
-		stcost=str(round(float(valuelabel) * float(volumnstep))) 
-		self.myvarasso[valuelabel]["price"].set(stcost)
-
-
-		totalstep=(invest/volumnstep)
-
-		print ("Totalstep="+str(totalstep))
-
-
 		
-
-		looprange=0
-
+		runvaluerange=startvaluerange
+		runinvest=invest
 		for i,valuelabel in enumerate(self.labeldisplay):
-
-			if (float(startvaluerange)<=float(valuelabel)):
-				looprange+=1
-				print ("start value " + valuelabel)
-				self.labeldisplay[valuelabel][valuelabel].configure(background="white")
-				self.labeldisplay[valuelabel]["updatedate"].configure(background="white")
-				self.labeldisplay[valuelabel]["updatetime"].configure(background="white")
-				self.labeldisplay[valuelabel]["volumn"].configure(background="white")
-				self.labeldisplay[valuelabel]["price"].configure(background="white")
-
-				self.labeldisplay[valuelabel]["order"].configure(background="white")
-				self.labeldisplay[valuelabel]["state"].configure(background="white")
-				self.labeldisplay[valuelabel]["targetvalue"].configure(background="white")
-				self.labeldisplay[valuelabel]["profit"].configure(background="white")
-
-				self.myvarasso[valuelabel]["volumn"].set(volumnstep)
+			runvaluerange=float(valuelabel)
+			if (startvaluerange<=runvaluerange):
+				print("run value range = " + str(runvaluerange))
+				stcost=str(runvaluerange*volumnstep)
 
 
+				print ("remain invest = " +  str(runinvest))
+				if runinvest > (runvaluerange*volumnstep):
 
+					chkpad=str(runvaluerange).split(".")
 
-				stcost=str(round(float(valuelabel) * float(volumnstep))) 
+					if len(chkpad[1])==1:
+						tempval=chkpad[1]+"0"
+						stval=chkpad[0]+"." +tempval
+						valuelabel=stval
+					else:
+						valuelabel=str(runvaluerange)
+											
+					self.labeldisplay[valuelabel][valuelabel].configure(background="white")
+					self.labeldisplay[valuelabel]["updatedate"].configure(background="white")
+					self.labeldisplay[valuelabel]["updatetime"].configure(background="white")
+					self.labeldisplay[valuelabel]["volumn"].configure(background="white")
+					self.labeldisplay[valuelabel]["price"].configure(background="white")
 
-				self.myvarasso[valuelabel]["price"].set(stcost)
+					self.labeldisplay[valuelabel]["order"].configure(background="white")
+					self.labeldisplay[valuelabel]["state"].configure(background="white")
+					self.labeldisplay[valuelabel]["targetvalue"].configure(background="white")
+					self.labeldisplay[valuelabel]["profit"].configure(background="white")
 
-				target=round((float(commonvaluestep) * profitstep) + float(valuelabel),2)
-				# print ("target value="+str(target))
-				# exit()
-				self.myvarasso[valuelabel]["targetvalue"].set(target)
-				# print("common step print in calculate="+self.commonstep)
+					self.myvarasso[valuelabel]["volumn"].set(volumnstep)
 
+					self.myvarasso[valuelabel]["price"].set(stcost)
 
+					target=round((float(commonvaluestep) * profitstep) + float(valuelabel),2)
+					# print ("target value="+str(target))
+					# exit()
+					self.myvarasso[valuelabel]["targetvalue"].set(target)
+					runinvest -=(runvaluerange*volumnstep)
+					stopvaluerange=runvaluerange
+					# invest=remaininvest
+				else:
 
-
-
-
-				if looprange==totalstep:
-					print ( "end of value range = " + valuelabel)
-					self.configval["stopvaluerangetxt"].set(valuelabel)
-					stopvaluerange=valuelabel
+					
+					print("remain invest that could not put more = " +str(runinvest))
 					break
 
+
+
+				# runvaluerange+=commonvaluestep
+		print ("remain invest = "+ str(runinvest))
+		print ("stopvaluerange at = " + str(stopvaluerange))
+		self.configval["stopvaluerangetxt"].set(stopvaluerange)
+		# exit()
 
 		self.canvas.yview_moveto(0.01)
 		# self.canvas.yview_moveto(0.5)
 
 
 		self.txtout("Set Invest = " +str(invest))
+		self.txtout("Remain Invest =" +str(runinvest))
 		self.txtout("Set Step Volumn = " +str(volumnstep))
 		self.txtout("Set Step Common Value = " +str(commonvaluestep))
 		self.txtout("Set Step Profit = " +str(profitstep))
