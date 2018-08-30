@@ -66,11 +66,11 @@ class outputlog(tk.Tk):
 		self.output.grid(row=0,column=0)
 		# self.output.pack(side=tk.LEFT)
 
-		self.scrollbar = tk.Scrollbar(frameOutput,orient="vertical", command = self.output.yview)
-		# self.scrollbar.grid_propagate(0)
-		self.scrollbar.grid(row=0,column=1,sticky="n"+"s")
-		# self.scrollbar.pack(side=tk.RIGHT, fill="y")
-		self.output['yscrollcommand'] = self.scrollbar.set
+		scrollbar = tk.Scrollbar(frameOutput,orient="vertical", command = self.output.yview)
+		# scrollbar.grid_propagate(0)
+		scrollbar.grid(row=0,column=1,sticky="n"+"s")
+		# scrollbar.pack(side=tk.RIGHT, fill="y")
+		self.output['yscrollcommand'] = scrollbar.set
 
 		
 		self.frameLoginRT = tk.Frame(self ,background = 'green')
@@ -221,11 +221,11 @@ class outputlog(tk.Tk):
 
 
 
-		# self.scrollbarGroupOutPut = tk.Scrollbar(self,orient="vertical", command = self.canvas.yview)
-		# # self.scrollbarGroupOutPut.grid_propagate(0)
-		# self.scrollbarGroupOutPut.grid(row=2,column=0,sticky="n"+"s"+"e")
-		# # self.scrollbar.pack(side=tk.RIGHT, fill="y")
-		# self.canvas['yscrollcommand'] = self.scrollbarGroupOutPut.set
+		# scrollbarGroupOutPut = tk.Scrollbar(self,orient="vertical", command = self.canvas.yview)
+		# # scrollbarGroupOutPut.grid_propagate(0)
+		# scrollbarGroupOutPut.grid(row=2,column=0,sticky="n"+"s"+"e")
+		# # scrollbar.pack(side=tk.RIGHT, fill="y")
+		# self.canvas['yscrollcommand'] = scrollbarGroupOutPut.set
 		# self.canvas.bind('<Configure>', self.on_configure)
 		# self.canvas.create_window((0,0), window=self.frameGroupOutput, anchor='center')
 
@@ -314,6 +314,20 @@ class outputlog(tk.Tk):
 
 	def executeSave(self):
 		print("saveAllvalue")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	def executeLoad(self):
 		print("LoadAllValue")
 
@@ -321,6 +335,76 @@ class outputlog(tk.Tk):
 
 		print("start value buy=" + self.configval["startvaluebuy"].get())
 		valuebuy=self.configval["startvaluebuy"].get()
+
+	
+
+
+		# print (self.configval["stopvaluerangetxt"].get())
+		stopvaluerange=float(self.configval["stopvaluerangetxt"].get())
+		# print (self.configval["commonstep"].get())
+		commonstep=float(self.configval["commonstep"].get())
+		
+		runvalue=round(float(valuebuy),2)
+		priceaccume=0
+		while (runvalue<=stopvaluerange):
+
+			runvalue=round(runvalue,2)
+			# print ("roundrunvalue=" +str(runvalue))
+			chkpad=str(runvalue).split(".")
+
+			if len(chkpad[1])==1:
+			# 	stval=str(round(i,2))+".00"
+			# elif len(chkpad)==2:
+				tempval=chkpad[1]+"0"
+				stval=chkpad[0]+"." +tempval
+				runvalue=stval
+				# print(self.myvarasso[runvalue])
+				priceaccumestep= float(self.myvarasso[runvalue]["price"].get())
+
+				print (runvalue+" need price = " + str(priceaccumestep))
+				
+
+
+				lblvalue=str(runvalue)
+				self.labeldisplay[lblvalue][lblvalue].configure(fg='black',background='green')
+				self.labeldisplay[lblvalue]["updatedate"].configure(fg='black',background='green')
+				self.labeldisplay[lblvalue]["updatetime"].configure(fg='black',background='green')
+				self.labeldisplay[lblvalue]["volumn"].configure(fg='black',background='green')
+				self.labeldisplay[lblvalue]["price"].configure(fg='black',background='green')
+				self.labeldisplay[lblvalue]["order"].configure(fg='black',background='green')
+				self.labeldisplay[lblvalue]["state"].configure(fg='black',background='green')
+				self.labeldisplay[lblvalue]["targetvalue"].configure(fg='black',background='green')
+				self.labeldisplay[lblvalue]["profit"].configure(fg='black',background='green')	
+
+				runvalue=float(stval)
+
+
+				priceaccume+=priceaccumestep
+				
+			else:
+				# print(self.myvarasso[str(runvalue)])
+				
+				
+				
+
+				lblvalue=str(runvalue)
+				self.labeldisplay[lblvalue][lblvalue].configure(fg='black',background='green')
+				self.labeldisplay[lblvalue]["updatedate"].configure(fg='black',background='green')
+				self.labeldisplay[lblvalue]["updatetime"].configure(fg='black',background='green')
+				self.labeldisplay[lblvalue]["volumn"].configure(fg='black',background='green')
+				self.labeldisplay[lblvalue]["price"].configure(fg='black',background='green')
+				self.labeldisplay[lblvalue]["order"].configure(fg='black',background='green')
+				self.labeldisplay[lblvalue]["state"].configure(fg='black',background='green')
+				self.labeldisplay[lblvalue]["targetvalue"].configure(fg='black',background='green')
+				self.labeldisplay[lblvalue]["profit"].configure(fg='black',background='green')	
+
+				priceaccumestep=float(self.myvarasso[lblvalue]["price"].get())
+				print (str(runvalue) +" need price = " + str(priceaccumestep))
+				priceaccume+=priceaccumestep
+
+
+			runvalue+=commonstep
+
 
 		self.labeldisplay[valuebuy][valuebuy].configure(fg='white',background='orange')
 		self.labeldisplay[valuebuy]["updatedate"].configure(fg='white',background='orange')
@@ -333,46 +417,11 @@ class outputlog(tk.Tk):
 		self.labeldisplay[valuebuy]["profit"].configure(fg='white',background='orange')
 
 
-		# print (self.configval["stopvaluerangetxt"].get())
-		stopvaluerange=float(self.configval["stopvaluerangetxt"].get())
-		# print (self.configval["commonstep"].get())
-		commonstep=float(self.configval["commonstep"].get())
-		runvalue=round(float(valuebuy),2)
-		print ("runvalue=" +str(runvalue))
-		# print (self.myvarasso)
-		while (runvalue<=stopvaluerange):
-
-			chkpad=str(runvalue).split(".")
-			# print(chkpad)
-			# print(len(chkpad))
-			
-			if len(chkpad[1])==1:
-			# 	stval=str(round(i,2))+".00"
-			# elif len(chkpad)==2:
-				tempval=chkpad[1]+"0"
-				stval=chkpad[0]+"." +tempval
-				runvalue=stval
-				# print(self.myvarasso[runvalue])
-				priceaccume=self.myvarasso[runvalue]["price"].get()
-
-				runvalue= round(float(stval),2)
-
-				print (str(runvalue)+" need price = " + priceaccume)
-				
-				
-			else:
-				# print(self.myvarasso[str(runvalue)])
-				priceaccume=self.myvarasso[str(runvalue)]["price"].get()
-
-				print (str(runvalue) +" need price = " + priceaccume)
-			runvalue+=commonstep
-			
-
-			
-
-
-
-
+		print ("Total price to buy =" +str(priceaccume))
+		self.configval["totalcostbuy"].set(priceaccume)
+		self.txtout("Set Value to buy =" + valuebuy)
+		self.txtout("Set Value End to buy = " + str(stopvaluerange))
+		self.txtout("Set total price to pay = " + str(priceaccume))
 
 
 	def startcalculate(self):
@@ -386,18 +435,31 @@ class outputlog(tk.Tk):
 			i+=1
 
 
-		startvaluerange=self.configval["startvaluerangetxt"].get()
-
+		startvaluerange=float(self.configval["startvaluerangetxt"].get())
 		invest=int(self.configval["invest"].get())
 		volumnstep=int(self.configval["volumnstep"].get())
 		profitstep=int(self.configval["profitstep"].get())
+		commonvaluestep=float(self.configval["commonstep"].get())
+
+		for i,valuelabel in enumerate(self.labeldisplay):
+
+			if (startvaluerange<=float(valuelabel)):
+				print("start value range = " + str(startvaluerange))
+				remaininvest=invest -(startvaluerange*volumnstep)
+				print ("remain invest = " +  str(remaininvest))
+				exit()
+
+
+		stcost=str(round(float(valuelabel) * float(volumnstep))) 
+		self.myvarasso[valuelabel]["price"].set(stcost)
+
 
 		totalstep=(invest/volumnstep)
 
 		print ("Totalstep="+str(totalstep))
 
 
-		commonvaluestep=self.configval["commonstep"].get()
+		
 
 		looprange=0
 
@@ -503,11 +565,11 @@ class outputlog(tk.Tk):
 
 
 
-		self.scrollbarGroupOutPut = tk.Scrollbar(self,orient="vertical", command = self.canvas.yview)
-		# self.scrollbar.grid_propagate(0)
-		self.scrollbarGroupOutPut.grid(row=2,column=0,rowspan=2,sticky="e"+"n"+"s")
-		# self.scrollbar.pack(side=tk.RIGHT, fill="y")
-		self.canvas['yscrollcommand'] = self.scrollbarGroupOutPut.set
+		scrollbarGroupOutPut = tk.Scrollbar(self,orient="vertical", command = self.canvas.yview)
+		# scrollbar.grid_propagate(0)
+		scrollbarGroupOutPut.grid(row=2,column=0,rowspan=2,sticky="e"+"n"+"s")
+		# scrollbar.pack(side=tk.RIGHT, fill="y")
+		self.canvas['yscrollcommand'] = scrollbarGroupOutPut.set
 		self.canvas.bind('<Configure>', self.on_configure)
 		self.canvas.create_window((0,0), window=self.frameGroupOutput, anchor='nw')
 
@@ -554,7 +616,7 @@ class outputlog(tk.Tk):
 					self.labeldisplay[varvalue][varinfo].grid(row=i,column=j+4)
 
 
-		self.canvas['yscrollcommand'] = self.scrollbarGroupOutPut.set
+		self.canvas['yscrollcommand'] = scrollbarGroupOutPut.set
 		self.canvas.bind('<Configure>', self.on_configure)
 		self.canvas.create_window((0,0), window=self.frameGroupOutput, anchor='nw')
 
