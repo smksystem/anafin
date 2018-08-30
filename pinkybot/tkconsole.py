@@ -448,7 +448,7 @@ class outputlog(tk.Tk):
 			runvaluerange=float(valuelabel)
 			if (startvaluerange<=runvaluerange):
 				print("run value range = " + str(runvaluerange))
-				stcost=str(runvaluerange*volumnstep)
+				stcost=str(round((runvaluerange*volumnstep),2))
 
 
 				print ("remain invest = " +  str(runinvest))
@@ -504,9 +504,10 @@ class outputlog(tk.Tk):
 
 
 		self.txtout("Set Invest = " +str(invest))
-		self.txtout("Remain Invest =" +str(runinvest))
 		self.txtout("Set Step Volumn = " +str(volumnstep))
 		self.txtout("Set Step Common Value = " +str(commonvaluestep))
+		self.txtout("Remain Invest =" +str(runinvest))
+		
 		self.txtout("Set Step Profit = " +str(profitstep))
 		self.txtout("Set Start Value Range = " +str(startvaluerange))
 		self.txtout("Set Stop Value Range = " +str(stopvaluerange))
