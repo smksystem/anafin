@@ -263,7 +263,7 @@ class outputlog(tk.Tk):
 		
 		runvalue=round(float(valuebuy),2)
 		priceaccume=0
-		while (runvalue<=stopvaluerange):
+		while (runvalue>=stopvaluerange):
 
 			runvalue=round(runvalue,2)
 			# print ("roundrunvalue=" +str(runvalue))
