@@ -570,6 +570,62 @@ class outputlog(tk.Tk):
 
 
 
+
+
+
+
+		# test=list (self.myvarasso.items())[99][0]
+		# print ("value of 99=" + test)
+		runrangeNo=len(list (self.myvarasso.items()))
+
+		print ( "total number of item = " + str(runrangeNo))
+		# print (str(runrangeNo[0]))
+
+		# exit()
+
+		# myvar=[]  
+		# labelvar={}
+		# labelinfo={}
+
+		self.labeldisplay={}
+
+
+
+		for i,myvarvalue in enumerate(self.myvarasso):
+
+			runrangeNo-=1
+			varvalue=list (self.myvarasso.items())[runrangeNo][0]
+			# print (i)
+			
+			# print(runrangeNo)
+
+
+			self.labeldisplay[varvalue]={}
+			self.labeldisplay[varvalue][varvalue]=tk.Label(self.frameGroupOutput, text=varvalue)
+			self.labeldisplay[varvalue][varvalue].grid(row=i,column=0)
+
+			labelseparate=tk.Label(self.frameGroupOutput, text=" | ")
+			labelseparate.grid(row=i,column=1)
+			
+			rowvalue=self.myvarasso[varvalue]
+
+
+
+		print ("222"+rowvalue)	
+		exit()
+
+
+
+
+
+
+
+
+
+
+
+
+
 		myvar=[]  
 		labelvar={}
 		labelinfo={}
