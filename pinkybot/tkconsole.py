@@ -362,11 +362,15 @@ class outputlog(tk.Tk):
 		# runvaluerange=startvaluerange
 
 
-		for i,valuelabel in enumerate(self.labeldisplay):
-			print ( valuelabel)
+		# for i,valuelabel in enumerate(self.labeldisplay):
+		# 	# print ( valuelabel)
+
+		# 	runvaluerange=float(valuelabel)
+		# 	if (startvaluerange >= runvaluerange):
+		# 		print(str(runvaluerange))
 
 
-		exit()
+		# exit()
 
 
 		runinvest=invest
@@ -374,7 +378,7 @@ class outputlog(tk.Tk):
 			runvaluerange=float(valuelabel)
 			print ("runvaluerange = " +str(runvaluerange))
 
-			if (startvaluerange<=runvaluerange):
+			if (startvaluerange>=runvaluerange):
 				
 
 				print("run value range = " + str(runvaluerange))
