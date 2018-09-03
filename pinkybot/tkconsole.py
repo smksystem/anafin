@@ -611,7 +611,7 @@ class outputlog(tk.Tk):
 
 
 
-		print ("222"+rowvalue)	
+		print ("22"+rowvalue)	
 		exit()
 
 
