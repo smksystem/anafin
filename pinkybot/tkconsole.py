@@ -29,7 +29,7 @@ class outputlog(tk.Tk):
 		investtxt=tk.StringVar(value="10000")
 		volumntxt=tk.StringVar(value="1000")
 		profitsteptxt=tk.StringVar(value="2")
-		startvaluerangetxt=tk.StringVar(value="2.06")
+		startvaluerangetxt=tk.StringVar(value="4.06")
 		startvaluebuytxt=tk.StringVar(value="0.00")
 		stopvaluerangetxt=tk.StringVar(value="0.00")
 		commonstep=tk.StringVar(value="0.00")
@@ -153,6 +153,11 @@ class outputlog(tk.Tk):
 		# frameSetValue.grid_propagate(0)
 		self.framePutValue.grid(row=3,column=1,sticky="e"+"n"+"s"+"w")      
 
+		btnBuyCommand=tk.Button(self.framePutValue,text="Buy it now",command=self.buyitnow)
+		btnBuyCommand.grid(row=0,column=0 )
+
+
+
 
 
 
@@ -227,23 +232,8 @@ class outputlog(tk.Tk):
 		# self.myvarasso["5.00"]["order"].set("buy")
 		self.txtout("!!! Welcome , Please login !!!")
 
-
-
 	def executeSave(self):
 		print("saveAllvalue")
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	def executeLoad(self):
 		print("LoadAllValue")
@@ -263,15 +253,13 @@ class outputlog(tk.Tk):
 		
 		runvalue=round(float(valuebuy),2)
 		priceaccume=0
-		while (runvalue>=stopvaluerange):
+		while (runvalue<=stopvaluerange):
 
 			runvalue=round(runvalue,2)
-			# print ("roundrunvalue=" +str(runvalue))
+			print ("round run value=" +str(runvalue))
 			chkpad=str(runvalue).split(".")
 
 			if len(chkpad[1])==1:
-			# 	stval=str(round(i,2))+".00"
-			# elif len(chkpad)==2:
 				tempval=chkpad[1]+"0"
 				stval=chkpad[0]+"." +tempval
 				runvalue=stval
@@ -340,16 +328,17 @@ class outputlog(tk.Tk):
 		self.txtout("Set Value End to buy = " + str(stopvaluerange))
 		self.txtout("Set total price to pay = " + str(priceaccume))
 
-
+	def buyitnow(self):
+		print("Buy it now")
 	def startcalculate(self):
 		print("calculate here")
 
 		print(self.configval["invest"].get())
 		i=0
-		for label in self.configval:
-			configlabel=tk.Label(self.framePutValue,text=label)
-			configlabel.grid(row=i,column=1)   
-			i+=1
+		# for label in self.configval:
+		# 	configlabel=tk.Label(self.framePutValue,text=label)
+		# 	configlabel.grid(row=i,column=1)   
+		# 	i+=1
 
 
 		startvaluerange=float(self.configval["startvaluerangetxt"].get())
@@ -374,11 +363,11 @@ class outputlog(tk.Tk):
 
 
 		runinvest=invest
-		for i,valuelabel in enumerate(self.labeldisplay):
+		for i,valuelabel in enumerate(self.myvarasso):
 			runvaluerange=float(valuelabel)
 			print ("runvaluerange = " +str(runvaluerange))
 
-			if (startvaluerange>=runvaluerange):
+			if (startvaluerange<=runvaluerange):
 				
 
 				print("run value range = " + str(runvaluerange))
@@ -440,11 +429,11 @@ class outputlog(tk.Tk):
 		self.txtout("Set Invest = " +str(invest))
 		self.txtout("Set Step Volumn = " +str(volumnstep))
 		self.txtout("Set Step Common Value = " +str(commonvaluestep))
-		self.txtout("Remain Invest =" +str(runinvest))
+		self.txtout("Remain Range Invest =" +str(runinvest),"orange")
 		
 		self.txtout("Set Step Profit = " +str(profitstep))
 		self.txtout("Set Start Value Range = " +str(startvaluerange))
-		self.txtout("Set Stop Value Range = " +str(stopvaluerange))
+		self.txtout("Set Stop Value Range = " +str(stopvaluerange),"green","white")
 
 
 	def doMenuRange(self,value):
@@ -653,7 +642,7 @@ class outputlog(tk.Tk):
 
 
 
-	def txtout(self,txtmsg):
+	def txtout(self,txtmsg,colorhighlight="",backcolor=""):
 
 			self.timenow = datetime.datetime.now()
 			
@@ -678,6 +667,9 @@ class outputlog(tk.Tk):
 			
 			self.output.see("end")
 
+			if colorhighlight != "" :
+				self.highlight_text(txtmsg,colorhighlight,backcolor)
+
 			# self.output.tag_config("a", foreground="blue")
 			# self.output.insert(contents, ("n", "a"))
 	
@@ -690,12 +682,12 @@ class outputlog(tk.Tk):
 			self.mybot.threadlogin(self.loginSet)
 
 			# return LoginParams
-	def highlight_text(self,word):
+	def highlight_text(self,word,color="white",backcolor="black"):
 			# word="Vol"
 			txtmsg=self.output.get("1.0","end")
 			# print (txtmsg)
 			countVar = tk.StringVar()
-			self.output.tag_config("test", background="black", foreground="green")
+			self.output.tag_config("test", background=backcolor, foreground=color)
 			if txtmsg:
 				pos = '1.0'
 				while 1:
