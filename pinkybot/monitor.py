@@ -13,13 +13,19 @@ class pinkybot(packselenium):
     def __init__(self):
         # pass
 
-
+        self.orderqueue = Queue()
         self.myqueue = Queue()
         self.dbqueue=Queue()
         super().__init__("xdebug")
 
-        
-
+    def threadorderbuy(self,buyparams):
+        print("thread buy now")
+        OrderParams={
+        "buyvalue":"4.90",
+        }
+        bthread=MyThread(self.orderqueue,self.myorderbuy,args=(OrderParams,))
+        bthread.start() 
+        # bthread.join()
 
     def threadlogin(self,loginSet):
         print ("thread login was called")
@@ -34,10 +40,14 @@ class pinkybot(packselenium):
         print (LoginParams)
         # self.mypinkylogin(LoginParams)
         
-        mthread=MyThread(self.myqueue,self,args=(LoginParams,))
+        mthread=MyThread(self.myqueue,self.mypinkylogin,args=(LoginParams,))
         mthread.start()
         # mthread.join()
 
+    def myorderbuy(self,orderparams,orderqueue):
+        print ("Start:buybuy buy buy buy")
+        time.sleep(5)
+        print ("END:buybuy buy buy buy")
 
     def mypinkylogin(self,loginParams,myqueue):
         # self.monitoring("test")
@@ -89,10 +99,10 @@ class MyThread(threading.Thread):
         # self.queue.put("hello2",block=True)
         # self.queue.put("hello3",block=True)
         
-        self.fnrun.mypinkylogin(self.parameter,self.queue)
+        self.fnrun(self.parameter,self.queue)
 
         val = self.queue.get()
-        self.do_thing_with_message(val)
+        # self.do_thing_with_message(val)
 
     def do_thing_with_message(self, message):
         if self.receive_messages:

@@ -153,8 +153,9 @@ class outputlog(tk.Tk):
 		# frameSetValue.grid_propagate(0)
 		self.framePutValue.grid(row=3,column=1,sticky="e"+"n"+"s"+"w")      
 
-		btnBuyCommand=tk.Button(self.framePutValue,text="Buy it now",command=self.buyitnow)
-		btnBuyCommand.grid(row=0,column=0 )
+		btnBuyCommand=tk.Button(self.framePutValue,text="Buy Now",command=self.buynow, width = 25,height=3)
+		# btnBuyCommand.grid_propagate(0)
+		btnBuyCommand.grid(row=0,column=0)
 
 
 
@@ -257,6 +258,7 @@ class outputlog(tk.Tk):
 
 			runvalue=round(runvalue,2)
 			print ("round run value=" +str(runvalue))
+			print ("stopvaluerange=" +str(stopvaluerange))
 			chkpad=str(runvalue).split(".")
 
 			if len(chkpad[1])==1:
@@ -309,7 +311,7 @@ class outputlog(tk.Tk):
 
 
 			runvalue+=commonstep
-
+			runvalue=round(runvalue,2)
 
 		self.labeldisplay[valuebuy][valuebuy].configure(fg='white',background='orange')
 		self.labeldisplay[valuebuy]["updatedate"].configure(fg='white',background='orange')
@@ -328,8 +330,9 @@ class outputlog(tk.Tk):
 		self.txtout("Set Value End to buy = " + str(stopvaluerange))
 		self.txtout("Set total price to pay = " + str(priceaccume))
 
-	def buyitnow(self):
+	def buynow(self):
 		print("Buy it now")
+		self.mybot.threadorderbuy("test")
 	def startcalculate(self):
 		print("calculate here")
 
@@ -426,10 +429,10 @@ class outputlog(tk.Tk):
 		# self.canvas.yview_moveto(0.5)
 
 
-		self.txtout("Set Invest = " +str(invest))
+		self.txtout("Set Invest = " +str(invest),"yellow","gray")
 		self.txtout("Set Step Volumn = " +str(volumnstep))
 		self.txtout("Set Step Common Value = " +str(commonvaluestep))
-		self.txtout("Remain Range Invest =" +str(runinvest),"orange")
+		self.txtout("Remain Range Invest =" +str(runinvest),"orange","green")
 		
 		self.txtout("Set Step Profit = " +str(profitstep))
 		self.txtout("Set Start Value Range = " +str(startvaluerange))
@@ -663,13 +666,17 @@ class outputlog(tk.Tk):
 			# self.highlight_text("Order",txtmsg)
 			# self.highlight_text("Stat",txtmsg)
 
-			self.output.configure(state='disabled')
-			
-			self.output.see("end")
 
 			if colorhighlight != "" :
 				self.highlight_text(txtmsg,colorhighlight,backcolor)
+				colorhighlight=""
+				backcolor=""
 
+
+
+			self.output.configure(state='disabled')
+			
+			self.output.see("end")
 			# self.output.tag_config("a", foreground="blue")
 			# self.output.insert(contents, ("n", "a"))
 	
@@ -687,17 +694,17 @@ class outputlog(tk.Tk):
 			txtmsg=self.output.get("1.0","end")
 			# print (txtmsg)
 			countVar = tk.StringVar()
-			self.output.tag_config("test", background=backcolor, foreground=color)
+			self.output.tag_config(word, background=backcolor, foreground=color)
 			if txtmsg:
 				pos = '1.0'
 				while 1:
 					pos = self.output.search( word,pos,stopindex="end", count=countVar)
 					if not pos: break
 					lastidx = '%s+%dc' % (pos, int(countVar.get()))
-					self.output.tag_add('test', pos, lastidx)
+					self.output.tag_add(word, pos, lastidx)
 					pos = lastidx
 
-			self.output.see(tk.END)
+			# self.output.see(tk.END)
 		 
 	def Refresher(self):
 
@@ -712,7 +719,7 @@ class outputlog(tk.Tk):
 						self.txtout("value change to:" + tempdict["textout"])
 				if "stockvalue" in tempdict:
 						print ("stock has been updated !!!!!!!!!!!!")
-						self.txtout(tempdict["stockvalue"])
+						self.txtout("Value Change : " + tempdict["stockvalue"])
 						lblstockvalue=tempdict["stockvalue"] # get value from queue
 						if lblstockvalue in self.labeldisplay:
 							self.flash(self.labeldisplay[lblstockvalue][lblstockvalue],9,"green")

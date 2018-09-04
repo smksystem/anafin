@@ -282,3 +282,5 @@ class packselenium():
 		# print("exit program")
 		# exit()
 
+	def order_buy():
+		print("order buy now")
