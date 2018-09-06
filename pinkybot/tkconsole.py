@@ -31,10 +31,13 @@ class outputlog(tk.Tk):
 		profitsteptxt=tk.StringVar(value="2")
 		startvaluerangetxt=tk.StringVar(value="4.06")
 		startvaluebuytxt=tk.StringVar(value="0.00")
+		startvolumnbuy=tk.StringVar(value="0")
 		stopvaluerangetxt=tk.StringVar(value="0.00")
 		commonstep=tk.StringVar(value="0.00")
 		totalcostbuy=tk.StringVar(value="0000000000")
 		stockname=tk.StringVar(value="dummy")
+
+
 
 		self.configval={
 			"invest":investtxt,
@@ -43,6 +46,7 @@ class outputlog(tk.Tk):
 			"startvaluerangetxt":startvaluerangetxt,		
 			"commonstep":commonstep,
 			"startvaluebuy":startvaluebuytxt,
+			"startvolumnbuy":startvolumnbuy,
 			"stopvaluerangetxt":stopvaluerangetxt,
 			"totalcostbuy":totalcostbuy,
 			"stockname":stockname,
@@ -332,7 +336,7 @@ class outputlog(tk.Tk):
 
 	def buybyvalue(self):
 		print("Buy set value")
-		self.mybot.myorder("buybyvalue",self.configure)
+		self.mybot.myorder("buybyvalue",self.configval)
 
 		print ("Buy finished ")
 

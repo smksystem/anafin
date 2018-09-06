@@ -241,13 +241,10 @@ class packselenium():
 
 			stockvalue=""
 
-			orderstate=self.qorder.get()
-			print (orderstate)
-			if orderstate=="buy":
-				self.order_buy(driver)
-			elif orderstate=="sell":
-				print("sell now")
-			# print (tempvalue)
+
+			if not self.qorder.empty(): 
+				orderparams=self.qorder.get()
+				self.order(driver,orderparams)
 			
 			
 
@@ -294,8 +291,13 @@ class packselenium():
 		# print("exit program")
 		# exit()
 
-	def order_buy(self,driver):
-		print("order buy now")
+	def order(self,driver,orderparams):
+		print (orderparams)
 		# stockvalue = driver.find_elements_by_xpath(self.xpathreturn("xbuyradio"))[0].text
-		chkstock=driver.find_elements_by_xpath(self.xpathreturn("xbuyradio"))[0].click()
-		print(chkstock)
+		orderside=orderparams["order"]
+		if orderside=="buy":
+			print("order buy now")
+			chkstock=driver.find_elements_by_xpath(self.xpathreturn("xbuyradio"))[0].click()
+			print(chkstock)
+		elif orderside=="sell":
+			pass

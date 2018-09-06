@@ -19,15 +19,21 @@ class pinkybot(packselenium):
         super().__init__("xdebug")
 
 
-    def myorder(self,orderside,orderparams):
+    def myorder(self,orderside,configparams):
         if orderside=="buybyvalue":
 
-            print (orderparams)
-            buyparams={ "stockname":"stockname"
+            print (configparams)
+            buyparams={ 
+                    "order":"buy",
+                    "stockname":configparams["stockname"].get(),
+                    "startvalue":configparams["startvaluebuy"].get(),
+                    "startvolumn":configparams["startvolumnbuy"].get(),
 
             }
             print ("Start:buy buy buy buy buy")
+
             self.botbuyorder(buyparams)
+            
             print ("END:buy buy buy buy buy")
         elif orderside=="sellbyvalue":
             print ("sell sell")
