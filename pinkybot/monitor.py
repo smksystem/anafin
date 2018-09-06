@@ -21,18 +21,21 @@ class pinkybot(packselenium):
 
     def myorder(self,orderside,orderparams):
         if orderside=="buybyvalue":
-            print ("Start:buybuy buy buy buy")
-            self.botbuyorder()
-            print ("END:buybuy buy buy buy")
+
+            print (orderparams)
+            buyparams={ "stockname":"stockname"
+
+            }
+            print ("Start:buy buy buy buy buy")
+            self.botbuyorder(buyparams)
+            print ("END:buy buy buy buy buy")
         elif orderside=="sellbyvalue":
             print ("sell sell")
     # for several type of orders
-    def botbuyorder(self): 
-        print("thread buy now")
-        OrderParams={
-        "buyvalue":"4.90",
-        }
-        self.qorder.put("buy")
+    def botbuyorder(self,buyparams): 
+        print("botbuyorder buy now")
+        self.qorder.put(buyparams)
+
     def botsellorder(self):
         print ("sell order")
 

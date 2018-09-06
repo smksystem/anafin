@@ -34,7 +34,7 @@ class outputlog(tk.Tk):
 		stopvaluerangetxt=tk.StringVar(value="0.00")
 		commonstep=tk.StringVar(value="0.00")
 		totalcostbuy=tk.StringVar(value="0000000000")
-
+		stockname=tk.StringVar(value="dummy")
 
 		self.configval={
 			"invest":investtxt,
@@ -45,7 +45,7 @@ class outputlog(tk.Tk):
 			"startvaluebuy":startvaluebuytxt,
 			"stopvaluerangetxt":stopvaluerangetxt,
 			"totalcostbuy":totalcostbuy,
-
+			"stockname":stockname,
 
 
 
@@ -693,6 +693,10 @@ class outputlog(tk.Tk):
 			# exit()
 			self.mybot.threadlogin(self.loginSet)
 
+
+
+
+
 			# return LoginParams
 	def highlight_text(self,word,color="white",backcolor="black"):
 			# word="Vol"
@@ -719,9 +723,11 @@ class outputlog(tk.Tk):
 			# print (dir(self))
 			if not self.mybot.qvalchange.empty():
 				tempdict=self.mybot.qvalchange.get()
+				print (tempdict)
 				# print (tempdict["textout"])
 				if "textout" in tempdict:
 						self.txtout("value change to:" + tempdict["textout"])
+
 				if "stockvalue" in tempdict:
 						print ("stock has been updated !!!!!!!!!!!!")
 						self.txtout("Value Change : " + tempdict["stockvalue"])
@@ -729,13 +735,14 @@ class outputlog(tk.Tk):
 						if lblstockvalue in self.labeldisplay:
 							self.flash(self.labeldisplay[lblstockvalue][lblstockvalue],9,"green")
 				# self.mybot.myqueue.join()
-
-
+				if "stockname" in tempdict:
+						print ("monitor =" + tempdict["stockname"])
+						self.configval["stockname"].set(tempdict["stockname"])
 
 				
 			# self.output.tag_config("testb", background="white", foreground="red")
 			# self.output.tag_add('testb', 10.0, step)
-			self.after(1000, self.Refresher) # every second...
+			self.after(500, self.Refresher) # every second...
 
 
 # if __name__ == '__main__':

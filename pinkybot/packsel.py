@@ -25,7 +25,8 @@ class packselenium():
 				"xstockup":"//*[@id='instInfoEq']/tbody/tr[1]/td[2]/h2/span",
 				"xstockname":"//*[@id='eqQuoteSymbol']",
 				"xstockvalue":"//*[@id='instInfoEq']/tbody/tr[1]/td[2]/h2/span",
-				
+				"xbuyradio":"//*[@id='placeEq']/div[1]/input[1]",
+				"xstockorder":"//*[@id='eqSymbol']"
 		}
 		livepath={"valuemonitor":"",
 				"xpathlogin":"/html/body/table[4]/tbody/tr/td[2]/table/tbody/tr[2]/td/table[1]/tbody/tr/td[2]/form/table/tbody/tr[3]/td[3]/font/input[2]",
@@ -141,10 +142,13 @@ class packselenium():
 
 
 		# stock = driver.find_elements_by_xpath("//*[@id='favourite-0']/ul/li[1]/editable-symbol-input/p")[0].text
-		stock = driver.find_elements_by_xpath(self.xpathreturn("xstockname"))[0]
 
+		# stock = driver.find_elements_by_xpath(self.xpathreturn("xstockname"))[0]
+		stock = driver.find_elements_by_xpath(self.xpathreturn("xstockname"))[0]
 		# print ("stock is below found check login")
-		# print(stock)
+
+		stockname=stock.get_attribute("value")
+
 
 		# one click to the first of favorite stock then wait
 		# chkstock=driver.find_elements_by_xpath("//*[@id='favourite-0']/ul/li[1]/editable-symbol-input/p")[0]
@@ -167,7 +171,9 @@ class packselenium():
 		if (stock):
 			# print("element is below")
 			# print (element)
-			self.qvalchange.put({"textout":"Login success contiue monitoring"})
+			self.qvalchange.put({"textout":"Login success contiue monitoring : " + stockname,
+				"stockname":stockname,
+				})
 			self.stockcompare="0.00"
 
 		return driver
@@ -236,7 +242,7 @@ class packselenium():
 			stockvalue=""
 
 			orderstate=self.qorder.get()
-			print ("state order=" + orderstate)
+			print (orderstate)
 			if orderstate=="buy":
 				self.order_buy(driver)
 			elif orderstate=="sell":
@@ -290,5 +296,6 @@ class packselenium():
 
 	def order_buy(self,driver):
 		print("order buy now")
-		stockvalue = driver.find_elements_by_xpath(self.xpathreturn("xstockvalue"))[0].text
-		print(stockvalue)
+		# stockvalue = driver.find_elements_by_xpath(self.xpathreturn("xbuyradio"))[0].text
+		chkstock=driver.find_elements_by_xpath(self.xpathreturn("xbuyradio"))[0].click()
+		print(chkstock)
