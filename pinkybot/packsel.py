@@ -26,7 +26,9 @@ class packselenium():
 				"xstockname":"//*[@id='eqQuoteSymbol']",
 				"xstockvalue":"//*[@id='instInfoEq']/tbody/tr[1]/td[2]/h2/span",
 				"xbuyradio":"//*[@id='placeEq']/div[1]/input[1]",
-				"xstockorder":"//*[@id='eqSymbol']"
+				"xstockorder":"//*[@id='eqSymbol']",
+				"xstockvolumnorder":"//*[@id='placeEq']/div[2]/input",
+				"xstockvalueorder":"//*[@id='placeEq']/div[3]/input[1]",
 		}
 		livepath={"valuemonitor":"",
 				"xpathlogin":"/html/body/table[4]/tbody/tr/td[2]/table/tbody/tr[2]/td/table[1]/tbody/tr/td[2]/form/table/tbody/tr[3]/td[3]/font/input[2]",
@@ -299,5 +301,22 @@ class packselenium():
 			print("order buy now")
 			chkstock=driver.find_elements_by_xpath(self.xpathreturn("xbuyradio"))[0].click()
 			print(chkstock)
+
+			elem = driver.find_element_by_xpath(self.xpathreturn("xstockorder"))
+			elem.clear()
+			# put user in key
+			elem.send_keys(orderparams["stockname"]) 
+
+			elem = driver.find_element_by_xpath(self.xpathreturn("xstockvolumnorder"))
+			elem.clear()
+			# put user in key
+			elem.send_keys(orderparams["startvolumn"]) 
+
+			elem = driver.find_element_by_xpath(self.xpathreturn("xstockvalueorder"))
+			elem.clear()
+			# put user in key
+			elem.send_keys(orderparams["startvalue"]) 
+
+
 		elif orderside=="sell":
 			pass
