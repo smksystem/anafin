@@ -13,19 +13,28 @@ class pinkybot(packselenium):
     def __init__(self):
         # pass
 
-        self.orderqueue = Queue()
-        self.myqueue = Queue()
-        self.dbqueue=Queue()
+        self.qorder = Queue()
+        self.qvalchange = Queue()
+        self.qdb=Queue()
         super().__init__("xdebug")
 
-    def threadorderbuy(self,buyparams):
+
+    def myorder(self,orderside,orderparams):
+        if orderside=="buybyvalue":
+            print ("Start:buybuy buy buy buy")
+            self.botbuyorder()
+            print ("END:buybuy buy buy buy")
+        elif orderside=="sellbyvalue":
+            print ("sell sell")
+    # for several type of orders
+    def botbuyorder(self): 
         print("thread buy now")
         OrderParams={
         "buyvalue":"4.90",
         }
-        bthread=MyThread(self.orderqueue,self.myorderbuy,args=(OrderParams,))
-        bthread.start() 
-        # bthread.join()
+        self.qorder.put("buy")
+    def botsellorder(self):
+        print ("sell order")
 
     def threadlogin(self,loginSet):
         print ("thread login was called")
@@ -40,22 +49,19 @@ class pinkybot(packselenium):
         print (LoginParams)
         # self.mypinkylogin(LoginParams)
         
-        mthread=MyThread(self.myqueue,self.mypinkylogin,args=(LoginParams,))
+        mthread=MyThread(self.qvalchange,self.mypinkylogin,args=(LoginParams,))
         mthread.start()
         # mthread.join()
 
-    def myorderbuy(self,orderparams,orderqueue):
-        print ("Start:buybuy buy buy buy")
-        time.sleep(5)
-        print ("END:buybuy buy buy buy")
+   
 
-    def mypinkylogin(self,loginParams,myqueue):
+    def mypinkylogin(self,loginParams,qvalchange):
         # self.monitoring("test")
         # print (username)
         print (loginParams)
         # exit()
 
-        handlewin=self.login(loginParams,myqueue)
+        handlewin=self.login(loginParams,qvalchange)
         # buysellorder.orderbuy(handlewin)
         
 

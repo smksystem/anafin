@@ -153,7 +153,7 @@ class outputlog(tk.Tk):
 		# frameSetValue.grid_propagate(0)
 		self.framePutValue.grid(row=3,column=1,sticky="e"+"n"+"s"+"w")      
 
-		btnBuyCommand=tk.Button(self.framePutValue,text="Buy Now",command=self.buynow, width = 25,height=3)
+		btnBuyCommand=tk.Button(self.framePutValue,text="Buy Now",command=self.buybyvalue, width = 25,height=3)
 		# btnBuyCommand.grid_propagate(0)
 		btnBuyCommand.grid(row=0,column=0)
 
@@ -330,9 +330,14 @@ class outputlog(tk.Tk):
 		self.txtout("Set Value End to buy = " + str(stopvaluerange))
 		self.txtout("Set total price to pay = " + str(priceaccume))
 
-	def buynow(self):
-		print("Buy it now")
-		self.mybot.threadorderbuy("test")
+	def buybyvalue(self):
+		print("Buy set value")
+		self.mybot.myorder("buybyvalue",self.configure)
+
+		print ("Buy finished ")
+
+		# self.mybot.threadorderbuy("test")
+
 	def startcalculate(self):
 		print("calculate here")
 
@@ -712,8 +717,8 @@ class outputlog(tk.Tk):
 			# step=10+(self.mycount/10)
 			# print (step)
 			# print (dir(self))
-			if not self.mybot.myqueue.empty():
-				tempdict=self.mybot.myqueue.get()
+			if not self.mybot.qvalchange.empty():
+				tempdict=self.mybot.qvalchange.get()
 				# print (tempdict["textout"])
 				if "textout" in tempdict:
 						self.txtout("value change to:" + tempdict["textout"])

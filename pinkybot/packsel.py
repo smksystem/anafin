@@ -56,19 +56,19 @@ class packselenium():
 		return xpath[self.mode][xplace]
 
 
-	def login(self,loginParams,myqueue):
-		self.myqueue=myqueue
-		# for i in iter(self.myqueue.get(),'STOP'):
+	def login(self,loginParams,qvalchange):
+		self.qvalchange=qvalchange
+		# for i in iter(self.qvalchange.get(),'STOP'):
 			
-		# for i in iter(self.myqueue):
-		# print( self.myqueue.display())
+		# for i in iter(self.qvalchange):
+		# print( self.qvalchange.display())
 
-		# print (self.myqueue.get())
+		# print (self.qvalchange.get())
 		# dataqueue={"textout":"Starting to login ... please wait ... "}
 
-		self.myqueue.put({"textout":"Starting to login ... please wait ... "})
+		self.qvalchange.put({"textout":"Starting to login ... please wait ... "})
 
-		# for job in iter(self.myqueue.get, None):
+		# for job in iter(self.qvalchange.get, None):
 			# print (job)
 		
 
@@ -167,7 +167,7 @@ class packselenium():
 		if (stock):
 			# print("element is below")
 			# print (element)
-			self.myqueue.put({"textout":"Login success contiue monitoring"})
+			self.qvalchange.put({"textout":"Login success contiue monitoring"})
 			self.stockcompare="0.00"
 
 		return driver
@@ -223,18 +223,24 @@ class packselenium():
 			if self.stockcompare=="0.00" and stockvalue !="0.00":
 				print("first stock compare updated" + stockvalue)
 				self.stockcompare=stockvalue
-				self.myqueue.put({"stockvalue":stockvalue})
+				self.qvalchange.put({"stockvalue":stockvalue})
 				PackSelModel.initialupdatestockvalue()
 
 			elif (self.stockcompare!=stockvalue) and (self.stockcompare!="0.00"):
 				print("update stock compare"+ stockvalue)
 				self.stockcompare=stockvalue
-				self.myqueue.put({"stockvalue":stockvalue})
+				self.qvalchange.put({"stockvalue":stockvalue})
 				PackSelModel.updatestockvalue(1,2)
 				print ("stockcompare="+self.stockcompare)
 
 			stockvalue=""
 
+			orderstate=self.qorder.get()
+			print ("state order=" + orderstate)
+			if orderstate=="buy":
+				self.order_buy(driver)
+			elif orderstate=="sell":
+				print("sell now")
 			# print (tempvalue)
 			
 			
@@ -282,5 +288,7 @@ class packselenium():
 		# print("exit program")
 		# exit()
 
-	def order_buy():
+	def order_buy(self,driver):
 		print("order buy now")
+		stockvalue = driver.find_elements_by_xpath(self.xpathreturn("xstockvalue"))[0].text
+		print(stockvalue)
