@@ -26,7 +26,7 @@ class outputlog(tk.Tk):
 						
 						]
 		
-		initinves=tk.StringVar(value="10000")
+		initinvest=tk.StringVar(value="10000")
 		volumestep=tk.StringVar(value="100")
 		profitstep=tk.StringVar(value="2")
 		startvaluerange=tk.StringVar(value="4.06")
@@ -38,10 +38,8 @@ class outputlog(tk.Tk):
 		totalvolumebuy=tk.StringVar(value="000")
 		stockname=tk.StringVar(value="dummy")
 
-
-
 		self.configval={
-			"invest":initinves,
+			"invest":initinvest,
 			"volumestep":volumestep,
 			"profitstep":profitstep,
 			"startvaluerange":startvaluerange,		
@@ -53,13 +51,7 @@ class outputlog(tk.Tk):
 			"totalvolumebuy":totalvolumebuy,
 			"stockname":stockname,
 
-
-
 		}
-
-		
-
-
 
 		self.myvarasso={}
 
@@ -102,17 +94,16 @@ class outputlog(tk.Tk):
 		self.btnLoginRT.grid(row=3,column=1 )
 
 		frameSetValue=tk.Frame(self,background = 'blue')
-		# frameSetValue.grid_propagate(0)
 		frameSetValue.grid(row=2,column=1,sticky="e"+"n"+"s"+"w")      
 
 		labelinitialvalue=tk.Label(frameSetValue, text="Invest")
 		labelinitialvalue.grid(row=1,column=0)
 
-		self.enterInvest=tk.Entry(frameSetValue,textvariable=initinves) #,textvariable=usertxt)
+		self.enterInvest=tk.Entry(frameSetValue,textvariable=initinvest) #,textvariable=usertxt)
 		self.enterInvest.grid(row=1,column=1)
 
 
-		labelinitialvalue=tk.Label(frameSetValue, text="Volumn")
+		labelinitialvalue=tk.Label(frameSetValue, text="Volume")
 		labelinitialvalue.grid(row=2,column=0)
 
 		self.enterVolumn=tk.Entry(frameSetValue,textvariable=volumestep) #,textvariable=usertxt)
@@ -162,11 +153,9 @@ class outputlog(tk.Tk):
 
 
 		self.framePutValue=tk.Frame(self,background = 'yellow')
-		# frameSetValue.grid_propagate(0)
 		self.framePutValue.grid(row=3,column=1,sticky="e"+"n"+"s"+"w")      
 
 		btnBuyCommand=tk.Button(self.framePutValue,text="Buy Now",command=self.buybyvalue, width = 25,height=3)
-		# btnBuyCommand.grid_propagate(0)
 		btnBuyCommand.grid(row=0,column=0)
 
 
@@ -175,16 +164,13 @@ class outputlog(tk.Tk):
 
 
 		self.canvas=tk.Canvas(self,background="black")
-		# self.canvas.grid_propagate(0)
 		self.canvas.grid(row=2,column=0,rowspan=2,sticky="nsew")
 
 
 		self.frameGroupOutput = tk.Frame(self.canvas,background = 'gray')
-		# self.frameGroupOutput.grid_propagate(0)
 		self.frameGroupOutput.grid(row=0,column=0) # start row 2 since text output occupied 2 rows with 0,1.
 
 		self.scrollbarGroupOutPut = tk.Scrollbar(self,orient="vertical", command = self.canvas.yview)
-		# scrollbar.grid_propagate(0)
 		self.scrollbarGroupOutPut.grid(row=2,column=0,rowspan=2,sticky="e"+"n"+"s")
 		# scrollbar.pack(side=tk.RIGHT, fill="y")
 
@@ -210,15 +196,6 @@ class outputlog(tk.Tk):
 			stepfrom=str(rangeData[myrange][2])
 			# print (self.rangeData[myrange][0])
 			optionList.append("Plan" + myrange +" "+ startfrom+"-"+stopfrom + " step " +stepfrom)
-		# print (optionlist)
-		# optionList = ["Plan A 0-2 step 0.01",
-		# 							"Plan B 2-4.98 step ",
-		# 							"Plan C",
-		# 							]
-
-		# print ("hello this is menu")
-		# print (optionList)
-		# exit()
 
 		self.rangeplanVar=tk.StringVar()
 		self.rangeplanVar.set("Select range plan") # default choice
@@ -232,12 +209,6 @@ class outputlog(tk.Tk):
 		self.btnLoad=tk.Button(frameSetValue,text="Load",command=self.executeLoad)
 		self.btnLoad.grid(row=0,column=1,sticky="w",padx=self.btnSave.winfo_width())
 
-
-
-
-
-
-		
 
 		self.update_idletasks()
 		# self.mycount = 0
@@ -266,6 +237,7 @@ class outputlog(tk.Tk):
 		
 		runvalue=round(float(valuebuy),2)
 		priceaccume=0
+		volumeaccume=0
 		while (runvalue<=stopvaluerange):
 
 			runvalue=round(runvalue,2)
@@ -279,6 +251,7 @@ class outputlog(tk.Tk):
 				runvalue=stval
 				# print(self.myvarasso[runvalue])
 				priceaccumestep= float(self.myvarasso[runvalue]["price"].get())
+				volumeaccumestep= float(self.myvarasso[runvalue]["volumn"].get())
 
 				print (runvalue+" need price = " + str(priceaccumestep))
 				
@@ -299,6 +272,7 @@ class outputlog(tk.Tk):
 
 
 				priceaccume+=priceaccumestep
+				volumeaccume+=volumeaccumestep
 				
 			else:
 				# print(self.myvarasso[str(runvalue)])
@@ -318,9 +292,11 @@ class outputlog(tk.Tk):
 				self.labeldisplay[lblvalue]["profit"].configure(fg='black',background='green')	
 
 				priceaccumestep=float(self.myvarasso[lblvalue]["price"].get())
+				volumeaccumestep= float(self.myvarasso[lblvalue]["volumn"].get())
+
 				print (str(runvalue) +" need price = " + str(priceaccumestep))
 				priceaccume+=priceaccumestep
-
+				volumeaccume+=volumeaccumestep
 
 			runvalue+=commonstep
 			runvalue=round(runvalue,2)
@@ -338,9 +314,11 @@ class outputlog(tk.Tk):
 
 		print ("Total price to buy =" +str(priceaccume))
 		self.configval["totalcostbuy"].set(priceaccume)
+		self.configval["totalvolumebuy"].set(volumeaccume)
 		self.txtout("Set Value to buy =" + valuebuy)
 		self.txtout("Set Value End to buy = " + str(stopvaluerange))
 		self.txtout("Set total price to pay = " + str(priceaccume))
+		self.txtout("Set total volume to pay = " + str(volumeaccume))
 
 	def buybyvalue(self):
 		print("Buy set value")
