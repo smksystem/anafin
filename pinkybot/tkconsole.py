@@ -26,29 +26,31 @@ class outputlog(tk.Tk):
 						
 						]
 		
-		investtxt=tk.StringVar(value="10000")
-		volumntxt=tk.StringVar(value="1000")
-		profitsteptxt=tk.StringVar(value="2")
-		startvaluerangetxt=tk.StringVar(value="4.06")
-		startvaluebuytxt=tk.StringVar(value="0.00")
-		startvolumnbuy=tk.StringVar(value="0")
-		stopvaluerangetxt=tk.StringVar(value="0.00")
+		initinves=tk.StringVar(value="10000")
+		volumestep=tk.StringVar(value="100")
+		profitstep=tk.StringVar(value="2")
+		startvaluerange=tk.StringVar(value="4.06")
+		startvaluebuy=tk.StringVar(value="0.00")
+		startvolumebuy=tk.StringVar(value="0")
+		stopvaluerange=tk.StringVar(value="0.00")
 		commonstep=tk.StringVar(value="0.00")
 		totalcostbuy=tk.StringVar(value="0000000000")
+		totalvolumebuy=tk.StringVar(value="000")
 		stockname=tk.StringVar(value="dummy")
 
 
 
 		self.configval={
-			"invest":investtxt,
-			"volumnstep":volumntxt,
-			"profitstep":profitsteptxt,
-			"startvaluerangetxt":startvaluerangetxt,		
+			"invest":initinves,
+			"volumestep":volumestep,
+			"profitstep":profitstep,
+			"startvaluerange":startvaluerange,		
 			"commonstep":commonstep,
-			"startvaluebuy":startvaluebuytxt,
-			"startvolumnbuy":startvolumnbuy,
-			"stopvaluerangetxt":stopvaluerangetxt,
+			"startvaluebuy":startvaluebuy,
+			"startvolumebuy":startvolumebuy,
+			"stopvaluerange":stopvaluerange,
 			"totalcostbuy":totalcostbuy,
+			"totalvolumebuy":totalvolumebuy,
 			"stockname":stockname,
 
 
@@ -106,27 +108,27 @@ class outputlog(tk.Tk):
 		labelinitialvalue=tk.Label(frameSetValue, text="Invest")
 		labelinitialvalue.grid(row=1,column=0)
 
-		self.enterInvest=tk.Entry(frameSetValue,textvariable=investtxt) #,textvariable=usertxt)
+		self.enterInvest=tk.Entry(frameSetValue,textvariable=initinves) #,textvariable=usertxt)
 		self.enterInvest.grid(row=1,column=1)
 
 
 		labelinitialvalue=tk.Label(frameSetValue, text="Volumn")
 		labelinitialvalue.grid(row=2,column=0)
 
-		self.enterVolumn=tk.Entry(frameSetValue,textvariable=volumntxt) #,textvariable=usertxt)
+		self.enterVolumn=tk.Entry(frameSetValue,textvariable=volumestep) #,textvariable=usertxt)
 		self.enterVolumn.grid(row=2,column=1)
 
 		labelinitialvalue=tk.Label(frameSetValue, text="Profit Step")
 		labelinitialvalue.grid(row=3,column=0)
 
-		self.enterVolumn=tk.Entry(frameSetValue,textvariable=profitsteptxt) 
+		self.enterVolumn=tk.Entry(frameSetValue,textvariable=profitstep) 
 		self.enterVolumn.grid(row=3,column=1)
 
 
 		labelinitialvalue=tk.Label(frameSetValue, text="StartValueRange")
 		labelinitialvalue.grid(row=4,column=0)
 
-		self.enterVolumn=tk.Entry(frameSetValue,textvariable=startvaluerangetxt) 
+		self.enterVolumn=tk.Entry(frameSetValue,textvariable=startvaluerange) 
 		self.enterVolumn.grid(row=4,column=1)
 
 
@@ -136,7 +138,7 @@ class outputlog(tk.Tk):
 		labelvaluebuy=tk.Label(frameSetValue, text="StartValueBuy")
 		labelvaluebuy.grid(row=6,column=0)
 
-		self.entervaluebuy=tk.Entry(frameSetValue,textvariable=startvaluebuytxt) 
+		self.entervaluebuy=tk.Entry(frameSetValue,textvariable=startvaluebuy) 
 		self.entervaluebuy.grid(row=6,column=1)
 
 		self.btnStartvaluebuy=tk.Button(frameSetValue,text="Set Value Buy",command=self.setvaluebuy)
@@ -148,6 +150,12 @@ class outputlog(tk.Tk):
 		labelvaluebuy=tk.Label(frameSetValue, textvariable=totalcostbuy)
 		labelvaluebuy.grid(row=7,column=0,sticky="e")
 
+
+		labelvalumebuy=tk.Label(frameSetValue, text="Volume:")
+		labelvalumebuy.grid(row=8,column=0,sticky="w")
+
+		labelvalumebuy=tk.Label(frameSetValue, textvariable=totalvolumebuy)
+		labelvalumebuy.grid(row=8,column=0,sticky="e")
 
 
 
@@ -251,8 +259,8 @@ class outputlog(tk.Tk):
 	
 
 
-		# print (self.configval["stopvaluerangetxt"].get())
-		stopvaluerange=float(self.configval["stopvaluerangetxt"].get())
+		# print (self.configval["stopvaluerange"].get())
+		stopvaluerange=float(self.configval["stopvaluerange"].get())
 		# print (self.configval["commonstep"].get())
 		commonstep=float(self.configval["commonstep"].get())
 		
@@ -353,9 +361,9 @@ class outputlog(tk.Tk):
 		# 	i+=1
 
 
-		startvaluerange=float(self.configval["startvaluerangetxt"].get())
+		startvaluerange=float(self.configval["startvaluerange"].get())
 		invest=int(self.configval["invest"].get())
-		volumnstep=int(self.configval["volumnstep"].get())
+		volumestep=int(self.configval["volumestep"].get())
 		profitstep=int(self.configval["profitstep"].get())
 		commonvaluestep=float(self.configval["commonstep"].get())
 
@@ -383,11 +391,11 @@ class outputlog(tk.Tk):
 				
 
 				print("run value range = " + str(runvaluerange))
-				stcost=str(round((runvaluerange*volumnstep),2))
+				stcost=str(round((runvaluerange*volumestep),2))
 
 
 				print ("remain invest = " +  str(runinvest))
-				if runinvest > (runvaluerange*volumnstep):
+				if runinvest > (runvaluerange*volumestep):
 
 					chkpad=str(runvaluerange).split(".")
 
@@ -409,7 +417,7 @@ class outputlog(tk.Tk):
 					self.labeldisplay[valuelabel]["targetvalue"].configure(background="white")
 					self.labeldisplay[valuelabel]["profit"].configure(background="white")
 
-					self.myvarasso[valuelabel]["volumn"].set(volumnstep)
+					self.myvarasso[valuelabel]["volumn"].set(volumestep)
 
 					self.myvarasso[valuelabel]["price"].set(stcost)
 
@@ -417,7 +425,7 @@ class outputlog(tk.Tk):
 					# print ("target value="+str(target))
 					# exit()
 					self.myvarasso[valuelabel]["targetvalue"].set(target)
-					runinvest -=(runvaluerange*volumnstep)
+					runinvest -=(runvaluerange*volumestep)
 					stopvaluerange=runvaluerange
 					# invest=remaininvest
 				else:
@@ -431,7 +439,7 @@ class outputlog(tk.Tk):
 				# runvaluerange+=commonvaluestep
 		print ("remain invest = "+ str(runinvest))
 		print ("stopvaluerange at = " + str(stopvaluerange))
-		self.configval["stopvaluerangetxt"].set(stopvaluerange)
+		self.configval["stopvaluerange"].set(stopvaluerange)
 		# exit()
 
 		self.canvas.yview_moveto(0.01)
@@ -439,7 +447,7 @@ class outputlog(tk.Tk):
 
 
 		self.txtout("Set Invest = " +str(invest),"yellow","gray")
-		self.txtout("Set Step Volumn = " +str(volumnstep))
+		self.txtout("Set Step Volumn = " +str(volumestep))
 		self.txtout("Set Step Common Value = " +str(commonvaluestep))
 		self.txtout("Remain Range Invest =" +str(runinvest),"orange","green")
 		

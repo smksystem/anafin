@@ -310,7 +310,7 @@ class packselenium():
 			elem = driver.find_element_by_xpath(self.xpathreturn("xstockvolumnorder"))
 			elem.clear()
 			# put user in key
-			elem.send_keys(orderparams["startvolumn"]) 
+			elem.send_keys(orderparams["startvolume"]) 
 
 			elem = driver.find_element_by_xpath(self.xpathreturn("xstockvalueorder"))
 			elem.clear()
