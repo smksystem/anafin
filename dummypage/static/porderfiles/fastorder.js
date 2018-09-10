@@ -1,14 +1,19 @@
 var TAB_KEY_CODE = 9;
 var ENTER_KEY_CODE = 13;
 function initStreamingLite() {
+
+	// alert(1);
 	updateAccList();
 	bindUi();
+
 	initLayout();
+	
 	initData();
-	fixIE();
-	stampStat();
+	// fixIE();
+	// stampStat();
 }
 function updateAccList() {
+	// alert(1);
 	var user = Session.user;
 	var accs = user.accsEq.concat(user.accsDeriv);
 	var i = 0;
@@ -66,24 +71,24 @@ function initMenuLayout() {
 function initData() {
 	var user = Session.user;
 	if(!user.isMkt()) {
-		AccCredDisplay.refresh();
-		OrderDisplay.refresh();
-		PortDisplay.refresh();
+		// AccCredDisplay.refresh();
+		// OrderDisplay.refresh();
+		// PortDisplay.refresh();
 		if(Config.Platform.isEq && Config.Host.current == Account.SYSTEM_DERIV) {
-			AccDisplayInv.loadAccEqList();
+			// AccDisplayInv.loadAccEqList();
 		}
 	}
-	MktSumDisplay.refreshData();
+	// MktSumDisplay.refreshData();
 	if(Global.requestQuoteSym && MenuDisplay.current==MenuDisplay.Home) {
-		InstQuoteDisplay.submitSymbol(Global.requestQuoteSym);
+		// InstQuoteDisplay.submitSymbol(Global.requestQuoteSym);
 	}
 	if(Global.requestPlaceSym && Global.requestPlaceSys) {
 		if(Global.requestPlaceSys == 'E') {
-			PlaceDisplayEq.setSymbol(Global.requestPlaceSym);
-			PlaceDisplayEq.setSide(Global.requestSide);
+			// PlaceDisplayEq.setSymbol(Global.requestPlaceSym);
+			// PlaceDisplayEq.setSide(Global.requestSide);
 		} else if(Global.requestPlaceSys == 'D') {
-			PlaceDisplayDeriv.setSymbol(Global.requestPlaceSym);
-			PlaceDisplayDeriv.setSide(Global.requestSide);
+			// PlaceDisplayDeriv.setSymbol(Global.requestPlaceSym);
+			// PlaceDisplayDeriv.setSide(Global.requestSide);
 		}
 	}
 }
@@ -1833,6 +1838,7 @@ PlaceDisplayDeriv.bindUi = function() {
 		return false;
 	});
 	$('#placeDeriv .submitBtn').click(function() {
+		alert(1);
 		var acc = AccDisplay.currentAcc();
 		var form = $('#placeDerivForm')[0];
 		PlaceDisplayDeriv.place(acc, form);
@@ -1944,6 +1950,7 @@ PlaceDisplayDeriv.confirm = function(form) {
 				(pbVol!=""? "P/B Volume :  " + pbVol + "\n" : "") +
 				"\n" +
 				"(Commision and VAT not included)";
+	// alert(2)
 	return confirm(confirmData);
 };
 PlaceDisplayDeriv.getPin = function() {
@@ -2117,10 +2124,13 @@ PlaceDisplayDeriv.visible = function(visible) {
 function PlaceDisplayEq() {}
 PlaceDisplayEq.isProcessing = false;
 PlaceDisplayEq.bindUi = function() {
+
+
 	$('#placeEqForm').submit(function() {
 		return false;
 	});
 	$('#placeEq .submitBtn').click(function() {
+		// alert(1);
 		var acc = AccDisplay.currentAcc();
 		var form = $('#placeEqForm')[0];
 		PlaceDisplayEq.place(acc, form);
@@ -2225,7 +2235,7 @@ PlaceDisplayEq.cancel = function(acc, orders, pin) {
 	var listener = new ConnListener();
 	var conn = new S4BuySellConnEq(listener);
 	listener.success = function(conn, data) {
-		PlaceDisplayEq.handleCancel(acc, data);
+		// PlaceDisplayEq.handleCancel(acc, data);
 		PlaceDisplayEq.status('');
 	};
 	listener.fail = function(conn, data) {
@@ -2361,6 +2371,11 @@ PlaceDisplayEq.onChangeValidity = function(value) {
 		$(form.txtPublishVol).removeClass('is-disabled');	//fix-ie.css
 	}
 };
+
+////////////////////////////////////////////////////
+// this function to make sell or buy confirm diaglog
+///////////////////////////////////////////////////
+
 PlaceDisplayEq.place = function(acc, form) {
 	if(this.isProcessing) {
 		alert('You can not place order twice in the same time');
@@ -2375,16 +2390,16 @@ PlaceDisplayEq.place = function(acc, form) {
 			listener.success = function(conn, data) {
 				PlaceDisplayEq.status('');
 				PlaceDisplayEq.isProcessing = false;
-				PlaceDisplayEq.handlePlace(conn, data, acc, order, pin);
+				// PlaceDisplayEq.handlePlace(conn, data, acc, order, pin);
 			};
 			listener.fail = function(conn, data) {
 				PlaceDisplayEq.status('');
 				PlaceDisplayEq.isProcessing = false;
-				alert("Cannot connect to server");
+				// alert("Cannot connect to server");
 			};
 			this.isProcessing = true;
-			conn.place(acc, order, pin, false);
-			this.status("Fetching Data...");
+			// conn.place(acc, order, pin, false);
+			// this.status("Fetching Data...");
 			this.resetForm();
 		}
 	}
@@ -2578,7 +2593,7 @@ PortDisplayDeriv.refreshData = function(acc) {
 	var conn = new S4PortConnDeriv(listener);
 	listener.success = function(conn, data) {
 		PortDisplayDeriv.handlePortSum(acc, data);
-		PlaceDisplay.status(acc.system, '');
+		// PlaceDisplay.status(acc.system, '');
 	};
 	listener.fail = function(conn, data) {
 		alert("Cannot connect to server");
