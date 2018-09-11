@@ -1653,6 +1653,7 @@ OrderDisplayEq.cancelChecked = function() {
 	}
 };
 OrderDisplayEq.onConfirmCancel = function(ok) {
+	alert(1);
 	if(ok) {
 		var pin = ConfirmCancelDialog.getPin();
 		PlaceDisplayEq.resetForm();
@@ -1985,13 +1986,18 @@ PlaceDisplayDeriv.onConfirmCancel = function(ok) {
 	}
 	PlaceDisplayDeriv.checkedOrders = undefined;
 };
+
+
+
+
 PlaceDisplayDeriv.place = function(acc, form) {
 	// for check place order 2 times
-	if(PlaceDisplayDeriv.isProcessing){
-		alert('You can not place order twice in the same time');
-		return false;
-	}
+	// if(PlaceDisplayDeriv.isProcessing){
+	// 	alert('You can not place order twice in the same time');
+	// 	return false;
+	// }
 	if(this.validate(acc, form)) {
+		alert("click ok");
 		if(this.confirm(form)) {
 			var order = this.serializeForm(form);
 			var pin = form.pin.value;
@@ -2130,7 +2136,9 @@ PlaceDisplayEq.bindUi = function() {
 		return false;
 	});
 	$('#placeEq .submitBtn').click(function() {
-		// alert(1);
+		
+		// alert("Hi");
+
 		var acc = AccDisplay.currentAcc();
 		var form = $('#placeEqForm')[0];
 		PlaceDisplayEq.place(acc, form);
@@ -2377,12 +2385,16 @@ PlaceDisplayEq.onChangeValidity = function(value) {
 ///////////////////////////////////////////////////
 
 PlaceDisplayEq.place = function(acc, form) {
-	if(this.isProcessing) {
-		alert('You can not place order twice in the same time');
-		return;
-	}
+	// if(this.isProcessing) {
+	// 	alert('You can not place order twice in the same time');
+	// 	return;
+	// }
+	// alert("click ok");
 	if(this.validate(acc, form)) {
 		if(this.confirm(form)) {
+
+			// alert("click ok to me");
+			console.log(data);
 			var order = this.serializeForm(form);
 			var pin = form.txtPIN_new.value;
 			var listener = new ConnListener();
