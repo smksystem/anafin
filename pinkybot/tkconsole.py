@@ -37,7 +37,7 @@ class outputlog(tk.Tk):
 		totalcostbuy=tk.StringVar(value="0000000000")
 		totalvolumebuy=tk.StringVar(value="000")
 		stockname=tk.StringVar(value="dummy")
-
+		stockpin=tk.StringVar(value="3333")
 		self.configval={
 			"invest":initinvest,
 			"volumestep":volumestep,
@@ -50,6 +50,7 @@ class outputlog(tk.Tk):
 			"totalcostbuy":totalcostbuy,
 			"totalvolumebuy":totalvolumebuy,
 			"stockname":stockname,
+			"stockpin":stockpin,
 
 		}
 
@@ -90,8 +91,16 @@ class outputlog(tk.Tk):
 		self.enterpassword=tk.Entry(self.frameLoginRT,show="*",textvariable=passtxt)
 		self.enterpassword.grid(row=2,column=1)
 
+		labelpinpassword=tk.Label(self.frameLoginRT, text="PIN")
+		labelpinpassword.grid(row=3,column=0)
+		enterpin=tk.Entry(self.frameLoginRT,show="*",textvariable=stockpin)
+		enterpin.grid(row=3,column=1)
+
+
+
+
 		self.btnLoginRT=tk.Button(self.frameLoginRT,text="Start Login RT",command=self.executeLogin)
-		self.btnLoginRT.grid(row=3,column=1 )
+		self.btnLoginRT.grid(row=3,column=2 )
 
 		frameSetValue=tk.Frame(self,background = 'blue')
 		frameSetValue.grid(row=2,column=1,sticky="e"+"n"+"s"+"w")      

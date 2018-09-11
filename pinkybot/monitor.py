@@ -28,6 +28,7 @@ class pinkybot(packselenium):
                     "stockname":configparams["stockname"].get(),
                     "startvalue":configparams["startvaluebuy"].get(),
                     "startvolume":configparams["totalvolumebuy"].get(),
+                    "stockpin": configparams["stockpin"].get(),
 
             }
             print ("Start:buy buy buy buy buy")
