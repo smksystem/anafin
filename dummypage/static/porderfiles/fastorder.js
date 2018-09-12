@@ -254,7 +254,7 @@ AccDisplayInv.loadAccEqList = function() {
 		accDisplay.handleAccEqList(data);
 	};
 	listener.fail = function(conn, data) {
-		alert("Cannot connect to server");
+		alert("AccDisplayInv load acc EqList Cannot connect to server");
 	};
 	conn.reqAcc(acc);
 };
@@ -435,7 +435,7 @@ AccCredDisplayDeriv.refreshData = function(acc) {
 	};
 	listener.fail = function(conn, data) {
 		PlaceDisplay.status(acc.system, '');
-		alert("Cannot connect to server");
+		alert("AccCreaditDisplayDeriv refresh Cannot connect to server");
 	};
 	conn.reqAcc(acc);
 	PlaceDisplay.status(acc.system, "Fetching Data...");
@@ -521,7 +521,7 @@ AccCredDisplayEq.refreshData = function(acc) {
 	};
 	listener.fail = function(conn, data) {
 		PlaceDisplay.status(acc.system, '');
-		alert("Cannot connect to server");
+		alert("AccCredDisplayEq.refreshData Cannot connect to server");
 	};
 	conn.reqAcc(acc);
 
@@ -1441,9 +1441,10 @@ OrderDisplay.fitBottomScreen = function() {
 	OrderDisplay.setHeight(orderH);
 };
 OrderDisplay.refresh = function() {
-	var acc = AccDisplay.currentAcc();
-	this.refreshDisplay(acc.system);
-	this.refreshData(acc);
+	// alert("order display");
+	// var acc = AccDisplay.currentAcc();
+	// this.refreshDisplay(acc.system);
+	// this.refreshData(acc);
 };
 OrderDisplay.refreshDisplay = function(system) {
 	OrderDisplay.fitBottomScreen();
@@ -1570,7 +1571,7 @@ OrderDisplayDeriv.refreshData = function(acc) {
 		PlaceDisplay.status(acc.system, '');
 	};
 	listener.fail = function(conn, data) {
-		alert("Cannot connect to server");
+		alert("OrderDisplayDeriv.refreshData Cannot connect to server");
 		PlaceDisplay.status(acc.system, '');
 	};
 	conn.reqOrder(acc);
@@ -1748,7 +1749,7 @@ OrderDisplayEq.refreshData = function(acc) {
 		PlaceDisplay.status(acc.system, '');
 	};
 	listener.fail = function(conn, data) {
-		alert("Cannot connect to server");
+		alert("OrderDisplayEq.refreshData Cannot connect to server");
 		PlaceDisplay.status(acc.system, '');
 	};
 	conn.reqOrder(acc);
@@ -1872,7 +1873,8 @@ PlaceDisplayDeriv.bindUi = function() {
 		}
 	});*/
 	$('#placeDeriv .refreshBtn').click(function() {
-		AccCredDisplay.refresh();
+		
+		// AccCredDisplay.refresh();
 		OrderDisplay.refresh();
 		PortDisplay.refresh();
 		InstQuoteDisplay.refreshData();
@@ -2010,7 +2012,7 @@ PlaceDisplayDeriv.place = function(acc, form) {
 			};
 			listener.fail = function(conn, data) {
 				PlaceDisplayDeriv.isProcessing = false;
-				alert("Cannot connect to server");
+				alert("PlaceDisplayDeriv.place Cannot connect to server");
 				PlaceDisplayDeriv.status('');
 			};
 			conn.place(acc, order, pin, false);
@@ -2137,7 +2139,7 @@ PlaceDisplayEq.bindUi = function() {
 	});
 	$('#placeEq .submitBtn').click(function() {
 		
-		// alert("Hi");
+		// alert("Hi this is ok click btn");
 
 		var acc = AccDisplay.currentAcc();
 		var form = $('#placeEqForm')[0];
@@ -2185,9 +2187,10 @@ PlaceDisplayEq.bindUi = function() {
 		OrderDisplayEq.gotoSelectedDetail();
 	});
 	$('#placeEq .refreshBtn').click(function() {
-		AccCredDisplay.refresh();
-		OrderDisplay.refresh();
-		PortDisplay.refresh();
+		// alert("refresh btn")
+		// AccCredDisplay.refresh();
+		// OrderDisplay.refresh();
+		// PortDisplay.refresh();
 		InstQuoteDisplay.refreshData();
 		MktSumDisplay.refreshData();
 	});
@@ -2393,12 +2396,16 @@ PlaceDisplayEq.place = function(acc, form) {
 	if(this.validate(acc, form)) {
 		if(this.confirm(form)) {
 
-			// alert("click ok to me");
-			console.log(data);
+			// alert("Hi click ok to me");
+			
 			var order = this.serializeForm(form);
 			var pin = form.txtPIN_new.value;
 			var listener = new ConnListener();
 			var conn = new S4BuySellConnEq(listener);
+			
+			console.log(order);
+
+
 			listener.success = function(conn, data) {
 				PlaceDisplayEq.status('');
 				PlaceDisplayEq.isProcessing = false;
@@ -2608,7 +2615,7 @@ PortDisplayDeriv.refreshData = function(acc) {
 		// PlaceDisplay.status(acc.system, '');
 	};
 	listener.fail = function(conn, data) {
-		alert("Cannot connect to server");
+		alert("PortDisplayDeriv.refreshData Cannot connect to server");
 		PlaceDisplay.status(acc.system, '');
 	};
 	conn.reqPort(acc);
@@ -2690,7 +2697,7 @@ PortDisplayEq.refreshData = function(acc) {
 		PlaceDisplay.status(acc.system, '');
 	};
 	listener.fail = function(conn, data) {
-		alert("Cannot connect to server");
+		alert("PortDisplayEq.refreshData Cannot data Cannot connect to server");
 		PlaceDisplay.status(acc.system, '');
 	};
 	conn.reqPort(acc);
