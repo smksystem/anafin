@@ -1580,6 +1580,7 @@ OrderDisplayDeriv.refreshData = function(acc) {
 OrderDisplayDeriv.replace = function(acc, orders) {
 	$('#orderDeriv .checkAll').removeAttr('checked');
 	var tr = "";
+	alert(orders.side);
 	for(var i=0;i<orders.length;i++) {
 		var order = orders[i];
 		tr += "<tr class='" + (order.side=="Long"?"b":"s") + "'>";
@@ -1720,6 +1721,7 @@ OrderDisplayEq.onCheckCancelAll = function(checked) {
 };
 OrderDisplayEq.onMouse = function(e) {
 	//var class = $(this).attr('class');
+	// alert("OrderDisplayEq.onMouse");
 	if (e.type == 'mouseover') {
 		//$(this).attr('class', class + 'hover');
 		$(this).addClass('hover');
@@ -1758,7 +1760,10 @@ OrderDisplayEq.refreshData = function(acc) {
 OrderDisplayEq.replace = function(acc, orders) {
 	$('#orderHeadEq .checkAll').removeAttr('checked');
 	var tr = "";
+	alert("OrderDisplayEq.replace");
+	alert(orders.lenght);
 	for(var i=0;i<orders.length;i++) {
+		alert("loop length");
 		var order = orders[i];
 		tr += "<tr class='" + (order.side=="B"?"b":"s") + "'>";
 		tr += "<td class='cancelBox'>" + (order.canCancelled?"<input type='checkbox' value='" + i + "' />":"&nbsp;") + "</td>";
@@ -1774,6 +1779,7 @@ OrderDisplayEq.replace = function(acc, orders) {
 		tr += "<td class='status'>" + order.status + "</td>";
 		tr += "</tr>";
 	}
+	alert(tr);
 	$('table#orderBodyEq').html(tr);
 };
 OrderDisplayEq.styleOrders = function() {
@@ -2139,9 +2145,10 @@ PlaceDisplayEq.bindUi = function() {
 	});
 	$('#placeEq .submitBtn').click(function() {
 		
-		// alert("Hi this is ok click btn");
+		alert("Hi this is ok click btn");
 
 		var acc = AccDisplay.currentAcc();
+		console.log("hello");
 		var form = $('#placeEqForm')[0];
 		PlaceDisplayEq.place(acc, form);
 		return false;
@@ -2187,7 +2194,19 @@ PlaceDisplayEq.bindUi = function() {
 		OrderDisplayEq.gotoSelectedDetail();
 	});
 	$('#placeEq .refreshBtn').click(function() {
-		// alert("refresh btn")
+		alert("refreshBtn")
+		OrderDisplayEq.clear();
+
+
+		acc="1";
+		var orders={
+			"side":"s",
+			"canCancelled":1,
+			"length":12
+		};
+		OrderDisplayEq.replace(acc,orders);
+		// OrderDisplayEq.clear();
+
 		// AccCredDisplay.refresh();
 		// OrderDisplay.refresh();
 		// PortDisplay.refresh();
