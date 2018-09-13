@@ -2205,6 +2205,8 @@ PlaceDisplayEq.bindUi = function() {
 			canCancelled:"1",
 			orderNo:"12"
 		};
+		var orders = [{id: 2}, {id: 1}, {id: 0}];
+
 		OrderDisplayEq.replace(acc,orders);
 		// OrderDisplayEq.clear();
 
