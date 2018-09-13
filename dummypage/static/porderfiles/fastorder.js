@@ -2198,27 +2198,31 @@ PlaceDisplayEq.bindUi = function() {
 		// alert("refreshBtn")
 		acc="1";
 	
-		var orders = [
-		{
-			side: "B",
-			canCancelled:1,
-			orderNo:"123",
-			symbol:"WHA",
-			nvdrFlag:"",
-			time:"00:00:00",
-			price:"4.02",
-			vol:"1000",
-			matchedVol:"0",
-			balanceVol:"0",
-			cancelledVol:"0",
-			status:"Pending(S)"
 
-		}, 
-		{
-			side: "S"
-		},
-		PlaceDisplayEq.myorder
-		];
+		var orders=PlaceDisplayEq.myorder;
+
+
+		// var orders = [
+		// {
+		// 	side: "B",
+		// 	canCancelled:1,
+		// 	orderNo:"123",
+		// 	symbol:"WHA",
+		// 	nvdrFlag:"",
+		// 	time:"00:00:00",
+		// 	price:"4.02",
+		// 	vol:"1000",
+		// 	matchedVol:"0",
+		// 	balanceVol:"0",
+		// 	cancelledVol:"0",
+		// 	status:"Pending(S)"
+
+		// }, 
+		// {
+		// 	side: "S"
+		// },
+		// PlaceDisplayEq.myorder
+		// ];
 
 		OrderDisplayEq.replace(acc,orders);
 		// OrderDisplayEq.clear();
@@ -2421,7 +2425,7 @@ PlaceDisplayEq.onChangeValidity = function(value) {
 ////////////////////////////////////////////////////
 // this function to make sell or buy confirm diaglog
 ///////////////////////////////////////////////////
-
+PlaceDisplayEq.myorder=[];
 PlaceDisplayEq.place = function(acc, form) {
 	// if(this.isProcessing) {
 	// 	alert('You can not place order twice in the same time');
@@ -2473,13 +2477,14 @@ PlaceDisplayEq.place = function(acc, form) {
 			order["balanceVol"]="0";
 			order["cancelledVol"]="0";	
 
-			// PlaceDisplayEq.myorder=[];
-			PlaceDisplayEq.myorder=PlaceDisplayEq.myorder+","+order;
-
+			
+			PlaceDisplayEq.myorder.unshift(order);
+			var orders=PlaceDisplayEq.myorder;
 			var acc="1";
-			var orders=[{side:"S"},
-			order
-			];
+
+			// var orders=[{side:"S"},
+			// order
+			// ];
 			OrderDisplayEq.replace(acc,orders);
 
 
