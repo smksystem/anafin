@@ -2195,17 +2195,25 @@ PlaceDisplayEq.bindUi = function() {
 		OrderDisplayEq.gotoSelectedDetail();
 	});
 	$('#placeEq .refreshBtn').click(function() {
-		alert("refreshBtn")
-		OrderDisplayEq.clear();
-
-
+		// alert("refreshBtn")
 		acc="1";
-		var orders={
-			side:"s",
-			canCancelled:"1",
-			orderNo:"12"
-		};
-		var orders = [{id: 2}, {id: 1}, {id: 0}];
+	
+		var orders = [
+		{
+			side: "B",
+			canCancelled:1,
+			orderNo:"123",
+			symbol:"WHA",
+			nvdrFlag:"",
+			time:"00:00:00",
+			price:"4.02",
+			vol:"1000",
+			matchedVol:"0",
+			balanceVol:"0",
+			cancelledVol:"0",
+			status:"Pending(S)"
+
+		}, {id: 1}, {id: 0}];
 
 		OrderDisplayEq.replace(acc,orders);
 		// OrderDisplayEq.clear();
@@ -2213,8 +2221,8 @@ PlaceDisplayEq.bindUi = function() {
 		// AccCredDisplay.refresh();
 		// OrderDisplay.refresh();
 		// PortDisplay.refresh();
-		InstQuoteDisplay.refreshData();
-		MktSumDisplay.refreshData();
+		// InstQuoteDisplay.refreshData();
+		// MktSumDisplay.refreshData();
 	});
 	$('#placeEq .cancelBtn').click(function() {
 		OrderDisplayEq.cancelChecked();
