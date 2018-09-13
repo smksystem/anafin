@@ -1761,7 +1761,8 @@ OrderDisplayEq.replace = function(acc, orders) {
 	$('#orderHeadEq .checkAll').removeAttr('checked');
 	var tr = "";
 	alert("OrderDisplayEq.replace");
-	alert(orders.lenght);
+	alert(orders.length);
+	alert(orders.canCancelled);
 	for(var i=0;i<orders.length;i++) {
 		alert("loop length");
 		var order = orders[i];
@@ -2200,9 +2201,9 @@ PlaceDisplayEq.bindUi = function() {
 
 		acc="1";
 		var orders={
-			"side":"s",
-			"canCancelled":1,
-			"length":12
+			side:"s",
+			canCancelled:"1",
+			orderNo:"12"
 		};
 		OrderDisplayEq.replace(acc,orders);
 		// OrderDisplayEq.clear();
