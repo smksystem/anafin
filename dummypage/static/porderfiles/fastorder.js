@@ -1760,11 +1760,11 @@ OrderDisplayEq.refreshData = function(acc) {
 OrderDisplayEq.replace = function(acc, orders) {
 	$('#orderHeadEq .checkAll').removeAttr('checked');
 	var tr = "";
-	alert("OrderDisplayEq.replace");
-	alert(orders.length);
-	alert(orders.canCancelled);
+	// alert("OrderDisplayEq.replace");
+	// alert(orders.length);
+	// alert(orders.canCancelled);
 	for(var i=0;i<orders.length;i++) {
-		alert("loop length");
+		// alert("loop length");
 		var order = orders[i];
 		tr += "<tr class='" + (order.side=="B"?"b":"s") + "'>";
 		tr += "<td class='cancelBox'>" + (order.canCancelled?"<input type='checkbox' value='" + i + "' />":"&nbsp;") + "</td>";
@@ -1780,7 +1780,7 @@ OrderDisplayEq.replace = function(acc, orders) {
 		tr += "<td class='status'>" + order.status + "</td>";
 		tr += "</tr>";
 	}
-	alert(tr);
+	// alert(tr);
 	$('table#orderBodyEq').html(tr);
 };
 OrderDisplayEq.styleOrders = function() {
@@ -2149,7 +2149,7 @@ PlaceDisplayEq.bindUi = function() {
 		alert("Hi this is ok click btn");
 
 		var acc = AccDisplay.currentAcc();
-		console.log("hello");
+		// console.log("hello");
 		var form = $('#placeEqForm')[0];
 		PlaceDisplayEq.place(acc, form);
 		return false;
@@ -2213,7 +2213,12 @@ PlaceDisplayEq.bindUi = function() {
 			cancelledVol:"0",
 			status:"Pending(S)"
 
-		}, {id: 1}, {id: 0}];
+		}, 
+		{
+			side: "S"
+		},
+		PlaceDisplayEq.myorder
+		];
 
 		OrderDisplayEq.replace(acc,orders);
 		// OrderDisplayEq.clear();
@@ -2432,8 +2437,10 @@ PlaceDisplayEq.place = function(acc, form) {
 			var pin = form.txtPIN_new.value;
 			var listener = new ConnListener();
 			var conn = new S4BuySellConnEq(listener);
-			
-			console.log(order);
+
+			// console.dir(order);
+			// alert(order.symbol);
+
 
 
 			listener.success = function(conn, data) {
@@ -2447,6 +2454,36 @@ PlaceDisplayEq.place = function(acc, form) {
 				// alert("Cannot connect to server");
 			};
 			this.isProcessing = true;
+
+
+			//my own modified
+
+			var dt = new Date();
+			hh=dt.getHours();
+			mm=dt.getMinutes();
+			ss=dt.getSeconds();
+    		var currentTime = ( hh < 10 ? "0" : "" ) + hh  + ( mm < 10 ? ":0" : ":" ) + mm + ( ss < 10 ? ":0" : ":" ) + ss;
+
+
+			order["time"]=currentTime;
+			order["orderNo"]="12345";
+			order["nvdrFlag"]="";
+			order["status"]="Pending(S)";
+			order["matchedVol"]="0";
+			order["balanceVol"]="0";
+			order["cancelledVol"]="0";	
+
+			// PlaceDisplayEq.myorder=[];
+			PlaceDisplayEq.myorder=PlaceDisplayEq.myorder+","+order;
+
+			var acc="1";
+			var orders=[{side:"S"},
+			order
+			];
+			OrderDisplayEq.replace(acc,orders);
+
+
+
 			// conn.place(acc, order, pin, false);
 			// this.status("Fetching Data...");
 			this.resetForm();
