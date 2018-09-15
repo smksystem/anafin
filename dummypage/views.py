@@ -24,17 +24,23 @@ def dummyrt(request):
 	
 	mmi=[]
 	if request.method == "POST":
-		test=request.POST
-		print(test)
+		test=dict(request.POST)
+		# print(test)
 		for i in test:
 			# print ("No ="+ i)
-			mmi=i
+			mmi=i.replace('[',"")
+			mmi=mmi.replace(']',"")
+			mmi=json.loads(mmi)
+			print (type(mmi))
+			print (mmi["status"])
+
 			# print(i[0])
 		
 		# print (mmi)
 		# for datalist in mmi:
-			for dic in mmi:
-				print (dic)
+		# for dic,key in mmi.items():
+		# 	print (dic)
+		# 	print(key)
 		# 	# for key in dic:
 			# 	print(key)
 			# print (y)
