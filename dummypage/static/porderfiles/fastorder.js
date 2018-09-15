@@ -2148,8 +2148,14 @@ PlaceDisplayEq.bindUi = function() {
 		
 		alert("Hi this is ok click btn");
 
+  //   	$.post("http://localhost:8000/dummyrt/", { name: "John", time: "2pm" },function(data) {
+  // 			alert(jQuery.parseJSON(data)["result"]);
+		// });
+
+
+		// alert("test ok");
+
 		var acc = AccDisplay.currentAcc();
-		// console.log("hello");
 		var form = $('#placeEqForm')[0];
 		PlaceDisplayEq.place(acc, form);
 		return false;
@@ -2459,9 +2465,9 @@ PlaceDisplayEq.place = function(acc, form) {
 			};
 			this.isProcessing = true;
 
-
+			////////////////////////////////////////////////////////
 			//my own modified
-
+			///////////////////////////////////////////////////////
 			var dt = new Date();
 			hh=dt.getHours();
 			mm=dt.getMinutes();
@@ -2476,17 +2482,27 @@ PlaceDisplayEq.place = function(acc, form) {
 			order["matchedVol"]="0";
 			order["balanceVol"]="0";
 			order["cancelledVol"]="0";	
+			order["nvdr"]="False";
 
 			
 			PlaceDisplayEq.myorder.unshift(order);
 			var orders=PlaceDisplayEq.myorder;
 			var acc="1";
 
+
+
 			// var orders=[{side:"S"},
 			// order
 			// ];
 			OrderDisplayEq.replace(acc,orders);
 
+			$.post("http://localhost:8000/dummyrt/",JSON.stringify(orders),function(data) {
+				// what to do with response data
+  				// alert(jQuery.parseJSON(data)["result"]);
+			});
+
+
+			alert("test ok");
 
 
 			// conn.place(acc, order, pin, false);
