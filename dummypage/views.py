@@ -21,46 +21,28 @@ def dummysuccess(request):
 def dummyrt(request):
 
 	print("dummyrt")
-	
-	mmi=[]
-	if request.method == "POST":
-		test=dict(request.POST)
-		# print(test)
-		for i in test:
-			# print ("No ="+ i)
-			mmi=i.replace('[',"")
-			mmi=mmi.replace(']',"")
-			mmi=json.loads(mmi)
-			print (type(mmi))
-			print (mmi["status"])
+	print (request)
 
-			# print(i[0])
-		
-		# print (mmi)
-		# for datalist in mmi:
-		# for dic,key in mmi.items():
-		# 	print (dic)
-		# 	print(key)
-		# 	# for key in dic:
-			# 	print(key)
-			# print (y)
-			# for x in i:
-			# 	print ("my no=" + x)
-		# print(request.POST["QueryDict"]["status"])
-		# if request.POST.get("points"):
-			# points = int(request.POST.get("points"))
-			# template = loader.get_template('porder.html')
-			# template = 'porder.html'
-			# context = {'message': "any message"}
-			# return HttpResponse(template.render(context, request))
+	if request.method == "POST":
+		postfile=open("stockpost.txt",'a')
+		postdata=dict(request.POST)
+		for i in postdata:
+			postarray=json.loads(i)
+			print (postarray[0])
+			postfile.write(json.dumps(postarray[0])+"\n")
+		postfile.close()
+
 		result="okokokokokokokok"
 		data="test"	
 		mytest={"result" : result, "data" : data }
 		response = json.dumps({"result" : result, "data" : data })
 		return HttpResponse(response)
+	elif request.method == "GET" and request.body == "" :
+		print ("receive get method")
+		print(request.body)
+		response=""
+		return HttpResponse(response)
 	else:
-
-		# print (STATIC_URL)
 		context={}
 		template="porder.html"
 		return render(request,template,context)

@@ -2201,12 +2201,20 @@ PlaceDisplayEq.bindUi = function() {
 		OrderDisplayEq.gotoSelectedDetail();
 	});
 	$('#placeEq .refreshBtn').click(function() {
-		// alert("refreshBtn")
-		acc="1";
-	
+		
 
+		alert("this is refresh button");	
+		acc="1";
+		
 		var orders=PlaceDisplayEq.myorder;
 
+
+		$.get("http://localhost:8000/dummyrt/",JSON.stringify(orders),function(data) {
+			// what to do with response data
+				// alert(jQuery.parseJSON(data)["result"]);
+		});
+
+		alert("pass get method")
 
 		// var orders = [
 		// {
@@ -2231,6 +2239,12 @@ PlaceDisplayEq.bindUi = function() {
 		// ];
 
 		OrderDisplayEq.replace(acc,orders);
+
+
+
+
+
+
 		// OrderDisplayEq.clear();
 
 		// AccCredDisplay.refresh();
@@ -2502,7 +2516,7 @@ PlaceDisplayEq.place = function(acc, form) {
 			});
 
 
-			alert("test ok");
+			// alert("test ok");
 
 
 			// conn.place(acc, order, pin, false);
