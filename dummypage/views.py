@@ -21,7 +21,10 @@ def dummysuccess(request):
 def dummyrt(request):
 
 	print("dummyrt")
-	print (request)
+	gettype=dict(request.GET)
+	posttype=""
+	for g,v in gettype.items():
+		posttype=gettype[g][0]
 
 	if request.method == "POST":
 		postfile=open("stockpost.txt",'a')
@@ -37,11 +40,16 @@ def dummyrt(request):
 		mytest={"result" : result, "data" : data }
 		response = json.dumps({"result" : result, "data" : data })
 		return HttpResponse(response)
-	elif request.method == "GET" and request.body == "" :
-		print ("receive get method")
-		print(request.body)
-		response=""
-		return HttpResponse(response)
+	elif request.method == "GET" and posttype == "refresh" :
+
+		with open("stockpost.txt", "r") as ins:
+			stocklist = []
+			for line in ins:
+				stocklist.append(line.rstrip('\n'))
+		
+		print (stocklist)
+
+		return HttpResponse(stocklist)
 	else:
 		context={}
 		template="porder.html"

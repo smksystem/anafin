@@ -2209,7 +2209,7 @@ PlaceDisplayEq.bindUi = function() {
 		var orders=PlaceDisplayEq.myorder;
 
 
-		$.get("http://localhost:8000/dummyrt/",JSON.stringify(orders),function(data) {
+		$.get("http://localhost:8000/dummyrt/",{"menu":"refresh"},function(data) {
 			// what to do with response data
 				// alert(jQuery.parseJSON(data)["result"]);
 		});
