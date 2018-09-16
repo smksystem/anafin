@@ -1580,7 +1580,7 @@ OrderDisplayDeriv.refreshData = function(acc) {
 OrderDisplayDeriv.replace = function(acc, orders) {
 	$('#orderDeriv .checkAll').removeAttr('checked');
 	var tr = "";
-	alert(orders.side);
+	// alert(orders.side);
 	for(var i=0;i<orders.length;i++) {
 		var order = orders[i];
 		tr += "<tr class='" + (order.side=="Long"?"b":"s") + "'>";
@@ -1655,7 +1655,7 @@ OrderDisplayEq.cancelChecked = function() {
 	}
 };
 OrderDisplayEq.onConfirmCancel = function(ok) {
-	alert(1);
+	// alert(1);
 	if(ok) {
 		var pin = ConfirmCancelDialog.getPin();
 		PlaceDisplayEq.resetForm();
@@ -1765,7 +1765,11 @@ OrderDisplayEq.replace = function(acc, orders) {
 	// alert(orders.canCancelled);
 	for(var i=0;i<orders.length;i++) {
 		// alert("loop length");
+
 		var order = orders[i];
+		// alert(order.side)
+		// alert(order)
+
 		tr += "<tr class='" + (order.side=="B"?"b":"s") + "'>";
 		tr += "<td class='cancelBox'>" + (order.canCancelled?"<input type='checkbox' value='" + i + "' />":"&nbsp;") + "</td>";
 		tr += "<td class='orderNo'>" + order.orderNo + "</td>";
@@ -2146,7 +2150,7 @@ PlaceDisplayEq.bindUi = function() {
 	});
 	$('#placeEq .submitBtn').click(function() {
 		
-		alert("Hi this is ok click btn");
+		// alert("Hi this is ok click btn");
 
   //   	$.post("http://localhost:8000/dummyrt/", { name: "John", time: "2pm" },function(data) {
   // 			alert(jQuery.parseJSON(data)["result"]);
@@ -2203,18 +2207,28 @@ PlaceDisplayEq.bindUi = function() {
 	$('#placeEq .refreshBtn').click(function() {
 		
 
-		alert("this is refresh button");	
+		// alert("this is refresh button");	
 		acc="1";
 		
 		var orders=PlaceDisplayEq.myorder;
-
+		// $.ajaxSetup({
+  //   		cache: false
+  // 		});
 
 		$.get("http://localhost:8000/dummyrt/",{"menu":"refresh"},function(data) {
-			// what to do with response data
-				// alert(jQuery.parseJSON(data)["result"]);
-		});
+				
+				$.each(data,function(key,value){
+					// alert(value);
+    				// PlaceDisplayEq.myorder.unshift(JSON.parse(value));
+    				orders.unshift(JSON.parse(value));
+				});
+		OrderDisplayEq.replace(acc,orders);	
+		PlaceDisplayEq.myorder=orders;
+		},"json");
 
-		alert("pass get method")
+		orders=[];
+		// alert("pass get method")
+		// OrderDisplayEq.replace(acc,PlaceDisplayEq.myorder);
 
 		// var orders = [
 		// {
@@ -2238,7 +2252,7 @@ PlaceDisplayEq.bindUi = function() {
 		// PlaceDisplayEq.myorder
 		// ];
 
-		OrderDisplayEq.replace(acc,orders);
+		
 
 
 

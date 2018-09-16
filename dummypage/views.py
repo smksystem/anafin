@@ -46,14 +46,17 @@ def dummyrt(request):
 			stocklist = []
 			for line in ins:
 				stocklist.append(line.rstrip('\n'))
-		
 		print (stocklist)
+		print(json.dumps(stocklist))
+		# response=json.dumps(stocklist)
+		# response=json.dumps(stocklist).replace("\\",'')
 
-		return HttpResponse(stocklist)
+		response=json.dumps(stocklist)
+		
+		print (response)
+
+		return HttpResponse(response)
 	else:
 		context={}
 		template="porder.html"
-		return render(request,template,context)
-
-
-	
+		return render(request,template,context)	
