@@ -1,2 +1,0 @@
-{"priceType": "limit", "nvdr": "False", "pbVol": "", "price": "200", "side": "S", "symbol": "WHA1", "validity": "DAY", "vol": "100", "time": "23:35:16", "orderNo": "12345", "nvdrFlag": "", "status": "Pending(111)", "matchedVol": "0", "balanceVol": "0", "cancelledVol": "0"}
-{"priceType": "limit", "nvdr": "False", "pbVol": "", "price": "222", "side": "S", "symbol": "WHA2", "validity": "DAY", "vol": "1222", "time": "23:35:48", "orderNo": "12345", "nvdrFlag": "", "status": "Pending(S)", "matchedVol": "0", "balanceVol": "0", "cancelledVol": "0"}
