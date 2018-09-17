@@ -31,6 +31,7 @@ class packselenium():
 				"xstockvalueorder":"//*[@id='placeEq']/div[3]/input[1]",
 				"xstockpinorder":"//*[@id='placeEq']/div[3]/span/input",
 				"xstocksubmitorder":"//*[@id='placeEq']/div[4]/input[1]",
+
 		}
 		livepath={"valuemonitor":"",
 				"xpathlogin":"/html/body/table[4]/tbody/tr/td[2]/table/tbody/tr[2]/td/table[1]/tbody/tr/td[2]/form/table/tbody/tr[3]/td[3]/font/input[2]",
@@ -325,6 +326,27 @@ class packselenium():
 			elem.send_keys(orderparams["stockpin"]) 
 
 			elem = driver.find_element_by_xpath(self.xpathreturn("xstocksubmitorder")).click()
+
+			elem=driver.switch_to_alert().accept()
+
+			# confirm ok then check refresh 
+
+			elem = driver.find_element_by_xpath(self.xpathreturn("xrtrefresh")).click()
+
+
+			# get all table list here
+
+
+
+
+
+
+			
+
+
+
+
+
 
 		elif orderside=="sell":
 			pass
