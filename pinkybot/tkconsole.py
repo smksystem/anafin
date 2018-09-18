@@ -303,7 +303,7 @@ class outputlog(tk.Tk):
 				priceaccumestep=float(self.myvarasso[lblvalue]["price"].get())
 				volumeaccumestep= float(self.myvarasso[lblvalue]["volumn"].get())
 
-				print (str(runvalocallue) +" need price = " + str(priceaccumestep))
+				print (str(runvalue) +" need price = " + str(priceaccumestep))
 				priceaccume+=priceaccumestep
 				volumeaccume+=volumeaccumestep
 
@@ -425,7 +425,7 @@ class outputlog(tk.Tk):
 
 				# runvaluerange+=commonvaluestep
 		print ("remain invest = "+ str(runinvest))
-		print ("stopvaluerange at = " + str(stopvaluerange))
+		# print ("stopvaluerange at = " + str(stopvaluerange))
 		self.configval["stopvaluerange"].set(stopvaluerange)
 		# exit()
 

@@ -31,6 +31,7 @@ class packselenium():
 				"xstockvalueorder":"//*[@id='placeEq']/div[3]/input[1]",
 				"xstockpinorder":"//*[@id='placeEq']/div[3]/span/input",
 				"xstocksubmitorder":"//*[@id='placeEq']/div[4]/input[1]",
+				"xoutputordertable":"//*[@id='orderBodyEq']",
 
 		}
 		livepath={"valuemonitor":"",
@@ -333,8 +334,34 @@ class packselenium():
 
 			elem = driver.find_element_by_xpath(self.xpathreturn("xrtrefresh")).click()
 
+			# wait until data arrive
+			wait = WebDriverWait(driver, 10)
+			elementClose = wait.until(EC.presence_of_element_located((By.XPATH, self.xpathreturn("xstockup"))))
+			print("wait finished")
+
 
 			# get all table list here
+
+
+			table_id = driver.find_element_by_xpath(self.xpathreturn("xoutputordertable"))
+			# print (table_id)
+			
+			for row in table_id.find_elements_by_xpath(".//tr"):
+				# print (row)
+
+				for col in row.find_elements_by_xpath(".//td"):
+					# //*[@id="orderBodyEq"]/tbody/tr[1]/td[4]
+					print (col.text)
+				# row = table_id.find_elements(By.TAG_NAME, "tr") # get all of the rows in the table
+				# print (row)			
+			# for row in rows:
+			# 	# Get the columns (all the column 2)        
+				# col = row.find_elements(By.TAG_NAME, "td")[0] #note: index start from 0, 1 is col 2
+				# print (col.text) #prints text from the element
+
+
+
+
 
 
 
