@@ -21,14 +21,16 @@ def refreshbtn(driver):
 
 	# wait until data arrive
 	wait = WebDriverWait(driver, 30)
-	WebElement = wait.until(EC.invisibility_of_element_located((By.ID, 'ajax_loader')));
+	# WebElement = wait.until(EC.invisibility_of_element_located((By.ID, 'ajax_loader')));
+
+
+	# wait = WebDriverWait(driver, 30)
+	WebElement = wait.until(EC.presence_of_element_located((By.XPATH, xoutputderivordertable)));
+	# elementClose = wait.until(EC.presence_of_element_located((By.XPATH, xoutputordertable)))
+	# print (elementClose.text)
 
 	time.sleep(0.5)
 
-	# wait = WebDriverWait(driver, 30)
-	# WebElement = wait.until(EC.visibility_of_element_located((By.XPATH, xoutputordertable)));
-	# elementClose = wait.until(EC.presence_of_element_located((By.XPATH, xoutputordertable)))
-	# print (elementClose.text)
 	print("wait finished")
 
 
@@ -67,7 +69,7 @@ if __name__=="__main__":
 	xstockpinorder="//*[@id='placeEq']/div[3]/span/input"
 	xstocksubmitorder="//*[@id='placeEq']/div[4]/input[1]"
 	xoutputordertable="//*[@id='orderBodyEq']"
-
+	xoutputderivordertable="//*[@id='orderDeriv']"
 	xtabletest="//*[@id='orderBodyEq']"
 
 
@@ -78,29 +80,29 @@ if __name__=="__main__":
 
 
 	wait = WebDriverWait(driver, 20)
-	elementClose = wait.until(EC.presence_of_element_located((By.XPATH, xoutputordertable)))
+	elementClose = wait.until(EC.presence_of_element_located((By.XPATH, xoutputderivordertable)))
 
 
 	print ( "finish wait")
 
 
 
-	# while 1:
-	refreshbtn(driver)
+	while 1:
+		refreshbtn(driver)
 
-	time.sleep(5)
+		time.sleep(5)
 
-	refreshbtn(driver)
+	# refreshbtn(driver)
 
-	time.sleep(5)
+	# time.sleep(5)
 
-	refreshbtn(driver)
+	# refreshbtn(driver)
 
-	time.sleep(5)
+	# time.sleep(5)
 
-	refreshbtn(driver)
+	# refreshbtn(driver)
 
-	time.sleep(5)
+	# time.sleep(5)
 
-	refreshbtn(driver)
+	# refreshbtn(driver)
 
