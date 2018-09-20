@@ -16,8 +16,11 @@ import time
 def refreshbtn(driver):
 
 
+	try:
+		elem = driver.find_element_by_xpath(xrtrefresh).click()
 
-	elem = driver.find_element_by_xpath(xrtrefresh).click()
+	except:
+		pass
 
 	# wait until data arrive
 	wait = WebDriverWait(driver, 30)
@@ -25,9 +28,13 @@ def refreshbtn(driver):
 
 
 	# wait = WebDriverWait(driver, 30)
-	WebElement = wait.until(EC.presence_of_element_located((By.XPATH, xoutputderivordertable)));
+	try:
+		WebElement = wait.until(EC.presence_of_element_located((By.XPATH, xoutputderivordertable)));
+
 	# elementClose = wait.until(EC.presence_of_element_located((By.XPATH, xoutputordertable)))
 	# print (elementClose.text)
+	except:
+		pass
 
 	time.sleep(0.5)
 
@@ -36,17 +43,48 @@ def refreshbtn(driver):
 
 	# get all table list here
 
+	# try:
+ #    	WebElement date = driver.findElement(By.linkText(Utility.getSheetData(path, 7, 1, 2)));
+ #    date.click();
+	# }
+	# catch(org.openqa.selenium.StaleElementReferenceException ex)
+	# {
+ #    	WebElement date = driver.findElement(By.linkText(Utility.getSheetData(path, 7, 1, 2)));
+ #    	date.click();
+	# }
+	try:
+		table_id = driver.find_element_by_xpath(xoutputordertable)
+		# result = True
+		# break
+	except:
+		pass
 
-	table_id = driver.find_element_by_xpath(xoutputordertable)
+	
 	# print (table_id.text)
 	# exit()
-	for row in table_id.find_elements_by_xpath(".//tr"):
+	try:
+		tablerow=table_id.find_elements_by_xpath(".//tr")
+	except:
+		pass
+
 		# print (row)
 		# print (row.text)
+	try:
 
-		for col in row.find_elements_by_xpath(".//td"):
-			# //*[@id="orderBodyEq"]/tbody/tr[1]/td[4]
-			print (col.text)
+		for row in tablerow:
+
+			tablecollume=row.find_elements_by_xpath(".//td")
+			# print ("len of colume is" + str(len(tablecollume)))
+			# print (tablecollume)
+			# if len(tablecollume) > 0:
+			for col in tablecollume:
+				# //*[@id="orderBodyEq"]/tbody/tr[1]/td[4]
+				# if col.text != "":
+				print (col.text)
+
+	except:
+		pass				
+		
 
 
 
@@ -80,7 +118,7 @@ if __name__=="__main__":
 
 
 	wait = WebDriverWait(driver, 20)
-	elementClose = wait.until(EC.presence_of_element_located((By.XPATH, xoutputderivordertable)))
+	elementClose = wait.until(EC.presence_of_element_located((By.XPATH, xoutputordertable)))
 
 
 	print ( "finish wait")
@@ -90,7 +128,7 @@ if __name__=="__main__":
 	while 1:
 		refreshbtn(driver)
 
-		time.sleep(5)
+		# time.sleep(1)
 
 	# refreshbtn(driver)
 
