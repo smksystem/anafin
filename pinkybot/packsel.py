@@ -8,6 +8,7 @@ import datetime as dt
 from pinkybot.packsel_model import PackSelModel
 from django.utils import timezone
 from datetime import datetime
+import time 
 
 class packselenium():
 	"""docstring for packselenium"""
@@ -32,6 +33,7 @@ class packselenium():
 				"xstockpinorder":"//*[@id='placeEq']/div[3]/span/input",
 				"xstocksubmitorder":"//*[@id='placeEq']/div[4]/input[1]",
 				"xoutputordertable":"//*[@id='orderBodyEq']",
+				"xoutputderivordertable":"//*[@id='orderDeriv']",
 
 		}
 		livepath={"valuemonitor":"",
@@ -331,49 +333,34 @@ class packselenium():
 			elem=driver.switch_to_alert().accept()
 
 			# confirm ok then check refresh 
-
-			elem = driver.find_element_by_xpath(self.xpathreturn("xrtrefresh")).click()
-
-			# wait until data arrive
-			wait = WebDriverWait(driver, 10)
-			elementClose = wait.until(EC.presence_of_element_located((By.XPATH, self.xpathreturn("xstockup"))))
-			print("wait finished")
-
-
-			# get all table list here
-
-
-			table_id = driver.find_element_by_xpath(self.xpathreturn("xoutputordertable"))
-			# print (table_id)
-			
-			for row in table_id.find_elements_by_xpath(".//tr"):
-				# print (row)
-
-				for col in row.find_elements_by_xpath(".//td"):
-					# //*[@id="orderBodyEq"]/tbody/tr[1]/td[4]
-					print (col.text)
-				# row = table_id.find_elements(By.TAG_NAME, "tr") # get all of the rows in the table
-				# print (row)			
-			# for row in rows:
-			# 	# Get the columns (all the column 2)        
-				# col = row.find_elements(By.TAG_NAME, "td")[0] #note: index start from 0, 1 is col 2
-				# print (col.text) #prints text from the element
-
-
-
-
-
-
-
-
-
-
-			
-
-
-
+			self.refreshbtn(driver)
 
 
 
 		elif orderside=="sell":
 			pass
+
+	def refreshbtn(self,driver):
+
+
+		try:
+			elem = driver.find_element_by_xpath(self.xpathreturn("xrtrefresh")).click()
+
+			wait = WebDriverWait(driver, 30)
+			WebElement = wait.until(EC.presence_of_element_located((By.XPATH, self.xpathreturn("xoutputderivordertable"))));
+
+			time.sleep(0.5)
+
+			print("wait finished")
+
+			table_id = driver.find_element_by_xpath( self.xpathreturn("xoutputordertable"))
+			tablerow=table_id.find_elements_by_xpath(".//tr")
+
+			for row in tablerow:
+
+				tablecollume=row.find_elements_by_xpath(".//td")
+				for col in tablecollume:
+					print (col.text)
+
+		except:
+			pass				
