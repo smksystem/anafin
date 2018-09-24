@@ -208,16 +208,6 @@ class packselenium():
 
 		driver=handlewin
 
-		# add stock value here
-		# stockvalue=driver.find_elements_by_xpath("")[0].text
-
-
-		# wait.close()
-
-		# monitortime = dt.datetime.now()
-		# testtimezone=timezone.now()
-		# print(testtimezone)
-
 		bidvolumn={}
 		bid={}
 		offer={}
@@ -228,19 +218,21 @@ class packselenium():
 		# timerecord = timestamp.strftime('%Y-%m-%d %H:%M:%S')
 
 		try:
+
 			# find the stock value
 			stockvalue = driver.find_elements_by_xpath(self.xpathreturn("xstockvalue"))[0].text
+				
 			
-
-			# print ("stock value="+stockvalue)
-			# print ( "stock compare="+ self.stockcompare)
 			if self.stockcompare=="0.00" and stockvalue !="0.00":
+				self.refreshbtn(driver)
 				print("first stock compare updated" + stockvalue)
 				self.stockcompare=stockvalue
 				self.qvalchange.put({"stockvalue":stockvalue})
 				PackSelModel.initialupdatestockvalue()
+				
 
 			elif (self.stockcompare!=stockvalue) and (self.stockcompare!="0.00"):
+				self.refreshbtn(driver)
 				print("update stock compare"+ stockvalue)
 				self.stockcompare=stockvalue
 				self.qvalchange.put({"stockvalue":stockvalue})
@@ -254,16 +246,6 @@ class packselenium():
 				orderparams=self.qorder.get()
 				self.order(driver,orderparams)
 			
-			
-
-			
-
-
-
-
-
-
-
 
 				# for line in range(1,6):
 						# test=driver.find_elements_by_xpath("//*[@id='bid-"+str(line)+"']")[0].text.replace(",","")
@@ -285,19 +267,13 @@ class packselenium():
 				# face to problem with float to string while ATO,ATC
 				# PackSelModel.InsertMonitorBidOffer(stock,timestampELS,bid,offer,bidvolumn,offervolumn)
 
-
-
-
-
 				# bidvolumn.clear()
 				# bid.clear()
 				# offer.clear()
 				# offervolumn.clear()
 
-		except KeyboardInterrupt:
+		except:
 			pass
-		# print("exit program")
-		# exit()
 
 	def order(self,driver,orderparams):
 		print (orderparams)
@@ -343,24 +319,25 @@ class packselenium():
 	def refreshbtn(self,driver):
 
 
-		try:
-			elem = driver.find_element_by_xpath(self.xpathreturn("xrtrefresh")).click()
+		# try:
+		print ("refresh botton press")
+		elem = driver.find_element_by_xpath(self.xpathreturn("xrtrefresh")).click()
 
-			wait = WebDriverWait(driver, 30)
-			WebElement = wait.until(EC.presence_of_element_located((By.XPATH, self.xpathreturn("xoutputderivordertable"))));
+		wait = WebDriverWait(driver, 30)
+		WebElement = wait.until(EC.presence_of_element_located((By.XPATH, self.xpathreturn("xoutputderivordertable"))));
 
-			time.sleep(0.5)
+		time.sleep(0.5)
 
-			print("wait finished")
+		print("wait finished")
 
-			table_id = driver.find_element_by_xpath( self.xpathreturn("xoutputordertable"))
-			tablerow=table_id.find_elements_by_xpath(".//tr")
+		table_id = driver.find_element_by_xpath( self.xpathreturn("xoutputordertable"))
+		tablerow=table_id.find_elements_by_xpath(".//tr")
 
-			for row in tablerow:
+		for row in tablerow:
 
-				tablecollume=row.find_elements_by_xpath(".//td")
-				for col in tablecollume:
-					print (col.text)
+			tablecollume=row.find_elements_by_xpath(".//td")
+			for col in tablecollume:
+				print (col.text)
 
-		except:
-			pass				
+		# except:
+		# 	pass				
