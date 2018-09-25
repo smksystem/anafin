@@ -44,7 +44,14 @@ class packselenium():
 				"xstockup":"//*[@id='page-0-container']/li[3]/mini-quote/div[1]/mini-quote-overview/div[5]/label",
 				"xstockname":"//*[@id='favourite-0']/ul/li[1]/editable-symbol-input/p",
 				"xstockvalue":"//*[@id='mini-quote-symbol']/div[2]/div[1]",
-
+				"xbuyradio":"//*[@id='buy-btn']",
+				"xstockorder":"//*[@id='place-order-symbol']/auto-complete/div/input[2]",
+				"xstockvolumnorder":"//*[@id='place-order-volume']/div/volume-input/input",
+				"xstockvalueorder":"//*[@id='place-order-price']/div/price-input/input",
+				"xstockpinorder":"//*[@id='place-order-pin']/div/input",
+				"xstocksubmitorder":"//*[@id='place-order-submit']",
+				"xoutputordertable":"/html/body/app-controller/div/ul/li[3]/order/div[2]/order-status/div/div",
+				"xoutputderivordertable":"//*[@id='fb-root']",
 
 
 		}
@@ -154,8 +161,8 @@ class packselenium():
 		# stock = driver.find_elements_by_xpath(self.xpathreturn("xstockname"))[0]
 		stock = driver.find_elements_by_xpath(self.xpathreturn("xstockname"))[0]
 		# print ("stock is below found check login")
-
-		stockname=stock.get_attribute("value")
+		stockname=stock.text
+		# stockname=stock.get_attribute("value")
 
 
 		# one click to the first of favorite stock then wait
@@ -216,64 +223,68 @@ class packselenium():
 
 		timestamp = datetime.utcnow()
 		# timerecord = timestamp.strftime('%Y-%m-%d %H:%M:%S')
+		# print("time stamp=" + str(timestamp))
+		
+		# try:
 
-		try:
-
-			# find the stock value
-			stockvalue = driver.find_elements_by_xpath(self.xpathreturn("xstockvalue"))[0].text
-				
-			
-			if self.stockcompare=="0.00" and stockvalue !="0.00":
-				self.refreshbtn(driver)
-				print("first stock compare updated" + stockvalue)
-				self.stockcompare=stockvalue
-				self.qvalchange.put({"stockvalue":stockvalue})
-				PackSelModel.initialupdatestockvalue()
-				
-
-			elif (self.stockcompare!=stockvalue) and (self.stockcompare!="0.00"):
-				self.refreshbtn(driver)
-				print("update stock compare"+ stockvalue)
-				self.stockcompare=stockvalue
-				self.qvalchange.put({"stockvalue":stockvalue})
-				PackSelModel.updatestockvalue(1,2)
-				print ("stockcompare="+self.stockcompare)
-
-			stockvalue=""
-
-
-			if not self.qorder.empty(): 
-				orderparams=self.qorder.get()
-				self.order(driver,orderparams)
+		# find the stock value
+		stockvalue = driver.find_elements_by_xpath(self.xpathreturn("xstockvalue"))[0].text
+		print ("stock value now =" + stockvalue)	
+		
+		if self.stockcompare=="0.00" and stockvalue !="0.00":
+			print("first stockvalue updated=" + stockvalue)
+			print("first stockcompare updated=" + self.stockcompare)
+			self.refreshbtn(driver)
+			self.stockcompare=stockvalue
+			self.qvalchange.put({"stockvalue":stockvalue})
+			PackSelModel.initialupdatestockvalue()
 			
 
-				# for line in range(1,6):
-						# test=driver.find_elements_by_xpath("//*[@id='bid-"+str(line)+"']")[0].text.replace(",","")
-						# print(test)
+		elif (self.stockcompare!=stockvalue) and (self.stockcompare!="0.00"):
+			# self.refreshbtn(driver)
+			print("update stock compare"+ stockvalue)
+			self.stockcompare=stockvalue
+			self.qvalchange.put({"stockvalue":stockvalue})
+			PackSelModel.updatestockvalue(1,2)
+			print ("stockcompare="+self.stockcompare)
 
-						# bid["bid"+str(line)]=float(driver.find_elements_by_xpath("//*[@id='bid-"+str(line)+"']")[0].text.replace(",",""))
-						# offer["offer"+str(line)]=float(driver.find_elements_by_xpath("//*[@id='offer-"+str(line)+"']")[0].text.replace(",",""))
-						# bidvolumn["bidvolumn"+ str(line)]=float(driver.find_elements_by_xpath("//*[@id='bid-volume-"+str(line)+"']")[0].text.replace(",",""))
-						# offervolumn["offervolumn"+str(line)]=float(driver.find_elements_by_xpath("//*[@id='offer-volume-"+str(line)+"']")[0].text.replace(",",""))
+		print ("reset stockvalue")
+		stockvalue=""
 
-				# timestamp = timezone.now()
-				# timestamp = datetime.utcnow()
-				# timestampELS = timestamp.isoformat(' ','seconds')
-				
-				# print("Time record is =" + timestampELS)
-				# exit()
-				#
 
-				# face to problem with float to string while ATO,ATC
-				# PackSelModel.InsertMonitorBidOffer(stock,timestampELS,bid,offer,bidvolumn,offervolumn)
+		if not self.qorder.empty(): 
+			orderparams=self.qorder.get()
+			self.order(driver,orderparams)
+		
 
-				# bidvolumn.clear()
-				# bid.clear()
-				# offer.clear()
-				# offervolumn.clear()
+			# for line in range(1,6):
+					# test=driver.find_elements_by_xpath("//*[@id='bid-"+str(line)+"']")[0].text.replace(",","")
+					# print(test)
 
-		except:
-			pass
+					# bid["bid"+str(line)]=float(driver.find_elements_by_xpath("//*[@id='bid-"+str(line)+"']")[0].text.replace(",",""))
+					# offer["offer"+str(line)]=float(driver.find_elements_by_xpath("//*[@id='offer-"+str(line)+"']")[0].text.replace(",",""))
+					# bidvolumn["bidvolumn"+ str(line)]=float(driver.find_elements_by_xpath("//*[@id='bid-volume-"+str(line)+"']")[0].text.replace(",",""))
+					# offervolumn["offervolumn"+str(line)]=float(driver.find_elements_by_xpath("//*[@id='offer-volume-"+str(line)+"']")[0].text.replace(",",""))
+
+			# timestamp = timezone.now()
+			# timestamp = datetime.utcnow()
+			# timestampELS = timestamp.isoformat(' ','seconds')
+			
+			# print("Time record is =" + timestampELS)
+			# exit()
+			#
+
+			# face to problem with float to string while ATO,ATC
+			# PackSelModel.InsertMonitorBidOffer(stock,timestampELS,bid,offer,bidvolumn,offervolumn)
+
+			# bidvolumn.clear()
+			# bid.clear()
+			# offer.clear()
+			# offervolumn.clear()
+
+		# except:
+		# 	stockvalue=""
+		# 	pass
 
 	def order(self,driver,orderparams):
 		print (orderparams)
