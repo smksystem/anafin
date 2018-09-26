@@ -50,9 +50,23 @@ class packselenium():
 				"xstockvalueorder":"//*[@id='place-order-price']/div/price-input/input",
 				"xstockpinorder":"//*[@id='place-order-pin']/div/input",
 				"xstocksubmitorder":"//*[@id='place-order-submit']",
-				"xoutputordertable":"/html/body/app-controller/div/ul/li[3]/order/div[2]/order-status/div/div",
+				"xoutputordertable":"/html/body/app-controller/div/ul/li[3]/order/div[2]/order-status/div/div/div/ul/equity-order-status-row[2]/ul",
+				# "xoutputordertable":"",
+			
 				"xoutputderivordertable":"//*[@id='fb-root']",
+				"xstockconfirmorder":"/html/body/modal-layer/div/div/div/form/div[2]/div[1]/button",
+			
 
+
+
+				# xpath for number of row 
+				# /html/body/app-controller/div/ul/li[3]/order/div[2]/order-status/div/div/div/ul/equity-order-status-row[2]
+
+				# /html/body/app-controller/div/ul/li[3]/order/div[2]/order-status/div/div/div/ul/equity-order-status-row[2]/ul/li[2]/a
+				# /html/body/app-controller/div/ul/li[3]/order/div[2]/order-status/div/div/div/ul/equity-order-status-row[3]/ul/li[2]/a
+
+				# /html/body/app-controller/div/ul/li[3]/order/div[2]/order-status/div/div/div/ul/equity-order-status-row[2]/ul/li[3]
+				# /html/body/app-controller/div/ul/li[3]/order/div[2]/order-status/div/div/div/ul/equity-order-status-row[3]/ul/li[3]
 
 		}
 
@@ -229,7 +243,7 @@ class packselenium():
 
 		# find the stock value
 		stockvalue = driver.find_elements_by_xpath(self.xpathreturn("xstockvalue"))[0].text
-		print ("stock value now =" + stockvalue)	
+		# print ("stock value now =" + stockvalue)	
 		
 		if self.stockcompare=="0.00" and stockvalue !="0.00":
 			print("first stockvalue updated=" + stockvalue)
@@ -241,14 +255,14 @@ class packselenium():
 			
 
 		elif (self.stockcompare!=stockvalue) and (self.stockcompare!="0.00"):
-			# self.refreshbtn(driver)
 			print("update stock compare"+ stockvalue)
+			self.refreshbtn(driver)
 			self.stockcompare=stockvalue
 			self.qvalchange.put({"stockvalue":stockvalue})
 			PackSelModel.updatestockvalue(1,2)
 			print ("stockcompare="+self.stockcompare)
 
-		print ("reset stockvalue")
+		# print ("reset stockvalue")
 		stockvalue=""
 
 
@@ -317,7 +331,13 @@ class packselenium():
 
 			elem = driver.find_element_by_xpath(self.xpathreturn("xstocksubmitorder")).click()
 
-			elem=driver.switch_to_alert().accept()
+			if self.mode=="xlive":
+
+				elem = driver.find_element_by_xpath(self.xpathreturn("xstockconfirmorder")).click()				
+
+			elif self.mode=="xdebug":
+				elem=driver.switch_to_alert().accept()
+
 
 			# confirm ok then check refresh 
 			self.refreshbtn(driver)
@@ -341,14 +361,19 @@ class packselenium():
 
 		print("wait finished")
 
-		table_id = driver.find_element_by_xpath( self.xpathreturn("xoutputordertable"))
-		tablerow=table_id.find_elements_by_xpath(".//tr")
+		if self.mode=="xlive":
 
-		for row in tablerow:
+			pass
 
-			tablecollume=row.find_elements_by_xpath(".//td")
-			for col in tablecollume:
-				print (col.text)
+		elif self.mode=="xdebug":
+			table_id = driver.find_element_by_xpath( self.xpathreturn("xoutputordertable"))
+			tablerow=table_id.find_elements_by_xpath(".//tr")
+
+			for row in tablerow:
+
+				tablecollume=row.find_elements_by_xpath(".//td")
+				for col in tablecollume:
+					print (col.text)
 
 		# except:
 		# 	pass				
