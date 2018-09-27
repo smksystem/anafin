@@ -363,7 +363,23 @@ class packselenium():
 
 		if self.mode=="xlive":
 
-			pass
+			# /html/body/app-controller/div/ul/li[3]/order/div[2]/order-status/div/div/div/ul/equity-order-status-row[2]
+
+			# /html/body/app-controller/div/ul/li[3]/order/div[2]/order-status/div/div/div/ul/equity-order-status-row[2]
+			roworder = driver.find_elements_by_xpath("/html/body/app-controller/div/ul/li[3]/order/div[2]/order-status/div/div/div/ul")
+			print ( roworder)
+			# print ( roworder.text)
+			# test=roworder.find_elements_by_xpath("./")
+
+			# print (test.text)
+			# print (test)
+			for myrow in roworder:
+				print ("row=" + myrow.text)
+				columes=roworder.find_elements_by_xpath(".")
+				for mycolume in columes:
+					print (mycolume)
+					print (mycolume.text)
+			# pass
 
 		elif self.mode=="xdebug":
 			table_id = driver.find_element_by_xpath( self.xpathreturn("xoutputordertable"))
