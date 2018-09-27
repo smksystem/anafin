@@ -366,19 +366,32 @@ class packselenium():
 			# /html/body/app-controller/div/ul/li[3]/order/div[2]/order-status/div/div/div/ul/equity-order-status-row[2]
 
 			# /html/body/app-controller/div/ul/li[3]/order/div[2]/order-status/div/div/div/ul/equity-order-status-row[2]
-			roworder = driver.find_elements_by_xpath("/html/body/app-controller/div/ul/li[3]/order/div[2]/order-status/div/div/div/ul")
+			roworder = driver.find_elements_by_xpath("/html/body/app-controller/div/ul/li[3]/order/div[2]/order-status/div/div/div/ul/*")
 			print ( roworder)
+			print(len(roworder))
 			# print ( roworder.text)
 			# test=roworder.find_elements_by_xpath("./")
 
 			# print (test.text)
 			# print (test)
 			for myrow in roworder:
+				print ("total rows=" + str(len(roworder)))
 				print ("row=" + myrow.text)
-				columes=roworder.find_elements_by_xpath(".")
-				for mycolume in columes:
-					print (mycolume)
-					print (mycolume.text)
+				print ("lenght of text=" + str(len(myrow.text)))
+				if len(myrow.text) != 0:
+					print("enter loop find column")
+					columes=myrow.find_elements_by_tag_name("li")
+					for mycolume in columes:
+						print (mycolume)
+						print (mycolume.text)
+				# /html/body/app-controller/div/ul/li[3]/order/div[2]/order-status/div/div/div/ul
+				# /html/body/app-controller/div/ul/li[3]/order/div[2]/order-status/div/div/div/ul/equity-order-status-row[1]
+
+
+				# /html/body/app-controller/div/ul/li[3]/order/div[2]/order-status/div/div/div/ul/equity-order-status-row[2]/ul/
+				# /html/body/app-controller/div/ul/li[3]/order/div[2]/order-status/div/div/div/ul/equity-order-status-row[2]/ul/li[5]
+				# columes=myrow.find_elements_by_xpath("./*")
+					
 			# pass
 
 		elif self.mode=="xdebug":
