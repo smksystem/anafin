@@ -336,7 +336,7 @@ class packselenium():
 				elem = driver.find_element_by_xpath(self.xpathreturn("xstockconfirmorder")).click()				
 
 			elif self.mode=="xdebug":
-				elem=driver.switch_to_alert().accept()
+				elem = driver.switch_to_alert().accept()
 
 
 			# confirm ok then check refresh 
@@ -397,12 +397,19 @@ class packselenium():
 		elif self.mode=="xdebug":
 			table_id = driver.find_element_by_xpath( self.xpathreturn("xoutputordertable"))
 			tablerow=table_id.find_elements_by_xpath(".//tr")
-
+			col_dict=[]
+			row_dict=[]
 			for row in tablerow:
 
 				tablecollume=row.find_elements_by_xpath(".//td")
 				for col in tablecollume:
-					print (col.text)
-
+					# print (col.text)
+					col_dict.append(col.text)
+				# print (col_dict)
+				row_dict.append(col_dict)
+				col_dict=[]
+				# print (row_dict)
+			print (row_dict)
+			print(row_dict[0])
 		# except:
 		# 	pass				

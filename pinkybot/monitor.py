@@ -17,7 +17,7 @@ class pinkybot(packselenium):
         self.qvalchange = Queue()
         self.qdb=Queue()
         # xdebug or xlive
-        super().__init__("xlive")
+        super().__init__("xdebug")
 
 
     def myorder(self,orderside,configparams):
