@@ -245,7 +245,7 @@ class packselenium():
 
 		# find the stock value
 		stockvalue = driver.find_elements_by_xpath(self.xpathreturn("xstockvalue"))[0].text
-		# print ("stock value now =" + stockvalue)	
+		print ("stock value now =" + stockvalue)	
 		
 		if self.stockcompare=="0.00" and stockvalue !="0.00":
 			print("first stockvalue updated=" + stockvalue)
