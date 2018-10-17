@@ -21,7 +21,12 @@ class packselenium():
 				# "xpathvaluemonitor":"//*[@id='instInfoEq']/tbody/tr[1]/td[2]/h2/span",
 				"xpathlogin" : "/html/body/table[4]/tbody/tr/td[2]/table/tbody/tr[2]/td/table[1]/tbody/tr/td[2]/form/table/tbody/tr[3]/td[3]/font/input[2]",
 				"xpathrealtime":"//*[@id='trading']/table/tbody/tr[1]/td/a/img",
+
 				"xrtrefresh":"//*[@id='order_ctrl']/input[3]",
+
+
+
+
 				"xfavorchk":"//*[@id='favourite-0']/ul/li[1]",
 				"xstockup":"//*[@id='instInfoEq']/tbody/tr[1]/td[2]/h2/span",
 				"xstockname":"//*[@id='eqQuoteSymbol']",
@@ -174,10 +179,15 @@ class packselenium():
 
 		# stock = driver.find_elements_by_xpath("//*[@id='favourite-0']/ul/li[1]/editable-symbol-input/p")[0].text
 
-		# stock = driver.find_elements_by_xpath(self.xpathreturn("xstockname"))[0]
 		stock = driver.find_elements_by_xpath(self.xpathreturn("xstockname"))[0]
+		
 		# print ("stock is below found check login")
-		stockname=stock.text
+		if self.mode=="xdebug":
+			stockname=stock.get_attribute('value')
+		elif self.mode=="xlive":
+			stockname=stock.text
+		print ("stockname found is " + stockname)
+		# exit()
 		# stockname=stock.get_attribute("value")
 
 
@@ -245,14 +255,14 @@ class packselenium():
 
 		# find the stock value
 		stockvalue = driver.find_elements_by_xpath(self.xpathreturn("xstockvalue"))[0].text
-		print ("stock value now =" + stockvalue)	
+		# print ("stock value now =" + stockvalue)	
 		
 		if self.stockcompare=="0.00" and stockvalue !="0.00":
 			print("first stockvalue updated=" + stockvalue)
 			print("first stockcompare updated=" + self.stockcompare)
 			self.refreshbtn(driver)
 			self.stockcompare=stockvalue
-			self.qvalchange.put({"stockvalue":stockvalue})
+			self.mycollectqueues["qvalchange"].put({"stockvalue":stockvalue})
 			PackSelModel.initialupdatestockvalue()
 			
 
@@ -260,7 +270,7 @@ class packselenium():
 			print("update stock compare"+ stockvalue)
 			self.refreshbtn(driver)
 			self.stockcompare=stockvalue
-			self.qvalchange.put({"stockvalue":stockvalue})
+			self.mycollectqueues["qvalchange"].put({"stockvalue":stockvalue})
 			PackSelModel.updatestockvalue(1,2)
 			print ("stockcompare="+self.stockcompare)
 
@@ -354,7 +364,9 @@ class packselenium():
 
 		# try:
 		print ("refresh botton press")
-		elem = driver.find_element_by_xpath(self.xpathreturn("xrtrefresh")).click()
+		# elem = driver.find_element_by_xpath(self.xpathreturn("xrtrefresh")).click()
+		elem = driver.find_element_by_xpath("//*[@id='order_ctrl']/input[3]").click()
+		# exit()
 
 		wait = WebDriverWait(driver, 30)
 		WebElement = wait.until(EC.presence_of_element_located((By.XPATH, self.xpathreturn("xoutputderivordertable"))));
