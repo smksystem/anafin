@@ -13,10 +13,17 @@ class pinkybot(packselenium):
     def __init__(self):
         # pass
 
-        self.qorder = Queue()
-        self.qvalchange = Queue()
-        self.qdb=Queue()
+        qorder = Queue() # To send Order request to Runtime
+        qvalchange = Queue() # To monitor value change value and refresh to GUI.
+        qdatarefresh=Queue() # To send refresh table between GUI and Refresh button.
+        # qdb=Queue()
         # xdebug or xlive
+        self.mycollectqueues={"qorder":qorder,
+                            "qvalchange":qvalchange,
+                            "qdatarefresh":qdatarefresh,
+
+        }
+        # print(self.mycollectqueues["qorder"])
         super().__init__("xdebug")
 
 
@@ -42,7 +49,8 @@ class pinkybot(packselenium):
     # for several type of orders
     def botbuyorder(self,buyparams): 
         print("botbuyorder buy now")
-        self.qorder.put(buyparams)
+        # self.qorder.put(buyparams)
+        self.mycollectqueues["qorder"].put(buyparams)
 
     def botsellorder(self):
         print ("sell order")
@@ -60,7 +68,7 @@ class pinkybot(packselenium):
         print (LoginParams)
         # self.mypinkylogin(LoginParams)
         
-        mthread=MyThread(self.qvalchange,self.mypinkylogin,args=(LoginParams,))
+        mthread=MyThread(self.mycollectqueues["qvalchange"],self.mypinkylogin,args=(LoginParams,))
         mthread.start()
         # mthread.join()
 
@@ -72,7 +80,7 @@ class pinkybot(packselenium):
         print (loginParams)
         # exit()
 
-        handlewin=self.login(loginParams,qvalchange)
+        handlewin=self.login(loginParams,self.mycollectqueues["qvalchange"],)
         # buysellorder.orderbuy(handlewin)
         
 

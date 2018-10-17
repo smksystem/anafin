@@ -720,8 +720,10 @@ class outputlog(tk.Tk):
 			# step=10+(self.mycount/10)
 			# print (step)
 			# print (dir(self))
-			if not self.mybot.qvalchange.empty():
-				tempdict=self.mybot.qvalchange.get()
+			# if not self.mybot.qvalchange.empty():
+			# print(self.mybot.mycollectqueues)
+			if not self.mybot.mycollectqueues["qvalchange"].empty():
+				tempdict=self.mybot.mycollectqueues["qvalchange"].get()
 				print (tempdict)
 				# print (tempdict["textout"])
 				if "textout" in tempdict:

@@ -87,7 +87,9 @@ class packselenium():
 
 
 	def login(self,loginParams,qvalchange):
-		self.qvalchange=qvalchange
+
+		self.mycollectqueues["qvalchange"]=qvalchange
+		
 		# for i in iter(self.qvalchange.get(),'STOP'):
 			
 		# for i in iter(self.qvalchange):
@@ -96,7 +98,7 @@ class packselenium():
 		# print (self.qvalchange.get())
 		# dataqueue={"textout":"Starting to login ... please wait ... "}
 
-		self.qvalchange.put({"textout":"Starting to login ... please wait ... "})
+		self.mycollectqueues["qvalchange"].put({"textout":"Starting to login ... please wait ... "})
 
 		# for job in iter(self.qvalchange.get, None):
 			# print (job)
@@ -200,7 +202,7 @@ class packselenium():
 		if (stock):
 			# print("element is below")
 			# print (element)
-			self.qvalchange.put({"textout":"Login success contiue monitoring : " + stockname,
+			self.mycollectqueues["qvalchange"].put({"textout":"Login success contiue monitoring : " + stockname,
 				"stockname":stockname,
 				})
 			self.stockcompare="0.00"
@@ -266,8 +268,8 @@ class packselenium():
 		stockvalue=""
 
 
-		if not self.qorder.empty(): 
-			orderparams=self.qorder.get()
+		if not self.mycollectqueues["qorder"].empty(): 
+			orderparams=self.mycollectqueues["qorder"].get()
 			self.order(driver,orderparams)
 		
 
@@ -410,6 +412,8 @@ class packselenium():
 				col_dict=[]
 				# print (row_dict)
 			print (row_dict)
+
+
 			print(row_dict[0])
 		# except:
 		# 	pass				
