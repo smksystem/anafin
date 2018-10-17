@@ -722,6 +722,11 @@ class outputlog(tk.Tk):
 			# print (dir(self))
 			# if not self.mybot.qvalchange.empty():
 			# print(self.mybot.mycollectqueues)
+			if not self.mybot.mycollectqueues["qdatarefresh"].empty():
+				temprefreshdata=self.mybot.mycollectqueues["qdatarefresh"].get()
+				print(temprefreshdata)
+				print ("!!!!!!!!!!!!!!!!!! Dump data refresh !!!!!!!!!!!!!")
+
 			if not self.mybot.mycollectqueues["qvalchange"].empty():
 				tempdict=self.mybot.mycollectqueues["qvalchange"].get()
 				print (tempdict)
@@ -743,7 +748,7 @@ class outputlog(tk.Tk):
 				
 			# self.output.tag_config("testb", background="white", foreground="red")
 			# self.output.tag_add('testb', 10.0, step)
-			self.after(500, self.Refresher) # every second...
+			self.after(50, self.Refresher) # every second...
 
 
 # if __name__ == '__main__':
