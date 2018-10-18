@@ -409,6 +409,7 @@ class packselenium():
 			for row in tablerow:
 
 				tablecollume=row.find_elements_by_xpath(".//td")
+				print(tablecollume.text)
 				for col in tablecollume:
 					# print (col.text)
 					col_dict.append(col.text)
@@ -416,8 +417,10 @@ class packselenium():
 				row_dict.append(col_dict)
 				col_dict=[]
 				# print (row_dict)
-		print (row_dict)
-		self.mycollectqueues["qdatarefresh"].put(row_dict)
+		# print (row_dict)
+		# self.mycollectqueues["qdatarefresh"].put(row_dict)
+		print("end of packsel.py")
+		self.mycollectqueues["qdatarefresh"].put("row update")
 
 		# print(row_dict[0])
 		# except:
