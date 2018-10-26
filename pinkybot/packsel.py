@@ -406,16 +406,25 @@ class packselenium():
 			tablerow=table_id.find_elements_by_xpath(".//tr")
 			col_dict=[]
 			row_dict=[]
-			for row in tablerow:
+			# print(tablerow.text)
 
-				tablecollume=row.find_elements_by_xpath(".//td")
-				print(tablecollume.text)
-				for col in tablecollume:
-					# print (col.text)
-					col_dict.append(col.text)
-				# print (col_dict)
-				row_dict.append(col_dict)
-				col_dict=[]
+			for row in tablerow:
+				print(row.text)
+				myrow=row.text.split(" ")
+				print(myrow)
+
+				# tablecollume=row.find_elements_by_xpath(".//td")
+				# print("test print out")
+				# print (tablecollume[1])
+				# print (tablecollume[1].text)
+				# # exit()
+				# # print(tablecollume.get_attribute("value"))
+				# for col in tablecollume:
+				# 	# print (col.text)
+				# 	col_dict.append(col.text)
+				# # print (col_dict)
+				# row_dict.append(col_dict)
+				# col_dict=[]
 				# print (row_dict)
 		# print (row_dict)
 		# self.mycollectqueues["qdatarefresh"].put(row_dict)
