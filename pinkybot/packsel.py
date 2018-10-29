@@ -130,7 +130,6 @@ class packselenium():
 		print("super selenium class is called")
 
 
-
 		elem = driver.find_element_by_name("txtLogin")
 		elem.clear()
 		# put user in key
@@ -404,15 +403,17 @@ class packselenium():
 		elif self.mode=="xdebug":
 			table_id = driver.find_element_by_xpath( self.xpathreturn("xoutputordertable"))
 			tablerow=table_id.find_elements_by_xpath(".//tr")
+			# print (tablerow)
 			col_dict=[]
 			row_dict=[]
-			# print(tablerow.text)
-
+			
 			for row in tablerow:
-				print(row.text)
-				myrow=row.text.split(" ")
-				print(myrow)
-
+				# print(row.text)
+				if row.text:
+					myrow=row.text.split(" ")
+					print(myrow)
+			PackSelModel.updaterefresh()
+			print("end for")
 				# tablecollume=row.find_elements_by_xpath(".//td")
 				# print("test print out")
 				# print (tablecollume[1])

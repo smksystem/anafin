@@ -66,6 +66,10 @@ class PackSelModel:
 
 		# exit()
 
+	def updaterefresh():
+		# compare logic here to update table or not 
+		print ("hello update refresh table databases")
+
 	def test_mysql():
 		# pass
 		print("insert a row")
