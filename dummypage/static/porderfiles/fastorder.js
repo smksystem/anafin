@@ -2504,7 +2504,7 @@ PlaceDisplayEq.place = function(acc, form) {
 
 
 			order["time"]=currentTime;
-			order["orderNo"]="12345";
+			order["orderNo"]= Math.floor(100000 + Math.random() * 900000); //"12345";
 			order["nvdrFlag"]="";
 			order["status"]="Pending(S)";
 			order["matchedVol"]="0";

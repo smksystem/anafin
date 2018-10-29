@@ -406,13 +406,14 @@ class packselenium():
 			# print (tablerow)
 			col_dict=[]
 			row_dict=[]
-			
+			mytable=[]
 			for row in tablerow:
 				# print(row.text)
 				if row.text:
 					myrow=row.text.split(" ")
-					print(myrow)
-			PackSelModel.updaterefresh()
+					mytable.append(myrow)
+					# print(myrow)
+			PackSelModel.updaterefresh(mytable)
 			print("end for")
 				# tablecollume=row.find_elements_by_xpath(".//td")
 				# print("test print out")
