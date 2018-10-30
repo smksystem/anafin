@@ -1,5 +1,5 @@
 from django.db import models
-
+from datetime import datetime
 # Create your models here.
 class monitorbidoffer(models.Model):
 
@@ -47,6 +47,7 @@ class udpatestockvalue(models.Model):
 	 
 class updaterefresh(models.Model):
 	orderno=models.CharField(max_length=10,unique=False,default="")
+	date=models.DateField(auto_now_add=True)
 	symbole=models.CharField(max_length=10,unique=False,default="")
 	time=models.CharField(max_length=10,unique=False,default="")
 	side=models.CharField(max_length=3,unique=False,default="")

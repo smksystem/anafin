@@ -1,4 +1,4 @@
-from pinkybot.models import monitorbidoffer
+from pinkybot.models import monitorbidoffer,updaterefresh
 from elasticsearch import Elasticsearch
 
 import pytz
@@ -70,6 +70,49 @@ class PackSelModel:
 		# compare logic here to update table or not 
 		print ("hello update refresh table databases")
 		print (mytable)
+		for myrow in mytable:
+			print (myrow[2])
+			chkorderno=updaterefresh.objects.filter(orderno=myrow[2])
+			if not chkorderno.exists():
+				print("Insert new row of order")
+				newrow=updaterefresh(orderno=myrow[2],
+									symbole=myrow[3],
+									time=myrow[4],
+									side=myrow[5],
+									price=myrow[6],
+									volume=myrow[7],
+									matched=myrow[8],
+									balance=myrow[9],
+									cancelled=myrow[10],
+									status=myrow[11],
+									)
+				newrow.save()
+			else:
+				print ("Order already existing")
+				# Blog.objects.values('id', 'name')
+				tochk=chkorderno.values()
+
+				updaterow="NEEDUPDATE" if tochk[0]["orderno"] != myrow[2] else updaterow="NOUPDATE"
+				
+				for i,value in tochk[0].items():
+					# orderno=myrow[2],
+					# symbole=myrow[3],
+					# time=myrow[4],
+					# side=myrow[5],
+					# price=myrow[6],
+					# volume=myrow[7],
+					# matched=myrow[8],
+					# balance=myrow[9],
+					# cancelled=myrow[10],
+					# status=myrow[11],
+					print(value) 
+
+				
+					# print (i)
+				
+				# start to compare each column in one row
+
+
 
 
 	def test_mysql():
