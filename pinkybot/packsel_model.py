@@ -91,10 +91,18 @@ class PackSelModel:
 				print ("Order already existing")
 				# Blog.objects.values('id', 'name')
 				tochk=chkorderno.values()
-
-				updaterow="NEEDUPDATE" if tochk[0]["orderno"] != myrow[2] else updaterow="NOUPDATE"
+				print (tochk[0]["orderno"])
 				
-				for i,value in tochk[0].items():
+				# a = 2 if i in [1, 3, 6] else 7
+
+
+				# print (updaterow)
+				# exit()
+				for index, (column,value) in enumerate(tochk[0].items()):
+					if column !="id":
+						updaterow=True if (value != myrow[index+1]) else False
+						print (index,column,value,myrow[index+1],updaterow)
+					# print (updaterow)
 					# orderno=myrow[2],
 					# symbole=myrow[3],
 					# time=myrow[4],
@@ -105,7 +113,7 @@ class PackSelModel:
 					# balance=myrow[9],
 					# cancelled=myrow[10],
 					# status=myrow[11],
-					print(value) 
+					# print(value) 
 
 				
 					# print (i)
