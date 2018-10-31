@@ -100,9 +100,14 @@ class PackSelModel:
 				# exit()
 				print (myrow)
 				for index, (column,value) in enumerate(tochk[0].items()):
-					if column =="orderno" or column =="symbole" or column =="time" or column =="side" : # or column !="date":
+					if column != "id" and column != "date":
 						updaterow=True if (value != myrow[index+1]) else False
 						print (index,column,value,myrow[index+1],updaterow)
+						
+						if updaterow==True:
+							print ("update row into table")
+
+
 					# print (updaterow)
 					# orderno=myrow[2],
 					# symbole=myrow[3],
