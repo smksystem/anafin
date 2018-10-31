@@ -47,9 +47,8 @@ class udpatestockvalue(models.Model):
 	 
 class updaterefresh(models.Model):
 	orderno=models.CharField(max_length=10,unique=False,default="")
-	date=models.DateField(auto_now_add=True)
-	symbole=models.CharField(max_length=10,unique=False,default="")
 	time=models.CharField(max_length=10,unique=False,default="")
+	symbole=models.CharField(max_length=10,unique=False,default="")
 	side=models.CharField(max_length=3,unique=False,default="")
 	price=models.CharField(max_length=10,unique=False,default="")
 	volume=models.CharField(max_length=10,unique=False,default="")
@@ -57,3 +56,4 @@ class updaterefresh(models.Model):
 	balance=models.CharField(max_length=10,unique=False,default="")
 	cancelled=models.CharField(max_length=10,unique=False,default="")
 	status=models.CharField(max_length=10,unique=False,default="")
+	date=models.DateField(auto_now_add=True)

@@ -76,8 +76,8 @@ class PackSelModel:
 			if not chkorderno.exists():
 				print("Insert new row of order")
 				newrow=updaterefresh(orderno=myrow[2],
-									symbole=myrow[3],
-									time=myrow[4],
+									time=myrow[3],
+									symbole=myrow[4],
 									side=myrow[5],
 									price=myrow[6],
 									volume=myrow[7],
@@ -98,8 +98,9 @@ class PackSelModel:
 
 				# print (updaterow)
 				# exit()
+				print (myrow)
 				for index, (column,value) in enumerate(tochk[0].items()):
-					if column !="id":
+					if column =="orderno" or column =="symbole" or column =="time" or column =="side" : # or column !="date":
 						updaterow=True if (value != myrow[index+1]) else False
 						print (index,column,value,myrow[index+1],updaterow)
 					# print (updaterow)

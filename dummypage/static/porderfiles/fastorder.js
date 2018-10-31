@@ -1773,8 +1773,8 @@ OrderDisplayEq.replace = function(acc, orders) {
 		tr += "<tr class='" + (order.side=="B"?"b":"s") + "'>";
 		tr += "<td class='cancelBox'>" + (order.canCancelled?"<input type='checkbox' value='" + i + "' />":"&nbsp;") + "</td>";
 		tr += "<td class='orderNo'>" + order.orderNo + "</td>";
-		tr += "<td class='symbol'>" + order.symbol + order.nvdrFlag + "</td>";
 		tr += "<td class='time'>" + order.time + "</td>";
+		tr += "<td class='symbol'>" + order.symbol + order.nvdrFlag + "</td>";
 		tr += "<td class='side " + (order.side=="B"?"buy":"sell") + "'>" + order.side + "</td>";
 		tr += "<td class='price'>" + order.price + "</td>";
 		tr += "<td class='volume'>" + order.vol + "</td>";
