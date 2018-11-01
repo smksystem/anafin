@@ -105,6 +105,13 @@ class PackSelModel:
 						print (index,column,value,myrow[index+1],updaterow)
 						
 						if updaterow==True:
+							print (index,column,value,myrow[index+1],updaterow)
+							# updaterow=chkorderno	
+							# Publisher.objects.filter(id=1).update(name='Apress Publishing')
+							# UPDATE books_publisher
+							# SET name = 'Apress Publishing'
+							# WHERE id = 1;
+							# updaterow.save()
 							print ("update row into table")
 
 
