@@ -13,13 +13,12 @@ from pinkybot.monitor import pinkybot
 if __name__=="__main__":
 	
 	print("Welcome Main Pinkybot by MML") 
-
-	# chooserange=rangevalue("C")
-	# myrange=chooserange.getRangeSeries()
-
 	console=outputlog()
-	
-	# work ok for hightlight
+	console.Refresher()
+	console.mainloop()
+
+
+		# work ok for hightlight
 	# for eachval,data in myrange.items():console.txtout("|"+eachval+" | Vol="+data["vol"] +  
 	# 													   " | Order=" +data["order"] + 
 	# 													   " | State=" + data["state"]
@@ -28,7 +27,3 @@ if __name__=="__main__":
  #    login.mypinkylogin(LoginParams)
  
 	# console.highlight_text("Vol")
-
-	console.Refresher()
-
-	console.mainloop()

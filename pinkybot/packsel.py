@@ -237,6 +237,7 @@ class packselenium():
 		# PackSelModel.InsertMonitorBidOffer(stock,timestamp,bid,offer,bidvolumn,offervolumn)
 		# exit()
 
+		# print("monitoring thread")
 
 		driver=handlewin
 
@@ -278,9 +279,19 @@ class packselenium():
 
 
 		if not self.mycollectqueues["qorder"].empty(): 
+
 			orderparams=self.mycollectqueues["qorder"].get()
-			self.order(driver,orderparams)
-		
+			if orderparams["order"]=="buy":
+				self.order(driver,orderparams)
+			if orderparams["order"]=="refresh":
+				# orderparams=self.mycollectqueues["qorder"].get()
+				print (orderparams)
+				self.refreshbtn(driver)
+
+		# if not self.mycollectqueues["qdatarefresh"].empty():
+			# orderparams=self.mycollectqueues["qdatarefresh"].get(block=True)
+			# print (orderparams)
+			# self.refreshbtn(driver)
 
 			# for line in range(1,6):
 					# test=driver.find_elements_by_xpath("//*[@id='bid-"+str(line)+"']")[0].text.replace(",","")
@@ -431,7 +442,7 @@ class packselenium():
 		# print (row_dict)
 		# self.mycollectqueues["qdatarefresh"].put(row_dict)
 		print("end of packsel.py")
-		self.mycollectqueues["qdatarefresh"].put("row update")
+		# self.mycollectqueues["qdatarefresh"].put("row update")
 
 		# print(row_dict[0])
 		# except:

@@ -15,12 +15,12 @@ class pinkybot(packselenium):
 
         qorder = Queue() # To send Order request to Runtime
         qvalchange = Queue() # To monitor value change value and refresh to GUI.
-        qdatarefresh=Queue() # To send refresh table between GUI and Refresh button.
+        # qdatarefresh=Queue() # Unuseable since missing qeue To send refresh table between GUI and Refresh button.
         # qdb=Queue()
         # xdebug or xlive
         self.mycollectqueues={"qorder":qorder,
                             "qvalchange":qvalchange,
-                            "qdatarefresh":qdatarefresh,
+                            # "qdatarefresh":qdatarefresh,
 
         }
         # print(self.mycollectqueues["qorder"])
@@ -54,6 +54,9 @@ class pinkybot(packselenium):
 
     def botsellorder(self):
         print ("sell order")
+    def botrtrefresh(self):
+        print ("RT Refresh order")
+        self.mycollectqueues["qorder"].put({"order":"refresh"})
 
     def threadlogin(self,loginSet):
         print ("thread login was called")

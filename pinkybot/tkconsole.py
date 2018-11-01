@@ -157,16 +157,17 @@ class outputlog(tk.Tk):
 		labelvalumebuy=tk.Label(frameSetValue, textvariable=totalvolumebuy)
 		labelvalumebuy.grid(row=8,column=0,sticky="e")
 
-
-
-
-
 		self.framePutValue=tk.Frame(self,background = 'yellow')
 		self.framePutValue.grid(row=3,column=1,sticky="e"+"n"+"s"+"w")      
 
-		btnBuyCommand=tk.Button(self.framePutValue,text="Buy Now",command=self.buybyvalue, width = 25,height=3)
-		btnBuyCommand.grid(row=0,column=0)
+		btnBuyCommand=tk.Button(self.framePutValue,text="Buy Now",command=self.buybyvalue, width = 10,height=2)
+		btnBuyCommand.grid(row=0,column=0,sticky="w")
 
+		btnSellCommand=tk.Button(self.framePutValue,text="Sell Now",command=self.sellbyvalue, width = 10,height=2)
+		btnSellCommand.grid(row=0,column=0,sticky="e")
+
+		btnRefreshCmd=tk.Button(self.framePutValue,text="Refresh",command=self.rtrefresh, width = 25,height=3)
+		btnRefreshCmd.grid(row=1,column=0)
 
 
 
@@ -335,7 +336,15 @@ class outputlog(tk.Tk):
 
 		print ("Buy finished ")
 
+	def sellbyvalue(self):
+		print ("sell set value")	
+
 		# self.mybot.threadorderbuy("test")
+	def rtrefresh(self):
+		print ("refresh button press")
+		self.mybot.botrtrefresh()
+		# self.mybot.myorder("rtrefresh",self.configval)
+
 
 	def startcalculate(self):
 		print("calculate here")
@@ -722,10 +731,10 @@ class outputlog(tk.Tk):
 			# print (dir(self))
 			# if not self.mybot.qvalchange.empty():
 			# print(self.mybot.mycollectqueues)
-			if not self.mybot.mycollectqueues["qdatarefresh"].empty():
-				temprefreshdata=self.mybot.mycollectqueues["qdatarefresh"].get()
-				print(temprefreshdata)
-				print ("!!!!!!!!!!!!!!!!!! Dump data refresh !!!!!!!!!!!!!")
+			# if not self.mybot.mycollectqueues["qdatarefresh"].empty():
+			# 	temprefreshdata=self.mybot.mycollectqueues["qdatarefresh"].get()
+			# 	print(temprefreshdata)
+			# print ("!!!!!!!!!!!!!!!!!! Dump data refresh !!!!!!!!!!!!!")
 
 			if not self.mybot.mycollectqueues["qvalchange"].empty():
 				tempdict=self.mybot.mycollectqueues["qvalchange"].get()
