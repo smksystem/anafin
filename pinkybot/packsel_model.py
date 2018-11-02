@@ -99,19 +99,26 @@ class PackSelModel:
 				# print (updaterow)
 				# exit()
 				print (myrow)
-				for index, (column,value) in enumerate(tochk[0].items()):
+				for index, (column,myvalue) in enumerate(tochk[0].items()):
 					if column != "id" and column != "date":
-						updaterow=True if (value != myrow[index+1]) else False
-						print (index,column,value,myrow[index+1],updaterow)
+						updaterow=True if (myvalue != myrow[index+1]) else False
+						# print (index,column,value,myrow[index+1],updaterow)
 						
 						if updaterow==True:
-							print (index,column,value,myrow[index+1],updaterow)
+
+							
+							
+							updatecolumnval=updaterefresh.objects.filter(orderno=myrow[2]).update(**{column:myrow[index+1]})
+							
+							
+							print (index,column,myvalue,myrow[index+1],updaterow)
 							# updaterow=chkorderno	
-							# Publisher.objects.filter(id=1).update(name='Apress Publishing')
+
 							# UPDATE books_publisher
 							# SET name = 'Apress Publishing'
 							# WHERE id = 1;
 							# updaterow.save()
+
 							print ("update row into table")
 
 
