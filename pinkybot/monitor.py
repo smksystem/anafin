@@ -15,11 +15,13 @@ class pinkybot(packselenium):
 
         qorder = Queue() # To send Order request to Runtime
         qvalchange = Queue() # To monitor value change value and refresh to GUI.
+        qtkuprefresh=Queue() # To update tkinter after update refresh into database.
         # qdatarefresh=Queue() # Unuseable since missing qeue To send refresh table between GUI and Refresh button.
         # qdb=Queue()
         # xdebug or xlive
         self.mycollectqueues={"qorder":qorder,
                             "qvalchange":qvalchange,
+                            "qtkuprefresh":qtkuprefresh,
                             # "qdatarefresh":qdatarefresh,
 
         }
