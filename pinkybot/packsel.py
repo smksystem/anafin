@@ -78,13 +78,6 @@ class packselenium():
 		xpath={"xdebug":debugpath,
 				"xlive":livepath,
 		}
-		
-
-
-
-
-
-
 
 		# print (xpath[self.mode]["xpathlogin"])
 		# exit()
@@ -164,17 +157,12 @@ class packselenium():
 		# wait until second pop up is complete loaded
 		wait = WebDriverWait(driver, 30)
 
-
-
 		# detect refresh button
 
 		# element = wait.until(EC.presence_of_element_located((By.XPATH, "//*[@id='place-order-form']/refresh-ui-component/button/span[1]")))
 		element = wait.until(EC.presence_of_element_located((By.XPATH, self.xpathreturn("xrtrefresh")))) 
 
 		print("detect web load success")
-
-
-
 
 		# stock = driver.find_elements_by_xpath("//*[@id='favourite-0']/ul/li[1]/editable-symbol-input/p")[0].text
 
@@ -201,12 +189,6 @@ class packselenium():
 		# elementClose = wait.until(EC.presence_of_element_located((By.XPATH, "//*[@id='page-0-container']/li[3]/mini-quote/div[1]/mini-quote-overview/div[5]/label")))
 		elementClose = wait.until(EC.presence_of_element_located((By.XPATH, self.xpathreturn("xstockup"))))
 		print("wait finished")
-
-
-
-
-
-
 
 		if (stock):
 			# print("element is below")
@@ -283,11 +265,15 @@ class packselenium():
 			orderparams=self.mycollectqueues["qorder"].get()
 			if orderparams["order"]=="buy":
 				self.order(driver,orderparams)
-			if orderparams["order"]=="refresh":
+			if orderparams["order"]=="refreshdb":
 				# orderparams=self.mycollectqueues["qorder"].get()
+				print ("refresh db packsel.py line 270")
 				print (orderparams)
 				self.refreshbtn(driver)
 
+				print ("put queue refreshtk packsel.py line 273")
+				self.mycollectqueues["qorder"].put({"order":"refreshtk"}) # continue refresh TKInter
+				
 		# if not self.mycollectqueues["qdatarefresh"].empty():
 			# orderparams=self.mycollectqueues["qdatarefresh"].get(block=True)
 			# print (orderparams)
@@ -373,7 +359,7 @@ class packselenium():
 
 
 		# try:
-		print ("refresh botton press")
+		print ("refresh botton press in function refresh btn packsel.py line 360")
 		# elem = driver.find_element_by_xpath(self.xpathreturn("xrtrefresh")).click()
 		elem = driver.find_element_by_xpath("//*[@id='order_ctrl']/input[3]").click()
 		# exit()
@@ -425,25 +411,5 @@ class packselenium():
 					mytable.append(myrow)
 					# print(myrow)
 			PackSelModel.updaterefresh(mytable)
-			print("end for")
-				# tablecollume=row.find_elements_by_xpath(".//td")
-				# print("test print out")
-				# print (tablecollume[1])
-				# print (tablecollume[1].text)
-				# # exit()
-				# # print(tablecollume.get_attribute("value"))
-				# for col in tablecollume:
-				# 	# print (col.text)
-				# 	col_dict.append(col.text)
-				# # print (col_dict)
-				# row_dict.append(col_dict)
-				# col_dict=[]
-				# print (row_dict)
-		# print (row_dict)
-		# self.mycollectqueues["qdatarefresh"].put(row_dict)
-		print("end of packsel.py")
-		# self.mycollectqueues["qdatarefresh"].put("row update")
-
-		# print(row_dict[0])
-		# except:
-		# 	pass				
+			# print("end for")
+		# print("end of packsel.py")

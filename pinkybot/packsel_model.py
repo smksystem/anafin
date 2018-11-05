@@ -121,27 +121,8 @@ class PackSelModel:
 
 							print ("update row into table")
 
-
-					# print (updaterow)
-					# orderno=myrow[2],
-					# symbole=myrow[3],
-					# time=myrow[4],
-					# side=myrow[5],
-					# price=myrow[6],
-					# volume=myrow[7],
-					# matched=myrow[8],
-					# balance=myrow[9],
-					# cancelled=myrow[10],
-					# status=myrow[11],
-					# print(value) 
-
-				
-					# print (i)
-				
-				# start to compare each column in one row
-
-
-
+		
+		return 0
 
 	def test_mysql():
 		# pass

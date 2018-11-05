@@ -3,6 +3,7 @@ import tkinter as tk
 import datetime
 import sys
 from pinkybot.monitor import pinkybot
+
 class outputlog(tk.Tk):
 	def __init__(self):
 
@@ -219,7 +220,7 @@ class outputlog(tk.Tk):
 		self.btnLoad=tk.Button(frameSetValue,text="Load",command=self.executeLoad)
 		self.btnLoad.grid(row=0,column=1,sticky="w",padx=self.btnSave.winfo_width())
 
-
+		self.alreadyputback=False # To make put back into queue one time and sync to DB.
 		self.update_idletasks()
 		# self.mycount = 0
 		
@@ -735,6 +736,7 @@ class outputlog(tk.Tk):
 			# 	temprefreshdata=self.mybot.mycollectqueues["qdatarefresh"].get()
 			# 	print(temprefreshdata)
 			# print ("!!!!!!!!!!!!!!!!!! Dump data refresh !!!!!!!!!!!!!")
+			# alreadyputback=False
 
 			if not self.mybot.mycollectqueues["qvalchange"].empty():
 				tempdict=self.mybot.mycollectqueues["qvalchange"].get()
@@ -754,6 +756,17 @@ class outputlog(tk.Tk):
 						print ("monitor =" + tempdict["stockname"])
 						self.configval["stockname"].set(tempdict["stockname"])
 
+			if not self.mybot.mycollectqueues["qorder"].empty() :
+				chkorder=self.mybot.mycollectqueues["qorder"].get()
+				print ("chkorder tkconsole.py line 760")
+				print (chkorder)
+				if chkorder["order"]=="refreshtk":
+					print ("<<<<<<<<<<refresh Tk Inter GUI need to refresh now")
+					# self.alreadyputback=False
+				else:
+					print (">>>>>>>>Put refresh back DB")
+					chkorder=self.mybot.mycollectqueues["qorder"].put(chkorder)
+					# self.alreadyputback=True
 				
 			# self.output.tag_config("testb", background="white", foreground="red")
 			# self.output.tag_add('testb', 10.0, step)
