@@ -97,11 +97,12 @@ class outputlog(tk.Tk):
 		enterpin=tk.Entry(self.frameLoginRT,show="*",textvariable=stockpin)
 		enterpin.grid(row=3,column=1)
 
-
-
-
 		self.btnLoginRT=tk.Button(self.frameLoginRT,text="Start Login RT",command=self.executeLogin)
 		self.btnLoginRT.grid(row=3,column=2 )
+
+
+
+
 
 		frameSetValue=tk.Frame(self,background = 'blue')
 		frameSetValue.grid(row=2,column=1,sticky="e"+"n"+"s"+"w")      
@@ -181,8 +182,12 @@ class outputlog(tk.Tk):
 		self.frameGroupOutput = tk.Frame(self.canvas,background = 'gray')
 		self.frameGroupOutput.grid(row=0,column=0) # start row 2 since text output occupied 2 rows with 0,1.
 
-		self.scrollbarGroupOutPut = tk.Scrollbar(self,orient="vertical", command = self.canvas.yview)
-		self.scrollbarGroupOutPut.grid(row=2,column=0,rowspan=2,sticky="e"+"n"+"s")
+		self.scrollbarYGroupOutPut = tk.Scrollbar(self,orient="vertical", command = self.canvas.yview)
+		self.scrollbarYGroupOutPut.grid(row=2,column=0,rowspan=2,sticky="e"+"n"+"s")
+
+		self.scrollbarXGroupOutPut = tk.Scrollbar(self,orient="horizontal", command = self.canvas.xview)
+		self.scrollbarXGroupOutPut.grid(row=4,column=0,rowspan=1,sticky="e"+"s"+"w")
+
 		# scrollbar.pack(side=tk.RIGHT, fill="y")
 
 
@@ -440,6 +445,7 @@ class outputlog(tk.Tk):
 		# exit()
 
 		self.canvas.yview_moveto(0.01)
+		self.canvas.xview_moveto(0.01)
 		# self.canvas.yview_moveto(0.5)
 
 
@@ -478,8 +484,16 @@ class outputlog(tk.Tk):
 
 				self.frameGroupOutput = tk.Frame(self.canvas,background = 'gray')
 				self.frameGroupOutput.grid(row=0,column=0) # start row 2 since text output occupied 2 rows with 0,1.
-				self.scrollbarGroupOutPut = tk.Scrollbar(self,orient="vertical", command = self.canvas.yview)
-				self.scrollbarGroupOutPut.grid(row=2,column=0,rowspan=2,sticky="e"+"n"+"s")
+				self.scrollbarYGroupOutPut = tk.Scrollbar(self,orient="vertical", command = self.canvas.yview)
+				self.scrollbarYGroupOutPut.grid(row=2,column=0,rowspan=2,sticky="e"+"n"+"s")
+
+				self.scrollbarXGroupOutPut = tk.Scrollbar(self,orient="horizontal", command = self.canvas.xview)
+				self.scrollbarXGroupOutPut.grid(row=4,column=0,rowspan=1,sticky="e"+"s"+"w")
+
+				# self.scrollbarXGroupOutPut = tk.Scrollbar(self,orient="horizontal", command = self.canvas.xview)
+				# self.scrollbarXGroupOutPut.grid(row=4,column=0,rowspan=1,sticky="e"+"s"+"w")
+
+
 
 				break		
 
@@ -529,9 +543,15 @@ class outputlog(tk.Tk):
 		# exit()
 
 
-		self.canvas['yscrollcommand'] = self.scrollbarGroupOutPut.set
+		self.canvas['yscrollcommand'] = self.scrollbarYGroupOutPut.set
 		self.canvas.bind('<Configure>', self.on_configure)
-		self.canvas.create_window((0,0), window=self.frameGroupOutput, anchor='nw')
+
+		self.canvas['xscrollcommand'] = self.scrollbarXGroupOutPut.set
+		self.canvas.bind('<Configure>', self.on_configure)
+
+		self.canvas.create_window((0,0), window=self.frameGroupOutput, anchor='center')
+		# self.canvas.create_window((0,0), window=self.frameXGroupOutput, anchor='we')
+
 		self.canvas.update()
 		# update database at the first time select range
 		# print (self.myvarasso)
