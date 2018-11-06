@@ -2,6 +2,7 @@
 import tkinter as tk
 import datetime
 import sys
+
 from pinkybot.monitor import pinkybot
 
 class outputlog(tk.Tk):
@@ -39,6 +40,7 @@ class outputlog(tk.Tk):
 		totalvolumebuy=tk.StringVar(value="000")
 		stockname=tk.StringVar(value="dummy")
 		stockpin=tk.StringVar(value="3333")
+
 		self.configval={
 			"invest":initinvest,
 			"volumestep":volumestep,
@@ -182,12 +184,13 @@ class outputlog(tk.Tk):
 		self.frameGroupOutput = tk.Frame(self.canvas,background = 'gray')
 		self.frameGroupOutput.grid(row=0,column=0) # start row 2 since text output occupied 2 rows with 0,1.
 
-		self.scrollbarYGroupOutPut = tk.Scrollbar(self,orient="vertical", command = self.canvas.yview)
-		self.scrollbarYGroupOutPut.grid(row=2,column=0,rowspan=2,sticky="e"+"n"+"s")
+		vsbar = tk.Scrollbar(self,orient="vertical", command = self.canvas.yview)
+		vsbar.grid(row=2,column=0,rowspan=2,sticky="e"+"n"+"s")
+		self.canvas.configure(yscrollcommand=vsbar.set)
 
-		self.scrollbarXGroupOutPut = tk.Scrollbar(self,orient="horizontal", command = self.canvas.xview)
-		self.scrollbarXGroupOutPut.grid(row=4,column=0,rowspan=1,sticky="e"+"s"+"w")
-
+		hsbar = tk.Scrollbar(self,orient="horizontal", command = self.canvas.xview)
+		hsbar.grid(row=4,column=0,rowspan=1,sticky="e"+"s"+"w")
+		self.canvas.configure(yscrollcommand=hsbar.set)
 		# scrollbar.pack(side=tk.RIGHT, fill="y")
 
 
@@ -353,7 +356,7 @@ class outputlog(tk.Tk):
 
 
 	def startcalculate(self):
-		print("calculate here")
+		print("def startcalculate here tkconsole.py line 359")
 
 		print(self.configval["invest"].get())
 		i=0
@@ -512,28 +515,59 @@ class outputlog(tk.Tk):
 			self.labeldisplay[varvalue]={}
 			# print("number of variable = " + str(len (self.labeldisplay)))
 
-			self.labeldisplay[varvalue][varvalue]=tk.Label(self.frameGroupOutput, text=varvalue)
-			self.labeldisplay[varvalue][varvalue].grid(row=i,column=0)
+			self.labeldisplay[varvalue][varvalue]=tk.Label(self.frameGroupOutput, text=varvalue,borderwidth=3, relief="groove",height=3)
+			self.labeldisplay[varvalue][varvalue].grid_propagate(0)
+			self.labeldisplay[varvalue][varvalue].grid(row=i,column=0,sticky="w")
 
-			labelseparate=tk.Label(self.frameGroupOutput, text=" | ")
-			labelseparate.grid(row=i,column=1)
+			# labelseparate=tk.Label(self.frameGroupOutput, text=" | ")
+			# labelseparate.grid(row=i,column=1)
 			
 			rowvalue=self.myvarasso[varvalue]
-
+			# print("doMenuRange tkconsole.py line 525")
+			# print(rowvalue)
 			for j,varinfo in enumerate(rowvalue):
 				# print (varinfo)
-				if varinfo=="updatedate" or varinfo=="updatetime" or varinfo=="volumn" or varinfo=="order" or varinfo=="state" or varinfo=="price":
-					self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo])
+
+		# varinfo={
+		# 		"orderid":varorderid,
+		# 		"startordertime":varstartordertime,
+		# 		"matchordertime":varmatchordertime,
+		# 		"matchcomplete":varmatchcomplete,
+		# 		"orderside":varorderside,
+		# 		"volumn":varvolumn,
+		# 		"state":varstatus,
+		# 		"targetvalue":vartargetvalue,
+		# 		"profit":varprofit,
+		# 		}
+
+
+
+				if  varinfo=="orderid" or varinfo=="startordertime" or varinfo=="matchordertime"  :
+					# print(varinfo,j)
+					self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo],borderwidth=2, relief="groove",height=1)
+					self.labeldisplay[varvalue][varinfo].grid(row=i,column=j+1,sticky="n"+"e"+"w",pady=10)
+
+				if  varinfo=="matchcomplete" or varinfo=="orderside" or varinfo=="volumn"  :
+					# print(varinfo,j)
+					self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo],borderwidth=2, relief="groove",height=1)
+					self.labeldisplay[varvalue][varinfo].grid(row=i,column=j-2,sticky="s"+"e"+"w",pady=10)
+
+					# self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo])
 					# self.labeldisplay.grid_propagate(0)
-					self.labeldisplay[varvalue][varinfo].grid(row=i,column=j+2)
-				if varinfo=="buy" or varinfo=="sell" or varinfo=="cancel":
-					self.buyBtnInFrame=tk.Button(self.frameGroupOutput,textvariable=self.myvarasso[varvalue][varinfo],command=self.executeLogin)
-					self.buyBtnInFrame.grid(row=i,column=j+3 )
-				
+					# self.labeldisplay[varvalue][varinfo].grid(row=i,column=j+4)
+				# if varinfo=="buy" or varinfo=="sell" or varinfo=="cancel":
+				# 	self.buyBtnInFrame=tk.Label(self.frameGroupOutput,textvariable=self.myvarasso[varvalue][varinfo],command=self.executeLogin)
+				# 	self.buyBtnInFrame.grid(row=i,column=j+3 )
+			
+				if  varinfo=="state" :
+					# print(varinfo,j)
+					self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo],borderwidth=2, relief="groove",height=3)
+					self.labeldisplay[varvalue][varinfo].grid(row=i,column=j+4,sticky="s"+"e"+"w",pady=7)
+
 				if varinfo=="targetvalue" or varinfo =="profit":
 					self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo])
 					# self.labeldisplay.grid_propagate(0)
-					self.labeldisplay[varvalue][varinfo].grid(row=i,column=j+4)
+					self.labeldisplay[varvalue][varinfo].grid(row=i,column=j+5)
 			runrangeNo-=1
 
 
@@ -611,31 +645,38 @@ class outputlog(tk.Tk):
 			# print (varvalue)
 			# exit()
 
-			vardate=tk.StringVar(value=datenow)
-			vartime=tk.StringVar(value=timenow)
-			varorder=tk.StringVar(value="order")
-			varstatus=tk.StringVar(value="state")
+			# vardate=tk.StringVar(value=datenow)
+			varorderid=tk.StringVar(value="orderid")
+			varstartordertime=tk.StringVar(value=timenow)
+			varmatchordertime=tk.StringVar(value="matchordertime")
+			varmatchcomplete=tk.StringVar(value="matchcomplete")
+			varorderside=tk.StringVar(value="orderside")
 			varvolumn=tk.StringVar(value="volumn")
-			varprice=tk.StringVar(value="price")
-			varbuy=tk.StringVar(value="buy")
-			varsell=tk.StringVar(value="sell")
-			varcancel=tk.StringVar(value="cancel")
+			varstatus=tk.StringVar(value="state")
+			# varprice=tk.StringVar(value="price")
+			# varbuy=tk.StringVar(value="buy")
+			# varsell=tk.StringVar(value="sell")
+			# varcancel=tk.StringVar(value="cancel")
 			vartargetvalue=tk.StringVar(value="target")
 			varprofit=tk.StringVar(value="profit")
 			# varvalue=tk.StringVar(value=data)
 
 			varinfo={
-				"updatedate":vardate,
-				"updatetime":vartime,
+				# "updatedate":vardate,
+				"orderid":varorderid,
+				"startordertime":varstartordertime,
+				"matchordertime":varmatchordertime,
+				"matchcomplete":varmatchcomplete,
+				# "price":varprice,
+				"orderside":varorderside,
 				"volumn":varvolumn,
-				"price":varprice,
-				"order":varorder,
 				"state":varstatus,
-				"buy":varbuy,
-				"sell":varsell,
-				"cancel":varcancel,
+				# "buy":varbuy,
+				# "sell":varsell,
+				# "cancel":varcancel,
 				"targetvalue":vartargetvalue,
 				"profit":varprofit,
+				# "test":test,
 			}
 			# varstep={"value":varvalue}
 			varasso[varvalue]=varinfo
