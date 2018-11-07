@@ -484,7 +484,7 @@ class outputlog(tk.Tk):
 		plansel=value.split(' ')[0]
 		self.myvarasso=self.initRangeValue(plansel[-1])
 
-		# print(self.myvarasso)
+		# print(self.myvarasso["4.00"])
 		# exit()
 
 		if plansel=="PlanA":
@@ -522,10 +522,14 @@ class outputlog(tk.Tk):
 		self.labeldisplay={}
 		self.labeldisplay.clear()
 
-		runrangeNo=len(list (self.myvarasso.items()))-1
+		# list all value to print with decrease number
+		runrangeNo=len(list (self.myvarasso.items()))-1 
+		# print(len(list (self.myvarasso.items())))
 		for i,myvarvalue in enumerate(self.myvarasso):
 
 			varvalue=list (self.myvarasso.items())[runrangeNo][0]
+			# print (varvalue)
+			# print (runrangeNo)
 			# print ("number of i=" + str(i))
 			
 			# print(runrangeNo)
@@ -542,53 +546,55 @@ class outputlog(tk.Tk):
 			# labelseparate.grid(row=i,column=1)
 			
 			rowvalue=self.myvarasso[varvalue]
-			print ("tkconsole.py line 542")
-			print (rowvalue)
+			# print ("tkconsole.py line 542")
+			# print (rowvalue)
+			# exit()
 			# print("doMenuRange tkconsole.py line 525")
 			# print(rowvalue)
-			for j,varinfo in enumerate(rowvalue):
-				# print (varinfo)
+			# if varvalue=="4.00":
+			# 	print(rowvalue)
+			for repeatidx,valrepeat in enumerate(rowvalue):
 
-		# varinfo={
-		# 		"orderid":varorderid,
-		# 		"startordertime":varstartordertime,
-		# 		"matchordertime":varmatchordertime,
-		# 		"matchcomplete":varmatchcomplete,
-		# 		"orderside":varorderside,
-		# 		"volumn":varvolumn,
-		# 		"state":varstatus,
-		# 		"targetvalue":vartargetvalue,
-		# 		"profit":varprofit,
-		# 		}
+				# if varvalue=="4.00":
+					# print(valrepeat)
+				# print("tkconsole.py line 553")
+				# print(valrepeat)
+				for j,varinfo in enumerate(valrepeat):
+					# print (varinfo)
+
+					# varinfo={
+					# 		"orderid":varorderid,
+					# 		"startordertime":varstartordertime,
+					# 		"matchordertime":varmatchordertime,
+					# 		"matchcomplete":varmatchcomplete,
+					# 		"orderside":varorderside,
+					# 		"volumn":varvolumn,
+					# 		"state":varstatus,
+					# 		"targetvalue":vartargetvalue,
+					# 		"profit":varprofit,
+					# 		}
 
 
 
-				if  varinfo=="orderid" or varinfo=="startordertime" or varinfo=="matchordertime"  :
-					# print(varinfo,j)
-					self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo],borderwidth=2, relief="groove",height=1)
-					self.labeldisplay[varvalue][varinfo].grid(row=i,column=j+1,sticky="n"+"e"+"w",pady=10)
+					if  varinfo=="orderid" or varinfo=="startordertime" or varinfo=="matchordertime":
+						# print(varinfo,j)
+						self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][repeatidx][varinfo],borderwidth=2, relief="groove",height=1)
+						self.labeldisplay[varvalue][varinfo].grid(row=i,column=j+1,sticky="n"+"e"+"w",pady=10)
 
-				if  varinfo=="matchcomplete" or varinfo=="orderside" or varinfo=="volumn"  :
-					# print(varinfo,j)
-					self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo],borderwidth=2, relief="groove",height=1)
-					self.labeldisplay[varvalue][varinfo].grid(row=i,column=j-2,sticky="s"+"e"+"w",pady=10)
+					if  varinfo=="matchcomplete" or varinfo=="orderside" or varinfo=="volumn"  :
+						# print(varinfo,j)
+						self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][repeatidx][varinfo],borderwidth=2, relief="groove",height=1)
+						self.labeldisplay[varvalue][varinfo].grid(row=i,column=j-2,sticky="s"+"e"+"w",pady=10)
 
-					# self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo])
-					# self.labeldisplay.grid_propagate(0)
-					# self.labeldisplay[varvalue][varinfo].grid(row=i,column=j+4)
-				# if varinfo=="buy" or varinfo=="sell" or varinfo=="cancel":
-				# 	self.buyBtnInFrame=tk.Label(self.frameGroupOutput,textvariable=self.myvarasso[varvalue][varinfo],command=self.executeLogin)
-				# 	self.buyBtnInFrame.grid(row=i,column=j+3 )
-			
-				if  varinfo=="state" :
-					# print(varinfo,j)
-					self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo],borderwidth=2, relief="groove",height=3)
-					self.labeldisplay[varvalue][varinfo].grid(row=i,column=j+4,sticky="s"+"e"+"w",pady=7)
+					if  varinfo=="state" :
+						# print(varinfo,j)
+						self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][repeatidx][varinfo],borderwidth=2, relief="groove",height=3)
+						self.labeldisplay[varvalue][varinfo].grid(row=i,column=j+4,sticky="s"+"e"+"w",pady=7)
 
-				if varinfo=="targetvalue" or varinfo =="profit":
-					self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][varinfo])
-					# self.labeldisplay.grid_propagate(0)
-					self.labeldisplay[varvalue][varinfo].grid(row=i,column=j+5)
+					if varinfo=="targetvalue" or varinfo =="profit":
+						self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][repeatidx][varinfo])
+						# self.labeldisplay.grid_propagate(0)
+						self.labeldisplay[varvalue][varinfo].grid(row=i,column=j+5)
 			runrangeNo-=1
 
 
@@ -653,13 +659,15 @@ class outputlog(tk.Tk):
 		return self.rangeline(series)
 
 	def rangeline(self,series):
-		# print(series)
+		# print(len(series))
+		# exit()
 		datenow = datetime.datetime.now().strftime("%Y-%m-%d")
 		timenow = datetime.datetime.now().strftime("%H:%M:%S")
 
 		varasso={}
 		varstep={}
 		varinfo={}
+		# varinfogroup=[]
 		varrepeat=[]
 
 # /*********** TEST ****************
@@ -683,35 +691,46 @@ class outputlog(tk.Tk):
 ################################################
 
 		for varvalue in series:
-			print(varvalue)
+			# print(varvalue)
 			varorderid=tk.StringVar(value="orderid")
-			# varstartordertime=tk.StringVar(value=timenow)
-			# varmatchordertime=tk.StringVar(value="matchordertime")
-			# varmatchcomplete=tk.StringVar(value="matchcomplete")
-			# varorderside=tk.StringVar(value="orderside")
-			# varvolumn=tk.StringVar(value="volumn")
-			# varstatus=tk.StringVar(value="state")
-			# vartargetvalue=tk.StringVar(value="target")
-			# varprofit=tk.StringVar(value="profit")
+			varstartordertime=tk.StringVar(value=timenow)
+			varmatchordertime=tk.StringVar(value="matchordertime")
+			varmatchcomplete=tk.StringVar(value="matchcomplete")
+			varorderside=tk.StringVar(value="orderside")
+			varvolumn=tk.StringVar(value="volumn")
+			varstatus=tk.StringVar(value="state")
+			vartargetvalue=tk.StringVar(value="target")
+			varprofit=tk.StringVar(value="profit")
 			varinfo={
 				"orderid":varorderid,
-				# "startordertime":varstartordertime,
-				# "matchordertime":varmatchordertime,
-				# "matchcomplete":varmatchcomplete,
-				# "orderside":varorderside,
-				# "volumn":varvolumn,
-				# "state":varstatus,
-				# "targetvalue":vartargetvalue,
-				# "profit":varprofit,
+				"startordertime":varstartordertime,
+				"matchordertime":varmatchordertime,
+				"matchcomplete":varmatchcomplete,
+				"orderside":varorderside,
+				"volumn":varvolumn,
+				"state":varstatus,
+				"targetvalue":vartargetvalue,
+				"profit":varprofit,
 			}
 			varrepeat.append(varinfo)
+			# varrepeat["idx0"]=varinfogroup
+			# varrepeat.append(varinfo)
+
+			# print (varrepeat[1])
+			# exit()
+			# if varvalue=="4.00":
+				# varrepeat.append(varinfo)
+				# print (varvalue,varrepeat)
+				# exit()
 			varasso[varvalue]=varrepeat
 			varrepeat=[]
+
 			# print (varvalue)
 			# print(varrepeat)
-		print (varasso)
 		# print (varasso)
-		exit()
+		# exit()
+		# print (varasso)
+		# exit()
 		return varasso
 
 	def getRangeData(self):
