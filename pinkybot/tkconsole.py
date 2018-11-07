@@ -410,21 +410,37 @@ class outputlog(tk.Tk):
 						valuelabel=stval
 					else:
 						valuelabel=str(runvaluerange)
-											
-					self.labeldisplay[valuelabel][valuelabel].configure(background="white")
-					self.labeldisplay[valuelabel]["updatedate"].configure(background="white")
-					self.labeldisplay[valuelabel]["updatetime"].configure(background="white")
-					self.labeldisplay[valuelabel]["volumn"].configure(background="white")
-					self.labeldisplay[valuelabel]["price"].configure(background="white")
+					
 
-					self.labeldisplay[valuelabel]["order"].configure(background="white")
+
+							# varinfo={
+		# 		"orderid":varorderid,
+		# 		"startordertime":varstartordertime,
+		# 		"matchordertime":varmatchordertime,
+		# 		"matchcomplete":varmatchcomplete,
+		# 		"orderside":varorderside,
+		# 		"volumn":varvolumn,
+		# 		"state":varstatus,
+		# 		"targetvalue":vartargetvalue,
+		# 		"profit":varprofit,
+		# 		}
+
+
+					self.labeldisplay[valuelabel][valuelabel].configure(background="white")
+					self.labeldisplay[valuelabel]["orderid"].configure(background="white")
+					self.labeldisplay[valuelabel]["startordertime"].configure(background="white")
+					self.labeldisplay[valuelabel]["matchordertime"].configure(background="white")
+					self.labeldisplay[valuelabel]["matchcomplete"].configure(background="white")
+					self.labeldisplay[valuelabel]["volumn"].configure(background="white")
+
+					self.labeldisplay[valuelabel]["orderside"].configure(background="white")
 					self.labeldisplay[valuelabel]["state"].configure(background="white")
 					self.labeldisplay[valuelabel]["targetvalue"].configure(background="white")
 					self.labeldisplay[valuelabel]["profit"].configure(background="white")
 
 					self.myvarasso[valuelabel]["volumn"].set(volumestep)
 
-					self.myvarasso[valuelabel]["price"].set(stcost)
+					# self.myvarasso[valuelabel]["price"].set(stcost)
 
 					target=round((float(commonvaluestep) * profitstep) + float(valuelabel),2)
 					# print ("target value="+str(target))
@@ -467,6 +483,9 @@ class outputlog(tk.Tk):
 
 		plansel=value.split(' ')[0]
 		self.myvarasso=self.initRangeValue(plansel[-1])
+
+		# print(self.myvarasso)
+		# exit()
 
 		if plansel=="PlanA":
 			print("planA selected")
@@ -523,6 +542,8 @@ class outputlog(tk.Tk):
 			# labelseparate.grid(row=i,column=1)
 			
 			rowvalue=self.myvarasso[varvalue]
+			print ("tkconsole.py line 542")
+			print (rowvalue)
 			# print("doMenuRange tkconsole.py line 525")
 			# print(rowvalue)
 			for j,varinfo in enumerate(rowvalue):
@@ -632,58 +653,65 @@ class outputlog(tk.Tk):
 		return self.rangeline(series)
 
 	def rangeline(self,series):
-
+		# print(series)
 		datenow = datetime.datetime.now().strftime("%Y-%m-%d")
 		timenow = datetime.datetime.now().strftime("%H:%M:%S")
 
 		varasso={}
 		varstep={}
 		varinfo={}
-		# print (series)
-		for rowid,varvalue in enumerate(series):
-			# print (rowid)
-			# print (varvalue)
-			# exit()
+		varrepeat=[]
 
-			# vardate=tk.StringVar(value=datenow)
-			varorderid=tk.StringVar(value="orderid")
-			varstartordertime=tk.StringVar(value=timenow)
-			varmatchordertime=tk.StringVar(value="matchordertime")
-			varmatchcomplete=tk.StringVar(value="matchcomplete")
-			varorderside=tk.StringVar(value="orderside")
-			varvolumn=tk.StringVar(value="volumn")
-			varstatus=tk.StringVar(value="state")
-			# varprice=tk.StringVar(value="price")
-			# varbuy=tk.StringVar(value="buy")
-			# varsell=tk.StringVar(value="sell")
-			# varcancel=tk.StringVar(value="cancel")
-			vartargetvalue=tk.StringVar(value="target")
-			varprofit=tk.StringVar(value="profit")
-			# varvalue=tk.StringVar(value=data)
-
-			varinfo={
-				# "updatedate":vardate,
-				"orderid":varorderid,
-				"startordertime":varstartordertime,
-				"matchordertime":varmatchordertime,
-				"matchcomplete":varmatchcomplete,
-				# "price":varprice,
-				"orderside":varorderside,
-				"volumn":varvolumn,
-				"state":varstatus,
-				# "buy":varbuy,
-				# "sell":varsell,
-				# "cancel":varcancel,
-				"targetvalue":vartargetvalue,
-				"profit":varprofit,
-				# "test":test,
-			}
-			# varstep={"value":varvalue}
-			varasso[varvalue]=varinfo
-
-
+# /*********** TEST ****************
+		# series=['2.00','2.02','2.04','2.06']
+		# for varvalue in series:
+		# 	varorderid=tk.StringVar(value="orderid")
+		# 	varinfo={
+		# 		"orderid":varorderid,
+		# 	}
+		# 	varrepeat.append(varinfo)
+		# 	varasso[varvalue]=varrepeat
+		# 	varrepeat=[]
+		# 	# print (varvalue)
+		# 	# print(varrepeat)
+		# 	# print(varvalue)
+		# 	if varvalue=="2.02":
+		# 		break
 		# print (varasso)
-	
+
+		# exit()	
+################################################
+
+		for varvalue in series:
+			print(varvalue)
+			varorderid=tk.StringVar(value="orderid")
+			# varstartordertime=tk.StringVar(value=timenow)
+			# varmatchordertime=tk.StringVar(value="matchordertime")
+			# varmatchcomplete=tk.StringVar(value="matchcomplete")
+			# varorderside=tk.StringVar(value="orderside")
+			# varvolumn=tk.StringVar(value="volumn")
+			# varstatus=tk.StringVar(value="state")
+			# vartargetvalue=tk.StringVar(value="target")
+			# varprofit=tk.StringVar(value="profit")
+			varinfo={
+				"orderid":varorderid,
+				# "startordertime":varstartordertime,
+				# "matchordertime":varmatchordertime,
+				# "matchcomplete":varmatchcomplete,
+				# "orderside":varorderside,
+				# "volumn":varvolumn,
+				# "state":varstatus,
+				# "targetvalue":vartargetvalue,
+				# "profit":varprofit,
+			}
+			varrepeat.append(varinfo)
+			varasso[varvalue]=varrepeat
+			varrepeat=[]
+			# print (varvalue)
+			# print(varrepeat)
+		print (varasso)
+		# print (varasso)
+		exit()
 		return varasso
 
 	def getRangeData(self):
