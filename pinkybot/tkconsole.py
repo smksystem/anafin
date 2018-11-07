@@ -526,7 +526,7 @@ class outputlog(tk.Tk):
 		runrangeNo=len(list (self.myvarasso.items()))-1 
 		# print(len(list (self.myvarasso.items())))
 		for i,myvarvalue in enumerate(self.myvarasso):
-
+			# print (myvarvalue)
 			varvalue=list (self.myvarasso.items())[runrangeNo][0]
 			# print (varvalue)
 			# print (runrangeNo)
@@ -555,8 +555,9 @@ class outputlog(tk.Tk):
 			# 	print(rowvalue)
 			for repeatidx,valrepeat in enumerate(rowvalue):
 
+				self.labeldisplay[varvalue][repeatidx]={}
 				# if varvalue=="4.00":
-					# print(valrepeat)
+					# print(repeatidx,valrepeat)
 				# print("tkconsole.py line 553")
 				# print(valrepeat)
 				for j,varinfo in enumerate(valrepeat):
@@ -574,27 +575,28 @@ class outputlog(tk.Tk):
 					# 		"profit":varprofit,
 					# 		}
 
+					# print(varvalue,repeatidx)
 
-
-					if  varinfo=="orderid" or varinfo=="startordertime" or varinfo=="matchordertime":
+					if  varinfo=="orderid" or varinfo=="startordertime" or varinfo=="matchordertime"  or varinfo =="targetvalue":
 						# print(varinfo,j)
-						self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][repeatidx][varinfo],borderwidth=2, relief="groove",height=1)
-						self.labeldisplay[varvalue][varinfo].grid(row=i,column=j+1,sticky="n"+"e"+"w",pady=10)
+						self.labeldisplay[varvalue][repeatidx][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][repeatidx][varinfo],borderwidth=2, relief="groove",height=1)
+						self.labeldisplay[varvalue][repeatidx][varinfo].grid(row=i,column=j+1+(int(repeatidx)*6),sticky="n"+"e"+"w",pady=5)
 
-					if  varinfo=="matchcomplete" or varinfo=="orderside" or varinfo=="volumn"  :
+					if  varinfo=="matchcomplete" or varinfo=="orderside" or varinfo=="volumn" or varinfo == "profit" or varinfo=="state" :
 						# print(varinfo,j)
-						self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][repeatidx][varinfo],borderwidth=2, relief="groove",height=1)
-						self.labeldisplay[varvalue][varinfo].grid(row=i,column=j-2,sticky="s"+"e"+"w",pady=10)
+						self.labeldisplay[varvalue][repeatidx][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][repeatidx][varinfo],borderwidth=2, relief="groove",height=1)
+						self.labeldisplay[varvalue][repeatidx][varinfo].grid(row=i,column=j-3+(int(repeatidx)*6),sticky="s"+"e"+"w",pady=5)
 
-					if  varinfo=="state" :
-						# print(varinfo,j)
-						self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][repeatidx][varinfo],borderwidth=2, relief="groove",height=3)
-						self.labeldisplay[varvalue][varinfo].grid(row=i,column=j+4,sticky="s"+"e"+"w",pady=7)
+					# if  varinfo=="state" :
+					# 	# print(varinfo,j)
+					# 	self.labeldisplay[varvalue][repeatidx][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][repeatidx][varinfo],borderwidth=2, relief="groove",height=3)
+					# 	self.labeldisplay[varvalue][repeatidx][varinfo].grid(row=i,column=j+5+int(repeatidx),sticky="s"+"e"+"w",pady=7)
+					# 	self.labeldisplay[varvalue][repeatidx][varinfo].grid_propagate(False)
+					# if varinfo=="targetvalue":
 
-					if varinfo=="targetvalue" or varinfo =="profit":
-						self.labeldisplay[varvalue][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][repeatidx][varinfo])
-						# self.labeldisplay.grid_propagate(0)
-						self.labeldisplay[varvalue][varinfo].grid(row=i,column=j+5)
+					# 	self.labeldisplay[varvalue][repeatidx][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][repeatidx][varinfo])
+					# 	# self.labeldisplay.grid_propagate(0)
+					# 	self.labeldisplay[varvalue][repeatidx][varinfo].grid(row=i,column=j+5)
 			runrangeNo-=1
 
 
@@ -705,21 +707,27 @@ class outputlog(tk.Tk):
 				"orderid":varorderid,
 				"startordertime":varstartordertime,
 				"matchordertime":varmatchordertime,
+				"targetvalue":vartargetvalue,
 				"matchcomplete":varmatchcomplete,
 				"orderside":varorderside,
 				"volumn":varvolumn,
-				"state":varstatus,
-				"targetvalue":vartargetvalue,
 				"profit":varprofit,
+				"state":varstatus,
 			}
 			varrepeat.append(varinfo)
-			# varrepeat["idx0"]=varinfogroup
-			# varrepeat.append(varinfo)
 
 			# print (varrepeat[1])
 			# exit()
+			############################################################################
+			# skip this for testing when multi result box
 			# if varvalue=="4.00":
-				# varrepeat.append(varinfo)
+			# 	varrepeat.append(varinfo)
+			# 	varrepeat.append(varinfo)
+			# 	varrepeat.append(varinfo)
+			# 	varrepeat.append(varinfo)
+			# 	varrepeat.append(varinfo)
+				
+			############################################################################	
 				# print (varvalue,varrepeat)
 				# exit()
 			varasso[varvalue]=varrepeat
