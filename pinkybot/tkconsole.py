@@ -31,11 +31,11 @@ class outputlog(tk.Tk):
 		initinvest=tk.StringVar(value="10000")
 		volumestep=tk.StringVar(value="100")
 		profitstep=tk.StringVar(value="2")
-		topvaluerange=tk.StringVar(value="4.06")
-		startvaluebuy=tk.StringVar(value="0.00")
-		startvolumebuy=tk.StringVar(value="0")
+		topvaluerange=tk.StringVar(value="4.98")
+		startvaluebuy=tk.StringVar(value="4.90")
+		startvolumebuy=tk.StringVar(value="0")   # from calculate range.
 		stopvaluerange=tk.StringVar(value="0.00")
-		commonstep=tk.StringVar(value="0.00")
+		commonstep=tk.StringVar(value="0.00")  # step from range calculation
 		totalcostbuy=tk.StringVar(value="0000000000")
 		totalvolumebuy=tk.StringVar(value="000")
 		stockname=tk.StringVar(value="dummy")
@@ -125,28 +125,29 @@ class outputlog(tk.Tk):
 		labelinitialvalue=tk.Label(frameSetValue, text="Profit Step")
 		labelinitialvalue.grid(row=3,column=0)
 
-		self.enterVolumn=tk.Entry(frameSetValue,textvariable=profitstep) 
-		self.enterVolumn.grid(row=3,column=1)
+		enterVolumn=tk.Entry(frameSetValue,textvariable=profitstep) 
+		enterVolumn.grid(row=3,column=1)
 
 
 		labelinitialvalue=tk.Label(frameSetValue, text="topvaluerange")
 		labelinitialvalue.grid(row=4,column=0)
 
-		self.enterVolumn=tk.Entry(frameSetValue,textvariable=topvaluerange) 
-		self.enterVolumn.grid(row=4,column=1)
-
-
-		self.btnStartInitCal=tk.Button(frameSetValue,text="Set Parameters",command=self.setparameter)
-		self.btnStartInitCal.grid(row=5,column=1 )
+		enterVolumn=tk.Entry(frameSetValue,textvariable=topvaluerange) 
+		enterVolumn.grid(row=4,column=1)
 
 		labelvaluebuy=tk.Label(frameSetValue, text="StartValueBuy")
-		labelvaluebuy.grid(row=6,column=0)
+		labelvaluebuy.grid(row=5,column=0)
 
 		self.entervaluebuy=tk.Entry(frameSetValue,textvariable=startvaluebuy) 
-		self.entervaluebuy.grid(row=6,column=1)
+		self.entervaluebuy.grid(row=5,column=1)
 
-		self.btnStartvaluebuy=tk.Button(frameSetValue,text="Set Value Buy",command=self.setvaluebuy)
-		self.btnStartvaluebuy.grid(row=7,column=1 )
+		self.btnStartInitCal=tk.Button(frameSetValue,text="Set Parameters",command=self.setparameter)
+		self.btnStartInitCal.grid(row=7,column=1 )
+
+
+
+		self.btnStartvaluebuy=tk.Button(frameSetValue,text="Set Value Buy",command=self.setvaluebuy,state='disabled',)
+		self.btnStartvaluebuy.grid(row=8,column=1 )
 
 		labelvaluebuy=tk.Label(frameSetValue, text="Cost:")
 		labelvaluebuy.grid(row=7,column=0,sticky="w")
