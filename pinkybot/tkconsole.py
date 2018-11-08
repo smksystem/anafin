@@ -31,7 +31,7 @@ class outputlog(tk.Tk):
 		initinvest=tk.StringVar(value="10000")
 		volumestep=tk.StringVar(value="100")
 		profitstep=tk.StringVar(value="2")
-		startvaluerange=tk.StringVar(value="4.06")
+		topvaluerange=tk.StringVar(value="4.06")
 		startvaluebuy=tk.StringVar(value="0.00")
 		startvolumebuy=tk.StringVar(value="0")
 		stopvaluerange=tk.StringVar(value="0.00")
@@ -45,7 +45,7 @@ class outputlog(tk.Tk):
 			"invest":initinvest,
 			"volumestep":volumestep,
 			"profitstep":profitstep,
-			"startvaluerange":startvaluerange,		
+			"topvaluerange":topvaluerange,		
 			"commonstep":commonstep,
 			"startvaluebuy":startvaluebuy,
 			"startvolumebuy":startvolumebuy,
@@ -129,14 +129,14 @@ class outputlog(tk.Tk):
 		self.enterVolumn.grid(row=3,column=1)
 
 
-		labelinitialvalue=tk.Label(frameSetValue, text="StartValueRange")
+		labelinitialvalue=tk.Label(frameSetValue, text="topvaluerange")
 		labelinitialvalue.grid(row=4,column=0)
 
-		self.enterVolumn=tk.Entry(frameSetValue,textvariable=startvaluerange) 
+		self.enterVolumn=tk.Entry(frameSetValue,textvariable=topvaluerange) 
 		self.enterVolumn.grid(row=4,column=1)
 
 
-		self.btnStartInitCal=tk.Button(frameSetValue,text="Set Parameters",command=self.startcalculate)
+		self.btnStartInitCal=tk.Button(frameSetValue,text="Set Parameters",command=self.setparameter)
 		self.btnStartInitCal.grid(row=5,column=1 )
 
 		labelvaluebuy=tk.Label(frameSetValue, text="StartValueBuy")
@@ -272,17 +272,23 @@ class outputlog(tk.Tk):
 
 			if len(chkpad[1])==1:
 				tempval=chkpad[1]+"0"
-				stval=chkpad[0]+"." +tempval
-				runvalue=stval
+				stepval=chkpad[0]+"." +tempval
+				runvalue=stepval
 				# print(self.myvarasso[runvalue])
-				priceaccumestep= float(self.myvarasso[runvalue]["price"].get())
-				volumeaccumestep= float(self.myvarasso[runvalue]["volumn"].get())
+				# priceaccumestep= float(self.myvarasso[runvalue][runvalue].get())
+				priceaccumestep= runvalue
+				print("tkconsole.py line 280 runvalue=" + runvalue)
+				volumeaccumestep= float(self.myvarasso[runvalue][0]["volumn"].get())
+				# exit()
 
 				print (runvalue+" need price = " + str(priceaccumestep))
 				
 
 
 				lblvalue=str(runvalue)
+				# for repeatidx in self.labeldisplay[valuebuy]:
+				# if repeatidx!=valuebuy:	
+				
 				self.labeldisplay[lblvalue][lblvalue].configure(fg='black',background='green')
 				self.labeldisplay[lblvalue]["updatedate"].configure(fg='black',background='green')
 				self.labeldisplay[lblvalue]["updatetime"].configure(fg='black',background='green')
@@ -366,7 +372,7 @@ class outputlog(tk.Tk):
 		# self.mybot.myorder("rtrefresh",self.configval)
 
 
-	def startcalculate(self):
+	def setparameter(self):
 		print("def startcalculate here tkconsole.py line 359")
 
 		print(self.configval["invest"].get())
@@ -377,21 +383,28 @@ class outputlog(tk.Tk):
 		# 	i+=1
 
 
-		startvaluerange=float(self.configval["startvaluerange"].get())
+		topvaluerange=float(self.configval["topvaluerange"].get())
 		invest=int(self.configval["invest"].get())
 		volumestep=int(self.configval["volumestep"].get())
 		profitstep=int(self.configval["profitstep"].get())
 		commonvaluestep=float(self.configval["commonstep"].get())
 
+		self.parameterconfig={
+			"topvaluerange":topvaluerange,
+			"invest":invest,
+			"volumestep":volumestep,
+			"profitstep":profitstep,
+			"commonvaluestep":commonvaluestep,
+		}
 		
-		# runvaluerange=startvaluerange
+		# runvaluerange=topvaluerange
 
 
 		# for i,valuelabel in enumerate(self.labeldisplay):
 		# 	# print ( valuelabel)
 
 		# 	runvaluerange=float(valuelabel)
-		# 	if (startvaluerange >= runvaluerange):
+		# 	if (topvaluerange >= runvaluerange):
 		# 		print(str(runvaluerange))
 
 
@@ -403,7 +416,7 @@ class outputlog(tk.Tk):
 			runvaluerange=float(valuelabel)
 			print ("runvaluerange = " +str(runvaluerange))
 
-			if (startvaluerange<=runvaluerange):
+			if (topvaluerange<=runvaluerange):
 				
 
 				print("run value range = " + str(runvaluerange))
@@ -485,7 +498,7 @@ class outputlog(tk.Tk):
 		self.txtout("Remain Range Invest =" +str(runinvest),"orange","green")
 		
 		self.txtout("Set Step Profit = " +str(profitstep))
-		self.txtout("Set Start Value Range = " +str(startvaluerange))
+		self.txtout("Set Start Value Range = " +str(topvaluerange))
 		self.txtout("Set Stop Value Range = " +str(stopvaluerange),"green","white")
 
 
