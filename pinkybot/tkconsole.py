@@ -401,31 +401,59 @@ class outputlog(tk.Tk):
 			"commonvaluestep":commonvaluestep,
 		}
 		# valuebuy=startvaluebuy
-		runvalue=round(float(startvaluebuy),2) # change text to numbering.
+		runvalue=float(startvaluebuy) # change text to numbering.
 		stopvaluerange=float(topvaluerange)
+		commonvaluestep=float(commonvaluestep)
+		# volumestep=float(volumestep)
 		# print (runvalue)
-		# print (stopvaluerange)
+		# print (commonvaluestep)
 		# print (type(runvalue))
 		# print(type(stopvaluerange))
 		# exit()
 		while (runvalue<=stopvaluerange):				
-			print ("enter while loop")
-			runvalue=round(runvalue,2)
-			print ("round run value=" +str(runvalue))
-			print ("topvaluerange=" +str(topvaluerange))
+			# print ("enter while loop")
+			# runvalue=round(runvalue,2)
+			# print ("round run value=" +str(runvalue))
 
-			chkpad=str(runvalue).split(".")
+			# if (stopvaluerange<=runvalue):
+				
 
-			if len(chkpad[1])==1:
-				tempval=chkpad[1]+"0"
-				stepval=chkpad[0]+"." +tempval
-				runvalue=stepval
-				# print(self.myvarasso[runvalue])
-				# priceaccumestep= float(self.myvarasso[runvalue][runvalue].get())
-				priceaccumestep= runvalue
-
+			print("run value range = " + str(runvalue))
+			stepcost=round((runvalue*volumestep),2)
+			runinvest -=(runvaluerange*volumestep)
 			runvalue+=commonvaluestep
 			runvalue=round(runvalue,2)
+			
+			print ("step cost = " + stepcost)
+
+			# print ("remain invest = " +  str(invest))
+			
+				# if runinvest > (runvaluerange*volumestep):
+
+				# 	chkpad=str(runvaluerange).split(".")
+
+				# 	if len(chkpad[1])==1:
+				# 		tempval=chkpad[1]+"0"
+				# 		stval=chkpad[0]+"." +tempval
+				# 		valuelabel=stval
+				# 	else:
+				# 		valuelabel=str(runvaluerange)
+
+
+
+
+			# print ("topvaluerange=" +str(topvaluerange))
+
+			# chkpad=str(runvalue).split(".")
+
+			# if len(chkpad[1])==1:
+			# 	tempval=chkpad[1]+"0"
+			# 	stepval=chkpad[0]+"." +tempval
+			# 	runvalue=stepval
+				# print(self.myvarasso[runvalue])
+				# priceaccumestep= float(self.myvarasso[runvalue][runvalue].get())
+				# priceaccumestep= runvalue
+
 
 		print("end test")
 		exit()
@@ -450,24 +478,6 @@ class outputlog(tk.Tk):
 			runvaluerange=float(valuelabel)
 			print ("runvaluerange = " +str(runvaluerange))
 
-			if (topvaluerange<=runvaluerange):
-				
-
-				print("run value range = " + str(runvaluerange))
-				stcost=str(round((runvaluerange*volumestep),2))
-
-
-				print ("remain invest = " +  str(runinvest))
-				if runinvest > (runvaluerange*volumestep):
-
-					chkpad=str(runvaluerange).split(".")
-
-					if len(chkpad[1])==1:
-						tempval=chkpad[1]+"0"
-						stval=chkpad[0]+"." +tempval
-						valuelabel=stval
-					else:
-						valuelabel=str(runvaluerange)
 
 							# varinfo={
 		# 		"orderid":varorderid,
@@ -480,38 +490,38 @@ class outputlog(tk.Tk):
 		# 		"targetvalue":vartargetvalue,
 		# 		"profit":varprofit,
 		# 		}
-				self.labeldisplay[valuelabel][valuelabel].configure(background="lightpink")
+			self.labeldisplay[valuelabel][valuelabel].configure(background="lightpink")
 				# print(self.labeldisplay[valuelabel][0])
-				for repeatidx in self.labeldisplay[valuelabel]:
-					if repeatidx!=valuelabel:
+			for repeatidx in self.labeldisplay[valuelabel]:
+				if repeatidx!=valuelabel:
 
-						self.labeldisplay[valuelabel][repeatidx]["orderid"].configure(background="lightpink")
-						self.labeldisplay[valuelabel][repeatidx]["startordertime"].configure(background="lightpink")
-						self.labeldisplay[valuelabel][repeatidx]["matchordertime"].configure(background="lightpink")
-						self.labeldisplay[valuelabel][repeatidx]["matchcomplete"].configure(background="lightpink")
-						self.labeldisplay[valuelabel][repeatidx]["volumn"].configure(background="lightpink")
-						self.labeldisplay[valuelabel][repeatidx]["orderside"].configure(background="lightpink")
-						self.labeldisplay[valuelabel][repeatidx]["state"].configure(background="lightpink")
-						self.labeldisplay[valuelabel][repeatidx]["targetvalue"].configure(background="lightpink")
-						self.labeldisplay[valuelabel][repeatidx]["profit"].configure(background="lightpink")
+					self.labeldisplay[valuelabel][repeatidx]["orderid"].configure(background="lightpink")
+					self.labeldisplay[valuelabel][repeatidx]["startordertime"].configure(background="lightpink")
+					self.labeldisplay[valuelabel][repeatidx]["matchordertime"].configure(background="lightpink")
+					self.labeldisplay[valuelabel][repeatidx]["matchcomplete"].configure(background="lightpink")
+					self.labeldisplay[valuelabel][repeatidx]["volumn"].configure(background="lightpink")
+					self.labeldisplay[valuelabel][repeatidx]["orderside"].configure(background="lightpink")
+					self.labeldisplay[valuelabel][repeatidx]["state"].configure(background="lightpink")
+					self.labeldisplay[valuelabel][repeatidx]["targetvalue"].configure(background="lightpink")
+					self.labeldisplay[valuelabel][repeatidx]["profit"].configure(background="lightpink")
 
-						self.myvarasso[valuelabel][repeatidx]["volumn"].set(volumestep)
-						# print (self.myvarasso[valuelabel])
-						# exit()
-						# self.myvarasso[valuelabel]["price"].set(stcost)
+					self.myvarasso[valuelabel][repeatidx]["volumn"].set(volumestep)
+					# print (self.myvarasso[valuelabel])
+					# exit()
+					# self.myvarasso[valuelabel]["price"].set(stcost)
 
-						target=round((float(commonvaluestep) * profitstep) + float(valuelabel),2)
-						# print ("target value="+str(target))
-						# exit()
-						self.myvarasso[valuelabel][repeatidx]["targetvalue"].set(target)
-						runinvest -=(runvaluerange*volumestep)
-						stopvaluerange=runvaluerange
-					# invest=remaininvest
-				else:
+					target=round((float(commonvaluestep) * profitstep) + float(valuelabel),2)
+					# print ("target value="+str(target))
+					# exit()
+					self.myvarasso[valuelabel][repeatidx]["targetvalue"].set(target)
+					runinvest -=(runvaluerange*volumestep)
+					stopvaluerange=runvaluerange
+				# invest=remaininvest
+			else:
 
-					
-					print("remain invest that could not put more = " +str(runinvest))
-					break
+				
+				print("remain invest that could not put more = " +str(runinvest))
+				break
 
 
 
