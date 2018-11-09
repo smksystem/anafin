@@ -384,20 +384,53 @@ class outputlog(tk.Tk):
 		# 	i+=1
 
 
-		topvaluerange=float(self.configval["topvaluerange"].get())
 		invest=int(self.configval["invest"].get())
 		volumestep=int(self.configval["volumestep"].get())
 		profitstep=int(self.configval["profitstep"].get())
+		topvaluerange=float(self.configval["topvaluerange"].get())
+		startvaluebuy=float(self.configval["startvaluebuy"].get())
 		commonvaluestep=float(self.configval["commonstep"].get())
 
+
 		self.parameterconfig={
-			"topvaluerange":topvaluerange,
 			"invest":invest,
 			"volumestep":volumestep,
 			"profitstep":profitstep,
+			"topvaluerange":topvaluerange,
+			"startvaluebuy":startvaluebuy,
 			"commonvaluestep":commonvaluestep,
 		}
-		
+		# valuebuy=startvaluebuy
+		runvalue=round(float(startvaluebuy),2) # change text to numbering.
+		stopvaluerange=float(topvaluerange)
+		# print (runvalue)
+		# print (stopvaluerange)
+		# print (type(runvalue))
+		# print(type(stopvaluerange))
+		# exit()
+		while (runvalue<=stopvaluerange):				
+			print ("enter while loop")
+			runvalue=round(runvalue,2)
+			print ("round run value=" +str(runvalue))
+			print ("topvaluerange=" +str(topvaluerange))
+
+			chkpad=str(runvalue).split(".")
+
+			if len(chkpad[1])==1:
+				tempval=chkpad[1]+"0"
+				stepval=chkpad[0]+"." +tempval
+				runvalue=stepval
+				# print(self.myvarasso[runvalue])
+				# priceaccumestep= float(self.myvarasso[runvalue][runvalue].get())
+				priceaccumestep= runvalue
+
+			runvalue+=commonvaluestep
+			runvalue=round(runvalue,2)
+
+		print("end test")
+		exit()
+
+
 		# runvaluerange=topvaluerange
 
 
