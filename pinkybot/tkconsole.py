@@ -243,119 +243,119 @@ class outputlog(tk.Tk):
 		print("LoadAllValue")
 
 	def setvaluebuy(self):
-
-		print("start value buy=" + self.configval["startvaluebuy"].get())
-		valuebuy=self.configval["startvaluebuy"].get()
+		pass
+	# 	print("start value buy=" + self.configval["startvaluebuy"].get())
+	# 	valuebuy=self.configval["startvaluebuy"].get()
 
 	
 
 
-		# print (self.configval["stopvaluerange"].get())
-		stopvaluerange=float(self.configval["stopvaluerange"].get())
-		# print (self.configval["commonstep"].get())
-		commonstep=float(self.configval["commonstep"].get())
+	# 	# print (self.configval["stopvaluerange"].get())
+	# 	stopvaluerange=float(self.configval["stopvaluerange"].get())
+	# 	# print (self.configval["commonstep"].get())
+	# 	commonstep=float(self.configval["commonstep"].get())
 		
-		runvalue=round(float(valuebuy),2)
-		priceaccume=0
-		volumeaccume=0
+	# 	runvalue=round(float(valuebuy),2)
+	# 	priceaccume=0
+	# 	volumeaccume=0
 		
-		print ("runvalue")
-		print(runvalue)
-		print ("stopvaluerange")
-		print (stopvaluerange)
+	# 	print ("runvalue")
+	# 	print(runvalue)
+	# 	print ("stopvaluerange")
+	# 	print (stopvaluerange)
 
-		while (runvalue<=stopvaluerange):
-			print ("enter while loop")
-			runvalue=round(runvalue,2)
-			print ("round run value=" +str(runvalue))
-			print ("stopvaluerange=" +str(stopvaluerange))
-			chkpad=str(runvalue).split(".")
+	# 	while (runvalue<=stopvaluerange):
+	# 		print ("enter while loop")
+	# 		runvalue=round(runvalue,2)
+	# 		print ("round run value=" +str(runvalue))
+	# 		print ("stopvaluerange=" +str(stopvaluerange))
+	# 		chkpad=str(runvalue).split(".")
 
-			if len(chkpad[1])==1:
-				tempval=chkpad[1]+"0"
-				stepval=chkpad[0]+"." +tempval
-				runvalue=stepval
-				# print(self.myvarasso[runvalue])
-				# priceaccumestep= float(self.myvarasso[runvalue][runvalue].get())
-				priceaccumestep= runvalue
-				print("tkconsole.py line 280 runvalue=" + runvalue)
-				volumeaccumestep= float(self.myvarasso[runvalue][0]["volumn"].get())
-				# exit()
+	# 		if len(chkpad[1])==1:
+	# 			tempval=chkpad[1]+"0"
+	# 			stepval=chkpad[0]+"." +tempval
+	# 			runvalue=stepval
+	# 			# print(self.myvarasso[runvalue])
+	# 			# priceaccumestep= float(self.myvarasso[runvalue][runvalue].get())
+	# 			priceaccumestep= runvalue
+	# 			print("tkconsole.py line 280 runvalue=" + runvalue)
+	# 			volumeaccumestep= float(self.myvarasso[runvalue][0]["volumn"].get())
+	# 			# exit()
 
-				print (runvalue+" need price = " + str(priceaccumestep))
+	# 			print (runvalue+" need price = " + str(priceaccumestep))
 				
 
 
-				lblvalue=str(runvalue)
-				# for repeatidx in self.labeldisplay[valuebuy]:
-				# if repeatidx!=valuebuy:	
+	# 			lblvalue=str(runvalue)
+	# 			# for repeatidx in self.labeldisplay[valuebuy]:
+	# 			# if repeatidx!=valuebuy:	
 				
-				self.labeldisplay[lblvalue][lblvalue].configure(fg='black',background='green')
-				self.labeldisplay[lblvalue]["updatedate"].configure(fg='black',background='green')
-				self.labeldisplay[lblvalue]["updatetime"].configure(fg='black',background='green')
-				self.labeldisplay[lblvalue]["volumn"].configure(fg='black',background='green')
-				self.labeldisplay[lblvalue]["price"].configure(fg='black',background='green')
-				self.labeldisplay[lblvalue]["order"].configure(fg='black',background='green')
-				self.labeldisplay[lblvalue]["state"].configure(fg='black',background='green')
-				self.labeldisplay[lblvalue]["targetvalue"].configure(fg='black',background='green')
-				self.labeldisplay[lblvalue]["profit"].configure(fg='black',background='green')	
+	# 			self.labeldisplay[lblvalue][lblvalue].configure(fg='black',background='green')
+	# 			self.labeldisplay[lblvalue]["updatedate"].configure(fg='black',background='green')
+	# 			self.labeldisplay[lblvalue]["updatetime"].configure(fg='black',background='green')
+	# 			self.labeldisplay[lblvalue]["volumn"].configure(fg='black',background='green')
+	# 			self.labeldisplay[lblvalue]["price"].configure(fg='black',background='green')
+	# 			self.labeldisplay[lblvalue]["order"].configure(fg='black',background='green')
+	# 			self.labeldisplay[lblvalue]["state"].configure(fg='black',background='green')
+	# 			self.labeldisplay[lblvalue]["targetvalue"].configure(fg='black',background='green')
+	# 			self.labeldisplay[lblvalue]["profit"].configure(fg='black',background='green')	
 
-				runvalue=float(stval)
+	# 			runvalue=float(stval)
 
 
-				priceaccume+=priceaccumestep
-				volumeaccume+=volumeaccumestep
+	# 			priceaccume+=priceaccumestep
+	# 			volumeaccume+=volumeaccumestep
 				
-			else:
-				# print(self.myvarasso[str(runvalue)])
+	# 		else:
+	# 			# print(self.myvarasso[str(runvalue)])
 				
 				
 				
 
-				lblvalue=str(runvalue)
-				self.labeldisplay[lblvalue][lblvalue].configure(fg='black',background='green')
-				self.labeldisplay[lblvalue]["updatedate"].configure(fg='black',background='green')
-				self.labeldisplay[lblvalue]["updatetime"].configure(fg='black',background='green')
-				self.labeldisplay[lblvalue]["volumn"].configure(fg='black',background='green')
-				self.labeldisplay[lblvalue]["price"].configure(fg='black',background='green')
-				self.labeldisplay[lblvalue]["order"].configure(fg='black',background='green')
-				self.labeldisplay[lblvalue]["state"].configure(fg='black',background='green')
-				self.labeldisplay[lblvalue]["targetvalue"].configure(fg='black',background='green')
-				self.labeldisplay[lblvalue]["profit"].configure(fg='black',background='green')	
+	# 			lblvalue=str(runvalue)
+	# 			self.labeldisplay[lblvalue][lblvalue].configure(fg='black',background='green')
+	# 			self.labeldisplay[lblvalue]["updatedate"].configure(fg='black',background='green')
+	# 			self.labeldisplay[lblvalue]["updatetime"].configure(fg='black',background='green')
+	# 			self.labeldisplay[lblvalue]["volumn"].configure(fg='black',background='green')
+	# 			self.labeldisplay[lblvalue]["price"].configure(fg='black',background='green')
+	# 			self.labeldisplay[lblvalue]["order"].configure(fg='black',background='green')
+	# 			self.labeldisplay[lblvalue]["state"].configure(fg='black',background='green')
+	# 			self.labeldisplay[lblvalue]["targetvalue"].configure(fg='black',background='green')
+	# 			self.labeldisplay[lblvalue]["profit"].configure(fg='black',background='green')	
 
-				priceaccumestep=float(self.myvarasso[lblvalue]["price"].get())
-				volumeaccumestep= float(self.myvarasso[lblvalue]["volumn"].get())
+	# 			priceaccumestep=float(self.myvarasso[lblvalue]["price"].get())
+	# 			volumeaccumestep= float(self.myvarasso[lblvalue]["volumn"].get())
 
-				print (str(runvalue) +" need price = " + str(priceaccumestep))
-				priceaccume+=priceaccumestep
-				volumeaccume+=volumeaccumestep
+	# 			print (str(runvalue) +" need price = " + str(priceaccumestep))
+	# 			priceaccume+=priceaccumestep
+	# 			volumeaccume+=volumeaccumestep
 
-			runvalue+=commonstep
-			runvalue=round(runvalue,2)
-
-
-		self.labeldisplay[valuebuy][valuebuy].configure(fg='white',background='orange')
-		for repeatidx in self.labeldisplay[valuebuy]:
-			if repeatidx!=valuebuy:	
-
-				self.labeldisplay[valuebuy][repeatidx]["orderid"].configure(fg='white',background='orange')
-				self.labeldisplay[valuebuy][repeatidx]["startordertime"].configure(fg='white',background='orange')
-				self.labeldisplay[valuebuy][repeatidx]["matchordertime"].configure(fg='white',background='orange')
-				self.labeldisplay[valuebuy][repeatidx]["matchcomplete"].configure(fg='white',background='orange')
-				self.labeldisplay[valuebuy][repeatidx]["volumn"].configure(fg='white',background='orange')
-				self.labeldisplay[valuebuy][repeatidx]["orderside"].configure(fg='white',background='orange')
-				self.labeldisplay[valuebuy][repeatidx]["state"].configure(fg='white',background='orange')
-				self.labeldisplay[valuebuy][repeatidx]["targetvalue"].configure(fg='white',background='orange')
-				self.labeldisplay[valuebuy][repeatidx]["profit"].configure(fg='white',background='orange')
+	# 		runvalue+=commonstep
+	# 		runvalue=round(runvalue,2)
 
 
-		print ("Total price to buy =" +str(priceaccume))
-		self.configval["totalcostbuy"].set(priceaccume)
-		self.configval["totalvolumebuy"].set(volumeaccume)
-		self.txtout("Set Value to buy =" + valuebuy)
-		self.txtout("Set Value End to buy = " + str(stopvaluerange))
-		self.txtout("Set total price to pay = " + str(priceaccume))
-		self.txtout("Set total volume to pay = " + str(volumeaccume))
+	# 	self.labeldisplay[valuebuy][valuebuy].configure(fg='white',background='orange')
+	# 	for repeatidx in self.labeldisplay[valuebuy]:
+	# 		if repeatidx!=valuebuy:	
+
+	# 			self.labeldisplay[valuebuy][repeatidx]["orderid"].configure(fg='white',background='orange')
+	# 			self.labeldisplay[valuebuy][repeatidx]["startordertime"].configure(fg='white',background='orange')
+	# 			self.labeldisplay[valuebuy][repeatidx]["matchordertime"].configure(fg='white',background='orange')
+	# 			self.labeldisplay[valuebuy][repeatidx]["matchcomplete"].configure(fg='white',background='orange')
+	# 			self.labeldisplay[valuebuy][repeatidx]["volumn"].configure(fg='white',background='orange')
+	# 			self.labeldisplay[valuebuy][repeatidx]["orderside"].configure(fg='white',background='orange')
+	# 			self.labeldisplay[valuebuy][repeatidx]["state"].configure(fg='white',background='orange')
+	# 			self.labeldisplay[valuebuy][repeatidx]["targetvalue"].configure(fg='white',background='orange')
+	# 			self.labeldisplay[valuebuy][repeatidx]["profit"].configure(fg='white',background='orange')
+
+
+	# 	print ("Total price to buy =" +str(priceaccume))
+	# 	self.configval["totalcostbuy"].set(priceaccume)
+	# 	self.configval["totalvolumebuy"].set(volumeaccume)
+	# 	self.txtout("Set Value to buy =" + valuebuy)
+	# 	self.txtout("Set Value End to buy = " + str(stopvaluerange))
+	# 	self.txtout("Set total price to pay = " + str(priceaccume))
+	# 	self.txtout("Set total volume to pay = " + str(volumeaccume))
 
 	def buybyvalue(self):
 		print("Buy set value")
@@ -426,17 +426,29 @@ class outputlog(tk.Tk):
 				else:
 					valuelabel=str(runvalue)
 				self.labeldisplay[valuelabel][valuelabel].configure(background="lightpink")
-				for repeatidx in self.labeldisplay[valuelabel]:
+				# print (self.labeldisplay[valuelabel][0]["orderid"])
+
+				# self.labeldisplay[varvalue][repeatidx][varinfo]
+				# print(self.labeldisplay[valuelabel][0]["orderid"].configure(background="lightpink"))
+
+
+				# exit()
+				# print(self.labeldisplay)
+				for repeatidx,label in enumerate(self.labeldisplay[valuelabel]):
+					if (label==valuelabel):
+						print(repeatidx,label,valuelabel)
+						print(repeatidx,self.labeldisplay[valuelabel][repeatidx]["orderid"])
+						self.labeldisplay[valuelabel][repeatidx]["orderid"].configure(background="lightpink")
 				# if repeatidx!=valuelabel:
-					self.labeldisplay[valuelabel][repeatidx]["orderid"].configure(background="lightpink")
-					self.labeldisplay[valuelabel][repeatidx]["startordertime"].configure(background="lightpink")
-					self.labeldisplay[valuelabel][repeatidx]["matchordertime"].configure(background="lightpink")
-					self.labeldisplay[valuelabel][repeatidx]["matchcomplete"].configure(background="lightpink")
-					self.labeldisplay[valuelabel][repeatidx]["volumn"].configure(background="lightpink")
-					self.labeldisplay[valuelabel][repeatidx]["orderside"].configure(background="lightpink")
-					self.labeldisplay[valuelabel][repeatidx]["state"].configure(background="lightpink")
-					self.labeldisplay[valuelabel][repeatidx]["targetvalue"].configure(background="lightpink")
-					self.labeldisplay[valuelabel][repeatidx]["profit"].configure(background="lightpink")
+					# self.labeldisplay[valuelabel][repeatidx]["orderid"].configure(background="lightpink")
+					# self.labeldisplay[valuelabel][repeatidx]["startordertime"].configure(background="lightpink")
+					# self.labeldisplay[valuelabel][repeatidx]["matchordertime"].configure(background="lightpink")
+					# self.labeldisplay[valuelabel][repeatidx]["matchcomplete"].configure(background="lightpink")
+					# self.labeldisplay[valuelabel][repeatidx]["volumn"].configure(background="lightpink")
+					# self.labeldisplay[valuelabel][repeatidx]["orderside"].configure(background="lightpink")
+					# self.labeldisplay[valuelabel][repeatidx]["state"].configure(background="lightpink")
+					# self.labeldisplay[valuelabel][repeatidx]["targetvalue"].configure(background="lightpink")
+					# self.labeldisplay[valuelabel][repeatidx]["profit"].configure(background="lightpink")
 
 				# exit()
 					# runvalue=stepval
