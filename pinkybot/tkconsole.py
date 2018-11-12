@@ -404,79 +404,84 @@ class outputlog(tk.Tk):
 		runvalue=float(startvaluebuy) # change text to numbering.
 		stopvaluerange=float(topvaluerange)
 		commonvaluestep=float(commonvaluestep)
-		# volumestep=float(volumestep)
-		# print (runvalue)
-		# print (commonvaluestep)
-		# print (type(runvalue))
-		# print(type(stopvaluerange))
-		# exit()
-		while (runvalue<=stopvaluerange):				
-			# print ("enter while loop")
-			# runvalue=round(runvalue,2)
-			# print ("round run value=" +str(runvalue))
+		runinvest=invest
+		initcostbuy=0
 
-			# if (stopvaluerange<=runvalue):
+		while (runvalue<=stopvaluerange):				
+				
+			if runinvest > (runvalue*volumestep): #### check not to give -294, -xxx
+
+				print("run value range = " + str(runvalue))
+				# stepcost=round((runvalue*volumestep),2)
+
+				##############################################################################
+				###### Check padding to avoid key not found with only "4.0" not "4.00" for label
+				##############################################################################
+				chkpad=str(runvalue).split(".") 
+
+				if len(chkpad[1])==1:
+					tempval=chkpad[1]+"0"
+					valuelabel=chkpad[0]+"." +tempval
+
+				else:
+					valuelabel=str(runvalue)
+				self.labeldisplay[valuelabel][valuelabel].configure(background="lightpink")
+				for repeatidx in self.labeldisplay[valuelabel]:
+				# if repeatidx!=valuelabel:
+					self.labeldisplay[valuelabel][repeatidx]["orderid"].configure(background="lightpink")
+					self.labeldisplay[valuelabel][repeatidx]["startordertime"].configure(background="lightpink")
+					self.labeldisplay[valuelabel][repeatidx]["matchordertime"].configure(background="lightpink")
+					self.labeldisplay[valuelabel][repeatidx]["matchcomplete"].configure(background="lightpink")
+					self.labeldisplay[valuelabel][repeatidx]["volumn"].configure(background="lightpink")
+					self.labeldisplay[valuelabel][repeatidx]["orderside"].configure(background="lightpink")
+					self.labeldisplay[valuelabel][repeatidx]["state"].configure(background="lightpink")
+					self.labeldisplay[valuelabel][repeatidx]["targetvalue"].configure(background="lightpink")
+					self.labeldisplay[valuelabel][repeatidx]["profit"].configure(background="lightpink")
+
+				# exit()
+					# runvalue=stepval
 				
 
-			print("run value range = " + str(runvalue))
-			stepcost=round((runvalue*volumestep),2)
-			runinvest -=(runvaluerange*volumestep)
-			runvalue+=commonvaluestep
-			runvalue=round(runvalue,2)
+					# print(self.myvarasso[runvalue])
+					# priceaccumestep= float(self.myvarasso[runvalue][runvalue].get())
+					# priceaccumestep= runvalue
+
+				##############################################################################
+
+
+
+
+
+				runcost=runvalue*volumestep
+				initcostbuy +=runcost ### accume initial cost value to buy
+				print("initial cost to buy =" , str(initcostbuy))
+				
+
+				
+				runvalue+=commonvaluestep
+				runvalue=round(runvalue,2)
 			
-			print ("step cost = " + stepcost)
 
-			# print ("remain invest = " +  str(invest))
-			
-				# if runinvest > (runvaluerange*volumestep):
+				runinvest -=runcost #### resul is 293.99999999999999994
+				runinvest=round(runinvest,2)
+				print (runinvest)
 
-				# 	chkpad=str(runvaluerange).split(".")
+			elif runinvest < (runvalue*volumestep):
+				print ("run invest is not enough break to exit tkconsole.py line 435")
+				break
 
-				# 	if len(chkpad[1])==1:
-				# 		tempval=chkpad[1]+"0"
-				# 		stval=chkpad[0]+"." +tempval
-				# 		valuelabel=stval
-				# 	else:
-				# 		valuelabel=str(runvaluerange)
-
-
-
-
-			# print ("topvaluerange=" +str(topvaluerange))
-
-			# chkpad=str(runvalue).split(".")
-
-			# if len(chkpad[1])==1:
-			# 	tempval=chkpad[1]+"0"
-			# 	stepval=chkpad[0]+"." +tempval
-			# 	runvalue=stepval
-				# print(self.myvarasso[runvalue])
-				# priceaccumestep= float(self.myvarasso[runvalue][runvalue].get())
-				# priceaccumestep= runvalue
-
-
+		print ("remain invest=========>>" + str(runinvest))
+		print ("Total initial cost to buy ====>>" + str(initcostbuy))
 		print("end test")
-		exit()
 
-
-		# runvaluerange=topvaluerange
-
-
-		# for i,valuelabel in enumerate(self.labeldisplay):
-		# 	# print ( valuelabel)
-
-		# 	runvaluerange=float(valuelabel)
-		# 	if (topvaluerange >= runvaluerange):
-		# 		print(str(runvaluerange))
-
-
+		return (0)
 		# exit()
 
 
-		runinvest=invest
-		for i,valuelabel in enumerate(self.myvarasso):
-			runvaluerange=float(valuelabel)
-			print ("runvaluerange = " +str(runvaluerange))
+		# runinvest=invest
+		# for i,valuelabel in enumerate(self.myvarasso):
+		# 	runvaluerange=float(valuelabel)
+		# 	print ("runvaluerange = " +str(runvaluerange))
 
 
 							# varinfo={
@@ -490,60 +495,60 @@ class outputlog(tk.Tk):
 		# 		"targetvalue":vartargetvalue,
 		# 		"profit":varprofit,
 		# 		}
-			self.labeldisplay[valuelabel][valuelabel].configure(background="lightpink")
+			
 				# print(self.labeldisplay[valuelabel][0])
-			for repeatidx in self.labeldisplay[valuelabel]:
-				if repeatidx!=valuelabel:
+		# 	for repeatidx in self.labeldisplay[valuelabel]:
+		# 		if repeatidx!=valuelabel:
 
-					self.labeldisplay[valuelabel][repeatidx]["orderid"].configure(background="lightpink")
-					self.labeldisplay[valuelabel][repeatidx]["startordertime"].configure(background="lightpink")
-					self.labeldisplay[valuelabel][repeatidx]["matchordertime"].configure(background="lightpink")
-					self.labeldisplay[valuelabel][repeatidx]["matchcomplete"].configure(background="lightpink")
-					self.labeldisplay[valuelabel][repeatidx]["volumn"].configure(background="lightpink")
-					self.labeldisplay[valuelabel][repeatidx]["orderside"].configure(background="lightpink")
-					self.labeldisplay[valuelabel][repeatidx]["state"].configure(background="lightpink")
-					self.labeldisplay[valuelabel][repeatidx]["targetvalue"].configure(background="lightpink")
-					self.labeldisplay[valuelabel][repeatidx]["profit"].configure(background="lightpink")
+		# 			self.labeldisplay[valuelabel][repeatidx]["orderid"].configure(background="lightpink")
+		# 			self.labeldisplay[valuelabel][repeatidx]["startordertime"].configure(background="lightpink")
+		# 			self.labeldisplay[valuelabel][repeatidx]["matchordertime"].configure(background="lightpink")
+		# 			self.labeldisplay[valuelabel][repeatidx]["matchcomplete"].configure(background="lightpink")
+		# 			self.labeldisplay[valuelabel][repeatidx]["volumn"].configure(background="lightpink")
+		# 			self.labeldisplay[valuelabel][repeatidx]["orderside"].configure(background="lightpink")
+		# 			self.labeldisplay[valuelabel][repeatidx]["state"].configure(background="lightpink")
+		# 			self.labeldisplay[valuelabel][repeatidx]["targetvalue"].configure(background="lightpink")
+		# 			self.labeldisplay[valuelabel][repeatidx]["profit"].configure(background="lightpink")
 
-					self.myvarasso[valuelabel][repeatidx]["volumn"].set(volumestep)
-					# print (self.myvarasso[valuelabel])
-					# exit()
-					# self.myvarasso[valuelabel]["price"].set(stcost)
+		# 			self.myvarasso[valuelabel][repeatidx]["volumn"].set(volumestep)
+		# 			# print (self.myvarasso[valuelabel])
+		# 			# exit()
+		# 			# self.myvarasso[valuelabel]["price"].set(stcost)
 
-					target=round((float(commonvaluestep) * profitstep) + float(valuelabel),2)
-					# print ("target value="+str(target))
-					# exit()
-					self.myvarasso[valuelabel][repeatidx]["targetvalue"].set(target)
-					runinvest -=(runvaluerange*volumestep)
-					stopvaluerange=runvaluerange
-				# invest=remaininvest
-			else:
+		# 			target=round((float(commonvaluestep) * profitstep) + float(valuelabel),2)
+		# 			# print ("target value="+str(target))
+		# 			# exit()
+		# 			self.myvarasso[valuelabel][repeatidx]["targetvalue"].set(target)
+		# 			runinvest -=(runvaluerange*volumestep)
+		# 			stopvaluerange=runvaluerange
+		# 		# invest=remaininvest
+		# 	else:
 
 				
-				print("remain invest that could not put more = " +str(runinvest))
-				break
+		# 		print("remain invest that could not put more = " +str(runinvest))
+		# 		break
 
 
 
-				# runvaluerange+=commonvaluestep
-		print ("remain invest = "+ str(runinvest))
-		# print ("stopvaluerange at = " + str(stopvaluerange))
-		self.configval["stopvaluerange"].set(stopvaluerange)
-		# exit()
+		# 		# runvaluerange+=commonvaluestep
+		# print ("remain invest = "+ str(runinvest))
+		# # print ("stopvaluerange at = " + str(stopvaluerange))
+		# self.configval["stopvaluerange"].set(stopvaluerange)
+		# # exit()
 
-		self.canvas.yview_moveto(0.01)
-		self.canvas.xview_moveto(0.01)
-		# self.canvas.yview_moveto(0.5)
+		# self.canvas.yview_moveto(0.01)
+		# self.canvas.xview_moveto(0.01)
+		# # self.canvas.yview_moveto(0.5)
 
 
-		self.txtout("Set Invest = " +str(invest),"yellow","gray")
-		self.txtout("Set Step Volumn = " +str(volumestep))
-		self.txtout("Set Step Common Value = " +str(commonvaluestep))
-		self.txtout("Remain Range Invest =" +str(runinvest),"orange","green")
+		# self.txtout("Set Invest = " +str(invest),"yellow","gray")
+		# self.txtout("Set Step Volumn = " +str(volumestep))
+		# self.txtout("Set Step Common Value = " +str(commonvaluestep))
+		# self.txtout("Remain Range Invest =" +str(runinvest),"orange","green")
 		
-		self.txtout("Set Step Profit = " +str(profitstep))
-		self.txtout("Set Start Value Range = " +str(topvaluerange))
-		self.txtout("Set Stop Value Range = " +str(stopvaluerange),"green","white")
+		# self.txtout("Set Step Profit = " +str(profitstep))
+		# self.txtout("Set Start Value Range = " +str(topvaluerange))
+		# self.txtout("Set Stop Value Range = " +str(stopvaluerange),"green","white")
 
 
 	def doMenuRange(self,value):
