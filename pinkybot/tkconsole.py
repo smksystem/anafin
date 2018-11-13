@@ -434,29 +434,23 @@ class outputlog(tk.Tk):
 
 				# exit()
 				# print(self.labeldisplay)
-				for repeatidx,label in enumerate(self.labeldisplay[valuelabel]):
-					if (label==valuelabel):
-						print(repeatidx,label,valuelabel)
-						print(repeatidx,self.labeldisplay[valuelabel][repeatidx]["orderid"])
-						self.labeldisplay[valuelabel][repeatidx]["orderid"].configure(background="lightpink")
-				# if repeatidx!=valuelabel:
-					# self.labeldisplay[valuelabel][repeatidx]["orderid"].configure(background="lightpink")
-					# self.labeldisplay[valuelabel][repeatidx]["startordertime"].configure(background="lightpink")
-					# self.labeldisplay[valuelabel][repeatidx]["matchordertime"].configure(background="lightpink")
-					# self.labeldisplay[valuelabel][repeatidx]["matchcomplete"].configure(background="lightpink")
-					# self.labeldisplay[valuelabel][repeatidx]["volumn"].configure(background="lightpink")
-					# self.labeldisplay[valuelabel][repeatidx]["orderside"].configure(background="lightpink")
-					# self.labeldisplay[valuelabel][repeatidx]["state"].configure(background="lightpink")
-					# self.labeldisplay[valuelabel][repeatidx]["targetvalue"].configure(background="lightpink")
-					# self.labeldisplay[valuelabel][repeatidx]["profit"].configure(background="lightpink")
-
+				# print(self.labeldisplay[valuelabel])
 				# exit()
-					# runvalue=stepval
-				
+				for repeatidx,label in enumerate(self.labeldisplay[valuelabel]):
 
-					# print(self.myvarasso[runvalue])
-					# priceaccumestep= float(self.myvarasso[runvalue][runvalue].get())
-					# priceaccumestep= runvalue
+					# print(repeatidx,label,valuelabel)
+					if (label==valuelabel):
+						# print(repeatidx,self.labeldisplay[valuelabel][repeatidx]["orderid"])
+						self.labeldisplay[valuelabel][repeatidx]["orderid"].configure(background="cyan")
+						self.labeldisplay[valuelabel][repeatidx]["startordertime"].configure(background="yellowgreen")
+						self.labeldisplay[valuelabel][repeatidx]["matchordertime"].configure(background="lime")
+						self.labeldisplay[valuelabel][repeatidx]["matchcomplete"].configure(background="tomato")
+						self.labeldisplay[valuelabel][repeatidx]["volumn"].configure(background="peru")
+						self.labeldisplay[valuelabel][repeatidx]["orderside"].configure(background="plum")
+						self.labeldisplay[valuelabel][repeatidx]["state"].configure(background="gold")
+						self.labeldisplay[valuelabel][repeatidx]["targetvalue"].configure(background="orchid")
+						self.labeldisplay[valuelabel][repeatidx]["profit"].configure(background="dodgerblue")
+
 
 				##############################################################################
 
