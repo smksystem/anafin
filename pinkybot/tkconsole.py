@@ -32,28 +32,32 @@ class outputlog(tk.Tk):
 		volumestep=tk.StringVar(value="100")
 		profitstep=tk.StringVar(value="2")
 		topvaluerange=tk.StringVar(value="4.98")
+		floorvaluerange=tk.StringVar(value="4.60")
 		startvaluebuy=tk.StringVar(value="4.90")
-		startvolumebuy=tk.StringVar(value="0")   # from calculate range.
+		# startvolumebuy=tk.StringVar(value="0")   # from calculate range.
 		stopvaluerange=tk.StringVar(value="0.00")
 		commonstep=tk.StringVar(value="0.00")  # step from range calculation
 		totalcostbuy=tk.StringVar(value="0000000000")
 		totalvolumebuy=tk.StringVar(value="000")
 		stockname=tk.StringVar(value="dummy")
 		stockpin=tk.StringVar(value="3333")
+		remaininvest=tk.StringVar(value="0")
 
 		self.configval={
-			"invest":initinvest,
+			"initinvest":initinvest,
 			"volumestep":volumestep,
 			"profitstep":profitstep,
-			"topvaluerange":topvaluerange,		
+			"topvaluerange":topvaluerange,	
+			"floorvaluerange":floorvaluerange,	
 			"commonstep":commonstep,
 			"startvaluebuy":startvaluebuy,
-			"startvolumebuy":startvolumebuy,
+			# "startvolumebuy":startvolumebuy,
 			"stopvaluerange":stopvaluerange,
 			"totalcostbuy":totalcostbuy,
 			"totalvolumebuy":totalvolumebuy,
 			"stockname":stockname,
 			"stockpin":stockpin,
+			"remaininvest":remaininvest,
 
 		}
 
@@ -116,7 +120,7 @@ class outputlog(tk.Tk):
 		self.enterInvest.grid(row=1,column=1)
 
 
-		labelinitialvalue=tk.Label(frameSetValue, text="Volume")
+		labelinitialvalue=tk.Label(frameSetValue, text="Volume Step")
 		labelinitialvalue.grid(row=2,column=0)
 
 		self.enterVolumn=tk.Entry(frameSetValue,textvariable=volumestep) #,textvariable=usertxt)
@@ -129,38 +133,47 @@ class outputlog(tk.Tk):
 		enterVolumn.grid(row=3,column=1)
 
 
-		labelinitialvalue=tk.Label(frameSetValue, text="topvaluerange")
+		labelinitialvalue=tk.Label(frameSetValue, text="Top Value Range")
 		labelinitialvalue.grid(row=4,column=0)
 
 		enterVolumn=tk.Entry(frameSetValue,textvariable=topvaluerange) 
 		enterVolumn.grid(row=4,column=1)
 
+		labelinitialvalue=tk.Label(frameSetValue, text="Floor Value Range")
+		labelinitialvalue.grid(row=5,column=0)
+
+		enterVolumn=tk.Entry(frameSetValue,textvariable=floorvaluerange) 
+		enterVolumn.grid(row=5,column=1)
+		
+
+
+
 		labelvaluebuy=tk.Label(frameSetValue, text="StartValueBuy")
-		labelvaluebuy.grid(row=5,column=0)
+		labelvaluebuy.grid(row=6,column=0)
 
 		self.entervaluebuy=tk.Entry(frameSetValue,textvariable=startvaluebuy) 
-		self.entervaluebuy.grid(row=5,column=1)
+		self.entervaluebuy.grid(row=6,column=1)
 
 		self.btnStartInitCal=tk.Button(frameSetValue,text="Set Parameters",command=self.setparameter)
-		self.btnStartInitCal.grid(row=7,column=1 )
+		self.btnStartInitCal.grid(row=8,column=1 )
 
 
 
 		self.btnStartvaluebuy=tk.Button(frameSetValue,text="Set Value Buy",command=self.setvaluebuy,state='disabled',)
-		self.btnStartvaluebuy.grid(row=8,column=1 )
+		self.btnStartvaluebuy.grid(row=9,column=1 )
 
 		labelvaluebuy=tk.Label(frameSetValue, text="Cost:")
-		labelvaluebuy.grid(row=7,column=0,sticky="w")
+		labelvaluebuy.grid(row=8,column=0,sticky="w")
 
 		labelvaluebuy=tk.Label(frameSetValue, textvariable=totalcostbuy)
-		labelvaluebuy.grid(row=7,column=0,sticky="e")
+		labelvaluebuy.grid(row=8,column=0,sticky="e")
 
 
 		labelvalumebuy=tk.Label(frameSetValue, text="Volume:")
-		labelvalumebuy.grid(row=8,column=0,sticky="w")
+		labelvalumebuy.grid(row=9,column=0,sticky="w")
 
 		labelvalumebuy=tk.Label(frameSetValue, textvariable=totalvolumebuy)
-		labelvalumebuy.grid(row=8,column=0,sticky="e")
+		labelvalumebuy.grid(row=9,column=0,sticky="e")
 
 		self.framePutValue=tk.Frame(self,background = 'yellow')
 		self.framePutValue.grid(row=3,column=1,sticky="e"+"n"+"s"+"w")      
@@ -349,13 +362,7 @@ class outputlog(tk.Tk):
 	# 			self.labeldisplay[valuebuy][repeatidx]["profit"].configure(fg='white',background='orange')
 
 
-	# 	print ("Total price to buy =" +str(priceaccume))
-	# 	self.configval["totalcostbuy"].set(priceaccume)
-	# 	self.configval["totalvolumebuy"].set(volumeaccume)
-	# 	self.txtout("Set Value to buy =" + valuebuy)
-	# 	self.txtout("Set Value End to buy = " + str(stopvaluerange))
-	# 	self.txtout("Set total price to pay = " + str(priceaccume))
-	# 	self.txtout("Set total volume to pay = " + str(volumeaccume))
+	
 
 	def buybyvalue(self):
 		print("Buy set value")
@@ -376,36 +383,28 @@ class outputlog(tk.Tk):
 	def setparameter(self):
 		print("def startcalculate here tkconsole.py line 359")
 
-		print(self.configval["invest"].get())
+		print(self.configval["initinvest"].get())
 		i=0
-		# for label in self.configval:
-		# 	configlabel=tk.Label(self.framePutValue,text=label)
-		# 	configlabel.grid(row=i,column=1)   
-		# 	i+=1
 
 
-		invest=int(self.configval["invest"].get())
+		initinvest=int(self.configval["initinvest"].get())
 		volumestep=int(self.configval["volumestep"].get())
 		profitstep=int(self.configval["profitstep"].get())
 		topvaluerange=float(self.configval["topvaluerange"].get())
+		floorvaluerange=float(self.configval["floorvaluerange"].get())
+
 		startvaluebuy=float(self.configval["startvaluebuy"].get())
 		commonvaluestep=float(self.configval["commonstep"].get())
 
-
-		self.parameterconfig={
-			"invest":invest,
-			"volumestep":volumestep,
-			"profitstep":profitstep,
-			"topvaluerange":topvaluerange,
-			"startvaluebuy":startvaluebuy,
-			"commonvaluestep":commonvaluestep,
-		}
-		# valuebuy=startvaluebuy
 		runvalue=float(startvaluebuy) # change text to numbering.
 		stopvaluerange=float(topvaluerange)
 		commonvaluestep=float(commonvaluestep)
-		runinvest=invest
-		initcostbuy=0
+
+		runinvest=initinvest
+
+
+		runcostbuy=0 #### purpose variable to calculate in below.
+		runvolumebuy=0
 
 		while (runvalue<=stopvaluerange):				
 				
@@ -426,16 +425,7 @@ class outputlog(tk.Tk):
 				else:
 					valuelabel=str(runvalue)
 				self.labeldisplay[valuelabel][valuelabel].configure(background="lightpink")
-				# print (self.labeldisplay[valuelabel][0]["orderid"])
 
-				# self.labeldisplay[varvalue][repeatidx][varinfo]
-				# print(self.labeldisplay[valuelabel][0]["orderid"].configure(background="lightpink"))
-
-
-				# exit()
-				# print(self.labeldisplay)
-				# print(self.labeldisplay[valuelabel])
-				# exit()
 				for repeatidx,label in enumerate(self.labeldisplay[valuelabel]):
 
 					# print(repeatidx,label,valuelabel)
@@ -454,14 +444,11 @@ class outputlog(tk.Tk):
 
 				##############################################################################
 
-
-
-
-
 				runcost=runvalue*volumestep
-				initcostbuy +=runcost ### accume initial cost value to buy
-				print("initial cost to buy =" , str(initcostbuy))
+				runcostbuy +=runcost ### accume initial cost value to buy
+				print("initial cost to buy =" , str(runcostbuy))
 				
+				runvolumebuy+=volumestep
 
 				
 				runvalue+=commonvaluestep
@@ -476,9 +463,52 @@ class outputlog(tk.Tk):
 				print ("run invest is not enough break to exit tkconsole.py line 435")
 				break
 
-		print ("remain invest=========>>" + str(runinvest))
-		print ("Total initial cost to buy ====>>" + str(initcostbuy))
-		print("end test")
+
+		self.configval["totalcostbuy"].set(runcostbuy)
+		self.configval["totalvolumebuy"].set(runvolumebuy)
+
+
+		print ("Initial Invest ====>>" + str(initinvest))
+		print ("Volume Step =====>>" + str(volumestep))
+		print ("Profit Step ====>>" + str(profitstep))
+
+		print ("Top Value Range ====>>" + str(topvaluerange))
+
+		print ("Floor Value Range ====>>" + str(floorvaluerange))
+
+		print ("Start Value Buy ====>>" + str(startvaluebuy))
+
+		print ("Total Initial Cost to buy ====>>" + str(runcostbuy))
+
+		print ("Total Initial Volume to buy =======>>" + str(runvolumebuy))
+
+		print ("Remain Invest Cost =========>>" + str(runinvest))
+
+
+		self.txtout("Set Invest = " + self.configval["initinvest"].get() ,"yellow","gray")
+		self.txtout("Set Volume Step = " + self.configval["volumestep"].get() ,"yellow","gray")
+		self.txtout("Set Profit Step = " + self.configval["profitstep"].get() ,"yellow","gray")
+		self.txtout("Set Top Value Range = " + self.configval["topvaluerange"].get() ,"yellow","gray")
+		self.txtout("Set Floor Value Range = " + self.configval["floorvaluerange"].get() ,"yellow","gray")
+		self.txtout("Set Start Value Buy = " + self.configval["startvaluebuy"].get() ,"yellow","gray")
+
+		self.txtout("Set total price to pay = " + self.configval["totalcostbuy"].get())
+		self.txtout("Set total volume = " + self.configval["totalvolumebuy"].get())
+
+
+		# self.txtout("Set Step Volumn = " +str(volumestep))
+		# self.txtout("Set Step Common Value = " +str(commonvaluestep))
+		# self.txtout("Remain Range Invest =" +str(runinvest),"orange","green")
+		
+		# self.txtout("Set Step Profit = " +str(profitstep))
+		# self.txtout("Set Start Value Range = " +str(topvaluerange))
+		# self.txtout("Set Stop Value Range = " +str(stopvaluerange),"green","white")
+		# 	print ("Total price to buy =" +str(priceaccume))
+	# 	self.configval["totalcostbuy"].set(priceaccume)
+	# 	self.configval["totalvolumebuy"].set(volumeaccume)
+	# 	self.txtout("Set Value to buy =" + valuebuy)
+	# 	self.txtout("Set Value End to buy = " + str(stopvaluerange))
+	# 	self.txtout("Set total volume to pay = " + str(volumeaccume))
 
 		return (0)
 		# exit()
@@ -547,14 +577,6 @@ class outputlog(tk.Tk):
 		# # self.canvas.yview_moveto(0.5)
 
 
-		# self.txtout("Set Invest = " +str(invest),"yellow","gray")
-		# self.txtout("Set Step Volumn = " +str(volumestep))
-		# self.txtout("Set Step Common Value = " +str(commonvaluestep))
-		# self.txtout("Remain Range Invest =" +str(runinvest),"orange","green")
-		
-		# self.txtout("Set Step Profit = " +str(profitstep))
-		# self.txtout("Set Start Value Range = " +str(topvaluerange))
-		# self.txtout("Set Stop Value Range = " +str(stopvaluerange),"green","white")
 
 
 	def doMenuRange(self,value):
@@ -640,19 +662,6 @@ class outputlog(tk.Tk):
 				# print("tkconsole.py line 553")
 				# print(valrepeat)
 				for j,varinfo in enumerate(valrepeat):
-					# print (varinfo)
-
-					# varinfo={
-					# 		"orderid":varorderid,
-					# 		"startordertime":varstartordertime,
-					# 		"matchordertime":varmatchordertime,
-					# 		"matchcomplete":varmatchcomplete,
-					# 		"orderside":varorderside,
-					# 		"volumn":varvolumn,
-					# 		"state":varstatus,
-					# 		"targetvalue":vartargetvalue,
-					# 		"profit":varprofit,
-					# 		}
 
 					# print(varvalue,repeatidx)
 
