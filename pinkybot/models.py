@@ -1,6 +1,18 @@
 from django.db import models
 from datetime import datetime
 # Create your models here.
+
+
+class valuechange(models.Model):
+
+	datefield=models.DateField(0)	
+	timestamp = models.TimeField(0) 
+
+	stockname=models.CharField(max_length=5)
+	valuefield=models.CharField(max_length=5,unique=False,default="")
+	totalvolume=models.CharField(max_length=15,unique=False,default="")
+	totalvolue=models.CharField(max_length=15,unique=False,default="")
+
 class monitorbidoffer(models.Model):
 
 	mastershare=models.CharField(max_length=50,unique=False,default="")

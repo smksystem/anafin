@@ -228,8 +228,9 @@ class packselenium():
 		offer={}
 		offervolumn={}
 
+		updatedate= datetime.now().strftime("%Y-%m-%d")
+		timestamp = datetime.now().strftime("%H:%M:%S")
 
-		timestamp = datetime.utcnow()
 		# timerecord = timestamp.strftime('%Y-%m-%d %H:%M:%S')
 		# print("time stamp=" + str(timestamp))
 		
@@ -239,25 +240,41 @@ class packselenium():
 		stockvalue = driver.find_elements_by_xpath(self.xpathreturn("xstockvalue"))[0].text
 		# print ("stock value now =" + stockvalue)	
 		
+		stockdata={ 
+			"datefield":updatedate,
+			"timestamp":timestamp,
+			"valuefiled":stockvalue,
+
+		}
+
+
+
 		if self.stockcompare=="0.00" and stockvalue !="0.00":
 			print("first stockvalue updated=" + stockvalue)
 			print("first stockcompare updated=" + self.stockcompare)
-			self.refreshbtn(driver)
+			# self.mycollectqueues["qvalchange"].put({"stockvalue":stockvalue})
 			self.stockcompare=stockvalue
+			self.refreshbtn(driver)
 			self.mycollectqueues["qvalchange"].put({"stockvalue":stockvalue})
-			PackSelModel.initialupdatestockvalue()
+		
+
+
+
+			PackSelModel.updatestockvaluechange(stockdata)
 			
 
 		elif (self.stockcompare!=stockvalue) and (self.stockcompare!="0.00"):
 			print("update stock compare"+ stockvalue)
-			self.refreshbtn(driver)
-			self.stockcompare=stockvalue
-			self.mycollectqueues["qvalchange"].put({"stockvalue":stockvalue})
-			PackSelModel.updatestockvalue(1,2)
+			# self.refreshbtn(driver)
+			# self.stockcompare=stockvalue
+			PackSelModel.updatestockvaluechange(stockdata)
 			print ("stockcompare="+self.stockcompare)
-
+			self.stockcompare=stockvalue
+			self.refreshbtn(driver)
+			self.mycollectqueues["qvalchange"].put({"stockvalue":stockvalue})
 		# print ("reset stockvalue")
-		stockvalue=""
+		stockvalue=""	
+		
 
 
 		if not self.mycollectqueues["qorder"].empty(): 

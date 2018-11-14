@@ -1,4 +1,4 @@
-from pinkybot.models import monitorbidoffer,updaterefresh
+from pinkybot.models import monitorbidoffer,updaterefresh,valuechange
 from elasticsearch import Elasticsearch
 
 import pytz
@@ -7,12 +7,32 @@ class PackSelModel:
 	createdFlag=""
 	def __init__(self):
 		pass
-	def initialupdatestockvalue():
+	# def initialupdatestockvalue():
 		
 
-		print ( "initial update stock value")
-	def updatestockvalue(stockvalue,updatetime):
+	# 	print ( "initial update stock value")
+	def updatestockvaluechange(stockdata):
+
 		print("model of update value is called")
+		# print (stockdata)
+		updaterow=valuechange(
+				datefield=stockdata["datefield"],
+				timestamp=stockdata["timestamp"],
+				valuefield=stockdata["valuefiled"]
+			)
+		updaterow.save()
+		# newrow=updaterefresh(orderno=myrow[2],
+		# 							time=myrow[3],
+		# 							symbole=myrow[4],
+		# 							side=myrow[5],
+		# 							price=myrow[6],
+		# 							volume=myrow[7],
+		# 							matched=myrow[8],
+		# 							balance=myrow[9],
+		# 							cancelled=myrow[10],
+		# 							status=myrow[11],
+		# 							)
+		# 		newrow.save()
 
 	def InsertMonitorBidOffer(stock,timestamp,bid,offer,bidvolumn,offervolumn):
 		print ("Insert value into els system")

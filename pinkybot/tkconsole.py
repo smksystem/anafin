@@ -139,52 +139,61 @@ class outputlog(tk.Tk):
 		enterVolumn=tk.Entry(frameSetValue,textvariable=topvaluerange) 
 		enterVolumn.grid(row=4,column=1)
 
+		labelvaluebuy=tk.Label(frameSetValue, text="StartValueBuy")
+		labelvaluebuy.grid(row=5,column=0)
+
+		entervaluebuy=tk.Entry(frameSetValue,textvariable=startvaluebuy) 
+		entervaluebuy.grid(row=5,column=1)
+
 		labelinitialvalue=tk.Label(frameSetValue, text="Floor Value Range")
-		labelinitialvalue.grid(row=5,column=0)
+		labelinitialvalue.grid(row=6,column=0)
 
 		enterVolumn=tk.Entry(frameSetValue,textvariable=floorvaluerange) 
-		enterVolumn.grid(row=5,column=1)
+		enterVolumn.grid(row=6,column=1)
 		
 
 
 
-		labelvaluebuy=tk.Label(frameSetValue, text="StartValueBuy")
-		labelvaluebuy.grid(row=6,column=0)
 
-		self.entervaluebuy=tk.Entry(frameSetValue,textvariable=startvaluebuy) 
-		self.entervaluebuy.grid(row=6,column=1)
-
-		self.btnStartInitCal=tk.Button(frameSetValue,text="Set Parameters",command=self.setparameter)
-		self.btnStartInitCal.grid(row=8,column=1 )
+		btnStartInitCal=tk.Button(frameSetValue,text="Set Parameters",command=self.setparameter)
+		btnStartInitCal.grid(row=8,column=1 )
 
 
 
-		self.btnStartvaluebuy=tk.Button(frameSetValue,text="Set Value Buy",command=self.setvaluebuy,state='disabled',)
-		self.btnStartvaluebuy.grid(row=9,column=1 )
+		# self.btnStartvaluebuy=tk.Button(frameSetValue,text="Set Value Buy",command=self.setvaluebuy,state='disabled',)
+		# self.btnStartvaluebuy.grid(row=9,column=1 )
 
-		labelvaluebuy=tk.Label(frameSetValue, text="Cost:")
+		labelvaluebuy=tk.Label(frameSetValue, text="Total Cost Buy:")
 		labelvaluebuy.grid(row=8,column=0,sticky="w")
 
 		labelvaluebuy=tk.Label(frameSetValue, textvariable=totalcostbuy)
 		labelvaluebuy.grid(row=8,column=0,sticky="e")
 
 
-		labelvalumebuy=tk.Label(frameSetValue, text="Volume:")
+		labelvalumebuy=tk.Label(frameSetValue, text="Total Volume Buy:")
 		labelvalumebuy.grid(row=9,column=0,sticky="w")
 
 		labelvalumebuy=tk.Label(frameSetValue, textvariable=totalvolumebuy)
 		labelvalumebuy.grid(row=9,column=0,sticky="e")
 
-		self.framePutValue=tk.Frame(self,background = 'yellow')
-		self.framePutValue.grid(row=3,column=1,sticky="e"+"n"+"s"+"w")      
+		labelvalumebuy=tk.Label(frameSetValue, text="Remain Invest:")
+		labelvalumebuy.grid(row=10,column=0,sticky="w")
 
-		btnBuyCommand=tk.Button(self.framePutValue,text="Buy Now",command=self.buybyvalue, width = 10,height=2)
+		labelvalumebuy=tk.Label(frameSetValue, textvariable=remaininvest)
+		labelvalumebuy.grid(row=10,column=0,sticky="e")
+		
+
+		framePutValue=tk.Frame(self,background = 'yellow')
+		framePutValue.grid(row=3,column=1,sticky="e"+"n"+"s"+"w")      
+
+
+		btnBuyCommand=tk.Button(framePutValue,text="Buy Now",command=self.buybyvalue, width = 10,height=2)
 		btnBuyCommand.grid(row=0,column=0,sticky="w")
 
-		btnSellCommand=tk.Button(self.framePutValue,text="Sell Now",command=self.sellbyvalue, width = 10,height=2)
+		btnSellCommand=tk.Button(framePutValue,text="Sell Now",command=self.sellbyvalue, width = 10,height=2)
 		btnSellCommand.grid(row=0,column=0,sticky="e")
 
-		btnRefreshCmd=tk.Button(self.framePutValue,text="Refresh",command=self.rtrefresh, width = 25,height=3)
+		btnRefreshCmd=tk.Button(framePutValue,text="Refresh",command=self.rtrefresh, width = 25,height=3)
 		btnRefreshCmd.grid(row=1,column=0)
 
 
@@ -257,112 +266,6 @@ class outputlog(tk.Tk):
 
 	def setvaluebuy(self):
 		pass
-	# 	print("start value buy=" + self.configval["startvaluebuy"].get())
-	# 	valuebuy=self.configval["startvaluebuy"].get()
-
-	
-
-
-	# 	# print (self.configval["stopvaluerange"].get())
-	# 	stopvaluerange=float(self.configval["stopvaluerange"].get())
-	# 	# print (self.configval["commonstep"].get())
-	# 	commonstep=float(self.configval["commonstep"].get())
-		
-	# 	runvalue=round(float(valuebuy),2)
-	# 	priceaccume=0
-	# 	volumeaccume=0
-		
-	# 	print ("runvalue")
-	# 	print(runvalue)
-	# 	print ("stopvaluerange")
-	# 	print (stopvaluerange)
-
-	# 	while (runvalue<=stopvaluerange):
-	# 		print ("enter while loop")
-	# 		runvalue=round(runvalue,2)
-	# 		print ("round run value=" +str(runvalue))
-	# 		print ("stopvaluerange=" +str(stopvaluerange))
-	# 		chkpad=str(runvalue).split(".")
-
-	# 		if len(chkpad[1])==1:
-	# 			tempval=chkpad[1]+"0"
-	# 			stepval=chkpad[0]+"." +tempval
-	# 			runvalue=stepval
-	# 			# print(self.myvarasso[runvalue])
-	# 			# priceaccumestep= float(self.myvarasso[runvalue][runvalue].get())
-	# 			priceaccumestep= runvalue
-	# 			print("tkconsole.py line 280 runvalue=" + runvalue)
-	# 			volumeaccumestep= float(self.myvarasso[runvalue][0]["volumn"].get())
-	# 			# exit()
-
-	# 			print (runvalue+" need price = " + str(priceaccumestep))
-				
-
-
-	# 			lblvalue=str(runvalue)
-	# 			# for repeatidx in self.labeldisplay[valuebuy]:
-	# 			# if repeatidx!=valuebuy:	
-				
-	# 			self.labeldisplay[lblvalue][lblvalue].configure(fg='black',background='green')
-	# 			self.labeldisplay[lblvalue]["updatedate"].configure(fg='black',background='green')
-	# 			self.labeldisplay[lblvalue]["updatetime"].configure(fg='black',background='green')
-	# 			self.labeldisplay[lblvalue]["volumn"].configure(fg='black',background='green')
-	# 			self.labeldisplay[lblvalue]["price"].configure(fg='black',background='green')
-	# 			self.labeldisplay[lblvalue]["order"].configure(fg='black',background='green')
-	# 			self.labeldisplay[lblvalue]["state"].configure(fg='black',background='green')
-	# 			self.labeldisplay[lblvalue]["targetvalue"].configure(fg='black',background='green')
-	# 			self.labeldisplay[lblvalue]["profit"].configure(fg='black',background='green')	
-
-	# 			runvalue=float(stval)
-
-
-	# 			priceaccume+=priceaccumestep
-	# 			volumeaccume+=volumeaccumestep
-				
-	# 		else:
-	# 			# print(self.myvarasso[str(runvalue)])
-				
-				
-				
-
-	# 			lblvalue=str(runvalue)
-	# 			self.labeldisplay[lblvalue][lblvalue].configure(fg='black',background='green')
-	# 			self.labeldisplay[lblvalue]["updatedate"].configure(fg='black',background='green')
-	# 			self.labeldisplay[lblvalue]["updatetime"].configure(fg='black',background='green')
-	# 			self.labeldisplay[lblvalue]["volumn"].configure(fg='black',background='green')
-	# 			self.labeldisplay[lblvalue]["price"].configure(fg='black',background='green')
-	# 			self.labeldisplay[lblvalue]["order"].configure(fg='black',background='green')
-	# 			self.labeldisplay[lblvalue]["state"].configure(fg='black',background='green')
-	# 			self.labeldisplay[lblvalue]["targetvalue"].configure(fg='black',background='green')
-	# 			self.labeldisplay[lblvalue]["profit"].configure(fg='black',background='green')	
-
-	# 			priceaccumestep=float(self.myvarasso[lblvalue]["price"].get())
-	# 			volumeaccumestep= float(self.myvarasso[lblvalue]["volumn"].get())
-
-	# 			print (str(runvalue) +" need price = " + str(priceaccumestep))
-	# 			priceaccume+=priceaccumestep
-	# 			volumeaccume+=volumeaccumestep
-
-	# 		runvalue+=commonstep
-	# 		runvalue=round(runvalue,2)
-
-
-	# 	self.labeldisplay[valuebuy][valuebuy].configure(fg='white',background='orange')
-	# 	for repeatidx in self.labeldisplay[valuebuy]:
-	# 		if repeatidx!=valuebuy:	
-
-	# 			self.labeldisplay[valuebuy][repeatidx]["orderid"].configure(fg='white',background='orange')
-	# 			self.labeldisplay[valuebuy][repeatidx]["startordertime"].configure(fg='white',background='orange')
-	# 			self.labeldisplay[valuebuy][repeatidx]["matchordertime"].configure(fg='white',background='orange')
-	# 			self.labeldisplay[valuebuy][repeatidx]["matchcomplete"].configure(fg='white',background='orange')
-	# 			self.labeldisplay[valuebuy][repeatidx]["volumn"].configure(fg='white',background='orange')
-	# 			self.labeldisplay[valuebuy][repeatidx]["orderside"].configure(fg='white',background='orange')
-	# 			self.labeldisplay[valuebuy][repeatidx]["state"].configure(fg='white',background='orange')
-	# 			self.labeldisplay[valuebuy][repeatidx]["targetvalue"].configure(fg='white',background='orange')
-	# 			self.labeldisplay[valuebuy][repeatidx]["profit"].configure(fg='white',background='orange')
-
-
-	
 
 	def buybyvalue(self):
 		print("Buy set value")
@@ -466,7 +369,7 @@ class outputlog(tk.Tk):
 
 		self.configval["totalcostbuy"].set(runcostbuy)
 		self.configval["totalvolumebuy"].set(runvolumebuy)
-
+		self.configval["remaininvest"].set(runinvest)
 
 		print ("Initial Invest ====>>" + str(initinvest))
 		print ("Volume Step =====>>" + str(volumestep))
@@ -474,13 +377,13 @@ class outputlog(tk.Tk):
 
 		print ("Top Value Range ====>>" + str(topvaluerange))
 
-		print ("Floor Value Range ====>>" + str(floorvaluerange))
-
 		print ("Start Value Buy ====>>" + str(startvaluebuy))
 
-		print ("Total Initial Cost to buy ====>>" + str(runcostbuy))
+		print ("Floor Value Range ====>>" + str(floorvaluerange))
 
-		print ("Total Initial Volume to buy =======>>" + str(runvolumebuy))
+		print ("Total Cost Buy ====>>" + str(runcostbuy))
+
+		print ("Total Volume Buy =======>>" + str(runvolumebuy))
 
 		print ("Remain Invest Cost =========>>" + str(runinvest))
 
@@ -489,94 +392,13 @@ class outputlog(tk.Tk):
 		self.txtout("Set Volume Step = " + self.configval["volumestep"].get() ,"yellow","gray")
 		self.txtout("Set Profit Step = " + self.configval["profitstep"].get() ,"yellow","gray")
 		self.txtout("Set Top Value Range = " + self.configval["topvaluerange"].get() ,"yellow","gray")
-		self.txtout("Set Floor Value Range = " + self.configval["floorvaluerange"].get() ,"yellow","gray")
 		self.txtout("Set Start Value Buy = " + self.configval["startvaluebuy"].get() ,"yellow","gray")
-
-		self.txtout("Set total price to pay = " + self.configval["totalcostbuy"].get())
-		self.txtout("Set total volume = " + self.configval["totalvolumebuy"].get())
-
-
-		# self.txtout("Set Step Volumn = " +str(volumestep))
-		# self.txtout("Set Step Common Value = " +str(commonvaluestep))
-		# self.txtout("Remain Range Invest =" +str(runinvest),"orange","green")
-		
-		# self.txtout("Set Step Profit = " +str(profitstep))
-		# self.txtout("Set Start Value Range = " +str(topvaluerange))
-		# self.txtout("Set Stop Value Range = " +str(stopvaluerange),"green","white")
-		# 	print ("Total price to buy =" +str(priceaccume))
-	# 	self.configval["totalcostbuy"].set(priceaccume)
-	# 	self.configval["totalvolumebuy"].set(volumeaccume)
-	# 	self.txtout("Set Value to buy =" + valuebuy)
-	# 	self.txtout("Set Value End to buy = " + str(stopvaluerange))
-	# 	self.txtout("Set total volume to pay = " + str(volumeaccume))
+		self.txtout("Set Floor Value Range = " + self.configval["floorvaluerange"].get() ,"yellow","gray")
+		self.txtout("Set Total Price to Pay = " + self.configval["totalcostbuy"].get())
+		self.txtout("Set Total Volume = " + self.configval["totalvolumebuy"].get(),"white","peru")
+		self.txtout("Remain Invest Cost = " + self.configval["remaininvest"].get())
 
 		return (0)
-		# exit()
-
-
-		# runinvest=invest
-		# for i,valuelabel in enumerate(self.myvarasso):
-		# 	runvaluerange=float(valuelabel)
-		# 	print ("runvaluerange = " +str(runvaluerange))
-
-
-							# varinfo={
-		# 		"orderid":varorderid,
-		# 		"startordertime":varstartordertime,
-		# 		"matchordertime":varmatchordertime,
-		# 		"matchcomplete":varmatchcomplete,
-		# 		"orderside":varorderside,
-		# 		"volumn":varvolumn,
-		# 		"state":varstatus,
-		# 		"targetvalue":vartargetvalue,
-		# 		"profit":varprofit,
-		# 		}
-			
-				# print(self.labeldisplay[valuelabel][0])
-		# 	for repeatidx in self.labeldisplay[valuelabel]:
-		# 		if repeatidx!=valuelabel:
-
-		# 			self.labeldisplay[valuelabel][repeatidx]["orderid"].configure(background="lightpink")
-		# 			self.labeldisplay[valuelabel][repeatidx]["startordertime"].configure(background="lightpink")
-		# 			self.labeldisplay[valuelabel][repeatidx]["matchordertime"].configure(background="lightpink")
-		# 			self.labeldisplay[valuelabel][repeatidx]["matchcomplete"].configure(background="lightpink")
-		# 			self.labeldisplay[valuelabel][repeatidx]["volumn"].configure(background="lightpink")
-		# 			self.labeldisplay[valuelabel][repeatidx]["orderside"].configure(background="lightpink")
-		# 			self.labeldisplay[valuelabel][repeatidx]["state"].configure(background="lightpink")
-		# 			self.labeldisplay[valuelabel][repeatidx]["targetvalue"].configure(background="lightpink")
-		# 			self.labeldisplay[valuelabel][repeatidx]["profit"].configure(background="lightpink")
-
-		# 			self.myvarasso[valuelabel][repeatidx]["volumn"].set(volumestep)
-		# 			# print (self.myvarasso[valuelabel])
-		# 			# exit()
-		# 			# self.myvarasso[valuelabel]["price"].set(stcost)
-
-		# 			target=round((float(commonvaluestep) * profitstep) + float(valuelabel),2)
-		# 			# print ("target value="+str(target))
-		# 			# exit()
-		# 			self.myvarasso[valuelabel][repeatidx]["targetvalue"].set(target)
-		# 			runinvest -=(runvaluerange*volumestep)
-		# 			stopvaluerange=runvaluerange
-		# 		# invest=remaininvest
-		# 	else:
-
-				
-		# 		print("remain invest that could not put more = " +str(runinvest))
-		# 		break
-
-
-
-		# 		# runvaluerange+=commonvaluestep
-		# print ("remain invest = "+ str(runinvest))
-		# # print ("stopvaluerange at = " + str(stopvaluerange))
-		# self.configval["stopvaluerange"].set(stopvaluerange)
-		# # exit()
-
-		# self.canvas.yview_moveto(0.01)
-		# self.canvas.xview_moveto(0.01)
-		# # self.canvas.yview_moveto(0.5)
-
-
 
 
 	def doMenuRange(self,value):
