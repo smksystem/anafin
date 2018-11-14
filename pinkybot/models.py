@@ -9,7 +9,7 @@ class valuechange(models.Model):
 	timestamp = models.TimeField(0) 
 
 	stockname=models.CharField(max_length=5)
-	valuefield=models.CharField(max_length=5,unique=False,default="")
+	stockvalue=models.CharField(max_length=5,unique=False,default="")
 	totalvolume=models.CharField(max_length=15,unique=False,default="")
 	totalvolue=models.CharField(max_length=15,unique=False,default="")
 

@@ -26,7 +26,8 @@ class pinkybot(packselenium):
 
         }
         # print(self.mycollectqueues["qorder"])
-        super().__init__("xdebug") # configure xdebug or xlive
+
+        super().__init__("xlive") # configure xdebug or xlive
 
 
     def myorder(self,orderside,configparams):

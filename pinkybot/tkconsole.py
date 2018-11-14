@@ -374,19 +374,12 @@ class outputlog(tk.Tk):
 		print ("Initial Invest ====>>" + str(initinvest))
 		print ("Volume Step =====>>" + str(volumestep))
 		print ("Profit Step ====>>" + str(profitstep))
-
 		print ("Top Value Range ====>>" + str(topvaluerange))
-
 		print ("Start Value Buy ====>>" + str(startvaluebuy))
-
 		print ("Floor Value Range ====>>" + str(floorvaluerange))
-
 		print ("Total Cost Buy ====>>" + str(runcostbuy))
-
 		print ("Total Volume Buy =======>>" + str(runvolumebuy))
-
 		print ("Remain Invest Cost =========>>" + str(runinvest))
-
 
 		self.txtout("Set Invest = " + self.configval["initinvest"].get() ,"yellow","gray")
 		self.txtout("Set Volume Step = " + self.configval["volumestep"].get() ,"yellow","gray")

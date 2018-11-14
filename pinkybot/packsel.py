@@ -44,7 +44,6 @@ class packselenium():
 		livepath={"valuemonitor":"",
 				"xpathlogin":"/html/body/table[4]/tbody/tr/td[2]/table/tbody/tr[2]/td/table[1]/tbody/tr/td[2]/form/table/tbody/tr[3]/td[3]/font/input[2]",
 				"xpathrealtime":"//*[@id='trading']/table/tbody/tr[1]/td/a/img",
-				"xrtrefresh":"//*[@id='place-order-form']/refresh-ui-component/button/span[1]",
 				"xfavorchk":"//*[@id='favourite-0']/ul/li[1]/editable-symbol-input/p",
 				"xstockup":"//*[@id='page-0-container']/li[3]/mini-quote/div[1]/mini-quote-overview/div[5]/label",
 				"xstockname":"//*[@id='favourite-0']/ul/li[1]/editable-symbol-input/p",
@@ -55,8 +54,10 @@ class packselenium():
 				"xstockvalueorder":"//*[@id='place-order-price']/div/price-input/input",
 				"xstockpinorder":"//*[@id='place-order-pin']/div/input",
 				"xstocksubmitorder":"//*[@id='place-order-submit']",
-				"xoutputordertable":"/html/body/app-controller/div/ul/li[3]/order/div[2]/order-status/div/div/div/ul/equity-order-status-row[2]/ul",
+				"xoutputordertable":"/html/body/app-controller/div/ul/li[3]/order/div[2]/order-status/div/div/div/ul",
+									# /html/body/app-controller/div/ul/li[3]/order/div[2]/order-status/div/div/div/ul
 				# "xoutputordertable":"",
+				"xrtrefresh":"//*[@id='place-order-form']/refresh-ui-component/button/span[1]",
 			
 				"xoutputderivordertable":"//*[@id='fb-root']",
 				"xstockconfirmorder":"/html/body/modal-layer/div/div/div/form/div[2]/div[1]/button",
@@ -86,6 +87,19 @@ class packselenium():
 
 	def login(self,loginParams,qvalchange):
 
+		updatedate=datetime.now().strftime("%Y-%m-%d")
+		timestamp=datetime.now().strftime("%H:%M:%S")
+		stockname=""
+		stockvalue=""
+
+		self.stockdata={ 
+			"datefield":updatedate,
+			"timestamp":timestamp,
+			"stockname":stockname,
+			"stockvalue":stockvalue,
+
+		}
+
 		self.mycollectqueues["qvalchange"]=qvalchange
 		
 		# for i in iter(self.qvalchange.get(),'STOP'):
@@ -112,6 +126,10 @@ class packselenium():
 			driver.get("http://localhost:8000/dummy/")
 		elif self.mode=="xlive":
 			driver.get("http://wen060.settrade.com/login.jsp?txtBrokerId="+loginParams["mybrokeId"])
+
+
+
+
 
 		wait = WebDriverWait(driver, 10)
 
@@ -176,7 +194,7 @@ class packselenium():
 		print ("stockname found is " + stockname)
 		# exit()
 		# stockname=stock.get_attribute("value")
-
+		self.stockdata["stockname"]=stockname
 
 		# one click to the first of favorite stock then wait
 		# chkstock=driver.find_elements_by_xpath("//*[@id='favourite-0']/ul/li[1]/editable-symbol-input/p")[0]
@@ -228,8 +246,8 @@ class packselenium():
 		offer={}
 		offervolumn={}
 
-		updatedate= datetime.now().strftime("%Y-%m-%d")
-		timestamp = datetime.now().strftime("%H:%M:%S")
+		self.stockdata["updatedate"]= datetime.now().strftime("%Y-%m-%d")
+		self.stockdata["timestamp"] = datetime.now().strftime("%H:%M:%S")
 
 		# timerecord = timestamp.strftime('%Y-%m-%d %H:%M:%S')
 		# print("time stamp=" + str(timestamp))
@@ -237,16 +255,12 @@ class packselenium():
 		# try:
 
 		# find the stock value
-		stockvalue = driver.find_elements_by_xpath(self.xpathreturn("xstockvalue"))[0].text
+		# stockname=driver.find_elements_by_xpath(self.xpathreturn("xstockname"))[0].text
+		self.stockdata["stockvalue"] = driver.find_elements_by_xpath(self.xpathreturn("xstockvalue"))[0].text
+		stockvalue=self.stockdata["stockvalue"]
 		# print ("stock value now =" + stockvalue)	
 		
-		stockdata={ 
-			"datefield":updatedate,
-			"timestamp":timestamp,
-			"valuefiled":stockvalue,
-
-		}
-
+		
 
 
 		if (self.stockcompare=="0.00" and stockvalue !="0.00") or (self.stockcompare!=stockvalue) and (self.stockcompare!="0.00"):
@@ -256,11 +270,12 @@ class packselenium():
 			self.stockcompare=stockvalue
 			self.refreshbtn(driver)
 			self.mycollectqueues["qvalchange"].put({"stockvalue":stockvalue})
+			
+			print(self.stockdata)
 		
 
 
-
-			PackSelModel.updatestockvaluechange(stockdata)
+			PackSelModel.updatestockvaluechange(self.stockdata)
 			
 
 		# elif (self.stockcompare!=stockvalue) and (self.stockcompare!="0.00"):
@@ -377,8 +392,11 @@ class packselenium():
 
 		# try:
 		print ("refresh botton press in function refresh btn packsel.py line 360")
-		# elem = driver.find_element_by_xpath(self.xpathreturn("xrtrefresh")).click()
-		elem = driver.find_element_by_xpath("//*[@id='order_ctrl']/input[3]").click()
+
+		elem = driver.find_element_by_xpath(self.xpathreturn("xrtrefresh")).click()
+
+		# elem = driver.find_element_by_xpath("//*[@id='order_ctrl']/input[3]").click()
+
 		# exit()
 
 		wait = WebDriverWait(driver, 30)
@@ -390,17 +408,13 @@ class packselenium():
 
 		if self.mode=="xlive":
 
-			# /html/body/app-controller/div/ul/li[3]/order/div[2]/order-status/div/div/div/ul/equity-order-status-row[2]
-
-			# /html/body/app-controller/div/ul/li[3]/order/div[2]/order-status/div/div/div/ul/equity-order-status-row[2]
+			# !!!!! already work well !!!!!
 			roworder = driver.find_elements_by_xpath("/html/body/app-controller/div/ul/li[3]/order/div[2]/order-status/div/div/div/ul/*")
-			print ( roworder)
-			print(len(roworder))
-			# print ( roworder.text)
-			# test=roworder.find_elements_by_xpath("./")
 
-			# print (test.text)
-			# print (test)
+			col_dict=[]
+			row_dict=[]
+			mytable=[]
+
 			for myrow in roworder:
 				print ("total rows=" + str(len(roworder)))
 				print ("row=" + myrow.text)
@@ -409,11 +423,18 @@ class packselenium():
 					print("enter loop find column")
 					columes=myrow.find_elements_by_tag_name("li")
 					for mycolume in columes:
-						print (mycolume)
-						print (mycolume.text)
+						# print (mycolume)
+						# print (mycolume.text)
 						col_dict.append(mycolume.text)
 				
-				row_dict.append(col_dict)
+				# row_dict.append(col_dict)
+			# PackSelModel.updaterefresh(col_dict)
+			col_dict=[]
+
+			# already got this result
+			# row=71906069 23:20:08 WHA B 4.18 500 0 0 0 Cancelled(CS) Detail
+			# row=71906056 22:38:04 WHA B 4.16 500 0 0 0 Cancelled(CS) Detail
+
 		elif self.mode=="xdebug":
 			table_id = driver.find_element_by_xpath( self.xpathreturn("xoutputordertable"))
 			tablerow=table_id.find_elements_by_xpath(".//tr")

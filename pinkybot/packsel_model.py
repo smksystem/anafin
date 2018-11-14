@@ -18,7 +18,9 @@ class PackSelModel:
 		updaterow=valuechange(
 				datefield=stockdata["datefield"],
 				timestamp=stockdata["timestamp"],
-				valuefield=stockdata["valuefiled"]
+				stockname=stockdata["stockname"],
+				stockvalue=stockdata["stockvalue"]
+
 			)
 		updaterow.save()
 		# newrow=updaterefresh(orderno=myrow[2],
@@ -88,7 +90,7 @@ class PackSelModel:
 
 	def updaterefresh(mytable):
 		# compare logic here to update table or not 
-		print ("hello update refresh table databases")
+		print ("hello update refresh table databases packsel_model.py line 93")
 		print (mytable)
 		for myrow in mytable:
 			print (myrow[2])
