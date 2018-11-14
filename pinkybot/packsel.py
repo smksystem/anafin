@@ -249,9 +249,9 @@ class packselenium():
 
 
 
-		if self.stockcompare=="0.00" and stockvalue !="0.00":
-			print("first stockvalue updated=" + stockvalue)
-			print("first stockcompare updated=" + self.stockcompare)
+		if (self.stockcompare=="0.00" and stockvalue !="0.00") or (self.stockcompare!=stockvalue) and (self.stockcompare!="0.00"):
+			# print("first stockvalue updated=" + stockvalue)
+			# print("first stockcompare updated=" + self.stockcompare)
 			# self.mycollectqueues["qvalchange"].put({"stockvalue":stockvalue})
 			self.stockcompare=stockvalue
 			self.refreshbtn(driver)
@@ -263,15 +263,15 @@ class packselenium():
 			PackSelModel.updatestockvaluechange(stockdata)
 			
 
-		elif (self.stockcompare!=stockvalue) and (self.stockcompare!="0.00"):
-			print("update stock compare"+ stockvalue)
-			# self.refreshbtn(driver)
-			# self.stockcompare=stockvalue
-			PackSelModel.updatestockvaluechange(stockdata)
-			print ("stockcompare="+self.stockcompare)
-			self.stockcompare=stockvalue
-			self.refreshbtn(driver)
-			self.mycollectqueues["qvalchange"].put({"stockvalue":stockvalue})
+		# elif (self.stockcompare!=stockvalue) and (self.stockcompare!="0.00"):
+		# 	print("update stock compare"+ stockvalue)
+		# 	# self.refreshbtn(driver)
+		# 	# self.stockcompare=stockvalue
+		# 	PackSelModel.updatestockvaluechange(stockdata)
+		# 	print ("stockcompare="+self.stockcompare)
+		# 	self.stockcompare=stockvalue
+		# 	self.refreshbtn(driver)
+		# 	self.mycollectqueues["qvalchange"].put({"stockvalue":stockvalue})
 		# print ("reset stockvalue")
 		stockvalue=""	
 		
