@@ -278,16 +278,6 @@ class packselenium():
 			PackSelModel.updatestockvaluechange(self.stockdata)
 			
 
-		# elif (self.stockcompare!=stockvalue) and (self.stockcompare!="0.00"):
-		# 	print("update stock compare"+ stockvalue)
-		# 	# self.refreshbtn(driver)
-		# 	# self.stockcompare=stockvalue
-		# 	PackSelModel.updatestockvaluechange(stockdata)
-		# 	print ("stockcompare="+self.stockcompare)
-		# 	self.stockcompare=stockvalue
-		# 	self.refreshbtn(driver)
-		# 	self.mycollectqueues["qvalchange"].put({"stockvalue":stockvalue})
-		# print ("reset stockvalue")
 		stockvalue=""	
 		
 
@@ -306,39 +296,6 @@ class packselenium():
 				print ("put queue refreshtk packsel.py line 273")
 				self.mycollectqueues["qorder"].put({"order":"refreshtk"}) # continue refresh TKInter
 				
-		# if not self.mycollectqueues["qdatarefresh"].empty():
-			# orderparams=self.mycollectqueues["qdatarefresh"].get(block=True)
-			# print (orderparams)
-			# self.refreshbtn(driver)
-
-			# for line in range(1,6):
-					# test=driver.find_elements_by_xpath("//*[@id='bid-"+str(line)+"']")[0].text.replace(",","")
-					# print(test)
-
-					# bid["bid"+str(line)]=float(driver.find_elements_by_xpath("//*[@id='bid-"+str(line)+"']")[0].text.replace(",",""))
-					# offer["offer"+str(line)]=float(driver.find_elements_by_xpath("//*[@id='offer-"+str(line)+"']")[0].text.replace(",",""))
-					# bidvolumn["bidvolumn"+ str(line)]=float(driver.find_elements_by_xpath("//*[@id='bid-volume-"+str(line)+"']")[0].text.replace(",",""))
-					# offervolumn["offervolumn"+str(line)]=float(driver.find_elements_by_xpath("//*[@id='offer-volume-"+str(line)+"']")[0].text.replace(",",""))
-
-			# timestamp = timezone.now()
-			# timestamp = datetime.utcnow()
-			# timestampELS = timestamp.isoformat(' ','seconds')
-			
-			# print("Time record is =" + timestampELS)
-			# exit()
-			#
-
-			# face to problem with float to string while ATO,ATC
-			# PackSelModel.InsertMonitorBidOffer(stock,timestampELS,bid,offer,bidvolumn,offervolumn)
-
-			# bidvolumn.clear()
-			# bid.clear()
-			# offer.clear()
-			# offervolumn.clear()
-
-		# except:
-		# 	stockvalue=""
-		# 	pass
 
 	def order(self,driver,orderparams):
 		print (orderparams)
@@ -395,10 +352,6 @@ class packselenium():
 
 		elem = driver.find_element_by_xpath(self.xpathreturn("xrtrefresh")).click()
 
-		# elem = driver.find_element_by_xpath("//*[@id='order_ctrl']/input[3]").click()
-
-		# exit()
-
 		wait = WebDriverWait(driver, 30)
 		WebElement = wait.until(EC.presence_of_element_located((By.XPATH, self.xpathreturn("xoutputderivordertable"))));
 
@@ -409,10 +362,10 @@ class packselenium():
 		if self.mode=="xlive":
 
 			# !!!!! already work well !!!!!
+			# tablerow = driver.find_elements_by_xpath("xoutputordertable"+"/*")
+			# special case with no work if put into above for xoutputordertable
 			tablerow = driver.find_elements_by_xpath("/html/body/app-controller/div/ul/li[3]/order/div[2]/order-status/div/div/div/ul/*")
 
-			# col_dict=[]
-			# row_dict=[]
 			mytable=[]
 
 			if len(tablerow) > 2 : #default will include 2 blank line 
@@ -425,17 +378,6 @@ class packselenium():
 						
 						mytable.append(myrow)
 
-					# print ("lenght of text=" + str(len(myrow.text)))
-					# if len(myrow.text) != 0:
-					# 	print("enter loop find column")
-					# 	columes=myrow.find_elements_by_tag_name("li")
-					# 	for mycolume in columes:
-					# 		# print (mycolume)
-					# 		# print (mycolume.text)
-					# 		col_dict.append(mycolume.text)
-					
-					# mytable.append(col_dict)
-				# result
 				# ['', '71911327', '14:42:59', 'WHA', 'B', '4.08', '700', '0', '0', '700', 'Cancel(X)', '', 'Detail', '']
 				# [['71911327', '14:42:59', 'WHA', 'B', '4.08', '700', '0', '0', '700', 'Cancel(X)', 'Detail']]
 				print (mytable)
@@ -448,12 +390,10 @@ class packselenium():
 			# row=71906069 23:20:08 WHA B 4.18 500 0 0 0 Cancelled(CS) Detail
 			# row=71906056 22:38:04 WHA B 4.16 500 0 0 0 Cancelled(CS) Detail
 
-		elif self.mode=="xdebug":
+		elif self.mode=="xlive":
 			table_id = driver.find_element_by_xpath( self.xpathreturn("xoutputordertable"))
 			tablerow=table_id.find_elements_by_xpath(".//tr")
-			# print (tablerow)
-			# col_dict=[]
-			# row_dict=[]
+
 			mytable=[]
 			for row in tablerow:
 				# print(row.text)
