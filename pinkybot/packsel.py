@@ -291,10 +291,11 @@ class packselenium():
 				# orderparams=self.mycollectqueues["qorder"].get()
 				print ("refresh db packsel.py line 270")
 				print (orderparams)
-				self.refreshbtn(driver)
+				result_refreshbtn=self.refreshbtn(driver)
 
 				print ("put queue refreshtk packsel.py line 273")
-				self.mycollectqueues["qorder"].put({"order":"refreshtk"}) # continue refresh TKInter
+				self.mycollectqueues["qorder"].put({"order":"refreshtk",
+												"doupdate":result_refreshbtn}) # continue refresh TKInter
 				
 
 	def order(self,driver,orderparams):
@@ -362,9 +363,11 @@ class packselenium():
 		if self.mode=="xlive":
 
 			# !!!!! already work well !!!!!
-			# tablerow = driver.find_elements_by_xpath("xoutputordertable"+"/*")
+			
+			#############################################################################
 			# special case with no work if put into above for xoutputordertable
 			tablerow = driver.find_elements_by_xpath("/html/body/app-controller/div/ul/li[3]/order/div[2]/order-status/div/div/div/ul/*")
+			#############################################################################
 
 			mytable=[]
 
@@ -411,5 +414,7 @@ class packselenium():
 			# print ("=========================")
 			PackSelModel.updaterefresh(mytable)
 			mytable=[]
+
+		return "After Update refresh button"
 			# print("end for")
 		# print("end of packsel.py")

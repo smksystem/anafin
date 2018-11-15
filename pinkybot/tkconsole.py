@@ -4,9 +4,11 @@ import datetime
 import sys
 
 from pinkybot.monitor import pinkybot
-
+from pinkybot.packsel_model import PackSelModel
 class outputlog(tk.Tk):
 	def __init__(self):
+
+		
 
 		tk.Tk.__init__(self)
 		self.mybot=pinkybot()
@@ -781,9 +783,20 @@ class outputlog(tk.Tk):
 				print (chkorder)
 				if chkorder["order"]=="refreshtk":
 					print ("<<<<<<<<<<refresh Tk Inter GUI need to refresh now")
+					print (chkorder["doupdate"])
+					dbtable_array=PackSelModel.tkrefreshdb()
+					print(dbtable_array)
+
+
+
+
+
+
+
 					# self.alreadyputback=False
 				else:
 					print (">>>>>>>>Put refresh back DB")
+					###### if not refresh tkinter put queue back to refresh at db for thread.
 					chkorder=self.mybot.mycollectqueues["qorder"].put(chkorder)
 					# self.alreadyputback=True
 				

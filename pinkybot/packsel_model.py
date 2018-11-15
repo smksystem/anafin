@@ -36,6 +36,11 @@ class PackSelModel:
 		# 							)
 		# 		newrow.save()
 
+	def tkrefreshdb():
+
+		print("call packsel_model.py line 41")
+		# chkorderno=updaterefresh.objects.filter(orderno=myrow[0])
+
 	def InsertMonitorBidOffer(stock,timestamp,bid,offer,bidvolumn,offervolumn):
 		print ("Insert value into els system")
 		
@@ -123,7 +128,6 @@ class PackSelModel:
 
 			else:
 				print ("Order already existing")
-				# Blog.objects.values('id', 'name')
 				tochk=chkorderno.values()
 				print (tochk[0]["orderno"])
 				
