@@ -409,28 +409,41 @@ class packselenium():
 		if self.mode=="xlive":
 
 			# !!!!! already work well !!!!!
-			roworder = driver.find_elements_by_xpath("/html/body/app-controller/div/ul/li[3]/order/div[2]/order-status/div/div/div/ul/*")
+			tablerow = driver.find_elements_by_xpath("/html/body/app-controller/div/ul/li[3]/order/div[2]/order-status/div/div/div/ul/*")
 
-			col_dict=[]
-			row_dict=[]
+			# col_dict=[]
+			# row_dict=[]
 			mytable=[]
 
-			for myrow in roworder:
-				print ("total rows=" + str(len(roworder)))
-				print ("row=" + myrow.text)
-				print ("lenght of text=" + str(len(myrow.text)))
-				if len(myrow.text) != 0:
-					print("enter loop find column")
-					columes=myrow.find_elements_by_tag_name("li")
-					for mycolume in columes:
-						# print (mycolume)
-						# print (mycolume.text)
-						col_dict.append(mycolume.text)
-				
-				# row_dict.append(col_dict)
-			# PackSelModel.updaterefresh(col_dict)
-			col_dict=[]
+			if len(tablerow) > 2 : #default will include 2 blank line 
 
+				for row in tablerow:
+					# print ("total rows=" + str(len(roworder)))
+					print ("row=" + row.text)
+					if row.text:
+						myrow=row.text.split(" ")
+						
+						mytable.append(myrow)
+
+					# print ("lenght of text=" + str(len(myrow.text)))
+					# if len(myrow.text) != 0:
+					# 	print("enter loop find column")
+					# 	columes=myrow.find_elements_by_tag_name("li")
+					# 	for mycolume in columes:
+					# 		# print (mycolume)
+					# 		# print (mycolume.text)
+					# 		col_dict.append(mycolume.text)
+					
+					# mytable.append(col_dict)
+				# result
+				# ['', '71911327', '14:42:59', 'WHA', 'B', '4.08', '700', '0', '0', '700', 'Cancel(X)', '', 'Detail', '']
+				# [['71911327', '14:42:59', 'WHA', 'B', '4.08', '700', '0', '0', '700', 'Cancel(X)', 'Detail']]
+				print (mytable)
+				PackSelModel.updaterefresh(mytable)
+				mytable=[]
+				# col_dict=[]
+			else:
+				print("=========No found any row of order to record=========")
 			# already got this result
 			# row=71906069 23:20:08 WHA B 4.18 500 0 0 0 Cancelled(CS) Detail
 			# row=71906056 22:38:04 WHA B 4.16 500 0 0 0 Cancelled(CS) Detail
@@ -439,15 +452,24 @@ class packselenium():
 			table_id = driver.find_element_by_xpath( self.xpathreturn("xoutputordertable"))
 			tablerow=table_id.find_elements_by_xpath(".//tr")
 			# print (tablerow)
-			col_dict=[]
-			row_dict=[]
+			# col_dict=[]
+			# row_dict=[]
 			mytable=[]
 			for row in tablerow:
 				# print(row.text)
 				if row.text:
 					myrow=row.text.split(" ")
+					myrow=myrow[2:]		
 					mytable.append(myrow)
 					# print(myrow)
+			 #remove first element of array to be the same as xlive
+			# ['', '71911327', '14:42:59', 'WHA', 'B', '4.08', '700', '0', '0', '700', 'Cancel(X)', '', 'Detail', '']
+			# ['', '', '232558', '23:19:57', 'WHA', 'B', '0.00', '000', '0', '0', '0', 'Pending(S)']	
+			# ['', '324276', '14:02:31', 'WHA', 'B', '4.90', '500', '0', '0', '0', 'Pending(S)']				
+			# print ("=========================")
+			# print(mytable)
+			# print ("=========================")
 			PackSelModel.updaterefresh(mytable)
+			mytable=[]
 			# print("end for")
 		# print("end of packsel.py")

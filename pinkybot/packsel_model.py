@@ -93,22 +93,34 @@ class PackSelModel:
 		print ("hello update refresh table databases packsel_model.py line 93")
 		print (mytable)
 		for myrow in mytable:
-			print (myrow[2])
-			chkorderno=updaterefresh.objects.filter(orderno=myrow[2])
+			print (myrow[0])
+			chkorderno=updaterefresh.objects.filter(orderno=myrow[0]) # SQL filter for order no to find existing record.
 			if not chkorderno.exists():
-				print("Insert new row of order")
-				newrow=updaterefresh(orderno=myrow[2],
-									time=myrow[3],
-									symbole=myrow[4],
-									side=myrow[5],
-									price=myrow[6],
-									volume=myrow[7],
-									matched=myrow[8],
-									balance=myrow[9],
-									cancelled=myrow[10],
-									status=myrow[11],
+				print("Insert new row of order below ")
+				print(myrow)
+				# [['71911327', '14:42:59', 'WHA', 'B', '4.08', '700', '0', '0', '700', 'Cancel(X)', 'Detail']]
+				newrow=updaterefresh(orderno=myrow[0],
+									time=myrow[1],
+									symbole=myrow[2],
+									side=myrow[3],
+									price=myrow[4],
+									volume=myrow[5],
+									matched=myrow[6],
+									balance=myrow[7],
+									cancelled=myrow[8],
+									status=myrow[9],
 									)
 				newrow.save()
+
+# [['71913646', '17:09:57', 'WHA', 'B', '4.10', '600', '0', '600', '0', 'Pending(OF)', 'Detail', 'Cancel'], 
+ # ['71911327', '14:42:59', 'WHA', 'B', '4.08', '700', '0', '0', '700', 'Cancel(X)', 'Detail']]
+# django.db.utils.DataError: (1406, "Data too long for column 'status' at row 1")
+# 71913646
+
+# Insert new row of order
+# Exception in thread Thread-3:
+
+
 			else:
 				print ("Order already existing")
 				# Blog.objects.values('id', 'name')
@@ -122,18 +134,19 @@ class PackSelModel:
 				# exit()
 				print (myrow)
 				for index, (column,myvalue) in enumerate(tochk[0].items()):
+					# index-=index
 					if column != "id" and column != "date":
-						updaterow=True if (myvalue != myrow[index+1]) else False
+						updaterow=True if (myvalue != myrow[index-1]) else False
 						# print (index,column,value,myrow[index+1],updaterow)
 						
 						if updaterow==True:
 
 							
 							
-							updatecolumnval=updaterefresh.objects.filter(orderno=myrow[2]).update(**{column:myrow[index+1]})
+							updatecolumnval=updaterefresh.objects.filter(orderno=myrow[0]).update(**{column:myrow[index-1]})
 							
 							
-							print (index,column,myvalue,myrow[index+1],updaterow)
+							print (index,column,myvalue,myrow[index-1],updaterow)
 							# updaterow=chkorderno	
 
 							# UPDATE books_publisher
