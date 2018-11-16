@@ -98,15 +98,17 @@ class PackSelModel:
 # [['71913646', '17:09:57', 'WHA', 'B', '4.10', '600', '0', '600', '0', 'Pending(OF)', 'Detail', 'Cancel'], 
 # ['71911327', '14:42:59', 'WHA', 'B', '4.08', '700', '0', '0', '700', 'Cancel(X)', 'Detail']]
 
-	def updaterefresh(mytable):
+	def updaterefresh(mytable,fullrefresh=False):
 		# compare logic here to update table or not 
 		print ("hello update refresh table databases packsel_model.py line 93")
 		print (mytable)
 		result_updaterefresh=[]
 		
 		for myrow in mytable:
-			print (myrow[0])
+			# print (myrow[0])
 			chkorderno=updaterefresh.objects.filter(orderno=myrow[0]) # SQL filter for order no to find existing record.
+			if fullrefresh==True:
+				result_updaterefresh.append(chkorderno.values()[0])
 			if not chkorderno.exists():
 				print("Insert new row of order below ")
 				print(myrow)

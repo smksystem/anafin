@@ -274,7 +274,7 @@ class packselenium():
 			self.mycollectqueues["qorder"].put({"order":"refreshtk",
 												"doupdatetk":result_refreshbtn}) # continue refresh TKInter
 			self.mycollectqueues["qvalchange"].put({"stockvalue":stockvalue})
-			
+
 			# print(self.stockdata)
 		
 
@@ -291,11 +291,15 @@ class packselenium():
 			if orderparams["order"]=="buy":
 				self.order(driver,orderparams)
 			if orderparams["order"]=="refreshdb":
+				if orderparams["refreshtype"]=="full":
+
 				# orderparams=self.mycollectqueues["qorder"].get()
 				# print ("refresh db packsel.py line 270")
 				# print (orderparams)
+					result_refreshbtn=self.refreshbtn(driver,"full")
 
-				result_refreshbtn=self.refreshbtn(driver)
+				else:
+					result_refreshbtn=self.refreshbtn(driver)
 				# print (" ================= refresh result packsel.py line 296 ================= ")
 				# print (result_refreshbtn)
 
@@ -352,7 +356,7 @@ class packselenium():
 		elif orderside=="sell":
 			pass
 
-	def refreshbtn(self,driver):
+	def refreshbtn(self,driver,fullorpartial="partial"):
 
 
 		# try:
@@ -419,7 +423,10 @@ class packselenium():
 			# print ("=========================")
 			# print(mytable)
 			# print ("=========================")
-			rowupdaterefresh=PackSelModel.updaterefresh(mytable)
+			if fullorpartial=="partial":
+				rowupdaterefresh=PackSelModel.updaterefresh(mytable)
+			elif fullorpartial=="full":
+				rowupdaterefresh=PackSelModel.updaterefresh(mytable,True)					
 			print ("show update refresh")
 			print(rowupdaterefresh)
 			mytable=[]

@@ -59,7 +59,7 @@ class pinkybot(packselenium):
         print ("sell order")
     def botrtrefresh(self):
         print ("RT Refresh order monitory.py line 60")
-        self.mycollectqueues["qorder"].put({"order":"refreshdb"})
+        self.mycollectqueues["qorder"].put({"order":"refreshdb","refreshtype":"full"})
 
     def threadlogin(self,loginSet):
         print ("thread login was called")
