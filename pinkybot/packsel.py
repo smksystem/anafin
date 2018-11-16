@@ -284,28 +284,32 @@ class packselenium():
 		stockvalue=""	
 		
 
+		if not self.mycollectqueues["qrefresh"].empty(): 
+			# To continue re arrange below.
+			# if orderparams["order"]=="refreshdb":
+			# 	if orderparams["refreshtype"]=="full":
 
+			# 	# orderparams=self.mycollectqueues["qorder"].get()
+			# 	# print ("refresh db packsel.py line 270")
+			# 	# print (orderparams)
+			# 		result_refreshbtn=self.refreshbtn(driver,"full")
+
+			# 	elif orderparams["refreshtype"]=="partial":
+			# 		result_refreshbtn=self.refreshbtn(driver,"partial")
+
+			# 	print (" ================= refresh result packsel.py line 303 ================= ")
+			# 	print (result_refreshbtn)
+
+			# 	# print ("put queue refreshtk packsel.py line 273")
+			# 	self.mycollectqueues["qorder"].put({"order":"refreshtk",
+			# 									"doupdatetk":result_refreshbtn}) # continue refresh TKInter
+			
 		if not self.mycollectqueues["qorder"].empty(): 
 
 			orderparams=self.mycollectqueues["qorder"].get()
 			if orderparams["order"]=="buy":
 				self.order(driver,orderparams)
-			if orderparams["order"]=="refreshdb":
-				if orderparams["refreshtype"]=="full":
 
-				# orderparams=self.mycollectqueues["qorder"].get()
-				# print ("refresh db packsel.py line 270")
-				# print (orderparams)
-					result_refreshbtn=self.refreshbtn(driver,"full")
-
-				else:
-					result_refreshbtn=self.refreshbtn(driver)
-				# print (" ================= refresh result packsel.py line 296 ================= ")
-				# print (result_refreshbtn)
-
-				# print ("put queue refreshtk packsel.py line 273")
-				self.mycollectqueues["qorder"].put({"order":"refreshtk",
-												"doupdatetk":result_refreshbtn}) # continue refresh TKInter
 				
 
 	def order(self,driver,orderparams):
@@ -360,7 +364,7 @@ class packselenium():
 
 
 		# try:
-		print ("refresh botton press in function refresh btn packsel.py line 360")
+		print ("refresh botton press in function refresh btn packsel.py line 363")
 
 		elem = driver.find_element_by_xpath(self.xpathreturn("xrtrefresh")).click()
 
@@ -369,7 +373,7 @@ class packselenium():
 
 		time.sleep(0.5)
 
-		print("wait finished")
+		print("wait finished packsel.py line 372")
 		doupdatetk=""
 		if self.mode=="xlive":
 
@@ -424,10 +428,12 @@ class packselenium():
 			# print(mytable)
 			# print ("=========================")
 			if fullorpartial=="partial":
-				rowupdaterefresh=PackSelModel.updaterefresh(mytable)
+				print ("partial update refresh packsel.py line 427")
+				rowupdaterefresh=PackSelModel.updaterefresh(mytable,False)
 			elif fullorpartial=="full":
+				print("full update refresh packsel.py line 430")
 				rowupdaterefresh=PackSelModel.updaterefresh(mytable,True)					
-			print ("show update refresh")
+			print ("show update refresh packsel.py line 432")
 			print(rowupdaterefresh)
 			mytable=[]
 

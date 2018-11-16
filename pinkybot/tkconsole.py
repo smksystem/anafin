@@ -779,23 +779,18 @@ class outputlog(tk.Tk):
 
 			if not self.mybot.mycollectqueues["qorder"].empty() :
 				chkorder=self.mybot.mycollectqueues["qorder"].get()
-				print ("chkorder tkconsole.py line 760")
+				print ("chkorder tkconsole.py line 782")
 				print (chkorder)
 				if chkorder["order"]=="refreshtk":
-					print ("<<<<<<<< Print to do update refresh tkinter here !!!!!")
+					print ("<<<<<<<< Print data to do update refresh tkinter here !!!!! tkconsole.py line 785")
 					# print (chkorder["doupdate"])
 					# dbtable_array=PackSelModel.tkrefreshdb()
 					# print(dbtable_array)
+
 					print (chkorder["doupdatetk"])
 
-
-
-
-
-
-
 					# self.alreadyputback=False
-				else:
+				elif chkorder["order"]=="refreshdb":
 					print (">>>>>>>>Put refresh back DB")
 					###### if not refresh tkinter put queue back to refresh at db for thread.
 					chkorder=self.mybot.mycollectqueues["qorder"].put(chkorder)

@@ -15,12 +15,14 @@ class pinkybot(packselenium):
 
         qorder = Queue() # To send Order request to Runtime
         qvalchange = Queue() # To monitor value change value and refresh to GUI.
+        qrefresh = Queue
         # qtkuprefresh=Queue() # To update tkinter after update refresh into database.
         # qdatarefresh=Queue() # Unuseable since missing qeue To send refresh table between GUI and Refresh button.
         # qdb=Queue()
         # xdebug or xlive
         self.mycollectqueues={"qorder":qorder,
                             "qvalchange":qvalchange,
+                            "qrefresh":qrefresh, # to decrease complexsity of Queue from order.
                             # "qtkuprefresh":qtkuprefresh,
                             # "qdatarefresh":qdatarefresh,
 
@@ -59,7 +61,8 @@ class pinkybot(packselenium):
         print ("sell order")
     def botrtrefresh(self):
         print ("RT Refresh order monitory.py line 60")
-        self.mycollectqueues["qorder"].put({"order":"refreshdb","refreshtype":"full"})
+        ## get command from click button ,assign to be full refresh for all table
+        self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshdb","refreshtype":"full"}) 
 
     def threadlogin(self,loginSet):
         print ("thread login was called")
