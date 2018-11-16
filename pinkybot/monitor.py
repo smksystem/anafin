@@ -104,13 +104,6 @@ class pinkybot(packselenium):
             i=0
             self.monitoring(handlewin,str(i))
 
-        # while True:
-        #     i=0
-        #     delta=datetime.now()-timestamp
-        #     if delta.seconds >= 2:
-        #         print ("monitor period=" +str(delta.seconds))
-        #         self.monitoring(handlewin,str(i))
-        #         timestamp=datetime.now()
 
 class MyThread(threading.Thread):
     def __init__(self, queue,fnrun, args=(), kwargs=None):

@@ -761,7 +761,7 @@ class outputlog(tk.Tk):
 
 			if not self.mybot.mycollectqueues["qvalchange"].empty():
 				tempdict=self.mybot.mycollectqueues["qvalchange"].get()
-				print (tempdict)
+				# print (tempdict)
 				# print (tempdict["textout"])
 				if "textout" in tempdict:
 						self.txtout("value change to:" + tempdict["textout"])
@@ -782,10 +782,11 @@ class outputlog(tk.Tk):
 				print ("chkorder tkconsole.py line 760")
 				print (chkorder)
 				if chkorder["order"]=="refreshtk":
-					print ("<<<<<<<<<<refresh Tk Inter GUI need to refresh now")
-					print (chkorder["doupdate"])
-					dbtable_array=PackSelModel.tkrefreshdb()
-					print(dbtable_array)
+					print ("<<<<<<<< Print to do update refresh tkinter here !!!!!")
+					# print (chkorder["doupdate"])
+					# dbtable_array=PackSelModel.tkrefreshdb()
+					# print(dbtable_array)
+					print (chkorder["doupdatetk"])
 
 
 

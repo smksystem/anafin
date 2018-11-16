@@ -36,9 +36,9 @@ class PackSelModel:
 		# 							)
 		# 		newrow.save()
 
-	def tkrefreshdb():
+	# def tkrefreshdb():
 
-		print("call packsel_model.py line 41")
+	# 	print("call packsel_model.py line 41")
 		# chkorderno=updaterefresh.objects.filter(orderno=myrow[0])
 
 	def InsertMonitorBidOffer(stock,timestamp,bid,offer,bidvolumn,offervolumn):
@@ -93,10 +93,17 @@ class PackSelModel:
 
 		# exit()
 
+
+
+# [['71913646', '17:09:57', 'WHA', 'B', '4.10', '600', '0', '600', '0', 'Pending(OF)', 'Detail', 'Cancel'], 
+# ['71911327', '14:42:59', 'WHA', 'B', '4.08', '700', '0', '0', '700', 'Cancel(X)', 'Detail']]
+
 	def updaterefresh(mytable):
 		# compare logic here to update table or not 
 		print ("hello update refresh table databases packsel_model.py line 93")
 		print (mytable)
+		result_updaterefresh=[]
+		
 		for myrow in mytable:
 			print (myrow[0])
 			chkorderno=updaterefresh.objects.filter(orderno=myrow[0]) # SQL filter for order no to find existing record.
@@ -116,15 +123,7 @@ class PackSelModel:
 									status=myrow[9],
 									)
 				newrow.save()
-
-# [['71913646', '17:09:57', 'WHA', 'B', '4.10', '600', '0', '600', '0', 'Pending(OF)', 'Detail', 'Cancel'], 
- # ['71911327', '14:42:59', 'WHA', 'B', '4.08', '700', '0', '0', '700', 'Cancel(X)', 'Detail']]
-# django.db.utils.DataError: (1406, "Data too long for column 'status' at row 1")
-# 71913646
-
-# Insert new row of order
-# Exception in thread Thread-3:
-
+				result_updaterefresh.append(myrow)
 
 			else:
 				print ("Order already existing")
@@ -132,8 +131,6 @@ class PackSelModel:
 				print (tochk[0]["orderno"])
 				
 				# a = 2 if i in [1, 3, 6] else 7
-
-
 				# print (updaterow)
 				# exit()
 				print (myrow)
@@ -144,24 +141,15 @@ class PackSelModel:
 						# print (index,column,value,myrow[index+1],updaterow)
 						
 						if updaterow==True:
+							
 
-							
-							
 							updatecolumnval=updaterefresh.objects.filter(orderno=myrow[0]).update(**{column:myrow[index-1]})
-							
-							
+							result_updaterefresh.append(myrow)
 							print (index,column,myvalue,myrow[index-1],updaterow)
-							# updaterow=chkorderno	
-
-							# UPDATE books_publisher
-							# SET name = 'Apress Publishing'
-							# WHERE id = 1;
-							# updaterow.save()
-
 							print ("update row into table")
 
 		
-		return 0
+		return result_updaterefresh
 
 	def test_mysql():
 		# pass

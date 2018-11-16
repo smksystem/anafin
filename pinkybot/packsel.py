@@ -268,15 +268,18 @@ class packselenium():
 			# print("first stockcompare updated=" + self.stockcompare)
 			# self.mycollectqueues["qvalchange"].put({"stockvalue":stockvalue})
 			self.stockcompare=stockvalue
-			self.refreshbtn(driver)
+			PackSelModel.updatestockvaluechange(self.stockdata)
+			
+			result_refreshbtn=self.refreshbtn(driver)
+			self.mycollectqueues["qorder"].put({"order":"refreshtk",
+												"doupdatetk":result_refreshbtn}) # continue refresh TKInter
 			self.mycollectqueues["qvalchange"].put({"stockvalue":stockvalue})
 			
-			print(self.stockdata)
+			# print(self.stockdata)
 		
 
 
-			PackSelModel.updatestockvaluechange(self.stockdata)
-			
+			# result_refreshbtn=self.refreshbtn(driver)
 
 		stockvalue=""	
 		
@@ -289,13 +292,16 @@ class packselenium():
 				self.order(driver,orderparams)
 			if orderparams["order"]=="refreshdb":
 				# orderparams=self.mycollectqueues["qorder"].get()
-				print ("refresh db packsel.py line 270")
-				print (orderparams)
-				result_refreshbtn=self.refreshbtn(driver)
+				# print ("refresh db packsel.py line 270")
+				# print (orderparams)
 
-				print ("put queue refreshtk packsel.py line 273")
+				result_refreshbtn=self.refreshbtn(driver)
+				# print (" ================= refresh result packsel.py line 296 ================= ")
+				# print (result_refreshbtn)
+
+				# print ("put queue refreshtk packsel.py line 273")
 				self.mycollectqueues["qorder"].put({"order":"refreshtk",
-												"doupdate":result_refreshbtn}) # continue refresh TKInter
+												"doupdatetk":result_refreshbtn}) # continue refresh TKInter
 				
 
 	def order(self,driver,orderparams):
@@ -338,9 +344,10 @@ class packselenium():
 
 
 			# confirm ok then check refresh 
-			self.refreshbtn(driver)
-
-
+			print ("=========>>> confirm order to tkinter after order buy packsel.py line 344 ")
+			result_refreshbtn=self.refreshbtn(driver)
+			self.mycollectqueues["qorder"].put({"order":"refreshtk",
+												"doupdatetk":result_refreshbtn}) # continue refresh TKInter
 
 		elif orderside=="sell":
 			pass
@@ -359,7 +366,7 @@ class packselenium():
 		time.sleep(0.5)
 
 		print("wait finished")
-
+		doupdatetk=""
 		if self.mode=="xlive":
 
 			# !!!!! already work well !!!!!
@@ -393,28 +400,30 @@ class packselenium():
 			# row=71906069 23:20:08 WHA B 4.18 500 0 0 0 Cancelled(CS) Detail
 			# row=71906056 22:38:04 WHA B 4.16 500 0 0 0 Cancelled(CS) Detail
 
-		elif self.mode=="xlive":
+		elif self.mode=="xdebug":
 			table_id = driver.find_element_by_xpath( self.xpathreturn("xoutputordertable"))
-			tablerow=table_id.find_elements_by_xpath(".//tr")
+			tablerow = table_id.find_elements_by_xpath(".//tr")
 
 			mytable=[]
 			for row in tablerow:
 				# print(row.text)
 				if row.text:
-					myrow=row.text.split(" ")
-					myrow=myrow[2:]		
+					myrow = row.text.split(" ")
+					myrow = myrow[2:]		
 					mytable.append(myrow)
 					# print(myrow)
-			 #remove first element of array to be the same as xlive
+			#remove first element of array to be the same as xlive
 			# ['', '71911327', '14:42:59', 'WHA', 'B', '4.08', '700', '0', '0', '700', 'Cancel(X)', '', 'Detail', '']
 			# ['', '', '232558', '23:19:57', 'WHA', 'B', '0.00', '000', '0', '0', '0', 'Pending(S)']	
 			# ['', '324276', '14:02:31', 'WHA', 'B', '4.90', '500', '0', '0', '0', 'Pending(S)']				
 			# print ("=========================")
 			# print(mytable)
 			# print ("=========================")
-			PackSelModel.updaterefresh(mytable)
+			rowupdaterefresh=PackSelModel.updaterefresh(mytable)
+			print ("show update refresh")
+			print(rowupdaterefresh)
 			mytable=[]
 
-		return "After Update refresh button"
+		return rowupdaterefresh
 			# print("end for")
 		# print("end of packsel.py")
