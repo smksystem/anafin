@@ -267,13 +267,15 @@ class packselenium():
 			# print("first stockvalue updated=" + stockvalue)
 			# print("first stockcompare updated=" + self.stockcompare)
 			# self.mycollectqueues["qvalchange"].put({"stockvalue":stockvalue})
-			self.stockcompare=stockvalue
 			PackSelModel.updatestockvaluechange(self.stockdata)
 			
-			result_refreshbtn=self.refreshbtn(driver)
-			self.mycollectqueues["qorder"].put({"order":"refreshtk",
-												"doupdatetk":result_refreshbtn}) # continue refresh TKInter
+			# result_refreshbtn=self.refreshbtn(driver,"partial")
+
 			self.mycollectqueues["qvalchange"].put({"stockvalue":stockvalue})
+		
+			self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshdb",
+												"refreshtype":"partial"}) # continue refresh TKInter
+			self.stockcompare=stockvalue
 
 			# print(self.stockdata)
 		
@@ -284,25 +286,29 @@ class packselenium():
 		stockvalue=""	
 		
 
+
 		if not self.mycollectqueues["qrefresh"].empty(): 
-			# To continue re arrange below.
-			# if orderparams["order"]=="refreshdb":
-			# 	if orderparams["refreshtype"]=="full":
 
-			# 	# orderparams=self.mycollectqueues["qorder"].get()
-			# 	# print ("refresh db packsel.py line 270")
-			# 	# print (orderparams)
-			# 		result_refreshbtn=self.refreshbtn(driver,"full")
+			refreshparams = self.mycollectqueues["qrefresh"].get()
+			# print ("Print refreshparams packsel.py line 291")
+			# print(refreshparams)
+			# print(refreshparams["refreshtype"])
+			# # To continue re arrange below.
+			if refreshparams["qrefresh"]=="refreshdb":
+				if refreshparams["refreshtype"]=="all":
+					result_refreshbtn=self.refreshbtn(driver,"all")
+				elif refreshparams["refreshtype"]=="partial":
 
-			# 	elif orderparams["refreshtype"]=="partial":
-			# 		result_refreshbtn=self.refreshbtn(driver,"partial")
+					result_refreshbtn=self.refreshbtn(driver,"partial")
+				self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk","doupdatetk":result_refreshbtn}) # continue refresh TKInter
 
-			# 	print (" ================= refresh result packsel.py line 303 ================= ")
-			# 	print (result_refreshbtn)
+			elif refreshparams["qrefresh"]=="refreshtk":
+				self.mycollectqueues["qrefresh"].put(refreshparams)
+			# # 	print (" ================= refresh result packsel.py line 303 ================= ")
+			# # 	print (result_refreshbtn)
 
-			# 	# print ("put queue refreshtk packsel.py line 273")
-			# 	self.mycollectqueues["qorder"].put({"order":"refreshtk",
-			# 									"doupdatetk":result_refreshbtn}) # continue refresh TKInter
+			# # 	# print ("put queue refreshtk packsel.py line 273")
+
 			
 		if not self.mycollectqueues["qorder"].empty(): 
 
@@ -360,7 +366,7 @@ class packselenium():
 		elif orderside=="sell":
 			pass
 
-	def refreshbtn(self,driver,fullorpartial="partial"):
+	def refreshbtn(self,driver,allorpartial="partial"):
 
 
 		# try:
@@ -373,7 +379,7 @@ class packselenium():
 
 		time.sleep(0.5)
 
-		print("wait finished packsel.py line 372")
+		# print("wait finished packsel.py line 372")
 		doupdatetk=""
 		if self.mode=="xlive":
 
@@ -427,14 +433,14 @@ class packselenium():
 			# print ("=========================")
 			# print(mytable)
 			# print ("=========================")
-			if fullorpartial=="partial":
+			if allorpartial=="partial":
 				print ("partial update refresh packsel.py line 427")
-				rowupdaterefresh=PackSelModel.updaterefresh(mytable,False)
-			elif fullorpartial=="full":
-				print("full update refresh packsel.py line 430")
-				rowupdaterefresh=PackSelModel.updaterefresh(mytable,True)					
-			print ("show update refresh packsel.py line 432")
-			print(rowupdaterefresh)
+				rowupdaterefresh=PackSelModel.updaterefresh(mytable,"partial")
+			elif allorpartial=="all":
+				# print("full update refresh packsel.py line 430")
+				rowupdaterefresh=PackSelModel.updaterefresh(mytable,"all")					
+			# print ("show update refresh packsel.py line 432")
+			# print(rowupdaterefresh)
 			mytable=[]
 
 		return rowupdaterefresh

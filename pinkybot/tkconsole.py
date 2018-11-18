@@ -777,12 +777,20 @@ class outputlog(tk.Tk):
 						print ("monitor =" + tempdict["stockname"])
 						self.configval["stockname"].set(tempdict["stockname"])
 
+			if not self.mybot.mycollectqueues["qrefresh"].empty() :
+				chkrefresh=self.mybot.mycollectqueues["qrefresh"].get()
+
+				if chkrefresh["qrefresh"]=="refreshtk":
+					print ("<<<<<<<< Print data to do update refresh tkinter here !!!!! tkconsole.py line 785")
+					print (chkrefresh)
+				elif chkrefresh["qrefresh"]=="refreshdb":
+					self.mybot.mycollectqueues["qrefresh"].put(chkrefresh)
+
 			if not self.mybot.mycollectqueues["qorder"].empty() :
 				chkorder=self.mybot.mycollectqueues["qorder"].get()
 				print ("chkorder tkconsole.py line 782")
 				print (chkorder)
 				if chkorder["order"]=="refreshtk":
-					print ("<<<<<<<< Print data to do update refresh tkinter here !!!!! tkconsole.py line 785")
 					# print (chkorder["doupdate"])
 					# dbtable_array=PackSelModel.tkrefreshdb()
 					# print(dbtable_array)
