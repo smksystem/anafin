@@ -433,6 +433,11 @@ class packselenium():
 			# print ("=========================")
 			# print(mytable)
 			# print ("=========================")
+
+
+
+
+			
 			if allorpartial=="partial":
 				print ("partial update refresh packsel.py line 427")
 				rowupdaterefresh=PackSelModel.updaterefresh(mytable,"partial")
