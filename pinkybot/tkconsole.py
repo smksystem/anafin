@@ -783,26 +783,43 @@ class outputlog(tk.Tk):
 				if chkrefresh["qrefresh"]=="refreshtk":
 					print ("<<<<<<<< Print data to do update refresh tkinter here !!!!! tkconsole.py line 785")
 					print (chkrefresh)
+					for rowupdata in chkrefresh["doupdatetk"] :
+						# print (rowupdata)
+						# print (rowupdata["price"])
+						# print(self.labeldisplay[rowupdata["price"]])
+						for repeatidx,detailrow in enumerate(self.labeldisplay[rowupdata["price"]]):
+							print (repeatidx)
+							self.labeldisplay["4.90"][0]["orderid"].configure(text="testorderno")
+							if (repeatidx>0):
+								# print(self.labeldisplay[rowupdata["price"]][repeatidx-1])
+								print (rowupdata["orderno"])
+								self.labeldisplay[rowupdata["price"]][repeatidx-1]["orderid"].configure(text="test or der no")
+							
+						# self.labeldisplay[valuelabel][repeatidx]["orderid"].configure(background="cyan")
+
+
+
+					
 				elif chkrefresh["qrefresh"]=="refreshdb":
 					self.mybot.mycollectqueues["qrefresh"].put(chkrefresh)
 
-			if not self.mybot.mycollectqueues["qorder"].empty() :
-				chkorder=self.mybot.mycollectqueues["qorder"].get()
-				print ("chkorder tkconsole.py line 782")
-				print (chkorder)
-				if chkorder["order"]=="refreshtk":
-					# print (chkorder["doupdate"])
-					# dbtable_array=PackSelModel.tkrefreshdb()
-					# print(dbtable_array)
+			# if not self.mybot.mycollectqueues["qorder"].empty() :
+			# 	chkorder=self.mybot.mycollectqueues["qorder"].get()
+			# 	print ("chkorder tkconsole.py line 782")
+			# 	print (chkorder)
+			# 	if chkorder["order"]=="refreshtk":
+			# 		# print (chkorder["doupdate"])
+			# 		# dbtable_array=PackSelModel.tkrefreshdb()
+			# 		# print(dbtable_array)
 
-					print (chkorder["doupdatetk"])
+			# 		print (chkorder["doupdatetk"])
 
-					# self.alreadyputback=False
-				elif chkorder["order"]=="refreshdb":
-					print (">>>>>>>>Put refresh back DB")
-					###### if not refresh tkinter put queue back to refresh at db for thread.
-					chkorder=self.mybot.mycollectqueues["qorder"].put(chkorder)
-					# self.alreadyputback=True
+			# 		# self.alreadyputback=False
+			# 	elif chkorder["order"]=="refreshdb":
+			# 		print (">>>>>>>>Put refresh back DB")
+			# 		###### if not refresh tkinter put queue back to refresh at db for thread.
+			# 		chkorder=self.mybot.mycollectqueues["qorder"].put(chkorder)
+			# 		# self.alreadyputback=True
 				
 			# self.output.tag_config("testb", background="white", foreground="red")
 			# self.output.tag_add('testb', 10.0, step)
