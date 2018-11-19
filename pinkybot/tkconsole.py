@@ -787,13 +787,22 @@ class outputlog(tk.Tk):
 						# print (rowupdata)
 						# print (rowupdata["price"])
 						# print(self.labeldisplay[rowupdata["price"]])
-						for repeatidx,detailrow in enumerate(self.labeldisplay[rowupdata["price"]]):
-							print (repeatidx)
-							self.labeldisplay["4.90"][0]["orderid"].configure(text="testorderno")
-							if (repeatidx>0):
+
+						
+						# print(self.myvarasso[rowupdata["price"]][0])
+
+						for repeatidx,detailrow in enumerate(self.myvarasso[rowupdata["price"]]):
+							# print (repeatidx)
+							# self.labeldisplay["4.90"][0]["orderid"].configure(text="testorderno")
+							print (self.myvarasso[rowupdata["price"]])
+							# print(rowupdata["orderno"])
+
+							# if (repeatidx==0):
+							print(rowupdata,detailrow,repeatidx)
+							self.myvarasso[rowupdata["price"]][repeatidx]["orderid"].set(rowupdata["orderno"])
 								# print(self.labeldisplay[rowupdata["price"]][repeatidx-1])
-								print (rowupdata["orderno"])
-								self.labeldisplay[rowupdata["price"]][repeatidx-1]["orderid"].configure(text="test or der no")
+								# print (rowupdata["orderno"])
+								# self.labeldisplay[rowupdata["price"]][repeatidx-1]["orderid"].configure(text="test or der no")
 							
 						# self.labeldisplay[valuelabel][repeatidx]["orderid"].configure(background="cyan")
 
