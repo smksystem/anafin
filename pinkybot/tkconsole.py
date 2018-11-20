@@ -862,23 +862,28 @@ class outputlog(tk.Tk):
 				if chkrefresh["qrefresh"]=="refreshtk":
 					print ("<<<<<<<< Print data to do update refresh tkinter here !!!!! tkconsole.py line 785")
 					print (chkrefresh)
-					for rowupdata in chkrefresh["doupdatetk"] :
-						# print (rowupdata)
-						# print (rowupdata["price"])
-						# print(self.labeldisplay[rowupdata["price"]])
+					for repeatdoupdateidx,rowupdata in enumerate(chkrefresh["doupdatetk"]) :
+						print (repeatdoupdateidx)
+						if repeatdoupdateidx > 0:
+							myprice=rowupdata["price"]
+							print (">>>>>>>>>>>> more than one repeat <<<<<<<<<<<<<<<<<<<<< tkconsole.py line 869")
+							print(self.myvarasso[myprice])
+							self.myvarasso[myprice].append(self.createrepeatinfo())
+							print(self.myvarasso[myprice])
+							exit()
+						else:
+							
 
-						
-						# print(self.myvarasso[rowupdata["price"]][0])
+							for repeatidx,detailrow in enumerate(self.myvarasso[rowupdata["price"]]):
+								# print (repeatidx)
+								# self.labeldisplay["4.90"][0]["orderid"].configure(text="testorderno")
+								# print (self.myvarasso[rowupdata["price"]])
+								# print(rowupdata["orderno"])
 
-						for repeatidx,detailrow in enumerate(self.myvarasso[rowupdata["price"]]):
-							# print (repeatidx)
-							# self.labeldisplay["4.90"][0]["orderid"].configure(text="testorderno")
-							print (self.myvarasso[rowupdata["price"]])
-							# print(rowupdata["orderno"])
-
-							# if (repeatidx==0):
-							print(rowupdata,detailrow,repeatidx)
-							self.myvarasso[rowupdata["price"]][repeatidx]["orderid"].set(rowupdata["orderno"])
+								# if (repeatidx==0):
+								print(repeatidx)
+								
+								self.myvarasso[rowupdata["price"]][repeatidx]["orderid"].set(rowupdata["orderno"])
 								# print(self.labeldisplay[rowupdata["price"]][repeatidx-1])
 								# print (rowupdata["orderno"])
 								# self.labeldisplay[rowupdata["price"]][repeatidx-1]["orderid"].configure(text="test or der no")
@@ -911,7 +916,7 @@ class outputlog(tk.Tk):
 				
 			# self.output.tag_config("testb", background="white", foreground="red")
 			# self.output.tag_add('testb', 10.0, step)
-			self.after(50, self.Refresher) # every second...
+			self.after(5, self.Refresher) # every second...
 
 
 # if __name__ == '__main__':
