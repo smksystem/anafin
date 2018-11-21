@@ -331,20 +331,22 @@ class outputlog(tk.Tk):
 					valuelabel=str(runvalue)
 				self.labeldisplay[valuelabel][valuelabel].configure(background="lightpink")
 
-				for repeatidx,label in enumerate(self.labeldisplay[valuelabel]):
+				### skip for first phase
 
-					# print(repeatidx,label,valuelabel)
-					if (label==valuelabel):
-						# print(repeatidx,self.labeldisplay[valuelabel][repeatidx]["orderid"])
-						self.labeldisplay[valuelabel][repeatidx]["orderid"].configure(background="cyan")
-						self.labeldisplay[valuelabel][repeatidx]["startordertime"].configure(background="yellowgreen")
-						self.labeldisplay[valuelabel][repeatidx]["matchordertime"].configure(background="lime")
-						self.labeldisplay[valuelabel][repeatidx]["matchcomplete"].configure(background="tomato")
-						self.labeldisplay[valuelabel][repeatidx]["volumn"].configure(background="peru")
-						self.labeldisplay[valuelabel][repeatidx]["orderside"].configure(background="plum")
-						self.labeldisplay[valuelabel][repeatidx]["state"].configure(background="gold")
-						self.labeldisplay[valuelabel][repeatidx]["targetvalue"].configure(background="orchid")
-						self.labeldisplay[valuelabel][repeatidx]["profit"].configure(background="dodgerblue")
+				# for repeatidx,label in enumerate(self.labeldisplay[valuelabel]):
+
+				# 	# print(repeatidx,label,valuelabel)
+				# 	if (label==valuelabel):
+				# 		# print(repeatidx,self.labeldisplay[valuelabel][repeatidx]["orderid"])
+				# 		self.labeldisplay[valuelabel][repeatidx]["orderid"].configure(background="cyan")
+				# 		self.labeldisplay[valuelabel][repeatidx]["startordertime"].configure(background="yellowgreen")
+				# 		self.labeldisplay[valuelabel][repeatidx]["matchordertime"].configure(background="lime")
+				# 		self.labeldisplay[valuelabel][repeatidx]["matchcomplete"].configure(background="tomato")
+				# 		self.labeldisplay[valuelabel][repeatidx]["volumn"].configure(background="peru")
+				# 		self.labeldisplay[valuelabel][repeatidx]["orderside"].configure(background="plum")
+				# 		self.labeldisplay[valuelabel][repeatidx]["state"].configure(background="gold")
+				# 		self.labeldisplay[valuelabel][repeatidx]["targetvalue"].configure(background="orchid")
+				# 		self.labeldisplay[valuelabel][repeatidx]["profit"].configure(background="dodgerblue")
 
 
 				##############################################################################
@@ -411,7 +413,7 @@ class outputlog(tk.Tk):
 
 				# print(varvalue,repeatidx)
 
-				if  varinfo=="orderid" or varinfo=="startordertime" or varinfo=="matchordertime"  or varinfo =="targetvalue":
+				if  varinfo=="orderno" or varinfo=="startordertime" or varinfo=="matchordertime"  or varinfo =="targetvalue":
 					# print(varinfo,j)
 					self.labeldisplay[varvalue][repeatidx][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][repeatidx][varinfo],borderwidth=2, relief="groove",height=1)
 					self.labeldisplay[varvalue][repeatidx][varinfo].grid(row=rowidx,column=j+1+(int(repeatidx)*6),sticky="n"+"e"+"w",pady=5)
@@ -611,7 +613,7 @@ class outputlog(tk.Tk):
 		timenow = datetime.datetime.now().strftime("%H:%M:%S")
 
 		varinfo={}
-		varorderid=tk.StringVar(value="orderid")
+		varorderno=tk.StringVar(value="orderno")
 		varstartordertime=tk.StringVar(value=timenow)
 		varmatchordertime=tk.StringVar(value="matchordertime")
 		varmatchcomplete=tk.StringVar(value="matchcomplete")
@@ -621,7 +623,7 @@ class outputlog(tk.Tk):
 		vartargetvalue=tk.StringVar(value="target")
 		varprofit=tk.StringVar(value="profit")
 		varinfo={
-			"orderid":varorderid,
+			"orderno":varorderno,
 			"startordertime":varstartordertime,
 			"matchordertime":varmatchordertime,
 			"targetvalue":vartargetvalue,
@@ -713,9 +715,11 @@ class outputlog(tk.Tk):
 			############################################################################	
 				# print (varvalue,varrepeat)
 				# exit()
-			varrepeat.append(self.createrepeatinfo())
-			varasso[varvalue]=varrepeat
-			varrepeat=[]
+			# varrepeat.append([])
+			# varrepeat.append(self.createrepeatinfo())
+
+			varasso[varvalue]=[]
+			# varrepeat=[]
 
 				# print (varvalue)
 			# print(varrepeat)
@@ -861,37 +865,19 @@ class outputlog(tk.Tk):
 
 				if chkrefresh["qrefresh"]=="refreshtk":
 					print ("<<<<<<<< Print data to do update refresh tkinter here !!!!! tkconsole.py line 785")
-					print (chkrefresh)
+					print (chkrefresh["doupdatetk"])
+					print(len(chkrefresh["doupdatetk"]))
+					# exit()
 					for repeatdoupdateidx,rowupdata in enumerate(chkrefresh["doupdatetk"]) :
-						print (repeatdoupdateidx)
-						if repeatdoupdateidx > 0:
-							myprice=rowupdata["price"]
-							print (">>>>>>>>>>>> more than one repeat <<<<<<<<<<<<<<<<<<<<< tkconsole.py line 869")
-							print(self.myvarasso[myprice])
-							self.myvarasso[myprice].append(self.createrepeatinfo())
-							print(self.myvarasso[myprice])
-							exit()
-						else:
-							
+						# print (repeatdoupdateidx)
+						a=chkrefresh["doupdatetk"][repeatdoupdateidx]["orderno"]
+						print (a)
+						self.myvarasso[rowupdata["price"]].append(self.createrepeatinfo())
+						
+						# print(self.myvarasso[rowupdata["price"]])
 
-							for repeatidx,detailrow in enumerate(self.myvarasso[rowupdata["price"]]):
-								# print (repeatidx)
-								# self.labeldisplay["4.90"][0]["orderid"].configure(text="testorderno")
-								# print (self.myvarasso[rowupdata["price"]])
-								# print(rowupdata["orderno"])
-
-								# if (repeatidx==0):
-								print(repeatidx)
-								
-								self.myvarasso[rowupdata["price"]][repeatidx]["orderid"].set(rowupdata["orderno"])
-								# print(self.labeldisplay[rowupdata["price"]][repeatidx-1])
-								# print (rowupdata["orderno"])
-								# self.labeldisplay[rowupdata["price"]][repeatidx-1]["orderid"].configure(text="test or der no")
-							
+						# exit()
 						# self.labeldisplay[valuelabel][repeatidx]["orderid"].configure(background="cyan")
-
-
-
 					
 				elif chkrefresh["qrefresh"]=="refreshdb":
 					self.mybot.mycollectqueues["qrefresh"].put(chkrefresh)

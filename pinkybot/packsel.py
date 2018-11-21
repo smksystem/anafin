@@ -426,6 +426,7 @@ class packselenium():
 					myrow = myrow[2:]		
 					mytable.append(myrow)
 					# print(myrow)
+			# print (mytable)
 			#remove first element of array to be the same as xlive
 			# ['', '71911327', '14:42:59', 'WHA', 'B', '4.08', '700', '0', '0', '700', 'Cancel(X)', '', 'Detail', '']
 			# ['', '', '232558', '23:19:57', 'WHA', 'B', '0.00', '000', '0', '0', '0', 'Pending(S)']	
@@ -439,7 +440,7 @@ class packselenium():
 
 			
 			if allorpartial=="partial":
-				print ("partial update refresh packsel.py line 427")
+				# print ("partial update refresh packsel.py line 427")
 				rowupdaterefresh=PackSelModel.updaterefresh(mytable,"partial")
 			elif allorpartial=="all":
 				# print("full update refresh packsel.py line 430")
@@ -447,7 +448,7 @@ class packselenium():
 			# print ("show update refresh packsel.py line 432")
 			# print(rowupdaterefresh)
 			mytable=[]
-
+			# print (rowupdaterefresh)
 		return rowupdaterefresh
 			# print("end for")
 		# print("end of packsel.py")

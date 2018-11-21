@@ -108,13 +108,31 @@ class PackSelModel:
 			# print (myrow[0])
 
 			chkorderno=updaterefresh.objects.filter(orderno=myrow[0]) # SQL filter for order no to find existing record.
-			if chkorderno.exists() and fullrefresh=="all":
+
+			# No check for refresh type it's all refresh at the first time to sync all db and rt
+			if fullrefresh=="all": 
 				# print("fullrefresh each row packsel_model.py line 112")
-				refreshrow=chkorderno.values()
+				if not chkorderno.exists():
+					newrow=updaterefresh(orderno=myrow[0],
+									time=myrow[1],
+									symbole=myrow[2],
+									side=myrow[3],
+									price=myrow[4],
+									volume=myrow[5],
+									matched=myrow[6],
+									balance=myrow[7],
+									cancelled=myrow[8],
+									status=myrow[9],
+									)
+					newrow.save()
+					result_updaterefresh.append(myrow)
+				elif chkorderno.exists():
+					refreshrow=chkorderno.values()
 				# print ("Refresh each row packsel_model.py line 114")
 				# print (refreshrow)
-				result_updaterefresh.append(refreshrow[0])
+					result_updaterefresh.append(refreshrow[0])
 
+			# for case new row when buy or sell 
 			elif not chkorderno.exists() and fullrefresh=="partial":
 				print("Insert new row of order below ")
 				print(myrow)
