@@ -607,7 +607,7 @@ class outputlog(tk.Tk):
 		self.configval["commonstep"].set(str(rangeData[idx][2]))
 
 		return self.rangeline(series)
-	def createrepeatinfo(self):
+	def createrepeatinfo(self,varvalue,repeatidx,myvarinfo):
 
 		datenow = datetime.datetime.now().strftime("%Y-%m-%d")
 		timenow = datetime.datetime.now().strftime("%H:%M:%S")
@@ -622,6 +622,11 @@ class outputlog(tk.Tk):
 		varstatus=tk.StringVar(value="state")
 		vartargetvalue=tk.StringVar(value="target")
 		varprofit=tk.StringVar(value="profit")
+
+		varorderno.set(myvarinfo["orderno"])
+
+
+
 		varinfo={
 			"orderno":varorderno,
 			"startordertime":varstartordertime,
@@ -633,8 +638,35 @@ class outputlog(tk.Tk):
 			"profit":varprofit,
 			"state":varstatus,
 		}
+
+		
+		self.labeldisplay[varvalue][repeatidx]={}
 		
 
+
+
+
+		for j,varelement in enumerate(varinfo):
+
+				# print(varvalue,repeatidx)
+
+				if  varelement=="orderno"  or varelement=="startordertime" or varelement=="matchordertime"  or varelement =="targetvalue":
+					# print(varelement,j)
+					rowid=self.labeldisplay[varvalue][varvalue].grid_info()['row']
+					# exit()
+					self.labeldisplay[varvalue][repeatidx][varelement]=tk.Label(self.frameGroupOutput , textvariable=varinfo[varelement],borderwidth=2, relief="groove",height=1)
+					# exit()
+					self.labeldisplay[varvalue][repeatidx][varelement].grid(row=rowid,column=j+1+(int(repeatidx)*6),sticky="n"+"e"+"w",pady=5)
+					# break;
+					# print(self.labeldisplay[varvalue])
+
+				# if  varelement=="matchcomplete" or varelement=="orderside" or varelement=="volumn" or varelement == "profit" or varelement=="state" :
+					# print(varinfo,j)
+					# self.labeldisplay[varvalue][repeatidx][varelement]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][repeatidx][varinfo],borderwidth=2, relief="groove",height=1)
+					# self.labeldisplay[varvalue][repeatidx][varelement].grid(row=rowidx,column=j-3+(int(repeatidx)*6),sticky="s"+"e"+"w",pady=5)
+
+
+		
 		return varinfo
 
 	def rangeline(self,series):
@@ -865,14 +897,24 @@ class outputlog(tk.Tk):
 
 				if chkrefresh["qrefresh"]=="refreshtk":
 					print ("<<<<<<<< Print data to do update refresh tkinter here !!!!! tkconsole.py line 785")
-					print (chkrefresh["doupdatetk"])
-					print(len(chkrefresh["doupdatetk"]))
+					# print (chkrefresh["doupdatetk"])
+					# print(len(chkrefresh["doupdatetk"]))
 					# exit()
 					for repeatdoupdateidx,rowupdata in enumerate(chkrefresh["doupdatetk"]) :
 						# print (repeatdoupdateidx)
-						a=chkrefresh["doupdatetk"][repeatdoupdateidx]["orderno"]
-						print (a)
-						self.myvarasso[rowupdata["price"]].append(self.createrepeatinfo())
+						# print(rowupdata)
+						# print(chkrefresh["doupdatetk"][repeatdoupdateidx])
+						# exit()
+						
+							
+
+
+
+						self.myvarasso[rowupdata["price"]].append(self.createrepeatinfo(
+																		rowupdata["price"],
+																		repeatdoupdateidx,
+																		rowupdata)
+																	)
 						
 						# print(self.myvarasso[rowupdata["price"]])
 
