@@ -41,11 +41,11 @@ class MyApp(tk.Tk):
         buttons_frame = tk.Frame(canvas, bg="Red", bd=2)
 
         # Add the buttons to the frame.
-        for i in range(1, ROWS+1):
-            for j in range(1, COLS+1):
-                button = tk.Label(buttons_frame, padx=7, pady=7, relief=tk.RIDGE,
-                                   text="[%d, %d]" % (i, j))
-                button.grid(row=i, column=j, sticky='news')
+        # for i in range(1, ROWS+1):
+        #     for j in range(1, COLS+1):
+        #         button = tk.Label(buttons_frame, padx=7, pady=7, relief=tk.RIDGE,
+        #                            text="[%d, %d]" % (i, j))
+        #         button.grid(row=i, column=j, sticky='news')
 
         # Create canvas window to hold the buttons_frame.
         canvas.create_window((0,0), window=buttons_frame, anchor=tk.NW)

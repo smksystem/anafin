@@ -266,6 +266,15 @@ class outputlog(tk.Tk):
 	def executeLoad(self):
 		print("LoadAllValue")
 
+		#################################### TEST can delete later #################################
+		self.labeldisplay["4.90"][0]={}
+		self.labeldisplay["4.90"][0]["orderno"]=tk.Label(self.frameGroupOutput , text="1112222",borderwidth=2, relief="groove",height=1)
+		self.labeldisplay["4.90"][0]["orderno"].grid(row=4,column=1,sticky="n"+"e"+"w",pady=5)
+		#################################### TEST #################################
+
+
+
+
 	def setvaluebuy(self):
 		pass
 
@@ -462,16 +471,14 @@ class outputlog(tk.Tk):
 				self.canvas.grid(row=2,column=0,rowspan=2,sticky="nsew")
 
 				self.frameGroupOutput = tk.Frame(self.canvas,background = 'gray')
-				self.frameGroupOutput.grid(row=0,column=0) # start row 2 since text output occupied 2 rows with 0,1.
+				self.frameGroupOutput.grid(row=0,column=0,sticky="nsew") # start row 2 since text output occupied 2 rows with 0,1.
+
+
 				self.scrollbarYGroupOutPut = tk.Scrollbar(self,orient="vertical", command = self.canvas.yview)
-				self.scrollbarYGroupOutPut.grid(row=2,column=0,rowspan=2,sticky="e"+"n"+"s")
 
 				self.scrollbarXGroupOutPut = tk.Scrollbar(self,orient="horizontal", command = self.canvas.xview)
+				self.scrollbarYGroupOutPut.grid(row=2,column=0,rowspan=2,sticky="e"+"n"+"s")
 				self.scrollbarXGroupOutPut.grid(row=4,column=0,rowspan=1,sticky="e"+"s"+"w")
-
-				# self.scrollbarXGroupOutPut = tk.Scrollbar(self,orient="horizontal", command = self.canvas.xview)
-				# self.scrollbarXGroupOutPut.grid(row=4,column=0,rowspan=1,sticky="e"+"s"+"w")
-
 
 
 				break		
@@ -492,24 +499,20 @@ class outputlog(tk.Tk):
 			# print(runrangeNo)
 
 
-			self.labeldisplay[varvalue]={}
 			# print("number of variable = " + str(len (self.labeldisplay)))
 
+			self.labeldisplay[varvalue]={}
 			self.labeldisplay[varvalue][varvalue]=tk.Label(self.frameGroupOutput, text=varvalue,borderwidth=3, relief="groove",height=3)
 			self.labeldisplay[varvalue][varvalue].grid_propagate(0)
-			self.labeldisplay[varvalue][varvalue].grid(row=rowidx,column=0,sticky="w")
+			
+			self.labeldisplay[varvalue][varvalue].grid(row=rowidx,column=0,sticky="w"+"n"+"e",padx=3)
 
-#################################### TEST can delete later #################################
-			# self.labeldisplay[varvalue][0]={}
-			# self.labeldisplay[varvalue][0]["orderno"]=tk.Label(self.frameGroupOutput , text="1112222",borderwidth=2, relief="groove",height=1)
-			# self.labeldisplay[varvalue][0]["orderno"].grid(row=4,column=1,sticky="n"+"e"+"w",pady=5)
-#################################### TEST #################################
 
 			# labelseparate=tk.Label(self.frameGroupOutput, text=" | ")
 			# labelseparate.grid(row=i,column=1)
 			
 			
-			self.createlabelgroup(self.myvarasso[varvalue],varvalue,rowidx)
+			# self.createlabelgroup(self.myvarasso[varvalue],varvalue,rowidx)
 			runrangeNo-=1
 
 			# rowvalue=self.myvarasso[varvalue]
@@ -560,20 +563,35 @@ class outputlog(tk.Tk):
 		# exit()
 
 
+
 		self.canvas['yscrollcommand'] = self.scrollbarYGroupOutPut.set
-		self.canvas.bind('<Configure>', self.on_configure)
+		# self.canvas.bind('<Configure>', self.on_configure)
 
 		self.canvas['xscrollcommand'] = self.scrollbarXGroupOutPut.set
 		self.canvas.bind('<Configure>', self.on_configure)
 
-		self.canvas.create_window((0,0), window=self.frameGroupOutput, anchor='center')
-		# self.canvas.create_window((0,0), window=self.frameXGroupOutput, anchor='we')
+		self.canvas.create_window((0,0), window=self.frameGroupOutput, anchor='n'+'w')
+
+
+
 
 		self.canvas.update()
-		# update database at the first time select range
-		# print (self.myvarasso)
-		# self.mybot.dbqueue.put({"varasso":self.myvarasso})
+
+		# self.canvas.update()
+
 		self.txtout("Set Plan = " +value)		
+
+		#################################### TEST can delete later #################################
+		# self.labeldisplay["4.90"][0]={}
+		# self.labeldisplay["4.90"][0]["orderno"]=tk.Label(self.frameGroupOutput , text="1112222",borderwidth=2, relief="groove",height=1)
+		# self.labeldisplay["4.90"][0]["orderno"].grid(row=4,column=1,sticky="n"+"e"+"w",padx=5,pady=3)
+
+		# self.labeldisplay["4.90"][0]["orderno"]=tk.Label(self.frameGroupOutput , text="1112222",borderwidth=2, relief="groove",height=1)
+		# self.labeldisplay["4.90"][0]["orderno"].grid(row=4,column=2,sticky="n"+"e"+"w",padx=5,pady=3)
+
+		
+		#################################### TEST #################################
+
 		return
 
 	def on_configure(self,event):
@@ -653,23 +671,28 @@ class outputlog(tk.Tk):
 
 
 
-		for varelement in varinfo:
+		for j,varelement in enumerate(varinfo):
 
 				# print(varvalue,repeatidx)
 
-				if  varelement=="orderno": #  or varelement=="startordertime" or varelement=="matchordertime"  or varelement =="targetvalue":
+				if  varelement=="orderno" or varelement=="startordertime" or varelement=="matchordertime"  or varelement =="targetvalue":
 					# print(varelement,j)
 					rowid=self.labeldisplay[varvalue][varvalue].grid_info()['row']
 					# exit()
-					# self.labeldisplay[varvalue][repeatidx][varelement]=tk.Label(self.frameGroupOutput , textvariable=varinfo[varelement],borderwidth=2, relief="groove",height=1)
-					# self.labeldisplay[varvalue][repeatidx][varelement].grid_propagate(1)
-					# self.labeldisplay[varvalue][repeatidx][varelement].grid(row=4,column=1,sticky="n"+"e"+"w",pady=5)
+					self.labeldisplay[varvalue][repeatidx][varelement]=tk.Label(self.frameGroupOutput , textvariable=varinfo[varelement],borderwidth=2, relief="groove",height=1)
+					self.labeldisplay[varvalue][repeatidx][varelement].grid_propagate(1)
+					self.labeldisplay[varvalue][repeatidx][varelement].grid(row=rowid,column=j+1+(int(repeatidx)*6),sticky="n"+"e"+"w",pady=5)
 					
+					#################################### TEST can delete later #################################
+					# self.labeldisplay[varvalue][0]={}
+					# self.labeldisplay[varvalue][0]["orderno"]=tk.Label(self.frameGroupOutput , text="1112222",borderwidth=2, relief="groove",height=1)
+					# self.labeldisplay[varvalue][0]["orderno"].grid(row=4,column=2,sticky="n"+"e"+"w",pady=5)
+					#################################### TEST #################################
 
 
-					self.labeldisplay[varvalue][0]={}
-					self.labeldisplay[varvalue][0]["orderno"]=tk.Label(self.frameGroupOutput , text="1112222",borderwidth=2, relief="groove",height=1)
-					self.labeldisplay[varvalue][0]["orderno"].grid(row=4,column=1,sticky="n"+"e"+"w",pady=5)
+					# self.labeldisplay[varvalue][0]={}
+					# self.labeldisplay[varvalue][0]["orderno"]=tk.Label(self.frameGroupOutput , text="1112222",borderwidth=2, relief="groove",height=1)
+					# self.labeldisplay[varvalue][0]["orderno"].grid(row=4,column=1,sticky="n"+"e"+"w",pady=5)
 
 
 
@@ -692,6 +715,11 @@ class outputlog(tk.Tk):
 		# self.canvas.create_window((0,0), window=self.frameGroupOutput, anchor='center')
 
 		# self.canvas.update()
+
+
+
+
+		self.canvas.update()
 
 		return varinfo
 
@@ -933,6 +961,7 @@ class outputlog(tk.Tk):
 						# exit()
 						
 							
+						
 
 
 
@@ -943,7 +972,7 @@ class outputlog(tk.Tk):
 																	)
 						
 						# print(self.myvarasso[rowupdata["price"]])
-
+						self.canvas.configure(scrollregion=self.canvas.bbox("all"))
 						# exit()
 						# self.labeldisplay[valuelabel][repeatidx]["orderid"].configure(background="cyan")
 					
