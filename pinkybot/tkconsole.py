@@ -266,15 +266,6 @@ class outputlog(tk.Tk):
 	def executeLoad(self):
 		print("LoadAllValue")
 
-		#################################### TEST can delete later #################################
-		self.labeldisplay["4.90"][0]={}
-		self.labeldisplay["4.90"][0]["orderno"]=tk.Label(self.frameGroupOutput , text="1112222",borderwidth=2, relief="groove",height=1)
-		self.labeldisplay["4.90"][0]["orderno"].grid(row=4,column=1,sticky="n"+"e"+"w",pady=5)
-		#################################### TEST #################################
-
-
-
-
 	def setvaluebuy(self):
 		pass
 
