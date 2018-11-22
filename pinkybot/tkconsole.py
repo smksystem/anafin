@@ -499,6 +499,12 @@ class outputlog(tk.Tk):
 			self.labeldisplay[varvalue][varvalue].grid_propagate(0)
 			self.labeldisplay[varvalue][varvalue].grid(row=rowidx,column=0,sticky="w")
 
+#################################### TEST can delete later #################################
+			# self.labeldisplay[varvalue][0]={}
+			# self.labeldisplay[varvalue][0]["orderno"]=tk.Label(self.frameGroupOutput , text="1112222",borderwidth=2, relief="groove",height=1)
+			# self.labeldisplay[varvalue][0]["orderno"].grid(row=4,column=1,sticky="n"+"e"+"w",pady=5)
+#################################### TEST #################################
+
 			# labelseparate=tk.Label(self.frameGroupOutput, text=" | ")
 			# labelseparate.grid(row=i,column=1)
 			
@@ -607,6 +613,7 @@ class outputlog(tk.Tk):
 		self.configval["commonstep"].set(str(rangeData[idx][2]))
 
 		return self.rangeline(series)
+
 	def createrepeatinfo(self,varvalue,repeatidx,myvarinfo):
 
 		datenow = datetime.datetime.now().strftime("%Y-%m-%d")
@@ -646,17 +653,27 @@ class outputlog(tk.Tk):
 
 
 
-		for j,varelement in enumerate(varinfo):
+		for varelement in varinfo:
 
 				# print(varvalue,repeatidx)
 
-				if  varelement=="orderno"  or varelement=="startordertime" or varelement=="matchordertime"  or varelement =="targetvalue":
+				if  varelement=="orderno": #  or varelement=="startordertime" or varelement=="matchordertime"  or varelement =="targetvalue":
 					# print(varelement,j)
 					rowid=self.labeldisplay[varvalue][varvalue].grid_info()['row']
 					# exit()
-					self.labeldisplay[varvalue][repeatidx][varelement]=tk.Label(self.frameGroupOutput , textvariable=varinfo[varelement],borderwidth=2, relief="groove",height=1)
-					# exit()
-					self.labeldisplay[varvalue][repeatidx][varelement].grid(row=rowid,column=j+1+(int(repeatidx)*6),sticky="n"+"e"+"w",pady=5)
+					# self.labeldisplay[varvalue][repeatidx][varelement]=tk.Label(self.frameGroupOutput , textvariable=varinfo[varelement],borderwidth=2, relief="groove",height=1)
+					# self.labeldisplay[varvalue][repeatidx][varelement].grid_propagate(1)
+					# self.labeldisplay[varvalue][repeatidx][varelement].grid(row=4,column=1,sticky="n"+"e"+"w",pady=5)
+					
+
+
+					self.labeldisplay[varvalue][0]={}
+					self.labeldisplay[varvalue][0]["orderno"]=tk.Label(self.frameGroupOutput , text="1112222",borderwidth=2, relief="groove",height=1)
+					self.labeldisplay[varvalue][0]["orderno"].grid(row=4,column=1,sticky="n"+"e"+"w",pady=5)
+
+
+
+
 					# break;
 					# print(self.labeldisplay[varvalue])
 
@@ -666,7 +683,16 @@ class outputlog(tk.Tk):
 					# self.labeldisplay[varvalue][repeatidx][varelement].grid(row=rowidx,column=j-3+(int(repeatidx)*6),sticky="s"+"e"+"w",pady=5)
 
 
-		
+		# self.canvas['yscrollcommand'] = self.scrollbarYGroupOutPut.set
+		# self.canvas.bind('<Configure>', self.on_configure)
+
+		# self.canvas['xscrollcommand'] = self.scrollbarXGroupOutPut.set
+		# self.canvas.bind('<Configure>', self.on_configure)
+
+		# self.canvas.create_window((0,0), window=self.frameGroupOutput, anchor='center')
+
+		# self.canvas.update()
+
 		return varinfo
 
 	def rangeline(self,series):
