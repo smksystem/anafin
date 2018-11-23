@@ -498,90 +498,19 @@ class outputlog(tk.Tk):
 			
 			self.labeldisplay[varvalue][varvalue].grid(row=rowidx,column=0,sticky="w"+"n"+"e",padx=3)
 
-
-			# labelseparate=tk.Label(self.frameGroupOutput, text=" | ")
-			# labelseparate.grid(row=i,column=1)
-			
-			
-			# self.createlabelgroup(self.myvarasso[varvalue],varvalue,rowidx)
 			runrangeNo-=1
 
-			# rowvalue=self.myvarasso[varvalue]
-			# # print ("tkconsole.py line 542")
-			# # print (rowvalue)
-			# # exit()
-			# # print("doMenuRange tkconsole.py line 525")
-			# # print(rowvalue)
-			# # if varvalue=="4.00":
-			# # 	print(rowvalue)
-			# for repeatidx,valrepeat in enumerate(rowvalue):
-
-			# 	self.labeldisplay[varvalue][repeatidx]={}
-			# 	# if varvalue=="4.00":
-			# 		# print(repeatidx,valrepeat)
-			# 	# print("tkconsole.py line 553")
-			# 	# print(valrepeat)
-			# 	for j,varinfo in enumerate(valrepeat):
-
-			# 		# print(varvalue,repeatidx)
-
-			# 		if  varinfo=="orderid" or varinfo=="startordertime" or varinfo=="matchordertime"  or varinfo =="targetvalue":
-			# 			# print(varinfo,j)
-			# 			self.labeldisplay[varvalue][repeatidx][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][repeatidx][varinfo],borderwidth=2, relief="groove",height=1)
-			# 			self.labeldisplay[varvalue][repeatidx][varinfo].grid(row=i,column=j+1+(int(repeatidx)*6),sticky="n"+"e"+"w",pady=5)
-
-			# 		if  varinfo=="matchcomplete" or varinfo=="orderside" or varinfo=="volumn" or varinfo == "profit" or varinfo=="state" :
-			# 			# print(varinfo,j)
-			# 			self.labeldisplay[varvalue][repeatidx][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][repeatidx][varinfo],borderwidth=2, relief="groove",height=1)
-			# 			self.labeldisplay[varvalue][repeatidx][varinfo].grid(row=i,column=j-3+(int(repeatidx)*6),sticky="s"+"e"+"w",pady=5)
-
-			# 		# if  varinfo=="state" :
-			# 		# 	# print(varinfo,j)
-			# 		# 	self.labeldisplay[varvalue][repeatidx][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][repeatidx][varinfo],borderwidth=2, relief="groove",height=3)
-			# 		# 	self.labeldisplay[varvalue][repeatidx][varinfo].grid(row=i,column=j+5+int(repeatidx),sticky="s"+"e"+"w",pady=7)
-			# 		# 	self.labeldisplay[varvalue][repeatidx][varinfo].grid_propagate(False)
-			# 		# if varinfo=="targetvalue":
-
-			# 		# 	self.labeldisplay[varvalue][repeatidx][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][repeatidx][varinfo])
-			# 		# 	# self.labeldisplay.grid_propagate(0)
-			# 		# 	self.labeldisplay[varvalue][repeatidx][varinfo].grid(row=i,column=j+5)
-			# runrangeNo-=1
-
-
-		# print (self.myvarasso)
-		# print ("22"+rowvalue)	
-		
-		# exit()
-
-
-
 		self.canvas['yscrollcommand'] = self.scrollbarYGroupOutPut.set
-		# self.canvas.bind('<Configure>', self.on_configure)
-
 		self.canvas['xscrollcommand'] = self.scrollbarXGroupOutPut.set
+
 		self.canvas.bind('<Configure>', self.on_configure)
 
 		self.canvas.create_window((0,0), window=self.frameGroupOutput, anchor='n'+'w')
 
-
-
-
 		self.canvas.update()
-
-		# self.canvas.update()
 
 		self.txtout("Set Plan = " +value)		
 
-		#################################### TEST can delete later #################################
-		# self.labeldisplay["4.90"][0]={}
-		# self.labeldisplay["4.90"][0]["orderno"]=tk.Label(self.frameGroupOutput , text="1112222",borderwidth=2, relief="groove",height=1)
-		# self.labeldisplay["4.90"][0]["orderno"].grid(row=4,column=1,sticky="n"+"e"+"w",padx=5,pady=3)
-
-		# self.labeldisplay["4.90"][0]["orderno"]=tk.Label(self.frameGroupOutput , text="1112222",borderwidth=2, relief="groove",height=1)
-		# self.labeldisplay["4.90"][0]["orderno"].grid(row=4,column=2,sticky="n"+"e"+"w",padx=5,pady=3)
-
-		
-		#################################### TEST #################################
 
 		return
 
@@ -634,13 +563,22 @@ class outputlog(tk.Tk):
 		varmatchordertime=tk.StringVar(value="matchordertime")
 		varmatchcomplete=tk.StringVar(value="matchcomplete")
 		varorderside=tk.StringVar(value="orderside")
-		varvolumn=tk.StringVar(value="volumn")
+		varvolume=tk.StringVar(value="volumn")
 		varstatus=tk.StringVar(value="state")
 		vartargetvalue=tk.StringVar(value="target")
 		varprofit=tk.StringVar(value="profit")
+		varsymbole=tk.StringVar(value="symbole")
 
+		print (myvarinfo)
 		varorderno.set(myvarinfo["orderno"])
-
+		varstartordertime.set(myvarinfo["time"])
+		# varmatchordertime.set(myvarinfo["matchordertime"])
+		varmatchcomplete.set (myvarinfo["matched"])
+		varorderside.set(myvarinfo["side"])
+		varvolume.set(myvarinfo["volume"])
+		varstatus.set(myvarinfo["status"])
+		# vartarget.set(myvarinfo[""])
+		varsymbole.set(myvarinfo["symbole"])
 
 
 		varinfo={
@@ -648,9 +586,11 @@ class outputlog(tk.Tk):
 			"startordertime":varstartordertime,
 			"matchordertime":varmatchordertime,
 			"targetvalue":vartargetvalue,
+			"symbole":varsymbole,
+
 			"matchcomplete":varmatchcomplete,
 			"orderside":varorderside,
-			"volumn":varvolumn,
+			"volume":varvolume,
 			"profit":varprofit,
 			"state":varstatus,
 		}
@@ -658,45 +598,42 @@ class outputlog(tk.Tk):
 		
 		self.labeldisplay[varvalue][repeatidx]={}
 		
-
-
-
+		backgroudcolor={
+					"orderno":"cyan",
+					"startordertime":"yellowgreen",
+					"matchordertime":"lime",
+					"targetvalue":"tomato",
+					"matchcomplete":"peru",
+					"orderside":"plum",
+					"volume":"gold",
+					"profit":"orchid",
+					"state":"dodgerblue",
+					"symbole":"white",
+					}
 
 		for j,varelement in enumerate(varinfo):
 
 				# print(varvalue,repeatidx)
+				rowid=self.labeldisplay[varvalue][varvalue].grid_info()['row']
+				columnid=self.labeldisplay[varvalue][varvalue].grid_info()['column']
+				print (columnid)
+				if  varelement=="orderno" or varelement=="startordertime" or varelement=="matchordertime"  or varelement =="targetvalue" or varelement=="symbole" :
 
-				if  varelement=="orderno" or varelement=="startordertime" or varelement=="matchordertime"  or varelement =="targetvalue":
-					# print(varelement,j)
-					rowid=self.labeldisplay[varvalue][varvalue].grid_info()['row']
-					# exit()
-					self.labeldisplay[varvalue][repeatidx][varelement]=tk.Label(self.frameGroupOutput , textvariable=varinfo[varelement],borderwidth=2, relief="groove",height=1)
-					self.labeldisplay[varvalue][repeatidx][varelement].grid_propagate(1)
+					self.labeldisplay[varvalue][repeatidx][varelement]=tk.Label(self.frameGroupOutput , textvariable=varinfo[varelement],
+															borderwidth=2, relief="groove",height=1,background=backgroudcolor[varelement])
+
+					# self.labeldisplay[varvalue][repeatidx][varelement].grid_propagate(1)
 					self.labeldisplay[varvalue][repeatidx][varelement].grid(row=rowid,column=j+1+(int(repeatidx)*6),sticky="n"+"e"+"w",pady=5)
 					
-					#################################### TEST can delete later #################################
-					# self.labeldisplay[varvalue][0]={}
-					# self.labeldisplay[varvalue][0]["orderno"]=tk.Label(self.frameGroupOutput , text="1112222",borderwidth=2, relief="groove",height=1)
-					# self.labeldisplay[varvalue][0]["orderno"].grid(row=4,column=2,sticky="n"+"e"+"w",pady=5)
-					#################################### TEST #################################
+					
+				if  varelement=="matchcomplete" or varelement=="orderside" or varelement=="volume" or varelement == "profit" or varelement=="state" :
 
+					self.labeldisplay[varvalue][repeatidx][varelement]=tk.Label(self.frameGroupOutput , textvariable=varinfo[varelement],
+															borderwidth=2, relief="groove",height=1,background=backgroudcolor[varelement])
 
-					# self.labeldisplay[varvalue][0]={}
-					# self.labeldisplay[varvalue][0]["orderno"]=tk.Label(self.frameGroupOutput , text="1112222",borderwidth=2, relief="groove",height=1)
-					# self.labeldisplay[varvalue][0]["orderno"].grid(row=4,column=1,sticky="n"+"e"+"w",pady=5)
+					self.labeldisplay[varvalue][repeatidx][varelement].grid(row=rowid,column=j-4+(int(repeatidx)*6),sticky="s"+"e"+"w",pady=5)
 
-
-
-
-					# break;
-					# print(self.labeldisplay[varvalue])
-
-				# if  varelement=="matchcomplete" or varelement=="orderside" or varelement=="volumn" or varelement == "profit" or varelement=="state" :
-					# print(varinfo,j)
-					# self.labeldisplay[varvalue][repeatidx][varelement]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][repeatidx][varinfo],borderwidth=2, relief="groove",height=1)
-					# self.labeldisplay[varvalue][repeatidx][varelement].grid(row=rowidx,column=j-3+(int(repeatidx)*6),sticky="s"+"e"+"w",pady=5)
-
-
+		
 		# self.canvas['yscrollcommand'] = self.scrollbarYGroupOutPut.set
 		# self.canvas.bind('<Configure>', self.on_configure)
 
@@ -715,103 +652,20 @@ class outputlog(tk.Tk):
 		return varinfo
 
 	def rangeline(self,series):
-		# print(len(series))
-		# exit()
-		
 
 		varasso={}
 		varstep={}
 		
-		# varinfogroup=[]
 		varrepeat=[]
 
-# /*********** TEST ****************
-		# series=['2.00','2.02','2.04','2.06']
-		# for varvalue in series:
-		# 	varorderid=tk.StringVar(value="orderid")
-		# 	varinfo={
-		# 		"orderid":varorderid,
-		# 	}
-		# 	varrepeat.append(varinfo)
-		# 	varasso[varvalue]=varrepeat
-		# 	varrepeat=[]
-		# 	# print (varvalue)
-		# 	# print(varrepeat)
-		# 	# print(varvalue)
-		# 	if varvalue=="2.02":
-		# 		break
-		# print (varasso)
-
-		# exit()	
-################################################
-
 		for varvalue in series:
-			# print(varvalue)
-
-
-			
-			# varorderid=tk.StringVar(value="orderid")
-			# varstartordertime=tk.StringVar(value=timenow)
-			# varmatchordertime=tk.StringVar(value="matchordertime")
-			# varmatchcomplete=tk.StringVar(value="matchcomplete")
-			# varorderside=tk.StringVar(value="orderside")
-			# varvolumn=tk.StringVar(value="volumn")
-			# varstatus=tk.StringVar(value="state")
-			# vartargetvalue=tk.StringVar(value="target")
-			# varprofit=tk.StringVar(value="profit")
-			# varinfo={
-			# 	"orderid":varorderid,
-			# 	"startordertime":varstartordertime,
-			# 	"matchordertime":varmatchordertime,
-			# 	"targetvalue":vartargetvalue,
-			# 	"matchcomplete":varmatchcomplete,
-			# 	"orderside":varorderside,
-			# 	"volumn":varvolumn,
-			# 	"profit":varprofit,
-			# 	"state":varstatus,
-			# }
-			# varrepeat.append(varinfo)
-
-
-
-
-
-
-
-			# print (varrepeat[1])
-			# exit()
-			################################TEST TEST############################################
-			# skip this for testing when multi result box
-			# if varvalue=="4.00":
-			# 	varrepeat.append(varinfo)
-			# 	varrepeat.append(varinfo)
-			# 	varrepeat.append(varinfo)
-			# 	varrepeat.append(varinfo)
-			# 	varrepeat.append(varinfo)
-				
-			############################################################################	
-				# print (varvalue,varrepeat)
-				# exit()
-			# varrepeat.append([])
-			# varrepeat.append(self.createrepeatinfo())
 
 			varasso[varvalue]=[]
-			# varrepeat=[]
 
-				# print (varvalue)
-			# print(varrepeat)
-		# print (varasso)
-		# exit()
-		# print (varasso)
-		# exit()
 		return varasso
 
 	def getRangeData(self):
 		print("print rangedata")
-
-
-
-
 
 		return self.rangeData
 	def update():
@@ -907,18 +761,6 @@ class outputlog(tk.Tk):
 		 
 	def Refresher(self):
 
-			# self.mycount+=1
-			# step=10+(self.mycount/10)
-			# print (step)
-			# print (dir(self))
-			# if not self.mybot.qvalchange.empty():
-			# print(self.mybot.mycollectqueues)
-			# if not self.mybot.mycollectqueues["qdatarefresh"].empty():
-			# 	temprefreshdata=self.mybot.mycollectqueues["qdatarefresh"].get()
-			# 	print(temprefreshdata)
-			# print ("!!!!!!!!!!!!!!!!!! Dump data refresh !!!!!!!!!!!!!")
-			# alreadyputback=False
-
 			if not self.mybot.mycollectqueues["qvalchange"].empty():
 				tempdict=self.mybot.mycollectqueues["qvalchange"].get()
 				# print (tempdict)
@@ -951,11 +793,6 @@ class outputlog(tk.Tk):
 						# print(chkrefresh["doupdatetk"][repeatdoupdateidx])
 						# exit()
 						
-							
-						
-
-
-
 						self.myvarasso[rowupdata["price"]].append(self.createrepeatinfo(
 																		rowupdata["price"],
 																		repeatdoupdateidx,
@@ -991,12 +828,3 @@ class outputlog(tk.Tk):
 			# self.output.tag_config("testb", background="white", foreground="red")
 			# self.output.tag_add('testb', 10.0, step)
 			self.after(5, self.Refresher) # every second...
-
-
-# if __name__ == '__main__':
-#     # print("start logoutput")
-#     txtoutput=outputlog()
-#     txtoutput.Refresher()
-#     txtoutput.mainloop()
-
-# exit()
