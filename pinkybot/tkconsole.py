@@ -569,7 +569,7 @@ class outputlog(tk.Tk):
 		varprofit=tk.StringVar(value="profit")
 		varsymbole=tk.StringVar(value="symbole")
 
-		print (myvarinfo)
+		# print (myvarinfo)
 		varorderno.set(myvarinfo["orderno"])
 		varstartordertime.set(myvarinfo["time"])
 		# varmatchordertime.set(myvarinfo["matchordertime"])
@@ -613,43 +613,40 @@ class outputlog(tk.Tk):
 
 		for j,varelement in enumerate(varinfo):
 
-				# print(varvalue,repeatidx)
-				rowid=self.labeldisplay[varvalue][varvalue].grid_info()['row']
-				columnid=self.labeldisplay[varvalue][varvalue].grid_info()['column']
-				print (columnid)
-				if  varelement=="orderno" or varelement=="startordertime" or varelement=="matchordertime"  or varelement =="targetvalue" or varelement=="symbole" :
+			# print(varvalue,repeatidx)
+			print(varelement)
+			rowid=self.labeldisplay[varvalue][varvalue].grid_info()['row']
+			columnid=self.labeldisplay[varvalue][varvalue].grid_info()['column']
+			print("repeatidx tkconsole.py line 619")
+			print (repeatidx)
+			if  varelement=="orderno" or varelement=="startordertime" or varelement=="matchordertime"  or varelement =="targetvalue" or varelement=="symbole" :
 
-					self.labeldisplay[varvalue][repeatidx][varelement]=tk.Label(self.frameGroupOutput , textvariable=varinfo[varelement],
-															borderwidth=2, relief="groove",height=1,background=backgroudcolor[varelement])
+				self.labeldisplay[varvalue][repeatidx][varelement]=tk.Label(self.frameGroupOutput , textvariable=varinfo[varelement],
+														borderwidth=2, relief="groove",height=1,background=backgroudcolor[varelement])
 
-					# self.labeldisplay[varvalue][repeatidx][varelement].grid_propagate(1)
-					self.labeldisplay[varvalue][repeatidx][varelement].grid(row=rowid,column=j+1+(int(repeatidx)*6),sticky="n"+"e"+"w",pady=5)
-					
-					
-				if  varelement=="matchcomplete" or varelement=="orderside" or varelement=="volume" or varelement == "profit" or varelement=="state" :
+				self.labeldisplay[varvalue][repeatidx][varelement].grid(row=rowid,column=j+1+(int(repeatidx)*6),sticky="n"+"e"+"w",pady=5)
+				# self.labeldisplay[varvalue][repeatidx][varelement].grid(row=rowid,column=(j+1+6),sticky="n"+"e"+"w",pady=5)
+				
+				
+			if  varelement=="matchcomplete" or varelement=="orderside" or varelement=="volume" or varelement == "profit" or varelement=="state" :
 
-					self.labeldisplay[varvalue][repeatidx][varelement]=tk.Label(self.frameGroupOutput , textvariable=varinfo[varelement],
-															borderwidth=2, relief="groove",height=1,background=backgroudcolor[varelement])
+				self.labeldisplay[varvalue][repeatidx][varelement]=tk.Label(self.frameGroupOutput , textvariable=varinfo[varelement],
+														borderwidth=2, relief="groove",height=1,background=backgroudcolor[varelement])
 
-					self.labeldisplay[varvalue][repeatidx][varelement].grid(row=rowid,column=j-4+(int(repeatidx)*6),sticky="s"+"e"+"w",pady=5)
+				self.labeldisplay[varvalue][repeatidx][varelement].grid(row=rowid,column=j-4+(int(repeatidx)*6),sticky="s"+"e"+"w",pady=5)
+				# self.labeldisplay[varvalue][repeatidx][varelement].grid(row=rowid,column=(j-4+6),sticky="s"+"e"+"w",pady=5)
 
-		
-		# self.canvas['yscrollcommand'] = self.scrollbarYGroupOutPut.set
-		# self.canvas.bind('<Configure>', self.on_configure)
-
-		# self.canvas['xscrollcommand'] = self.scrollbarXGroupOutPut.set
-		# self.canvas.bind('<Configure>', self.on_configure)
-
-		# self.canvas.create_window((0,0), window=self.frameGroupOutput, anchor='center')
-
-		# self.canvas.update()
-
-
-
-
+			print ("-------print j -----")
+			print(j)
+		repeatidx=0
+		j=0		
 		self.canvas.update()
 
 		return varinfo
+
+
+
+
 
 	def rangeline(self,series):
 
@@ -706,8 +703,6 @@ class outputlog(tk.Tk):
 			# self.highlight_pattern("vol","red")
 
 			self.output.insert(tk.END,self.timenow.strftime("%Y-%m-%d %H:%M:%S ") + str(txtmsg + "\n"))
-			
-
 			
 			# pos = self.output.search( "Vol","1.0",stopindex="end", count=countVar)
 			# print (pos)
@@ -784,7 +779,7 @@ class outputlog(tk.Tk):
 
 				if chkrefresh["qrefresh"]=="refreshtk":
 					print ("<<<<<<<< Print data to do update refresh tkinter here !!!!! tkconsole.py line 785")
-					# print (chkrefresh["doupdatetk"])
+					print (chkrefresh["doupdatetk"])
 					# print(len(chkrefresh["doupdatetk"]))
 					# exit()
 					for repeatdoupdateidx,rowupdata in enumerate(chkrefresh["doupdatetk"]) :
@@ -793,12 +788,11 @@ class outputlog(tk.Tk):
 						# print(chkrefresh["doupdatetk"][repeatdoupdateidx])
 						# exit()
 						
-						self.myvarasso[rowupdata["price"]].append(self.createrepeatinfo(
-																		rowupdata["price"],
+						self.myvarasso[rowupdata["price"]].append(self.createrepeatinfo(rowupdata["price"],
 																		repeatdoupdateidx,
 																		rowupdata)
 																	)
-						
+						# repeatdoupdateidx=0
 						# print(self.myvarasso[rowupdata["price"]])
 						self.canvas.configure(scrollregion=self.canvas.bbox("all"))
 						# exit()
