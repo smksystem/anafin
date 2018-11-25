@@ -801,17 +801,17 @@ class outputlog(tk.Tk):
 					# print (chkrefresh["doupdatetk"])
 					# print(len(chkrefresh["doupdatetk"]))
 					# exit()
-
-					### Need to group the value first #####
-
-
 					# print (self.myvarasso)
 					# exit()
 
 					for rowupdata in chkrefresh["doupdatetk"] :
 						# print (repeatdoupdateidx)
-						# print(rowupdata)
+						print(rowupdata["orderno"])
 						# print(chkrefresh["doupdatetk"][repeatdoupdateidx])
+						# exit()
+						for chklblorderno in self.myvarasso[rowupdata["price"]] :
+							print (chklblorderno)
+
 						# exit()
 						repeatidx=len(self.myvarasso[rowupdata["price"]])
 						self.myvarasso[rowupdata["price"]].append(self.createrepeatinfo(rowupdata["price"],
