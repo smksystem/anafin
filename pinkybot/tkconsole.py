@@ -798,17 +798,7 @@ class outputlog(tk.Tk):
 
 				if chkrefresh["qrefresh"]=="refreshtk":
 					print ("<<<<<<<< Print data to do update refresh tkinter here !!!!! tkconsole.py line 785")
-					# print (chkrefresh["doupdatetk"])
-					# print(len(chkrefresh["doupdatetk"]))
-					# exit()
-					# print (self.myvarasso)
-					# exit()
-
 					for rowupdata in chkrefresh["doupdatetk"] :
-						# print (repeatdoupdateidx)
-						# print(rowupdata["orderno"])
-						# print(chkrefresh["doupdatetk"][repeatdoupdateidx])
-						# exit()
 						if len(self.myvarasso[rowupdata["price"]]) == 0:
 
 							repeatidx=len(self.myvarasso[rowupdata["price"]])
@@ -832,11 +822,7 @@ class outputlog(tk.Tk):
 																	repeatidx,
 																	rowupdata)
 																)
-						# print("number of row=" +str(len(self.myvarasso[rowupdata["price"]])))
-					# print(self.myvarasso)
 					self.canvas.configure(scrollregion=self.canvas.bbox("all"))
-						# exit()
-						# self.labeldisplay[valuelabel][repeatidx]["orderid"].configure(background="cyan")
 					
 				elif chkrefresh["qrefresh"]=="refreshdb":
 					self.mybot.mycollectqueues["qrefresh"].put(chkrefresh)

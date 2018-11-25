@@ -370,7 +370,7 @@ class packselenium():
 
 
 		# try:
-		print ("refresh botton press in function refresh btn packsel.py line 363")
+		print ("refresh botton press in function refresh btn packsel.py line 373")
 
 		elem = driver.find_element_by_xpath(self.xpathreturn("xrtrefresh")).click()
 
@@ -404,12 +404,25 @@ class packselenium():
 
 				# ['', '71911327', '14:42:59', 'WHA', 'B', '4.08', '700', '0', '0', '700', 'Cancel(X)', '', 'Detail', '']
 				# [['71911327', '14:42:59', 'WHA', 'B', '4.08', '700', '0', '0', '700', 'Cancel(X)', 'Detail']]
-				print (mytable)
-				PackSelModel.updaterefresh(mytable)
+				
+				if allorpartial=="partial":
+				# print ("partial update refresh packsel.py line 427")
+					rowupdaterefresh=PackSelModel.updaterefresh(mytable,"partial")
+				elif allorpartial=="all":
+				# print("full update refresh packsel.py line 430")
+					rowupdaterefresh=PackSelModel.updaterefresh(mytable,"all")					
+				# print (mytable)
+				# PackSelModel.updaterefresh(mytable)
+
 				mytable=[]
+				
+
+
+
 				# col_dict=[]
 			else:
 				print("=========No found any row of order to record=========")
+				rowupdaterefresh=""
 			# already got this result
 			# row=71906069 23:20:08 WHA B 4.18 500 0 0 0 Cancelled(CS) Detail
 			# row=71906056 22:38:04 WHA B 4.16 500 0 0 0 Cancelled(CS) Detail
