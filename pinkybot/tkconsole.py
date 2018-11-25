@@ -397,43 +397,31 @@ class outputlog(tk.Tk):
 
 		return (0)
 
-	def createlabelgroup(self,rowvalue,varvalue,rowidx):
+	# def createlabelgroup(self,rowvalue,varvalue,rowidx):
 
-		# rowvalue=self.myvarasso[varvalue]
+	# 	# rowvalue=self.myvarasso[varvalue]
 
 		
-		for repeatidx,valrepeat in enumerate(rowvalue):
+	# 	for repeatidx,valrepeat in enumerate(rowvalue):
 
-			self.labeldisplay[varvalue][repeatidx]={}
-			# if varvalue=="4.00":
-				# print(repeatidx,valrepeat)
-			# print("tkconsole.py line 553")
-			# print(valrepeat)
-			for j,varinfo in enumerate(valrepeat):
+	# 		self.labeldisplay[varvalue][repeatidx]={}
+	# 		# if varvalue=="4.00":
+	# 			# print(repeatidx,valrepeat)
+	# 		# print("tkconsole.py line 553")
+	# 		# print(valrepeat)
+	# 		for j,varinfo in enumerate(valrepeat):
 
-				# print(varvalue,repeatidx)
+	# 			# print(varvalue,repeatidx)
 
-				if  varinfo=="orderno" or varinfo=="startordertime" or varinfo=="matchordertime"  or varinfo =="targetvalue":
-					# print(varinfo,j)
-					self.labeldisplay[varvalue][repeatidx][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][repeatidx][varinfo],borderwidth=2, relief="groove",height=1)
-					self.labeldisplay[varvalue][repeatidx][varinfo].grid(row=rowidx,column=j+1+(int(repeatidx)*6),sticky="n"+"e"+"w",pady=5)
+	# 			if  varinfo=="orderno" or varinfo=="startordertime" or varinfo=="matchordertime"  or varinfo =="targetvalue":
+	# 				# print(varinfo,j)
+	# 				self.labeldisplay[varvalue][repeatidx][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][repeatidx][varinfo],borderwidth=2, relief="groove",height=1)
+	# 				self.labeldisplay[varvalue][repeatidx][varinfo].grid(row=rowidx,column=j+1+(int(repeatidx)*6),sticky="n"+"e"+"w",pady=5)
 
-				if  varinfo=="matchcomplete" or varinfo=="orderside" or varinfo=="volumn" or varinfo == "profit" or varinfo=="state" :
-					# print(varinfo,j)
-					self.labeldisplay[varvalue][repeatidx][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][repeatidx][varinfo],borderwidth=2, relief="groove",height=1)
-					self.labeldisplay[varvalue][repeatidx][varinfo].grid(row=rowidx,column=j-3+(int(repeatidx)*6),sticky="s"+"e"+"w",pady=5)
-
-				# if  varinfo=="state" :
-				# 	# print(varinfo,j)
-				# 	self.labeldisplay[varvalue][repeatidx][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][repeatidx][varinfo],borderwidth=2, relief="groove",height=3)
-				# 	self.labeldisplay[varvalue][repeatidx][varinfo].grid(row=i,column=j+5+int(repeatidx),sticky="s"+"e"+"w",pady=7)
-				# 	self.labeldisplay[varvalue][repeatidx][varinfo].grid_propagate(False)
-				# if varinfo=="targetvalue":
-
-				# 	self.labeldisplay[varvalue][repeatidx][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][repeatidx][varinfo])
-				# 	# self.labeldisplay.grid_propagate(0)
-				# 	self.labeldisplay[varvalue][repeatidx][varinfo].grid(row=i,column=j+5)
-		
+	# 			if  varinfo=="matchcomplete" or varinfo=="orderside" or varinfo=="volumn" or varinfo == "profit" or varinfo=="state" :
+	# 				# print(varinfo,j)
+	# 				self.labeldisplay[varvalue][repeatidx][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][repeatidx][varinfo],borderwidth=2, relief="groove",height=1)
+	# 				self.labeldisplay[varvalue][repeatidx][varinfo].grid(row=rowidx,column=j-3+(int(repeatidx)*6),sticky="s"+"e"+"w",pady=5)
 
 	def doMenuRange(self,value):
 
@@ -611,39 +599,19 @@ class outputlog(tk.Tk):
 					"symbole":"white",
 					}
 		
-		# children = self.frameGroupOutput.winfo_children()
-		
-		# print(children)
-		
-		# exit()
-
 		for j,varelement in enumerate(varinfo):
 
 			# print(varvalue,repeatidx)
 			# print(varelement)
 			rowid=self.labeldisplay[varvalue][varvalue].grid_info()['row']
 			
-			# print("tkconsole.py 626 Number of len=" + str(len(self.labeldisplay[varvalue])))
-			# print (self.labeldisplay[varvalue])
-			# print("repeatidx tkconsole.py line 619")
-			# print (repeatidx)
-			# print ("j=====>" + str(j))
 			if  varelement=="orderno" or varelement=="startordertime" or varelement=="matchordertime"  or varelement =="targetvalue" or varelement=="symbole" :
 
 				self.labeldisplay[varvalue][repeatidx][varelement]=tk.Label(self.frameGroupOutput , textvariable=varinfo[varelement],
 														borderwidth=2, relief="groove",height=1,background=backgroudcolor[varelement])
 
 				self.labeldisplay[varvalue][repeatidx][varelement].grid(row=rowid,column=(j+1+int(repeatidx)*6),sticky="n"+"e"+"w",pady=5)
-				# self.labeldisplay[varvalue][repeatidx][varelement].grid(row=rowid,column=j+1+(int(repeatidx)*6),sticky="n"+"e"+"w",pady=5)
 
-
-			# if varelement=="startordertime":
-			# 	self.labeldisplay[varvalue][repeatidx][varelement]=tk.Label(self.frameGroupOutput , textvariable=varinfo[varelement],
-			# 										borderwidth=2, relief="groove",height=1,background=backgroudcolor[varelement])
-
-			# 	self.labeldisplay[varvalue][repeatidx][varelement].grid(row=rowid,column=j+1,sticky="n"+"e"+"w",pady=5)
-
-				
 				
 			if  varelement=="matchcomplete" or varelement=="orderside" or varelement=="volume" or varelement == "profit" or varelement=="state" :
 
@@ -651,21 +619,10 @@ class outputlog(tk.Tk):
 														borderwidth=2, relief="groove",height=1,background=backgroudcolor[varelement])
 
 				self.labeldisplay[varvalue][repeatidx][varelement].grid(row=rowid,column=(j-4+int(repeatidx)*6),sticky="s"+"e"+"w",pady=5)
-				# self.labeldisplay[varvalue][repeatidx][varelement].grid(row=rowid,column=j-4+(int(repeatidx)*6),sticky="s"+"e"+"w",pady=5)
 
-			# print(self.labeldisplay[varvalue][varvalue].grid_info())
-
-			# print ("-------print j -----")
-			# print(j)
-		# repeatidx=0
-		# j=0		
 		self.canvas.update()
 
 		return varinfo
-
-
-
-
 
 	def rangeline(self,series):
 
@@ -798,7 +755,10 @@ class outputlog(tk.Tk):
 
 				if chkrefresh["qrefresh"]=="refreshtk":
 					print ("<<<<<<<< Print data to do update refresh tkinter here !!!!! tkconsole.py line 785")
+					print(chkrefresh["doupdatetk"])
 					for rowupdata in chkrefresh["doupdatetk"] :
+						print("///////////////myvarasso tkconsole.py line 759")
+						print(self.myvarasso[rowupdata["price"]])
 						if len(self.myvarasso[rowupdata["price"]]) == 0:
 
 							repeatidx=len(self.myvarasso[rowupdata["price"]])

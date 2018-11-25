@@ -359,8 +359,11 @@ class packselenium():
 
 			# confirm ok then check refresh 
 			print ("=========>>> confirm order to tkinter after order buy packsel.py line 344 ")
-			result_refreshbtn=self.refreshbtn(driver)
-			self.mycollectqueues["qorder"].put({"order":"refreshtk",
+			result_refreshbtn=self.refreshbtn(driver,"partial") # with the update database 
+			print("return result_refreshbtn by buy order packsel.py line 363")
+			print(result_refreshbtn)
+
+			self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk",
 												"doupdatetk":result_refreshbtn}) # continue refresh TKInter
 
 		elif orderside=="sell":
@@ -438,6 +441,7 @@ class packselenium():
 					myrow = row.text.split(" ")
 					myrow = myrow[2:]		
 					mytable.append(myrow)
+
 					# print(myrow)
 			# print (mytable)
 			#remove first element of array to be the same as xlive

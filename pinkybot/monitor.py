@@ -29,7 +29,7 @@ class pinkybot(packselenium):
         }
         # print(self.mycollectqueues["qorder"])
 
-        super().__init__("xlive") # configure xdebug or xlive
+        super().__init__("xdebug") # configure xdebug or xlive
 
 
     def myorder(self,orderside,configparams):
@@ -44,11 +44,12 @@ class pinkybot(packselenium):
                     "stockpin": configparams["stockpin"].get(),
 
             }
-            print ("Start:buy buy buy buy buy")
+            print ("Start:buy buy buy buy buy monitor.py line 47")
 
             self.botbuyorder(buyparams)
             
-            print ("END:buy buy buy buy buy")
+            print ("END:buy buy buy buy buy monitor.py line 51")
+
         elif orderside=="sellbyvalue":
             print ("sell sell")
     # for several type of orders
