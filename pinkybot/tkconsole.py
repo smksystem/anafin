@@ -806,18 +806,32 @@ class outputlog(tk.Tk):
 
 					for rowupdata in chkrefresh["doupdatetk"] :
 						# print (repeatdoupdateidx)
-						print(rowupdata["orderno"])
+						# print(rowupdata["orderno"])
 						# print(chkrefresh["doupdatetk"][repeatdoupdateidx])
 						# exit()
-						for chklblorderno in self.myvarasso[rowupdata["price"]] :
-							print (chklblorderno)
+						if len(self.myvarasso[rowupdata["price"]]) == 0:
 
-						# exit()
-						repeatidx=len(self.myvarasso[rowupdata["price"]])
-						self.myvarasso[rowupdata["price"]].append(self.createrepeatinfo(rowupdata["price"],
-																		repeatidx,
-																		rowupdata)
-																	)
+							repeatidx=len(self.myvarasso[rowupdata["price"]])
+							self.myvarasso[rowupdata["price"]].append(self.createrepeatinfo(rowupdata["price"],
+																			repeatidx,rowupdata))
+						else:
+							# check if lable already existing then no more create label 
+							for chklblorderno in self.myvarasso[rowupdata["price"]] :
+								# print (chklblorderno["orderno"].get())
+								chkorderno=chklblorderno["orderno"].get()
+								# print ("tkconsole.py line 822 compare orderno=" + chkorderno,rowupdata["orderno"])
+								if chkorderno == rowupdata["orderno"] :
+									ignoreadd=True
+									break;
+								else:
+									ignoreadd=False
+								# else:
+							if ignoreadd==False:	
+								repeatidx=len(self.myvarasso[rowupdata["price"]])
+								self.myvarasso[rowupdata["price"]].append(self.createrepeatinfo(rowupdata["price"],
+																	repeatidx,
+																	rowupdata)
+																)
 						# print("number of row=" +str(len(self.myvarasso[rowupdata["price"]])))
 					# print(self.myvarasso)
 					self.canvas.configure(scrollregion=self.canvas.bbox("all"))
