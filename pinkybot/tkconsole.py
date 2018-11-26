@@ -758,7 +758,10 @@ class outputlog(tk.Tk):
 					print(chkrefresh["doupdatetk"])
 					for rowupdata in chkrefresh["doupdatetk"] :
 						print("///////////////myvarasso tkconsole.py line 759")
-						print(self.myvarasso[rowupdata["price"]])
+						
+						# print(self.myvarasso[rowupdata["price"]])
+
+
 						if len(self.myvarasso[rowupdata["price"]]) == 0:
 
 							repeatidx=len(self.myvarasso[rowupdata["price"]])

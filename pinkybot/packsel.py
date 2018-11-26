@@ -461,9 +461,11 @@ class packselenium():
 				rowupdaterefresh=PackSelModel.updaterefresh(mytable,"partial")
 			elif allorpartial=="all":
 				# print("full update refresh packsel.py line 430")
-				rowupdaterefresh=PackSelModel.updaterefresh(mytable,"all")					
+				rowupdaterefresh=PackSelModel.updaterefresh(mytable,"all")	
+
 			# print ("show update refresh packsel.py line 432")
-			# print(rowupdaterefresh)
+				# print(rowupdaterefresh)
+				# exit()
 			mytable=[]
 			# print (rowupdaterefresh)
 		return rowupdaterefresh
