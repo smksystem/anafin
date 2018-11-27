@@ -168,9 +168,10 @@ class PackSelModel:
 						if updaterow==True:
 
 							updatecolumnval=updaterefresh.objects.filter(orderno=myrow[0]).update(**{column:myrow[index-1]})
-							result_updaterefresh.append(myrow)
-							print (index,column,myvalue,myrow[index-1],updaterow)
-							print ("update row into table")
+							result_updaterefresh.append(dataparams)
+							# print ("--------------update row into table with existing and partial packsel_model.py line 172")
+							# print(dataparams)
+							# print (index,column,myvalue,myrow[index-1],updaterow)
 
 		# print("========result updaterefresh before return out from function packsel_model.py line 178")
 		# print(result_updaterefresh)

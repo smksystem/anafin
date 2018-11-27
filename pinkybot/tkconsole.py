@@ -758,7 +758,7 @@ class outputlog(tk.Tk):
 					print(chkrefresh["doupdatetk"])
 					for rowupdata in chkrefresh["doupdatetk"] :
 						print("///////////////myvarasso tkconsole.py line 759")
-						
+
 						# print(self.myvarasso[rowupdata["price"]])
 
 
@@ -785,6 +785,15 @@ class outputlog(tk.Tk):
 																	repeatidx,
 																	rowupdata)
 																)
+							elif ignoreadd==True: ### case already existing of order and need to update for parameter of realtime like status.
+
+								print("+++++++need to update partial realtime table tkconsole.py line 790 !!!")
+								print(self.myvarasso[rowupdata["price"]])
+								for varparams in self.myvarasso[rowupdata["price"]]:
+									print("print varparams tkconsole.py line 793")
+									print (varparams)
+
+
 					self.canvas.configure(scrollregion=self.canvas.bbox("all"))
 					
 				elif chkrefresh["qrefresh"]=="refreshdb":
