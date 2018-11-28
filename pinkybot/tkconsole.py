@@ -791,8 +791,18 @@ class outputlog(tk.Tk):
 								print(self.myvarasso[rowupdata["price"]])
 								for varparams in self.myvarasso[rowupdata["price"]]:
 									print("print varparams tkconsole.py line 793")
-									for varrepeatupdate in varparams:
-										print (varrepeatupdate["orderno"].get())
+									# "orderno": myrow[0],
+									# "time":myrow[1],
+									# "symbole" :myrow[2],
+									# "side":myrow[3],
+									# "price":myrow[4],
+									# "volume":myrow[5],
+									# "matched":myrow[6],
+									# "balance":myrow[7],
+									# "cancelled":myrow[8],
+									# "status":myrow[9],
+									for varrepeatkey in varparams:
+										print (varparams[varrepeatkey].get())
 
 
 					self.canvas.configure(scrollregion=self.canvas.bbox("all"))

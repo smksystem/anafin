@@ -130,7 +130,7 @@ class PackSelModel:
 					
 					newrow=updaterefresh(**dataparams)
 					newrow.save()
-					result_updaterefresh.append(myrow)
+					result_updaterefresh.append(dataparams)
 
 				elif chkorderno.exists():
 
@@ -151,9 +151,9 @@ class PackSelModel:
 
 			elif chkorderno.exists() and fullrefresh=="partial":
 
-				print ("Order already existing packsel_model.py line 134")
+				print ("Order already existing and fullrefresh = partial packsel_model.py line 134")
 				tochk=chkorderno.values()
-				print (tochk[0]["orderno"])
+				# print (tochk[0]["orderno"])
 				
 				# a = 2 if i in [1, 3, 6] else 7
 				# print (updaterow)
@@ -169,12 +169,15 @@ class PackSelModel:
 
 							updatecolumnval=updaterefresh.objects.filter(orderno=myrow[0]).update(**{column:myrow[index-1]})
 							result_updaterefresh.append(dataparams)
+							updaterow=False
+						# else:
+						# 	updaterow=False
 							# print ("--------------update row into table with existing and partial packsel_model.py line 172")
 							# print(dataparams)
 							# print (index,column,myvalue,myrow[index-1],updaterow)
 
-		# print("========result updaterefresh before return out from function packsel_model.py line 178")
-		# print(result_updaterefresh)
+		print("========result updaterefresh from realtime before return out from function packsel_model.py line 178")
+		print(result_updaterefresh)
 		return result_updaterefresh
 
 	def test_mysql():

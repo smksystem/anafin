@@ -63,7 +63,12 @@ class pinkybot(packselenium):
     def botrtrefresh(self):
         print ("RT Refresh order monitory.py line 60")
         ## get command from click button ,assign to be full refresh for all table
-        self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshdb","refreshtype":"all"}) 
+
+
+        # line below for real all refresh set parameter "refreshtype to be all or partial"
+        # self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshdb","refreshtype":"all"}) 
+
+        self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshdb","refreshtype":"partial"}) 
 
     def threadlogin(self,loginSet):
         print ("thread login was called")
