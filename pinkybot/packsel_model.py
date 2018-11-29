@@ -141,7 +141,7 @@ class PackSelModel:
 
 			# for case new row when buy or sell 
 			elif not chkorderno.exists() and fullrefresh=="partial":
-				print("Insert new row with chkorderno.exists and partial refresh of order below packsel_model.py line 137 ")
+				print("Insert new row with chkorderno.exists and partial refresh of order below packsel_model.py line 144 ")
 				# print(myrow)
 				# [['71911327', '14:42:59', 'WHA', 'B', '4.08', '700', '0', '0', '700', 'Cancel(X)', 'Detail']]
 				newrow=updaterefresh(**dataparams)
@@ -151,24 +151,25 @@ class PackSelModel:
 
 			elif chkorderno.exists() and fullrefresh=="partial":
 
-				print ("Order already existing and fullrefresh = partial packsel_model.py line 134")
+				print ("Order already existing and fullrefresh = partial packsel_model.py line 154")
 				tochk=chkorderno.values()
 				# print (tochk[0]["orderno"])
 				
 				# a = 2 if i in [1, 3, 6] else 7
 				# print (updaterow)
 				# exit()
-				print (myrow)
+				# print (myrow)
 				for index, (column,myvalue) in enumerate(tochk[0].items()):
 					# index-=index
 					if column != "id" and column != "date":
 						updaterow=True if (myvalue != myrow[index-1]) else False
-						# print (index,column,value,myrow[index+1],updaterow)
-						
+						# print (index,column,myvalue,myrow[index-1],updaterow)
+						# print(dataparams["orderno"])
 						if updaterow==True:
-
+							# print("///////// data params in result updaterefresh packsel_model.py line 169")
+							# print (dataparams in result_updaterefresh)
 							updatecolumnval=updaterefresh.objects.filter(orderno=myrow[0]).update(**{column:myrow[index-1]})
-							result_updaterefresh.append(dataparams)
+							result_updaterefresh.append(dataparams) if (dataparams not in result_updaterefresh) else False
 							updaterow=False
 						# else:
 						# 	updaterow=False
@@ -176,8 +177,8 @@ class PackSelModel:
 							# print(dataparams)
 							# print (index,column,myvalue,myrow[index-1],updaterow)
 
-		print("========result updaterefresh from realtime before return out from function packsel_model.py line 178")
-		print(result_updaterefresh)
+		# print("========result updaterefresh from realtime before return out from function packsel_model.py line 178")
+		# print(result_updaterefresh)
 		return result_updaterefresh
 
 	def test_mysql():

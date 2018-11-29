@@ -788,9 +788,10 @@ class outputlog(tk.Tk):
 							elif ignoreadd==True: ### case already existing of order and need to update for parameter of realtime like status.
 
 								print("+++++++need to update partial realtime table tkconsole.py line 790 !!!")
-								print(self.myvarasso[rowupdata["price"]])
+								# print(self.myvarasso[rowupdata["price"]])
 								for varparams in self.myvarasso[rowupdata["price"]]:
 									print("print varparams tkconsole.py line 793")
+									print (varparams)
 									# "orderno": myrow[0],
 									# "time":myrow[1],
 									# "symbole" :myrow[2],
@@ -801,9 +802,13 @@ class outputlog(tk.Tk):
 									# "balance":myrow[7],
 									# "cancelled":myrow[8],
 									# "status":myrow[9],
-									for varrepeatkey in varparams:
-										print (varparams[varrepeatkey].get())
-
+									for varrepeatkey,varrepeatvalue in varparams.items():
+										print("!!!!!!!!! show key and value of varparams tkconsole.py line 806")
+										print (varrepeatkey,varrepeatvalue.get())
+										print("show price of data tkconsole.py line 808")
+										print(rowupdata["orderno"])
+										if varrepeatvalue.get()== rowupdata["orderno"] :
+											print ("********found orderno to update tkconsole.py line 811")
 
 					self.canvas.configure(scrollregion=self.canvas.bbox("all"))
 					
