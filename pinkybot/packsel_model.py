@@ -177,8 +177,8 @@ class PackSelModel:
 							# print(dataparams)
 							# print (index,column,myvalue,myrow[index-1],updaterow)
 
-		# print("========result updaterefresh from realtime before return out from function packsel_model.py line 178")
-		# print(result_updaterefresh)
+		print("========result updaterefresh from realtime before return out from function packsel_model.py line 180")
+		print(result_updaterefresh)
 		return result_updaterefresh
 
 	def test_mysql():

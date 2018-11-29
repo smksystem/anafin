@@ -754,10 +754,10 @@ class outputlog(tk.Tk):
 				chkrefresh=self.mybot.mycollectqueues["qrefresh"].get()
 
 				if chkrefresh["qrefresh"]=="refreshtk":
-					print ("<<<<<<<< Print data to do update refresh tkinter here !!!!! tkconsole.py line 785")
-					print(chkrefresh["doupdatetk"])
+					print ("<<<<<<<< Print data to do update refresh tkinter here !!!!! tkconsole.py line 757")
+					# print(chkrefresh["doupdatetk"])
 					for rowupdata in chkrefresh["doupdatetk"] :
-						print("///////////////myvarasso tkconsole.py line 759")
+						# print("///////////////myvarasso tkconsole.py line 759")
 
 						# print(self.myvarasso[rowupdata["price"]])
 
@@ -772,7 +772,7 @@ class outputlog(tk.Tk):
 							for chklblorderno in self.myvarasso[rowupdata["price"]] :
 								# print (chklblorderno["orderno"].get())
 								chkorderno=chklblorderno["orderno"].get()
-								# print ("tkconsole.py line 822 compare orderno=" + chkorderno,rowupdata["orderno"])
+								print ("tkconsole.py line 775 compare orderno=" + chkorderno,rowupdata["orderno"])
 								if chkorderno == rowupdata["orderno"] :
 									ignoreadd=True
 									break;
@@ -790,25 +790,22 @@ class outputlog(tk.Tk):
 								print("+++++++need to update partial realtime table tkconsole.py line 790 !!!")
 								# print(self.myvarasso[rowupdata["price"]])
 								for varparams in self.myvarasso[rowupdata["price"]]:
-									print("print varparams tkconsole.py line 793")
-									print (varparams)
-									# "orderno": myrow[0],
-									# "time":myrow[1],
-									# "symbole" :myrow[2],
-									# "side":myrow[3],
-									# "price":myrow[4],
-									# "volume":myrow[5],
-									# "matched":myrow[6],
-									# "balance":myrow[7],
-									# "cancelled":myrow[8],
-									# "status":myrow[9],
+									# print("print varparams tkconsole.py line 793")
+									# print (varparams)
 									for varrepeatkey,varrepeatvalue in varparams.items():
-										print("!!!!!!!!! show key and value of varparams tkconsole.py line 806")
-										print (varrepeatkey,varrepeatvalue.get())
-										print("show price of data tkconsole.py line 808")
-										print(rowupdata["orderno"])
+										# print("!!!!!!!!! show key and value of varparams tkconsole.py line 806")
+										# print (varrepeatkey,varrepeatvalue.get())
+										# print("show price of data tkconsole.py line 808")
+										# print(rowupdata["orderno"])
 										if varrepeatvalue.get()== rowupdata["orderno"] :
-											print ("********found orderno to update tkconsole.py line 811")
+											# print ("********found orderno to update tkconsole.py line 811")
+
+											varparams["orderside"].set(rowupdata["side"])
+											varparams["volume"].set(rowupdata["volume"])
+											varparams["matchcomplete"].set(rowupdata["matched"])
+											# varparams["balance"].set(rowupdata["balance"])
+											varparams["state"].set(rowupdata["status"])
+
 
 					self.canvas.configure(scrollregion=self.canvas.bbox("all"))
 					

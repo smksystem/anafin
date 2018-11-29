@@ -66,9 +66,9 @@ class pinkybot(packselenium):
 
 
         # line below for real all refresh set parameter "refreshtype to be all or partial"
-        # self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshdb","refreshtype":"all"}) 
+        self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshdb","refreshtype":"all"}) 
 
-        self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshdb","refreshtype":"partial"}) 
+        # self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshdb","refreshtype":"partial"}) 
 
     def threadlogin(self,loginSet):
         print ("thread login was called")
