@@ -2,6 +2,7 @@
 import tkinter as tk
 import datetime
 import sys
+import time
 
 from pinkybot.monitor import pinkybot
 from pinkybot.packsel_model import PackSelModel
@@ -22,6 +23,7 @@ class outputlog(tk.Tk):
 		passtxt=tk.StringVar()
 		broketxt=tk.StringVar(value="013")
 
+		# global time1
 
 		self.loginSet=[
 						broketxt,
@@ -67,7 +69,7 @@ class outputlog(tk.Tk):
 
 
 
-		
+
 
 
 
@@ -91,38 +93,38 @@ class outputlog(tk.Tk):
 
 		frameTime=tk.Frame(self,background="Blue")
 		frameTime.grid(row=0,column=1,sticky="e"+"n"+"s"+"w")
-		lablecomputetime=tk.Label(frameTime,text="time")
-		lablecomputetime.grid(row=0,column=0)
+		self.lablecomputetime=tk.Label(frameTime,text="time")
+		self.lablecomputetime.grid(row=0,column=0)
 
 
 		
-		frameLoginRT = tk.Frame(self ,background = 'green')
-		frameLoginRT.grid(row=1,column=1,sticky="e"+"n"+"s"+"w")
+		self.frameLoginRT = tk.Frame(self ,background = 'green')
+		self.frameLoginRT.grid(row=1,column=1,sticky="e"+"n"+"s"+"w")
 	
-		labelnamebrokeid=tk.Label(frameLoginRT, text="Broke ID")
+		labelnamebrokeid=tk.Label(self.frameLoginRT, text="Broke ID")
 		labelnamebrokeid.grid(row=0,column=0)
-		self.enterbrokeid=tk.Entry(frameLoginRT,textvariable=broketxt)
+		self.enterbrokeid=tk.Entry(self.frameLoginRT,textvariable=broketxt)
 		self.enterbrokeid.grid(row=0,column=1)      
 
 
 
 
-		labelnamelogin=tk.Label(frameLoginRT, text="Login ID")
+		labelnamelogin=tk.Label(self.frameLoginRT, text="Login ID")
 		labelnamelogin.grid(row=1,column=0)
-		self.enterloginid=tk.Entry(frameLoginRT,textvariable=usertxt)
+		self.enterloginid=tk.Entry(self.frameLoginRT,textvariable=usertxt)
 		self.enterloginid.grid(row=1,column=1)
 
-		labelnamepassword=tk.Label(frameLoginRT, text="Password")
+		labelnamepassword=tk.Label(self.frameLoginRT, text="Password")
 		labelnamepassword.grid(row=2,column=0)
-		self.enterpassword=tk.Entry(frameLoginRT,show="*",textvariable=passtxt)
+		self.enterpassword=tk.Entry(self.frameLoginRT,show="*",textvariable=passtxt)
 		self.enterpassword.grid(row=2,column=1)
 
-		labelpinpassword=tk.Label(frameLoginRT, text="PIN")
+		labelpinpassword=tk.Label(self.frameLoginRT, text="PIN")
 		labelpinpassword.grid(row=3,column=0)
-		enterpin=tk.Entry(frameLoginRT,show="*",textvariable=stockpin)
+		enterpin=tk.Entry(self.frameLoginRT,show="*",textvariable=stockpin)
 		enterpin.grid(row=3,column=1)
 
-		self.btnLoginRT=tk.Button(frameLoginRT,text="Start Login RT",command=self.executeLogin)
+		self.btnLoginRT=tk.Button(self.frameLoginRT,text="Start Login RT",command=self.executeLogin)
 		self.btnLoginRT.grid(row=3,column=2 )
 
 
@@ -276,6 +278,23 @@ class outputlog(tk.Tk):
 		
 		# self.myvarasso["5.00"]["order"].set("buy")
 		self.txtout("!!! Welcome , Please login !!!")
+		self.tkclock()
+
+	def tkclock(self):
+		
+		# get the current local time from the PC
+		self.time2 = time.strftime('%H:%M:%S')
+		# if time string has changed, update it
+
+		# if self.time2 != time1:
+			# time1 = self.time2
+		self.lablecomputetime.config(text=self.time2)
+		
+
+		# calls itself every 200 milliseconds
+		# to update the time display as needed
+		# could use >200 ms, but display gets jerky
+		self.lablecomputetime.after(200, self.tkclock)
 
 	def executeSave(self):
 		print("saveAllvalue")
