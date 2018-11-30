@@ -154,8 +154,10 @@ class packselenium():
 		elem.send_keys(Keys.RETURN)
 
 
-		myclick=driver.find_elements_by_xpath(self.xpathreturn("xpathrealtime"))[0]
-		myclick.click()
+		element = wait.until(EC.presence_of_element_located((By.XPATH, self.xpathreturn("xpathrealtime"))))
+
+		# myclick=driver.find_elements_by_xpath(self.xpathreturn("xpathrealtime"))
+		element.click()
 
 
 		# driver.switch_to_alert()
