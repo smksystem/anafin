@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^dashboard/',views.home,name='home'),
     url(r'^main/',views.mainpage,name='main'),
     url(r'^dummy/',dummyviews.dummypage,name='dummy'),
+    url(r'^runlogic/',dummyviews.runlogic,name='runlogic'),
     url(r'^dummysuccess/',dummyviews.dummysuccess,name='dummysuccess'),
     url(r'^dummyrt/',dummyviews.dummyrt,name='dummyrt'),
 

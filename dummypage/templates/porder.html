@@ -37,6 +37,26 @@ $(document).ready(function() {
 	// Global.etfSymbols = [];
 	
 	initStreamingLite();
+
+	// alert("ready")
+	var i=4.90;
+	var order=0;
+	var data="data";
+	var intervalID = setInterval(function(){
+		// alert("Interval reached");
+		$.post("http://localhost:8000/runlogic/",order,function(data) {
+			// alert(1)
+		});
+
+		// i+=0.02;
+		// $(".last").html(i.toFixed(2));
+
+		// $(".status0").html("Matched(M)");
+
+	}, 5000);
+
+
+
 });
 
 var allSeries = new Array();

@@ -1763,13 +1763,14 @@ OrderDisplayEq.replace = function(acc, orders) {
 	// alert("OrderDisplayEq.replace");
 	// alert(orders.length);
 	// alert(orders.canCancelled);
+	j=0
 	for(var i=0;i<orders.length;i++) {
 		// alert("loop length");
-
+		
 		var order = orders[i];
 		// alert(order.side)
 		// alert(order)
-
+		// alert(i)
 		tr += "<tr class='" + (order.side=="B"?"b":"s") + "'>";
 		tr += "<td class='cancelBox'>" + (order.canCancelled?"<input type='checkbox' value='" + i + "' />":"&nbsp;") + "</td>";
 		tr += "<td class='orderNo'>" + order.orderNo + "</td>";
@@ -1781,11 +1782,14 @@ OrderDisplayEq.replace = function(acc, orders) {
 		tr += "<td class='matchedVol'>" + order.matchedVol + "</td>";
 		tr += "<td class='balanceVol'>" + order.balanceVol + "</td>";
 		tr += "<td class='cancelledVol'>" + order.cancelledVol + "</td>";
-		tr += "<td class='status'>" + order.status + "</td>";
+		tr += "<td class='status"+ i + "'>" + order.status + "</td>";
 		tr += "</tr>";
+		// j=j+1
 	}
 	// alert(tr);
 	$('table#orderBodyEq').html(tr);
+	// alert("finish refresh")
+
 };
 OrderDisplayEq.styleOrders = function() {
 	var tr = $('table#orderBodyEq tr');

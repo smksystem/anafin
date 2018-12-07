@@ -18,6 +18,25 @@ def dummysuccess(request):
 	return render(request,template,context)
 
 @csrf_exempt
+def runlogic(request):
+	print ("Running logic")
+	# response="ok"
+	
+	postfile=open("stockpost.txt","r")
+		# postdata=dict(request.POST)
+		# for i in postdata:
+			# postarray=json.loads(i)
+			# print (postarray[0])
+
+
+	test= postfile.readlines()
+	print(test)
+	for line in test:
+		print (line)
+
+	postfile.close()
+	response=""
+	return HttpResponse(response)
 def dummyrt(request):
 
 	print("dummyrt")
