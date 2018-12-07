@@ -1782,7 +1782,7 @@ OrderDisplayEq.replace = function(acc, orders) {
 		tr += "<td class='matchedVol'>" + order.matchedVol + "</td>";
 		tr += "<td class='balanceVol'>" + order.balanceVol + "</td>";
 		tr += "<td class='cancelledVol'>" + order.cancelledVol + "</td>";
-		tr += "<td class='status"+ i + "'>" + order.status + "</td>";
+		tr += "<td class='status'>" + order.status + "</td>";
 		tr += "</tr>";
 		// j=j+1
 	}

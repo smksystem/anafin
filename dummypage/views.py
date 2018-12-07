@@ -37,6 +37,7 @@ def runlogic(request):
 	postfile.close()
 	response=""
 	return HttpResponse(response)
+@csrf_exempt
 def dummyrt(request):
 
 	print("dummyrt")
