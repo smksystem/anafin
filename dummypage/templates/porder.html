@@ -41,11 +41,12 @@ $(document).ready(function() {
 	// alert("ready")
 	var i=4.90;
 	var orderid=0;
+	// var orderids={};
 	var data="data";
 
 	var intervalID = setInterval(function(){
 		// alert("Interval reached");
-		$.post("http://localhost:8000/runlogic/",orderid,function(data) {
+		$.post("http://localhost:8000/runlogic/",{"data":orderid},function(data) {
 			// alert(1)
 		});
 		// alert(orderid);
@@ -53,7 +54,7 @@ $(document).ready(function() {
 			clearInterval(intervalID);
 		};
 		orderid=orderid+1;
-
+		// orderids=orderids+{"dataid":orderid}
 	// 	// i+=0.02;
 	// 	// $(".last").html(i.toFixed(2));
 	// 	// $(".status0").html("Matched(M)");

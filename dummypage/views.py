@@ -32,12 +32,19 @@ def writedatatofile(writedata):
 def runlogic(request):
 	print ("-------Running logic--------")
 	# response="ok"
-	
+	# print(request)
+	mytest=dict(request.POST)
+	# print(mytest)
+	numberid=mytest["data"].pop()
+	# a=dict(request.POST)
+
+	# print(a)
+
 	postfile=open("stockpost.txt","r+")
 	
 	test= postfile.readlines()
 
-	tempwrite=[]
+	tempwrite=[]	
 
 	for line in test:
 		# print ("each line of line views.py line 38")
@@ -47,8 +54,13 @@ def runlogic(request):
 		tempwrite.append(mydic)
 
 	if (len(tempwrite)!= 0):
-		tempwrite[-1]["status"]="Matched(M)"  # else False
+		if numberid=='0':
 
+			tempwrite[-1]["status"]="Matched(M)"  # else False
+		if numberid=='1':
+			tempwrite[-1]["status"]="Matched(M)2"  # else False
+		if numberid=='2':
+			tempwrite[-1]["status"]="Matched(M)3"  # else False
 	postfile.truncate(0)
 	postfile.close()
 
