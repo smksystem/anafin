@@ -17,25 +17,57 @@ def dummysuccess(request):
 	template="dummysuccess.html"
 	return render(request,template,context)
 
+def writedatatofile(writedata):
+	print(writedata)
+	postfile=open("stockpost.txt",'a')
+	postdata=dict(writedata)
+	for i in postdata:
+		postarray=json.loads(i)
+		print (postarray[0])
+		postfile.write(json.dumps(postarray[0])+"\n")
+	postfile.close()
+
+
 @csrf_exempt
 def runlogic(request):
-	print ("Running logic")
+	print ("-------Running logic--------")
 	# response="ok"
 	
-	postfile=open("stockpost.txt","r")
-		# postdata=dict(request.POST)
-		# for i in postdata:
-			# postarray=json.loads(i)
-			# print (postarray[0])
-
-
+	postfile=open("stockpost.txt","r+")
+	
 	test= postfile.readlines()
-	print(test)
-	for line in test:
-		print (line)
 
+	tempwrite=[]
+
+	for line in test:
+		# print ("each line of line views.py line 38")
+		mydic=json.loads(line)
+		# mydic ["status"]="matched(S)"
+		# print( mydic ["status"])
+		tempwrite.append(mydic)
+
+	if (len(tempwrite)!= 0):
+		tempwrite[-1]["status"]="Matched(M)"  # else False
+
+	postfile.truncate(0)
 	postfile.close()
+
+	# open('stockpost.txt', 'w').close()
+
+
+	outfile=open("stockpost.txt",'a')
+	for i in tempwrite:
+		# print (postarray[0])
+		outfile.write(json.dumps(i)+"\n")
+	outfile.close()
+
+
+
 	response=""
+
+
+
+
 	return HttpResponse(response)
 @csrf_exempt
 def dummyrt(request):
@@ -47,13 +79,9 @@ def dummyrt(request):
 		posttype=gettype[g][0]
 
 	if request.method == "POST":
-		postfile=open("stockpost.txt",'a')
-		postdata=dict(request.POST)
-		for i in postdata:
-			postarray=json.loads(i)
-			print (postarray[0])
-			postfile.write(json.dumps(postarray[0])+"\n")
-		postfile.close()
+		print(request.POST)
+		writedatatofile(request.POST)
+
 
 		result="okokokokokokokok"
 		data="test"	
