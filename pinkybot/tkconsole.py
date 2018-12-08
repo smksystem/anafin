@@ -14,6 +14,7 @@ class outputlog(tk.Tk):
 		
 
 		tk.Tk.__init__(self)
+		
 		self.mybot=pinkybot(plugins=[fivesteps()])
 		# self.mybot=pinkybot(plugins=[onestep()])
 
@@ -331,36 +332,7 @@ class outputlog(tk.Tk):
 	def setparameter(self):
 
 		# print(self.mybot)
-		self.mybot.setparameter(self.configval) # set default parameter for each plugins.
-
-		# print("def startcalculate here tkconsole.py line 359")
-
-		# print(self.configval["initinvest"].get())
-		
-
-
-
-
-
-		print ("Initial Invest ====>>" + str(initinvest))
-		print ("Volume Step =====>>" + str(volumestep))
-		print ("Profit Step ====>>" + str(profitstep))
-		print ("Top Value Range ====>>" + str(topvaluerange))
-		print ("Start Value Buy ====>>" + str(startvaluebuy))
-		print ("Floor Value Range ====>>" + str(floorvaluerange))
-		print ("Total Cost Buy ====>>" + str(runcostbuy))
-		print ("Total Volume Buy =======>>" + str(runvolumebuy))
-		print ("Remain Invest Cost =========>>" + str(runinvest))
-
-		self.txtout("Set Invest = " + self.configval["initinvest"].get() ,"yellow","gray")
-		self.txtout("Set Volume Step = " + self.configval["volumestep"].get() ,"yellow","gray")
-		self.txtout("Set Profit Step = " + self.configval["profitstep"].get() ,"yellow","gray")
-		self.txtout("Set Top Value Range = " + self.configval["topvaluerange"].get() ,"yellow","gray")
-		self.txtout("Set Start Value Buy = " + self.configval["startvaluebuy"].get() ,"yellow","gray")
-		self.txtout("Set Floor Value Range = " + self.configval["floorvaluerange"].get() ,"yellow","gray")
-		self.txtout("Set Total Price to Pay = " + self.configval["totalcostbuy"].get())
-		self.txtout("Set Total Volume = " + self.configval["totalvolumebuy"].get(),"white","peru")
-		self.txtout("Remain Invest Cost = " + self.configval["remaininvest"].get())
+		self.mybot.setparameter(self.configval,self.labeldisplay,self.txtout) # set default parameter for each plugins.
 
 		return (0)
 

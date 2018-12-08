@@ -16,15 +16,15 @@ class pinkybot(packselenium):
 	 #    self.myplugins = plugins
 	 #    print (self.myplugins)
 
-	def setparameter(self,params):
-		self.myplugins.setparameter(params)
+	def setparameter(self,params,labeldisplay,textout):
+		self.myplugins.setparameter(params,labeldisplay,textout)
 
 	def __init__(self, *, plugins: list=list()):
 		# pass
 		# self.default_modules = [InternalPrinter()]
 		self.myplugins = plugins[0]
 
-		print(self.myplugins)
+		# print(self.myplugins)
 
 		qorder = Queue() # To send Order request to Runtime
 		qvalchange = Queue() # To monitor value change value and refresh to GUI.
