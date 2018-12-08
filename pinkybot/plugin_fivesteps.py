@@ -4,25 +4,32 @@ class fivesteps():
 		
 		initinvest=20000
 		volumestep	=100
-
+		profitstep=2
+		topvaluerange=4.96
+		startvaluebuy=4.88
+		floorvaluerange=4.78
+		stopvaluerange=4.84
 		conf_params["initinvest"].set(str(initinvest))
 		conf_params["volumestep"].set(str(volumestep))
 
-		conf_params["profitstep"].set("2")
-		conf_params["topvaluerange"].set("4.96")
-		conf_params["startvaluebuy"].set("4.88")
-		conf_params["floorvaluerange"].set("4.78")
+		conf_params["profitstep"].set(str(profitstep))
 
-		conf_params["stopvaluerange"].set("4.84")	# stop loss not to buy more	
+		conf_params["topvaluerange"].set(str(topvaluerange))
+
+		conf_params["startvaluebuy"].set(str(startvaluebuy))
+		conf_params["floorvaluerange"].set(str(floorvaluerange))
+
+		conf_params["stopvaluerange"].set(str(stopvaluerange))	# stop loss not to buy more	
+		
 		# conf_params["volumestep"].set("100")
 		# conf_params["volumestep"].set("100")
 
 		# initinvest=int(self.configval["initinvest"].get()) delete this.
 		# volumestep=int(self.configval["volumestep"].get())
-
-
 		# profitstep=int(self.configval["profitstep"].get())
+
 		# topvaluerange=float(self.configval["topvaluerange"].get())
+
 		# floorvaluerange=float(self.configval["floorvaluerange"].get())
 
 		# startvaluebuy=float(self.configval["startvaluebuy"].get())
