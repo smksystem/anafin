@@ -6,13 +6,20 @@ import time
 
 from pinkybot.monitor import pinkybot
 from pinkybot.packsel_model import PackSelModel
+from pinkybot.plugin_fivesteps import fivesteps
+from pinkybot.plugin_onestep import onestep
 class outputlog(tk.Tk):
 	def __init__(self):
 
 		
 
 		tk.Tk.__init__(self)
-		self.mybot=pinkybot()
+		self.mybot=pinkybot(plugins=[fivesteps()])
+		# self.mybot=pinkybot(plugins=[onestep()])
+
+
+
+
 		self.title("Output Log")
 		# self.resizable(0,0)
 		self.geometry('780x620+20+20')
@@ -32,13 +39,13 @@ class outputlog(tk.Tk):
 						
 						]
 		
-		initinvest=tk.StringVar(value="10000")
-		volumestep=tk.StringVar(value="100")
-		profitstep=tk.StringVar(value="2")
-		topvaluerange=tk.StringVar(value="4.98")
-		floorvaluerange=tk.StringVar(value="4.60")
-		startvaluebuy=tk.StringVar(value="4.90")
-		# startvolumebuy=tk.StringVar(value="0")   # from calculate range.
+		initinvest=tk.StringVar(value="0")
+		volumestep=tk.StringVar(value="0")
+		profitstep=tk.StringVar(value="0")
+		topvaluerange=tk.StringVar(value="0")
+		floorvaluerange=tk.StringVar(value="0")
+		startvaluebuy=tk.StringVar(value="0")
+
 		stopvaluerange=tk.StringVar(value="0.00")
 		commonstep=tk.StringVar(value="0.00")  # step from range calculation
 		totalcostbuy=tk.StringVar(value="0000000000")
@@ -322,94 +329,18 @@ class outputlog(tk.Tk):
 
 
 	def setparameter(self):
-		print("def startcalculate here tkconsole.py line 359")
 
-		print(self.configval["initinvest"].get())
-		i=0
+		# print(self.mybot)
+		self.mybot.setparameter(self.configval) # set default parameter for each plugins.
 
+		# print("def startcalculate here tkconsole.py line 359")
 
-		initinvest=int(self.configval["initinvest"].get())
-		volumestep=int(self.configval["volumestep"].get())
-		profitstep=int(self.configval["profitstep"].get())
-		topvaluerange=float(self.configval["topvaluerange"].get())
-		floorvaluerange=float(self.configval["floorvaluerange"].get())
-
-		startvaluebuy=float(self.configval["startvaluebuy"].get())
-		commonvaluestep=float(self.configval["commonstep"].get())
-
-		runvalue=float(startvaluebuy) # change text to numbering.
-		stopvaluerange=float(topvaluerange)
-		commonvaluestep=float(commonvaluestep)
-
-		runinvest=initinvest
+		# print(self.configval["initinvest"].get())
+		
 
 
-		runcostbuy=0 #### purpose variable to calculate in below.
-		runvolumebuy=0
-
-		while (runvalue<=stopvaluerange):				
-				
-			if runinvest > (runvalue*volumestep): #### check not to give -294, -xxx
-
-				print("run value range = " + str(runvalue))
-				# stepcost=round((runvalue*volumestep),2)
-
-				##############################################################################
-				###### Check padding to avoid key not found with only "4.0" not "4.00" for label
-				##############################################################################
-				chkpad=str(runvalue).split(".") 
-
-				if len(chkpad[1])==1:
-					tempval=chkpad[1]+"0"
-					valuelabel=chkpad[0]+"." +tempval
-
-				else:
-					valuelabel=str(runvalue)
-				self.labeldisplay[valuelabel][valuelabel].configure(background="lightpink")
-
-				### skip for first phase
-
-				# for repeatidx,label in enumerate(self.labeldisplay[valuelabel]):
-
-				# 	# print(repeatidx,label,valuelabel)
-				# 	if (label==valuelabel):
-				# 		# print(repeatidx,self.labeldisplay[valuelabel][repeatidx]["orderid"])
-				# 		self.labeldisplay[valuelabel][repeatidx]["orderid"].configure(background="cyan")
-				# 		self.labeldisplay[valuelabel][repeatidx]["startordertime"].configure(background="yellowgreen")
-				# 		self.labeldisplay[valuelabel][repeatidx]["matchordertime"].configure(background="lime")
-				# 		self.labeldisplay[valuelabel][repeatidx]["matchcomplete"].configure(background="tomato")
-				# 		self.labeldisplay[valuelabel][repeatidx]["volumn"].configure(background="peru")
-				# 		self.labeldisplay[valuelabel][repeatidx]["orderside"].configure(background="plum")
-				# 		self.labeldisplay[valuelabel][repeatidx]["state"].configure(background="gold")
-				# 		self.labeldisplay[valuelabel][repeatidx]["targetvalue"].configure(background="orchid")
-				# 		self.labeldisplay[valuelabel][repeatidx]["profit"].configure(background="dodgerblue")
 
 
-				##############################################################################
-
-				runcost=runvalue*volumestep
-				runcostbuy +=runcost ### accume initial cost value to buy
-				print("initial cost to buy =" , str(runcostbuy))
-				
-				runvolumebuy+=volumestep
-
-				
-				runvalue+=commonvaluestep
-				runvalue=round(runvalue,2)
-			
-
-				runinvest -=runcost #### resul is 293.99999999999999994
-				runinvest=round(runinvest,2)
-				print (runinvest)
-
-			elif runinvest < (runvalue*volumestep):
-				print ("run invest is not enough break to exit tkconsole.py line 435")
-				break
-
-
-		self.configval["totalcostbuy"].set(runcostbuy)
-		self.configval["totalvolumebuy"].set(runvolumebuy)
-		self.configval["remaininvest"].set(runinvest)
 
 		print ("Initial Invest ====>>" + str(initinvest))
 		print ("Volume Step =====>>" + str(volumestep))

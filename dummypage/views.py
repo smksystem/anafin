@@ -56,11 +56,11 @@ def runlogic(request):
 	if (len(tempwrite)!= 0):
 		if numberid=='0':
 
-			tempwrite[-1]["status"]="Matched(M)"  # else False
+			tempwrite[-1]["status"]="Pending(S)"  # else False
 		if numberid=='1':
-			tempwrite[-1]["status"]="Matched(M)2"  # else False
+			tempwrite[-1]["status"]="Open(O)"  # else False
 		if numberid=='2':
-			tempwrite[-1]["status"]="Matched(M)3"  # else False
+			tempwrite[-1]["status"]="Matched(M)"  # else False
 	postfile.truncate(0)
 	postfile.close()
 

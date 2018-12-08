@@ -9,135 +9,148 @@ import queue
 from multiprocessing import Queue
 
 class pinkybot(packselenium):
-    """docstring for firstlogin"""
-    def __init__(self):
-        # pass
+	"""docstring for firstlogin"""
 
-        qorder = Queue() # To send Order request to Runtime
-        qvalchange = Queue() # To monitor value change value and refresh to GUI.
-        qrefresh = Queue()
-        # qtkuprefresh=Queue() # To update tkinter after update refresh into database.
-        # qdatarefresh=Queue() # Unuseable since missing qeue To send refresh table between GUI and Refresh button.
-        # qdb=Queue()
-        # xdebug or xlive
-        self.mycollectqueues={"qorder":qorder,
-                            "qvalchange":qvalchange,
-                            "qrefresh":qrefresh, # to decrease complexsity of Queue from order.
-                            # "qtkuprefresh":qtkuprefresh,
-                            # "qdatarefresh":qdatarefresh,
+	 # def __init__(self, *, plugins: list=list()):
+	 #    self.internal_modules = [InternalPrinter()]
+	 #    self.myplugins = plugins
+	 #    print (self.myplugins)
 
-        }
-        # print(self.mycollectqueues["qorder"])
+	def setparameter(self,params):
+		self.myplugins.setparameter(params)
 
-        super().__init__("xdebug") # configure xdebug or xlive
+	def __init__(self, *, plugins: list=list()):
+		# pass
+		# self.default_modules = [InternalPrinter()]
+		self.myplugins = plugins[0]
 
+		print(self.myplugins)
 
-    def myorder(self,orderside,configparams):
-        if orderside=="buybyvalue":
+		qorder = Queue() # To send Order request to Runtime
+		qvalchange = Queue() # To monitor value change value and refresh to GUI.
+		qrefresh = Queue()
+		# qtkuprefresh=Queue() # To update tkinter after update refresh into database.
+		# qdatarefresh=Queue() # Unuseable since missing qeue To send refresh table between GUI and Refresh button.
+		# qdb=Queue()
+		# xdebug or xlive
+		self.mycollectqueues={"qorder":qorder,
+							"qvalchange":qvalchange,
+							"qrefresh":qrefresh, # to decrease complexsity of Queue from order.
+							# "qtkuprefresh":qtkuprefresh,
+							# "qdatarefresh":qdatarefresh,
 
-            print (configparams)
-            buyparams={ 
-                    "order":"buy",
-                    "stockname":configparams["stockname"].get(),
-                    "startvalue":configparams["startvaluebuy"].get(),
-                    "startvolume":configparams["totalvolumebuy"].get(),
-                    "stockpin": configparams["stockpin"].get(),
+		}
+		# print(self.mycollectqueues["qorder"])
 
-            }
-            print ("Start:buy buy buy buy buy monitor.py line 47")
-
-            self.botbuyorder(buyparams)
-            
-            print ("END:buy buy buy buy buy monitor.py line 51")
-
-        elif orderside=="sellbyvalue":
-            print ("sell sell")
-    # for several type of orders
-    def botbuyorder(self,buyparams): 
-        print("botbuyorder buy now")
-        # self.qorder.put(buyparams)
-        self.mycollectqueues["qorder"].put(buyparams)
-
-    def botsellorder(self):
-        print ("sell order")
-    def botrtrefresh(self):
-        print ("RT Refresh order monitory.py line 60")
-        ## get command from click button ,assign to be full refresh for all table
+		super().__init__("xdebug") # configure xdebug or xlive
 
 
-        # line below for real all refresh set parameter "refreshtype to be all or partial"
-        self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshdb","refreshtype":"all"}) 
+	def myorder(self,orderside,configparams):
+		if orderside=="buybyvalue":
 
-        # self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshdb","refreshtype":"partial"}) 
+			print (configparams)
+			buyparams={ 
+					"order":"buy",
+					"stockname":configparams["stockname"].get(),
+					"startvalue":configparams["startvaluebuy"].get(),
+					"startvolume":configparams["totalvolumebuy"].get(),
+					"stockpin": configparams["stockpin"].get(),
 
-    def threadlogin(self,loginSet):
-        print ("thread login was called")
-        
+			}
+			print ("Start:buy buy buy buy buy monitor.py line 47")
 
-        # from pinkybot.monitor import pinkybot
-        LoginParams={
-          "mybrokeId":loginSet[0].get(),
-          "myuser":loginSet[1].get(),
-          "mypassword":loginSet[2].get(),
-          }
-        print (LoginParams)
-        # self.mypinkylogin(LoginParams)
-        
-        mthread=MyThread(self.mycollectqueues["qvalchange"],self.mypinkylogin,args=(LoginParams,))
-        mthread.start()
-        # mthread.join()
+			self.botbuyorder(buyparams)
+			
+			print ("END:buy buy buy buy buy monitor.py line 51")
+
+		elif orderside=="sellbyvalue":
+			print ("sell sell")
+	# for several type of orders
+	def botbuyorder(self,buyparams): 
+		print("botbuyorder buy now")
+		# self.qorder.put(buyparams)
+		self.mycollectqueues["qorder"].put(buyparams)
+
+	def botsellorder(self):
+		print ("sell order")
+	def botrtrefresh(self):
+		print ("RT Refresh order monitory.py line 60")
+		## get command from click button ,assign to be full refresh for all table
+
+
+		# line below for real all refresh set parameter "refreshtype to be all or partial"
+		self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshdb","refreshtype":"all"}) 
+
+		# self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshdb","refreshtype":"partial"}) 
+
+	def threadlogin(self,loginSet):
+		print ("thread login was called")
+		
+
+		# from pinkybot.monitor import pinkybot
+		LoginParams={
+		  "mybrokeId":loginSet[0].get(),
+		  "myuser":loginSet[1].get(),
+		  "mypassword":loginSet[2].get(),
+		  }
+		print (LoginParams)
+		# self.mypinkylogin(LoginParams)
+		
+		mthread=MyThread(self.mycollectqueues["qvalchange"],self.mypinkylogin,args=(LoginParams,))
+		mthread.start()
+		# mthread.join()
 
    
 
-    def mypinkylogin(self,loginParams,qvalchange):
-        # self.monitoring("test")
-        # print (username)
-        print (loginParams)
-        # exit()
+	def mypinkylogin(self,loginParams,qvalchange):
+		# self.monitoring("test")
+		# print (username)
+		print (loginParams)
+		# exit()
 
-        handlewin=self.login(loginParams,self.mycollectqueues["qvalchange"],)
-        # buysellorder.orderbuy(handlewin)
-        
+		handlewin=self.login(loginParams,self.mycollectqueues["qvalchange"],)
+		# buysellorder.orderbuy(handlewin)
+		
 
-        # test here to pass thrue the handlewin
+		# test here to pass thrue the handlewin
 
 
-        # exit()
-        # handlewin="test"
-        timestamp = datetime.now()
-        print("login is called")
-        
-        # Monitor loop here
+		# exit()
+		# handlewin="test"
+		timestamp = datetime.now()
+		print("login is called")
+		
+		# Monitor loop here
 
-        while True:
-            i=0
-            self.monitoring(handlewin,str(i))
+		while True:
+			i=0
+			self.monitoring(handlewin,str(i))
 
 
 class MyThread(threading.Thread):
-    def __init__(self, queue,fnrun, args=(), kwargs=None):
-        threading.Thread.__init__(self, args=(), kwargs=None)
-        self.queue = queue
-        self.daemon = True
-        print(args)
-        self.parameter=args[0]
-        self.receive_messages=args[0]
-        self.fnrun=fnrun
+	def __init__(self, queue,fnrun, args=(), kwargs=None):
+		threading.Thread.__init__(self, args=(), kwargs=None)
+		self.queue = queue
+		self.daemon = True
+		print(args)
+		self.parameter=args[0]
+		self.receive_messages=args[0]
+		self.fnrun=fnrun
 
-    def run(self):
-        print("start run")
-        print (threading.currentThread().getName(),self.receive_messages)
+	def run(self):
+		print("start run")
+		print (threading.currentThread().getName(),self.receive_messages)
 
-        # self.queue.put("hello1",block=True)
-        # self.queue.put("hello2",block=True)
-        # self.queue.put("hello3",block=True)
-        
-        self.fnrun(self.parameter,self.queue)
+		# self.queue.put("hello1",block=True)
+		# self.queue.put("hello2",block=True)
+		# self.queue.put("hello3",block=True)
+		
+		self.fnrun(self.parameter,self.queue)
 
-        val = self.queue.get()
-        # self.do_thing_with_message(val)
+		val = self.queue.get()
+		# self.do_thing_with_message(val)
 
-    def do_thing_with_message(self, message):
-        if self.receive_messages:
-            with print_lock:
-                print (threading.currentThread().getName(), "Received {}".format(message))
+	def do_thing_with_message(self, message):
+		if self.receive_messages:
+			with print_lock:
+				print (threading.currentThread().getName(), "Received {}".format(message))
