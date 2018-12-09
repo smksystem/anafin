@@ -316,13 +316,15 @@ class packselenium():
 
 			orderparams=self.mycollectqueues["qorder"].get()
 			if orderparams["order"]=="buy":
-				self.order(driver,orderparams)
-
+				# self.order(driver,orderparams)
+				orderparams["driver"]=driver
+				self.myplugins.order(orderparams,self.order)
 				
 
-	def order(self,driver,orderparams):
+	def order(self,orderparams):
 		print (orderparams)
 		# stockvalue = driver.find_elements_by_xpath(self.xpathreturn("xbuyradio"))[0].text
+		driver=orderparams["driver"]
 		orderside=orderparams["order"]
 		if orderside=="buy":
 			print("order buy now")

@@ -150,3 +150,9 @@ class fivesteps():
 
 	def process(self):
 		print("Hello World")
+	def order(self,params,orderfn):
+
+		orderfn(params)
+		orderfn(params)
+		
+		print("access order plugin_fivesteps.py line 154")
