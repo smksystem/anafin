@@ -150,9 +150,15 @@ class fivesteps():
 
 	def process(self):
 		print("Hello World")
+
+
 	def order(self,params,orderfn):
 
-		orderfn(params)
-		orderfn(params)
-		
+
 		print("access order plugin_fivesteps.py line 154")
+
+		if params["buymode"]=="manualbuy":
+			print("manual buy mode plugin_fivesteps.py line 159")
+			orderfn(params)
+		else:
+			pass	

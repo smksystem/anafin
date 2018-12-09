@@ -51,10 +51,12 @@ class pinkybot(packselenium):
 			print (configparams)
 			buyparams={ 
 					"order":"buy",
+					"buymode":"manualbuy",
 					"stockname":configparams["stockname"].get(),
 					"startvalue":configparams["startvaluebuy"].get(),
 					"startvolume":configparams["totalvolumebuy"].get(),
 					"stockpin": configparams["stockpin"].get(),
+
 
 			}
 			print ("Start:buy buy buy buy buy monitor.py line 47")

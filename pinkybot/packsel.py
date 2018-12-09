@@ -315,10 +315,10 @@ class packselenium():
 		if not self.mycollectqueues["qorder"].empty(): 
 
 			orderparams=self.mycollectqueues["qorder"].get()
-			if orderparams["order"]=="buy":
+			# if orderparams["order"]=="buy":
 				# self.order(driver,orderparams)
-				orderparams["driver"]=driver
-				self.myplugins.order(orderparams,self.order)
+			orderparams["driver"]=driver
+			self.myplugins.order(orderparams,self.order)
 				
 
 	def order(self,orderparams):
