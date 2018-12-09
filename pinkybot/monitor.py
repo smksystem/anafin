@@ -19,6 +19,9 @@ class pinkybot(packselenium):
 	def setparameter(self,params,labeldisplay,textout):
 		self.myplugins.setparameter(params,labeldisplay,textout)
 
+	def checkparams(self,params):
+		self.myplugins.checkparams(params)
+
 	def __init__(self, *, plugins: list=list()):
 		# pass
 		# self.default_modules = [InternalPrinter()]
@@ -51,7 +54,7 @@ class pinkybot(packselenium):
 			print (configparams)
 			buyparams={ 
 					"order":"buy",
-					"buymode":"manualbuy",
+					"buycount":"1buy",
 					"stockname":configparams["stockname"].get(),
 					"startvalue":configparams["startvaluebuy"].get(),
 					"startvolume":configparams["totalvolumebuy"].get(),
