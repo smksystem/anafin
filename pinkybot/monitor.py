@@ -49,12 +49,12 @@ class pinkybot(packselenium):
 
 
 	def myorder(self,orderside,configparams):
-		if orderside=="buybyvalue":
+		if orderside=="buybyclick":
 
-			print (configparams)
+			# print (configparams)
 			buyparams={ 
+					"ordermode":"buybyclick",
 					"order":"buy",
-					# "buycount":"1buy",
 					"stockname":configparams["stockname"].get(),
 					"startvalue":configparams["startvaluebuy"].get(),
 					"startvolume":configparams["totalvolumebuy"].get(),

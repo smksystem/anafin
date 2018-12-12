@@ -278,7 +278,6 @@ class packselenium():
 			self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshdb",
 												"refreshtype":"partial"}) # continue refresh TKInter
 			self.stockcompare=stockvalue
-			self.myplugins.checkprocess2order("aaaaaaaaaaaa")
 			# print(self.stockdata)
 		
 
@@ -473,6 +472,9 @@ class packselenium():
 		self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk",
 												"doupdatetk":rowupdaterefresh}) # continue refresh TKInter
 			# print (rowupdaterefresh)
+
+		self.myplugins.checkprocess2order(rowupdaterefresh)
+
 		return rowupdaterefresh
 			# print("end for")
 		# print("end of packsel.py")

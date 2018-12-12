@@ -216,10 +216,10 @@ class outputlog(tk.Tk):
 		framePutValue.grid(row=3,column=1,sticky="e"+"n"+"s"+"w")      
 
 
-		btnBuyCommand=tk.Button(framePutValue,text="Buy Now",command=self.buybyvalue, width = 10,height=2)
+		btnBuyCommand=tk.Button(framePutValue,text="Buy Now",command=self.buybyclick, width = 10,height=2)
 		btnBuyCommand.grid(row=0,column=0,sticky="w")
 
-		btnSellCommand=tk.Button(framePutValue,text="Sell Now",command=self.sellbyvalue, width = 10,height=2)
+		btnSellCommand=tk.Button(framePutValue,text="Sell Now",command=self.sellbyclick, width = 10,height=2)
 		btnSellCommand.grid(row=0,column=0,sticky="e")
 
 		btnRefreshCmd=tk.Button(framePutValue,text="Refresh",command=self.rtrefresh, width = 25,height=3)
@@ -313,13 +313,13 @@ class outputlog(tk.Tk):
 	def setvaluebuy(self):
 		pass
 
-	def buybyvalue(self):
+	def buybyclick(self):
 		print("Buy set value")
-		self.mybot.myorder("buybyvalue",self.configval)
+		self.mybot.myorder("buybyclick",self.configval)
 
 		print ("Buy finished ")
 
-	def sellbyvalue(self):
+	def sellbyclick(self):
 		print ("sell set value")	
 
 		# self.mybot.threadorderbuy("test")
