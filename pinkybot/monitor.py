@@ -54,7 +54,7 @@ class pinkybot(packselenium):
 			print (configparams)
 			buyparams={ 
 					"order":"buy",
-					"buycount":"1buy",
+					# "buycount":"1buy",
 					"stockname":configparams["stockname"].get(),
 					"startvalue":configparams["startvaluebuy"].get(),
 					"startvolume":configparams["totalvolumebuy"].get(),
@@ -62,9 +62,11 @@ class pinkybot(packselenium):
 
 
 			}
-			print ("Start:buy buy buy buy buy monitor.py line 47")
+			# print ("Start:buy buy buy buy buy monitor.py line 47")
 
-			self.botbuyorder(buyparams)
+			# self.botbuyorder(buyparams)
+			# print("botbuyorder buy now")
+			self.mycollectqueues["qorder"].put(buyparams)
 			
 			print ("END:buy buy buy buy buy monitor.py line 51")
 

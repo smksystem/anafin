@@ -155,13 +155,14 @@ class fivesteps():
 	def order(self,params,orderfn):
 
 
-		print("access order plugin_fivesteps.py line 154")
+		# print("access order plugin_fivesteps.py line 154")
 
-		if params["buycount"]=="1buy":
-			print("first buy mode plugin_fivesteps.py line 159")
-			orderfn(params)
-		else:
-			pass	
-	def checkparams(self,chk_params):
+		# if params["buycount"]=="1buy":
+		print("first buy mode plugin_fivesteps.py line 161")
+		result_order=orderfn(params)
+		print(result_order)
+		# else:
+			# pass	
+	def checkprocess2order(self,chk_params):
 		print("check params from plugin_fivesteps.py line 166")
 		print(chk_params)
