@@ -162,14 +162,18 @@ class fivesteps():
 		if params["ordermode"]=="buybyclick":
 			print("first buy mode plugin_fivesteps.py line 161")
 			result_order=orderfn(params)
+			print(params)
 			print(result_order)
 			for ordertoconfirm in result_order:
 				self.waitconfirmorder=ordertoconfirm["orderno"]
+
 		# else:
 			# pass	
 	def checkprocess2order(self,chk_params):
 		print("check params from plugin_fivesteps.py line 166")
 		print(chk_params)
 		for chkresult in chk_params:
-			if chkresult["orderno"]==self.waitconfirmorder and chkkresult["status"]=="Matched(M)":
+			if chkresult["orderno"]==self.waitconfirmorder and chkresult["status"]=="Matched(M)":
+
 				print("found match the first order !!!!!!!!!!!!!!!!++++++++")
+				# result_order=orderfn(params)
