@@ -473,7 +473,7 @@ class packselenium():
 												"doupdatetk":rowupdaterefresh}) # continue refresh TKInter
 			# print (rowupdaterefresh)
 
-		self.myplugins.checkprocess2order(rowupdaterefresh)
+		rowupdaterefresh.append(self.myplugins.checkprocess2order(rowupdaterefresh))
 
 		return rowupdaterefresh
 			# print("end for")

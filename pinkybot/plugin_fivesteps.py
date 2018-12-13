@@ -3,7 +3,7 @@ class fivesteps():
 
 	############# 3 parameter to configure value of label display , color of label display and text out 
 	def __init__(self):
-		self.waitconfirmorder=""
+		self.waitconfirmfirstorder=""
 
 	def setparameter(self,conf_params,conf_labeldisplay,conf_textout):
 		print("set parameter of fivestep plugin_fivestep.py line 3")
@@ -165,7 +165,9 @@ class fivesteps():
 			print(params)
 			print(result_order)
 			for ordertoconfirm in result_order:
-				self.waitconfirmorder=ordertoconfirm["orderno"]
+				self.waitconfirmfirstorder=ordertoconfirm["orderno"]
+				print("confirm order plugin_fivesteps.py line 169")
+				print ("------------confirm order to monitor="+ self.waitconfirmfirstorder)
 
 		# else:
 			# pass	
@@ -173,7 +175,8 @@ class fivesteps():
 		print("check params from plugin_fivesteps.py line 166")
 		print(chk_params)
 		for chkresult in chk_params:
-			if chkresult["orderno"]==self.waitconfirmorder and chkresult["status"]=="Matched(M)":
+			if chkresult["orderno"]==self.waitconfirmfirstorder and chkresult["status"]=="Matched(M)":
 
 				print("found match the first order !!!!!!!!!!!!!!!!++++++++")
+				return {"confirmorder":chkresult["orderno"],"status":chkresult["status"]}
 				# result_order=orderfn(params)
