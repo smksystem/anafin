@@ -297,9 +297,14 @@ class packselenium():
 			# # To continue re arrange below.
 			if refreshparams["qrefresh"]=="refreshdb":
 				if refreshparams["refreshtype"]=="all":
-					result_refreshbtn=self.refreshbtn(driver,"all")
+					print("+++++++++++Begin start to refresh all order")
+					result_refreshbtn,result_chkprocess =self.refreshbtn(driver,"all")
+					print(result_refreshbtn)
+					print(result_chkprocess)
+
 				elif refreshparams["refreshtype"]=="partial":
-					result_refreshbtn=self.refreshbtn(driver,"partial")
+
+					result_refreshbtn,result_chkprocess=self.refreshbtn(driver,"partial")
 
 				# self.myplugins.checkparams(result_refreshbtn)	
 				self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk","doupdatetk":result_refreshbtn}) # continue refresh TKInter
@@ -363,9 +368,10 @@ class packselenium():
 
 			# confirm ok then check refresh 
 			print ("=========>>> confirm order to tkinter after order buy packsel.py line 366 ")
-			result_refreshbtn=self.refreshbtn(driver,"partial") # with the update database 
+			result_refreshbtn,result_chkprocess=self.refreshbtn(driver,"partial") # with the update database 
 			print("return result_refreshbtn by buy order packsel.py line 368")
-			
+			print(result_refreshbtn)
+			print(result_chkprocess)
 			
 		elif orderside=="sell":
 			pass
@@ -472,9 +478,12 @@ class packselenium():
 		self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk",
 												"doupdatetk":rowupdaterefresh}) # continue refresh TKInter
 			# print (rowupdaterefresh)
+		result_chk=self.myplugins.checkprocess2order(rowupdaterefresh)
+		# if result_chk	!="NOUPDATE" :
+			# print("check result update !!!! packsel.py line 477")
+			# print(result_chk)
+			# rowupdaterefresh.append(result_chk) 
 
-		rowupdaterefresh.append(self.myplugins.checkprocess2order(rowupdaterefresh))
-
-		return rowupdaterefresh
+		return rowupdaterefresh,result_chk
 			# print("end for")
 		# print("end of packsel.py")

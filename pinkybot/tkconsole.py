@@ -694,7 +694,11 @@ class outputlog(tk.Tk):
 
 				if chkrefresh["qrefresh"]=="refreshtk":
 					print ("<<<<<<<< Print data to do update refresh tkinter here !!!!! tkconsole.py line 757")
+					print(chkrefresh["doupdatetk"])
+					# L=chkrefresh["doupdatetk"]
+					# chkrefresh["doupdatetk"]=list(filter(None.__ne__, chkrefresh["doupdatetk"]))
 					# print(chkrefresh["doupdatetk"])
+					print("finish///....")
 					for rowupdata in chkrefresh["doupdatetk"] :
 						# print("///////////////myvarasso tkconsole.py line 759")
 

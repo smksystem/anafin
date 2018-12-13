@@ -164,6 +164,7 @@ class fivesteps():
 			result_order=orderfn(params)
 			print(params)
 			print(result_order)
+			# chkrefresh["doupdatetk"]=list(filter(None.__ne__, chkrefresh["doupdatetk"]))
 			for ordertoconfirm in result_order:
 				self.waitconfirmfirstorder=ordertoconfirm["orderno"]
 				print("confirm order plugin_fivesteps.py line 169")
@@ -179,4 +180,6 @@ class fivesteps():
 
 				print("found match the first order !!!!!!!!!!!!!!!!++++++++")
 				return {"confirmorder":chkresult["orderno"],"status":chkresult["status"]}
+			else: 
+				return "NOUPDATE"
 				# result_order=orderfn(params)
