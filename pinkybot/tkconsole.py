@@ -680,6 +680,9 @@ class outputlog(tk.Tk):
 
 				if "stockvalue" in tempdict:
 						print ("stock has been updated !!!!!!!!!!!!")
+						params={"ordermode":"buybybot"}
+						self.mybot.myplugins.order(params,self.mybot.order)
+
 						self.txtout("Value Change : " + tempdict["stockvalue"])
 						lblstockvalue=tempdict["stockvalue"] # get value from queue
 						if lblstockvalue in self.labeldisplay:
@@ -689,22 +692,22 @@ class outputlog(tk.Tk):
 						print ("monitor =" + tempdict["stockname"])
 						self.configval["stockname"].set(tempdict["stockname"])
 
+
+
 			if not self.mybot.mycollectqueues["qrefresh"].empty() :
 				chkrefresh=self.mybot.mycollectqueues["qrefresh"].get()
 
 				if chkrefresh["qrefresh"]=="refreshtk":
-					print ("<<<<<<<< Print data to do update refresh tkinter here !!!!! tkconsole.py line 757")
-					print(chkrefresh["doupdatetk"])
+					# print ("<<<<<<<< Print data to do update refresh tkinter here !!!!! tkconsole.py line 757")
+					# print(chkrefresh["doupdatetk"])
+
 					# L=chkrefresh["doupdatetk"]
 					# chkrefresh["doupdatetk"]=list(filter(None.__ne__, chkrefresh["doupdatetk"]))
 					# print(chkrefresh["doupdatetk"])
-					print("finish///....")
+					# print("finish///....")
 					for rowupdata in chkrefresh["doupdatetk"] :
 						# print("///////////////myvarasso tkconsole.py line 759")
-
 						# print(self.myvarasso[rowupdata["price"]])
-
-
 						if len(self.myvarasso[rowupdata["price"]]) == 0:
 
 							repeatidx=len(self.myvarasso[rowupdata["price"]])
@@ -730,7 +733,7 @@ class outputlog(tk.Tk):
 																)
 							elif ignoreadd==True: ### case already existing of order and need to update for parameter of realtime like status.
 
-								print("+++++++need to update partial realtime table tkconsole.py line 790 !!!")
+								# print("+++++++need to update partial realtime table tkconsole.py line 790 !!!")
 								# print(self.myvarasso[rowupdata["price"]])
 								for varparams in self.myvarasso[rowupdata["price"]]:
 									# print("print varparams tkconsole.py line 793")
@@ -755,23 +758,6 @@ class outputlog(tk.Tk):
 				elif chkrefresh["qrefresh"]=="refreshdb":
 					self.mybot.mycollectqueues["qrefresh"].put(chkrefresh)
 
-			# if not self.mybot.mycollectqueues["qorder"].empty() :
-			# 	chkorder=self.mybot.mycollectqueues["qorder"].get()
-			# 	print ("chkorder tkconsole.py line 782")
-			# 	print (chkorder)
-			# 	if chkorder["order"]=="refreshtk":
-			# 		# print (chkorder["doupdate"])
-			# 		# dbtable_array=PackSelModel.tkrefreshdb()
-			# 		# print(dbtable_array)
-
-			# 		print (chkorder["doupdatetk"])
-
-			# 		# self.alreadyputback=False
-			# 	elif chkorder["order"]=="refreshdb":
-			# 		print (">>>>>>>>Put refresh back DB")
-			# 		###### if not refresh tkinter put queue back to refresh at db for thread.
-			# 		chkorder=self.mybot.mycollectqueues["qorder"].put(chkorder)
-			# 		# self.alreadyputback=True
 				
 			# self.output.tag_config("testb", background="white", foreground="red")
 			# self.output.tag_add('testb', 10.0, step)

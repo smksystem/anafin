@@ -370,6 +370,7 @@ class packselenium():
 			print ("=========>>> confirm order to tkinter after order buy packsel.py line 366 ")
 			result_refreshbtn,result_chkprocess=self.refreshbtn(driver,"partial") # with the update database 
 			print("return result_refreshbtn by buy order packsel.py line 368")
+			
 			print(result_refreshbtn)
 			print(result_chkprocess)
 			

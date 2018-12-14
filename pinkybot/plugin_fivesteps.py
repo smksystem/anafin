@@ -4,6 +4,24 @@ class fivesteps():
 	############# 3 parameter to configure value of label display , color of label display and text out 
 	def __init__(self):
 		self.waitconfirmfirstorder=""
+		self.params={ 
+					"ordermode":"",
+					# "order":"buy",
+					# "stockname":configparams["stockname"].get(),
+					# "startvalue":configparams["startvaluebuy"].get(),
+					# "startvolume":configparams["totalvolumebuy"].get(),
+					# "stockpin": configparams["stockpin"].get(),
+
+
+			}
+	def configlogic(self):
+		
+		self.buybyclick={
+						"ordermode":"buybyclick",
+
+						}
+		self.buybybot={}
+		self.sellbybot={}
 
 	def setparameter(self,conf_params,conf_labeldisplay,conf_textout):
 		print("set parameter of fivestep plugin_fivestep.py line 3")
@@ -153,22 +171,26 @@ class fivesteps():
 		print("Hello World")
 
 
-	def order(self,params,orderfn):
+	def order(self,params="",orderfn=""):
 
 
-		# print("access order plugin_fivesteps.py line 154")
+		print("access order process plugin_fivesteps.py line 159 88888888888888888")
 
 		# if params["buycount"]=="1buy":
-		if params["ordermode"]=="buybyclick":
+		self.params=params
+		if self.params["ordermode"]=="buybyclick":
 			print("first buy mode plugin_fivesteps.py line 161")
 			result_order=orderfn(params)
-			print(params)
-			print(result_order)
+			# print(params)
+			# print(result_order)
 			# chkrefresh["doupdatetk"]=list(filter(None.__ne__, chkrefresh["doupdatetk"]))
 			for ordertoconfirm in result_order:
 				self.waitconfirmfirstorder=ordertoconfirm["orderno"]
 				print("confirm order plugin_fivesteps.py line 169")
 				print ("------------confirm order to monitor="+ self.waitconfirmfirstorder)
+				# 
+		elif self.params["ordermode"]=="buybybot":
+			print("start to sell")
 
 		# else:
 			# pass	
@@ -179,6 +201,7 @@ class fivesteps():
 			if chkresult["orderno"]==self.waitconfirmfirstorder and chkresult["status"]=="Matched(M)":
 
 				print("found match the first order !!!!!!!!!!!!!!!!++++++++")
+				self.params["ordermode"]="buybybot"
 				return {"confirmorder":chkresult["orderno"],"status":chkresult["status"]}
 			else: 
 				return "NOUPDATE"
