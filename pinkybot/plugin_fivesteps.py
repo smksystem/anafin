@@ -3,6 +3,7 @@ class fivesteps():
 
 	############# 3 parameter to configure value of label display , color of label display and text out 
 	def __init__(self):
+		print("initialization of plugin_fivestep.py line 6 --------------")
 		self.waitconfirmfirstorder=""
 		self.params={ 
 					"ordermode":"",
@@ -14,6 +15,7 @@ class fivesteps():
 
 
 			}
+			
 	def configlogic(self):
 		
 		self.buybyclick={
