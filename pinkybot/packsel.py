@@ -10,9 +10,9 @@ from django.utils import timezone
 from datetime import datetime
 import time 
 
+# mydriver=0
 class packselenium():
 	"""docstring for packselenium"""
-	global mydriver
 	def __init__(self,mode):
 		self.mode=mode
 		print ("running mode=" + mode)
@@ -222,7 +222,7 @@ class packselenium():
 			self.stockcompare="0.00"
 		# print(self.stockdata)
 		# exit()
-		mydriver=driver
+		self.mydriver=driver
 		return self.stockdata , driver
 
 	def monitoring(self,handlewin,return_login):
@@ -324,14 +324,15 @@ class packselenium():
 			orderparams=self.mycollectqueues["qorder"].get()
 			# if orderparams["order"]=="buy":
 				# self.order(driver,orderparams)
-			orderparams["driver"]=mydriver
+			orderparams["driver"]=self.mydriver
 			self.myplugins.order(orderparams,self.order)
 				
 
 	def order(self,orderparams):
 		print (orderparams)
 		# stockvalue = driver.find_elements_by_xpath(self.xpathreturn("xbuyradio"))[0].text
-		driver=mydriver
+		print(self.mydriver)
+		driver=self.mydriver
 		orderside=orderparams["order"]
 		if orderside=="buy":
 			print("order buy now")

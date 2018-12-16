@@ -53,6 +53,7 @@ class fivesteps():
 		conf_params["stopvaluerange"].set(str(stopvaluerange))	# stop loss not to buy more	
 
 		commonvaluestep=float(conf_params["commonstep"].get())
+		stockname=conf_params["stockname"].get()
 
 		runvalue=startvaluebuy # change text to numbering.
 		stopvaluerange=topvaluerange
@@ -148,6 +149,7 @@ class fivesteps():
 		print ("Total Cost Buy ====>>" + str(runcostbuy))
 		print ("Total Volume Buy =======>>" + str(runvolumebuy))
 		print ("Remain Invest Cost =========>>" + str(runinvest))
+		print("StockName =========>>" + (stockname))
 
 		conf_textout("Set Invest = " + str_initinvest ,"yellow","gray")
 		conf_textout("Set Volume Step = " + str_volumestep ,"yellow","gray")
@@ -158,10 +160,23 @@ class fivesteps():
 		conf_textout("Set Total Price to Pay = " + str_totalcostbuy)
 		conf_textout("Set Total Volume = " + str_totalvolumebuy,"white","peru")
 		conf_textout("Remain Invest Cost = " + str_remaininvest)
+		conf_textout("StockName = " + stockname)
+		
+		# print("Config parameter is following plugin_fivesteps.py line 170")
+		# print(conf_params)
+		self.conf_params={"initinvest":initinvest,
+							"volumestep":volumestep,
+							"profitstep":profitstep,
+							"topvaluerange":topvaluerange,
+							"startvaluebuy":startvaluebuy,
+							"floorvaluerange":floorvaluerange,
+							"totalcostbuy":runcostbuy,
+							"totalvolumebuy":runvolumebuy,
+							"remaininvest":runinvest,
+							"stockname":stockname,
+		}
+		# conf_params
 
-		print("Config parameter is following plugin_fivesteps.py line 170")
-		print(conf_params)
-		self.conf_params=conf_params
 		return self.conf_params
 
 	def process(self):
@@ -177,11 +192,16 @@ class fivesteps():
 		# self.params=params
 		if params["ordermode"]=="buybyclick":
 
+			params["stockname"]=self.conf_params["stockname"]
+			params["startvolume"]=self.conf_params["totalvolumebuy"]
+			params["startvalue"]=self.conf_params["startvaluebuy"]
+			params["stockpin"]=self.conf_params["stockpin"]
 			params["order"]="buy"
 			# self.params[""]
 
 			print("first buy mode plugin_fivesteps.py line 161")
-			result_order=orderfn(self.conf_params)
+
+			result_order=orderfn(params)
 			# print(params)
 			# print(result_order)
 			# chkrefresh["doupdatetk"]=list(filter(None.__ne__, chkrefresh["doupdatetk"]))
