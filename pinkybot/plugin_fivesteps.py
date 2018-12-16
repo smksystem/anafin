@@ -5,17 +5,8 @@ class fivesteps():
 	def __init__(self):
 		print("initialization of plugin_fivestep.py line 6 --------------")
 		self.waitconfirmfirstorder=""
-		self.params={ 
-					"ordermode":"",
-					# "order":"buy",
-					# "stockname":configparams["stockname"].get(),
-					# "startvalue":configparams["startvaluebuy"].get(),
-					# "startvolume":configparams["totalvolumebuy"].get(),
-					# "stockpin": configparams["stockpin"].get(),
+		# self.conf_params={}
 
-
-			}
-			
 	def configlogic(self):
 		
 		self.buybyclick={
@@ -168,6 +159,10 @@ class fivesteps():
 		conf_textout("Set Total Volume = " + str_totalvolumebuy,"white","peru")
 		conf_textout("Remain Invest Cost = " + str_remaininvest)
 
+		print("Config parameter is following plugin_fivesteps.py line 170")
+		print(conf_params)
+		self.conf_params=conf_params
+		return self.conf_params
 
 	def process(self):
 		print("Hello World")
@@ -179,10 +174,14 @@ class fivesteps():
 		print("access order process plugin_fivesteps.py line 159 88888888888888888")
 
 		# if params["buycount"]=="1buy":
-		self.params=params
-		if self.params["ordermode"]=="buybyclick":
+		# self.params=params
+		if params["ordermode"]=="buybyclick":
+
+			params["order"]="buy"
+			# self.params[""]
+
 			print("first buy mode plugin_fivesteps.py line 161")
-			result_order=orderfn(params)
+			result_order=orderfn(self.conf_params)
 			# print(params)
 			# print(result_order)
 			# chkrefresh["doupdatetk"]=list(filter(None.__ne__, chkrefresh["doupdatetk"]))
@@ -191,7 +190,7 @@ class fivesteps():
 				print("confirm order plugin_fivesteps.py line 169")
 				print ("------------confirm order to monitor="+ self.waitconfirmfirstorder)
 				# 
-		elif self.params["ordermode"]=="buybybot":
+		elif params["ordermode"]=="buybybot":
 			print("start to sell")
 
 		# else:
@@ -203,7 +202,7 @@ class fivesteps():
 			if chkresult["orderno"]==self.waitconfirmfirstorder and chkresult["status"]=="Matched(M)":
 
 				print("found match the first order !!!!!!!!!!!!!!!!++++++++")
-				self.params["ordermode"]="buybybot"
+				params["ordermode"]="buybybot"
 				return {"confirmorder":chkresult["orderno"],"status":chkresult["status"]}
 			else: 
 				return "NOUPDATE"

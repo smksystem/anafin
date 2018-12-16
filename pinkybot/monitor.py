@@ -15,7 +15,7 @@ class pinkybot(packselenium):
 	 #    self.internal_modules = [InternalPrinter()]
 	 #    self.myplugins = plugins
 	 #    print (self.myplugins)
-
+	
 	def setparameter(self,params,labeldisplay,textout):
 		self.myplugins.setparameter(params,labeldisplay,textout)
 
@@ -39,8 +39,6 @@ class pinkybot(packselenium):
 		self.mycollectqueues={"qorder":qorder,
 							"qvalchange":qvalchange,
 							"qrefresh":qrefresh, # to decrease complexsity of Queue from order.
-							# "qtkuprefresh":qtkuprefresh,
-							# "qdatarefresh":qdatarefresh,
 
 		}
 		# print(self.mycollectqueues["qorder"])
@@ -55,9 +53,9 @@ class pinkybot(packselenium):
 			buyparams={ 
 					"ordermode":"buybyclick",
 					"order":"buy",
-					"stockname":configparams["stockname"].get(),
-					"startvalue":configparams["startvaluebuy"].get(),
-					"startvolume":configparams["totalvolumebuy"].get(),
+					# "stockname":configparams["stockname"].get(),
+					# "startvalue":configparams["startvaluebuy"].get(),
+					# "startvolume":configparams["totalvolumebuy"].get(),
 					"stockpin": configparams["stockpin"].get(),
 
 
@@ -71,12 +69,27 @@ class pinkybot(packselenium):
 			print ("END:buy buy buy buy buy monitor.py line 51")
 
 		elif orderside=="sellbyvalue":
+
+			buyparams={ 
+				"ordermode":"buybyclick",
+				"order":"buy",
+				"stockname":configparams["stockname"].get(),
+				"startvalue":configparams["startvaluebuy"].get(),
+				"startvolume":configparams["totalvolumebuy"].get(),
+				"stockpin": configparams["stockpin"].get(),
+
+
+			}
+
+			self.mycollectqueues["qorder"].put(buyparams)
+
+
 			print ("sell sell")
 	# for several type of orders
-	def botbuyorder(self,buyparams): 
-		print("botbuyorder buy now")
-		# self.qorder.put(buyparams)
-		self.mycollectqueues["qorder"].put(buyparams)
+	# def botbuyorder(self,buyparams): 
+	# 	print("botbuyorder buy now")
+	# 	# self.qorder.put(buyparams)
+	# 	self.mycollectqueues["qorder"].put(buyparams)
 
 	def botsellorder(self):
 		print ("sell order")
@@ -112,10 +125,13 @@ class pinkybot(packselenium):
 	def mypinkylogin(self,loginParams,qvalchange):
 		# self.monitoring("test")
 		# print (username)
-		print (loginParams)
+		# print (loginParams)
 		# exit()
 
-		handlewin=self.login(loginParams,self.mycollectqueues["qvalchange"],)
+		# handlewin=self.login(loginParams,self.mycollectqueues["qvalchange"],)
+		return_login,mydriver=self.login(loginParams)
+		# print("return login from login result monitor.py line 135 000000000000")
+		# print(return_login)
 		# buysellorder.orderbuy(handlewin)
 		
 
@@ -130,8 +146,8 @@ class pinkybot(packselenium):
 		# Monitor loop here
 
 		while True:
-			i=0
-			self.monitoring(handlewin,str(i))
+			# i=0
+			self.monitoring(mydriver,return_login)
 
 
 class MyThread(threading.Thread):

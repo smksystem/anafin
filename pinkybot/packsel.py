@@ -12,6 +12,7 @@ import time
 
 class packselenium():
 	"""docstring for packselenium"""
+	global mydriver
 	def __init__(self,mode):
 		self.mode=mode
 		print ("running mode=" + mode)
@@ -85,7 +86,8 @@ class packselenium():
 		return xpath[self.mode][xplace]
 
 
-	def login(self,loginParams,qvalchange):
+	# def login(self,loginParams,qvalchange):
+	def login(self,loginParams):
 
 		updatedate=datetime.now().strftime("%Y-%m-%d")
 		timestamp=datetime.now().strftime("%H:%M:%S")
@@ -100,7 +102,7 @@ class packselenium():
 
 		}
 
-		self.mycollectqueues["qvalchange"]=qvalchange
+		# self.mycollectqueues["qvalchange"]=qvalchange
 		
 		# for i in iter(self.qvalchange.get(),'STOP'):
 			
@@ -110,7 +112,7 @@ class packselenium():
 		# print (self.qvalchange.get())
 		# dataqueue={"textout":"Starting to login ... please wait ... "}
 
-		self.mycollectqueues["qvalchange"].put({"textout":"Starting to login ... please wait ... "})
+		# self.mycollectqueues["qvalchange"].put({"textout":"Starting to login ... please wait ... "})
 
 		# for job in iter(self.qvalchange.get, None):
 			# print (job)
@@ -197,6 +199,7 @@ class packselenium():
 		# exit()
 		# stockname=stock.get_attribute("value")
 		self.stockdata["stockname"]=stockname
+		self.stockdata["stockvalue"] = driver.find_elements_by_xpath(self.xpathreturn("xstockvalue"))[0].text
 
 		# one click to the first of favorite stock then wait
 		# chkstock=driver.find_elements_by_xpath("//*[@id='favourite-0']/ul/li[1]/editable-symbol-input/p")[0]
@@ -212,15 +215,17 @@ class packselenium():
 
 		if (stock):
 			# print("element is below")
-			# print (element)
+			# pr3int (element)
 			self.mycollectqueues["qvalchange"].put({"textout":"Login success contiue monitoring : " + stockname,
 				"stockname":stockname,
 				})
 			self.stockcompare="0.00"
+		# print(self.stockdata)
+		# exit()
+		mydriver=driver
+		return self.stockdata , driver
 
-		return driver
-
-	def monitoring(self,handlewin,fav_no):
+	def monitoring(self,handlewin,return_login):
 
 		# for test data
 		# stock='TEST'
@@ -234,12 +239,9 @@ class packselenium():
 		# for line in range(1,6):
 			# bidvolumn["bidvolumn"+str(line)]="00004"
 
-		# print(bidvolumn)
-		# exit()		
-		# PackSelModel.InsertMonitorBidOffer(stock,timestamp,bid,offer,bidvolumn,offervolumn)
-		# exit()
-
-		# print("monitoring thread")
+	
+		# print("return login in monitoring pacsel.py line 239")
+		# print(return_login)
 
 		driver=handlewin
 
@@ -322,14 +324,14 @@ class packselenium():
 			orderparams=self.mycollectqueues["qorder"].get()
 			# if orderparams["order"]=="buy":
 				# self.order(driver,orderparams)
-			orderparams["driver"]=driver
+			orderparams["driver"]=mydriver
 			self.myplugins.order(orderparams,self.order)
 				
 
 	def order(self,orderparams):
 		print (orderparams)
 		# stockvalue = driver.find_elements_by_xpath(self.xpathreturn("xbuyradio"))[0].text
-		driver=orderparams["driver"]
+		driver=mydriver
 		orderside=orderparams["order"]
 		if orderside=="buy":
 			print("order buy now")

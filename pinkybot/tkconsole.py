@@ -111,29 +111,35 @@ class outputlog(tk.Tk):
 	
 		labelnamebrokeid=tk.Label(self.frameLoginRT, text="Broke ID")
 		labelnamebrokeid.grid(row=0,column=0)
-		self.enterbrokeid=tk.Entry(self.frameLoginRT,textvariable=broketxt)
-		self.enterbrokeid.grid(row=0,column=1)      
+		enterbrokeid=tk.Entry(self.frameLoginRT,textvariable=broketxt)
+		enterbrokeid.grid(row=0,column=1)      
 
 
 
 
 		labelnamelogin=tk.Label(self.frameLoginRT, text="Login ID")
 		labelnamelogin.grid(row=1,column=0)
-		self.enterloginid=tk.Entry(self.frameLoginRT,textvariable=usertxt)
-		self.enterloginid.grid(row=1,column=1)
+		enterloginid=tk.Entry(self.frameLoginRT,textvariable=usertxt)
+		enterloginid.grid(row=1,column=1)
 
 		labelnamepassword=tk.Label(self.frameLoginRT, text="Password")
 		labelnamepassword.grid(row=2,column=0)
-		self.enterpassword=tk.Entry(self.frameLoginRT,show="*",textvariable=passtxt)
-		self.enterpassword.grid(row=2,column=1)
+		enterpassword=tk.Entry(self.frameLoginRT,show="*",textvariable=passtxt)
+		enterpassword.grid(row=2,column=1)
 
 		labelpinpassword=tk.Label(self.frameLoginRT, text="PIN")
 		labelpinpassword.grid(row=3,column=0)
 		enterpin=tk.Entry(self.frameLoginRT,show="*",textvariable=stockpin)
 		enterpin.grid(row=3,column=1)
 
-		self.btnLoginRT=tk.Button(self.frameLoginRT,text="Start Login RT",command=self.executeLogin)
-		self.btnLoginRT.grid(row=3,column=2 )
+		btnLoginRT=tk.Button(self.frameLoginRT,text="Start Login RT",command=self.executeLogin)
+		btnLoginRT.grid(row=3,column=2 )
+
+		labelmonitor=tk.Label(self.frameLoginRT,text="Monitor => ")
+		labelmonitor.grid(row=4,column=0)
+
+		labelstock=tk.Entry(self.frameLoginRT,textvariable=stockname)
+		labelstock.grid(row=4,column=1)
 
 
 
@@ -315,8 +321,13 @@ class outputlog(tk.Tk):
 
 	def buybyclick(self):
 		print("Buy set value")
-		self.mybot.myorder("buybyclick",self.configval)
+		# self.mybot.myorder("buybyclick",self.configval)
 
+		buyparams={ "ordermode":"buybyclick",
+
+					}
+
+		self.mybot.mycollectqueues["qorder"].put(buyparams)
 		print ("Buy finished ")
 
 	def sellbyclick(self):
