@@ -54,7 +54,7 @@ class fivesteps():
 
 		commonvaluestep=float(conf_params["commonstep"].get())
 		stockname=conf_params["stockname"].get()
-
+		stockpin=conf_params["stockpin"].get()
 		runvalue=startvaluebuy # change text to numbering.
 		stopvaluerange=topvaluerange
 		runinvest=initinvest
@@ -168,12 +168,13 @@ class fivesteps():
 							"volumestep":volumestep,
 							"profitstep":profitstep,
 							"topvaluerange":topvaluerange,
-							"startvaluebuy":startvaluebuy,
+							"startvaluebuy":str_startvaluebuy,
 							"floorvaluerange":floorvaluerange,
 							"totalcostbuy":runcostbuy,
 							"totalvolumebuy":runvolumebuy,
 							"remaininvest":runinvest,
 							"stockname":stockname,
+							"stockpin":stockpin,
 		}
 		# conf_params
 
