@@ -479,15 +479,16 @@ class packselenium():
 				# print(rowupdaterefresh)
 				# exit()
 			mytable=[]
+		rowupdaterefresh=self.myplugins.checkprocess2order(rowupdaterefresh)
+
 		self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk",
 												"doupdatetk":rowupdaterefresh}) # continue refresh TKInter
 			# print (rowupdaterefresh)
-		result_chk=self.myplugins.checkprocess2order(rowupdaterefresh)
 		# if result_chk	!="NOUPDATE" :
 			# print("check result update !!!! packsel.py line 477")
 			# print(result_chk)
 			# rowupdaterefresh.append(result_chk) 
 
-		return rowupdaterefresh,result_chk
+		return rowupdaterefresh
 			# print("end for")
 		# print("end of packsel.py")

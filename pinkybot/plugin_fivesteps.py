@@ -219,11 +219,12 @@ class fivesteps():
 	def checkprocess2order(self,chk_params):
 		print("check params from plugin_fivesteps.py line 166")
 		print(chk_params)
+		# exit()
 		for chkresult in chk_params:
 			if chkresult["orderno"]==self.waitconfirmfirstorder and chkresult["status"]=="Matched(M)":
 
 				print("found match the first order !!!!!!!!!!!!!!!!++++++++")
-				params["ordermode"]="buybybot"
+				chkresult["ordermode"]="buybybot"
 				return {"confirmorder":chkresult["orderno"],"status":chkresult["status"]}
 			else: 
 				return "NOUPDATE"
