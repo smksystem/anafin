@@ -300,13 +300,15 @@ class packselenium():
 			if refreshparams["qrefresh"]=="refreshdb":
 				if refreshparams["refreshtype"]=="all":
 					print("+++++++++++Begin start to refresh all order")
-					result_refreshbtn,result_chkprocess =self.refreshbtn(driver,"all")
+					# result_refreshbtn,result_chkprocess =self.refreshbtn(driver,"all")
+					result_refreshbtn =self.refreshbtn(driver,"all")
+
 					print(result_refreshbtn)
 					print(result_chkprocess)
 
 				elif refreshparams["refreshtype"]=="partial":
 
-					result_refreshbtn,result_chkprocess=self.refreshbtn(driver,"partial")
+					result_refreshbtn=self.refreshbtn(driver,"partial")
 
 				# self.myplugins.checkparams(result_refreshbtn)	
 				self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk","doupdatetk":result_refreshbtn}) # continue refresh TKInter
