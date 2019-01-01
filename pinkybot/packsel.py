@@ -304,7 +304,7 @@ class packselenium():
 					result_refreshbtn =self.refreshbtn(driver,"all")
 
 					print(result_refreshbtn)
-					print(result_chkprocess)
+					# print(result_chkprocess)
 
 				elif refreshparams["refreshtype"]=="partial":
 
@@ -331,14 +331,16 @@ class packselenium():
 				
 
 	def order(self,orderparams):
+		print("orderparams packsel.py line 334")
 		print (orderparams)
 		# stockvalue = driver.find_elements_by_xpath(self.xpathreturn("xbuyradio"))[0].text
-		print(self.mydriver)
+		# print(self.mydriver)
 		driver=self.mydriver
 		orderside=orderparams["order"]
 		if orderside=="buy":
-			print("order buy now")
+
 			chkstock=driver.find_elements_by_xpath(self.xpathreturn("xbuyradio"))[0].click()
+			print("order buy now")
 			print(chkstock)
 
 			elem = driver.find_element_by_xpath(self.xpathreturn("xstockorder"))
@@ -474,19 +476,20 @@ class packselenium():
 				# print ("partial update refresh packsel.py line 427")
 				rowupdaterefresh=PackSelModel.updaterefresh(mytable,"partial")
 			elif allorpartial=="all":
-				# print("full update refresh packsel.py line 430")
 				rowupdaterefresh=PackSelModel.updaterefresh(mytable,"all")	
-
+				print("full update refresh packsel.py line 481")
+				print(rowupdaterefresh)
 			# print ("show update refresh packsel.py line 432")
 				# print(rowupdaterefresh)
 				# exit()
 			mytable=[]
 		rowupdaterefresh=self.myplugins.checkprocess2order(rowupdaterefresh)
 
+
 		self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk",
 												"doupdatetk":rowupdaterefresh}) # continue refresh TKInter
 			# print (rowupdaterefresh)
-		# if result_chk	!="NOUPDATE" :
+			# if result_chk	!="NOUPDATE" :
 			# print("check result update !!!! packsel.py line 477")
 			# print(result_chk)
 			# rowupdaterefresh.append(result_chk) 

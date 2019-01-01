@@ -137,7 +137,7 @@ class PackSelModel:
 
 					refreshrow=chkorderno.values()
 					print ("----------------------Refresh each row packsel_model.py line 114")
-					# print (refreshrow)
+					print (refreshrow)
 					result_updaterefresh.append(refreshrow[0])
 
 			# for case new row when buy or sell 

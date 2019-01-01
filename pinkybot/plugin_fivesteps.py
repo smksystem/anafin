@@ -200,11 +200,14 @@ class fivesteps():
 			params["order"]="buy"
 			# self.params[""]
 
-			print("first buy mode plugin_fivesteps.py line 161")
 
 			result_order=orderfn(params)
+
+			
+			print("======= debug plugin_fivesteps.py line 205")
+			print("first buy mode plugin_fivesteps.py line 206")
 			# print(params)
-			# print(result_order)
+			print(result_order)
 			# chkrefresh["doupdatetk"]=list(filter(None.__ne__, chkrefresh["doupdatetk"]))
 			for ordertoconfirm in result_order:
 				self.waitconfirmfirstorder=ordertoconfirm["orderno"]

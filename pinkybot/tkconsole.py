@@ -707,8 +707,9 @@ class outputlog(tk.Tk):
 
 			if not self.mybot.mycollectqueues["qrefresh"].empty() :
 				chkrefresh=self.mybot.mycollectqueues["qrefresh"].get()
-
-				if chkrefresh["qrefresh"]=="refreshtk":
+				# print("check refresh , line 710, tkconsole.py")
+				# print(chkrefresh)
+				if chkrefresh["qrefresh"]=="refreshtk" and chkrefresh["doupdatetk"] != None :
 					# print ("<<<<<<<< Print data to do update refresh tkinter here !!!!! tkconsole.py line 757")
 					# print(chkrefresh["doupdatetk"])
 
@@ -716,9 +717,14 @@ class outputlog(tk.Tk):
 					# chkrefresh["doupdatetk"]=list(filter(None.__ne__, chkrefresh["doupdatetk"]))
 					# print(chkrefresh["doupdatetk"])
 					# print("finish///....")
+					
 					for rowupdata in chkrefresh["doupdatetk"] :
-						# print("///////////////myvarasso tkconsole.py line 759")
-						# print(self.myvarasso[rowupdata["price"]])
+						# print("file tkconsole.py line 722")
+						# print(chkrefresh["doupdatetk"])
+						if chkrefresh["doupdatetk"]=="NOUPDATE":
+							break
+						
+						# print(self.myvarasso)
 						if len(self.myvarasso[rowupdata["price"]]) == 0:
 
 							repeatidx=len(self.myvarasso[rowupdata["price"]])
