@@ -222,13 +222,24 @@ class fivesteps():
 	def checkprocess2order(self,chk_params):
 		print("check params from plugin_fivesteps.py line 166")
 		print(chk_params)
+		return_params=[]
 		# exit()
 		for chkresult in chk_params:
 			if chkresult["orderno"]==self.waitconfirmfirstorder and chkresult["status"]=="Matched(M)":
 
-				print("found match the first order !!!!!!!!!!!!!!!!++++++++")
+				print("found Match(M) the first order plugin_fivesteps.py line 229 !!!!!!!!!++++++++")
 				chkresult["ordermode"]="buybybot"
-				return {"confirmorder":chkresult["orderno"],"status":chkresult["status"]}
+				chkresult.update({"confirmorder":chkresult["orderno"],"status":chkresult["status"]})
+				print(chkresult)
+
+				
+				return_params.append(chkresult)
+				print("9999999999999 return params plugin_fivesteps.py line 237 ")
+				print (return_params)
+				return return_params
+
+
 			else: 
-				return "NOUPDATE"
+				return chk_params
+				# return "NOUPDATE"
 				# result_order=orderfn(params)
