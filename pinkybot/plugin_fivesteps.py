@@ -235,7 +235,9 @@ class fivesteps():
 
 		# else:
 			# pass	
-	def checkprocess2order(self,chk_params):
+	def checkprocess2order(self,rt_params,price_change):
+		print ("check process in order to order next")
+	def checkprocess2matchstatus(self,chk_params):
 		print("check params from plugin_fivesteps.py line 166")
 		print(chk_params)
 		return_params=[]

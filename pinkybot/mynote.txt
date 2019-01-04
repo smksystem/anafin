@@ -4,3 +4,23 @@
 
 Plan:
 	- Do auto first buy
+
+
+
+
+
+
+
+
+	tkconsole  <--> rt_selenium
+
+
+	qvalchange(get) -> tkconsole.py
+	qvalchange(put) -> packsel.py
+
+	qrefresh(put) -> packsel.py
+	qrefresh(get) -> packsel.py // only for refresh db.
+	
+	qrefresh (put) -> tkconsole.py
+	qrefresh (get) -> tkconsole.py // only for refresh console
+

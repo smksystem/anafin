@@ -268,21 +268,25 @@ class packselenium():
 		stockvalue=self.stockdata["stockvalue"]
 		# print ("stock value now =" + stockvalue)	
 		
-		
 
+#########################/////////////////////////////// 
+#########################  Value Change ////////////////
+#########################///////////////////////////////
 
 		if (self.stockcompare=="0.00" and stockvalue !="0.00") or (self.stockcompare!=stockvalue) and (self.stockcompare!="0.00"):
 			# print("first stockvalue updated=" + stockvalue)
 			# print("first stockcompare updated=" + self.stockcompare)
 			# self.mycollectqueues["qvalchange"].put({"stockvalue":stockvalue})
 			PackSelModel.updatestockvaluechange(self.stockdata)
-			
-			# result_refreshbtn=self.refreshbtn(driver,"partial")
+			resultvaluechange=self.refreshbtn(driver,"partial")
 
-			self.mycollectqueues["qvalchange"].put({"stockvalue":stockvalue})
-		
+			resultvaluechange=self.myplugins.checkprocess2order(resultvaluechange)
+
+			# To send to tkconsole.py update status of value change.			# continue refresh TKInter
+			self.mycollectqueues["qvalchange"].put({"stockvalue":stockvalue}) 
 			self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshdb",
-												"refreshtype":"partial"}) # continue refresh TKInter
+												"refreshtype":"partial"}) 
+			
 			self.stockcompare=stockvalue
 			# print(self.stockdata)
 		
@@ -307,7 +311,7 @@ class packselenium():
 					# result_refreshbtn,result_chkprocess =self.refreshbtn(driver,"all")
 					result_refreshbtn =self.refreshbtn(driver,"all")
 
-					print(result_refreshbtn)
+					# print(result_refreshbtn)
 					# print(result_chkprocess)
 
 				elif refreshparams["refreshtype"]=="partial":
@@ -493,9 +497,9 @@ class packselenium():
 				# print(rowupdaterefresh)
 				# exit()
 			mytable=[]
+
+		# this is ok to work like this check process nad then send to update data
 		rowupdaterefresh=self.myplugins.checkprocess2order(rowupdaterefresh)
-
-
 		self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk",
 												"doupdatetk":rowupdaterefresh}) # continue refresh TKInter
 			# print (rowupdaterefresh)
