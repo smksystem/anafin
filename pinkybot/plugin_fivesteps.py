@@ -1,3 +1,5 @@
+import datetime
+
 class fivesteps():
 
 
@@ -214,8 +216,22 @@ class fivesteps():
 				print("confirm order plugin_fivesteps.py line 169")
 				print ("------------confirm order to monitor="+ self.waitconfirmfirstorder)
 				# 
-		elif params["ordermode"]=="buybybot":
-			print("start to sell")
+		elif params["ordermode"]=="sellbybot":
+			print("========================= start to sell plugin_fivesteps.py line 218 =====================")
+
+			params["stockname"]=self.conf_params["stockname"]
+			
+			params["startvolume"]=self.conf_params["totalvolumebuy"]
+
+
+			params["startvalue"]=self.conf_params["startvaluebuy"]
+			params["stockpin"]=self.conf_params["stockpin"]
+			params["order"]="sell"
+			# self.params[""]
+
+
+			result_order=orderfn(params)
+
 
 		# else:
 			# pass	
@@ -223,13 +239,16 @@ class fivesteps():
 		print("check params from plugin_fivesteps.py line 166")
 		print(chk_params)
 		return_params=[]
+		datenow = datetime.datetime.now().strftime("%Y-%m-%d")
+		timenow = datetime.datetime.now().strftime("%H:%M:%S")
+		currentdatetime=datenow+"_"+timenow
 		# exit()
 		for chkresult in chk_params:
 			if chkresult["orderno"]==self.waitconfirmfirstorder and chkresult["status"]=="Matched(M)":
 
 				print("found Match(M) the first order plugin_fivesteps.py line 229 !!!!!!!!!++++++++")
-				chkresult["ordermode"]="buybybot"
-				chkresult.update({"confirmorder":chkresult["orderno"],"status":chkresult["status"]})
+				chkresult["ordermode"]="sellbybot"
+				chkresult.update({"matchedtime":currentdatetime,"targetvalue":"xx","profit":"100"})
 				print(chkresult)
 
 				

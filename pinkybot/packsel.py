@@ -33,6 +33,8 @@ class packselenium():
 				"xstockname":"//*[@id='eqQuoteSymbol']",
 				"xstockvalue":"//*[@id='instInfoEq']/tbody/tr[1]/td[2]/h2/span",
 				"xbuyradio":"//*[@id='placeEq']/div[1]/input[1]",
+				"xsellradio":"//*[@id='placeEq']/div[1]/input[0]",
+
 				"xstockorder":"//*[@id='eqSymbol']",
 				"xstockvolumnorder":"//*[@id='placeEq']/div[2]/input",
 				"xstockvalueorder":"//*[@id='placeEq']/div[3]/input[1]",
@@ -50,6 +52,8 @@ class packselenium():
 				"xstockname":"//*[@id='favourite-0']/ul/li[1]/editable-symbol-input/p",
 				"xstockvalue":"//*[@id='mini-quote-symbol']/div[2]/div[1]",
 				"xbuyradio":"//*[@id='buy-btn']",
+				"xsellradio":"//*[@id='sell-btn']",
+
 				"xstockorder":"//*[@id='place-order-symbol']/auto-complete/div/input[2]",
 				"xstockvolumnorder":"//*[@id='place-order-volume']/div/volume-input/input",
 				"xstockvalueorder":"//*[@id='place-order-price']/div/price-input/input",
@@ -337,52 +341,58 @@ class packselenium():
 		# print(self.mydriver)
 		driver=self.mydriver
 		orderside=orderparams["order"]
+
 		if orderside=="buy":
 
 			chkstock=driver.find_elements_by_xpath(self.xpathreturn("xbuyradio"))[0].click()
 			print("order buy now")
 			print(chkstock)
 
-			elem = driver.find_element_by_xpath(self.xpathreturn("xstockorder"))
-			elem.clear()
-			# put user in key
-			elem.send_keys(orderparams["stockname"]) 
-
-			elem = driver.find_element_by_xpath(self.xpathreturn("xstockvolumnorder"))
-			elem.clear()
-			# put user in key
-			elem.send_keys(orderparams["startvolume"]) 
-
-			elem = driver.find_element_by_xpath(self.xpathreturn("xstockvalueorder"))
-			elem.clear()
-			# put user in key
-			elem.send_keys(orderparams["startvalue"]) 
-
-			elem = driver.find_element_by_xpath(self.xpathreturn("xstockpinorder"))
-			elem.clear()
-			# put user in key
-			elem.send_keys(orderparams["stockpin"]) 
-
-			elem = driver.find_element_by_xpath(self.xpathreturn("xstocksubmitorder")).click()
-
-			if self.mode=="xlive":
-
-				elem = driver.find_element_by_xpath(self.xpathreturn("xstockconfirmorder")).click()				
-
-			elif self.mode=="xdebug":
-				elem = driver.switch_to_alert().accept()
-
-
-			# confirm ok then check refresh 
-			print ("=========>>> confirm order to tkinter after order buy packsel.py line 366 ")
-			result_refreshbtn=self.refreshbtn(driver,"partial") # with the update database 
-			print("return result_refreshbtn by buy order packsel.py line 368")
-			
-			print(result_refreshbtn)
-			# print(result_chkprocess)
-			
 		elif orderside=="sell":
-			pass
+
+			chkstock=driver.find_elements_by_xpath(self.xpathreturn("xsellradio"))[0].click()
+			print("order sell now")
+			print(chkstock)
+
+		elem = driver.find_element_by_xpath(self.xpathreturn("xstockorder"))
+		elem.clear()
+		# put user in key
+		elem.send_keys(orderparams["stockname"]) 
+
+		elem = driver.find_element_by_xpath(self.xpathreturn("xstockvolumnorder"))
+		elem.clear()
+		# put user in key
+		elem.send_keys(orderparams["startvolume"]) 
+
+		elem = driver.find_element_by_xpath(self.xpathreturn("xstockvalueorder"))
+		elem.clear()
+		# put user in key
+		elem.send_keys(orderparams["startvalue"]) 
+
+		elem = driver.find_element_by_xpath(self.xpathreturn("xstockpinorder"))
+		elem.clear()
+		# put user in key
+		elem.send_keys(orderparams["stockpin"]) 
+
+		elem = driver.find_element_by_xpath(self.xpathreturn("xstocksubmitorder")).click()
+
+		if self.mode=="xlive":
+
+			elem = driver.find_element_by_xpath(self.xpathreturn("xstockconfirmorder")).click()				
+
+		elif self.mode=="xdebug":
+			elem = driver.switch_to_alert().accept()
+
+
+		# confirm ok then check refresh 
+		print ("=========>>> confirm order to tkinter after order buy packsel.py line 366 ")
+		result_refreshbtn=self.refreshbtn(driver,"partial") # with the update database 
+		print("return result_refreshbtn by buy order packsel.py line 368")
+		
+		print(result_refreshbtn)
+		# print(result_chkprocess)
+			
+		
 
 		return result_refreshbtn
 	def refreshbtn(self,driver,allorpartial="partial"):

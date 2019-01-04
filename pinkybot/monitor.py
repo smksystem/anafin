@@ -161,7 +161,7 @@ class MyThread(threading.Thread):
 		self.fnrun=fnrun
 
 	def run(self):
-		print("start run")
+		print("start run monitor.py line 164")
 		print (threading.currentThread().getName(),self.receive_messages)
 
 		# self.queue.put("hello1",block=True)
@@ -171,6 +171,8 @@ class MyThread(threading.Thread):
 		self.fnrun(self.parameter,self.queue)
 
 		val = self.queue.get()
+		print ("value queue in run function monitor.py line 174")
+		print(val)
 		# self.do_thing_with_message(val)
 
 	def do_thing_with_message(self, message):

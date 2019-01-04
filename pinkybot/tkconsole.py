@@ -11,16 +11,10 @@ from pinkybot.plugin_onestep import onestep
 class outputlog(tk.Tk):
 	def __init__(self):
 
-		
-
 		tk.Tk.__init__(self)
 		
 		self.mybot=pinkybot(plugins=[fivesteps()])
 		# self.mybot=pinkybot(plugins=[onestep()])
-
-
-
-
 		self.title("Output Log")
 		# self.resizable(0,0)
 		self.geometry('780x620+20+20')
@@ -30,9 +24,7 @@ class outputlog(tk.Tk):
 		usertxt=tk.StringVar(value="0147500")
 		passtxt=tk.StringVar()
 		broketxt=tk.StringVar(value="013")
-
 		# global time1
-
 		self.loginSet=[
 						broketxt,
 						usertxt,
@@ -54,6 +46,7 @@ class outputlog(tk.Tk):
 		stockname=tk.StringVar(value="dummy")
 		stockpin=tk.StringVar(value="3333")
 		remaininvest=tk.StringVar(value="0")
+		runningmode=tk.StringVar(value="auto")		
 
 		self.configval={
 			"initinvest":initinvest,
@@ -70,7 +63,7 @@ class outputlog(tk.Tk):
 			"stockname":stockname,
 			"stockpin":stockpin,
 			"remaininvest":remaininvest,
-
+			"runningmode": runningmode,
 		}
 
 		self.myvarasso={}
@@ -106,39 +99,39 @@ class outputlog(tk.Tk):
 
 
 		
-		self.frameLoginRT = tk.Frame(self ,background = 'green')
-		self.frameLoginRT.grid(row=1,column=1,sticky="e"+"n"+"s"+"w")
+		frameLoginRT = tk.Frame(self ,background = 'green')
+		frameLoginRT.grid(row=1,column=1,sticky="e"+"n"+"s"+"w")
 	
-		labelnamebrokeid=tk.Label(self.frameLoginRT, text="Broke ID")
+		labelnamebrokeid=tk.Label(frameLoginRT, text="Broke ID")
 		labelnamebrokeid.grid(row=0,column=0)
-		enterbrokeid=tk.Entry(self.frameLoginRT,textvariable=broketxt)
+		enterbrokeid=tk.Entry(frameLoginRT,textvariable=broketxt)
 		enterbrokeid.grid(row=0,column=1)      
 
 
 
 
-		labelnamelogin=tk.Label(self.frameLoginRT, text="Login ID")
+		labelnamelogin=tk.Label(frameLoginRT, text="Login ID")
 		labelnamelogin.grid(row=1,column=0)
-		enterloginid=tk.Entry(self.frameLoginRT,textvariable=usertxt)
+		enterloginid=tk.Entry(frameLoginRT,textvariable=usertxt)
 		enterloginid.grid(row=1,column=1)
 
-		labelnamepassword=tk.Label(self.frameLoginRT, text="Password")
+		labelnamepassword=tk.Label(frameLoginRT, text="Password")
 		labelnamepassword.grid(row=2,column=0)
-		enterpassword=tk.Entry(self.frameLoginRT,show="*",textvariable=passtxt)
+		enterpassword=tk.Entry(frameLoginRT,show="*",textvariable=passtxt)
 		enterpassword.grid(row=2,column=1)
 
-		labelpinpassword=tk.Label(self.frameLoginRT, text="PIN")
+		labelpinpassword=tk.Label(frameLoginRT, text="PIN")
 		labelpinpassword.grid(row=3,column=0)
-		enterpin=tk.Entry(self.frameLoginRT,show="*",textvariable=stockpin)
+		enterpin=tk.Entry(frameLoginRT,show="*",textvariable=stockpin)
 		enterpin.grid(row=3,column=1)
 
-		btnLoginRT=tk.Button(self.frameLoginRT,text="Start Login RT",command=self.executeLogin)
+		btnLoginRT=tk.Button(frameLoginRT,text="Start Login RT",command=self.executeLogin)
 		btnLoginRT.grid(row=3,column=2 )
 
-		labelmonitor=tk.Label(self.frameLoginRT,text="Monitor => ")
+		labelmonitor=tk.Label(frameLoginRT,text="Monitor => ")
 		labelmonitor.grid(row=4,column=0)
 
-		labelstock=tk.Entry(self.frameLoginRT,textvariable=stockname)
+		labelstock=tk.Entry(frameLoginRT,textvariable=stockname)
 		labelstock.grid(row=4,column=1)
 
 
@@ -151,15 +144,15 @@ class outputlog(tk.Tk):
 		labelinitialvalue=tk.Label(frameSetValue, text="Invest")
 		labelinitialvalue.grid(row=1,column=0)
 
-		self.enterInvest=tk.Entry(frameSetValue,textvariable=initinvest) #,textvariable=usertxt)
-		self.enterInvest.grid(row=1,column=1)
+		enterInvest=tk.Entry(frameSetValue,textvariable=initinvest) #,textvariable=usertxt)
+		enterInvest.grid(row=1,column=1)
 
 
 		labelinitialvalue=tk.Label(frameSetValue, text="Volume Step")
 		labelinitialvalue.grid(row=2,column=0)
 
-		self.enterVolumn=tk.Entry(frameSetValue,textvariable=volumestep) #,textvariable=usertxt)
-		self.enterVolumn.grid(row=2,column=1)
+		enterVolumn=tk.Entry(frameSetValue,textvariable=volumestep) #,textvariable=usertxt)
+		enterVolumn.grid(row=2,column=1)
 
 		labelinitialvalue=tk.Label(frameSetValue, text="Profit Step")
 		labelinitialvalue.grid(row=3,column=0)
@@ -231,7 +224,11 @@ class outputlog(tk.Tk):
 		btnRefreshCmd=tk.Button(framePutValue,text="Refresh",command=self.rtrefresh, width = 25,height=3)
 		btnRefreshCmd.grid(row=1,column=0)
 
+		radioauto=tk.Radiobutton(framePutValue,text="auto",variable=runningmode,value="auto",indicatoron=0,command=self.chooserunningmode)
+		radioauto.grid(row=0,column=1,sticky="e")
 
+		radiomanual=tk.Radiobutton(framePutValue,text="manual",variable=runningmode,value="",indicatoron=0,command=self.chooserunningmode)
+		radiomanual.grid(row=0,column=2,sticky="w")
 
 
 
@@ -339,7 +336,8 @@ class outputlog(tk.Tk):
 		self.mybot.botrtrefresh()
 		# self.mybot.myorder("rtrefresh",self.configval)
 
-
+	def chooserunningmode(self):
+		print("run mode")
 	def setparameter(self):
 
 		# print(self.mybot)
