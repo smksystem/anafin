@@ -99,39 +99,39 @@ class outputlog(tk.Tk):
 
 
 		
-		frameLoginRT = tk.Frame(self ,background = 'green')
-		frameLoginRT.grid(row=1,column=1,sticky="e"+"n"+"s"+"w")
+		self.frameLoginRT = tk.Frame(self ,background = 'green')
+		self.frameLoginRT.grid(row=1,column=1,sticky="e"+"n"+"s"+"w")
 	
-		labelnamebrokeid=tk.Label(frameLoginRT, text="Broke ID")
+		labelnamebrokeid=tk.Label(self.frameLoginRT, text="Broke ID")
 		labelnamebrokeid.grid(row=0,column=0)
-		enterbrokeid=tk.Entry(frameLoginRT,textvariable=broketxt)
+		enterbrokeid=tk.Entry(self.frameLoginRT,textvariable=broketxt)
 		enterbrokeid.grid(row=0,column=1)      
 
 
 
 
-		labelnamelogin=tk.Label(frameLoginRT, text="Login ID")
+		labelnamelogin=tk.Label(self.frameLoginRT, text="Login ID")
 		labelnamelogin.grid(row=1,column=0)
-		enterloginid=tk.Entry(frameLoginRT,textvariable=usertxt)
+		enterloginid=tk.Entry(self.frameLoginRT,textvariable=usertxt)
 		enterloginid.grid(row=1,column=1)
 
-		labelnamepassword=tk.Label(frameLoginRT, text="Password")
+		labelnamepassword=tk.Label(self.frameLoginRT, text="Password")
 		labelnamepassword.grid(row=2,column=0)
-		enterpassword=tk.Entry(frameLoginRT,show="*",textvariable=passtxt)
+		enterpassword=tk.Entry(self.frameLoginRT,show="*",textvariable=passtxt)
 		enterpassword.grid(row=2,column=1)
 
-		labelpinpassword=tk.Label(frameLoginRT, text="PIN")
+		labelpinpassword=tk.Label(self.frameLoginRT, text="PIN")
 		labelpinpassword.grid(row=3,column=0)
-		enterpin=tk.Entry(frameLoginRT,show="*",textvariable=stockpin)
+		enterpin=tk.Entry(self.frameLoginRT,show="*",textvariable=stockpin)
 		enterpin.grid(row=3,column=1)
 
-		btnLoginRT=tk.Button(frameLoginRT,text="Start Login RT",command=self.executeLogin)
+		btnLoginRT=tk.Button(self.frameLoginRT,text="Start Login RT",command=self.executeLogin)
 		btnLoginRT.grid(row=3,column=2 )
 
-		labelmonitor=tk.Label(frameLoginRT,text="Monitor => ")
+		labelmonitor=tk.Label(self.frameLoginRT,text="Monitor => ")
 		labelmonitor.grid(row=4,column=0)
 
-		labelstock=tk.Entry(frameLoginRT,textvariable=stockname)
+		labelstock=tk.Entry(self.frameLoginRT,textvariable=stockname)
 		labelstock.grid(row=4,column=1)
 
 
@@ -227,7 +227,7 @@ class outputlog(tk.Tk):
 		radioauto=tk.Radiobutton(framePutValue,text="auto",variable=runningmode,value="auto",indicatoron=0,command=self.chooserunningmode)
 		radioauto.grid(row=0,column=1,sticky="e")
 
-		radiomanual=tk.Radiobutton(framePutValue,text="manual",variable=runningmode,value="",indicatoron=0,command=self.chooserunningmode)
+		radiomanual=tk.Radiobutton(framePutValue,text="manual",variable=runningmode,value="manual",indicatoron=0,command=self.chooserunningmode)
 		radiomanual.grid(row=0,column=2,sticky="w")
 
 
@@ -337,10 +337,12 @@ class outputlog(tk.Tk):
 		# self.mybot.myorder("rtrefresh",self.configval)
 
 	def chooserunningmode(self):
-		print("run mode")
+		print("run mode = "+ self.configval["runningmode"].get())
 	def setparameter(self):
 
 		# print(self.mybot)
+		print("setting necessary parameter tkconsole.py line 344")
+		print(self.configval)
 		self.mybot.setparameter(self.configval,self.labeldisplay,self.txtout) # set default parameter for each plugins.
 
 		return (0)

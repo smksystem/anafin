@@ -39,7 +39,7 @@ $(document).ready(function() {
 	initStreamingLite();
 
 	// alert("ready")
-	var i=4.90;
+	var i=4.88;
 	var orderid=0;
 	// var orderids={};
 	var data="data";
@@ -53,7 +53,7 @@ $(document).ready(function() {
 		$(".last").html(i.toFixed(2));
 		i+=0.02;
 
-		if (orderid==2){
+		if (orderid==0){
 			clearInterval(intervalID);
 		};
 		orderid=orderid+1;
