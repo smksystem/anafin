@@ -280,12 +280,12 @@ class packselenium():
 			PackSelModel.updatestockvaluechange(self.stockdata)
 			resultvaluechange=self.refreshbtn(driver,"partial")
 
-			resultvaluechange=self.myplugins.checkprocess2order(resultvaluechange)
+			resultvaluechange=self.myplugins.checkprocess2order(resultvaluechange,stockvalue,self.order)
 
 			# To send to tkconsole.py update status of value change.			# continue refresh TKInter
-			self.mycollectqueues["qvalchange"].put({"stockvalue":stockvalue}) 
+			# self.mycollectqueues["qvalchange"].put({"stockvalue":stockvalue}) 
 			self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshdb",
-												"refreshtype":"partial"}) 
+												"refreshtype":"all"}) 
 			
 			self.stockcompare=stockvalue
 			# print(self.stockdata)
@@ -334,12 +334,12 @@ class packselenium():
 			orderparams=self.mycollectqueues["qorder"].get()
 			# if orderparams["order"]=="buy":
 				# self.order(driver,orderparams)
-			orderparams["driver"]=self.mydriver
+			# orderparams["driver"]=self.mydriver
 			self.myplugins.order(orderparams,self.order)
 				
 
 	def order(self,orderparams):
-		print("orderparams packsel.py line 334")
+		print(" order params packsel.py line 334 in def order")
 		print (orderparams)
 		# stockvalue = driver.find_elements_by_xpath(self.xpathreturn("xbuyradio"))[0].text
 		# print(self.mydriver)
@@ -349,14 +349,14 @@ class packselenium():
 		if orderside=="buy":
 
 			chkstock=driver.find_elements_by_xpath(self.xpathreturn("xbuyradio"))[0].click()
-			print("order buy now")
-			print(chkstock)
+			# print("order buy now")
+			# print(chkstock)
 
 		elif orderside=="sell":
 
 			chkstock=driver.find_elements_by_xpath(self.xpathreturn("xsellradio"))[0].click()
-			print("order sell now")
-			print(chkstock)
+			# print("order sell now")
+			# print(chkstock)
 
 		elem = driver.find_element_by_xpath(self.xpathreturn("xstockorder"))
 		elem.clear()
@@ -389,7 +389,7 @@ class packselenium():
 
 
 		# confirm ok then check refresh 
-		print ("=========>>> confirm order to tkinter after order buy packsel.py line 366 ")
+		print ("=========>>> confirm order to tkinter after order buy packsel.py line 392 in def order ")
 		result_refreshbtn=self.refreshbtn(driver,"partial") # with the update database 
 		print("return result_refreshbtn by buy order packsel.py line 368")
 		
@@ -403,7 +403,7 @@ class packselenium():
 
 
 		# try:
-		print ("refresh botton press in function refresh btn packsel.py line 373")
+		print ("refresh botton press in function refresh btn packsel.py line 406 in def refreshbtn")
 
 		elem = driver.find_element_by_xpath(self.xpathreturn("xrtrefresh")).click()
 
@@ -499,7 +499,7 @@ class packselenium():
 			mytable=[]
 
 		# this is ok to work like this check process nad then send to update data
-		rowupdaterefresh=self.myplugins.checkprocess2order(rowupdaterefresh)
+		# rowupdaterefresh=self.myplugins.checkprocess2matchstatus(rowupdaterefresh)
 		self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk",
 												"doupdatetk":rowupdaterefresh}) # continue refresh TKInter
 			# print (rowupdaterefresh)

@@ -235,8 +235,24 @@ class fivesteps():
 
 		# else:
 			# pass	
-	def checkprocess2order(self,rt_params,price_change):
-		print ("check process in order to order next")
+	def checkprocess2order(self,rt_table,price_change,orderfn=""):
+		print ("check process in order to order next plugin_fivesteps.py line 239")
+		print("initial value to buy = " + price_change)
+		params={}
+		if not rt_table and price_change==self.conf_params["startvaluebuy"]:
+			print("start first buy plugin_fivesteps.py line 241")
+
+			params["stockname"]=self.conf_params["stockname"]
+			params["startvolume"]=self.conf_params["totalvolumebuy"]
+			params["startvalue"]=self.conf_params["startvaluebuy"]
+			params["stockpin"]=self.conf_params["stockpin"]
+			params["order"]="buy"
+
+			resultbuy=orderfn(params)
+			
+
+
+
 	def checkprocess2matchstatus(self,chk_params):
 		print("check params from plugin_fivesteps.py line 166")
 		print(chk_params)

@@ -1,6 +1,6 @@
 4-Jan-2019:
 	- Do auto manual choices
-	- Need to change dummypage to be start buy value at file dummypage/templates/porder.html 
+	- Need to change dummypage to start buy value at file dummypage/templates/porder.html 
 
 Plan:
 	- Do auto first buy
