@@ -1,11 +1,11 @@
 4-Jan-2019:
 	- Do auto manual choices
 	- Need to change dummypage to start buy value at file dummypage/templates/porder.html 
+	- Do auto first buy
+	- dummy page value change then change status of previous order.
 
 Plan:
-	- Do auto first buy
-
-
+	- detect orderid for the first buy order to be matched status.
 
 
 

@@ -40,23 +40,25 @@ $(document).ready(function() {
 
 	// alert("ready")
 	var i=4.88;
-	var orderid=0;
+	var status_order=0;
 	// var orderids={};
 	var data="data";
 
 	var intervalID = setInterval(function(){
 		// alert("Interval reached");
-		$.post("http://localhost:8000/runlogic/",{"data":orderid},function(data) {
+		$.post("http://localhost:8000/runlogic/",{"data":status_order},function(data) {
 			// alert(1)
 		});
 		// alert(orderid);
 		$(".last").html(i.toFixed(2));
 		i+=0.02;
 
-		if (orderid==0){
+		if (status_order==2){
 			clearInterval(intervalID);
 		};
-		orderid=orderid+1;
+
+		status_order=2
+		// status_order=status_order+1;
 		// orderids=orderids+{"dataid":orderid}
 	// 	// $(".status0").html("Matched(M)");
 

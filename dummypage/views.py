@@ -30,7 +30,7 @@ def writedatatofile(writedata):
 
 @csrf_exempt
 def runlogic(request):
-	print ("-------Running logic--------")
+	print ("-------Running logic--------views.py dummypage runlogic")
 	# response="ok"
 	# print(request)
 	mytest=dict(request.POST)

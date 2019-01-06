@@ -281,9 +281,11 @@ class packselenium():
 			resultvaluechange=self.refreshbtn(driver,"partial")
 
 			resultvaluechange=self.myplugins.checkprocess2order(resultvaluechange,stockvalue,self.order)
+			
+			resultvaluechange=self.myplugins.checkprocess2matchstatus(resultvaluechange)
 
 			# To send to tkconsole.py update status of value change.			# continue refresh TKInter
-			# self.mycollectqueues["qvalchange"].put({"stockvalue":stockvalue}) 
+			self.mycollectqueues["qvalchange"].put({"stockvalue":stockvalue})   # to send blink at value.
 			self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshdb",
 												"refreshtype":"all"}) 
 			
