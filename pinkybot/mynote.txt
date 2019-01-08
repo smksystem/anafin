@@ -5,6 +5,7 @@
 	- dummy page value change then change status of previous order.
 
 Plan:
+	- detect orderid in array.
 	- detect orderid for the first buy order to be matched status.
 
 

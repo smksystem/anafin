@@ -6,7 +6,8 @@ class fivesteps():
 	############# 3 parameter to configure value of label display , color of label display and text out 
 	def __init__(self):
 		print("initialization of plugin_fivestep.py line 6 --------------")
-		self.waitconfirmfirstorder=""
+		# self.waitconfirmfirstorder=""
+		self.matchedordermonitor=[]
 		# self.conf_params={}
 
 	def configlogic(self):
@@ -69,8 +70,8 @@ class fivesteps():
 		while (runconfig<=topvaluerange):
 			runconfig= round(runconfig,2)
 
-			print("run config plugin_fivesteps.py line 58")
-			print(runconfig)
+			# print("run config plugin_fivesteps.py line 58")
+			# print(runconfig)
 			##############################################################################
 			###### Check padding to avoid key not found with only "4.0" not "4.00" for label
 			##############################################################################
@@ -83,8 +84,8 @@ class fivesteps():
 			else:
 				valuelabel=str(runconfig)
 				
-			print("config value step plugin_fivesteps.py line 71")
-			print(valuelabel)
+			# print("config value step plugin_fivesteps.py line 71")
+			# print(valuelabel)
 			conf_labeldisplay[valuelabel][valuelabel].configure(background="orangered")
 			
 			runconfig+=commonvaluestep
@@ -248,9 +249,18 @@ class fivesteps():
 			params["stockpin"]=self.conf_params["stockpin"]
 			params["order"]="buy"
 
-			resultbuy=orderfn(params)
+			resultbuy=orderfn(params) # return result from refresh for all line.
 			
-
+			for linetable in resultbuy:
+				print("line of each buy after order buy plugin_fivesteps.py line 254 in def checkprocess2order")
+				print(linetable)
+				if linetable["status"] != "Matched(M)":
+					self.matchedordermonitor.append[{"orderno":linetable["orderno"],
+														"status":linetable["status"],
+													}]
+		print("order to monitor plugin_fivesteps.py line 259 def checkprocess2order ")
+		print(self.matchedordermonitor)
+		return self.matchedordermonitor
 
 
 	def checkprocess2matchstatus(self,chk_params):
@@ -260,23 +270,24 @@ class fivesteps():
 		datenow = datetime.datetime.now().strftime("%Y-%m-%d")
 		timenow = datetime.datetime.now().strftime("%H:%M:%S")
 		currentdatetime=datenow+"_"+timenow
-		# exit()
-		for chkresult in chk_params:
-			if chkresult["orderno"]==self.waitconfirmfirstorder and chkresult["status"]=="Matched(M)":
 
-				print("found Match(M) the first order plugin_fivesteps.py line 229 !!!!!!!!!++++++++")
-				chkresult["ordermode"]="sellbybot"
-				chkresult.update({"matchedtime":currentdatetime,"targetvalue":"xx","profit":"100"})
-				print(chkresult)
+		# exit()
+		# for chkresult in chk_params:
+		# 	if chkresult["orderno"]==self.matchedordermonitor[""] and chkresult["status"]=="Matched(M)":
+
+		# 		print("found Match(M) the first order plugin_fivesteps.py line 229 !!!!!!!!!++++++++")
+		# 		chkresult["ordermode"]="sellbybot"
+		# 		chkresult.update({"matchedtime":currentdatetime,"targetvalue":"xx","profit":"100"})
+		# 		print(chkresult)
 
 				
-				return_params.append(chkresult)
-				print("9999999999999 return params plugin_fivesteps.py line 237 ")
-				print (return_params)
-				return return_params
+		# 		return_params.append(chkresult)
+		# 		print("9999999999999 return params plugin_fivesteps.py line 237 ")
+		# 		print (return_params)
+		# 		return return_params
 
 
-			else: 
-				return chk_params
+		# 	else: 
+		# 		return chk_params
 				# return "NOUPDATE"
 				# result_order=orderfn(params)
