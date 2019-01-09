@@ -14,6 +14,7 @@ import time
 class packselenium():
 	"""docstring for packselenium"""
 	def __init__(self,mode):
+		self.starttime=datetime.now()
 		self.mode=mode
 		print ("running mode=" + mode)
 	def xpathreturn(self,xplace=""):
@@ -256,6 +257,10 @@ class packselenium():
 
 		self.stockdata["updatedate"]= datetime.now().strftime("%Y-%m-%d")
 		self.stockdata["timestamp"] = datetime.now().strftime("%H:%M:%S")
+		self.currenttime=datetime.now()
+
+
+		print(self.stockdata["timestamp"])
 
 		# timerecord = timestamp.strftime('%Y-%m-%d %H:%M:%S')
 		# print("time stamp=" + str(timestamp))
@@ -272,6 +277,12 @@ class packselenium():
 #########################/////////////////////////////// 
 #########################  Value Change ////////////////
 #########################///////////////////////////////
+	
+		if (self.currenttime-self.starttime) >= 3 :
+			print("refresh time more than 3 seconds packsel.py line 281 def monitoring")
+
+			resultvaluechange=self.refreshbtn(driver,"partial")
+
 
 		if (self.stockcompare=="0.00" and stockvalue !="0.00") or (self.stockcompare!=stockvalue) and (self.stockcompare!="0.00"):
 			# print("first stockvalue updated=" + stockvalue)
@@ -291,8 +302,8 @@ class packselenium():
 			
 			self.stockcompare=stockvalue
 			# print(self.stockdata)
-		
-
+			# starttime=self.stockdata["timestamp"]		
+			self.resettime=0
 
 			# result_refreshbtn=self.refreshbtn(driver)
 
