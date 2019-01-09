@@ -255,9 +255,9 @@ class fivesteps():
 				print("line of each buy after order buy plugin_fivesteps.py line 254 in def checkprocess2order")
 				print(linetable)
 				if linetable["status"] != "Matched(M)":
-					self.matchedordermonitor.append[{"orderno":linetable["orderno"],
+					self.matchedordermonitor.append({"orderno":linetable["orderno"],
 														"status":linetable["status"],
-													}]
+													})
 		print("order to monitor plugin_fivesteps.py line 259 def checkprocess2order ")
 		print(self.matchedordermonitor)
 		return self.matchedordermonitor
