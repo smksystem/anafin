@@ -14,7 +14,7 @@ import time
 class packselenium():
 	"""docstring for packselenium"""
 	def __init__(self,mode):
-		self.starttime=datetime.now()
+		self.starttime=time.time()
 		self.mode=mode
 		print ("running mode=" + mode)
 	def xpathreturn(self,xplace=""):
@@ -257,10 +257,10 @@ class packselenium():
 
 		self.stockdata["updatedate"]= datetime.now().strftime("%Y-%m-%d")
 		self.stockdata["timestamp"] = datetime.now().strftime("%H:%M:%S")
-		self.currenttime=datetime.now()
+		self.currenttime=time.time()
 
 
-		print(self.stockdata["timestamp"])
+		# print(self.stockdata["timestamp"])
 
 		# timerecord = timestamp.strftime('%Y-%m-%d %H:%M:%S')
 		# print("time stamp=" + str(timestamp))
@@ -272,16 +272,26 @@ class packselenium():
 		self.stockdata["stockvalue"] = driver.find_elements_by_xpath(self.xpathreturn("xstockvalue"))[0].text
 		stockvalue=self.stockdata["stockvalue"]
 		# print ("stock value now =" + stockvalue)	
-		
+
+#########################///////////////////////////////
+######################### Time out check use 
+######################### when there's no change value 
+######################### and clikc refresh every 3 seconds.
+#########################/////////////////////////////// 
+		# print("time elapse now packsel.py line 281 def monitoring " )
+		# print(self.currenttime-self.starttime)
+		if (self.currenttime - self.starttime) >= 3 :
+
+			print("refresh time more than 3 seconds packsel.py line 281 def monitoring")
+			
+			self.starttime=time.time()
+			resultvaluechange=self.refreshbtn(driver,"partial")
+
 
 #########################/////////////////////////////// 
 #########################  Value Change ////////////////
 #########################///////////////////////////////
 	
-		if (self.currenttime-self.starttime) >= 3 :
-			print("refresh time more than 3 seconds packsel.py line 281 def monitoring")
-
-			resultvaluechange=self.refreshbtn(driver,"partial")
 
 
 		if (self.stockcompare=="0.00" and stockvalue !="0.00") or (self.stockcompare!=stockvalue) and (self.stockcompare!="0.00"):
@@ -291,8 +301,9 @@ class packselenium():
 			PackSelModel.updatestockvaluechange(self.stockdata)
 			resultvaluechange=self.refreshbtn(driver,"partial")
 
-			resultvaluechange=self.myplugins.checkprocess2order(resultvaluechange,stockvalue,self.order)
-			
+			resultvaluemonitor=self.myplugins.checkprocess2order(resultvaluechange,stockvalue,self.order)
+			print("\nresult from value of monitoring packsel.py line 305 def monitoring\n")
+			print(resultvaluemonitor)
 			# resultvaluechange=self.myplugins.checkprocess2matchstatus(resultvaluechange)
 
 			# To send to tkconsole.py update status of value change.			# continue refresh TKInter
