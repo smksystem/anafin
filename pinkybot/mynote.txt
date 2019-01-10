@@ -8,6 +8,7 @@ Plan:
 	- detect orderid in array.
 	- detect orderid for the first buy order to be matched status.
 	- periodic refresh to get status of order.
+	- to fix inactive of thread by move time to tkconsole clock and use queue to active it.
 
 
 
