@@ -240,6 +240,8 @@ class fivesteps():
 		print ("check process in order to order next plugin_fivesteps.py line 239")
 		print("initial value to buy = " + price_change)
 		params={}
+		
+		# if table of realtime not empty do execute below...
 		if not rt_table and price_change==self.conf_params["startvaluebuy"]:
 			print("start first buy plugin_fivesteps.py line 241")
 

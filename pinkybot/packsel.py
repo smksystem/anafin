@@ -302,7 +302,7 @@ class packselenium():
 			resultvaluechange=self.refreshbtn(driver,"partial")
 
 			resultvaluemonitor=self.myplugins.checkprocess2order(resultvaluechange,stockvalue,self.order)
-			print("\nresult from value of monitoring packsel.py line 305 def monitoring\n")
+			print("\nresult from value of monitoring packsel.py line 305 def monitoring")
 			print(resultvaluemonitor)
 			# resultvaluechange=self.myplugins.checkprocess2matchstatus(resultvaluechange)
 
