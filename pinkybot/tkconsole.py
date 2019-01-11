@@ -18,7 +18,7 @@ class outputlog(tk.Tk):
 		self.title("Output Log")
 		# self.resizable(0,0)
 		self.geometry('780x620+20+20')
-
+		self.starttime=time.time()
 		# self.grid_columnconfigure(1, weight=1)
 		# self.pack_propagate(0)
 		usertxt=tk.StringVar(value="0147500")
@@ -302,6 +302,17 @@ class outputlog(tk.Tk):
 		self.lablecomputetime.config(text=self.time2)
 		
 
+		elapsedtime=(time.time() - self.starttime)
+		if elapsedtime >= 3 :
+
+			print("refresh time more than 3 seconds packsel.py line 281 def monitoring")
+			
+			self.starttime=time.time()
+			# resultvaluechange=self.refreshbtn(driver,"partial")
+			print(self.starttime)
+
+
+		# print("every 200 ms")
 		# calls itself every 200 milliseconds
 		# to update the time display as needed
 		# could use >200 ms, but display gets jerky

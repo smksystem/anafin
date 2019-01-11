@@ -279,15 +279,16 @@ class packselenium():
 ######################### and clikc refresh every 3 seconds.
 #########################/////////////////////////////// 
 		# print("time elapse now packsel.py line 281 def monitoring " )
-		# print(self.currenttime-self.starttime)
-		elapsedtime=(self.currenttime - self.starttime)
-		if elapsedtime >= 3 :
+		# # print(self.currenttime-self.starttime)
+		
+		# elapsedtime=(self.currenttime - self.starttime)
+		# if elapsedtime >= 3 :
 
-			print("refresh time more than 3 seconds packsel.py line 281 def monitoring")
+		# 	print("refresh time more than 3 seconds packsel.py line 281 def monitoring")
 			
-			self.starttime=time.time()
-			resultvaluechange=self.refreshbtn(driver,"partial")
-			print(self.stockdata["timestamp"])
+		# 	self.starttime=time.time()
+		# 	resultvaluechange=self.refreshbtn(driver,"partial")
+		# 	print(self.stockdata["timestamp"])
 
 #########################/////////////////////////////// 
 #########################  Value Change ////////////////

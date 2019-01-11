@@ -117,6 +117,7 @@ class pinkybot(packselenium):
 		# self.mypinkylogin(LoginParams)
 		
 		mthread=MyThread(self.mycollectqueues["qvalchange"],self.mypinkylogin,args=(LoginParams,))
+		mthread.setDaemon=True
 		mthread.start()
 		# mthread.join()
 
