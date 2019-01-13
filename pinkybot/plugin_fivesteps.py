@@ -152,7 +152,7 @@ class fivesteps():
 		print ("Total Cost Buy ====>>" + str(runcostbuy))
 		print ("Total Volume Buy =======>>" + str(runvolumebuy))
 		print ("Remain Invest Cost =========>>" + str(runinvest))
-		print("StockName =========>>" + (stockname))
+		print("StockName =========>>" + (stockname))  # get value from login function in pacsel.py self.stockdata.
 
 		conf_textout("Set Invest = " + str_initinvest ,"yellow","gray")
 		conf_textout("Set Volume Step = " + str_volumestep ,"yellow","gray")
@@ -220,7 +220,7 @@ class fivesteps():
 		elif params["ordermode"]=="sellbybot":
 			print("========================= start to sell plugin_fivesteps.py line 218 =====================")
 
-			params["stockname"]=self.conf_params["stockname"]
+			params["stockname"]=self.conf_params["stockname"] 
 			
 			params["startvolume"]=self.conf_params["totalvolumebuy"]
 

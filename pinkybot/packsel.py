@@ -200,6 +200,7 @@ class packselenium():
 			stockname=stock.get_attribute('value')
 		elif self.mode=="xlive":
 			stockname=stock.text
+		print("debug: packsel.py line 203 def login ")
 		print ("stockname found is " + stockname)
 		# exit()
 		# stockname=stock.get_attribute("value")
@@ -218,8 +219,8 @@ class packselenium():
 		elementClose = wait.until(EC.presence_of_element_located((By.XPATH, self.xpathreturn("xstockup"))))
 		print("wait finished")
 
-		if (stock):
-			# print("element is below")
+		if (stockname):
+			print("enter to if confirm login packsel.py line 223 def login !!!!!!!!!!")
 			# pr3int (element)
 			self.mycollectqueues["qvalchange"].put({"textout":"Login success contiue monitoring : " + stockname,
 				"stockname":stockname,
@@ -280,14 +281,23 @@ class packselenium():
 #########################/////////////////////////////// 
 		# print("time elapse now packsel.py line 281 def monitoring " )
 		# # print(self.currenttime-self.starttime)
-		
+
+
+		# if not self.mycollectqueues["qtimerefresh"].empty(): 		
+		# 	refreshtime = self.mycollectqueues["qtimerefresh"].get()			
+		# 	print("refresh time packsel.py line 284 def monitoring")
+
+
+
+			# if refreshtime=="refresh":
+			# 	resultvaluechange=self.refreshbtn(driver,"partial")
+				
 		# elapsedtime=(self.currenttime - self.starttime)
 		# if elapsedtime >= 3 :
 
 		# 	print("refresh time more than 3 seconds packsel.py line 281 def monitoring")
 			
 		# 	self.starttime=time.time()
-		# 	resultvaluechange=self.refreshbtn(driver,"partial")
 		# 	print(self.stockdata["timestamp"])
 
 #########################/////////////////////////////// 
@@ -304,8 +314,9 @@ class packselenium():
 			resultvaluechange=self.refreshbtn(driver,"partial")
 
 			resultvaluemonitor=self.myplugins.checkprocess2order(resultvaluechange,stockvalue,self.order)
-			print("\nresult from value of monitoring packsel.py line 305 def monitoring")
-			print(resultvaluemonitor)
+			# print("\nresult from value of monitoring packsel.py line 305 def monitoring")
+			# print(resultvaluemonitor)
+
 			# resultvaluechange=self.myplugins.checkprocess2matchstatus(resultvaluechange)
 
 			# To send to tkconsole.py update status of value change.			# continue refresh TKInter
