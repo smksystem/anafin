@@ -214,7 +214,9 @@ class fivesteps():
 			# chkrefresh["doupdatetk"]=list(filter(None.__ne__, chkrefresh["doupdatetk"]))
 			for ordertoconfirm in result_order:
 				self.waitconfirmfirstorder=ordertoconfirm["orderno"]
+
 				self.mybot.mycollectqueues["qtimerefresh"].put({"command":"monitoring"})			
+
 				print("confirm order plugin_fivesteps.py line 169")
 				print ("------------confirm order to monitor="+ self.waitconfirmfirstorder)
 				# 
@@ -252,7 +254,7 @@ class fivesteps():
 			params["stockpin"]=self.conf_params["stockpin"]
 			params["order"]="buy"
 
-			
+
 
 			resultbuy=orderfn(params) # return result from refresh for all line.
 			
