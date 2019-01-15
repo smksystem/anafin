@@ -303,7 +303,7 @@ class outputlog(tk.Tk):
 
 		if not self.mybot.mycollectqueues["qtimerefresh"].empty(): 
 			timeparams = self.mybot.mycollectqueues["qtimerefresh"].get()
-			if timeparams["command"]=="refresh":
+			if timeparams["command"]=="runtime":
 				self.starttime=time.time()
 
 
