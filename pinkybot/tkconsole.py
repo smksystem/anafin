@@ -301,8 +301,8 @@ class outputlog(tk.Tk):
 		self.lablecomputetime.config(text=self.time2)
 		
 
-		if not self.mycollectqueues["qtimerefresh"].empty(): 
-			timeparams = self.mycollectqueues["qtimerefresh"].get()
+		if not self.mybot.mycollectqueues["qtimerefresh"].empty(): 
+			timeparams = self.mybot.mycollectqueues["qtimerefresh"].get()
 			if timeparams["command"]=="refresh":
 				self.starttime=time.time()
 
@@ -314,7 +314,7 @@ class outputlog(tk.Tk):
 
 					print("refresh time more than 3 seconds packsel.py line 281 def monitoring")
 					self.txtout("Put Queue refresh time at : " + self.time2)
-					
+
 					self.mybot.mycollectqueues["qtimerefresh"].put({"refresh":"refresh"})			
 					self.starttime=time.time()
 			else:

@@ -252,6 +252,8 @@ class fivesteps():
 			params["stockpin"]=self.conf_params["stockpin"]
 			params["order"]="buy"
 
+			
+
 			resultbuy=orderfn(params) # return result from refresh for all line.
 			
 			for linetable in resultbuy:
