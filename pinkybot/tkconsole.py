@@ -18,7 +18,6 @@ class outputlog(tk.Tk):
 		self.title("Output Log")
 		# self.resizable(0,0)
 		self.geometry('780x620+20+20')
-		self.starttime=time.time()
 		# self.grid_columnconfigure(1, weight=1)
 		# self.pack_propagate(0)
 		usertxt=tk.StringVar(value="0147500")
@@ -302,13 +301,24 @@ class outputlog(tk.Tk):
 		self.lablecomputetime.config(text=self.time2)
 		
 
-		elapsedtime=(time.time() - self.starttime)
-		if elapsedtime >= 3 :
+		if not self.mycollectqueues["qtimerefresh"].empty(): 
+			timeparams = self.mycollectqueues["qtimerefresh"].get()
+			if timeparams["command"]=="refresh":
+				self.starttime=time.time()
 
-			# print("refresh time more than 3 seconds packsel.py line 281 def monitoring")
-			# self.txtout("Put Queue refresh time at : " + self.time2)
-			self.mybot.mycollectqueues["qtimerefresh"].put({"refresh":"refresh"})			
-			self.starttime=time.time()
+
+			elif timeparams["command"]=="monitoring":
+
+				elapsedtime=(time.time() - self.starttime)
+				if elapsedtime >= 3 :
+
+					print("refresh time more than 3 seconds packsel.py line 281 def monitoring")
+					self.txtout("Put Queue refresh time at : " + self.time2)
+					
+					self.mybot.mycollectqueues["qtimerefresh"].put({"refresh":"refresh"})			
+					self.starttime=time.time()
+			else:
+				self.mycollectqueues["qtimerefresh"].put(timeparams)
 			# resultvaluechange=self.refreshbtn(driver,"partial")
 			# print(self.starttime)
 

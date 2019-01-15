@@ -324,6 +324,9 @@ class packselenium():
 			self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshdb",
 												"refreshtype":"all"}) 
 			
+
+			self.mybot.mycollectqueues["qtimerefresh"].put({"command":"refresh"})			
+			
 			self.stockcompare=stockvalue
 			# print(self.stockdata)
 			# starttime=self.stockdata["timestamp"]		
