@@ -215,7 +215,6 @@ class fivesteps():
 			for ordertoconfirm in result_order:
 				self.waitconfirmfirstorder=ordertoconfirm["orderno"]
 
-				self.mybot.mycollectqueues["qtimerefresh"].put({"command":"monitoring"})			
 
 				print("confirm order plugin_fivesteps.py line 169")
 				print ("------------confirm order to monitor="+ self.waitconfirmfirstorder)

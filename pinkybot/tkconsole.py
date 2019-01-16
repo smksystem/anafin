@@ -69,7 +69,7 @@ class outputlog(tk.Tk):
 
 
 
-
+		self.starttime =None
 
 
 
@@ -304,13 +304,15 @@ class outputlog(tk.Tk):
 		if not self.mybot.mycollectqueues["qtimerefresh"].empty(): 
 			timeparams = self.mybot.mycollectqueues["qtimerefresh"].get()
 
-			print("qtime refresh is call tkconsole.py line 307 def tkclock")
+			# print("qtime refresh is call tkconsole.py line 307 def tkclock")
+			print (self.starttime,timeparams)
+
 			if timeparams["command"]=="runtime":
 				print("\nstart time count is called tkconsole.py line 307 def tkclock")
 				self.starttime=time.time()
 
 
-			elif timeparams["command"]=="monitoring":
+			elif timeparams["command"]=="monitoring" and self.starttime is not None:
 				print("monitoring value is called tkconsole.py line 314 def tkclock")
 				elapsedtime=(time.time() - self.starttime)
 				if elapsedtime >= 3 :
@@ -321,7 +323,7 @@ class outputlog(tk.Tk):
 					self.mybot.mycollectqueues["qtimerefresh"].put({"refresh":"refresh"})			
 					self.starttime=time.time()
 			else:
-				self.mycollectqueues["qtimerefresh"].put(timeparams)
+				self.mybot.mycollectqueues["qtimerefresh"].put(timeparams)
 			# resultvaluechange=self.refreshbtn(driver,"partial")
 			# print(self.starttime)
 

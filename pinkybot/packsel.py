@@ -321,8 +321,8 @@ class packselenium():
 
 			# To send to tkconsole.py update status of value change.			# continue refresh TKInter
 			self.mycollectqueues["qvalchange"].put({"stockvalue":stockvalue})   # to send blink at value.
-			self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshdb",
-												"refreshtype":"all"}) 
+			# self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshdb",
+												# "refreshtype":"all"}) 
 			
 
 			self.mycollectqueues["qtimerefresh"].put({"command":"runtime"})			
@@ -376,6 +376,8 @@ class packselenium():
 				# self.order(driver,orderparams)
 			# orderparams["driver"]=self.mydriver
 			self.myplugins.order(orderparams,self.order)
+		
+		self.mycollectqueues["qtimerefresh"].put({"command":"monitoring"})			
 				
 
 	def order(self,orderparams):
