@@ -320,8 +320,8 @@ class outputlog(tk.Tk):
 					print("refresh time more than 3 seconds packsel.py line 281 def monitoring")
 					self.txtout("Put Queue refresh time at : " + self.time2)
 
-					self.mybot.mycollectqueues["qtimerefresh"].put({"refresh":"refresh"})			
-					self.starttime=time.time()
+					# self.mybot.mycollectqueues["qtimerefresh"].put({"refresh":"refresh"})			
+					# self.starttime=time.time()
 			else:
 				self.mybot.mycollectqueues["qtimerefresh"].put(timeparams)
 			# resultvaluechange=self.refreshbtn(driver,"partial")

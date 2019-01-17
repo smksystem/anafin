@@ -219,7 +219,7 @@ class fivesteps():
 				self.waitconfirmfirstorder=ordertoconfirm["orderno"]
 
 
-				print("confirm order plugin_fivesteps.py line 169")
+				print("confirm first buy order plugin_fivesteps.py line 169")
 				print ("------------confirm order to monitor="+ self.waitconfirmfirstorder)
 				# 
 		elif params["ordermode"]=="sellbybot":
