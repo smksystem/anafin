@@ -310,6 +310,7 @@ class packselenium():
 			# print("first stockvalue updated=" + stockvalue)
 			# print("first stockcompare updated=" + self.stockcompare)
 			# self.mycollectqueues["qvalchange"].put({"stockvalue":stockvalue})
+
 			PackSelModel.updatestockvaluechange(self.stockdata)
 			resultvaluechange=self.refreshbtn(driver,"partial")
 
@@ -325,12 +326,12 @@ class packselenium():
 												# "refreshtype":"all"}) 
 			
 
-			self.mycollectqueues["qtimerefresh"].put({"command":"runtime"})			
+			self.mycollectqueues["qtimerefresh"].put({"command":"monitoring"})			
 			
 			self.stockcompare=stockvalue
 			# print(self.stockdata)
 			# starttime=self.stockdata["timestamp"]		
-			self.resettime=0
+			# self.resettime=0
 
 			# result_refreshbtn=self.refreshbtn(driver)
 
@@ -377,7 +378,6 @@ class packselenium():
 			# orderparams["driver"]=self.mydriver
 			self.myplugins.order(orderparams,self.order)
 		
-		self.mycollectqueues["qtimerefresh"].put({"command":"monitoring"})			
 				
 
 	def order(self,orderparams):

@@ -307,8 +307,8 @@ class outputlog(tk.Tk):
 			# print("qtime refresh is call tkconsole.py line 307 def tkclock")
 			print (self.starttime,timeparams)
 
-			if timeparams["command"]=="runtime":
-				print("\nstart time count is called tkconsole.py line 307 def tkclock")
+			if timeparams["command"]=="starttime":
+				print("\nstart time count is called tkconsitole.py line 307 def tkclock")
 				self.starttime=time.time()
 
 

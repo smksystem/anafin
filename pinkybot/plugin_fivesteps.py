@@ -211,6 +211,9 @@ class fivesteps():
 			print("first buy mode plugin_fivesteps.py line 206")
 			# print(params)
 			print(result_order)
+			self.mycollectqueues["qtimerefresh"].put({"command":"starttime"})			
+
+
 			# chkrefresh["doupdatetk"]=list(filter(None.__ne__, chkrefresh["doupdatetk"]))
 			for ordertoconfirm in result_order:
 				self.waitconfirmfirstorder=ordertoconfirm["orderno"]
