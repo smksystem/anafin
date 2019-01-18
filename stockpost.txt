@@ -1,1 +1,0 @@
-{"priceType": "limit", "nvdr": "False", "pbVol": "", "price": "4.88", "side": "B", "symbol": "WHA", "validity": "DAY", "vol": "500", "time": "23:19:42", "orderNo": 121950, "nvdrFlag": "", "status": "Matched(M)", "matchedVol": "0", "balanceVol": "0", "cancelledVol": "0"}

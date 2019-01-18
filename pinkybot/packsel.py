@@ -326,7 +326,7 @@ class packselenium():
 			self.mycollectqueues["qvalchange"].put({"stockvalue":stockvalue})   # to send blink at value.
 			# self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshdb",
 												# "refreshtype":"all"}) 
-			
+			print ( "start to put commnad with monitoring packsel.py line 329 def monitoring   0000000000000")
 
 			self.mycollectqueues["qtimerefresh"].put({"command":"monitoring"})			
 			

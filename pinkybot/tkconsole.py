@@ -305,21 +305,25 @@ class outputlog(tk.Tk):
 			timeparams = self.mybot.mycollectqueues["qtimerefresh"].get()
 
 			# print("qtime refresh is call tkconsole.py line 307 def tkclock")
-			print (self.starttime,timeparams)
+			# print (self.starttime,timeparams)
 
 			if timeparams["command"]=="starttime":
-				print("\nstart time count is called tkconsitole.py line 307 def tkclock")
 				self.starttime=time.time()
-
+				print("\nstart time count is called tkconsitole.py line 307 def tkclock")
+				print(self.starttime)
+				print("\n\n")
 
 			elif timeparams["command"]=="monitoring" and self.starttime is not None:
-				print("monitoring value is called tkconsole.py line 314 def tkclock")
+				# print("monitoring value is called tkconsole.py line 314 def tkclock")
 				elapsedtime=(time.time() - self.starttime)
+				# print(elapsedtime)
+
+				self.mybot.mycollectqueues["qtimerefresh"].put({"command":"monitoring"})			
 				if elapsedtime >= 3 :
 
 					print("refresh time more than 3 seconds packsel.py line 281 def monitoring")
 					self.txtout("Put Queue refresh time at : " + self.time2)
-
+					self.starttime=time.time()
 					# self.mybot.mycollectqueues["qtimerefresh"].put({"refresh":"refresh"})			
 					# self.starttime=time.time()
 			else:
