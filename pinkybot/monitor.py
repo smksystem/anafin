@@ -143,8 +143,8 @@ class pinkybot(packselenium):
 		# exit()
 		# handlewin="test"
 		timestamp = datetime.now()
-		print("login is called")
-		
+		print("\ncontinue monitoring after login with refresh once monitor.py line 146 def threading")
+		self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshdb","refreshtype":"all"})		
 		# Monitor loop here
 
 		while True:

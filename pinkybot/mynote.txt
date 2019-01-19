@@ -3,12 +3,11 @@
 	- Need to change dummypage to start buy value at file dummypage/templates/porder.html 
 	- Do auto first buy
 	- dummy page value change then change status of previous order.
+	- periodic refresh to get status of order.
+	- detect orderid in array.
 
 Plan:
-	- detect orderid in array.
-	- detect orderid for the first buy order to be matched status.
-	- periodic refresh to get status of order.
-	- to fix inactive of thread by move time to tkconsole clock and use queue to active it.
+	- detect orderid for the first buy order to be -- >>> matched status.
 
 
 
