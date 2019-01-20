@@ -34,7 +34,7 @@ class packselenium():
 				"xstockname":"//*[@id='eqQuoteSymbol']",
 				"xstockvalue":"//*[@id='instInfoEq']/tbody/tr[1]/td[2]/h2/span",
 				"xbuyradio":"//*[@id='placeEq']/div[1]/input[1]",
-				"xsellradio":"//*[@id='placeEq']/div[1]/input[0]",
+				"xsellradio":"//*[@id='placeEq']/div[1]/input[2]", 
 
 				"xstockorder":"//*[@id='eqSymbol']",
 				"xstockvolumnorder":"//*[@id='placeEq']/div[2]/input",
@@ -403,7 +403,7 @@ class packselenium():
 		elif orderside=="sell":
 
 			chkstock=driver.find_elements_by_xpath(self.xpathreturn("xsellradio"))[0].click()
-			# //*[@id="placeEq"]/div[1]/input[2]
+			# 
 			
 			# print("order sell now")
 			# print(chkstock)

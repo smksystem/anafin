@@ -31,13 +31,6 @@ class fivesteps():
 		stopvaluerange=4.84
 
 
-		str_initinvest=str(initinvest)
-		str_volumestep	=str(volumestep)
-		str_profitstep= str(profitstep)
-		str_topvaluerange= str(topvaluerange)
-		str_startvaluebuy= str(startvaluebuy)
-		str_floorvaluerange= str(floorvaluerange)
-		str_stopvaluerange= str(stopvaluerange)
 
 
 
@@ -66,6 +59,21 @@ class fivesteps():
 		runcostbuy=0 #### purpose variable to calculate in below.
 		runvolumebuy=0
 		runconfig=floorvaluerange
+
+
+		str_initinvest=str(initinvest)
+		str_volumestep	=str(volumestep)
+		str_profitstep= str(profitstep)
+		str_topvaluerange= str(topvaluerange)
+		str_startvaluebuy= str(startvaluebuy)
+		str_floorvaluerange= str(floorvaluerange)
+		str_stopvaluerange= str(stopvaluerange)
+		str_commonvaluestep=str(commonvaluestep)
+
+
+
+
+
 
 		while (runconfig<=topvaluerange):
 			runconfig= round(runconfig,2)
@@ -146,6 +154,7 @@ class fivesteps():
 		print ("Initial Invest ====>>" + str(initinvest))
 		print ("Volume Step =====>>" + str(volumestep))
 		print ("Profit Step ====>>" + str(profitstep))
+		print("Common Value Step ====>>" + str(commonvaluestep))
 		print ("Top Value Range ====>>" + str(topvaluerange))
 		print ("Start Value Buy ====>>" + str(startvaluebuy))
 		print ("Floor Value Range ====>>" + str(floorvaluerange))
@@ -157,6 +166,7 @@ class fivesteps():
 		conf_textout("Set Invest = " + str_initinvest ,"yellow","gray")
 		conf_textout("Set Volume Step = " + str_volumestep ,"yellow","gray")
 		conf_textout("Set Profit Step = " + str_profitstep ,"yellow","gray")
+		conf_textout("Set Common Value Step = " + str_commonvaluestep ,"red","white")
 		conf_textout("Set Top Value Range = " + str_topvaluerange ,"yellow","gray")
 		conf_textout("Set Start Value Buy = " + str_startvaluebuy ,"yellow","gray")
 		conf_textout("Set Floor Value Range = " + str_floorvaluerange ,"yellow","gray")
@@ -170,6 +180,7 @@ class fivesteps():
 		self.conf_params={"initinvest":initinvest,
 							"volumestep":volumestep,
 							"profitstep":profitstep,
+							"commonvaluestep":commonvaluestep,
 							"topvaluerange":topvaluerange,
 							"startvaluebuy":str_startvaluebuy,
 							"floorvaluerange":floorvaluerange,
@@ -290,6 +301,12 @@ class fivesteps():
 					chkmatch["status"]=chkresult["status"]
 
 		# 		chkresult["ordermode"]="sellbybot"
+
+					print("Set commonvaluestep plugin_fivesteps.py line 304 def checkprocess2matchstatus")
+					print(self.conf_params)
+					print(self.conf_params["commonvaluestep"])
+					print(self.conf_params["profitstep"])
+
 					chkmatch.update({"matchedtime":currentdatetime,"targetvalue":"xx","profit":"100"})
 		# 		print(chkresult)
 
