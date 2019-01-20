@@ -8,6 +8,7 @@
 
 Plan:
 	- detect orderid for the first buy order to be -- >>> matched status.
+	- check why value up and down again trigger to buy lik initial buy.
 
 
 
