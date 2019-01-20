@@ -320,7 +320,6 @@ class packselenium():
 			# print("\nresult from value of monitoring packsel.py line 305 def monitoring")
 			# print(resultvaluemonitor)
 
-			# resultvaluechange=self.myplugins.checkprocess2matchstatus(resultvaluechange)
 
 			# To send to tkconsole.py update status of value change.			# continue refresh TKInter
 			self.mycollectqueues["qvalchange"].put({"stockvalue":stockvalue})   # to send blink at value.
@@ -360,6 +359,8 @@ class packselenium():
 				elif refreshparams["refreshtype"]=="partial":
 
 					result_refreshbtn=self.refreshbtn(driver,"partial")
+				
+				resultMatch=self.myplugins.checkprocess2matchstatus(result_refreshbtn)
 
 				# self.myplugins.checkparams(result_refreshbtn)	
 				self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk","doupdatetk":result_refreshbtn}) # continue refresh TKInter

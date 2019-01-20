@@ -273,30 +273,33 @@ class fivesteps():
 
 
 	def checkprocess2matchstatus(self,chk_params):
-		print("check params from plugin_fivesteps.py line 166")
+		print("\n\n\n\ncheck params from plugin_fivesteps.py line 166")
 		print(chk_params)
+		print (self.matchedordermonitor)
 		return_params=[]
 		datenow = datetime.datetime.now().strftime("%Y-%m-%d")
 		timenow = datetime.datetime.now().strftime("%H:%M:%S")
 		currentdatetime=datenow+"_"+timenow
 
 		# exit()
-		# for chkresult in chk_params:
-		# 	if chkresult["orderno"]==self.matchedordermonitor[""] and chkresult["status"]=="Matched(M)":
+		for chkresult in chk_params:
+			for chkmatch in self.matchedordermonitor:
+				if chkresult["orderno"]==chkmatch["orderno"] and chkresult["status"]=="Matched(M)":
 
-		# 		print("found Match(M) the first order plugin_fivesteps.py line 229 !!!!!!!!!++++++++")
+					print("found Match(M) the first order plugin_fivesteps.py line 289 def checkprocess2matchstatus")
+					chkmatch["status"]=chkresult["status"]
+
 		# 		chkresult["ordermode"]="sellbybot"
 		# 		chkresult.update({"matchedtime":currentdatetime,"targetvalue":"xx","profit":"100"})
 		# 		print(chkresult)
 
 				
-		# 		return_params.append(chkresult)
-		# 		print("9999999999999 return params plugin_fivesteps.py line 237 ")
-		# 		print (return_params)
-		# 		return return_params
+				print("update monitor order after check with rt table plugin_fivesteps.py line 299 def checkprocess2matchstatus")
+				print(self.matchedordermonitor)
+				return self.matchedordermonitor
 
 
-		# 	else: 
+				else: 
 		# 		return chk_params
-				# return "NOUPDATE"
+					return "NOUPDATE"
 				# result_order=orderfn(params)
