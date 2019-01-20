@@ -360,7 +360,8 @@ class packselenium():
 
 					result_refreshbtn=self.refreshbtn(driver,"partial")
 				
-				resultMatch=self.myplugins.checkprocess2matchstatus(result_refreshbtn)
+				resultMatch=self.myplugins.checkprocess2matchstatus(result_refreshbtn,self.order)
+				### update resultmatch to result_refreshbtn to tkinter here ( profit target ...etc)
 
 				# self.myplugins.checkparams(result_refreshbtn)	
 				self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk","doupdatetk":result_refreshbtn}) # continue refresh TKInter
@@ -402,6 +403,8 @@ class packselenium():
 		elif orderside=="sell":
 
 			chkstock=driver.find_elements_by_xpath(self.xpathreturn("xsellradio"))[0].click()
+			# //*[@id="placeEq"]/div[1]/input[2]
+			
 			# print("order sell now")
 			# print(chkstock)
 

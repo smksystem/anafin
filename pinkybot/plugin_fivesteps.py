@@ -272,7 +272,7 @@ class fivesteps():
 		return self.matchedordermonitor
 
 
-	def checkprocess2matchstatus(self,chk_params):
+	def checkprocess2matchstatus(self,chk_params,orderfn=""):
 		print("\n\n\n\ncheck params from plugin_fivesteps.py line 166")
 		print(chk_params)
 		print (self.matchedordermonitor)
@@ -290,12 +290,15 @@ class fivesteps():
 					chkmatch["status"]=chkresult["status"]
 
 		# 		chkresult["ordermode"]="sellbybot"
-		# 		chkresult.update({"matchedtime":currentdatetime,"targetvalue":"xx","profit":"100"})
+					chkmatch.update({"matchedtime":currentdatetime,"targetvalue":"xx","profit":"100"})
 		# 		print(chkresult)
 
 				
 					print("update monitor order after check with rt table plugin_fivesteps.py line 299 def checkprocess2matchstatus")
 					print(self.matchedordermonitor)
+
+					self.order({"ordermode":"sellbybot"},orderfn)
+
 					return self.matchedordermonitor
 
 
