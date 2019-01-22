@@ -304,9 +304,17 @@ class fivesteps():
 
 					print("Set commonvaluestep plugin_fivesteps.py line 304 def checkprocess2matchstatus")
 					print(self.conf_params)
-					print(self.conf_params["commonvaluestep"])
-					print(self.conf_params["profitstep"])
+					commonvaluestep=float(self.conf_params["commonvaluestep"])
+					# print(self.conf_params["profitstep"])
+					# print("result of multiply plugin_fivesteps.py line 309 def checkprocess2matchstatus")
+					# print(self.conf_params["profitstep"]*commonvaluestep)
+					# print( type (self.conf_params["profitstep"] ))
+					# print(type(commonvaluestep))
+					# print(type ( self.conf_params["startvaluebuy"] ))
 
+					ordertargetvalue=(float(self.conf_params["profitstep"])*commonvaluestep + float(self.conf_params["startvaluebuy"]))
+					print("\n\n plugin_fivesteps.py line 316 def checkprocess2matchstatus")
+					print(ordertargetvalue)
 					chkmatch.update({"matchedtime":currentdatetime,"targetvalue":"xx","profit":"100"})
 		# 		print(chkresult)
 

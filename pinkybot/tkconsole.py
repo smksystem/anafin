@@ -319,7 +319,8 @@ class outputlog(tk.Tk):
 				# print(elapsedtime)
 
 				self.mybot.mycollectqueues["qtimerefresh"].put({"command":"monitoring"})			
-				if elapsedtime >= 10 :
+				# if elapsedtime >= 10 :
+				if elapsedtime >= 3 :
 
 					print("refresh time more than 3 seconds packsel.py line 281 def monitoring")
 					self.txtout("Put Queue refresh time at : " + self.time2)
