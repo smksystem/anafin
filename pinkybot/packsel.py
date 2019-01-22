@@ -387,7 +387,7 @@ class packselenium():
 				
 
 	def order(self,orderparams):
-		print(" order params packsel.py line 334 in def order")
+		print(" \norder params packsel.py line 334 in def order")
 		print (orderparams)
 		# stockvalue = driver.find_elements_by_xpath(self.xpathreturn("xbuyradio"))[0].text
 		# print(self.mydriver)

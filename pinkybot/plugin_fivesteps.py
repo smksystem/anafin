@@ -245,7 +245,7 @@ class fivesteps():
 			params["stockpin"]=self.conf_params["stockpin"]
 			params["order"]="sell"
 			# self.params[""]
-
+			print("parameter before send to order function to sell by bot line 248 def order")
 
 			result_order=orderfn(params)
 
@@ -315,14 +315,20 @@ class fivesteps():
 					ordertargetvalue=(float(self.conf_params["profitstep"])*commonvaluestep + float(self.conf_params["startvaluebuy"]))
 					print("\n\n plugin_fivesteps.py line 316 def checkprocess2matchstatus")
 					print(ordertargetvalue)
-					chkmatch.update({"matchedtime":currentdatetime,"targetvalue":"xx","profit":"100"})
+					chkmatch.update({"matchedtime":currentdatetime,
+									"targetvalue":ordertargetvalue,
+									"profit":"100",
+									"sellvolumn":"100",
+									"nextordermode":"sellbybot",
+
+									})
 		# 		print(chkresult)
 
 				
 					print("update monitor order after check with rt table plugin_fivesteps.py line 299 def checkprocess2matchstatus")
 					print(self.matchedordermonitor)
 
-					self.order({"ordermode":"sellbybot"},orderfn)
+					self.order(self.matchedordermonitor,orderfn)
 
 					return self.matchedordermonitor
 
