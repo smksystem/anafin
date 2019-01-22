@@ -319,7 +319,7 @@ class fivesteps():
 									"targetvalue":ordertargetvalue,
 									"profit":"100",
 									"sellvolumn":"100",
-									"nextordermode":"sellbybot",
+									"ordermode":"sellbybot",
 
 									})
 		# 		print(chkresult)
@@ -327,8 +327,9 @@ class fivesteps():
 				
 					print("update monitor order after check with rt table plugin_fivesteps.py line 299 def checkprocess2matchstatus")
 					print(self.matchedordermonitor)
+					print(chkmatch)
 
-					self.order(self.matchedordermonitor,orderfn)
+					self.order(chkmatch,orderfn)
 
 					return self.matchedordermonitor
 
