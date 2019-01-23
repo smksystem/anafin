@@ -233,7 +233,7 @@ class fivesteps():
 				print("confirm first buy order plugin_fivesteps.py line 169")
 				print ("------------confirm order to monitor="+ self.waitconfirmfirstorder)
 				# 
-		elif params["ordermode"]=="sellbybot":
+		elif params["ordermode"]=="tosellbybot":
 			print("========================= start to sell plugin_fivesteps.py line 218 =====================")
 
 			params["stockname"]=self.conf_params["stockname"] 
@@ -315,11 +315,14 @@ class fivesteps():
 					ordertargetvalue=(float(self.conf_params["profitstep"])*commonvaluestep + float(self.conf_params["startvaluebuy"]))
 					print("\n\n plugin_fivesteps.py line 316 def checkprocess2matchstatus")
 					print(ordertargetvalue)
+
+					# sellvolume=conf_params["volumestep"]
+
 					chkmatch.update({"matchedtime":currentdatetime,
 									"targetvalue":ordertargetvalue,
 									"profit":"100",
 									"sellvolumn":"100",
-									"ordermode":"sellbybot",
+									"ordermode":"tosellbybot",
 
 									})
 		# 		print(chkresult)
