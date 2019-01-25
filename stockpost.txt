@@ -1,1 +1,1 @@
-{"priceType": "limit", "nvdr": "False", "pbVol": "", "price": "4.88", "side": "B", "symbol": "WHA", "validity": "DAY", "vol": "500", "time": "18:37:25", "orderNo": 668653, "nvdrFlag": "", "status": "Matched(M)", "matchedVol": "0", "balanceVol": "0", "cancelledVol": "0"}
+{"priceType": "limit", "nvdr": "False", "pbVol": "", "price": "4.88", "side": "B", "symbol": "WHA", "validity": "DAY", "vol": "500", "time": "00:50:26", "orderNo": 706746, "nvdrFlag": "", "status": "Matched(M)", "matchedVol": "0", "balanceVol": "0", "cancelledVol": "0"}

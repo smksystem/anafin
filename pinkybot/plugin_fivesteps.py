@@ -318,10 +318,20 @@ class fivesteps():
 					print(self.conf_params["volumestep"]) 
 					print(chkmatch["volume"])
 					
-					runvolumestep=int(chkmatch)/int(self.conf_params["volumestep"])
+					allvol=int(chkmatch["volume"])
+					stepvol=int(self.conf_params["volumestep"])
 
-					print("\n\nvolume loop to run ")
-					print(runvolumestep)
+					allvolidx=int(allvol/stepvol)
+					print(allvolidx)
+					
+					for runvolidx in range(allvolidx):
+						# runvol=
+						allvol= allvol-stepvol
+						print("test volume test")
+						print(allvol)
+
+					# print("\n\nvolume loop to run ")
+					# print(runvolumestep)
 
 					# sellvolume=conf_params["volumestep"]
 
