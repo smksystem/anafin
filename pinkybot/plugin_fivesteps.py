@@ -299,8 +299,8 @@ class fivesteps():
 
 					print("found Match(M) the first order plugin_fivesteps.py line 289 def checkprocess2matchstatus")
 					chkmatch["status"]=chkresult["status"]
-
-		# 		chkresult["ordermode"]="sellbybot"
+					chkmatch["volume"]=chkresult["volume"]
+					# 		chkresult["ordermode"]="sellbybot"
 
 					print("Set commonvaluestep plugin_fivesteps.py line 304 def checkprocess2matchstatus")
 					print(self.conf_params)
@@ -313,8 +313,15 @@ class fivesteps():
 					# print(type ( self.conf_params["startvaluebuy"] ))
 
 					ordertargetvalue=(float(self.conf_params["profitstep"])*commonvaluestep + float(self.conf_params["startvaluebuy"]))
-					print("\n\n plugin_fivesteps.py line 316 def checkprocess2matchstatus")
+					print("\n\n plugin_fivesteps.py line 316 def checkprocess2matchstatus \n\n")
 					print(ordertargetvalue)
+					print(self.conf_params["volumestep"]) 
+					print(chkmatch["volume"])
+					
+					runvolumestep=int(chkmatch)/int(self.conf_params["volumestep"])
+
+					print("\n\nvolume loop to run ")
+					print(runvolumestep)
 
 					# sellvolume=conf_params["volumestep"]
 
