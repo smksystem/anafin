@@ -300,11 +300,15 @@ class fivesteps():
 					print("found Match(M) the first order plugin_fivesteps.py line 289 def checkprocess2matchstatus")
 					chkmatch["status"]=chkresult["status"]
 					chkmatch["volume"]=chkresult["volume"]
+					chkmatch["price"]=chkresult["price"]
 					# 		chkresult["ordermode"]="sellbybot"
 
 					print("Set commonvaluestep plugin_fivesteps.py line 304 def checkprocess2matchstatus")
 					print(self.conf_params)
+
 					commonvaluestep=float(self.conf_params["commonvaluestep"])
+					profitstep=float(self.conf_params["profitstep"])
+					startvaluebuy=float(self.conf_params["startvaluebuy"])
 					# print(self.conf_params["profitstep"])
 					# print("result of multiply plugin_fivesteps.py line 309 def checkprocess2matchstatus")
 					# print(self.conf_params["profitstep"]*commonvaluestep)
@@ -312,9 +316,7 @@ class fivesteps():
 					# print(type(commonvaluestep))
 					# print(type ( self.conf_params["startvaluebuy"] ))
 
-					ordertargetvalue=(float(self.conf_params["profitstep"])*commonvaluestep + float(self.conf_params["startvaluebuy"]))
 					print("\n\n plugin_fivesteps.py line 316 def checkprocess2matchstatus \n\n")
-					print(ordertargetvalue)
 					print(self.conf_params["volumestep"]) 
 					print(chkmatch["volume"])
 					
@@ -324,19 +326,23 @@ class fivesteps():
 					allvolidx=int(allvol/stepvol)
 					print(allvolidx)
 					
+					sellprice=startvaluebuy
 					for runvolidx in range(allvolidx):
 						# runvol=
 						allvol= allvol-stepvol
 						print("test volume test")
 						print(allvol)
+						sellprice=(profitstep*commonvaluestep) + sellprice
 
+						print(sellprice)
 					# print("\n\nvolume loop to run ")
 					# print(runvolumestep)
 
 					# sellvolume=conf_params["volumestep"]
 
 					chkmatch.update({"matchedtime":currentdatetime,
-									"targetvalue":ordertargetvalue,
+									"price":sellprice,
+									# "targetvalue":targetvalue,
 									"profit":"100",
 									"sellvolumn":"100",
 									"ordermode":"tosellbybot",
