@@ -5,17 +5,39 @@
 	- dummy page value change then change status of previous order.
 	- periodic refresh to get status of order.
 	- detect orderid in array.
+	- detect orderid for the first buy order to be -- >>> matched status.
 
 Plan:
-	- detect orderid for the first buy order to be -- >>> matched status.
 	- check why value up and down again trigger to buy lik initial buy.
 
+====================
+Dict:
+====================
+
+Refresh data result:
+	[{'orderno': '507954', 'time': '09:52:08', 'symbole': 'WHA', 'side': 'B', 'price': '4.88', 'volume': '500', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Open(O)'}]
+
+Monitoring Period:
+	[{'orderno': '507954', 'status': 'Pending(S)'}]
+
+Monitoring Complete:
+	[{'orderno': '507954', 'status': 'Matched(M)', 'volume': '500', 'price': 5.08, 'matchedtime': '2019-01-28_09:52:25', 'profit': '100', 'sellvolumn': '100', 'ordermode': 'tosellbybot'}]
+
+Pre-Order in order def first buy:
+	{'orderno': '507954', 'status': 'Matched(M)', 'volume': '500', 'price': 5.08, 'matchedtime': '2019-01-28_09:52:25', 'profit': '100', 'sellvolumn': '100', 'ordermode': 'tosellbybot', 'stockname': 'WHA', 'startvolume': 500, 'startvalue': '4.88', 'stockpin': '3333', 'order': 'sell'}
+
+
+
+Order Parameter:
+	{'stockname': 'WHA', 'startvolume': 500, 'startvalue': '4.88', 'stockpin': '3333', 'order': 'buy'}
+
+Parameter configure:
+	{'initinvest': 20000, 'volumestep': 100, 'profitstep': 2, 'commonvaluestep': 0.02, 'topvaluerange': 4.96, 'startvaluebuy': '4.88', 'floorvaluerange': 4.78, 'totalcostbuy': 2460.0, 'totalvolumebuy': 500, 'remaininvest': 17540.0, 'stockname': 'WHA', 'stockpin': '3333'}
 
 
 
 
 	tkconsole  <--> rt_selenium
-
 
 	qvalchange(get) -> tkconsole.py
 	qvalchange(put) -> packsel.py
