@@ -316,6 +316,7 @@ class packselenium():
 			print("start to refersh partial from packsel.py line 315 def monitoring")
 			resultvaluechange=self.refreshbtn(driver,"partial")
 			print("start to check process to order packsel.py line 317 def monitoring")
+			
 			resultvaluemonitor=self.myplugins.checkprocess2order(resultvaluechange,stockvalue,self.order)
 			# print("\nresult from value of monitoring packsel.py line 305 def monitoring")
 			# print(resultvaluemonitor)

@@ -21,6 +21,8 @@ Monitoring Period:
 	[{'orderno': '507954', 'status': 'Pending(S)'}]
 
 Monitoring Complete:
+	[{'orderno': '298944', 'status': 'Matched(M)', 'volume': '500', 'price': '4.88', 'matchedtime': '2019-01-28_16:32:37', 'nextordermode': 'tosellbybot'}]
+
 	[{'orderno': '507954', 'status': 'Matched(M)', 'volume': '500', 'price': 5.08, 'matchedtime': '2019-01-28_09:52:25', 'profit': '100', 'sellvolumn': '100', 'ordermode': 'tosellbybot'}]
 
 Pre-Order in order def first buy:
@@ -28,8 +30,16 @@ Pre-Order in order def first buy:
 
 
 
+
 Order Parameter:
 	{'stockname': 'WHA', 'startvolume': 500, 'startvalue': '4.88', 'stockpin': '3333', 'order': 'buy'}
+
+
+
+Order List:
+	[{'startvalue': 4.92, 'startvolume': 100, 'order': 'sell', 'symbole': 'WHA', 'referfromorderno': '298944'}, {'startvalue': 4.96, 'startvolume': 100, 'order': 'sell', 'symbole': 'WHA', 'referfromorderno': '298944'}, {'startvalue': 5.0, 'startvolume': 100, 'order': 'sell', 'symbole': 'WHA', 'referfromorderno': '298944'}, {'startvalue': 5.04, 'startvolume': 100, 'order': 'sell', 'symbole': 'WHA', 'referfromorderno': '298944'}, {'startvalue': 5.08, 'startvolume': 100, 'order': 'sell', 'symbole': 'WHA', 'referfromorderno': '298944'}]
+
+
 
 Parameter configure:
 	{'initinvest': 20000, 'volumestep': 100, 'profitstep': 2, 'commonvaluestep': 0.02, 'topvaluerange': 4.96, 'startvaluebuy': '4.88', 'floorvaluerange': 4.78, 'totalcostbuy': 2460.0, 'totalvolumebuy': 500, 'remaininvest': 17540.0, 'stockname': 'WHA', 'stockpin': '3333'}

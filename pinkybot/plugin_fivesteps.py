@@ -205,35 +205,37 @@ class fivesteps():
 
 		# if params["buycount"]=="1buy":
 		# self.params=params
-		if params["ordermode"]=="buybyclick":
-
-			params["stockname"]=self.conf_params["stockname"]
-			params["startvolume"]=self.conf_params["totalvolumebuy"]
-			params["startvalue"]=self.conf_params["startvaluebuy"]
-			params["stockpin"]=self.conf_params["stockpin"]
-			params["order"]="buy"
-			# self.params[""]
 
 
-			result_order=orderfn(params)
+		# if params["ordermode"]=="buybyclick":
+
+		# 	params["stockname"]=self.conf_params["stockname"]
+		# 	params["startvolume"]=self.conf_params["totalvolumebuy"]
+		# 	params["startvalue"]=self.conf_params["startvaluebuy"]
+		# 	params["stockpin"]=self.conf_params["stockpin"]
+		# 	params["order"]="buy"
+		# 	# self.params[""]
+
+
+		# 	result_order=orderfn(params)
 
 			
-			print("======= debug plugin_fivesteps.py line 205")
-			print("first buy mode plugin_fivesteps.py line 206")
-			# print(params)
-			print(result_order)
-			self.mycollectqueues["qtimerefresh"].put({"command":"starttime"})			
+		# 	print("======= debug plugin_fivesteps.py line 205")
+		# 	print("first buy mode plugin_fivesteps.py line 206")
+		# 	# print(params)
+		# 	print(result_order)
+		# 	self.mycollectqueues["qtimerefresh"].put({"command":"starttime"})			
 
 
-			# chkrefresh["doupdatetk"]=list(filter(None.__ne__, chkrefresh["doupdatetk"]))
-			for ordertoconfirm in result_order:
-				self.waitconfirmfirstorder=ordertoconfirm["orderno"]
+		# 	# chkrefresh["doupdatetk"]=list(filter(None.__ne__, chkrefresh["doupdatetk"]))
+		# 	for ordertoconfirm in result_order:
+		# 		self.waitconfirmfirstorder=ordertoconfirm["orderno"]
 
 
-				print("confirm first buy order plugin_fivesteps.py line 169")
-				print ("------------confirm order to monitor="+ self.waitconfirmfirstorder)
-				# 
-		elif params["ordermode"]=="tosellbybot":
+		# 		print("confirm first buy order plugin_fivesteps.py line 169")
+		# 		print ("------------confirm order to monitor="+ self.waitconfirmfirstorder)
+		# 		# 
+		# elif params["ordermode"]=="tosellbybot":
 			print("========================= start to sell plugin_fivesteps.py line 218 =====================")
 
 			params["stockname"]=self.conf_params["stockname"] 
@@ -288,6 +290,7 @@ class fivesteps():
 		print(chk_params)
 		print (self.matchedordermonitor)
 		return_params=[]
+		orderlist=[]
 		datenow = datetime.datetime.now().strftime("%Y-%m-%d")
 		timenow = datetime.datetime.now().strftime("%H:%M:%S")
 		currentdatetime=datenow+"_"+timenow
@@ -325,7 +328,8 @@ class fivesteps():
 
 					allvolidx=int(allvol/stepvol)
 					print(allvolidx)
-					
+					orderno=chkresult["orderno"]
+					symbole=chkresult["symbole"]
 					sellprice=startvaluebuy
 					for runvolidx in range(allvolidx):
 						# runvol=
@@ -335,17 +339,27 @@ class fivesteps():
 						sellprice=(profitstep*commonvaluestep) + sellprice
 
 						print(sellprice)
+
+
+						orderlist.append({"startvalue":sellprice,
+										"startvolume":stepvol,
+										"order":"sell",
+										"symbole":symbole,
+										"referfromorderno":orderno,
+							})
+						
 					# print("\n\nvolume loop to run ")
 					# print(runvolumestep)
 
 					# sellvolume=conf_params["volumestep"]
-
+					print("total order to buy after check match is below plugin_fivesteps.py line 347 def checkprocess2matchstatus")
+					print(orderlist)
 					chkmatch.update({"matchedtime":currentdatetime,
-									"price":sellprice,
+									# "price":sellprice,
 									# "targetvalue":targetvalue,
-									"profit":"100",
-									"sellvolumn":"100",
-									"ordermode":"tosellbybot",
+									# "profit":"100",
+									# "sellvolumn":"100",
+									"nextordermode":"tosellbybot",
 
 									})
 		# 		print(chkresult)
@@ -353,9 +367,9 @@ class fivesteps():
 				
 					print("update monitor order after check with rt table plugin_fivesteps.py line 299 def checkprocess2matchstatus")
 					print(self.matchedordermonitor)
-					print(chkmatch)
+					# print(chkmatch)
 
-					self.order(chkmatch,orderfn)
+					self.order(orderlist,orderfn)
 
 					return self.matchedordermonitor
 
