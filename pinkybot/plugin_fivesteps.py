@@ -203,6 +203,12 @@ class fivesteps():
 
 		print("access order process plugin_fivesteps.py line 159 88888888888888888")
 
+		for orderidx in params:
+			print("order idx before order line 207 plugin_fivesteps.py def order")
+			print(orderidx)
+			result_order=orderfn(orderidx)
+
+
 		# if params["buycount"]=="1buy":
 		# self.params=params
 
@@ -236,20 +242,19 @@ class fivesteps():
 		# 		print ("------------confirm order to monitor="+ self.waitconfirmfirstorder)
 		# 		# 
 		# elif params["ordermode"]=="tosellbybot":
-			print("========================= start to sell plugin_fivesteps.py line 218 =====================")
+			# print("========================= start to sell plugin_fivesteps.py line 218 =====================")
 
-			params["stockname"]=self.conf_params["stockname"] 
+			# params["stockname"]=self.conf_params["stockname"] 
 			
-			params["startvolume"]=self.conf_params["totalvolumebuy"]
+			# params["startvolume"]=self.conf_params["totalvolumebuy"]
 
 
-			params["startvalue"]=self.conf_params["startvaluebuy"]
-			params["stockpin"]=self.conf_params["stockpin"]
-			params["order"]="sell"
-			# self.params[""]
-			print("parameter before send to order function to sell by bot line 248 def order")
+			# params["startvalue"]=self.conf_params["startvaluebuy"]
+			# params["stockpin"]=self.conf_params["stockpin"]
+			# params["order"]="sell"
+			# # self.params[""]
+			# print("parameter before send to order function to sell by bot line 248 def order")
 
-			result_order=orderfn(params)
 
 
 		# else:
@@ -329,7 +334,7 @@ class fivesteps():
 					allvolidx=int(allvol/stepvol)
 					print(allvolidx)
 					orderno=chkresult["orderno"]
-					symbole=chkresult["symbole"]
+					stockname=chkresult["symbole"]
 					sellprice=startvaluebuy
 					for runvolidx in range(allvolidx):
 						# runvol=
@@ -341,10 +346,10 @@ class fivesteps():
 						print(sellprice)
 
 
-						orderlist.append({"startvalue":sellprice,
-										"startvolume":stepvol,
+						orderlist.append({"startvalue":str(sellprice),
+										"startvolume":str(stepvol),
 										"order":"sell",
-										"symbole":symbole,
+										"stockname":stockname,
 										"referfromorderno":orderno,
 							})
 						
