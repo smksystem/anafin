@@ -26,7 +26,7 @@ class fivesteps():
 		volumestep	=100
 		profitstep=2
 		topvaluerange=4.96
-		startvaluebuy=4.88
+		startvaluebuy=4.72
 		floorvaluerange=4.78
 		stopvaluerange=4.84
 
@@ -248,7 +248,7 @@ class fivesteps():
 			pass
 		elif controlorder["ordermode"]=="sellbybot" and controlorder["firstbuy"]=="no":
 
-			for orderidx in dataorder:
+			for orderidx in orderdetail:
 				print("\norder idx before order line 207 plugin_fivesteps.py def order")
 				print(orderidx)
 
@@ -392,7 +392,7 @@ class fivesteps():
 					print(self.matchedordermonitor)
 					# print(chkmatch)
 
-					self.order(orderlist,orderfn)
+					self.order({'ordermode':'sellbybot','firstbuy':'no'},orderlist,orderfn)
 
 					return self.matchedordermonitor
 
