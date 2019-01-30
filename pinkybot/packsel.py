@@ -381,6 +381,7 @@ class packselenium():
 			# if orderparams["order"]=="buy":
 				# self.order(driver,orderparams)
 			# orderparams["driver"]=self.mydriver
+			print("\n\ngot order to buy from qorder queue packsel.py line 384 def monitoring")
 			self.myplugins.order(orderparams,self.order)
 		
 		# self.mycollectqueues["qtimerefresh"].put({"command":"monitoring"})			
@@ -394,6 +395,7 @@ class packselenium():
 		# print(self.mydriver)
 		driver=self.mydriver
 		orderside=orderparams["order"]
+		# orderparams["stockpin"]=self.mypin
 
 		if orderside=="buy":
 

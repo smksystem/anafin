@@ -10,14 +10,14 @@ class fivesteps():
 		self.matchedordermonitor=[]
 		# self.conf_params={}
 
-	def configlogic(self):
+	# def configlogic(self):
 		
-		self.buybyclick={
-						"ordermode":"buybyclick",
+	# 	self.buybyclick={
+	# 					"ordermode":"buybyclick",
 
-						}
-		self.buybybot={}
-		self.sellbybot={}
+	# 					}
+	# 	self.buybybot={}
+	# 	self.sellbybot={}
 
 	def setparameter(self,conf_params,conf_labeldisplay,conf_textout):
 		print("set parameter of fivestep plugin_fivestep.py line 3")
@@ -198,49 +198,66 @@ class fivesteps():
 		print("Hello World")
 
 
-	def order(self,params="",orderfn=""):
+	def order(self,controlorder="",orderdetail={},orderfn=""):
 
 
-		print("access order process plugin_fivesteps.py line 159 88888888888888888")
+		print("\naccess order process plugin_fivesteps.py line 159 88888888888888888")
+		print(controlorder)
+		print(orderdetail)
 
-		for orderidx in params:
-			print("order idx before order line 207 plugin_fivesteps.py def order")
-			print(orderidx)
-			result_order=orderfn(orderidx)
+		
 
 
 		# if params["buycount"]=="1buy":
 		# self.params=params
 
+		if controlorder["ordermode"]=="buybybot" and controlorder["firstbuy"]=="yes":
+
+			orderdetail["stockname"]=self.conf_params["stockname"]
+			orderdetail["startvolume"]=self.conf_params["totalvolumebuy"]
+			orderdetail["startvalue"]=self.conf_params["startvaluebuy"]
+			orderdetail["stockpin"]=self.conf_params["stockpin"]
+			orderdetail["order"]="buy"
+			# self.params[""]
+
+
+			result_order=orderfn(orderdetail)
+
+			
+			print("======= debug plugin_fivesteps.py line 205")
+			print("first buy mode plugin_fivesteps.py line 206")
+			# print(params)
+			print(result_order)
+			self.mycollectqueues["qtimerefresh"].put({"command":"starttime"})			
+
+
+			# chkrefresh["doupdatetk"]=list(filter(None.__ne__, chkrefresh["doupdatetk"]))
+			for ordertoconfirm in result_order:
+				self.waitconfirmfirstorder=ordertoconfirm["orderno"]
+
+
+				print("confirm first buy order plugin_fivesteps.py line 169")
+				print ("------------confirm order to monitor="+ self.waitconfirmfirstorder)
+				# 
+
+
+
+		elif controlorder["ordermode"]=="buybybot" and controlorder["firstbuy"]=="no":
+			pass
+		elif controlorder["ordermode"]=="buybybot" and controlorder["firstbuy"]=="no":
+			pass
+		elif controlorder["ordermode"]=="sellbybot" and controlorder["firstbuy"]=="no":
+
+			for orderidx in dataorder:
+				print("\norder idx before order line 207 plugin_fivesteps.py def order")
+				print(orderidx)
+
+				result_order=orderfn(orderidx)
+
+
 
 		# if params["ordermode"]=="buybyclick":
 
-		# 	params["stockname"]=self.conf_params["stockname"]
-		# 	params["startvolume"]=self.conf_params["totalvolumebuy"]
-		# 	params["startvalue"]=self.conf_params["startvaluebuy"]
-		# 	params["stockpin"]=self.conf_params["stockpin"]
-		# 	params["order"]="buy"
-		# 	# self.params[""]
-
-
-		# 	result_order=orderfn(params)
-
-			
-		# 	print("======= debug plugin_fivesteps.py line 205")
-		# 	print("first buy mode plugin_fivesteps.py line 206")
-		# 	# print(params)
-		# 	print(result_order)
-		# 	self.mycollectqueues["qtimerefresh"].put({"command":"starttime"})			
-
-
-		# 	# chkrefresh["doupdatetk"]=list(filter(None.__ne__, chkrefresh["doupdatetk"]))
-		# 	for ordertoconfirm in result_order:
-		# 		self.waitconfirmfirstorder=ordertoconfirm["orderno"]
-
-
-		# 		print("confirm first buy order plugin_fivesteps.py line 169")
-		# 		print ("------------confirm order to monitor="+ self.waitconfirmfirstorder)
-		# 		# 
 		# elif params["ordermode"]=="tosellbybot":
 			# print("========================= start to sell plugin_fivesteps.py line 218 =====================")
 
@@ -351,6 +368,7 @@ class fivesteps():
 										"order":"sell",
 										"stockname":stockname,
 										"referfromorderno":orderno,
+										"stockpin":self.conf_params["stockpin"],
 							})
 						
 					# print("\n\nvolume loop to run ")

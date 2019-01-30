@@ -724,9 +724,9 @@ class outputlog(tk.Tk):
 						self.txtout("value change to:" + tempdict["textout"])
 
 				if "stockvalue" in tempdict:
-						print ("stock has been updated !!!!!!!!!!!!")
-						params={"ordermode":"buybybot"}
-						self.mybot.myplugins.order(params,self.mybot.order)
+						print ("stock has been updated !!!!!!!!!!!! tkconsole.py line 727 def Refresher")
+						# controlorder={"ordermode":"buybybot","firstbuy":"yes"}
+						# self.mybot.myplugins.order(controlorder,{},self.mybot.order)
 
 						self.txtout("Value Change : " + tempdict["stockvalue"])
 						lblstockvalue=tempdict["stockvalue"] # get value from queue

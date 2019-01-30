@@ -8,7 +8,9 @@
 	- detect orderid for the first buy order to be -- >>> matched status.
 
 Plan:
+	- from refresher in tkconsole how to know if it's the first buy order ?
 	- check why value up and down again trigger to buy lik initial buy.
+
 
 ====================
 Dict:

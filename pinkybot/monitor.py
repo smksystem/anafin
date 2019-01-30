@@ -61,7 +61,7 @@ class pinkybot(packselenium):
 
 
 			}
-			# print ("Start:buy buy buy buy buy monitor.py line 47")
+			print ("Start:buy buy buy buy buy monitor.py line 47 def myorder")
 
 			# self.botbuyorder(buyparams)
 			# print("botbuyorder buy now")
