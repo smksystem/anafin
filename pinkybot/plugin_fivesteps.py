@@ -24,8 +24,8 @@ class fivesteps():
 		
 		initinvest=20000
 		volumestep	=100
-		profitstep=2
-		topvaluerange=4.96
+		profitstep=1
+		topvaluerange=4.82
 		startvaluebuy=4.72
 		floorvaluerange=4.78
 		stopvaluerange=4.84
@@ -352,13 +352,14 @@ class fivesteps():
 					print(allvolidx)
 					orderno=chkresult["orderno"]
 					stockname=chkresult["symbole"]
-					sellprice=startvaluebuy
+					sellprice= startvaluebuy
+
 					for runvolidx in range(allvolidx):
 						# runvol=
 						allvol= allvol-stepvol
 						print("test volume test")
 						print(allvol)
-						sellprice=(profitstep*commonvaluestep) + sellprice
+						sellprice=  round(((profitstep*commonvaluestep) + sellprice),2)
 
 						print(sellprice)
 
