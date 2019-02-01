@@ -24,10 +24,10 @@ class fivesteps():
 		
 		initinvest=20000
 		volumestep	=100
-		profitstep=1
+		profitstep=2
 		topvaluerange=4.82
 		startvaluebuy=4.72
-		floorvaluerange=4.78
+		floorvaluerange=4.60
 		stopvaluerange=4.84
 
 
@@ -359,12 +359,19 @@ class fivesteps():
 						allvol= allvol-stepvol
 						print("test volume test")
 						print(allvol)
-						sellprice=  round(((profitstep*commonvaluestep) + sellprice),2)
+						sellprice=  round(((profitstep * commonvaluestep) + sellprice),2)
 
 						print(sellprice)
+						chkpad=str(sellprice).split(".") 
 
+						if len(chkpad[1])==1:
+							tempval=chkpad[1]+"0"
+							strprice=chkpad[0]+"." +tempval
 
-						orderlist.append({"startvalue":str(sellprice),
+						else:
+							strprice=str(sellprice)
+
+						orderlist.append({"startvalue":strprice,
 										"startvolume":str(stepvol),
 										"order":"sell",
 										"stockname":stockname,
