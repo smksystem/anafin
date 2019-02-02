@@ -533,7 +533,7 @@ class outputlog(tk.Tk):
 		varorderno=tk.StringVar(value="orderno")
 		varstartordertime=tk.StringVar(value=timenow)
 		varmatchordertime=tk.StringVar(value="matchordertime")
-		varmatchcomplete=tk.StringVar(value="matchcomplete")
+		varmatchcomplete=tk.StringVar(value="referorder")
 		varorderside=tk.StringVar(value="orderside")
 		varvolume=tk.StringVar(value="volumn")
 		varstatus=tk.StringVar(value="state")

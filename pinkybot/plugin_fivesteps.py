@@ -281,7 +281,7 @@ class fivesteps():
 		print("initial value to buy = " + price_change)
 		params={}
 		
-		# if table of realtime not empty do execute below...
+		# if table of realtime empty do execute below...
 		if not rt_table and price_change==self.conf_params["startvaluebuy"]:
 			print("start first buy plugin_fivesteps.py line 241")
 
@@ -301,7 +301,11 @@ class fivesteps():
 				if linetable["status"] != "Matched(M)":
 					self.matchedordermonitor.append({"orderno":linetable["orderno"],
 														"status":linetable["status"],
+
+
+
 													})
+
 		print("order to monitor plugin_fivesteps.py line 259 def checkprocess2order ")
 		print(self.matchedordermonitor)
 		return self.matchedordermonitor
@@ -393,9 +397,7 @@ class fivesteps():
 									"nextordermode":"tosellbybot",
 
 									})
-		# 		print(chkresult)
-
-				
+					# 		print(chkresult)
 					print("update monitor order after check with rt table plugin_fivesteps.py line 299 def checkprocess2matchstatus")
 					print(self.matchedordermonitor)
 					# print(chkmatch)
@@ -405,7 +407,10 @@ class fivesteps():
 					return self.matchedordermonitor
 
 
-				else: 
-		# 		return chk_params
-					return "NOUPDATE"
+				elif chkresult["orderno"]==chkmatch["orderno"] and chkresult["status"]!= "Matched(M)": 
+					# 		return chk_params
+					print("+++ Case else with not match but order match plugin_fivesteps.py def checkprocess2matchstatus line 414")
+					print(chkresult["status"])
+					chkmatch["status"]=chkresult["status"]
+					return "update status"
 				# result_order=orderfn(params)
