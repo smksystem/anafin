@@ -158,17 +158,23 @@ class PackSelModel:
 				print ("\n===Order already existing and fullrefresh = partial packsel_model.py line 158")
 				tochk=chkorderno.values()
 				print(tochk)
+				print(mytable)
+				print(len(myrow))
 				# print (tochk[0]["orderno"])
 				
 				# a = 2 if i in [1, 3, 6] else 7
 				# print (updaterow)
 				# exit()
 				# print (myrow)
+
+				# to check if database and rt table has the same data or not ?
+
 				for index, (column,myvalue) in enumerate(tochk[0].items()):
 					# index-=index
-					if column != "id" and column != "date":
-						print("--- index of myrow packsel_model.py line 170")
-						print (index)
+					# to exclude check below column
+					if column != "id" and column != "date" and column !="matchedtime" and column != "referorderfrom":
+						# print("--- index of myrow packsel_model.py line 170")
+						# print (index,myvalue,myrow[index-1])
 						updaterow=True if (myvalue != myrow[index-1]) else False
 						# print (index,column,myvalue,myrow[index-1],updaterow)
 						# print(dataparams["orderno"])
