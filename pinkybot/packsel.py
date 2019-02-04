@@ -383,7 +383,7 @@ class packselenium():
 			# if orderparams["order"]=="buy":
 				# self.order(driver,orderparams)
 			# orderparams["driver"]=self.mydriver
-			print("\n\ngot order to buy from qorder queue packsel.py line 384 def monitoring")
+			print("\ngot order to buy from qorder queue packsel.py line 384 def monitoring")
 			self.myplugins.order(orderparams,self.order)
 		
 		# self.mycollectqueues["qtimerefresh"].put({"command":"monitoring"})			
@@ -458,7 +458,7 @@ class packselenium():
 
 
 		# try:
-		print ("refresh botton press in function refresh btn packsel.py line 406 in def refreshbtn")
+		print ("\nrefresh botton press in function refresh btn packsel.py line 406 in def refreshbtn")
 
 		elem = driver.find_element_by_xpath(self.xpathreturn("xrtrefresh")).click()
 

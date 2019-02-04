@@ -397,6 +397,8 @@ class fivesteps():
 					print(self.matchedordermonitor)
 					# print(chkmatch)
 
+					
+
 					self.order({'ordermode':'sellbybot','firstbuy':'no'},orderlist,orderfn)
 
 					return self.matchedordermonitor
