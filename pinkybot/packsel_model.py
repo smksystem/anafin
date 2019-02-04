@@ -97,8 +97,9 @@ class PackSelModel:
 
 # [['71913646', '17:09:57', 'WHA', 'B', '4.10', '600', '0', '600', '0', 'Pending(OF)', 'Detail', 'Cancel'], 
 # ['71911327', '14:42:59', 'WHA', 'B', '4.08', '700', '0', '0', '700', 'Cancel(X)', 'Detail']]
-	def updatematchstatus():
+	def updatematchstatus(resultMatch):
 		print("\nupdate match status packsel_model.py line 101 def updatematchstatus")
+		print(resultMatch)
 		
 	def updaterefresh(mytable,fullrefresh="partial"):
 		# compare logic here to update table or not 
