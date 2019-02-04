@@ -492,7 +492,9 @@ class packselenium():
 
 				# ['', '71911327', '14:42:59', 'WHA', 'B', '4.08', '700', '0', '0', '700', 'Cancel(X)', '', 'Detail', '']
 				# [['71911327', '14:42:59', 'WHA', 'B', '4.08', '700', '0', '0', '700', 'Cancel(X)', 'Detail']]
-				
+				print("\n--- update refresh to refresh database packsel.py line 495 def refreshbtn ")
+				print(mytable)
+
 				if allorpartial=="partial":
 				# print ("partial update refresh packsel.py line 427")
 					rowupdaterefresh=PackSelModel.updaterefresh(mytable,"partial")
@@ -540,7 +542,8 @@ class packselenium():
 
 
 
-			
+			print ("\n---mytable before refreshbtn line 545 packsel.py")
+			print(mytable)			
 			if allorpartial=="partial":
 				# print ("partial update refresh packsel.py line 427")
 				rowupdaterefresh=PackSelModel.updaterefresh(mytable,"partial")
