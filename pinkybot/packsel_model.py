@@ -100,12 +100,13 @@ class PackSelModel:
 
 	def updaterefresh(mytable,fullrefresh="partial"):
 		# compare logic here to update table or not 
-		# print ("hello update refresh table databases packsel_model.py line 103")
-		# print (mytable)
+		
+		
 		result_updaterefresh=[]
 		
 		for myrow in mytable:
-		
+			myrow.append("matchtime")
+			myrow.append("refodfrm")
 			dataparams={
 					"orderno": myrow[0],
 					"time":myrow[1],
@@ -117,11 +118,13 @@ class PackSelModel:
 					"balance":myrow[7],
 					"cancelled":myrow[8],
 					"status":myrow[9],
-					# "seq_order":seq_order,
+					"matchedtime":myrow[10],
+
+					"referorderfrom":myrow[11],
+
 			}
-
-			# print (myrow[0])
-
+			print("\n---Print myrow line 126 packsel_model.py def updaterefresh")
+			print(myrow)
 			chkorderno=updaterefresh.objects.filter(orderno=myrow[0]) # SQL filter for order no to find existing record.
 
 			# No check for refresh type it's all refresh at the first time to sync all db and rt
@@ -177,7 +180,9 @@ class PackSelModel:
 							# print ("--------------update row into table with existing and partial packsel_model.py line 172")
 							# print(dataparams)
 							# print (index,column,myvalue,myrow[index-1],updaterow)
-
+		print ("\nprint mytable packsel_model.py line 103 def updaterefresh")
+		print (mytable)
+		
 		print("========result updaterefresh from realtime before return out from function packsel_model.py line 180")
 		print(result_updaterefresh)
 		return result_updaterefresh
