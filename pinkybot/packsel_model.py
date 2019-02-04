@@ -97,7 +97,9 @@ class PackSelModel:
 
 # [['71913646', '17:09:57', 'WHA', 'B', '4.10', '600', '0', '600', '0', 'Pending(OF)', 'Detail', 'Cancel'], 
 # ['71911327', '14:42:59', 'WHA', 'B', '4.08', '700', '0', '0', '700', 'Cancel(X)', 'Detail']]
-
+	def updatematchstatus():
+		print("\nupdate match status packsel_model.py line 101 def updatematchstatus")
+		
 	def updaterefresh(mytable,fullrefresh="partial"):
 		# compare logic here to update table or not 
 		
@@ -155,11 +157,11 @@ class PackSelModel:
 
 			elif chkorderno.exists() and fullrefresh=="partial":
 
-				print ("\n===Order already existing and fullrefresh = partial packsel_model.py line 158")
+				# print ("\n===Order already existing and fullrefresh = partial packsel_model.py line 158")
 				tochk=chkorderno.values()
-				print(tochk)
-				print(mytable)
-				print(len(myrow))
+				# print(tochk)
+				# print(mytable)
+				# print(len(myrow))
 				# print (tochk[0]["orderno"])
 				
 				# a = 2 if i in [1, 3, 6] else 7
@@ -189,11 +191,11 @@ class PackSelModel:
 							# print ("--------------update row into table with existing and partial packsel_model.py line 172")
 							# print(dataparams)
 							# print (index,column,myvalue,myrow[index-1],updaterow)
-		print ("\nprint mytable packsel_model.py line 103 def updaterefresh")
-		print (mytable)
-		
-		print("========result updaterefresh from realtime before return out from function packsel_model.py line 180")
-		print(result_updaterefresh)
+		# print ("\nprint mytable packsel_model.py line 103 def updaterefresh")
+		# print (mytable)
+		# 
+		# print("========result updaterefresh from realtime before return out from function packsel_model.py line 180")
+		# print(result_updaterefresh)
 		return result_updaterefresh
 
 	def test_mysql():

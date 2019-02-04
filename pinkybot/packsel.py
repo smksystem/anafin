@@ -364,6 +364,9 @@ class packselenium():
 					print(result_refreshbtn)
 				
 				resultMatch =self.myplugins.checkprocess2matchstatus(result_refreshbtn,self.order)
+
+				
+				PackSelModel.updatematchstatus(resultMatch)
 				### update resultmatch to result_refreshbtn to tkinter here ( profit target ...etc)
 
 				# self.myplugins.checkparams(result_refreshbtn)	
