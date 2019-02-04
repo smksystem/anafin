@@ -360,8 +360,10 @@ class packselenium():
 				elif refreshparams["refreshtype"]=="partial":
 
 					result_refreshbtn=self.refreshbtn(driver,"partial")
+					print ("\n--- Partial refresh result from refreshbtn packsel.py line 363 def monitoring")
+					print(result_refreshbtn)
 				
-				resultMatch=self.myplugins.checkprocess2matchstatus(result_refreshbtn,self.order)
+				resultMatch =self.myplugins.checkprocess2matchstatus(result_refreshbtn,self.order)
 				### update resultmatch to result_refreshbtn to tkinter here ( profit target ...etc)
 
 				# self.myplugins.checkparams(result_refreshbtn)	

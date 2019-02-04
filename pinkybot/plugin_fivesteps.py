@@ -312,7 +312,7 @@ class fivesteps():
 
 
 	def checkprocess2matchstatus(self,chk_params,orderfn=""):
-		print("\n\n\n\ncheck params from plugin_fivesteps.py line 166")
+		print("\ncheck params from plugin_fivesteps.py line 166")
 		print(chk_params)
 		print (self.matchedordermonitor)
 		return_params=[]
@@ -326,18 +326,23 @@ class fivesteps():
 			for chkmatch in self.matchedordermonitor:
 				if chkresult["orderno"]==chkmatch["orderno"] and chkresult["status"]=="Matched(M)":
 
-					print("found Match(M) the first order plugin_fivesteps.py line 289 def checkprocess2matchstatus")
-					chkmatch["status"]=chkresult["status"]
-					chkmatch["volume"]=chkresult["volume"]
-					chkmatch["price"]=chkresult["price"]
-					# 		chkresult["ordermode"]="sellbybot"
+					print("\nfound Match(M) the first order plugin_fivesteps.py line 289 def checkprocess2matchstatus")
 
-					print("Set commonvaluestep plugin_fivesteps.py line 304 def checkprocess2matchstatus")
+					chkmatch.update({
+									"status":chkresult["status"],
+									"volume":chkresult["volume"],
+									"price": chkresult["price"],
+									"matchedtime":currentdatetime,
+									"nextordermode":"tosellbybot",
+
+									})
+					print("\nSet commonvaluestep plugin_fivesteps.py line 304 def checkprocess2matchstatus")
 					print(self.conf_params)
 
 					commonvaluestep=float(self.conf_params["commonvaluestep"])
 					profitstep=float(self.conf_params["profitstep"])
 					startvaluebuy=float(self.conf_params["startvaluebuy"])
+
 					# print(self.conf_params["profitstep"])
 					# print("result of multiply plugin_fivesteps.py line 309 def checkprocess2matchstatus")
 					# print(self.conf_params["profitstep"]*commonvaluestep)
@@ -345,7 +350,7 @@ class fivesteps():
 					# print(type(commonvaluestep))
 					# print(type ( self.conf_params["startvaluebuy"] ))
 
-					print("\n\n plugin_fivesteps.py line 316 def checkprocess2matchstatus \n\n")
+					print("\n plugin_fivesteps.py line 316 def checkprocess2matchstatus")
 					print(self.conf_params["volumestep"]) 
 					print(chkmatch["volume"])
 					
@@ -383,20 +388,10 @@ class fivesteps():
 										"stockpin":self.conf_params["stockpin"],
 							})
 						
-					# print("\n\nvolume loop to run ")
-					# print(runvolumestep)
-
 					# sellvolume=conf_params["volumestep"]
 					print("total order to buy after check match is below plugin_fivesteps.py line 347 def checkprocess2matchstatus")
 					print(orderlist)
-					chkmatch.update({"matchedtime":currentdatetime,
-									# "price":sellprice,
-									# "targetvalue":targetvalue,
-									# "profit":"100",
-									# "sellvolumn":"100",
-									"nextordermode":"tosellbybot",
-
-									})
+					
 					# 		print(chkresult)
 					print("update monitor order after check with rt table plugin_fivesteps.py line 299 def checkprocess2matchstatus")
 					print(self.matchedordermonitor)
