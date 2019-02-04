@@ -155,8 +155,9 @@ class PackSelModel:
 
 			elif chkorderno.exists() and fullrefresh=="partial":
 
-				print ("Order already existing and fullrefresh = partial packsel_model.py line 154")
+				print ("\n===Order already existing and fullrefresh = partial packsel_model.py line 158")
 				tochk=chkorderno.values()
+				print(tochk)
 				# print (tochk[0]["orderno"])
 				
 				# a = 2 if i in [1, 3, 6] else 7
@@ -166,6 +167,8 @@ class PackSelModel:
 				for index, (column,myvalue) in enumerate(tochk[0].items()):
 					# index-=index
 					if column != "id" and column != "date":
+						print("--- index of myrow packsel_model.py line 170")
+						print (index)
 						updaterow=True if (myvalue != myrow[index-1]) else False
 						# print (index,column,myvalue,myrow[index-1],updaterow)
 						# print(dataparams["orderno"])
