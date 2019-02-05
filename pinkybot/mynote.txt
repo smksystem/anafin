@@ -6,11 +6,12 @@
 	- periodic refresh to get status of order.
 	- detect orderid in array.
 	- detect orderid for the first buy order to be -- >>> matched status.
-
-Plan:
+	- fix error KeyError: '4.8'
 	- from refresher in tkconsole how to know if it's the first buy order ?
 	- check why value up and down again trigger to buy lik initial buy.
-	- fix error KeyError: '4.8'
+
+Plan:
+	- to remove dic after matched already.
 
 ====================
 Dict:
@@ -23,7 +24,7 @@ Monitoring Period:
 	[{'orderno': '507954', 'status': 'Pending(S)'}]
 
 Monitoring Complete:
-	[{'orderno': '298944', 'status': 'Matched(M)', 'volume': '500', 'price': '4.88', 'matchedtime': '2019-01-28_16:32:37', 'nextordermode': 'tosellbybot'}]
+	[{'orderno': '486386', 'status': 'Matched(M)', 'volume': '600', 'price': '4.72', 'matchdate': '2019-02-05', 'matchtime': '23:03:41', 'nextordermode': 'tosellbybot'}]
 
 	[{'orderno': '507954', 'status': 'Matched(M)', 'volume': '500', 'price': 5.08, 'matchedtime': '2019-01-28_09:52:25', 'profit': '100', 'sellvolumn': '100', 'ordermode': 'tosellbybot'}]
 
