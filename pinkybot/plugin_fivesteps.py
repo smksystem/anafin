@@ -1,5 +1,5 @@
 import datetime
-
+from pinkybot.packsel_model import PackSelModel
 class fivesteps():
 
 
@@ -319,7 +319,7 @@ class fivesteps():
 		orderlist=[]
 		datenow = datetime.datetime.now().strftime("%Y-%m-%d")
 		timenow = datetime.datetime.now().strftime("%H:%M:%S")
-		currentdatetime=datenow+"_"+timenow
+		# currentdatetime=datenow+"_"+timenow
 
 		# exit()
 		for chkresult in chk_params:
@@ -328,14 +328,20 @@ class fivesteps():
 
 					print("\nfound Match(M) the first order plugin_fivesteps.py line 289 def checkprocess2matchstatus")
 
+
+
 					chkmatch.update({
 									"status":chkresult["status"],
 									"volume":chkresult["volume"],
 									"price": chkresult["price"],
-									"matchedtime":currentdatetime,
+									"matchdate":datenow,
+									"matchtime":timenow,
 									"nextordermode":"tosellbybot",
 
 									})
+					
+					PackSelModel.updatematchstatus(chkmatch)
+
 					print("\nSet commonvaluestep plugin_fivesteps.py line 304 def checkprocess2matchstatus")
 					print(self.conf_params)
 
@@ -350,18 +356,19 @@ class fivesteps():
 					# print(type(commonvaluestep))
 					# print(type ( self.conf_params["startvaluebuy"] ))
 
-					print("\n plugin_fivesteps.py line 316 def checkprocess2matchstatus")
-					print(self.conf_params["volumestep"]) 
-					print(chkmatch["volume"])
+					# print("\n plugin_fivesteps.py line 316 def checkprocess2matchstatus")
+					# print(self.conf_params["volumestep"]) 
+					# print(chkmatch["volume"])
 					
 					allvol=int(chkmatch["volume"])
 					stepvol=int(self.conf_params["volumestep"])
 
 					allvolidx=int(allvol/stepvol)
-					print(allvolidx)
+					# print(allvolidx)
 					orderno=chkresult["orderno"]
 					stockname=chkresult["symbole"]
 					sellprice= startvaluebuy
+					
 
 					for runvolidx in range(allvolidx):
 						# runvol=
@@ -396,7 +403,6 @@ class fivesteps():
 					print("update monitor order after check with rt table plugin_fivesteps.py line 299 def checkprocess2matchstatus")
 					print(self.matchedordermonitor)
 					# print(chkmatch)
-
 					
 
 					self.order({'ordermode':'sellbybot','firstbuy':'no'},orderlist,orderfn)
@@ -409,5 +415,5 @@ class fivesteps():
 					print("+++ Case else with not match but order match plugin_fivesteps.py def checkprocess2matchstatus line 414")
 					print(chkresult["status"])
 					chkmatch["status"]=chkresult["status"]
-					return "status updated!"
+					return chk_params
 				# result_order=orderfn(params)

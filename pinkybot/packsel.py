@@ -364,10 +364,14 @@ class packselenium():
 					print(result_refreshbtn)
 				
 				resultMatch =self.myplugins.checkprocess2matchstatus(result_refreshbtn,self.order)
-
-
-				PackSelModel.updatematchstatus(resultMatch)
-				### update resultmatch to result_refreshbtn to tkinter here ( profit target ...etc)
+				# print("\n+++ result after checkprocess2matchstatus in plugin_fivesteps.py line 367 packsel.py def refreshbtn")
+				# print(resultMatch)
+				# if resultMatch != None:
+				# 	for chkmatch in resultMatch: ### return as arry with dictionary.
+				# 		if chkmatch["status"]=="Matched(M)":
+				# 			print("Found match status packsel.py line 368")
+							
+				# 	### update resultmatch to result_refreshbtn to tkinter here ( profit target ...etc)
 
 				# self.myplugins.checkparams(result_refreshbtn)	
 				self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk","doupdatetk":result_refreshbtn}) # continue refresh TKInter
