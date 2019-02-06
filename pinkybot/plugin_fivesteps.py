@@ -236,7 +236,7 @@ class fivesteps():
 				self.waitconfirmfirstorder=ordertoconfirm["orderno"]
 
 
-				print("confirm first buy order plugin_fivesteps.py line 169")
+				print("\nconfirm first buy order plugin_fivesteps.py line 169")
 				print ("------------confirm order to monitor="+ self.waitconfirmfirstorder)
 				# 
 
@@ -254,6 +254,9 @@ class fivesteps():
 
 				result_order=orderfn(orderidx)
 
+				print("\n result_order from orderfn (order in packsel.py) plugin_fivesteps.py line 256 def order")
+				print(result_order)
+			# return result_order
 
 
 		# if params["ordermode"]=="buybyclick":
@@ -301,12 +304,9 @@ class fivesteps():
 				if linetable["status"] != "Matched(M)":
 					self.matchedordermonitor.append({"orderno":linetable["orderno"],
 														"status":linetable["status"],
-
-
-
 													})
 
-		print("order to monitor plugin_fivesteps.py line 259 def checkprocess2order ")
+		print("\nprint self.matchedordermonitor to monitor in plugin_fivesteps.py line 309 def checkprocess2order ")
 		print(self.matchedordermonitor)
 		return self.matchedordermonitor
 
@@ -396,16 +396,16 @@ class fivesteps():
 							})
 						
 					# sellvolume=conf_params["volumestep"]
-					print("total order to buy after check match is below plugin_fivesteps.py line 347 def checkprocess2matchstatus")
+					print("\ntotal order to buy after check match is below plugin_fivesteps.py line 347 def checkprocess2matchstatus")
 					print(orderlist)
 					
 					# 		print(chkresult)
-					print("update monitor order after check with rt table plugin_fivesteps.py line 299 def checkprocess2matchstatus")
+					print("\nupdate monitor order after check with rt table plugin_fivesteps.py line 299 def checkprocess2matchstatus")
 					print(self.matchedordermonitor)
 					# print(chkmatch)
 					
 
-					self.order({'ordermode':'sellbybot','firstbuy':'no'},orderlist,orderfn)
+					ordertomonitor=self.order({'ordermode':'sellbybot','firstbuy':'no'},orderlist,orderfn)
 
 					return self.matchedordermonitor
 

@@ -313,13 +313,13 @@ class packselenium():
 			self.mycollectqueues["qtimerefresh"].put({"command":"starttime"})			
 
 			PackSelModel.updatestockvaluechange(self.stockdata)
-			print("start to refersh partial from packsel.py line 315 def monitoring")
+			print("\nstart to refersh partial from packsel.py line 315 def monitoring")
 			resultvaluechange=self.refreshbtn(driver,"partial")
-			print("start to check process to order packsel.py line 317 def monitoring")
+			print("\nstart to check process to order packsel.py line 317 def monitoring")
 			
 			resultvaluemonitor=self.myplugins.checkprocess2order(resultvaluechange,stockvalue,self.order)
-			# print("\nresult from value of monitoring packsel.py line 305 def monitoring")
-			# print(resultvaluemonitor)
+			print("\nresult from value of monitoring packsel.py line 321 def monitoring")
+			print(resultvaluemonitor)
 
 
 			# To send to tkconsole.py update status of value change.			# continue refresh TKInter
@@ -409,16 +409,10 @@ class packselenium():
 		if orderside=="buy":
 
 			chkstock=driver.find_elements_by_xpath(self.xpathreturn("xbuyradio"))[0].click()
-			# print("order buy now")
-			# print(chkstock)
 
 		elif orderside=="sell":
 
 			chkstock=driver.find_elements_by_xpath(self.xpathreturn("xsellradio"))[0].click()
-			# 
-			
-			# print("order sell now")
-			# print(chkstock)
 
 		elem = driver.find_element_by_xpath(self.xpathreturn("xstockorder"))
 		elem.clear()
@@ -449,18 +443,13 @@ class packselenium():
 		elif self.mode=="xdebug":
 			elem = driver.switch_to_alert().accept()
 
-
-		# confirm ok then check refresh 
-		print ("=========>>> confirm order to tkinter after order buy packsel.py line 392 in def order ")
 		result_refreshbtn=self.refreshbtn(driver,"partial") # with the update database 
-		print("return result_refreshbtn by buy order packsel.py line 368")
-		
+
+		print("\nreturn result_refreshbtn by buy order packsel.py line 368")
 		print(result_refreshbtn)
-		# print(result_chkprocess)
-			
-		
 
 		return result_refreshbtn
+
 	def refreshbtn(self,driver,allorpartial="partial"):
 
 
