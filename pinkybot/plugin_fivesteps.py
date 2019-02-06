@@ -224,22 +224,28 @@ class fivesteps():
 			result_order=orderfn(orderdetail)
 
 			
-			print("======= debug plugin_fivesteps.py line 205")
-			print("first buy mode plugin_fivesteps.py line 206")
+			# print("======= debug plugin_fivesteps.py line 205")
+			print("result_order first buy mode plugin_fivesteps.py line 228")
 			# print(params)
 			print(result_order)
-			self.mycollectqueues["qtimerefresh"].put({"command":"starttime"})			
+			# self.mycollectqueues["qtimerefresh"].put({"command":"starttime"})			
 
 
 			# chkrefresh["doupdatetk"]=list(filter(None.__ne__, chkrefresh["doupdatetk"]))
-			for ordertoconfirm in result_order:
-				self.waitconfirmfirstorder=ordertoconfirm["orderno"]
+			# for ordertoconfirm in result_order:
+			# 	self.waitconfirmfirstorder=ordertoconfirm["orderno"]
 
 
-				print("\nconfirm first buy order plugin_fivesteps.py line 169")
-				print ("------------confirm order to monitor="+ self.waitconfirmfirstorder)
+			# 	print("\nconfirm first buy order plugin_fivesteps.py line 169")
+			# 	print ("------------confirm order to monitor="+ self.waitconfirmfirstorder)
 				# 
-
+			for linetable in result_order:
+				print("line of each buy after order buy plugin_fivesteps.py line 254 in def checkprocess2order")
+				print(linetable)
+				if linetable["status"] != "Matched(M)":
+					self.matchedordermonitor.append({"orderno":linetable["orderno"],
+														"status":linetable["status"],
+													})
 
 
 		elif controlorder["ordermode"]=="buybybot" and controlorder["firstbuy"]=="no":
@@ -296,18 +302,12 @@ class fivesteps():
 			# params["order"]="buy"
 
 			# use self.order instead direct call orderfn
-			resultbuy=self.order({'ordermode':'buybybot','firstbuy':'yes'},"",orderfn)
+			resultbuy=self.order({'ordermode':'buybybot','firstbuy':'yes'},{},orderfn)
 			# resultbuy=orderfn(params) # return result from refresh for all line.
 			
 
 			# move append monitoring to order function.
-			for linetable in resultbuy:
-				print("line of each buy after order buy plugin_fivesteps.py line 254 in def checkprocess2order")
-				print(linetable)
-				if linetable["status"] != "Matched(M)":
-					self.matchedordermonitor.append({"orderno":linetable["orderno"],
-														"status":linetable["status"],
-													})
+			
 
 		print("\nprint self.matchedordermonitor to monitor in plugin_fivesteps.py line 309 def checkprocess2order ")
 		print(self.matchedordermonitor)
