@@ -247,12 +247,13 @@ class fivesteps():
 		elif controlorder["ordermode"]=="buybybot" and controlorder["firstbuy"]=="no":
 			pass
 		elif controlorder["ordermode"]=="sellbybot" and controlorder["firstbuy"]=="no":
-
+			# monitor_return
 			for orderidx in orderdetail:
 				print("\norder idx before order line 207 plugin_fivesteps.py def order")
 				print(orderidx)
 
-				result_order=orderfn(orderidx)
+				result_order=orderfn(orderidx) ### got result from refreshbtn output.
+				# [{'orderno': '174766', 'time': '14:03:56', 'symbole': 'WHA', 'side': 'S', 'price': '4.76', 'volume': '100', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderfrom': 'refodfrm'}]
 
 				print("\n result_order from orderfn (order in packsel.py) plugin_fivesteps.py line 256 def order")
 				print(result_order)
@@ -280,24 +281,26 @@ class fivesteps():
 		# else:
 			# pass	
 	def checkprocess2order(self,rt_table,price_change,orderfn=""):
-		print ("check process in order to order next plugin_fivesteps.py line 239")
-		print("initial value to buy = " + price_change)
-		params={}
+		print ("\nprint price_change from checkprocess2order to order next plugin_fivesteps.py line 239")
+		print( price_change)
+		# params={}
 		
 		# if table of realtime empty do execute below...
 		if not rt_table and price_change==self.conf_params["startvaluebuy"]:
-			print("start first buy plugin_fivesteps.py line 241")
+			# print("start first buy plugin_fivesteps.py line 241")
 
-			params["stockname"]=self.conf_params["stockname"]
-			params["startvolume"]=self.conf_params["totalvolumebuy"]
-			params["startvalue"]=self.conf_params["startvaluebuy"]
-			params["stockpin"]=self.conf_params["stockpin"]
-			params["order"]="buy"
+			# params["stockname"]=self.conf_params["stockname"]
+			# params["startvolume"]=self.conf_params["totalvolumebuy"]
+			# params["startvalue"]=self.conf_params["startvaluebuy"]
+			# params["stockpin"]=self.conf_params["stockpin"]
+			# params["order"]="buy"
 
-
-
-			resultbuy=orderfn(params) # return result from refresh for all line.
+			# use self.order instead direct call orderfn
+			resultbuy=self.order({'ordermode':'buybybot','firstbuy':'yes'},"",orderfn)
+			# resultbuy=orderfn(params) # return result from refresh for all line.
 			
+
+			# move append monitoring to order function.
 			for linetable in resultbuy:
 				print("line of each buy after order buy plugin_fivesteps.py line 254 in def checkprocess2order")
 				print(linetable)
