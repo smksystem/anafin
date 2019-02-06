@@ -239,13 +239,7 @@ class fivesteps():
 			# 	print("\nconfirm first buy order plugin_fivesteps.py line 169")
 			# 	print ("------------confirm order to monitor="+ self.waitconfirmfirstorder)
 				# 
-			for linetable in result_order:
-				print("line of each buy after order buy plugin_fivesteps.py line 254 in def checkprocess2order")
-				print(linetable)
-				if linetable["status"] != "Matched(M)":
-					self.matchedordermonitor.append({"orderno":linetable["orderno"],
-														"status":linetable["status"],
-													})
+
 
 
 		elif controlorder["ordermode"]=="buybybot" and controlorder["firstbuy"]=="no":
@@ -265,7 +259,13 @@ class fivesteps():
 				print(result_order)
 			# return result_order
 
-
+		for linetable in result_order:
+				print("line of each buy after order buy plugin_fivesteps.py line 254 in def checkprocess2order")
+				print(linetable)
+				if linetable["status"] != "Matched(M)":
+					self.matchedordermonitor.append({"orderno":linetable["orderno"],
+														"status":linetable["status"],
+													})
 		# if params["ordermode"]=="buybyclick":
 
 		# elif params["ordermode"]=="tosellbybot":
