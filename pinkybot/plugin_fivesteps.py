@@ -332,11 +332,12 @@ class fivesteps():
 
 		# exit()
 		for chkresult in chk_params:
-			for i,chkmatch in enumerate(self.matchedordermonitor):
+			# for matchindex,chkmatch in enumerate(self.matchedordermonitor):
+			for chkmatch in self.matchedordermonitor:
 
 
-				print("\nindex of enumerate for monitoring plugin_fivesteps.py line 338 def checkprocess2matchstatus")
-				print (i)
+				# print("\nindex of enumerate for monitoring plugin_fivesteps.py line 338 def checkprocess2matchstatus")
+				# print (matchindex)
 
 				if chkresult["orderno"]==chkmatch["orderno"] and chkresult["status"]=="Matched(M)":
 
@@ -355,8 +356,7 @@ class fivesteps():
 									})
 					
 					PackSelModel.updatematchstatus(chkmatch)
-
-					# chkmatch.remove()
+					# remove match index after add into database
 
 					print("\nSet commonvaluestep plugin_fivesteps.py line 304 def checkprocess2matchstatus")
 					print(self.conf_params)
@@ -385,6 +385,9 @@ class fivesteps():
 					stockname=chkresult["symbole"]
 					sellprice= startvaluebuy
 					
+					# self.matchedordermonitor.remove(self.matchedordermonitor[matchindex])
+					self.matchedordermonitor.remove(chkmatch)
+
 
 					for runvolidx in range(allvolidx):
 						# runvol=
