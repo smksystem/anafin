@@ -42,7 +42,7 @@ class PackSelModel:
 		# chkorderno=updaterefresh.objects.filter(orderno=myrow[0])
 
 	def InsertMonitorBidOffer(stock,timestamp,bid,offer,bidvolumn,offervolumn):
-		print ("Insert value into els system")
+		# print ("Insert value into els system")
 		
 		es = Elasticsearch()
 		
@@ -101,8 +101,8 @@ class PackSelModel:
 
 
 		updatecolumnval=updaterefresh.objects.filter(orderno=resultMatch["orderno"]).update(matchedtime= resultMatch["matchtime"])
-		print("\nupdate match status packsel_model.py line 101 def updatematchstatus")
-		print(resultMatch)
+		# print("\nupdate match status packsel_model.py line 101 def updatematchstatus")
+		# print(resultMatch)
 		
 	def updaterefresh(mytable,fullrefresh="partial"):
 		# compare logic here to update table or not 
@@ -151,7 +151,8 @@ class PackSelModel:
 
 			# for case new row when buy or sell 
 			elif not chkorderno.exists() and fullrefresh=="partial":
-				print("Insert new row with chkorderno.exists and partial refresh of order below packsel_model.py line 144 ")
+				# print("Insert new row with chkorderno.exists and partial refresh of order below packsel_model.py line 144 ")
+				
 				# print(myrow)
 				# [['71911327', '14:42:59', 'WHA', 'B', '4.08', '700', '0', '0', '700', 'Cancel(X)', 'Detail']]
 				newrow=updaterefresh(**dataparams)

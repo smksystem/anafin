@@ -332,7 +332,12 @@ class fivesteps():
 
 		# exit()
 		for chkresult in chk_params:
-			for chkmatch in self.matchedordermonitor:
+			for i,chkmatch in enumerate(self.matchedordermonitor):
+
+
+				print("\nindex of enumerate for monitoring plugin_fivesteps.py line 338 def checkprocess2matchstatus")
+				print (i)
+
 				if chkresult["orderno"]==chkmatch["orderno"] and chkresult["status"]=="Matched(M)":
 
 					print("\nfound Match(M) the first order plugin_fivesteps.py line 289 def checkprocess2matchstatus")
@@ -350,6 +355,8 @@ class fivesteps():
 									})
 					
 					PackSelModel.updatematchstatus(chkmatch)
+
+					# chkmatch.remove()
 
 					print("\nSet commonvaluestep plugin_fivesteps.py line 304 def checkprocess2matchstatus")
 					print(self.conf_params)
