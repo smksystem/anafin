@@ -9,9 +9,10 @@
 	- fix error KeyError: '4.8'
 	- from refresher in tkconsole how to know if it's the first buy order ?
 	- check why value up and down again trigger to buy lik initial buy.
+	- to remove dic after matched already.
 
 Plan:
-	- to remove dic after matched already.
+	- dummy page to change value of testbed in sell line to be matched
 
 ====================
 Dict:
