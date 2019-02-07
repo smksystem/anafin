@@ -197,11 +197,20 @@ class fivesteps():
 	def process(self):
 		print("Hello World")
 
+	def putordermonitoring(self,result_order):
+
+		for linetable in result_order:
+				if linetable["status"] != "Matched(M)":
+					self.matchedordermonitor.append({"orderno":linetable["orderno"],
+														"status":linetable["status"],
+													})
+				print("\norder buy plugin_fivesteps.py line 254 in def checkprocess2order")
+				print(linetable)
 
 	def order(self,controlorder="",orderdetail={},orderfn=""):
 
 
-		print("\naccess order process plugin_fivesteps.py line 159 88888888888888888")
+		print("\naccess order process plugin_fivesteps.py line 159 ")
 		print(controlorder)
 		print(orderdetail)
 
@@ -228,6 +237,7 @@ class fivesteps():
 			print("result_order first buy mode plugin_fivesteps.py line 228")
 			# print(params)
 			print(result_order)
+			self.putordermonitoring(result_order)
 			# self.mycollectqueues["qtimerefresh"].put({"command":"starttime"})			
 
 
@@ -257,15 +267,11 @@ class fivesteps():
 
 				print("\n result_order from orderfn (order in packsel.py) plugin_fivesteps.py line 256 def order")
 				print(result_order)
+
+				self.putordermonitoring(result_order)
 			# return result_order
 
-		for linetable in result_order:
-				print("line of each buy after order buy plugin_fivesteps.py line 254 in def checkprocess2order")
-				print(linetable)
-				if linetable["status"] != "Matched(M)":
-					self.matchedordermonitor.append({"orderno":linetable["orderno"],
-														"status":linetable["status"],
-													})
+		
 		# if params["ordermode"]=="buybyclick":
 
 		# elif params["ordermode"]=="tosellbybot":
