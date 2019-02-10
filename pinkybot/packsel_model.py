@@ -98,9 +98,11 @@ class PackSelModel:
 # [['71913646', '17:09:57', 'WHA', 'B', '4.10', '600', '0', '600', '0', 'Pending(OF)', 'Detail', 'Cancel'], 
 # ['71911327', '14:42:59', 'WHA', 'B', '4.08', '700', '0', '0', '700', 'Cancel(X)', 'Detail']]
 	def updatematchstatus(resultMatch):
-
-
 		updatecolumnval=updaterefresh.objects.filter(orderno=resultMatch["orderno"]).update(matchedtime= resultMatch["matchtime"])
+
+	def updatereferorderfrom(orderno,referorderfrom):
+		updatecolumnval=updaterefresh.objects.filter(orderno=orderno).update(referorderfrom=referorderfrom)
+
 		# print("\nupdate match status packsel_model.py line 101 def updatematchstatus")
 		# print(resultMatch)
 		
@@ -145,7 +147,7 @@ class PackSelModel:
 				elif chkorderno.exists():
 
 					refreshrow=chkorderno.values()
-					print ("----------------------Refresh each row packsel_model.py line 114")
+					print ("\n-----Refresh each row packsel_model.py line 114")
 					print (refreshrow)
 					result_updaterefresh.append(refreshrow[0])
 
@@ -164,15 +166,7 @@ class PackSelModel:
 
 				# print ("\n===Order already existing and fullrefresh = partial packsel_model.py line 158")
 				tochk=chkorderno.values()
-				# print(tochk)
-				# print(mytable)
-				# print(len(myrow))
-				# print (tochk[0]["orderno"])
 				
-				# a = 2 if i in [1, 3, 6] else 7
-				# print (updaterow)
-				# exit()
-				# print (myrow)
 
 				# to check if database and rt table has the same data or not ?
 

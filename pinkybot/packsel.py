@@ -326,9 +326,8 @@ class packselenium():
 			self.mycollectqueues["qvalchange"].put({"stockvalue":stockvalue})   # to send blink at value.
 			# self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshdb",
 												# "refreshtype":"all"}) 
-			print ( "start to put commnad with monitoring packsel.py line 329 def monitoring   0000000000000")
-
 			self.mycollectqueues["qtimerefresh"].put({"command":"monitoring"})			
+
 			
 			self.stockcompare=stockvalue
 			# print(self.stockdata)
@@ -445,7 +444,7 @@ class packselenium():
 
 		result_refreshbtn=self.refreshbtn(driver,"partial") # with the update database 
 
-		print("\nreturn result_refreshbtn by buy order packsel.py line 368")
+		print("\nreturn result_refreshbtn order packsel.py line 368 def order")
 		print(result_refreshbtn)
 
 		return result_refreshbtn

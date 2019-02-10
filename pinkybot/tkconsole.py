@@ -533,7 +533,7 @@ class outputlog(tk.Tk):
 		varorderno=tk.StringVar(value="orderno")
 		varstartordertime=tk.StringVar(value=timenow)
 		varmatchordertime=tk.StringVar(value="matchordertime")
-		varmatchcomplete=tk.StringVar(value="referorder")
+		varreferorderfrom=tk.StringVar(value="referorderfrom")
 		varorderside=tk.StringVar(value="orderside")
 		varvolume=tk.StringVar(value="volumn")
 		varstatus=tk.StringVar(value="state")
@@ -545,7 +545,7 @@ class outputlog(tk.Tk):
 		varorderno.set(myvarinfo["orderno"])
 		varstartordertime.set(myvarinfo["time"])
 		# varmatchordertime.set(myvarinfo["matchordertime"])
-		varmatchcomplete.set (myvarinfo["matched"])
+		varreferorderfrom.set (myvarinfo["referorderfrom"])
 		varorderside.set(myvarinfo["side"])
 		varvolume.set(myvarinfo["volume"])
 		varstatus.set(myvarinfo["status"])
@@ -560,7 +560,7 @@ class outputlog(tk.Tk):
 			"targetvalue":vartargetvalue,
 			"symbole":varsymbole,
 
-			"matchcomplete":varmatchcomplete,
+			"referorderfrom":varreferorderfrom,
 			"orderside":varorderside,
 			"volume":varvolume,
 			"profit":varprofit,
@@ -575,7 +575,7 @@ class outputlog(tk.Tk):
 					"startordertime":"yellowgreen",
 					"matchordertime":"lime",
 					"targetvalue":"tomato",
-					"matchcomplete":"peru",
+					"referorderfrom":"peru",
 					"orderside":"plum",
 					"volume":"gold",
 					"profit":"orchid",
@@ -597,7 +597,7 @@ class outputlog(tk.Tk):
 				self.labeldisplay[varvalue][repeatidx][varelement].grid(row=rowid,column=(j+1+int(repeatidx)*6),sticky="n"+"e"+"w",pady=5)
 
 				
-			if  varelement=="matchcomplete" or varelement=="orderside" or varelement=="volume" or varelement == "profit" or varelement=="state" :
+			if  varelement=="referorderfrom" or varelement=="orderside" or varelement=="volume" or varelement == "profit" or varelement=="state" :
 
 				self.labeldisplay[varvalue][repeatidx][varelement]=tk.Label(self.frameGroupOutput , textvariable=varinfo[varelement],
 														borderwidth=2, relief="groove",height=1,background=backgroudcolor[varelement])
@@ -788,20 +788,28 @@ class outputlog(tk.Tk):
 								# print(self.myvarasso[rowupdata["price"]])
 								for varparams in self.myvarasso[rowupdata["price"]]:
 									# print("print varparams tkconsole.py line 793")
-									# print (varparams)
+									print("\nvariable parameter to update tkconsole.py line 797 def Refresher")
+									print (varparams)
 									for varrepeatkey,varrepeatvalue in varparams.items():
 										# print("!!!!!!!!! show key and value of varparams tkconsole.py line 806")
 										# print (varrepeatkey,varrepeatvalue.get())
 										# print("show price of data tkconsole.py line 808")
 										# print(rowupdata["orderno"])
+
 										if varrepeatvalue.get()== rowupdata["orderno"] :
 											# print ("********found orderno to update tkconsole.py line 811")
 
 											varparams["orderside"].set(rowupdata["side"])
 											varparams["volume"].set(rowupdata["volume"])
-											varparams["matchcomplete"].set(rowupdata["matched"])
+
+											# varparams["matchcomplete"].set(rowupdata["matched"])
+											varparams["referorderfrom"].set("set orderfrom")
+
+											# varparams["referorderfrom"].set(rowupdata["referorderfrom"])
+
 											# varparams["balance"].set(rowupdata["balance"])
 											varparams["state"].set(rowupdata["status"])
+
 
 
 					self.canvas.configure(scrollregion=self.canvas.bbox("all"))
