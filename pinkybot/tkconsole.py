@@ -753,8 +753,11 @@ class outputlog(tk.Tk):
 					# print("finish///....")
 					
 					for rowupdata in chkrefresh["doupdatetk"] :
-						# print("file tkconsole.py line 722")
-						# print(chkrefresh["doupdatetk"])
+						
+						print("\nprint doupdatetk file tkconsole.py line 722 in def Refresher")
+						print(chkrefresh["doupdatetk"])
+
+
 						if chkrefresh["doupdatetk"]=="NOUPDATE":
 							break
 						
