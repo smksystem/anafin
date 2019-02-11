@@ -315,7 +315,7 @@ class fivesteps():
 		return_params=[]
 		orderlist=[]
 		datenow = datetime.datetime.now().strftime("%Y-%m-%d")
-		timenow = datetime.datetime.now().strftime("%H:%M:%S")
+		matchedtime = datetime.datetime.now().strftime("%H:%M:%S")
 		# currentdatetime=datenow+"_"+timenow
 
 		# exit()
@@ -338,7 +338,7 @@ class fivesteps():
 									"volume":chkresult["volume"],
 									"price": chkresult["price"],
 									"matchdate":datenow,
-									"matchtime":timenow,
+									"matchtime":matchedtime,
 									"nextordermode":"tosellbybot",
 
 									})
@@ -414,7 +414,9 @@ class fivesteps():
 
 					ordertomonitor=self.order({'ordermode':'sellbybot','firstbuy':'no'},orderlist,orderfn)
 
-					return self.matchedordermonitor
+					chkreturn={"matchedtime":matchedtime}
+
+					return chkreturn
 
 
 				elif chkresult["orderno"]==chkmatch["orderno"] and chkresult["status"]!= "Matched(M)": 

@@ -13,6 +13,7 @@
 
 Plan:
 	- dummy page to change value of testbed in sell line to be matched
+	- to show matchedtime and referorderfrom in tkconsole.py
 
 ====================
 Dict:
