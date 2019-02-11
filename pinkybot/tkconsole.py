@@ -772,7 +772,9 @@ class outputlog(tk.Tk):
 							for chklblorderno in self.myvarasso[rowupdata["price"]] :
 								# print (chklblorderno["orderno"].get())
 								chkorderno=chklblorderno["orderno"].get()
-								print ("tkconsole.py line 775 compare orderno=" + chkorderno,rowupdata["orderno"])
+								
+								print ("\ntkconsole.py line 775 compare orderno=" + chkorderno,rowupdata["orderno"])
+
 								if chkorderno == rowupdata["orderno"] :
 									ignoreadd=True
 									break;
@@ -796,8 +798,8 @@ class outputlog(tk.Tk):
 									for varrepeatkey,varrepeatvalue in varparams.items():
 										# print("!!!!!!!!! show key and value of varparams tkconsole.py line 806")
 										# print (varrepeatkey,varrepeatvalue.get())
-										# print("show price of data tkconsole.py line 808")
-										# print(rowupdata["orderno"])
+										print("\n print rowupdate of data tkconsole.py line 801 in def Refresher")
+										print(rowupdata)
 
 										if varrepeatvalue.get()== rowupdata["orderno"] :
 											# print ("********found orderno to update tkconsole.py line 811")
@@ -812,6 +814,7 @@ class outputlog(tk.Tk):
 
 											# varparams["balance"].set(rowupdata["balance"])
 											varparams["state"].set(rowupdata["status"])
+											varparams["matchordertime"].set(rowupdata["matchedtime"])
 
 
 

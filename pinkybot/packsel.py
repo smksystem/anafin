@@ -373,7 +373,7 @@ class packselenium():
 					print("\nresultMatch output from checkprocess2matchstatus def monitoring")
 					print (resultMatch)
 					for myMatch in result_refreshbtn:
-						if myMatch["status"]=="Matched(M)":
+						if myMatch["status"]=="Matched(M)" and myMatch["orderno"]== resultMatch["orderno"]:
 							myMatch["matchedtime"]=resultMatch["matchedtime"]
 				# 	for chkmatch in resultMatch: ### return as arry with dictionary.
 				# 		if chkmatch["status"]=="Matched(M)":
@@ -506,8 +506,9 @@ class packselenium():
 
 				# ['', '71911327', '14:42:59', 'WHA', 'B', '4.08', '700', '0', '0', '700', 'Cancel(X)', '', 'Detail', '']
 				# [['71911327', '14:42:59', 'WHA', 'B', '4.08', '700', '0', '0', '700', 'Cancel(X)', 'Detail']]
-				print("\n--- update refresh to refresh database packsel.py line 495 def refreshbtn ")
-				print(mytable)
+
+				# print("\n--- update refresh to refresh database packsel.py line 495 def refreshbtn ")
+				# print(mytable)
 
 				if allorpartial=="partial":
 				# print ("partial update refresh packsel.py line 427")
@@ -556,15 +557,18 @@ class packselenium():
 
 
 
-			print ("\n---mytable before refreshbtn line 545 packsel.py")
-			print(mytable)			
+			# print ("\n---mytable before refreshbtn line 545 packsel.py")
+			# print(mytable)			
+
 			if allorpartial=="partial":
 				# print ("partial update refresh packsel.py line 427")
 				rowupdaterefresh=PackSelModel.updaterefresh(mytable,"partial")
 			elif allorpartial=="all":
 				rowupdaterefresh=PackSelModel.updaterefresh(mytable,"all")	
-				print("full update refresh packsel.py line 481")
-				print(rowupdaterefresh)
+			
+				# print("full update refresh packsel.py line 481")
+				# print(rowupdaterefresh)
+			
 			# print ("show update refresh packsel.py line 432")
 				# print(rowupdaterefresh)
 				# exit()
