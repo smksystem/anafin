@@ -414,7 +414,9 @@ class fivesteps():
 
 					ordertomonitor=self.order({'ordermode':'sellbybot','firstbuy':'no'},orderlist,orderfn)
 
-					chkreturn={"matchedtime":matchedtime}
+
+					# only single match if more than one match need to add with array
+					chkreturn={"orderno":orderno, "matchedtime":matchedtime}
 
 					return chkreturn
 

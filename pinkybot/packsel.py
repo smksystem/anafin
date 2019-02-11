@@ -367,6 +367,8 @@ class packselenium():
 
 				# print("\n+++ result after checkprocess2matchstatus in plugin_fivesteps.py line 367 packsel.py def refreshbtn")
 				# print(resultMatch)
+
+				# for eachMatch in resultMatch:
 				if resultMatch != None:
 					print("\nresultMatch output from checkprocess2matchstatus def monitoring")
 					print (resultMatch)
