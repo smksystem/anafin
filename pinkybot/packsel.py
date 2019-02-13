@@ -313,12 +313,12 @@ class packselenium():
 			self.mycollectqueues["qtimerefresh"].put({"command":"starttime"})			
 
 			PackSelModel.updatestockvaluechange(self.stockdata)
-			print("\nstart to refersh partial from packsel.py line 315 def monitoring")
+			# print("\nstart to refersh partial from packsel.py line 315 def monitoring")
 			resultvaluechange=self.refreshbtn(driver,"partial")
-			print("\nstart to check process to order packsel.py line 317 def monitoring")
+			# print("\nstart to check process to order packsel.py line 317 def monitoring")
 			
 			resultvaluemonitor=self.myplugins.checkprocess2order(resultvaluechange,stockvalue,self.order)
-			print("\nresult from value of monitoring packsel.py line 321 def monitoring")
+			print("\n*** result from value of monitoring packsel.py line 321 def monitoring")
 			print(resultvaluemonitor)
 
 

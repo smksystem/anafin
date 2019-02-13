@@ -277,7 +277,7 @@ class fivesteps():
 				self.putordermonitoring(result_order) 
 
 
-			return result_order
+			# return result_order
 
 		
 		# else:
