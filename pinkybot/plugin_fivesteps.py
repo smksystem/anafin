@@ -266,16 +266,18 @@ class fivesteps():
 				# [{'orderno': '174766', 'time': '14:03:56', 'symbole': 'WHA', 'side': 'S', 'price': '4.76', 'volume': '100', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderfrom': 'refodfrm'}]
 				
 				# assume that result_order with row 0 always the correct order result.
+				result_order[0]["referorderfrom"]=orderidx["referfromorderno"]
+				
+				print("\n === result_order from orderfn (order in packsel.py) plugin_fivesteps.py line 269 def order")
+				print(result_order,orderidx)
 
 				PackSelModel.updatereferorderfrom(result_order[0]["orderno"],orderidx["referfromorderno"])
 
-				print("\n result_order from orderfn (order in packsel.py) plugin_fivesteps.py line 256 def order")
-				print(result_order)
-
-				self.putordermonitoring(result_order)
+				# This is function to add monitoring
+				self.putordermonitoring(result_order) 
 
 
-			# return result_order
+			return result_order
 
 		
 		# else:
