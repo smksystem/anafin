@@ -355,25 +355,21 @@ class fivesteps():
 					profitstep=float(self.conf_params["profitstep"])
 					startvaluebuy=float(self.conf_params["startvaluebuy"])
 
-					# print(self.conf_params["profitstep"])
-					# print("result of multiply plugin_fivesteps.py line 309 def checkprocess2matchstatus")
-					# print(self.conf_params["profitstep"]*commonvaluestep)
-					# print( type (self.conf_params["profitstep"] ))
-					# print(type(commonvaluestep))
-					# print(type ( self.conf_params["startvaluebuy"] ))
-
-					# print("\n plugin_fivesteps.py line 316 def checkprocess2matchstatus")
-					# print(self.conf_params["volumestep"]) 
-					# print(chkmatch["volume"])
 					
 					allvol=int(chkmatch["volume"])
 					stepvol=int(self.conf_params["volumestep"])
 
-					allvolidx=int(allvol/stepvol)
+					halfvolidx=int((((allvol/stepvol)/2)))
+					allvolidx=int(allvol/stepvol) 
+
 					# print(allvolidx)
+
+
 					orderno=chkresult["orderno"]
 					stockname=chkresult["symbole"]
 					sellprice= startvaluebuy
+					buyprice= startvaluebuy
+
 					
 					# self.matchedordermonitor.remove(self.matchedordermonitor[matchindex])
 					self.matchedordermonitor.remove(chkmatch)
@@ -382,28 +378,50 @@ class fivesteps():
 					for runvolidx in range(allvolidx):
 						# runvol=
 						allvol= allvol-stepvol
-						print("test volume test")
+
+						print("\n!!! print volume")
 						print(allvol)
-						sellprice=  round(((profitstep * commonvaluestep) + sellprice),2)
+						
+						if runvolidx <= halfvolidx:
+							# sell price order
+							sellprice=  round(((profitstep * commonvaluestep) + sellprice),2)
+							chkpad=str(sellprice).split(".") 
 
-						print(sellprice)
-						chkpad=str(sellprice).split(".") 
+							if len(chkpad[1])==1:
+								tempval=chkpad[1]+"0"
+								strprice=chkpad[0]+"." +tempval
 
-						if len(chkpad[1])==1:
-							tempval=chkpad[1]+"0"
-							strprice=chkpad[0]+"." +tempval
+							else:
+								strprice=str(sellprice)
+							orderside="sell"
 
-						else:
-							strprice=str(sellprice)
+						elif runvolidx > halfvolidx :
+							# buy price order
+							buyprice=  round(((profitstep * commonvaluestep) - buyprice),2)
+
+							chkpad=str(buyprice).split(".") 
+
+							if len(chkpad[1])==1:
+								tempval=chkpad[1]+"0"
+								strprice=chkpad[0]+"." +tempval
+
+							else:
+								strprice=str(buyprice)
+							orderside="buy"
+
+						print("\n---order price")
+						print(strprice)
 
 						orderlist.append({"startvalue":strprice,
 										"startvolume":str(stepvol),
-										"order":"sell",
+										"order":orderside,
 										"stockname":stockname,
 										"referfromorderno":orderno,
 										"stockpin":self.conf_params["stockpin"],
 							})
-						
+					
+
+
 					# sellvolume=conf_params["volumestep"]
 					print("\ntotal order to buy after check match is below plugin_fivesteps.py line 347 def checkprocess2matchstatus")
 					print(orderlist)
