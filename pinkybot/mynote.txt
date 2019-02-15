@@ -10,10 +10,11 @@
 	- from refresher in tkconsole how to know if it's the first buy order ?
 	- check why value up and down again trigger to buy lik initial buy.
 	- to remove dic after matched already.
+	- to show matchedtime and referorderfrom in tkconsole.py
 
 Plan:
 	- dummy page to change value of testbed in sell line to be matched
-	- to show matchedtime and referorderfrom in tkconsole.py
+	- to fix orderreferno not correct and still have problem.
 
 ====================
 Dict:
