@@ -374,11 +374,14 @@ class packselenium():
 				if resultMatch != None:
 					print("\nresultMatch output from checkprocess2matchstatus def monitoring")
 					print (resultMatch)
-					result_refreshbtn["referorderfrom"]=resultMatch["referorderfrom"]
-					
+
 					for myMatch in result_refreshbtn:
 						if myMatch["status"]=="Matched(M)" and myMatch["orderno"]== resultMatch["orderno"]:
 							myMatch["matchedtime"]=resultMatch["matchedtime"]
+						elif myMatch["status"]!="Matched(M)" :
+							pass
+							# result_refreshbtn["referorderfrom"]=resultMatch["referorderfrom"]
+
 
 				# 	for chkmatch in resultMatch: ### return as arry with dictionary.
 				# 		if chkmatch["status"]=="Matched(M)":
