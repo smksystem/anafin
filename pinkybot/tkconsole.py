@@ -808,7 +808,7 @@ class outputlog(tk.Tk):
 											varparams["volume"].set(rowupdata["volume"])
 
 											# varparams["matchcomplete"].set(rowupdata["matched"])
-											varparams["referorderfrom"].set("set orderfrom")
+											varparams["referorderfrom"].set(rowupdata["referorderfrom"])
 
 											# varparams["referorderfrom"].set(rowupdata["referorderfrom"])
 
