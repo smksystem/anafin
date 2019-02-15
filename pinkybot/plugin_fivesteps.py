@@ -377,12 +377,12 @@ class fivesteps():
 
 					for runvolidx in range(allvolidx):
 						# runvol=
-						allvol= allvol-stepvol
-
 						print("\n!!! print volume")
 						print(allvol)
+
+						allvol= allvol-stepvol
 						
-						if runvolidx <= halfvolidx:
+						if runvolidx < halfvolidx:
 							# sell price order
 							sellprice=  round(((profitstep * commonvaluestep) + sellprice),2)
 							chkpad=str(sellprice).split(".") 
@@ -394,10 +394,12 @@ class fivesteps():
 							else:
 								strprice=str(sellprice)
 							orderside="sell"
+							print("\n--- summary sell price runvolidx,halfvolidx,buyprice")
+							print(runvolidx,halfvolidx,buyprice)
 
-						elif runvolidx > halfvolidx :
+						elif runvolidx >= halfvolidx :
 							# buy price order
-							buyprice=  round(((profitstep * commonvaluestep) - buyprice),2)
+							buyprice=  round((buyprice - (profitstep * commonvaluestep)),2)
 
 							chkpad=str(buyprice).split(".") 
 
@@ -408,7 +410,8 @@ class fivesteps():
 							else:
 								strprice=str(buyprice)
 							orderside="buy"
-
+							print("\n--- summary buy price runvolidx,halfvolidx,buyprice")
+							print(runvolidx,halfvolidx,buyprice)
 						print("\n---order price")
 						print(strprice)
 
