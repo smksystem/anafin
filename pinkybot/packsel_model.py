@@ -98,10 +98,10 @@ class PackSelModel:
 # [['71913646', '17:09:57', 'WHA', 'B', '4.10', '600', '0', '600', '0', 'Pending(OF)', 'Detail', 'Cancel'], 
 # ['71911327', '14:42:59', 'WHA', 'B', '4.08', '700', '0', '0', '700', 'Cancel(X)', 'Detail']]
 	def updatematchstatus(resultMatch):
-		updatecolumnval=updaterefresh.objects.filter(orderno=resultMatch["orderno"]).update(matchedtime= resultMatch["matchtime"])
+		updatecolumnval=updaterefresh.objects.filter(orderno=resultMatch["orderno"]).update(matchedtime= resultMatch["matchedtime"])
 
-	def updatereferorderfrom(orderno,referorderfrom):
-		updatecolumnval=updaterefresh.objects.filter(orderno=orderno).update(referorderfrom=referorderfrom)
+	def updatereferorderno(orderno,referorderno):
+		updatecolumnval=updaterefresh.objects.filter(orderno=orderno).update(referorderno=referorderno)
 
 		# print("\nupdate match status packsel_model.py line 101 def updatematchstatus")
 		# print(resultMatch)
@@ -114,7 +114,7 @@ class PackSelModel:
 		
 		for myrow in mytable:
 			myrow.append("matchtime")
-			myrow.append("refodfrm")
+			myrow.append("referorderno")
 			dataparams={
 					"orderno": myrow[0],
 					"time":myrow[1],
@@ -128,7 +128,8 @@ class PackSelModel:
 					"status":myrow[9],
 					"matchedtime":myrow[10],
 
-					"referorderfrom":myrow[11],
+					"referorderno":myrow[11],
+
 
 			}
 			print("\n---Print myrow line 126 packsel_model.py def updaterefresh")
@@ -173,7 +174,7 @@ class PackSelModel:
 				for index, (column,myvalue) in enumerate(tochk[0].items()):
 					# index-=index
 					# to exclude check below column
-					if column != "id" and column != "date" and column !="matchedtime" and column != "referorderfrom":
+					if column != "id" and column != "date" and column !="matchedtime" and column != "referorderno":
 						# print("--- index of myrow packsel_model.py line 170")
 						# print (index,myvalue,myrow[index-1])
 						updaterow=True if (myvalue != myrow[index-1]) else False

@@ -25,7 +25,7 @@ class pinkybot(packselenium):
 	def __init__(self, *, plugins: list=list()):
 		# pass
 		# self.default_modules = [InternalPrinter()]
-		self.myplugins = plugins[0]
+
 
 		# print(self.myplugins)
 
@@ -43,6 +43,11 @@ class pinkybot(packselenium):
 							"qtimerefresh":qtimerefresh,
 		}
 		# print(self.mycollectqueues["qorder"])
+		self.myplugins = plugins[0]
+
+		self.myplugins.mycollectqueues=self.mycollectqueues
+
+
 
 		super().__init__("xdebug") # configure xdebug or xlive
 

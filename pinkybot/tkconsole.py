@@ -351,15 +351,16 @@ class outputlog(tk.Tk):
 		pass
 
 	def buybyclick(self):
-		print("Buy set value")
-		# self.mybot.myorder("buybyclick",self.configval)
+		pass
+	# 	print("Buy set value")
+	# 	# self.mybot.myorder("buybyclick",self.configval)
 
-		buyparams={ "ordermode":"buybyclick",
+	# 	buyparams={ "ordermode":"buybyclick",
 
-					}
+	# 				}
 
-		self.mybot.mycollectqueues["qorder"].put(buyparams)
-		print ("Buy finished ")
+	# 	self.mybot.mycollectqueues["qorder"].put(buyparams)
+	# 	print ("Buy finished ")
 
 	def sellbyclick(self):
 		print ("sell set value")	
@@ -533,7 +534,7 @@ class outputlog(tk.Tk):
 		varorderno=tk.StringVar(value="orderno")
 		varstartordertime=tk.StringVar(value=timenow)
 		varmatchordertime=tk.StringVar(value="matchordertime")
-		varreferorderfrom=tk.StringVar(value="referorderfrom")
+		varreferorderno=tk.StringVar(value="referorderno")
 		varorderside=tk.StringVar(value="orderside")
 		varvolume=tk.StringVar(value="volumn")
 		varstatus=tk.StringVar(value="state")
@@ -545,7 +546,7 @@ class outputlog(tk.Tk):
 		varorderno.set(myvarinfo["orderno"])
 		varstartordertime.set(myvarinfo["time"])
 		# varmatchordertime.set(myvarinfo["matchordertime"])
-		varreferorderfrom.set (myvarinfo["referorderfrom"])
+		varreferorderno.set (myvarinfo["referorderno"])
 		varorderside.set(myvarinfo["side"])
 		varvolume.set(myvarinfo["volume"])
 		varstatus.set(myvarinfo["status"])
@@ -560,7 +561,7 @@ class outputlog(tk.Tk):
 			"targetvalue":vartargetvalue,
 			"symbole":varsymbole,
 
-			"referorderfrom":varreferorderfrom,
+			"referorderno":varreferorderno,
 			"orderside":varorderside,
 			"volume":varvolume,
 			"profit":varprofit,
@@ -575,7 +576,7 @@ class outputlog(tk.Tk):
 					"startordertime":"yellowgreen",
 					"matchordertime":"lime",
 					"targetvalue":"tomato",
-					"referorderfrom":"peru",
+					"referorderno":"peru",
 					"orderside":"plum",
 					"volume":"gold",
 					"profit":"orchid",
@@ -585,8 +586,6 @@ class outputlog(tk.Tk):
 		
 		for j,varelement in enumerate(varinfo):
 
-			# print(varvalue,repeatidx)
-			# print(varelement)
 			rowid=self.labeldisplay[varvalue][varvalue].grid_info()['row']
 			
 			if  varelement=="orderno" or varelement=="startordertime" or varelement=="matchordertime"  or varelement =="targetvalue" or varelement=="symbole" :
@@ -597,7 +596,7 @@ class outputlog(tk.Tk):
 				self.labeldisplay[varvalue][repeatidx][varelement].grid(row=rowid,column=(j+1+int(repeatidx)*6),sticky="n"+"e"+"w",pady=5)
 
 				
-			if  varelement=="referorderfrom" or varelement=="orderside" or varelement=="volume" or varelement == "profit" or varelement=="state" :
+			if  varelement=="referorderno" or varelement=="orderside" or varelement=="volume" or varelement == "profit" or varelement=="state" :
 
 				self.labeldisplay[varvalue][repeatidx][varelement]=tk.Label(self.frameGroupOutput , textvariable=varinfo[varelement],
 														borderwidth=2, relief="groove",height=1,background=backgroudcolor[varelement])
@@ -717,11 +716,12 @@ class outputlog(tk.Tk):
 	def Refresher(self):
 
 			if not self.mybot.mycollectqueues["qvalchange"].empty():
+
 				tempdict=self.mybot.mycollectqueues["qvalchange"].get()
 				# print (tempdict)
 				# print (tempdict["textout"])
 				if "textout" in tempdict:
-						self.txtout("value change to:" + tempdict["textout"])
+						self.txtout(tempdict["textout"])
 
 				if "stockvalue" in tempdict:
 						print ("stock has been updated !!!!!!!!!!!! tkconsole.py line 727 def Refresher")
@@ -744,8 +744,9 @@ class outputlog(tk.Tk):
 				# print("check refresh , line 710, tkconsole.py")
 				# print(chkrefresh)
 				if chkrefresh["qrefresh"]=="refreshtk" and chkrefresh["doupdatetk"] != None :
-					# print ("<<<<<<<< Print data to do update refresh tkinter here !!!!! tkconsole.py line 757")
-					# print(chkrefresh["doupdatetk"])
+
+					print ("\n !!! Print data to do update refresh tkinter here !!!!! tkconsole.py line 757 in def Refresher")
+					print(chkrefresh)
 
 					# L=chkrefresh["doupdatetk"]
 					# chkrefresh["doupdatetk"]=list(filter(None.__ne__, chkrefresh["doupdatetk"]))
@@ -808,7 +809,7 @@ class outputlog(tk.Tk):
 											varparams["volume"].set(rowupdata["volume"])
 
 											# varparams["matchcomplete"].set(rowupdata["matched"])
-											varparams["referorderfrom"].set(rowupdata["referorderfrom"])
+											varparams["referorderno"].set(rowupdata["referorderno"])
 
 											# varparams["referorderfrom"].set(rowupdata["referorderfrom"])
 

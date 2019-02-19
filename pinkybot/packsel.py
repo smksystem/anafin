@@ -369,27 +369,30 @@ class packselenium():
 
 				# print("\n+++ result after checkprocess2matchstatus in plugin_fivesteps.py line 367 packsel.py def refreshbtn")
 				# print(resultMatch)
+				# if resultMatch!=None:
+					# for eachMatch in resultMatch:
 
-				# for eachMatch in resultMatch:
-				if resultMatch != None:
-					print("\nresultMatch output from checkprocess2matchstatus def monitoring")
-					print (resultMatch)
+							# print("\nresultMatch output from checkprocess2matchstatus def monitoring")
+							# print (eachMatch)
 
-					for myMatch in result_refreshbtn:
-						if myMatch["status"]=="Matched(M)" and myMatch["orderno"]== resultMatch["orderno"]:
-							myMatch["matchedtime"]=resultMatch["matchedtime"]
-						elif myMatch["status"]!="Matched(M)" :
-							pass
-							# result_refreshbtn["referorderfrom"]=resultMatch["referorderfrom"]
+							# result_refreshbtn=resultMatch
 
 
-				# 	for chkmatch in resultMatch: ### return as arry with dictionary.
-				# 		if chkmatch["status"]=="Matched(M)":
-				# 			print("Found match status packsel.py line 368")
-							
-				# 	### update resultmatch to result_refreshbtn to tkinter here ( profit target ...etc)
+						# for myMatch in eachMatch:
+							# if myMatch["status"]=="Matched(M)" and myMatch["orderno"]== resultMatch["orderno"]:
+								# myMatch["matchedtime"]=resultMatch["matchedtime"]
+								# elif myMatch["status"]!="Matched(M)" :
+								# 	pass
+								# 	result_refreshbtn["referorderfrom"]=resultMatch["referorderfrom"]
 
-				# self.myplugins.checkparams(result_refreshbtn)	
+
+						# 	for chkmatch in resultMatch: ### return as arry with dictionary.
+						# 		if chkmatch["status"]=="Matched(M)":
+						# 			print("Found match status packsel.py line 368")
+									
+						# 	### update resultmatch to result_refreshbtn to tkinter here ( profit target ...etc)
+
+						# self.myplugins.checkparams(result_refreshbtn)	
 
 
 
@@ -412,14 +415,11 @@ class packselenium():
 			# # 	# print ("put queue refreshtk packsel.py line 273")
 
 			
-		if not self.mycollectqueues["qorder"].empty(): 
+		# if not self.mycollectqueues["qorder"].empty(): 
 
-			orderparams=self.mycollectqueues["qorder"].get()
-			# if orderparams["order"]=="buy":
-				# self.order(driver,orderparams)
-			# orderparams["driver"]=self.mydriver
-			print("\ngot order to buy from qorder queue packsel.py line 384 def monitoring")
-			self.myplugins.order(orderparams,self.order)
+		# 	orderparams=self.mycollectqueues["qorder"].get()
+		# 	print("\ngot order to buy from qorder queue packsel.py line 384 def monitoring")
+		# 	self.myplugins.order(orderparams,self.order)
 		
 		# self.mycollectqueues["qtimerefresh"].put({"command":"monitoring"})			
 		
@@ -504,7 +504,7 @@ class packselenium():
 
 			mytable=[]
 
-			if len(tablerow) > 2 : #default will include 2 blank line 
+			if len(tablerow) > 2 : # default will include 2 blank line 
 
 				for row in tablerow:
 					# print ("total rows=" + str(len(roworder)))
@@ -573,6 +573,7 @@ class packselenium():
 			if allorpartial=="partial":
 				# print ("partial update refresh packsel.py line 427")
 				rowupdaterefresh=PackSelModel.updaterefresh(mytable,"partial")
+
 			elif allorpartial=="all":
 				rowupdaterefresh=PackSelModel.updaterefresh(mytable,"all")	
 			

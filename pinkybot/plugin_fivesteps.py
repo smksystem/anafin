@@ -8,6 +8,7 @@ class fivesteps():
 		print("initialization of plugin_fivestep.py line 6 --------------")
 		# self.waitconfirmfirstorder=""
 		self.matchedordermonitor=[]
+
 		# self.conf_params={}
 
 	# def configlogic(self):
@@ -201,10 +202,13 @@ class fivesteps():
 
 		for linetable in result_order:
 				if linetable["status"] != "Matched(M)":
-					self.matchedordermonitor.append({"orderno":linetable["orderno"],
-														"status":linetable["status"],
-													})
-				print("\norder buy plugin_fivesteps.py line 254 in def checkprocess2order")
+					# self.matchedordermonitor.append({"orderno":linetable["orderno"],
+					# 									"status":linetable["status"],
+					# 								})
+					self.matchedordermonitor.append(linetable)
+					
+
+				print("\norder buy plugin_fivesteps.py line 254 in def putordermonitoring")
 				print(linetable)
 
 	def order(self,controlorder="",orderdetail={},orderfn=""):
@@ -256,32 +260,62 @@ class fivesteps():
 			pass
 		elif controlorder["ordermode"]=="buybybot" and controlorder["firstbuy"]=="no":
 			pass
+			# for orderidx in orderdetail:
+			# 	print("\n === order idx before order line 207 plugin_fivesteps.py def order")
+			# 	print(orderidx)
+
+			# 	result_order=orderfn(orderidx) ### got result from refreshbtn output.
+			# 	# [{'orderno': '174766', 'time': '14:03:56', 'symbole': 'WHA', 'side': 'S', 'price': '4.76', 'volume': '100', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderfrom': 'refodfrm'}]
+				
+			# 	# assume that result_order with row 0 always the correct order result.
+			# 	result_order[0]["referorderno"]=orderidx["referorderno"]
+				
+			# 	print("\n === result_order from orderfn (order in packsel.py) plugin_fivesteps.py line 269 def order")
+			# 	print(result_order,orderidx)
+
+			# 	PackSelModel.updatereferorderno(result_order[0]["orderno"],orderidx["referorderno"])
+
+			# 	# This is function to add monitoring
+			# 	self.putordermonitoring(result_order) 
+
+			# print("\nresult_order from buybybot and firstbuy no plugin_fivesteps.py line 277 def order")
+			# print(result_order)
+
+			# return result_order
+
 		elif controlorder["ordermode"]=="sellbybot" and controlorder["firstbuy"]=="no":
 			# monitor_return
+			# print("\n!!! print of orderdetail before for order idx plugin_fivesteps.py line 285 in def order ")
+			# print(orderdetail)
+
 			for orderidx in orderdetail:
-				print("\norder idx before order line 207 plugin_fivesteps.py def order")
-				print(orderidx)
+				# print("\n ==! order idx before orderfn line 286 plugin_fivesteps.py def order")
+				# print(orderidx)
 
 				result_order=orderfn(orderidx) ### got result from refreshbtn output.
 				# [{'orderno': '174766', 'time': '14:03:56', 'symbole': 'WHA', 'side': 'S', 'price': '4.76', 'volume': '100', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderfrom': 'refodfrm'}]
 				
 				# assume that result_order with row 0 always the correct order result.
-				result_order[0]["referorderfrom"]=orderidx["referfromorderno"]
+				result_order[0]["referorderno"]=orderidx["referorderno"]
 				
-				print("\n === result_order from orderfn (order in packsel.py) plugin_fivesteps.py line 269 def order")
-				print(result_order,orderidx)
+				# print("\n === result_order from orderfn (order in packsel.py) plugin_fivesteps.py line 269 def order")
+				# print(result_order,orderidx)
 
-				PackSelModel.updatereferorderfrom(result_order[0]["orderno"],orderidx["referfromorderno"])
+				PackSelModel.updatereferorderno(result_order[0]["orderno"],orderidx["referorderno"])
 
 				# This is function to add monitoring
 				self.putordermonitoring(result_order) 
 
-
+			print("\nresult_order from sellbybot and firstbuy no plugin_fivesteps.py line 277 in def order")
+			print(result_order)
+			
 			return result_order
 
 		
 		# else:
 			# pass	
+
+	# called by change value
 	def checkprocess2order(self,rt_table,price_change,orderfn=""):
 		print ("\nprint price_change from checkprocess2order to order next plugin_fivesteps.py line 239")
 		print( price_change)
@@ -320,7 +354,7 @@ class fivesteps():
 		matchedtime = datetime.datetime.now().strftime("%H:%M:%S")
 		# currentdatetime=datenow+"_"+timenow
 
-		# exit()
+		# chk_params ==> result from check refresh_btn
 		for chkresult in chk_params:
 			# for matchindex,chkmatch in enumerate(self.matchedordermonitor):
 			for chkmatch in self.matchedordermonitor:
@@ -332,21 +366,29 @@ class fivesteps():
 				if chkresult["orderno"]==chkmatch["orderno"] and chkresult["status"]=="Matched(M)":
 
 					print("\nfound Match(M) the first order plugin_fivesteps.py line 289 def checkprocess2matchstatus")
-
-
-
+					chkmatch=chkresult
 					chkmatch.update({
-									"status":chkresult["status"],
-									"volume":chkresult["volume"],
-									"price": chkresult["price"],
-									"matchdate":datenow,
-									"matchtime":matchedtime,
+									# "status":chkresult["status"],
+									# "volume":chkresult["volume"],
+									# "price": chkresult["price"],
+									"matcheddate":datenow,
+									"matchedtime":matchedtime,
 									"nextordermode":"tosellbybot",
 
 									})
+
+					print("\n @@@ Check Matched chkmatch=chkresult before put into database ")
+					print(chkmatch)
 					
 					PackSelModel.updatematchstatus(chkmatch)
 					# remove match index after add into database
+
+					print("\n Value now of matchedordermonitor is below plugin_fivesteps.py line 411 in def checkprocess2matchstatus")
+					print(self.matchedordermonitor)
+					self.matchedordermonitor.remove(chkmatch)
+					print("\nFinish remove chkmatch")
+
+
 
 					print("\nSet commonvaluestep plugin_fivesteps.py line 304 def checkprocess2matchstatus")
 					print(self.conf_params)
@@ -371,11 +413,16 @@ class fivesteps():
 					buyprice= startvaluebuy
 
 					
+					# update match time for first order
+					self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk",
+												"doupdatetk":[chkmatch]})
+
 					# self.matchedordermonitor.remove(self.matchedordermonitor[matchindex])
-					self.matchedordermonitor.remove(chkmatch)
+					
 
-
+					# for runvolidx in range(allvolidx):
 					for runvolidx in range(allvolidx):
+
 						# runvol=
 						print("\n!!! print volume")
 						print(allvol)
@@ -393,64 +440,98 @@ class fivesteps():
 
 							else:
 								strprice=str(sellprice)
+							
 							orderside="sell"
 							print("\n--- summary sell price runvolidx,halfvolidx,buyprice")
-							print(runvolidx,halfvolidx,buyprice)
-
-						elif runvolidx >= halfvolidx :
-							# buy price order
-							buyprice=  round((buyprice - (profitstep * commonvaluestep)),2)
-
-							chkpad=str(buyprice).split(".") 
-
-							if len(chkpad[1])==1:
-								tempval=chkpad[1]+"0"
-								strprice=chkpad[0]+"." +tempval
-
-							else:
-								strprice=str(buyprice)
-							orderside="buy"
-							print("\n--- summary buy price runvolidx,halfvolidx,buyprice")
-							print(runvolidx,halfvolidx,buyprice)
-						print("\n---order price")
-						print(strprice)
-
-						orderlist.append({"startvalue":strprice,
+							print(runvolidx,halfvolidx,sellprice)
+							
+							orderlist=[{"startvalue":strprice,
 										"startvolume":str(stepvol),
 										"order":orderside,
 										"stockname":stockname,
-										"referfromorderno":orderno,
+										"referorderno":orderno,
 										"stockpin":self.conf_params["stockpin"],
-							})
+							}]
+
+
+							ordercontrol={'ordermode':'sellbybot','firstbuy':'no'}
+
+
+							ordertomonitor=self.order(ordercontrol,orderlist,orderfn)
+
+							print("\n@@@ ordertomonitor after def order line 447 plugin_fivesteps.py def order")
+							print(ordertomonitor)
+
+							self.mycollectqueues["qvalchange"].put({"textout":"SELL==>>" + strprice + " VOLUME ==>>" + str(stepvol) })
+
+
+						# elif runvolidx >= halfvolidx :
+						# 	# buy price order
+						# 	buyprice=  round((buyprice - (profitstep * commonvaluestep)),2)
+
+						# 	chkpad=str(buyprice).split(".") 
+
+						# 	if len(chkpad[1])==1:
+						# 		tempval=chkpad[1]+"0"
+						# 		strprice=chkpad[0]+"." +tempval
+
+						# 	else:
+						# 		strprice=str(buyprice)
+
+						# 	orderside="buy"
+						# 	print("\n--- summary buy price runvolidx,halfvolidx,buyprice")
+						# 	print(runvolidx,halfvolidx,buyprice)
+							
+						# 	orderlist.append({"startvalue":strprice,
+						# 				"startvolume":str(stepvol),
+						# 				"order":orderside,
+						# 				"stockname":stockname,
+						# 				"referorderno":orderno,
+						# 				"stockpin":self.conf_params["stockpin"],
+						# 	})
+
+						# 	ordercontrol={'ordermode':'buybybot','firstbuy':'no'}
+
+						# print("\n---order price")
+						# print(strprice)
+
+						
 					
 
 
 					# sellvolume=conf_params["volumestep"]
-					print("\ntotal order to buy after check match is below plugin_fivesteps.py line 347 def checkprocess2matchstatus")
-					print(orderlist)
+					# print("\ntotal order to buy after check match is below plugin_fivesteps.py line 347 def checkprocess2matchstatus")
+					# print(orderlist)
 					
 					# 		print(chkresult)
-					print("\nupdate monitor order after check with rt table plugin_fivesteps.py line 299 def checkprocess2matchstatus")
-					print(self.matchedordermonitor)
+					# print("\nupdate monitor order after check with rt table plugin_fivesteps.py line 299 def checkprocess2matchstatus")
+					# print(self.matchedordermonitor)
 					# print(chkmatch)
 					
 
-					ordertomonitor=self.order({'ordermode':'sellbybot','firstbuy':'no'},orderlist,orderfn)
-					print("+++ ordertomonitor plugin_fivesteps.py line 439 in def checkprocess2matchstatus")
-					print (ordertomonitor)
+					# ordertomonitor=self.order(ordercontrol,orderlist,orderfn)
+					
+					# print("\n+++ ordertomonitor plugin_fivesteps.py line 439 in def checkprocess2matchstatus")
+					# print (ordertomonitor)
 
 					# only single match if more than one match need to add with array
-					chkreturn={"orderno":orderno, "matchedtime":matchedtime}
+					
 
-					return chkreturn
 
+
+					# chkreturn={"orderno":orderno, "matchedtime":matchedtime}
+
+					# return chkreturn
+
+					return ordertomonitor
 
 				elif chkresult["orderno"]==chkmatch["orderno"] and chkresult["status"]!= "Matched(M)": 
-					# 		return chk_params
-					print("+++ Case else with not match but order match plugin_fivesteps.py def checkprocess2matchstatus line 414")
+					# return chk_params
+					print("\n+++ Case else with not match but order match plugin_fivesteps.py def checkprocess2matchstatus line 414")
 					print(chk_params)
+
 					chkmatch["status"]=chkresult["status"]
-					# chkmatch[""]=ordertomonitor["referfromorderno"]
+					# chkmatch["refreorderno"]=ordertomonitor["referorderno"]
 
 					return chk_params
 				# result_order=orderfn(params)
