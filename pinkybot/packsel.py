@@ -405,7 +405,7 @@ class packselenium():
 
 
 
-				self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk","doupdatetk":result_refreshbtn}) # continue refresh TKInter
+				# self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk","doupdatetk":result_refreshbtn}) # continue refresh TKInter
 
 			elif refreshparams["qrefresh"]=="refreshtk":
 				self.mycollectqueues["qrefresh"].put(refreshparams)

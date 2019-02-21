@@ -26,7 +26,7 @@ class fivesteps():
 		initinvest=20000
 		volumestep	=100
 		profitstep=1
-		topvaluerange=4.74
+		topvaluerange=4.82
 		startvaluebuy=4.72
 		floorvaluerange=4.60
 		stopvaluerange=4.74
@@ -465,6 +465,9 @@ class fivesteps():
 
 							print("\n@@@ ordertomonitor after def order line 447 plugin_fivesteps.py def order")
 							print(ordertomonitor)
+							
+							self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk",
+												"doupdatetk":ordertomonitor})
 
 							self.mycollectqueues["qvalchange"].put({"textout":"SELL==>>" + strprice + " VOLUME ==>>" + str(stepvol) })
 
@@ -529,13 +532,15 @@ class fivesteps():
 
 					return ordertomonitor
 
+				# chk_params ==> result from check refresh_btn chkresult
+				# chkmatch ==> from self.matchedordermonitor
 				elif chkresult["orderno"]==chkmatch["orderno"] and chkresult["status"]!= "Matched(M)": 
 					# return chk_params
 					print("\n+++ Case else with not match but order match plugin_fivesteps.py def checkprocess2matchstatus line 414")
-					print(chk_params)
+					print(chk_params,self.matchedordermonitor)
 
-					chkmatch["status"]=chkresult["status"]
-					# chkmatch["refreorderno"]=ordertomonitor["referorderno"]
+					# chkmatch["status"]=chkresult["status"]
+					# chkresult["refreorderno"]=chkmatch["referorderno"]
 
 					return chk_params
 				# result_order=orderfn(params)
