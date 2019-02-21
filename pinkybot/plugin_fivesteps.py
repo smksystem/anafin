@@ -466,8 +466,8 @@ class fivesteps():
 							print("\n@@@ ordertomonitor after def order line 447 plugin_fivesteps.py def order")
 							print(ordertomonitor)
 							
-							self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk",
-												"doupdatetk":ordertomonitor})
+							# self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk",
+												# "doupdatetk":ordertomonitor})
 
 							self.mycollectqueues["qvalchange"].put({"textout":"SELL==>>" + strprice + " VOLUME ==>>" + str(stepvol) })
 

@@ -471,14 +471,29 @@ class packselenium():
 		elif self.mode=="xdebug":
 			elem = driver.switch_to_alert().accept()
 
-		result_refreshbtn=self.refreshbtn(driver,"partial") # with the update database 
+
+		if "referorderno" in orderparams:
+
+			result_refreshbtn=self.refreshbtn(driver,"partial",orderparams["referorderno"]) # with the update database 
+		else:
+
+			result_refreshbtn=self.refreshbtn(driver,"partial") # with the update database 
+
+
 
 		print("\nreturn result_refreshbtn order packsel.py line 368 def order")
 		print(result_refreshbtn)
 
 		return result_refreshbtn
 
-	def refreshbtn(self,driver,allorpartial="partial"):
+	def refreshbtn(self,driver,allorpartial="partial",*params_referorderno):
+
+		chkreferorderno=None
+		if "referorderno" in params_referorderno:
+				print("\nRefer order no is sent in refreshbtn packsel.py line 488")
+				print(params_referorderno[0])
+				chkreferorderno=params_referorderno[0]
+				# chkreferorderno=referorderno
 
 
 		# try:
@@ -517,8 +532,10 @@ class packselenium():
 				# ['', '71911327', '14:42:59', 'WHA', 'B', '4.08', '700', '0', '0', '700', 'Cancel(X)', '', 'Detail', '']
 				# [['71911327', '14:42:59', 'WHA', 'B', '4.08', '700', '0', '0', '700', 'Cancel(X)', 'Detail']]
 
-				# print("\n--- update refresh to refresh database packsel.py line 495 def refreshbtn ")
-				# print(mytable)
+				print("\n--- update refresh to mytable packsel.py line 495 def refreshbtn ")
+				print(mytable)
+
+
 
 				if allorpartial=="partial":
 				# print ("partial update refresh packsel.py line 427")
@@ -569,6 +586,12 @@ class packselenium():
 
 			print ("\n---mytable before update to database line 545 packsel.py in def refreshbtn")
 			print(mytable)			
+			if chkreferorderno != None:
+				mytable.append({"referorderno":chkreferorderno})
+				chkreferorderno=None
+
+			print(mytable)
+
 
 			if allorpartial=="partial":
 				# print ("partial update refresh packsel.py line 427")

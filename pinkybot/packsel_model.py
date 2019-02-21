@@ -108,7 +108,7 @@ class PackSelModel:
 		
 	def updaterefresh(mytable,fullrefresh="partial"):
 		# compare logic here to update table or not 
-		
+				
 		
 		result_updaterefresh=[]
 		
