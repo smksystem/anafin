@@ -25,11 +25,11 @@ class fivesteps():
 		
 		initinvest=20000
 		volumestep	=100
-		profitstep=2
-		topvaluerange=4.82
+		profitstep=1
+		topvaluerange=4.74
 		startvaluebuy=4.72
 		floorvaluerange=4.60
-		stopvaluerange=4.84
+		stopvaluerange=4.74
 
 
 
@@ -368,7 +368,7 @@ class fivesteps():
 
 					# print("\nfound Match(M) the first order plugin_fivesteps.py line 289 def checkprocess2matchstatus")
 
-					
+
 					# chkmatch=chkresult
 
 					# all below is needed in the refresh for tkconsole.
