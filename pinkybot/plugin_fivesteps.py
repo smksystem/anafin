@@ -202,14 +202,15 @@ class fivesteps():
 
 		for linetable in result_order:
 				if linetable["status"] != "Matched(M)":
-					# self.matchedordermonitor.append({"orderno":linetable["orderno"],
-					# 									"status":linetable["status"],
-					# 								})
-					self.matchedordermonitor.append(linetable)
+					self.matchedordermonitor.append({"orderno":linetable["orderno"],
+														"status":linetable["status"],
+														"referorderno":linetable["referorderno"],
+													})
+					# self.matchedordermonitor.append(linetable)
 					
 
-				print("\norder buy plugin_fivesteps.py line 254 in def putordermonitoring")
-				print(linetable)
+				print("\nMonitor below data plugin_fivesteps.py line 254 in def putordermonitoring")
+				print(self.matchedordermonitor)
 
 	def order(self,controlorder="",orderdetail={},orderfn=""):
 
@@ -239,8 +240,8 @@ class fivesteps():
 			
 			# print("======= debug plugin_fivesteps.py line 205")
 			print("result_order first buy mode plugin_fivesteps.py line 228")
-			# print(params)
 			print(result_order)
+
 			self.putordermonitoring(result_order)
 			# self.mycollectqueues["qtimerefresh"].put({"command":"starttime"})			
 
@@ -365,28 +366,38 @@ class fivesteps():
 
 				if chkresult["orderno"]==chkmatch["orderno"] and chkresult["status"]=="Matched(M)":
 
-					print("\nfound Match(M) the first order plugin_fivesteps.py line 289 def checkprocess2matchstatus")
-					chkmatch=chkresult
+					# print("\nfound Match(M) the first order plugin_fivesteps.py line 289 def checkprocess2matchstatus")
+
+					
+					# chkmatch=chkresult
+
+					# all below is needed in the refresh for tkconsole.
 					chkmatch.update({
-									# "status":chkresult["status"],
-									# "volume":chkresult["volume"],
-									# "price": chkresult["price"],
+									"status":chkresult["status"],
+									"volume":chkresult["volume"],
+									"price": chkresult["price"],
 									"matcheddate":datenow,
 									"matchedtime":matchedtime,
-									"nextordermode":"tosellbybot",
+									"side":"B",
+									# "nextordermode":"tosellbybot",
 
 									})
 
-					print("\n @@@ Check Matched chkmatch=chkresult before put into database ")
-					print(chkmatch)
+					# print("\n @@@ Check Matched chkmatch=chkresult before put into database ")
+					# print(chkmatch)
 					
 					PackSelModel.updatematchstatus(chkmatch)
 					# remove match index after add into database
 
-					print("\n Value now of matchedordermonitor is below plugin_fivesteps.py line 411 in def checkprocess2matchstatus")
-					print(self.matchedordermonitor)
+
+					self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk",
+												"doupdatetk":[chkmatch]})
+
+					# print("\n Value now of matchedordermonitor is below plugin_fivesteps.py line 411 in def checkprocess2matchstatus")
+					# print(self.matchedordermonitor)
 					self.matchedordermonitor.remove(chkmatch)
-					print("\nFinish remove chkmatch")
+					# print("\nFinish remove chkmatch print matchedordermonitor again")
+					# print (self.matchedordermonitor)
 
 
 
@@ -398,7 +409,7 @@ class fivesteps():
 					startvaluebuy=float(self.conf_params["startvaluebuy"])
 
 					
-					allvol=int(chkmatch["volume"])
+					allvol=int(chkresult["volume"])
 					stepvol=int(self.conf_params["volumestep"])
 
 					halfvolidx=int((((allvol/stepvol)/2)))
@@ -413,13 +424,6 @@ class fivesteps():
 					buyprice= startvaluebuy
 
 					
-					# update match time for first order
-					self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk",
-												"doupdatetk":[chkmatch]})
-
-					# self.matchedordermonitor.remove(self.matchedordermonitor[matchindex])
-					
-
 					# for runvolidx in range(allvolidx):
 					for runvolidx in range(allvolidx):
 

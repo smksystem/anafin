@@ -567,8 +567,8 @@ class packselenium():
 
 
 
-			# print ("\n---mytable before refreshbtn line 545 packsel.py")
-			# print(mytable)			
+			print ("\n---mytable before update to database line 545 packsel.py in def refreshbtn")
+			print(mytable)			
 
 			if allorpartial=="partial":
 				# print ("partial update refresh packsel.py line 427")
@@ -585,6 +585,8 @@ class packselenium():
 				# exit()
 			mytable=[]
 
+		print("\nprint data for rowupdaterefresh after got from database before sent to tkconsole.py line 588 in def refreshbtn")
+		print(rowupdaterefresh)
 		# this is ok to work like this check process nad then send to update data
 		# rowupdaterefresh=self.myplugins.checkprocess2matchstatus(rowupdaterefresh)
 		self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk",

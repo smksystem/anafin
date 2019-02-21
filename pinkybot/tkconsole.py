@@ -745,8 +745,8 @@ class outputlog(tk.Tk):
 				# print(chkrefresh)
 				if chkrefresh["qrefresh"]=="refreshtk" and chkrefresh["doupdatetk"] != None :
 
-					print ("\n !!! Print data to do update refresh tkinter here !!!!! tkconsole.py line 757 in def Refresher")
-					print(chkrefresh)
+					# print ("\n !!! Print data to do update refresh tkinter here !!!!! tkconsole.py line 757 in def Refresher")
+					# print(chkrefresh)
 
 					# L=chkrefresh["doupdatetk"]
 					# chkrefresh["doupdatetk"]=list(filter(None.__ne__, chkrefresh["doupdatetk"]))
@@ -755,8 +755,8 @@ class outputlog(tk.Tk):
 					
 					for rowupdata in chkrefresh["doupdatetk"] :
 						
-						print("\nprint doupdatetk file tkconsole.py line 722 in def Refresher")
-						print(chkrefresh["doupdatetk"])
+						# print("\nprint doupdatetk file tkconsole.py line 722 in def Refresher")
+						# print(chkrefresh["doupdatetk"])
 
 
 						if chkrefresh["doupdatetk"]=="NOUPDATE":
@@ -794,13 +794,13 @@ class outputlog(tk.Tk):
 								# print(self.myvarasso[rowupdata["price"]])
 								for varparams in self.myvarasso[rowupdata["price"]]:
 									# print("print varparams tkconsole.py line 793")
-									print("\nvariable parameter to update tkconsole.py line 797 def Refresher")
-									print (varparams)
+									# print("\nvariable parameter to update tkconsole.py line 797 def Refresher")
+									# print (varparams)
 									for varrepeatkey,varrepeatvalue in varparams.items():
 										# print("!!!!!!!!! show key and value of varparams tkconsole.py line 806")
 										# print (varrepeatkey,varrepeatvalue.get())
-										print("\n print rowupdate of data tkconsole.py line 801 in def Refresher")
-										print(rowupdata)
+										# print("\n print rowupdate of data tkconsole.py line 801 in def Refresher")
+										# print(rowupdata)
 
 										if varrepeatvalue.get()== rowupdata["orderno"] :
 											# print ("********found orderno to update tkconsole.py line 811")

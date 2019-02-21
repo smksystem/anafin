@@ -194,8 +194,8 @@ class PackSelModel:
 		# print ("\nprint mytable packsel_model.py line 103 def updaterefresh")
 		# print (mytable)
 		# 
-		# print("========result updaterefresh from realtime before return out from function packsel_model.py line 180")
-		# print(result_updaterefresh)
+		print("=!= result updaterefresh from realtime before return out from function packsel_model.py line 180")
+		print(result_updaterefresh)
 		return result_updaterefresh
 
 	def test_mysql():
