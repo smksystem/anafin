@@ -26,14 +26,10 @@ class fivesteps():
 		initinvest=20000
 		volumestep	=100
 		profitstep=1
-		topvaluerange=4.82
+		topvaluerange=4.80
 		startvaluebuy=4.72
 		floorvaluerange=4.60
 		stopvaluerange=4.70
-
-
-
-
 
 
 

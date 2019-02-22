@@ -13,6 +13,9 @@ class valuechange(models.Model):
 	totalvolume=models.CharField(max_length=15,unique=False,default="")
 	totalvolue=models.CharField(max_length=15,unique=False,default="")
 
+	# to check if this value should send order to buy or sell.
+	orderstate=models.CharField(max_length=10,unique=False,default="") 
+
 class monitorbidoffer(models.Model):
 
 	mastershare=models.CharField(max_length=50,unique=False,default="")
@@ -43,19 +46,19 @@ class monitorbidoffer(models.Model):
 	bidvolumn5 = models.FloatField(unique=False)
 	offervolumn5 = models.FloatField(unique=False)
 
-class udpatestockvalue(models.Model):
+# class udpatestockvalue(models.Model):
 	
-	valuefield=models.CharField(max_length=10,unique=False,default="")
-	datefield=models.DateTimeField(0)
-	timefield=models.DateTimeField(0)
-	orderfield=models.CharField(max_length=5,unique=False,default="")
-	statusfield=models.CharField(max_length=20,unique=False,default="")
-	volumnfield=models.CharField(max_length=10,unique=False,default="")
-	buyfield=models.CharField(max_length=5,unique=False,default="")
-	sellfield=models.CharField(max_length=5,unique=False,default="")
-	cancelfield=models.CharField(max_length=5,unique=False,default="")
-	targetvalue=models.CharField(max_length=10,unique=False,default="")
-	profitfield=models.CharField(max_length=10,unique=False,default="")
+# 	valuefield=models.CharField(max_length=10,unique=False,default="")
+# 	datefield=models.DateTimeField(0)
+# 	timefield=models.DateTimeField(0)
+# 	orderfield=models.CharField(max_length=5,unique=False,default="")
+# 	statusfield=models.CharField(max_length=20,unique=False,default="")
+# 	volumnfield=models.CharField(max_length=10,unique=False,default="")
+# 	buyfield=models.CharField(max_length=5,unique=False,default="")
+# 	sellfield=models.CharField(max_length=5,unique=False,default="")
+# 	cancelfield=models.CharField(max_length=5,unique=False,default="")
+# 	targetvalue=models.CharField(max_length=10,unique=False,default="")
+# 	profitfield=models.CharField(max_length=10,unique=False,default="")
 	 
 class updaterefresh(models.Model):
 	orderno=models.CharField(max_length=10,unique=False,default="")
