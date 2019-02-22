@@ -29,7 +29,7 @@ class fivesteps():
 		topvaluerange=4.82
 		startvaluebuy=4.72
 		floorvaluerange=4.60
-		stopvaluerange=4.74
+		stopvaluerange=4.70
 
 
 
@@ -106,7 +106,7 @@ class fivesteps():
 				
 			if runinvest > (runvalue*volumestep): #### check not to give -294, -xxx
 
-				print("run value range = " + str(runvalue))
+				# print("run value range = " + str(runvalue))
 				stepcost=round((runvalue*volumestep),2)
 
 				##############################################################################
@@ -258,31 +258,19 @@ class fivesteps():
 
 
 		elif controlorder["ordermode"]=="buybybot" and controlorder["firstbuy"]=="no":
-			pass
-		elif controlorder["ordermode"]=="buybybot" and controlorder["firstbuy"]=="no":
-			pass
-			# for orderidx in orderdetail:
-			# 	print("\n === order idx before order line 207 plugin_fivesteps.py def order")
-			# 	print(orderidx)
 
-			# 	result_order=orderfn(orderidx) ### got result from refreshbtn output.
-			# 	# [{'orderno': '174766', 'time': '14:03:56', 'symbole': 'WHA', 'side': 'S', 'price': '4.76', 'volume': '100', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderfrom': 'refodfrm'}]
+			for orderidx in orderdetail:
+				print("\n ==! order idx buybybot before orderfn line 286 plugin_fivesteps.py def order")
+				print(orderidx)
+
+				result_order=orderfn(orderidx) ### got result from refreshbtn output.
+				# [{'orderno': '174766', 'time': '14:03:56', 'symbole': 'WHA', 'side': 'S', 'price': '4.76', 'volume': '100', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderfrom': 'refodfrm'}]
 				
-			# 	# assume that result_order with row 0 always the correct order result.
-			# 	result_order[0]["referorderno"]=orderidx["referorderno"]
+				# assume that result_order with row 0 always the correct order result.
+				result_order[0]["referorderno"]=orderidx["referorderno"]
 				
-			# 	print("\n === result_order from orderfn (order in packsel.py) plugin_fivesteps.py line 269 def order")
-			# 	print(result_order,orderidx)
-
-			# 	PackSelModel.updatereferorderno(result_order[0]["orderno"],orderidx["referorderno"])
-
-			# 	# This is function to add monitoring
-			# 	self.putordermonitoring(result_order) 
-
-			# print("\nresult_order from buybybot and firstbuy no plugin_fivesteps.py line 277 def order")
-			# print(result_order)
-
-			# return result_order
+				# This is function to add monitoring
+				self.putordermonitoring(result_order) 
 
 		elif controlorder["ordermode"]=="sellbybot" and controlorder["firstbuy"]=="no":
 			# monitor_return
@@ -299,11 +287,6 @@ class fivesteps():
 				# assume that result_order with row 0 always the correct order result.
 				result_order[0]["referorderno"]=orderidx["referorderno"]
 				
-				# print("\n === result_order from orderfn (order in packsel.py) plugin_fivesteps.py line 269 def order")
-				# print(result_order,orderidx)
-
-				# PackSelModel.updatereferorderno(result_order[0]["orderno"],orderidx["referorderno"])
-
 				# This is function to add monitoring
 				self.putordermonitoring(result_order) 
 
@@ -463,7 +446,7 @@ class fivesteps():
 
 							ordertomonitor=self.order(ordercontrol,orderlist,orderfn)
 
-							print("\n@@@ ordertomonitor after def order line 447 plugin_fivesteps.py def order")
+							print("\n@@@ ordertomonitor sell after def order line 447 plugin_fivesteps.py def order")
 							print(ordertomonitor)
 							
 							# self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk",
@@ -472,37 +455,43 @@ class fivesteps():
 							self.mycollectqueues["qvalchange"].put({"textout":"SELL==>>" + strprice + " VOLUME ==>>" + str(stepvol) })
 
 
-						# elif runvolidx >= halfvolidx :
-						# 	# buy price order
-						# 	buyprice=  round((buyprice - (profitstep * commonvaluestep)),2)
+						elif runvolidx >= halfvolidx :
+							# buy price order
+							buyprice=  round((buyprice - (profitstep * commonvaluestep)),2)
 
-						# 	chkpad=str(buyprice).split(".") 
+							print("\nprint buy value before processing line 462 plugin_fivesteps.py in def checkprocess2matchstatus")
+							print (buyprice)
 
-						# 	if len(chkpad[1])==1:
-						# 		tempval=chkpad[1]+"0"
-						# 		strprice=chkpad[0]+"." +tempval
 
-						# 	else:
-						# 		strprice=str(buyprice)
+							chkpad=str(buyprice).split(".") 
 
-						# 	orderside="buy"
-						# 	print("\n--- summary buy price runvolidx,halfvolidx,buyprice")
-						# 	print(runvolidx,halfvolidx,buyprice)
+							if len(chkpad[1])==1:
+								tempval=chkpad[1]+"0"
+								strprice=chkpad[0]+"." +tempval
+
+							else:
+								strprice=str(buyprice)
+
+							orderside="buy"
+							print("\n--- summary buy price runvolidx,halfvolidx,buyprice")
+							print(runvolidx,halfvolidx,strprice)
 							
-						# 	orderlist.append({"startvalue":strprice,
-						# 				"startvolume":str(stepvol),
-						# 				"order":orderside,
-						# 				"stockname":stockname,
-						# 				"referorderno":orderno,
-						# 				"stockpin":self.conf_params["stockpin"],
-						# 	})
+							orderlist=[{"startvalue":strprice,
+										"startvolume":str(stepvol),
+										"order":orderside,
+										"stockname":stockname,
+										"referorderno":orderno,
+										"stockpin":self.conf_params["stockpin"],
+							}]
 
-						# 	ordercontrol={'ordermode':'buybybot','firstbuy':'no'}
+							ordercontrol={'ordermode':'buybybot','firstbuy':'no'}
 
-						# print("\n---order price")
-						# print(strprice)
+							ordertomonitor=self.order(ordercontrol,orderlist,orderfn)
 
-						
+							print("\n@@@ ordertomonitor buy after def order line 447 plugin_fivesteps.py def order")
+							print(ordertomonitor)
+
+							self.mycollectqueues["qvalchange"].put({"textout":"ORDER BUY==>>" + strprice + " VOLUME ==>>" + str(stepvol) })
 					
 
 

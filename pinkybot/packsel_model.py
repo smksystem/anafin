@@ -100,8 +100,8 @@ class PackSelModel:
 	def updatematchstatus(resultMatch):
 		updatecolumnval=updaterefresh.objects.filter(orderno=resultMatch["orderno"]).update(matchedtime= resultMatch["matchedtime"])
 
-	def updatereferorderno(orderno,referorderno):
-		updatecolumnval=updaterefresh.objects.filter(orderno=orderno).update(referorderno=referorderno)
+	# def updatereferorderno(orderno,referorderno):
+	# 	updatecolumnval=updaterefresh.objects.filter(orderno=orderno).update(referorderno=referorderno)
 
 		# print("\nupdate match status packsel_model.py line 101 def updatematchstatus")
 		# print(resultMatch)
