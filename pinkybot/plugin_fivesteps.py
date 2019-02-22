@@ -302,7 +302,7 @@ class fivesteps():
 				# print("\n === result_order from orderfn (order in packsel.py) plugin_fivesteps.py line 269 def order")
 				# print(result_order,orderidx)
 
-				PackSelModel.updatereferorderno(result_order[0]["orderno"],orderidx["referorderno"])
+				# PackSelModel.updatereferorderno(result_order[0]["orderno"],orderidx["referorderno"])
 
 				# This is function to add monitoring
 				self.putordermonitoring(result_order) 

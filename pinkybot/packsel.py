@@ -488,16 +488,22 @@ class packselenium():
 
 	def refreshbtn(self,driver,allorpartial="partial",*params_referorderno):
 
-		chkreferorderno=None
-		if "referorderno" in params_referorderno:
+		chkreferorderno="None"
+		# print("Number of params_referorderno is below packsel.py line 492 in def refreshbtn")
+		# print(len(params_referorderno))
+
+
+		if len(params_referorderno) != 0 : 
 				print("\nRefer order no is sent in refreshbtn packsel.py line 488")
+				print(params_referorderno)
 				print(params_referorderno[0])
+
 				chkreferorderno=params_referorderno[0]
 				# chkreferorderno=referorderno
 
 
 		# try:
-		print ("\nrefresh botton press in function refresh btn packsel.py line 406 in def refreshbtn")
+		# print ("\nrefresh botton press in function refresh btn packsel.py line 406 in def refreshbtn")
 
 		elem = driver.find_element_by_xpath(self.xpathreturn("xrtrefresh")).click()
 
@@ -586,16 +592,16 @@ class packselenium():
 
 			print ("\n---mytable before update to database line 545 packsel.py in def refreshbtn")
 			print(mytable)			
-			if chkreferorderno != None:
-				mytable.append({"referorderno":chkreferorderno})
-				chkreferorderno=None
+			# if chkreferorderno != None:
+				# mytable.append({"referorderno":chkreferorderno})
+				# chkreferorderno=None
 
-			print(mytable)
+			# print(mytable)
 
 
 			if allorpartial=="partial":
 				# print ("partial update refresh packsel.py line 427")
-				rowupdaterefresh=PackSelModel.updaterefresh(mytable,"partial")
+				rowupdaterefresh=PackSelModel.updaterefresh(mytable,"partial",chkreferorderno)
 
 			elif allorpartial=="all":
 				rowupdaterefresh=PackSelModel.updaterefresh(mytable,"all")	

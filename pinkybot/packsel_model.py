@@ -106,15 +106,21 @@ class PackSelModel:
 		# print("\nupdate match status packsel_model.py line 101 def updatematchstatus")
 		# print(resultMatch)
 		
-	def updaterefresh(mytable,fullrefresh="partial"):
+	def updaterefresh(mytable,fullrefresh="partial",*params_referorderno):
 		# compare logic here to update table or not 
-				
+		referorderno="None"
+		if len(params_referorderno) != 0 : 
+				print("\nRefer order no is sent in refreshbtn packsel_model.py line 113 in def updaterefresh")
+				print(params_referorderno[0])
+
+				referorderno=params_referorderno[0]
+
 		
 		result_updaterefresh=[]
 		
 		for myrow in mytable:
 			myrow.append("matchtime")
-			myrow.append("referorderno")
+			myrow.append(referorderno)
 			dataparams={
 					"orderno": myrow[0],
 					"time":myrow[1],
