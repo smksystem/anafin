@@ -53,14 +53,19 @@ def runlogic(request):
 		# print( mydic ["status"])
 		tempwrite.append(mydic)
 
-	if (len(tempwrite)!= 0):
-		if numberid=='0':
+		if (len(tempwrite)!= 0):
+			if numberid=='0' and tempwrite[-1]["price"]=="4.72":
 
-			tempwrite[-1]["status"]="Pending(S)"  # else False
-		if numberid=='1':
-			tempwrite[-1]["status"]="Open(O)"  # else False
-		if numberid=='2':
-			tempwrite[-1]["status"]="Matched(M)"  # else False
+				tempwrite[-1]["status"]="Pending(S)"  # else False
+			if numberid=='1' and tempwrite[-1]["price"]=="4.72":
+				tempwrite[-1]["status"]="Open(O)"  # else False
+			if numberid=='2' and tempwrite[-1]["price"]=="4.72":
+				tempwrite[-1]["status"]="Matched(M)"  # else False
+	
+			
+
+
+
 	postfile.truncate(0)
 	postfile.close()
 

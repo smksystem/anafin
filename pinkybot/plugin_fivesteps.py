@@ -8,7 +8,7 @@ class fivesteps():
 		print("initialization of plugin_fivestep.py line 6 --------------")
 		# self.waitconfirmfirstorder=""
 		self.matchedordermonitor=[]
-
+		self.firstbuyflag="FIRSTBUY"
 		# self.conf_params={}
 
 	# def configlogic(self):
@@ -302,7 +302,12 @@ class fivesteps():
 		# params={}
 		
 		# if table of realtime empty do execute below...
-		if not rt_table and price_change==self.conf_params["startvaluebuy"]:
+
+		print("\nprint rt_table this value should be empty for first time buy")
+		print(rt_table)
+
+
+		if not rt_table and price_change==self.conf_params["startvaluebuy"] and self.firstbuyflag=="FIRSTBUY":
 			# print("start first buy plugin_fivesteps.py line 241")
 
 			# params["stockname"]=self.conf_params["stockname"]
@@ -313,6 +318,7 @@ class fivesteps():
 
 			# use self.order instead direct call orderfn
 			resultbuy=self.order({'ordermode':'buybybot','firstbuy':'yes'},{},orderfn)
+			self.firstbuyflag="DONE"
 			# resultbuy=orderfn(params) # return result from refresh for all line.
 			
 

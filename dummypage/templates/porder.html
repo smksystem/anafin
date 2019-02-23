@@ -43,6 +43,7 @@ $(document).ready(function() {
 	var status_order=0;
 	// var orderids={};
 	var data="data";
+	var stepcontrol="step1";
 
 	var intervalID = setInterval(function(){
 		// alert("Interval reached");
@@ -53,16 +54,30 @@ $(document).ready(function() {
 		$(".last").html(i.toFixed(2));
 		// i+=0.02;
 
-		if (status_order==2){
+		// if (status_order==2)  {
+		if (stepcontrol=="step1"){
+			status_order=status_order+1;
+			if (status_order==2){
+				stepcontrol="stepvalue"
+			}
+		}else if  (stepcontrol=="stepvalue") {
+			i+=0.02;
+			if (i.toFixed(2)==4.74){
+				stepcontrol="stepend"
+			}
+		
+		}else if (stepcontrol=="stepend") {
+
 			clearInterval(intervalID);
+		
 		};
 
 		// status_order=2
-		status_order=status_order+1;
 		// orderids=orderids+{"dataid":orderid}
 	// 	// $(".status0").html("Matched(M)");
 
-	}, 8000);
+	// }, 8000);
+	}, 4000);
 
 
 
