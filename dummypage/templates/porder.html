@@ -58,8 +58,15 @@ $(document).ready(function() {
 		if (stepcontrol=="step1"){
 			status_order=status_order+1;
 			if (status_order==2){
-				stepcontrol="stepvalue"
+				stepcontrol="step2"
 			}
+		}else if (stepcontrol=="step2"){
+			status_order=status_order+1;
+
+			if (status_order==4){
+				stepcontrol="stepvalue"
+			}	
+
 		}else if  (stepcontrol=="stepvalue") {
 			i+=0.02;
 			if (i.toFixed(2)==4.74){
@@ -77,7 +84,7 @@ $(document).ready(function() {
 	// 	// $(".status0").html("Matched(M)");
 
 	// }, 8000);
-	}, 4000);
+	}, 5000);
 
 
 
