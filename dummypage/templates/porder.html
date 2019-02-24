@@ -70,9 +70,15 @@ $(document).ready(function() {
 		}else if  (stepcontrol=="stepvalue") {
 			i+=0.02;
 			if (i.toFixed(2)==4.74){
-				stepcontrol="stepend"
+				stepcontrol="step3"
 			}
 		
+		}else if  (stepcontrol=="step3") {
+			status_order=status_order+1;
+			if (i.toFixed(2)==4.74){
+				stepcontrol="stepend"
+			}	
+
 		}else if (stepcontrol=="stepend") {
 
 			clearInterval(intervalID);

@@ -31,6 +31,13 @@ class fivesteps():
 		floorvaluerange=4.60
 		stopvaluerange=4.70
 
+		# initinvest=20000
+		# volumestep	=100
+		# profitstep=1
+		# topvaluerange=24.80
+		# startvaluebuy=24.40
+		# floorvaluerange=24.00
+		# stopvaluerange=24.20		
 
 
 		conf_params["initinvest"].set(str(initinvest))
@@ -70,35 +77,21 @@ class fivesteps():
 
 
 
+		diffrange=round( stopvaluerange-startvaluebuy,2)
+		print("\n==== Difference between top value buy and start value buy below plugin_fivesteps.py line 74 in def setparameter")
+		print(diffrange)
+
+		totalvolumebuy=((diffrange/commonvaluestep)*volumestep)
+		print("\n==== Total volume to buy from the initial buy value is blow plugin_fivesteps.py line 78 in def setparameter")
+		print(totalvolumebuy)
 
 
-		while (runconfig<=topvaluerange):
-			runconfig= round(runconfig,2)
+##################################################
+# To set upper range of initial buy value
+##################################################
 
-			# print("run config plugin_fivesteps.py line 58")
-			# print(runconfig)
-			##############################################################################
-			###### Check padding to avoid key not found with only "4.0" not "4.00" for label
-			##############################################################################
-			chkpad=str(runconfig).split(".") 
+		while (runvalue<=stopvaluerange):	
 
-			if len(chkpad[1])==1:
-				tempval=chkpad[1]+"0"
-				valuelabel=chkpad[0]+"." +tempval
-
-			else:
-				valuelabel=str(runconfig)
-				
-			# print("config value step plugin_fivesteps.py line 71")
-			# print(valuelabel)
-			conf_labeldisplay[valuelabel][valuelabel].configure(background="orangered")
-			
-			runconfig+=commonvaluestep
-
-
-
-
-		while (runvalue<=stopvaluerange):				
 				
 			if runinvest > (runvalue*volumestep): #### check not to give -294, -xxx
 
@@ -136,6 +129,35 @@ class fivesteps():
 			elif runinvest < (runvalue*volumestep):
 				print ("run invest is not enough break to exit tkconsole.py line 435")
 				break
+
+
+##################################################
+# To set under range of initial buy value
+##################################################
+		# while (runconfig<=topvaluerange):
+		# 	runconfig= round(runconfig,2)
+
+		# 	# print("run config plugin_fivesteps.py line 58")
+		# 	# print(runconfig)
+		# 	##############################################################################
+		# 	###### Check padding to avoid key not found with only "4.0" not "4.00" for label
+		# 	##############################################################################
+		# 	chkpad=str(runconfig).split(".") 
+
+		# 	if len(chkpad[1])==1:
+		# 		tempval=chkpad[1]+"0"
+		# 		valuelabel=chkpad[0]+"." +tempval
+
+		# 	else:
+		# 		valuelabel=str(runconfig)
+				
+		# 	# print("config value step plugin_fivesteps.py line 71")
+		# 	# print(valuelabel)
+			
+		# 	conf_labeldisplay[valuelabel][valuelabel].configure(background="orangered")
+			
+		# 	runconfig+=commonvaluestep
+
 
 		
 
