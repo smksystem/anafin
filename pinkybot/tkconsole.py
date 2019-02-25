@@ -376,8 +376,8 @@ class outputlog(tk.Tk):
 	def setparameter(self):
 
 		# print(self.mybot)
-		print("setting necessary parameter tkconsole.py line 344")
-		print(self.configval)
+		# print("setting necessary parameter tkconsole.py line 344")
+		# print(self.configval)
 		self.mybot.setparameter(self.configval,self.labeldisplay,self.txtout) # set default parameter for each plugins.
 
 		return (0)

@@ -60,8 +60,8 @@ class fivesteps():
 		runinvest=initinvest
 
 
-		runcostbuy=0 #### purpose variable to calculate in below.
-		runvolumebuy=0
+		totalcostbuy=0 #### purpose variable to calculate in below.
+		totalvolumebuy=0
 		runconfig=floorvaluerange
 
 
@@ -82,9 +82,15 @@ class fivesteps():
 		print(diffrange)
 
 		totalvolumebuy=((diffrange/commonvaluestep)*volumestep)
-		print("\n==== Total volume to buy from the initial buy value is blow plugin_fivesteps.py line 78 in def setparameter")
-		print(totalvolumebuy)
+		# print("\n==== Total volume to buy from the initial buy value is blow plugin_fivesteps.py line 78 in def setparameter")
+		# print(totalvolumebuy)
+		# runvolumebuy=totalvolumebuy
 
+
+		totalcostbuy=totalvolumebuy * startvaluebuy
+
+		print("\n=== Total cost to buy from the initial value is below plugin_fivesteps.py line 90 in def setparameter")
+		print(totalcostbuy)
 
 ##################################################
 # To set upper range of initial buy value
@@ -111,20 +117,20 @@ class fivesteps():
 					valuelabel=str(runvalue)
 				conf_labeldisplay[valuelabel][valuelabel].configure(background="lightgreen")
 
-				runcost=runvalue*volumestep
-				runcostbuy +=runcost ### accume initial cost value to buy
-				print("initial cost to buy =" , str(runcostbuy))
+				# runcost=runvalue*volumestep
+				# runcostbuy +=runcost ### accume initial cost value to buy
+				# print("initial cost to buy =" , str(runcostbuy))
 				
-				runvolumebuy+=volumestep
+				# runvolumebuy+=volumestep
 
 				
 				runvalue+=commonvaluestep
 				runvalue=round(runvalue,2)
 			
 
-				runinvest -=runcost #### resul is 293.99999999999999994
-				runinvest=round(runinvest,2)
-				print (runinvest)
+				# runinvest -=runcost #### resul is 293.99999999999999994
+				# runinvest=round(runinvest,2)
+				# print (runinvest)
 
 			elif runinvest < (runvalue*volumestep):
 				print ("run invest is not enough break to exit tkconsole.py line 435")
@@ -163,10 +169,10 @@ class fivesteps():
 
 		conf_labeldisplay[str_startvaluebuy][str_startvaluebuy].configure(background="yellow")
 
-		conf_params["totalcostbuy"].set(runcostbuy)
-		str_totalcostbuy=str(runcostbuy)
-		conf_params["totalvolumebuy"].set(runvolumebuy)
-		str_totalvolumebuy=str(runvolumebuy)
+		conf_params["totalcostbuy"].set(totalcostbuy)
+		str_totalcostbuy=str(totalcostbuy)
+		conf_params["totalvolumebuy"].set(totalvolumebuy)
+		str_totalvolumebuy=str(totalvolumebuy)
 		conf_params["remaininvest"].set(runinvest)
 		str_remaininvest=str(runinvest)
 
@@ -177,8 +183,8 @@ class fivesteps():
 		print ("Top Value Range ====>>" + str(topvaluerange))
 		print ("Start Value Buy ====>>" + str(startvaluebuy))
 		print ("Floor Value Range ====>>" + str(floorvaluerange))
-		print ("Total Cost Buy ====>>" + str(runcostbuy))
-		print ("Total Volume Buy =======>>" + str(runvolumebuy))
+		print ("Total Cost Buy ====>>" + str(totalcostbuy))
+		print ("Total Volume Buy =======>>" + str(totalvolumebuy))
 		print ("Remain Invest Cost =========>>" + str(runinvest))
 		print("StockName =========>>" + (stockname))  # get value from login function in pacsel.py self.stockdata.
 
@@ -203,8 +209,8 @@ class fivesteps():
 							"topvaluerange":topvaluerange,
 							"startvaluebuy":str_startvaluebuy,
 							"floorvaluerange":floorvaluerange,
-							"totalcostbuy":runcostbuy,
-							"totalvolumebuy":runvolumebuy,
+							"totalcostbuy":totalcostbuy,
+							"totalvolumebuy":totalvolumebuy,
 							"remaininvest":runinvest,
 							"stockname":stockname,
 							"stockpin":stockpin,
