@@ -92,6 +92,9 @@ class fivesteps():
 		print("\n=== Total cost to buy from the initial value is below plugin_fivesteps.py line 90 in def setparameter")
 		print(totalcostbuy)
 
+		remaininvest=round(initinvest-totalcostbuy,2)
+		print("\n=== Remain cost buy from initial buy value is below plugin_fivesteps.py line 96 in def setparameter")
+		print(remaininvest)
 ##################################################
 # To set upper range of initial buy value
 ##################################################
@@ -173,8 +176,8 @@ class fivesteps():
 		str_totalcostbuy=str(totalcostbuy)
 		conf_params["totalvolumebuy"].set(totalvolumebuy)
 		str_totalvolumebuy=str(totalvolumebuy)
-		conf_params["remaininvest"].set(runinvest)
-		str_remaininvest=str(runinvest)
+		conf_params["remaininvest"].set(remaininvest)
+		str_remaininvest=str(remaininvest)
 
 		print ("Initial Invest ====>>" + str(initinvest))
 		print ("Volume Step =====>>" + str(volumestep))
@@ -185,7 +188,7 @@ class fivesteps():
 		print ("Floor Value Range ====>>" + str(floorvaluerange))
 		print ("Total Cost Buy ====>>" + str(totalcostbuy))
 		print ("Total Volume Buy =======>>" + str(totalvolumebuy))
-		print ("Remain Invest Cost =========>>" + str(runinvest))
+		print ("Remain Invest Cost =========>>" + str(remaininvest))
 		print("StockName =========>>" + (stockname))  # get value from login function in pacsel.py self.stockdata.
 
 		conf_textout("Set Invest = " + str_initinvest ,"yellow","gray")
@@ -211,7 +214,7 @@ class fivesteps():
 							"floorvaluerange":floorvaluerange,
 							"totalcostbuy":totalcostbuy,
 							"totalvolumebuy":totalvolumebuy,
-							"remaininvest":runinvest,
+							"remaininvest":remaininvest,
 							"stockname":stockname,
 							"stockpin":stockpin,
 		}
