@@ -81,9 +81,10 @@ class fivesteps():
 		print("\n==== Difference between top value buy and start value buy below plugin_fivesteps.py line 74 in def setparameter")
 		print(diffrange)
 
-		totalvolumebuy=((diffrange/commonvaluestep)*volumestep)
-		# print("\n==== Total volume to buy from the initial buy value is blow plugin_fivesteps.py line 78 in def setparameter")
-		# print(totalvolumebuy)
+		totalvolumebuy=int((diffrange/commonvaluestep)*volumestep)
+
+		print("\n==== Total volume to buy from the initial buy value is blow plugin_fivesteps.py line 78 in def setparameter")
+		print(totalvolumebuy)
 		# runvolumebuy=totalvolumebuy
 
 
@@ -211,9 +212,9 @@ class fivesteps():
 							"topvaluerange":topvaluerange,
 							"startvaluebuy":str_startvaluebuy,
 							"floorvaluerange":floorvaluerange,
-							"totalcostbuy":totalcostbuy,
+							"totalcostbuy":str_totalcostbuy,
 							"totalvolumebuy":str_totalvolumebuy,
-							"remaininvest":remaininvest,
+							"remaininvest":str_remaininvest,
 							"stockname":stockname,
 							"stockpin":stockpin,
 		}
@@ -262,6 +263,8 @@ class fivesteps():
 			orderdetail["order"]="buy"
 			# self.params[""]
 
+			print("\n*** First volume to buy orderdetail plugin_fivesteps.py line 265 in def order")
+			print(orderdetail)
 
 			result_order=orderfn(orderdetail)
 
@@ -295,10 +298,17 @@ class fivesteps():
 				# [{'orderno': '174766', 'time': '14:03:56', 'symbole': 'WHA', 'side': 'S', 'price': '4.76', 'volume': '100', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderfrom': 'refodfrm'}]
 				
 				# assume that result_order with row 0 always the correct order result.
-				result_order[0]["referorderno"]=orderidx["referorderno"]
+
+
+				print("---Print result_order return from orderfn in for loop of orderdetail line 303 plugin_fivesteps.py line 303 in def order")
+				print(result_order,len(result_order))
+
+
+				if len(result_order)!=0:
+					result_order[0]["referorderno"]=orderidx["referorderno"]
+					self.putordermonitoring(result_order) 
 				
 				# This is function to add monitoring
-				self.putordermonitoring(result_order) 
 
 		elif controlorder["ordermode"]=="sellbybot" and controlorder["firstbuy"]=="no":
 			# monitor_return
@@ -445,7 +455,7 @@ class fivesteps():
 					for runvolidx in range(allvolidx):
 
 						# runvol=
-						print("\n!!! print volume")
+						print("\n!!! Loop to print allvol volume plugin_fivesteps.py line 448 in def checkprocess2matchstatus")
 						print(allvol)
 
 						allvol= allvol-stepvol
