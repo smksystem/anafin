@@ -62,7 +62,7 @@ class fivesteps():
 
 		totalcostbuy=0 #### purpose variable to calculate in below.
 		totalvolumebuy=0
-		runconfig=floorvaluerange
+		# runconfig=floorvaluerange
 
 
 		str_initinvest=str(initinvest)
@@ -143,29 +143,30 @@ class fivesteps():
 ##################################################
 # To set under range of initial buy value
 ##################################################
-		# while (runconfig<=topvaluerange):
-		# 	runconfig= round(runconfig,2)
+		runvalue=floorvaluerange
+		while (runvalue<=startvaluebuy):
+			runvalue= round(runvalue,2)
 
-		# 	# print("run config plugin_fivesteps.py line 58")
-		# 	# print(runconfig)
-		# 	##############################################################################
-		# 	###### Check padding to avoid key not found with only "4.0" not "4.00" for label
-		# 	##############################################################################
-		# 	chkpad=str(runconfig).split(".") 
+			# print("run config plugin_fivesteps.py line 58")
+			# print(runvalue)
+			##############################################################################
+			###### Check padding to avoid key not found with only "4.0" not "4.00" for label
+			##############################################################################
+			chkpad=str(runvalue).split(".") 
 
-		# 	if len(chkpad[1])==1:
-		# 		tempval=chkpad[1]+"0"
-		# 		valuelabel=chkpad[0]+"." +tempval
+			if len(chkpad[1])==1:
+				tempval=chkpad[1]+"0"
+				valuelabel=chkpad[0]+"." +tempval
 
-		# 	else:
-		# 		valuelabel=str(runconfig)
+			else:
+				valuelabel=str(runvalue)
 				
-		# 	# print("config value step plugin_fivesteps.py line 71")
-		# 	# print(valuelabel)
+			# print("config value step plugin_fivesteps.py line 71")
+			# print(valuelabel)
 			
-		# 	conf_labeldisplay[valuelabel][valuelabel].configure(background="orangered")
+			conf_labeldisplay[valuelabel][valuelabel].configure(background="orangered")
 			
-		# 	runconfig+=commonvaluestep
+			runvalue+=commonvaluestep
 
 
 		
@@ -203,8 +204,6 @@ class fivesteps():
 		conf_textout("Remain Invest Cost = " + str_remaininvest)
 		conf_textout("StockName = " + stockname)
 		
-		# print("Config parameter is following plugin_fivesteps.py line 170")
-		# print(conf_params)
 		self.conf_params={"initinvest":initinvest,
 							"volumestep":volumestep,
 							"profitstep":profitstep,
@@ -220,6 +219,8 @@ class fivesteps():
 		}
 		# conf_params
 
+		print("\n---Config parameter is following plugin_fivesteps.py line 170")
+		print(self.conf_params)
 		return self.conf_params
 
 	def process(self):
