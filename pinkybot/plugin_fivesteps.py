@@ -212,7 +212,7 @@ class fivesteps():
 							"startvaluebuy":str_startvaluebuy,
 							"floorvaluerange":floorvaluerange,
 							"totalcostbuy":totalcostbuy,
-							"totalvolumebuy":totalvolumebuy,
+							"totalvolumebuy":str_totalvolumebuy,
 							"remaininvest":remaininvest,
 							"stockname":stockname,
 							"stockpin":stockpin,
