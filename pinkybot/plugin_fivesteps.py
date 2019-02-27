@@ -438,9 +438,18 @@ class fivesteps():
 					
 					allvol=int(chkresult["volume"])
 					stepvol=int(self.conf_params["volumestep"])
+					floorvaluerange=float(self.conf_params["floorvaluerange"])
+					topvaluerange=float(self.conf_params["topvaluerange"])
 
-					halfvolidx=int((((allvol/stepvol)/2)))
-					allvolidx=int(allvol/stepvol) 
+					difvaluerange=round((topvaluerange - floorvaluerange),2)
+					print("\n---Print difvaluerange for topvaluerange - floorvaluerange in plugin_fivesteps.py line 445 def checkprocess2matchstatus")
+					print(difvaluerange)
+					# halfvolidx=int((((allvol/stepvol)/2)))
+
+					allvalueidx=int(difvaluerange/commonvaluestep) 
+
+					print("\n---Print allvalueidx for step value with difvaluerange/commonvaluestep in plugin_fivesteps.py line 449 def checkprocess2matchstatus")
+					print(allvalueidx)
 
 					# print(allvolidx)
 
@@ -452,15 +461,17 @@ class fivesteps():
 
 					
 					# for runvolidx in range(allvolidx):
-					for runvolidx in range(allvolidx):
+					for runvolidx in range(allvalueidx):
 
 						# runvol=
 						print("\n!!! Loop to print allvol volume plugin_fivesteps.py line 448 in def checkprocess2matchstatus")
 						print(allvol)
 
-						allvol= allvol-stepvol
 						
-						if runvolidx < halfvolidx:
+						# if runvolidx < halfvolidx:
+						if sellprice < topvaluerange:
+
+							allvol= allvol-stepvol
 							# sell price order
 							sellprice=  round(((profitstep * commonvaluestep) + sellprice),2)
 							chkpad=str(sellprice).split(".") 
@@ -473,8 +484,8 @@ class fivesteps():
 								strprice=str(sellprice)
 							
 							orderside="sell"
-							print("\n--- summary sell price runvolidx,halfvolidx,buyprice")
-							print(runvolidx,halfvolidx,sellprice)
+							print("\n--- summary sell price runvolidx,sellprice,buyprice,allvol")
+							print(runvolidx,sellprice,buyprice,allvol)
 							
 							orderlist=[{"startvalue":strprice,
 										"startvolume":str(stepvol),
@@ -499,7 +510,7 @@ class fivesteps():
 							self.mycollectqueues["qvalchange"].put({"textout":"SELL==>>" + strprice + " VOLUME ==>>" + str(stepvol) })
 
 
-						elif runvolidx >= halfvolidx :
+						elif (buyprice >=floorvaluerange) and (allvol==0) :
 							# buy price order
 							buyprice=  round((buyprice - (profitstep * commonvaluestep)),2)
 
@@ -517,8 +528,8 @@ class fivesteps():
 								strprice=str(buyprice)
 
 							orderside="buy"
-							print("\n--- summary buy price runvolidx,halfvolidx,buyprice")
-							print(runvolidx,halfvolidx,strprice)
+							print("\n--- summary buy price runvolidx,sellprice,buyprice")
+							print(runvolidx,sellprice,buyprice)
 							
 							orderlist=[{"startvalue":strprice,
 										"startvolume":str(stepvol),
