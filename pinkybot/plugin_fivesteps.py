@@ -323,10 +323,11 @@ class fivesteps():
 				# [{'orderno': '174766', 'time': '14:03:56', 'symbole': 'WHA', 'side': 'S', 'price': '4.76', 'volume': '100', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderfrom': 'refodfrm'}]
 				
 				# assume that result_order with row 0 always the correct order result.
-				result_order[0]["referorderno"]=orderidx["referorderno"]
+				if len(result_order)!=0:
+					result_order[0]["referorderno"]=orderidx["referorderno"]
 				
 				# This is function to add monitoring
-				self.putordermonitoring(result_order) 
+					self.putordermonitoring(result_order) 
 
 			print("\nresult_order from sellbybot and firstbuy no plugin_fivesteps.py line 277 in def order")
 			print(result_order)
@@ -461,94 +462,98 @@ class fivesteps():
 
 					
 					# for runvolidx in range(allvolidx):
-					for runvolidx in range(allvalueidx):
+					if allvol >100 :
+						for runvolidx in range(allvalueidx):
 
-						# runvol=
-						print("\n!!! Loop to print allvol volume plugin_fivesteps.py line 448 in def checkprocess2matchstatus")
-						print(allvol)
+							# runvol=
+							print("\n!!! Loop to print allvol volume plugin_fivesteps.py line 448 in def checkprocess2matchstatus")
+							print(allvol)
 
+							
+							# if runvolidx < halfvolidx:
+							if sellprice < topvaluerange:
+
+								allvol= allvol-stepvol
+								# sell price order
+								sellprice=  round(((profitstep * commonvaluestep) + sellprice),2)
+								chkpad=str(sellprice).split(".") 
+
+								if len(chkpad[1])==1:
+									tempval=chkpad[1]+"0"
+									strprice=chkpad[0]+"." +tempval
+
+								else:
+									strprice=str(sellprice)
+								
+								orderside="sell"
+								print("\n--- summary sell price runvolidx,sellprice,buyprice,allvol")
+								print(runvolidx,sellprice,buyprice,allvol)
+								
+								orderlist=[{"startvalue":strprice,
+											"startvolume":str(stepvol),
+											"order":orderside,
+											"stockname":stockname,
+											"referorderno":orderno,
+											"stockpin":self.conf_params["stockpin"],
+								}]
+
+
+								ordercontrol={'ordermode':'sellbybot','firstbuy':'no'}
+
+
+								ordertomonitor=self.order(ordercontrol,orderlist,orderfn)
+
+								print("\n@@@ ordertomonitor sell after def order line 447 plugin_fivesteps.py def order")
+								print(ordertomonitor)
+								
+								# self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk",
+													# "doupdatetk":ordertomonitor})
+
+								self.mycollectqueues["qvalchange"].put({"textout":"SELL==>>" + strprice + " VOLUME ==>>" + str(stepvol) })
+
+
+							elif (buyprice >=floorvaluerange) and (allvol==0) :
+								# buy price order
+								buyprice=  round((buyprice - (profitstep * commonvaluestep)),2)
+
+								print("\nprint buy value before processing line 462 plugin_fivesteps.py in def checkprocess2matchstatus")
+								print (buyprice)
+
+
+								chkpad=str(buyprice).split(".") 
+
+								if len(chkpad[1])==1:
+									tempval=chkpad[1]+"0"
+									strprice=chkpad[0]+"." +tempval
+
+								else:
+									strprice=str(buyprice)
+
+								orderside="buy"
+								print("\n--- summary buy price runvolidx,sellprice,buyprice")
+								print(runvolidx,sellprice,buyprice)
+								
+								orderlist=[{"startvalue":strprice,
+											"startvolume":str(stepvol),
+											"order":orderside,
+											"stockname":stockname,
+											"referorderno":orderno,
+											"stockpin":self.conf_params["stockpin"],
+								}]
+
+								ordercontrol={'ordermode':'buybybot','firstbuy':'no'}
+
+								ordertomonitor=self.order(ordercontrol,orderlist,orderfn)
+
+								print("\n@@@ ordertomonitor buy after def order line 447 plugin_fivesteps.py def order")
+								print(ordertomonitor)
+
+								self.mycollectqueues["qvalchange"].put({"textout":"ORDER BUY==>>" + strprice + " VOLUME ==>>" + str(stepvol) })
 						
-						# if runvolidx < halfvolidx:
-						if sellprice < topvaluerange:
 
-							allvol= allvol-stepvol
-							# sell price order
-							sellprice=  round(((profitstep * commonvaluestep) + sellprice),2)
-							chkpad=str(sellprice).split(".") 
-
-							if len(chkpad[1])==1:
-								tempval=chkpad[1]+"0"
-								strprice=chkpad[0]+"." +tempval
-
-							else:
-								strprice=str(sellprice)
-							
-							orderside="sell"
-							print("\n--- summary sell price runvolidx,sellprice,buyprice,allvol")
-							print(runvolidx,sellprice,buyprice,allvol)
-							
-							orderlist=[{"startvalue":strprice,
-										"startvolume":str(stepvol),
-										"order":orderside,
-										"stockname":stockname,
-										"referorderno":orderno,
-										"stockpin":self.conf_params["stockpin"],
-							}]
-
-
-							ordercontrol={'ordermode':'sellbybot','firstbuy':'no'}
-
-
-							ordertomonitor=self.order(ordercontrol,orderlist,orderfn)
-
-							print("\n@@@ ordertomonitor sell after def order line 447 plugin_fivesteps.py def order")
-							print(ordertomonitor)
-							
-							# self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk",
-												# "doupdatetk":ordertomonitor})
-
-							self.mycollectqueues["qvalchange"].put({"textout":"SELL==>>" + strprice + " VOLUME ==>>" + str(stepvol) })
-
-
-						elif (buyprice >=floorvaluerange) and (allvol==0) :
-							# buy price order
-							buyprice=  round((buyprice - (profitstep * commonvaluestep)),2)
-
-							print("\nprint buy value before processing line 462 plugin_fivesteps.py in def checkprocess2matchstatus")
-							print (buyprice)
-
-
-							chkpad=str(buyprice).split(".") 
-
-							if len(chkpad[1])==1:
-								tempval=chkpad[1]+"0"
-								strprice=chkpad[0]+"." +tempval
-
-							else:
-								strprice=str(buyprice)
-
-							orderside="buy"
-							print("\n--- summary buy price runvolidx,sellprice,buyprice")
-							print(runvolidx,sellprice,buyprice)
-							
-							orderlist=[{"startvalue":strprice,
-										"startvolume":str(stepvol),
-										"order":orderside,
-										"stockname":stockname,
-										"referorderno":orderno,
-										"stockpin":self.conf_params["stockpin"],
-							}]
-
-							ordercontrol={'ordermode':'buybybot','firstbuy':'no'}
-
-							ordertomonitor=self.order(ordercontrol,orderlist,orderfn)
-
-							print("\n@@@ ordertomonitor buy after def order line 447 plugin_fivesteps.py def order")
-							print(ordertomonitor)
-
-							self.mycollectqueues["qvalchange"].put({"textout":"ORDER BUY==>>" + strprice + " VOLUME ==>>" + str(stepvol) })
-					
-
+						return ordertomonitor	
+					elif allvol==100:
+						print("\n--- allvol == 100")
 
 					# sellvolume=conf_params["volumestep"]
 					# print("\ntotal order to buy after check match is below plugin_fivesteps.py line 347 def checkprocess2matchstatus")
@@ -574,7 +579,6 @@ class fivesteps():
 
 					# return chkreturn
 
-					return ordertomonitor
 
 				# chk_params ==> result from check refresh_btn chkresult
 				# chkmatch ==> from self.matchedordermonitor
