@@ -450,12 +450,12 @@ class packselenium():
 		elem = driver.find_element_by_xpath(self.xpathreturn("xstockvolumnorder"))
 		elem.clear()
 		# put user in key
-		elem.send_keys(orderparams["startvolume"]) 
+		elem.send_keys(orderparams["volume"]) 
 
 		elem = driver.find_element_by_xpath(self.xpathreturn("xstockvalueorder"))
 		elem.clear()
 		# put user in key
-		elem.send_keys(orderparams["startvalue"]) 
+		elem.send_keys(orderparams["price"]) 
 
 		elem = driver.find_element_by_xpath(self.xpathreturn("xstockpinorder"))
 		elem.clear()

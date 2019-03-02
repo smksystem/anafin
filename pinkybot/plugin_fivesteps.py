@@ -257,8 +257,8 @@ class fivesteps():
 		if controlorder["ordermode"]=="buybybot" and controlorder["firstbuy"]=="yes":
 
 			orderdetail["stockname"]=self.conf_params["stockname"]
-			orderdetail["startvolume"]=self.conf_params["totalvolumebuy"]
-			orderdetail["startvalue"]=self.conf_params["startvaluebuy"]
+			orderdetail["volume"]=self.conf_params["totalvolumebuy"]
+			orderdetail["price"]=self.conf_params["startvaluebuy"]
 			orderdetail["stockpin"]=self.conf_params["stockpin"]
 			orderdetail["order"]="buy"
 			# self.params[""]
@@ -285,8 +285,6 @@ class fivesteps():
 			# 	print("\nconfirm first buy order plugin_fivesteps.py line 169")
 			# 	print ("------------confirm order to monitor="+ self.waitconfirmfirstorder)
 				# 
-
-
 
 		elif controlorder["ordermode"]=="buybybot" and controlorder["firstbuy"]=="no":
 
@@ -374,9 +372,10 @@ class fivesteps():
 
 
 	def checkprocess2matchstatus(self,chk_params,orderfn=""):
-		print("\ncheck params from plugin_fivesteps.py line 166")
+		print("\n=== Print check params , self.matchedordermonitor from plugin_fivesteps.py line 166 in def checkprocess2matchstatus")
 		print(chk_params)
-		print (self.matchedordermonitor)
+		print(self.matchedordermonitor)
+
 		return_params=[]
 		orderlist=[]
 		datenow = datetime.datetime.now().strftime("%Y-%m-%d")
@@ -400,26 +399,35 @@ class fivesteps():
 					# chkmatch=chkresult
 
 					# all below is needed in the refresh for tkconsole.
-					chkmatch.update({
-									"status":chkresult["status"],
-									"volume":chkresult["volume"],
+					
+					# chkmatch.update({
+					# 				"status":chkresult["status"],
+					# 				"volume":chkresult["volume"],
+					# 				"price": chkresult["price"],
+					# 				"matcheddate":datenow,
+					# 				"matchedtime":matchedtime,
+					# 				"side":"B",
+					# 				# "nextordermode":"tosellbybot",
+
+					# 				})
+
+					chkresult.update({
 									"price": chkresult["price"],
 									"matcheddate":datenow,
 									"matchedtime":matchedtime,
-									"side":"B",
-									# "nextordermode":"tosellbybot",
-
-									})
+						})
 
 					# print("\n @@@ Check Matched chkmatch=chkresult before put into database ")
 					# print(chkmatch)
 					
-					PackSelModel.updatematchstatus(chkmatch)
+					# PackSelModel.updatematchstatus(chkmatch)
+					PackSelModel.updatematchstatus(chkresult)
+
 					# remove match index after add into database
 
 
 					self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk",
-												"doupdatetk":[chkmatch]})
+												"doupdatetk":[chkresult]})
 
 					# print("\n Value now of matchedordermonitor is below plugin_fivesteps.py line 411 in def checkprocess2matchstatus")
 					# print(self.matchedordermonitor)
@@ -438,19 +446,19 @@ class fivesteps():
 
 					
 					allvol=int(chkresult["volume"])
+
 					stepvol=int(self.conf_params["volumestep"])
 					floorvaluerange=float(self.conf_params["floorvaluerange"])
 					topvaluerange=float(self.conf_params["topvaluerange"])
 
 					difvaluerange=round((topvaluerange - floorvaluerange),2)
+					
 					print("\n---Print difvaluerange for topvaluerange - floorvaluerange in plugin_fivesteps.py line 445 def checkprocess2matchstatus")
 					print(difvaluerange)
 					# halfvolidx=int((((allvol/stepvol)/2)))
 
-					allvalueidx=int(difvaluerange/commonvaluestep) 
+					
 
-					print("\n---Print allvalueidx for step value with difvaluerange/commonvaluestep in plugin_fivesteps.py line 449 def checkprocess2matchstatus")
-					print(allvalueidx)
 
 					# print(allvolidx)
 
@@ -463,6 +471,11 @@ class fivesteps():
 					
 					# for runvolidx in range(allvolidx):
 					if allvol >100 :
+						allvalueidx=int(difvaluerange/commonvaluestep) 
+						
+						print("\n---Print allvalueidx in case of alvol >100 for step value with difvaluerange/commonvaluestep in plugin_fivesteps.py line 449 def checkprocess2matchstatus")
+						print(allvalueidx)
+
 						for runvolidx in range(allvalueidx):
 
 							# runvol=
@@ -489,8 +502,8 @@ class fivesteps():
 								print("\n--- summary sell price runvolidx,sellprice,buyprice,allvol")
 								print(runvolidx,sellprice,buyprice,allvol)
 								
-								orderlist=[{"startvalue":strprice,
-											"startvolume":str(stepvol),
+								orderlist=[{"price":strprice,
+											"volume":str(stepvol),
 											"order":orderside,
 											"stockname":stockname,
 											"referorderno":orderno,
@@ -533,8 +546,8 @@ class fivesteps():
 								print("\n--- summary buy price runvolidx,sellprice,buyprice")
 								print(runvolidx,sellprice,buyprice)
 								
-								orderlist=[{"startvalue":strprice,
-											"startvolume":str(stepvol),
+								orderlist=[{"price":strprice,
+											"volume":str(stepvol),
 											"order":orderside,
 											"stockname":stockname,
 											"referorderno":orderno,
@@ -554,6 +567,10 @@ class fivesteps():
 						return ordertomonitor	
 					elif allvol==100:
 						print("\n--- allvol == 100")
+
+						print("!!! Check chkresult,chkmatch buy or sell in case elif allvol==100 line 563 plugin_fivesteps.py in def checkprocess2matchstatus")
+						print(chkresult)
+						print(chkmatch)
 
 					# sellvolume=conf_params["volumestep"]
 					# print("\ntotal order to buy after check match is below plugin_fivesteps.py line 347 def checkprocess2matchstatus")
