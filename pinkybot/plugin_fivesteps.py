@@ -232,6 +232,7 @@ class fivesteps():
 		for linetable in result_order:
 				if linetable["status"] != "Matched(M)":
 					self.matchedordermonitor.append({"orderno":linetable["orderno"],
+													"price":linetable["price"],
 														"status":linetable["status"],
 														"referorderno":linetable["referorderno"],
 													})
@@ -538,8 +539,7 @@ class fivesteps():
 								# buy price order
 								buyprice=  round((buyprice - (profitstep * commonvaluestep)),2)
 
-								print(
-									"\nprint buy value before processing line 462 plugin_fivesteps.py in def checkprocess2matchstatus")
+								print("\nprint buy value before processing line 462 plugin_fivesteps.py in def checkprocess2matchstatus")
 								print (buyprice)
 
 
