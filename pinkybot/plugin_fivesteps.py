@@ -538,7 +538,8 @@ class fivesteps():
 								# buy price order
 								buyprice=  round((buyprice - (profitstep * commonvaluestep)),2)
 
-								print("\nprint buy value before processing line 462 plugin_fivesteps.py in def checkprocess2matchstatus")
+								print(
+									"\nprint buy value before processing line 462 plugin_fivesteps.py in def checkprocess2matchstatus")
 								print (buyprice)
 
 
