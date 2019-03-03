@@ -447,6 +447,9 @@ class fivesteps():
 					
 					allvol=int(chkresult["volume"])
 
+					print("\n!!!Print allvol to order in line 450 file plugin_fivesteps.py in def checkprocess2matchstatus")
+					print (allvol)
+
 					stepvol=int(self.conf_params["volumestep"])
 					floorvaluerange=float(self.conf_params["floorvaluerange"])
 					topvaluerange=float(self.conf_params["topvaluerange"])
@@ -470,6 +473,12 @@ class fivesteps():
 
 					
 					# for runvolidx in range(allvolidx):
+
+					print("!!! Check chkresult,chkmatch buy or sell in case elif allvol==100 line 563 plugin_fivesteps.py in def checkprocess2matchstatus")
+					print(chkresult)
+					print(chkmatch)
+
+
 					if allvol >100 :
 						allvalueidx=int(difvaluerange/commonvaluestep) 
 						
@@ -568,9 +577,7 @@ class fivesteps():
 					elif allvol==100:
 						print("\n--- allvol == 100")
 
-						print("!!! Check chkresult,chkmatch buy or sell in case elif allvol==100 line 563 plugin_fivesteps.py in def checkprocess2matchstatus")
-						print(chkresult)
-						print(chkmatch)
+						
 
 					# sellvolume=conf_params["volumestep"]
 					# print("\ntotal order to buy after check match is below plugin_fivesteps.py line 347 def checkprocess2matchstatus")
