@@ -13,8 +13,8 @@ class PackSelModel:
 	# 	print ( "initial update stock value")
 	def updatestockvaluechange(stockdata):
 
-		print("model of update value is called packsel_model.py line 16")
-		print (stockdata)
+		# print("model of update value is called packsel_model.py line 16")
+		# print (stockdata)
 		updaterow=valuechange(
 				datefield=stockdata["datefield"],
 				timestamp=stockdata["timestamp"],

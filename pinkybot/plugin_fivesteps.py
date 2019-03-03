@@ -229,18 +229,42 @@ class fivesteps():
 
 	def putordermonitoring(self,result_order):
 
+		print("\n!!! Now Monitoring before data plugin_fivesteps.py line 254 in def putordermonitoring")
+		print(self.matchedordermonitor)
+
+		print("!!! Print result_order in line 235 plugin_fivesteps.py in def putordermonitoring")
+		print(result_order)
+		tempadd=None
+		notAllowTodd=False
 		for linetable in result_order:
-				if linetable["status"] != "Matched(M)":
-					self.matchedordermonitor.append({"orderno":linetable["orderno"],
-													"price":linetable["price"],
-														"status":linetable["status"],
-														"referorderno":linetable["referorderno"],
-													})
+			if linetable["status"] == "Matched(M)":
+				notAllowTodd=True
+				# break
+			elif linetable["status"] != "Matched(M)" and len(self.matchedordermonitor)>0:
+				# To check if already existing in matchedordermonitor or not
+				for matchcheck in self.matchedordermonitor:
+					 if linetable["orderno"] == matchcheck["orderno"]:
+					 	notAllowTodd=True
+					 elif linetable["orderno"] != matchcheck["orderno"]:
+					 	notAllowTodd=False
+					 	tempadd=linetable
+			elif linetable["status"] != "Matched(M)" and len(self.matchedordermonitor)==0:
+				notAllowTodd=False
+				tempadd=linetable
+
+					 	# break
+		if notAllowTodd==False :
+			self.matchedordermonitor.append({"orderno":tempadd["orderno"],
+											"price":tempadd["price"],
+												"status":tempadd["status"],
+												"referorderno":tempadd["referorderno"],
+											})
+			# notAllowTodd=False
 					# self.matchedordermonitor.append(linetable)
 					
+		print("\n!!! Now Monitoring data after plugin_fivesteps.py line 254 in def putordermonitoring")
+		print(self.matchedordermonitor)
 
-				print("\nMonitor below data plugin_fivesteps.py line 254 in def putordermonitoring")
-				print(self.matchedordermonitor)
 
 	def order(self,controlorder="",orderdetail={},orderfn=""):
 
@@ -610,9 +634,12 @@ class fivesteps():
 				elif chkresult["orderno"]==chkmatch["orderno"] and chkresult["status"]!= "Matched(M)": 
 					# return chk_params
 					print("\n+++ Case else with not match but order match plugin_fivesteps.py def checkprocess2matchstatus line 414")
-					print(chk_params,self.matchedordermonitor)
+					print(chk_params)
+					print(self.matchedordermonitor)
 
-					# chkmatch["status"]=chkresult["status"]
+
+					# if not match update status instead.
+					chkmatch["status"]=chkresult["status"] 
 					# chkresult["refreorderno"]=chkmatch["referorderno"]
 
 					return chk_params
