@@ -235,22 +235,36 @@ class fivesteps():
 		print("!!! Print result_order in line 235 plugin_fivesteps.py in def putordermonitoring")
 		print(result_order)
 		tempadd=None
-		notAllowTodd=False
+		notAllowTodd=None
 		for linetable in result_order:
 			if linetable["status"] == "Matched(M)":
 				notAllowTodd=True
-				# break
+				break
 			elif linetable["status"] != "Matched(M)" and len(self.matchedordermonitor)>0:
 				# To check if already existing in matchedordermonitor or not
-				for matchcheck in self.matchedordermonitor:
-					 if linetable["orderno"] == matchcheck["orderno"]:
-					 	notAllowTodd=True
-					 elif linetable["orderno"] != matchcheck["orderno"]:
+				for i,matchcheck in enumerate(self.matchedordermonitor):
+					# print("\n ### Number of enumberate plugin_fivesteps.py line 246 in def putordermonitoring")
+					# print((i+1),len(self.matchedordermonitor))
+
+					if linetable["orderno"] == matchcheck["orderno"]:
+						notAllowTodd=True
+						print("\n +++Found orderno update status below plugin_fivesteps.py line 251 in def updatematchstatus")
+						self.matchedordermonitor["status"]=linetable["status"]
+
+						break
+
+					elif linetable["orderno"] != matchcheck["orderno"]:
 					 	notAllowTodd=False
 					 	tempadd=linetable
+					if (i+1)==len(self.matchedordermonitor):
+						break
+
 			elif linetable["status"] != "Matched(M)" and len(self.matchedordermonitor)==0:
 				notAllowTodd=False
 				tempadd=linetable
+
+			if notAllowTodd==True or notAllowTodd==False:
+				break
 
 					 	# break
 		if notAllowTodd==False :
