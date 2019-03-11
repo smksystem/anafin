@@ -258,6 +258,7 @@ class fivesteps():
 					elif linetable["orderno"] != matchcheck["orderno"]:
 					 	notAllowTodd=False
 					 	tempadd=linetable
+					 	# break
 					if (i+1)==len(self.matchedordermonitor):
 						break
 
