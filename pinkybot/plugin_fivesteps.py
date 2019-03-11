@@ -257,26 +257,34 @@ class fivesteps():
 
 					elif linetable["orderno"] != matchcheck["orderno"]:
 					 	notAllowTodd=False
+					 	tempadd=linetable
 					 	
 					 	# break
-					if (i+1)==len(self.matchedordermonitor) and notAllowTodd==False:
-						tempadd=linetable
-						break
+					# if (i+1)==len(self.matchedordermonitor) and notAllowTodd==False:
+					# 	tempadd=linetable
+					# 	break
 
+				if notAllowTodd==False :
+					self.matchedordermonitor.append({"orderno":tempadd["orderno"],
+											"price":tempadd["price"],
+												"status":tempadd["status"],
+												"referorderno":tempadd["referorderno"],
+											})
 			elif linetable["status"] != "Matched(M)" and len(self.matchedordermonitor)==0:
+				print("\n===Print case linetable != matched[M] and len(self.matchedordermonitor==0) plugin_fivesteps.py line 273 in def putordermonitoring")
 				notAllowTodd=False
 				tempadd=linetable
+				self.matchedordermonitor.append({"orderno":tempadd["orderno"],
+												"price":tempadd["price"],
+												"status":tempadd["status"],
+												"referorderno":tempadd["referorderno"],
+											})
 
 			# if notAllowTodd==True or notAllowTodd==False:
 			# 	break
 
 					 	# break
-		if notAllowTodd==False :
-			self.matchedordermonitor.append({"orderno":tempadd["orderno"],
-											"price":tempadd["price"],
-												"status":tempadd["status"],
-												"referorderno":tempadd["referorderno"],
-											})
+		
 			# notAllowTodd=False
 					# self.matchedordermonitor.append(linetable)
 					
