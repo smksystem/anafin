@@ -382,31 +382,6 @@ class outputlog(tk.Tk):
 
 		return (0)
 
-	# def createlabelgroup(self,rowvalue,varvalue,rowidx):
-
-	# 	# rowvalue=self.myvarasso[varvalue]
-
-		
-	# 	for repeatidx,valrepeat in enumerate(rowvalue):
-
-	# 		self.labeldisplay[varvalue][repeatidx]={}
-	# 		# if varvalue=="4.00":
-	# 			# print(repeatidx,valrepeat)
-	# 		# print("tkconsole.py line 553")
-	# 		# print(valrepeat)
-	# 		for j,varinfo in enumerate(valrepeat):
-
-	# 			# print(varvalue,repeatidx)
-
-	# 			if  varinfo=="orderno" or varinfo=="startordertime" or varinfo=="matchordertime"  or varinfo =="targetvalue":
-	# 				# print(varinfo,j)
-	# 				self.labeldisplay[varvalue][repeatidx][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][repeatidx][varinfo],borderwidth=2, relief="groove",height=1)
-	# 				self.labeldisplay[varvalue][repeatidx][varinfo].grid(row=rowidx,column=j+1+(int(repeatidx)*6),sticky="n"+"e"+"w",pady=5)
-
-	# 			if  varinfo=="matchcomplete" or varinfo=="orderside" or varinfo=="volumn" or varinfo == "profit" or varinfo=="state" :
-	# 				# print(varinfo,j)
-	# 				self.labeldisplay[varvalue][repeatidx][varinfo]=tk.Label(self.frameGroupOutput , textvariable=self.myvarasso[varvalue][repeatidx][varinfo],borderwidth=2, relief="groove",height=1)
-	# 				self.labeldisplay[varvalue][repeatidx][varinfo].grid(row=rowidx,column=j-3+(int(repeatidx)*6),sticky="s"+"e"+"w",pady=5)
 
 	def doMenuRange(self,value):
 
@@ -816,6 +791,13 @@ class outputlog(tk.Tk):
 											# varparams["balance"].set(rowupdata["balance"])
 											varparams["state"].set(rowupdata["status"])
 											varparams["matchordertime"].set(rowupdata["matchedtime"])
+
+											if rowupdata["status"] =="Matched(M)":
+												print("\n===Found Match status in has been send to update in tkconsole.py line 796 in def Refresher")
+												print(rowupdata)
+												print(self.labeldisplay)
+												print(self.labeldisplay[rowupdata["price"]][rowupdata["price"]])
+												# self.flash(,9,"green")
 
 
 
