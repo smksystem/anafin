@@ -623,6 +623,11 @@ class outputlog(tk.Tk):
 			Label.configure(foreground="black")
 			Label.configure(background="silver")
 
+	def monomatch(self,label,order,color="gray"):
+		for labelidx in label:
+			print("\n!!! Check loop for label in tkconsole.py line 628 in def monomatch")
+			print(labelidx)
+			print(labelidx.text())
 
 
 	def txtout(self,txtmsg,colorhighlight="",backcolor=""):
@@ -782,7 +787,6 @@ class outputlog(tk.Tk):
 
 											varparams["orderside"].set(rowupdata["side"])
 											varparams["volume"].set(rowupdata["volume"])
-
 											# varparams["matchcomplete"].set(rowupdata["matched"])
 											varparams["referorderno"].set(rowupdata["referorderno"])
 
@@ -794,10 +798,15 @@ class outputlog(tk.Tk):
 
 											if rowupdata["status"] =="Matched(M)":
 												print("\n===Found Match status in has been send to update in tkconsole.py line 796 in def Refresher")
-												print(rowupdata)
-												print(self.labeldisplay)
-												print(self.labeldisplay[rowupdata["price"]][rowupdata["price"]])
+												# print(rowupdata)
+												# print(self.labeldisplay)
+												print(self.labeldisplay[rowupdata["price"]])
+												targetlabelprice=self.labeldisplay[rowupdata["price"]]
+												grayorderno=rowupdata["orderno"]
+
+
 												# self.flash(,9,"green")
+												self.monomatch(targetlabelprice,grayorderno)
 
 
 
