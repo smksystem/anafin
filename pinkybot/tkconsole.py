@@ -623,11 +623,14 @@ class outputlog(tk.Tk):
 			Label.configure(foreground="black")
 			Label.configure(background="silver")
 
-	def monomatch(self,label,order,color="gray"):
-		for labelidx in label:
+	def monomatch(self,label,orderno,color="gray"):
+		print("\n$$$Print label orderno line 627 tkconsole.py in def monomatch")
+		print(label,orderno)
+
+		for labelidx,labelcontent in label.items():
 			print("\n!!! Check loop for label in tkconsole.py line 628 in def monomatch")
-			print(labelidx)
-			print(labelidx.text())
+			if labelcontent["text"]==orderno :
+				labelcontent.configure(background="red")
 
 
 	def txtout(self,txtmsg,colorhighlight="",backcolor=""):
@@ -808,23 +811,15 @@ class outputlog(tk.Tk):
 
 												for labelidx,(findlabel,labelcontent) in enumerate(targetlabelprice.items()):
 													print("\n @@@ print labelidx , findlabel,labelcontent line 810 tkconsole.py in def Refresher")
-													# {'4.72': <tkinter.Label object .!canvas2.!frame.!label14>, 0: {'orderno': <tkinter.Label object .!canvas2.!frame.!label151>, 'startordertime': <tkinter.Label object .!canvas2.!frame.!label152>, 'matchordertime': <tkinter.Label object .!canvas2.!frame.!label153>, 'targetvalue': <tkinter.Label object .!canvas2.!frame.!label154>, 'symbole': <tkinter.Label object .!canvas2.!frame.!label155>, 'referorderno': <tkinter.Label object .!canvas2.!frame.!label156>, 'orderside': <tkinter.Label object .!canvas2.!frame.!label157>, 'volume': <tkinter.Label object .!canvas2.!frame.!label158>, 'profit': <tkinter.Label object .!canvas2.!frame.!label159>, 'state': <tkinter.Label object .!canvas2.!frame.!label160>}}
-													#  @@@ print labelidx , findlabel line 810 tkconsole.py in def Refresher
-													# 0 4.72
-													#  @@@ print labelidx , findlabel line 810 tkconsole.py in def Refresher
-													# 1 0
-													
 													print( labelidx,findlabel,labelcontent)
 													if labelidx> 0:
+														# if labelcontent["orderno"]["text"]=grayorderno:
 														print("\n### print findlabel[labelidx] in line 821 tkconsole.py in def Refresher")
 														print(labelcontent["orderno"])
-														print(labelcontent["orderno"]["text"])
-														# print(findlabel[labelidx]["orderno"])
-														labelcontent["orderno"].configure(background="red")
+														self.monomatch(labelcontent,grayorderno)
 
 
 												# self.flash(,9,"green")
-												# self.monomatch(targetlabelprice,grayorderno)
 
 
 
