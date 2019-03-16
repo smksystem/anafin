@@ -587,7 +587,8 @@ class fivesteps():
 
 							elif (buyprice >=floorvaluerange) and (allvol==0) :
 								# buy price order
-								buyprice=  round((buyprice - (profitstep * commonvaluestep)),2)
+								# buyprice=  round((buyprice),2)
+
 
 								print("\nprint buy value before processing line 462 plugin_fivesteps.py in def checkprocess2matchstatus")
 								print (buyprice)
@@ -623,7 +624,8 @@ class fivesteps():
 
 								self.mycollectqueues["qvalchange"].put({"textout":"ORDER BUY==>>" + strprice + " VOLUME ==>>" + str(stepvol) })
 						
-
+								buyprice=  round((buyprice - (profitstep * commonvaluestep)),2)
+								
 						return ordertomonitor	
 					elif allvol==100:
 						print("\n--- allvol == 100")

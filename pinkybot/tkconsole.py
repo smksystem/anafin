@@ -623,14 +623,20 @@ class outputlog(tk.Tk):
 			Label.configure(foreground="black")
 			Label.configure(background="silver")
 
-	def monomatch(self,label,orderno,color="gray"):
+	def monomatch(self,label,orderno,color="lightgray"):
 		print("\n$$$Print label orderno line 627 tkconsole.py in def monomatch")
 		print(label,orderno)
-
+		changecolor=False
 		for labelidx,labelcontent in label.items():
 			print("\n!!! Check loop for label in tkconsole.py line 628 in def monomatch")
 			if labelcontent["text"]==orderno :
-				labelcontent.configure(background="red")
+				changecolor=True
+				break;
+		if changecolor==True:
+			for labelidx,labelcontent in label.items():
+				labelcontent.configure(background=color)
+		else:
+			changecolor=False
 
 
 	def txtout(self,txtmsg,colorhighlight="",backcolor=""):
