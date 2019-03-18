@@ -607,7 +607,32 @@ class fivesteps():
 
 						return ordertomonitor	
 					elif allvol==100:
-						print("\n--- allvol == 100")
+						print("\n---allvol == 100 to sell or buy by bot plugin_fivesteps.py line 610 def checkprocess2matchstatus")
+						print("\n+++print buy or sell in plugin_fivesteps.py line 611 def checkprocess2matchstatus")
+						print(chkresult["side"])
+						chkside=chkresult["side"]
+						if chkside=="B" :
+							ordermode="sellbybot"
+						elif chkside=="S":
+							ordermode="buybybot"
+						print("\n***Prepare to order side in plugin_fivesteps.py line 618 in def checkprocess2matchstatus")
+						print(ordermode)
+
+						print("\n@@@ Print check result in plugin_fivesteps.py line 621 in def checkprocess2matchstatus")
+						print(chkresult)
+
+						# orderlist=[{"price":chkresult["price"],
+						# 					"volume":chkresult["volume"],
+						# 					"order":orderside,
+						# 					"stockname":chkresult["name"],
+						# 					"referorderno":orderno,
+						# 					"stockpin":self.conf_params["stockpin"],
+						# 		}]						
+						# ordercontrol={'ordermode':ordermode,'firstbuy':'no'}
+
+						# ordertomonitor=self.order(ordercontrol,orderlist,orderfn)
+
+
 
 						
 
@@ -621,7 +646,6 @@ class fivesteps():
 					# print(chkmatch)
 					
 
-					# ordertomonitor=self.order(ordercontrol,orderlist,orderfn)
 					
 					# print("\n+++ ordertomonitor plugin_fivesteps.py line 439 in def checkprocess2matchstatus")
 					# print (ordertomonitor)

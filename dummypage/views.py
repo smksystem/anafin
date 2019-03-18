@@ -69,15 +69,19 @@ def runlogic(request):
 
 			if numberid=='4' and tempwrite[-1]["price"]!="4.72":
 
-				for mystatus in tempwrite:
-					if mystatus["status"] != "Open(O)":
-						mystatus["status"]="Open(O)"
 				
-				# tempwrite[-1]["status"]="Open(O)"  # else False
+				tempwrite[-1]["status"]="Open(O)"  # else False
 
 
 			if numberid=='5' and tempwrite[-1]["price"]=="4.74":
+
+
+				for mystatus in tempwrite:
+					if mystatus["status"] != "Open(O)" and mystatus["status"]!="Matched(M)" :
+						mystatus["status"]="Open(O)"
+				
 				tempwrite[-1]["status"]="Matched(M)"  # else False	
+
 			# if numberid=='5' and tempwrite[-1]["price"]!="4.72":
 			# 	tempwrite[-1]["status"]="Matched(M)"  # else False
 
