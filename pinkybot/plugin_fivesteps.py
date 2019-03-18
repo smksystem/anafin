@@ -444,24 +444,6 @@ class fivesteps():
 
 				if chkresult["orderno"]==chkmatch["orderno"] and chkresult["status"]=="Matched(M)":
 
-					# print("\nfound Match(M) the first order plugin_fivesteps.py line 289 def checkprocess2matchstatus")
-
-
-					# chkmatch=chkresult
-
-					# all below is needed in the refresh for tkconsole.
-					
-					# chkmatch.update({
-					# 				"status":chkresult["status"],
-					# 				"volume":chkresult["volume"],
-					# 				"price": chkresult["price"],
-					# 				"matcheddate":datenow,
-					# 				"matchedtime":matchedtime,
-					# 				"side":"B",
-					# 				# "nextordermode":"tosellbybot",
-
-					# 				})
-
 					chkresult.update({
 									"price": chkresult["price"],
 									"matcheddate":datenow,
@@ -471,7 +453,6 @@ class fivesteps():
 					# print("\n @@@ Check Matched chkmatch=chkresult before put into database ")
 					# print(chkmatch)
 					
-					# PackSelModel.updatematchstatus(chkmatch)
 					PackSelModel.updatematchstatus(chkresult)
 
 					# remove match index after add into database
@@ -485,8 +466,6 @@ class fivesteps():
 					self.matchedordermonitor.remove(chkmatch)
 					# print("\nFinish remove chkmatch print matchedordermonitor again")
 					# print (self.matchedordermonitor)
-
-
 
 					print("\nSet commonvaluestep plugin_fivesteps.py line 304 def checkprocess2matchstatus")
 					print(self.conf_params)
@@ -531,7 +510,7 @@ class fivesteps():
 
 
 					if allvol >100 :
-						allvalueidx=int(difvaluerange/commonvaluestep) 
+						allvalueidx=int(difvaluerange/commonvaluestep) + 1
 						
 						print("\n---Print allvalueidx in case of alvol >100 for step value with difvaluerange/commonvaluestep in plugin_fivesteps.py line 449 def checkprocess2matchstatus")
 						print(allvalueidx)
@@ -625,7 +604,7 @@ class fivesteps():
 								self.mycollectqueues["qvalchange"].put({"textout":"ORDER BUY==>>" + strprice + " VOLUME ==>>" + str(stepvol) })
 						
 								buyprice=  round((buyprice - (profitstep * commonvaluestep)),2)
-								
+
 						return ordertomonitor	
 					elif allvol==100:
 						print("\n--- allvol == 100")
