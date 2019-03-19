@@ -613,56 +613,44 @@ class fivesteps():
 						chkside=chkresult["side"]
 						if chkside=="B" :
 							ordermode="sellbybot"
+							orderside="S"
 							botprice=round(float(chkresult["price"])+commonvaluestep,2)
 
 						elif chkside=="S":
 							ordermode="buybybot"
+							orderside="B"
 							botprice=round(float(chkresult["price"])-commonvaluestep,2)
 
+						chkpad=str(botprice).split(".") 
+
+						if len(chkpad[1])==1:
+							tempval=chkpad[1]+"0"
+							strprice=chkpad[0]+"." +tempval
+
+						else:
+							strprice=str(botprice)
+
 						print("\n***Prepare to order side in plugin_fivesteps.py line 618 in def checkprocess2matchstatus")
-						print(ordermode,botprice)
+						print(ordermode,strprice)
 
 						print("\n@@@ Print check result in plugin_fivesteps.py line 621 in def checkprocess2matchstatus")
 						print(chkresult)
 
-						# orderlist=[{"price":chkresult["price"],
-						# 					"volume":chkresult["volume"],
-						# 					"order":orderside,
-						# 					"stockname":chkresult["name"],
-						# 					"referorderno":orderno,
-						# 					"stockpin":self.conf_params["stockpin"],
-						# 		}]						
-						# ordercontrol={'ordermode':ordermode,'firstbuy':'no'}
+						orderlist=[{"price":strprice,
+											"volume":chkresult["volume"],
+											"order":orderside,
+											"stockname":chkresult["symbole"],
+											"referorderno":chkresult["orderno"],
+											"stockpin":self.conf_params["stockpin"],
+								}]					
+						print("\n!!!Print orderlist in line 644 plugin_fivesteps.py in def checkprocess2matchstatus")
+						print(orderlist)	
+						ordercontrol={'ordermode':ordermode,'firstbuy':'no'}
 
-						# ordertomonitor=self.order(ordercontrol,orderlist,orderfn)
-
-
-
-						
-
-					# sellvolume=conf_params["volumestep"]
-					# print("\ntotal order to buy after check match is below plugin_fivesteps.py line 347 def checkprocess2matchstatus")
-					# print(orderlist)
-					
-					# 		print(chkresult)
-					# print("\nupdate monitor order after check with rt table plugin_fivesteps.py line 299 def checkprocess2matchstatus")
-					# print(self.matchedordermonitor)
-					# print(chkmatch)
-					
-
-					
-					# print("\n+++ ordertomonitor plugin_fivesteps.py line 439 in def checkprocess2matchstatus")
-					# print (ordertomonitor)
-
-					# only single match if more than one match need to add with array
-					
-
-
-
-					# chkreturn={"orderno":orderno, "matchedtime":matchedtime}
-
-					# return chkreturn
-
+						ordertomonitor=self.order(ordercontrol,orderlist,orderfn)
+						print("\n@@@ ordertomonitor bot order after def order line 447 plugin_fivesteps.py def matchedordermonitor")
+						print(ordertomonitor)
+					# return ordertomonitor
 
 				# chk_params ==> result from check refresh_btn chkresult
 				# chkmatch ==> from self.matchedordermonitor
