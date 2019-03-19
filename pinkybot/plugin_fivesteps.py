@@ -361,8 +361,8 @@ class fivesteps():
 
 		elif controlorder["ordermode"]=="sellbybot" and controlorder["firstbuy"]=="no":
 			# monitor_return
-			# print("\n!!! print of orderdetail before for order idx plugin_fivesteps.py line 285 in def order ")
-			# print(orderdetail)
+			print("\n!!! print of orderdetail case sellbybot firstbuy==no before for order idx plugin_fivesteps.py line 285 in def order ")
+			print(orderdetail)
 
 			for orderidx in orderdetail:
 				# print("\n ==! order idx before orderfn line 286 plugin_fivesteps.py def order")
@@ -613,12 +613,12 @@ class fivesteps():
 						chkside=chkresult["side"]
 						if chkside=="B" :
 							ordermode="sellbybot"
-							orderside="S"
+							orderside="sell"
 							botprice=round(float(chkresult["price"])+commonvaluestep,2)
 
 						elif chkside=="S":
 							ordermode="buybybot"
-							orderside="B"
+							orderside="buy"
 							botprice=round(float(chkresult["price"])-commonvaluestep,2)
 
 						chkpad=str(botprice).split(".") 
