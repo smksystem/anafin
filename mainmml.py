@@ -16,7 +16,7 @@ if __name__=="__main__":
 	console=outputlog()
 	console.Refresher()
 	console.mainloop()
-
+	
 		# work ok for hightlight
 	# for eachval,data in myrange.items():console.txtout("|"+eachval+" | Vol="+data["vol"] +  
 	# # login= pinkybot()

@@ -613,10 +613,14 @@ class fivesteps():
 						chkside=chkresult["side"]
 						if chkside=="B" :
 							ordermode="sellbybot"
+							botprice=round(float(chkresult["price"])+commonvaluestep,2)
+
 						elif chkside=="S":
 							ordermode="buybybot"
+							botprice=round(float(chkresult["price"])-commonvaluestep,2)
+
 						print("\n***Prepare to order side in plugin_fivesteps.py line 618 in def checkprocess2matchstatus")
-						print(ordermode)
+						print(ordermode,botprice)
 
 						print("\n@@@ Print check result in plugin_fivesteps.py line 621 in def checkprocess2matchstatus")
 						print(chkresult)
