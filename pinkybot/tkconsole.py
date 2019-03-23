@@ -20,7 +20,7 @@ class outputlog(tk.Tk):
 		self.geometry('780x620+20+20')
 		# self.grid_columnconfigure(1, weight=1)
 		# self.pack_propagate(0)
-		usertxt=tk.StringVar(value="0147500")
+		usertxt=tk.StringVar(value="014xxxx")
 		passtxt=tk.StringVar()
 		broketxt=tk.StringVar(value="013")
 		# global time1
@@ -283,6 +283,14 @@ class outputlog(tk.Tk):
 		self.btnLoad.grid(row=0,column=1,sticky="w",padx=self.btnSave.winfo_width())
 
 		self.alreadyputback=False # To make put back into queue one time and sync to DB.
+
+
+		
+# when start up to set automatic 
+		self.doMenuRange("PlanB")
+		self.setparameter()
+
+
 		self.update_idletasks()
 		# self.mycount = 0
 		
