@@ -46,19 +46,28 @@ class monitorbidoffer(models.Model):
 	bidvolumn5 = models.FloatField(unique=False)
 	offervolumn5 = models.FloatField(unique=False)
 
-# class udpatestockvalue(models.Model):
-	
-# 	valuefield=models.CharField(max_length=10,unique=False,default="")
-# 	datefield=models.DateTimeField(0)
-# 	timefield=models.DateTimeField(0)
-# 	orderfield=models.CharField(max_length=5,unique=False,default="")
-# 	statusfield=models.CharField(max_length=20,unique=False,default="")
-# 	volumnfield=models.CharField(max_length=10,unique=False,default="")
-# 	buyfield=models.CharField(max_length=5,unique=False,default="")
-# 	sellfield=models.CharField(max_length=5,unique=False,default="")
-# 	cancelfield=models.CharField(max_length=5,unique=False,default="")
-# 	targetvalue=models.CharField(max_length=10,unique=False,default="")
-# 	profitfield=models.CharField(max_length=10,unique=False,default="")
+
+
+class keepconfig(models.Model):
+
+	# initinvest=20000
+	# 	volumestep	=100
+	# 	profitstep=1
+	# 	topvaluerange=4.80
+	# 	startvaluebuy=4.72
+	# 	floorvaluerange=4.60
+	# 	stopvaluerange=4.70
+	# stockname=
+
+	initinvest=models.CharField(max_length=10,unique=False,default="")
+	volumestep=models.CharField(max_length=5,unique=False,default="")
+	profitstep=models.CharField(max_length=10,unique=False,default="")
+	topvaluerange=models.CharField(max_length=5,unique=False,default="")
+	startvaluebuy=models.CharField(max_length=5,unique=False,default="")
+	floorvaluerange=models.CharField(max_length=5,unique=False,default="")
+	stopvaluerange=models.CharField(max_length=5,unique=False,default="")
+	stockname=models.CharField(max_length=10,unique=False,default="")
+	source=	models.CharField(max_length=15,unique=False,default="")
 	 
 class updaterefresh(models.Model):
 	orderno=models.CharField(max_length=10,unique=False,default="")

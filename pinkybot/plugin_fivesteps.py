@@ -23,6 +23,9 @@ class fivesteps():
 	def setparameter(self,conf_params,conf_labeldisplay,conf_textout):
 		print("set parameter of fivestep plugin_fivestep.py line 3")
 		
+
+		PackSelModel.loadparameter("plugin_fivestep")
+
 		initinvest=20000
 		volumestep	=100
 		profitstep=1
@@ -30,7 +33,7 @@ class fivesteps():
 		startvaluebuy=4.72
 		floorvaluerange=4.60
 		stopvaluerange=4.70
-
+		stockname="WHA"
 		# initinvest=20000
 		# volumestep	=100
 		# profitstep=1

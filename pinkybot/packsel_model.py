@@ -11,6 +11,10 @@ class PackSelModel:
 		
 
 	# 	print ( "initial update stock value")
+	def loadparameter(source=""):
+		print("\nStart Load parameter packsel_model.py line 15 in def PackSelModel")
+		
+
 	def updatestockvaluechange(stockdata):
 
 		# print("model of update value is called packsel_model.py line 16")
