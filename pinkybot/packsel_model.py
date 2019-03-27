@@ -1,4 +1,4 @@
-from pinkybot.models import monitorbidoffer,updaterefresh,valuechange
+from pinkybot.models import monitorbidoffer,updaterefresh,valuechange,keepconfig
 from elasticsearch import Elasticsearch
 
 import pytz
@@ -13,7 +13,8 @@ class PackSelModel:
 	# 	print ( "initial update stock value")
 	def loadparameter(source=""):
 		print("\nStart Load parameter packsel_model.py line 15 in def PackSelModel")
-		
+		currentconfig=keepconfig.objects.filter(source=source)
+		print(currentconfig.values())
 
 	def updatestockvaluechange(stockdata):
 
@@ -104,11 +105,6 @@ class PackSelModel:
 	def updatematchstatus(resultMatch):
 		updatecolumnval=updaterefresh.objects.filter(orderno=resultMatch["orderno"]).update(matchedtime= resultMatch["matchedtime"])
 
-	# def updatereferorderno(orderno,referorderno):
-	# 	updatecolumnval=updaterefresh.objects.filter(orderno=orderno).update(referorderno=referorderno)
-
-		# print("\nupdate match status packsel_model.py line 101 def updatematchstatus")
-		# print(resultMatch)
 		
 	def updaterefresh(mytable,fullrefresh="partial",*params_referorderno):
 		# compare logic here to update table or not 

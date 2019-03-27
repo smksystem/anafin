@@ -24,7 +24,7 @@ class fivesteps():
 		print("set parameter of fivestep plugin_fivestep.py line 3")
 		
 
-		PackSelModel.loadparameter("plugin_fivestep")
+		PackSelModel.loadparameter("plugin")
 
 		initinvest=20000
 		volumestep	=100
