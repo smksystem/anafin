@@ -14,7 +14,19 @@ class PackSelModel:
 	def loadparameter(source=""):
 		print("\nStart Load parameter packsel_model.py line 15 in def PackSelModel")
 		currentconfig=keepconfig.objects.filter(source=source)
-		print(currentconfig.values())
+		# tochk=currentconfig.values()
+		if currentconfig.exists():
+			
+			# print(currentconfig.values())
+			loadparams=currentconfig.values()
+			for params,params_value in loadparams[0].items():
+				print(params,params_value)
+
+
+		else:
+			print("**************")
+			print("\nError: with no any parameter configured please check database !!!")
+			print("**************")
 
 	def updatestockvaluechange(stockdata):
 

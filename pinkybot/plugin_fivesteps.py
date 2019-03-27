@@ -5,7 +5,7 @@ class fivesteps():
 
 	############# 3 parameter to configure value of label display , color of label display and text out 
 	def __init__(self):
-		print("initialization of plugin_fivestep.py line 6 --------------")
+		print("initialization of plugin_fivesteps.py line 6 --------------")
 		# self.waitconfirmfirstorder=""
 		self.matchedordermonitor=[]
 		self.firstbuyflag="FIRSTBUY"
@@ -21,10 +21,10 @@ class fivesteps():
 	# 	self.sellbybot={}
 
 	def setparameter(self,conf_params,conf_labeldisplay,conf_textout):
-		print("set parameter of fivestep plugin_fivestep.py line 3")
+		print("set parameter of fivestep plugin_fivesteps.py line 3")
 		
 
-		PackSelModel.loadparameter("plugin")
+		PackSelModel.loadparameter("plugin_fivesteps")
 
 		initinvest=20000
 		volumestep	=100

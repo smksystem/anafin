@@ -67,7 +67,8 @@ class keepconfig(models.Model):
 	floorvaluerange=models.CharField(max_length=5,unique=False,default="")
 	stopvaluerange=models.CharField(max_length=5,unique=False,default="")
 	stockname=models.CharField(max_length=10,unique=False,default="")
-	source=	models.CharField(max_length=15,unique=False,default="")
+	planvalue=models.CharField(max_length=3,unique=False,default="")
+	source=	models.CharField(max_length=30,unique=False,default="")
 	 
 class updaterefresh(models.Model):
 	orderno=models.CharField(max_length=10,unique=False,default="")
