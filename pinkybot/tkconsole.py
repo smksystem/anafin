@@ -42,7 +42,7 @@ class outputlog(tk.Tk):
 		commonstep=tk.StringVar(value="0.00")  # step from range calculation
 		totalcostbuy=tk.StringVar(value="0000000000")
 		totalvolumebuy=tk.StringVar(value="000")
-		stockname=tk.StringVar(value="dummy")
+		stockname=tk.StringVar(value="")
 		stockpin=tk.StringVar(value="3333")
 		remaininvest=tk.StringVar(value="0")
 		runningmode=tk.StringVar(value="auto")		
@@ -735,8 +735,10 @@ class outputlog(tk.Tk):
 							self.flash(self.labeldisplay[lblstockvalue][lblstockvalue],9,"green")
 				# self.mybot.myqueue.join()
 				if "stockname" in tempdict:
-						print ("monitor =" + tempdict["stockname"])
-						self.configval["stockname"].set(tempdict["stockname"])
+						print("\n Monitor the following tempdict and self.configval")
+						print ( tempdict["stockname"].upper(),self.configval["stockname"].get().upper())
+						if tempdict["stockname"].upper()==self.configval["stockname"].get().upper():
+							self.configval["stockname"].set(tempdict["stockname"].upper())
 
 
 

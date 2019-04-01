@@ -48,6 +48,9 @@ class fivesteps():
 		stockname=allparams["monitorstock"]
 
 
+
+
+
 		# initinvest=20000
 		# volumestep	=100
 		# profitstep=1
@@ -68,9 +71,11 @@ class fivesteps():
 		conf_params["floorvaluerange"].set(str(floorvaluerange))
 
 		conf_params["stopvaluerange"].set(str(stopvaluerange))	# stop loss not to buy more	
+		conf_params["stockname"].set (stockname)
+
 
 		commonvaluestep=float(conf_params["commonstep"].get())
-		stockname=conf_params["stockname"].get()
+		# stockname=conf_params["stockname"].get()
 		stockpin=conf_params["stockpin"].get()
 		runvalue=startvaluebuy # change text to numbering.
 		stopvaluerange=topvaluerange
