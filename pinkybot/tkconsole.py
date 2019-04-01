@@ -127,12 +127,7 @@ class outputlog(tk.Tk):
 		btnLoginRT=tk.Button(self.frameLoginRT,text="Start Login RT",command=self.executeLogin)
 		btnLoginRT.grid(row=3,column=2 )
 
-		labelmonitor=tk.Label(self.frameLoginRT,text="Monitor => ")
-		labelmonitor.grid(row=4,column=0)
-
-		labelstock=tk.Entry(self.frameLoginRT,textvariable=stockname)
-		labelstock.grid(row=4,column=1)
-
+		
 
 
 
@@ -140,50 +135,59 @@ class outputlog(tk.Tk):
 		frameSetValue=tk.Frame(self,background = 'blue')
 		frameSetValue.grid(row=2,column=1,sticky="e"+"n"+"s"+"w")      
 
+
+		labelmonitor=tk.Label(frameSetValue,text="Monitor => ")
+		labelmonitor.grid(row=1,column=0)
+
+		labelstock=tk.Entry(frameSetValue,textvariable=stockname)
+		labelstock.grid(row=1,column=1)
+
+
+
 		labelinitialvalue=tk.Label(frameSetValue, text="Invest")
-		labelinitialvalue.grid(row=1,column=0)
+		labelinitialvalue.grid(row=2,column=0)
 
 		enterInvest=tk.Entry(frameSetValue,textvariable=initinvest) #,textvariable=usertxt)
-		enterInvest.grid(row=1,column=1)
+		enterInvest.grid(row=2,column=1)
 
 
 		labelinitialvalue=tk.Label(frameSetValue, text="Volume Step")
-		labelinitialvalue.grid(row=2,column=0)
-
-		enterVolumn=tk.Entry(frameSetValue,textvariable=volumestep) #,textvariable=usertxt)
-		enterVolumn.grid(row=2,column=1)
-
-		labelinitialvalue=tk.Label(frameSetValue, text="Profit Step")
 		labelinitialvalue.grid(row=3,column=0)
 
-		enterVolumn=tk.Entry(frameSetValue,textvariable=profitstep) 
+		enterVolumn=tk.Entry(frameSetValue,textvariable=volumestep) #,textvariable=usertxt)
 		enterVolumn.grid(row=3,column=1)
+
+		labelinitialvalue=tk.Label(frameSetValue, text="Profit Step")
+		labelinitialvalue.grid(row=4,column=0)
+
+		enterVolumn=tk.Entry(frameSetValue,textvariable=profitstep) 
+		enterVolumn.grid(row=4,column=1)
 
 
 		labelinitialvalue=tk.Label(frameSetValue, text="Top Value Range")
-		labelinitialvalue.grid(row=4,column=0)
+		labelinitialvalue.grid(row=5,column=0)
 
 		enterVolumn=tk.Entry(frameSetValue,textvariable=topvaluerange) 
-		enterVolumn.grid(row=4,column=1)
+		enterVolumn.grid(row=5,column=1)
 
 		labelvaluebuy=tk.Label(frameSetValue, text="StartValueBuy")
-		labelvaluebuy.grid(row=5,column=0)
+		labelvaluebuy.grid(row=6,column=0)
 
 		entervaluebuy=tk.Entry(frameSetValue,textvariable=startvaluebuy) 
-		entervaluebuy.grid(row=5,column=1)
+		entervaluebuy.grid(row=6,column=1)
 
 		labelinitialvalue=tk.Label(frameSetValue, text="Floor Value Range")
-		labelinitialvalue.grid(row=6,column=0)
+		labelinitialvalue.grid(row=7,column=0)
 
 		enterVolumn=tk.Entry(frameSetValue,textvariable=floorvaluerange) 
-		enterVolumn.grid(row=6,column=1)
+		enterVolumn.grid(row=7,column=1)
 		
 
 
 
 
 		btnStartInitCal=tk.Button(frameSetValue,text="Set Parameters",command=self.setparameter)
-		btnStartInitCal.grid(row=8,column=1 )
+		btnStartInitCal.grid(row=9,column=1 )
 
 
 
@@ -191,23 +195,23 @@ class outputlog(tk.Tk):
 		# self.btnStartvaluebuy.grid(row=9,column=1 )
 
 		labelvaluebuy=tk.Label(frameSetValue, text="Total Cost Buy:")
-		labelvaluebuy.grid(row=8,column=0,sticky="w")
+		labelvaluebuy.grid(row=9,column=0,sticky="w")
 
 		labelvaluebuy=tk.Label(frameSetValue, textvariable=totalcostbuy)
-		labelvaluebuy.grid(row=8,column=0,sticky="e")
+		labelvaluebuy.grid(row=9,column=0,sticky="e")
 
 
 		labelvalumebuy=tk.Label(frameSetValue, text="Total Volume Buy:")
-		labelvalumebuy.grid(row=9,column=0,sticky="w")
-
-		labelvalumebuy=tk.Label(frameSetValue, textvariable=totalvolumebuy)
-		labelvalumebuy.grid(row=9,column=0,sticky="e")
-
-		labelvalumebuy=tk.Label(frameSetValue, text="Remain Invest:")
 		labelvalumebuy.grid(row=10,column=0,sticky="w")
 
-		labelvalumebuy=tk.Label(frameSetValue, textvariable=remaininvest)
+		labelvalumebuy=tk.Label(frameSetValue, textvariable=totalvolumebuy)
 		labelvalumebuy.grid(row=10,column=0,sticky="e")
+
+		labelvalumebuy=tk.Label(frameSetValue, text="Remain Invest:")
+		labelvalumebuy.grid(row=11,column=0,sticky="w")
+
+		labelvalumebuy=tk.Label(frameSetValue, textvariable=remaininvest)
+		labelvalumebuy.grid(row=11,column=0,sticky="e")
 		
 
 		framePutValue=tk.Frame(self,background = 'yellow')

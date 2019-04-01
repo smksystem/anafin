@@ -13,7 +13,7 @@ class PackSelModel:
 	# 	print ( "initial update stock value")
 	def loadparameter(source=""):
 		print("\nStart Load parameter packsel_model.py line 15 in def PackSelModel")
-		currentconfig=keepconfig.objects.filter(source=source)
+		currentconfig=keepconfig.objects.filter(pluginfile=source)
 
 		# tochk=currentconfig.values()
 		if currentconfig.exists():

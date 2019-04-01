@@ -24,7 +24,12 @@ class fivesteps():
 		print("set parameter of fivestep plugin_fivesteps.py line 3")
 		
 
-		PackSelModel.loadparameter("plugin_fivesteps")
+		allparams=PackSelModel.loadparameter("plugin_fivesteps")
+
+		# for keyparams,valparams in allparams.items():
+		# 	print (keyparams,valparams)
+
+		
 
 		initinvest=20000
 		volumestep	=100
@@ -34,6 +39,12 @@ class fivesteps():
 		floorvaluerange=4.60
 		stopvaluerange=4.70
 		stockname="WHA"
+
+		initinvest=int(allparams["initinvest"])
+		volumestep=int(allparams["volumestep"])
+		profitstep=int(allparams["profitstep"])
+
+
 		# initinvest=20000
 		# volumestep	=100
 		# profitstep=1

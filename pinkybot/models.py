@@ -66,7 +66,7 @@ class keepconfig(models.Model):
 	startvaluebuy=models.CharField(max_length=5,unique=False,default="")
 	floorvaluerange=models.CharField(max_length=5,unique=False,default="")
 	stopvaluerange=models.CharField(max_length=5,unique=False,default="")
-	stockname=models.CharField(max_length=10,unique=False,default="")
+	monitorstock=models.CharField(max_length=10,unique=False,default="")
 	planselect=models.CharField(max_length=5,unique=False,default="")
 	pluginfile=	models.CharField(max_length=30,unique=False,default="")
 	 
