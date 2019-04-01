@@ -25,7 +25,8 @@ class fivesteps():
 		
 
 		allparams=PackSelModel.loadparameter("plugin_fivesteps")
-
+		print("\n Print all stockname return from loadparameter in line 28 in def setparameter")
+		print(allparams)
 		# for keyparams,valparams in allparams.items():
 		# 	print (keyparams,valparams)
 
@@ -43,6 +44,8 @@ class fivesteps():
 		initinvest=int(allparams["initinvest"])
 		volumestep=int(allparams["volumestep"])
 		profitstep=int(allparams["profitstep"])
+		topvaluerange=float(allparams["topvaluerange"])
+		stockname=allparams["stockname"]
 
 
 		# initinvest=20000
