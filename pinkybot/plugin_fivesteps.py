@@ -45,7 +45,7 @@ class fivesteps():
 		volumestep=int(allparams["volumestep"])
 		profitstep=int(allparams["profitstep"])
 		topvaluerange=float(allparams["topvaluerange"])
-		stockname=allparams["stockname"]
+		stockname=allparams["monitorstock"]
 
 
 		# initinvest=20000
