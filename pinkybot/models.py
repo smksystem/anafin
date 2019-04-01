@@ -58,7 +58,7 @@ class keepconfig(models.Model):
 	# 	floorvaluerange=4.60
 	# 	stopvaluerange=4.70
 	# stockname=
-
+	planname=models.CharField(max_length=30,unique=False,default="")
 	initinvest=models.CharField(max_length=10,unique=False,default="")
 	volumestep=models.CharField(max_length=5,unique=False,default="")
 	profitstep=models.CharField(max_length=10,unique=False,default="")
@@ -67,8 +67,8 @@ class keepconfig(models.Model):
 	floorvaluerange=models.CharField(max_length=5,unique=False,default="")
 	stopvaluerange=models.CharField(max_length=5,unique=False,default="")
 	stockname=models.CharField(max_length=10,unique=False,default="")
-	planvalue=models.CharField(max_length=3,unique=False,default="")
-	source=	models.CharField(max_length=30,unique=False,default="")
+	planselect=models.CharField(max_length=5,unique=False,default="")
+	pluginfile=	models.CharField(max_length=30,unique=False,default="")
 	 
 class updaterefresh(models.Model):
 	orderno=models.CharField(max_length=10,unique=False,default="")
