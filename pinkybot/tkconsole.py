@@ -3,16 +3,21 @@ import tkinter as tk
 import datetime
 import sys
 import time
+from pinkybot.mylogconfig import mylog
 
 from pinkybot.monitor import pinkybot
 from pinkybot.packsel_model import PackSelModel
 from pinkybot.plugin_fivesteps import fivesteps
 from pinkybot.plugin_onestep import onestep
-class outputlog(tk.Tk):
+class outputlog(tk.Tk,mylog):
 	def __init__(self):
 
 		tk.Tk.__init__(self)
+		# mylog.__init__(self)
 		
+		self.info("Initialize and start to load plugin")
+
+
 		self.mybot=pinkybot(plugins=[fivesteps()])
 		# self.mybot=pinkybot(plugins=[onestep()])
 		self.title("Output Log")
@@ -725,7 +730,7 @@ class outputlog(tk.Tk):
 						self.txtout(tempdict["textout"])
 
 				if "stockvalue" in tempdict:
-						print ("stock has been updated !!!!!!!!!!!! tkconsole.py line 727 def Refresher")
+						logger.debug("stock has been updated !!!!!!!!!!!! tkconsole.py line 727 def Refresher")
 						# controlorder={"ordermode":"buybybot","firstbuy":"yes"}
 						# self.mybot.myplugins.order(controlorder,{},self.mybot.order)
 

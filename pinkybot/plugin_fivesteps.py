@@ -1,10 +1,12 @@
 import datetime
+# import logging
 from pinkybot.packsel_model import PackSelModel
-class fivesteps():
+class fivesteps(logging):
 
 
 	############# 3 parameter to configure value of label display , color of label display and text out 
 	def __init__(self):
+		
 		print("initialization of plugin_fivesteps.py line 6 --------------")
 		# self.waitconfirmfirstorder=""
 		self.matchedordermonitor=[]
