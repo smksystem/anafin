@@ -1,7 +1,9 @@
 import datetime
 # import logging
 from pinkybot.packsel_model import PackSelModel
-class fivesteps(logging):
+# class fivesteps(logging):
+class fivesteps():
+
 
 
 	############# 3 parameter to configure value of label display , color of label display and text out 

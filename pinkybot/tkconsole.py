@@ -9,13 +9,15 @@ from pinkybot.monitor import pinkybot
 from pinkybot.packsel_model import PackSelModel
 from pinkybot.plugin_fivesteps import fivesteps
 from pinkybot.plugin_onestep import onestep
-class outputlog(tk.Tk,mylog):
+# class outputlog(tk.Tk,mylog):
+class outputlog(tk.Tk):
+
 	def __init__(self):
 
 		tk.Tk.__init__(self)
 		# mylog.__init__(self)
 		
-		self.info("Initialize and start to load plugin")
+		# self.info("Initialize and start to load plugin")
 
 
 		self.mybot=pinkybot(plugins=[fivesteps()])
@@ -730,7 +732,7 @@ class outputlog(tk.Tk,mylog):
 						self.txtout(tempdict["textout"])
 
 				if "stockvalue" in tempdict:
-						logger.debug("stock has been updated !!!!!!!!!!!! tkconsole.py line 727 def Refresher")
+						# logger.debug("stock has been updated !!!!!!!!!!!! tkconsole.py line 727 def Refresher")
 						# controlorder={"ordermode":"buybybot","firstbuy":"yes"}
 						# self.mybot.myplugins.order(controlorder,{},self.mybot.order)
 
