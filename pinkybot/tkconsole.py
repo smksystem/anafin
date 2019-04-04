@@ -9,15 +9,15 @@ from pinkybot.monitor import pinkybot
 from pinkybot.packsel_model import PackSelModel
 from pinkybot.plugin_fivesteps import fivesteps
 from pinkybot.plugin_onestep import onestep
-# class outputlog(tk.Tk,mylog):
-class outputlog(tk.Tk):
+class outputlog(tk.Tk,mylog):
+# class outputlog(tk.Tk):
 
 	def __init__(self):
 
 		tk.Tk.__init__(self)
-		# mylog.__init__(self)
+		mylog.__init__(self)
 		
-		# self.info("Initialize and start to load plugin")
+		self.logger.info("Initialize and start to load plugin")
 
 
 		self.mybot=pinkybot(plugins=[fivesteps()])

@@ -45,11 +45,11 @@ class fivesteps():
 		stopvaluerange=4.70
 		stockname="WHA"
 
-		initinvest=int(allparams["initinvest"])
-		volumestep=int(allparams["volumestep"])
-		profitstep=int(allparams["profitstep"])
-		topvaluerange=float(allparams["topvaluerange"])
-		stockname=allparams["monitorstock"]
+		# initinvest=int(allparams["initinvest"])
+		# volumestep=int(allparams["volumestep"])
+		# profitstep=int(allparams["profitstep"])
+		# topvaluerange=float(allparams["topvaluerange"])
+		# stockname=allparams["monitorstock"]
 
 
 
