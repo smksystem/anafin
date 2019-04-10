@@ -1,0 +1,738 @@
+(0.001) SELECT @@SQL_AUTO_IS_NULL; args=None
+(0.000) SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED; args=None
+(0.000) SELECT VERSION(); args=None
+(0.000) SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED; args=None
+(0.001) SHOW FULL TABLES; args=None
+(0.001) SELECT `django_migrations`.`app`, `django_migrations`.`name` FROM `django_migrations`; args=()
+"GET /dummy/ HTTP/1.1" 200 35131
+Not Found: /brokerpage/013/website.css
+"GET /brokerpage/013/website.css HTTP/1.1" 404 3130
+Not Found: /mylib.js
+Not Found: /mylib.jsp
+Not Found: /brokerpage/013/top_panel/images/logo.gif
+"GET /mylib.jsp?txtBrokerId=013 HTTP/1.1" 404 3095
+"GET /mylib.js HTTP/1.1" 404 3076
+Not Found: /brokerpage/013/top_panel/images/imgTxt_KGIHeadOffice.gif
+"GET /brokerpage/013/top_panel/images/logo.gif HTTP/1.1" 404 3172
+"GET /brokerpage/013/top_panel/images/imgTxt_KGIHeadOffice.gif HTTP/1.1" 404 3220
+Not Found: /brokerpage/013/top_panel/images/nav_ResearchPaper.gif
+Not Found: /brokerpage/013/top_panel/images/imgTxt_InternetTrading.gif
+Not Found: /brokerpage/013/top_panel/images/nav_Home.gif
+Not Found: /brokerpage/013/top_panel/images/nav_HowtoTrade.gif
+"GET /brokerpage/013/top_panel/images/imgTxt_InternetTrading.gif HTTP/1.1" 404 3226
+"GET /brokerpage/013/top_panel/images/nav_ResearchPaper.gif HTTP/1.1" 404 3211
+"GET /brokerpage/013/top_panel/images/nav_Home.gif HTTP/1.1" 404 3184
+Not Found: /brokerpage/013/top_panel/images/nav_Corporate.gif
+Not Found: /brokerpage/013/top_panel/images/nav_ProductandService.gif
+"GET /brokerpage/013/top_panel/images/nav_HowtoTrade.gif HTTP/1.1" 404 3202
+"GET /brokerpage/013/top_panel/images/nav_Corporate.gif HTTP/1.1" 404 3199
+"GET /brokerpage/013/top_panel/images/nav_ProductandService.gif HTTP/1.1" 404 3223
+Not Found: /brokerpage/013/top_panel/images/nav_Contact.gif
+Not Found: /brokerpage/013/top_panel/images/bg_Language.gif
+"GET /brokerpage/013/top_panel/images/nav_Contact.gif HTTP/1.1" 404 3193
+Not Found: /brokerpage/013/left_panel/images/side_alert.gif
+Not Found: /brokerpage/013/left_panel/images/side_interact.gif
+"GET /brokerpage/013/top_panel/images/bg_Language.gif HTTP/1.1" 404 3193
+"GET /brokerpage/013/left_panel/images/side_alert.gif HTTP/1.1" 404 3193
+Not Found: /brokerpage/013/left_panel/images/side_news.gif
+"GET /brokerpage/013/left_panel/images/side_interact.gif HTTP/1.1" 404 3202
+"GET /brokerpage/013/left_panel/images/side_news.gif HTTP/1.1" 404 3190
+Not Found: /brokerpage/013/left_panel/images/side_market.gif
+"GET /brokerpage/013/left_panel/images/side_market.gif HTTP/1.1" 404 3196
+Not Found: /brokerpage/013/left_panel/images/side_stock.gif
+"GET /brokerpage/013/left_panel/images/side_stock.gif HTTP/1.1" 404 3193
+Not Found: /brokerpage/013/left_panel/images/side_decision.gif
+"GET /brokerpage/013/left_panel/images/side_decision.gif HTTP/1.1" 404 3202
+"GET /dummy/image/Intraday_Chart_Logo.gif HTTP/1.1" 200 35131
+Not Found: /brokerpage/013/top_panel/images/nav_Career.gif
+"GET /dummy/image/SETIndex.gif?1534794662411 HTTP/1.1" 200 35131
+Not Found: /brokerpage/013/top_panel/images/bg_Menu.jpg
+"GET /brokerpage/013/top_panel/images/nav_Career.gif HTTP/1.1" 404 3190
+"GET /brokerpage/013/top_panel/images/bg_Menu.jpg HTTP/1.1" 404 3181
+Not Found: /brokerpage/013/left_panel/images/side_mycorner.gif
+"GET /brokerpage/013/left_panel/images/side_mycorner.gif HTTP/1.1" 404 3202
+Not Found: /brokerpage/013/top_panel/e_images/top_menu_productservice1.gif
+Not Found: /brokerpage/013/left_panel/images/bullet.jpg
+Not Found: /brokerpage/013/top_panel/e_images/top_menu_research1.gif
+Not Found: /brokerpage/013/top_panel/e_images/top_menu_tradepoint1.gif
+"GET /brokerpage/013/left_panel/images/bullet.jpg HTTP/1.1" 404 3181
+"GET /brokerpage/013/top_panel/e_images/top_menu_research1.gif HTTP/1.1" 404 3220
+"GET /brokerpage/013/top_panel/e_images/top_menu_productservice1.gif HTTP/1.1" 404 3238
+Not Found: /brokerpage/013/top_panel/e_images/top_menu_financial1.gif
+"GET /brokerpage/013/top_panel/e_images/top_menu_tradepoint1.gif HTTP/1.1" 404 3226
+"GET /brokerpage/013/top_panel/e_images/top_menu_financial1.gif HTTP/1.1" 404 3223
+Not Found: /brokerpage/013/top_panel/e_images/top_menu_olt1.gif
+"GET /brokerpage/013/top_panel/e_images/top_menu_olt1.gif HTTP/1.1" 404 3205
+Not Found: /brokerpage/013/top_panel/e_images/sub_menu_trading1.gif
+Not Found: /brokerpage/013/top_panel/e_images/sub_menu_portfolio1.gif
+"GET /brokerpage/013/top_panel/e_images/sub_menu_trading1.gif HTTP/1.1" 404 3217
+"GET /brokerpage/013/top_panel/e_images/sub_menu_portfolio1.gif HTTP/1.1" 404 3223
+Not Found: /brokerpage/013/top_panel/e_images/sub_menu_preference1.gif
+"GET /brokerpage/013/top_panel/e_images/sub_menu_preference1.gif HTTP/1.1" 404 3226
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3085
+"POST /dummysuccess/ HTTP/1.1" 200 75350
+Not Found: /brokerpage/default/default.css
+"GET /brokerpage/default/default.css HTTP/1.1" 404 3142
+Not Found: /mylib.js
+Not Found: /brokerpage/013/website.css
+Not Found: /webrealtime/css/webrealtime.css
+Not Found: /mylib.jsp
+"GET /mylib.js HTTP/1.1" 404 3076
+"GET /brokerpage/013/website.css?1060263496000 HTTP/1.1" 404 3144
+"GET /webrealtime/css/webrealtime.css HTTP/1.1" 404 3145
+Not Found: /brokerpage/013/top_panel/images/logo.gif
+"GET /mylib.jsp?txtBrokerId=013 HTTP/1.1" 404 3095
+"GET /brokerpage/013/top_panel/images/logo.gif HTTP/1.1" 404 3172
+Not Found: /brokerpage/013/top_panel/images/imgTxt_InternetTrading.gif
+"GET /brokerpage/013/top_panel/images/imgTxt_InternetTrading.gif HTTP/1.1" 404 3226
+Not Found: /brokerpage/013/top_panel/images/bg_Menu.jpg
+Not Found: /brokerpage/013/top_panel/images/nav_Home.gif
+"GET /brokerpage/013/top_panel/images/bg_Menu.jpg HTTP/1.1" 404 3181
+"GET /brokerpage/013/top_panel/images/nav_Home.gif HTTP/1.1" 404 3184
+Not Found: /brokerpage/013/top_panel/images/nav_ProductandService.gif
+Not Found: /brokerpage/013/top_panel/images/nav_Corporate.gif
+Not Found: /brokerpage/013/top_panel/images/nav_HowtoTrade.gif
+"GET /brokerpage/013/top_panel/images/nav_ProductandService.gif HTTP/1.1" 404 3223
+"GET /brokerpage/013/top_panel/images/nav_Corporate.gif HTTP/1.1" 404 3199
+"GET /brokerpage/013/top_panel/images/nav_HowtoTrade.gif HTTP/1.1" 404 3202
+Not Found: /brokerpage/013/top_panel/images/nav_ResearchPaper.gif
+"GET /brokerpage/013/top_panel/images/nav_ResearchPaper.gif HTTP/1.1" 404 3211
+Not Found: /brokerpage/013/top_panel/images/nav_Career.gif
+"GET /brokerpage/013/top_panel/images/nav_Career.gif HTTP/1.1" 404 3190
+Not Found: /brokerpage/013/top_panel/images/nav_Contact.gif
+"GET /brokerpage/013/top_panel/images/nav_Contact.gif HTTP/1.1" 404 3193
+Not Found: /brokerpage/013/top_panel/images/bg_Language.gif
+"GET /brokerpage/013/top_panel/images/bg_Language.gif HTTP/1.1" 404 3193
+Not Found: /brokerpage/013/images/TFEX_FreeTrial2.gif
+Not Found: /brokerpage/IPO/StaticPage/Home/images/newstreaming_light_bg.png
+"GET /brokerpage/013/images/TFEX_FreeTrial2.gif HTTP/1.1" 404 3175
+"GET /brokerpage/IPO/StaticPage/Home/images/newstreaming_light_bg.png HTTP/1.1" 404 3241
+Not Found: /webrealtime/script/genKey.jsp
+"GET /webrealtime/script/genKey.jsp?type=realtime&1534795064524 HTTP/1.1" 404 3171
+Not Found: /webrealtime/css/webrealtime.css
+"GET /webrealtime/css/webrealtime.css HTTP/1.1" 404 3145
+Not Found: /javascript/jquery/jquery-core.js
+Not Found: /javascript/jquery/jquery.currency.js
+"GET /javascript/jquery/jquery-core.js HTTP/1.1" 404 3148
+"GET /javascript/jquery/jquery.currency.js HTTP/1.1" 404 3160
+Not Found: /webrealtime/script/marketsummary.js
+"GET /webrealtime/script/marketsummary.js HTTP/1.1" 404 3157
+Not Found: /brokerpage/013/top_panel/images/imgTxt_KGIHeadOffice.gif
+"GET /brokerpage/013/top_panel/images/imgTxt_KGIHeadOffice.gif HTTP/1.1" 404 3220
+Not Found: /webrealtime/DisplayIndexChart.jsp
+"GET /webrealtime/DisplayIndexChart.jsp?index=100&width=315&height=170 HTTP/1.1" 404 3190
+Not Found: /webrealtime/DisplayIndexChart.jsp
+"GET /webrealtime/DisplayIndexChart.jsp?index=200&width=315&height=170 HTTP/1.1" 404 3190
+Not Found: /webrealtime/S13_Futures.jsp
+"GET /webrealtime/S13_Futures.jsp?type=set50 HTTP/1.1" 404 3144
+Not Found: /webrealtime/S13_Futures.jsp
+Not Found: /webrealtime/S13_Futures.jsp
+"GET /webrealtime/S13_Futures.jsp?type=metal HTTP/1.1" 404 3144
+Not Found: /webrealtime/S13_Futures.jsp
+"GET /webrealtime/S13_Futures.jsp?type=energy HTTP/1.1" 404 3145
+"GET /webrealtime/S13_Futures.jsp?type=interest HTTP/1.1" 404 3147
+Not Found: /webrealtime/S13_Futures.jsp
+"GET /webrealtime/S13_Futures.jsp?type=agricultural HTTP/1.1" 404 3151
+Not Found: /webrealtime/S13_Futures.jsp
+"GET /webrealtime/S13_Futures.jsp?type=physical HTTP/1.1" 404 3147
+Not Found: /webrealtime/S13_Options.jsp
+"GET /webrealtime/S13_Options.jsp HTTP/1.1" 404 3133
+Not Found: /webrealtime/S13_Futures.jsp
+"GET /webrealtime/S13_Futures.jsp?type=currency HTTP/1.1" 404 3147
+Not Found: /webrealtime/S13_Futures.jsp
+Not Found: /webrealtime/script/marketsummary.js
+"GET /webrealtime/S13_Futures.jsp?type=ssf HTTP/1.1" 404 3142
+"GET /webrealtime/script/marketsummary.js HTTP/1.1" 404 3157
+Not Found: /webrealtime/images/normal_arrow.png
+"GET /webrealtime/images/normal_arrow.png HTTP/1.1" 404 3157
+Not Found: /webrealtime/images/loading.gif
+"GET /webrealtime/images/loading.gif HTTP/1.1" 404 3142
+Not Found: /webrealtime/images/fall.gif
+"GET /webrealtime/images/fall.gif HTTP/1.1" 404 3133
+Not Found: /brokerpage/013/top_panel/e_images/top_menu_productservice1.gif
+"GET /brokerpage/013/top_panel/e_images/top_menu_productservice1.gif HTTP/1.1" 404 3238
+Not Found: /brokerpage/IPO/StaticPage/Home/images/icon-new.gif
+Not Found: /brokerpage/013/top_panel/e_images/top_menu_tradepoint1.gif
+"GET /brokerpage/IPO/StaticPage/Home/images/icon-new.gif HTTP/1.1" 404 3202
+"GET /brokerpage/013/top_panel/e_images/top_menu_tradepoint1.gif HTTP/1.1" 404 3226
+Not Found: /brokerpage/013/top_panel/e_images/top_menu_research1.gif
+"GET /brokerpage/013/top_panel/e_images/top_menu_research1.gif HTTP/1.1" 404 3220
+Not Found: /brokerpage/013/top_panel/e_images/top_menu_olt1.gif
+"GET /brokerpage/013/top_panel/e_images/top_menu_olt1.gif HTTP/1.1" 404 3205
+Not Found: /brokerpage/013/top_panel/e_images/top_menu_financial1.gif
+"GET /brokerpage/013/top_panel/e_images/top_menu_financial1.gif HTTP/1.1" 404 3223
+Not Found: /brokerpage/013/top_panel/e_images/sub_menu_preference1.gif
+"GET /brokerpage/013/top_panel/e_images/sub_menu_preference1.gif HTTP/1.1" 404 3226
+Not Found: /brokerpage/013/top_panel/e_images/sub_menu_trading1.gif
+Not Found: /brokerpage/013/top_panel/e_images/sub_menu_portfolio1.gif
+"GET /brokerpage/013/top_panel/e_images/sub_menu_portfolio1.gif HTTP/1.1" 404 3223
+"GET /brokerpage/013/top_panel/e_images/sub_menu_trading1.gif HTTP/1.1" 404 3217
+"GET /dummyrt/ HTTP/1.1" 200 167736
+"GET /static/bootstrap.min.css HTTP/1.1" 200 121270
+"GET /static/porderfiles/jquery-ui-dialog.css HTTP/1.1" 200 27530
+"GET /static/color.css HTTP/1.1" 200 1950
+"GET /static/porderfiles/jquery-ui.css HTTP/1.1" 200 36435
+"GET /static/porderfiles/fastorder.css HTTP/1.1" 200 11274
+"GET /static/porderfiles/jquery-ui-dialog-autocomplete.js HTTP/1.1" 200 173067
+"GET /static/main-wide.css HTTP/1.1" 200 470717
+"GET /static/porderfiles/jquery.watermark.min.js HTTP/1.1" 200 4629
+"GET /static/porderfiles/streaming-core.js HTTP/1.1" 200 49282
+"GET /static/porderfiles/config-mm.jsp HTTP/1.1" 200 1633
+"GET /static/porderfiles/mylib.js HTTP/1.1" 200 50530
+"GET /static/porderfiles/jquery.bgiframe.js HTTP/1.1" 200 4880
+"GET /static/porderfiles/jquery.dotdotdot.js HTTP/1.1" 200 2012
+"GET /static/porderfiles/fastorder.js HTTP/1.1" 200 100520
+"GET /static/porderfiles/jquery.numeric.js HTTP/1.1" 200 8387
+"GET /static/porderfiles/jquery-core.js HTTP/1.1" 200 94840
+"GET /dummyrt/ HTTP/1.1" 200 167736
+Not Found: /assets/img/scroll_down.png
+"GET /assets/img/scroll_down.png HTTP/1.1" 404 3130
+Not Found: /fonts/OpenSans-Regular.ttf
+"GET /fonts/OpenSans-Regular.ttf HTTP/1.1" 404 3130
+Not Found: /fonts/OpenSans-Semibold.ttf
+"GET /fonts/OpenSans-Semibold.ttf HTTP/1.1" 404 3133
+"GET /static/porderfiles/images/thead.png HTTP/1.1" 404 1708
+"GET /static/porderfiles/images/menu_selected.png HTTP/1.1" 404 1732
+"GET /static/porderfiles/images/menu.png HTTP/1.1" 404 1705
+Not Found: /img/corner-green.png
+"GET /img/corner-green.png HTTP/1.1" 404 3112
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 4292
+Not Found: /assets/img/scroll_up.png
+"GET /assets/img/scroll_up.png HTTP/1.1" 404 3124
+"GET /static/porderfiles/images/ui-icons_222222_256x240.png HTTP/1.1" 404 1762
+"GET /static/porderfiles/images/ui-bg_flat_75_ffffff_40x100.png HTTP/1.1" 404 1774
+"POST /runlogic/ HTTP/1.1" 200 0
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 4292
+"GET /dummy/ HTTP/1.1" 200 35131
+Not Found: /brokerpage/013/website.css
+"GET /brokerpage/013/website.css HTTP/1.1" 404 3130
+Not Found: /mylib.js
+Not Found: /mylib.jsp
+Not Found: /brokerpage/013/top_panel/images/logo.gif
+"GET /mylib.js HTTP/1.1" 404 3076
+Not Found: /brokerpage/013/top_panel/images/imgTxt_KGIHeadOffice.gif
+"GET /mylib.jsp?txtBrokerId=013 HTTP/1.1" 404 3095
+"GET /brokerpage/013/top_panel/images/logo.gif HTTP/1.1" 404 3172
+"GET /brokerpage/013/top_panel/images/imgTxt_KGIHeadOffice.gif HTTP/1.1" 404 3220
+Not Found: /brokerpage/013/top_panel/images/nav_Home.gif
+Not Found: /brokerpage/013/top_panel/images/imgTxt_InternetTrading.gif
+Not Found: /brokerpage/013/top_panel/images/nav_ResearchPaper.gif
+Not Found: /brokerpage/013/top_panel/images/nav_ProductandService.gif
+"GET /brokerpage/013/top_panel/images/nav_Home.gif HTTP/1.1" 404 3184
+Not Found: /brokerpage/013/top_panel/images/nav_HowtoTrade.gif
+"GET /brokerpage/013/top_panel/images/imgTxt_InternetTrading.gif HTTP/1.1" 404 3226
+"GET /brokerpage/013/top_panel/images/nav_ResearchPaper.gif HTTP/1.1" 404 3211
+"GET /brokerpage/013/top_panel/images/nav_ProductandService.gif HTTP/1.1" 404 3223
+Not Found: /brokerpage/013/top_panel/images/nav_Corporate.gif
+"GET /brokerpage/013/top_panel/images/nav_HowtoTrade.gif HTTP/1.1" 404 3202
+"GET /brokerpage/013/top_panel/images/nav_Corporate.gif HTTP/1.1" 404 3199
+Not Found: /brokerpage/013/top_panel/images/bg_Menu.jpg
+"GET /brokerpage/013/top_panel/images/bg_Menu.jpg HTTP/1.1" 404 3181
+Not Found: /brokerpage/013/left_panel/images/side_news.gif
+Not Found: /brokerpage/013/top_panel/images/bg_Language.gif
+Not Found: /brokerpage/013/top_panel/images/nav_Contact.gif
+"GET /brokerpage/013/top_panel/images/bg_Language.gif HTTP/1.1" 404 3193
+"GET /brokerpage/013/left_panel/images/side_news.gif HTTP/1.1" 404 3190
+Not Found: /brokerpage/013/left_panel/images/side_market.gif
+Not Found: /brokerpage/013/left_panel/images/side_decision.gif
+"GET /brokerpage/013/top_panel/images/nav_Contact.gif HTTP/1.1" 404 3193
+"GET /brokerpage/013/left_panel/images/side_market.gif HTTP/1.1" 404 3196
+"GET /brokerpage/013/left_panel/images/side_decision.gif HTTP/1.1" 404 3202
+Not Found: /brokerpage/013/left_panel/images/side_interact.gif
+"GET /brokerpage/013/left_panel/images/side_interact.gif HTTP/1.1" 404 3202
+Not Found: /brokerpage/013/left_panel/images/side_stock.gif
+"GET /brokerpage/013/left_panel/images/side_stock.gif HTTP/1.1" 404 3193
+Not Found: /brokerpage/013/left_panel/images/side_alert.gif
+"GET /brokerpage/013/left_panel/images/side_alert.gif HTTP/1.1" 404 3193
+Not Found: /brokerpage/013/top_panel/images/nav_Career.gif
+"GET /dummy/image/SETIndex.gif?1534794662411 HTTP/1.1" 200 35131
+"GET /dummy/image/Intraday_Chart_Logo.gif HTTP/1.1" 200 35131
+"GET /brokerpage/013/top_panel/images/nav_Career.gif HTTP/1.1" 404 3190
+"GET /dummy/ HTTP/1.1" 200 35131
+Not Found: /brokerpage/013/website.css
+"GET /brokerpage/013/website.css HTTP/1.1" 404 3130
+Not Found: /mylib.js
+Not Found: /mylib.jsp
+"GET /mylib.js HTTP/1.1" 404 3076
+Not Found: /brokerpage/013/top_panel/images/imgTxt_KGIHeadOffice.gif
+Not Found: /brokerpage/013/top_panel/images/logo.gif
+"GET /mylib.jsp?txtBrokerId=013 HTTP/1.1" 404 3095
+"GET /brokerpage/013/top_panel/images/imgTxt_KGIHeadOffice.gif HTTP/1.1" 404 3220
+"GET /brokerpage/013/top_panel/images/logo.gif HTTP/1.1" 404 3172
+Not Found: /brokerpage/013/top_panel/images/nav_Home.gif
+Not Found: /brokerpage/013/top_panel/images/nav_ResearchPaper.gif
+Not Found: /brokerpage/013/top_panel/images/imgTxt_InternetTrading.gif
+Not Found: /brokerpage/013/top_panel/images/nav_ProductandService.gif
+Not Found: /brokerpage/013/top_panel/images/nav_HowtoTrade.gif
+"GET /brokerpage/013/top_panel/images/nav_ProductandService.gif HTTP/1.1" 404 3223
+"GET /brokerpage/013/top_panel/images/nav_ResearchPaper.gif HTTP/1.1" 404 3211
+"GET /brokerpage/013/top_panel/images/nav_Home.gif HTTP/1.1" 404 3184
+"GET /brokerpage/013/top_panel/images/imgTxt_InternetTrading.gif HTTP/1.1" 404 3226
+Not Found: /brokerpage/013/top_panel/images/nav_Corporate.gif
+"GET /brokerpage/013/top_panel/images/nav_HowtoTrade.gif HTTP/1.1" 404 3202
+"GET /brokerpage/013/top_panel/images/nav_Corporate.gif HTTP/1.1" 404 3199
+"GET /dummy/image/Intraday_Chart_Logo.gif HTTP/1.1" 200 35131
+Not Found: /brokerpage/013/left_panel/images/side_news.gif
+Not Found: /brokerpage/013/left_panel/images/side_mycorner.gif
+Not Found: /brokerpage/013/left_panel/images/side_alert.gif
+Not Found: /brokerpage/013/left_panel/images/side_stock.gif
+"GET /brokerpage/013/left_panel/images/side_news.gif HTTP/1.1" 404 3190
+Not Found: /brokerpage/013/left_panel/images/side_interact.gif
+"GET /brokerpage/013/left_panel/images/side_stock.gif HTTP/1.1" 404 3193
+"GET /brokerpage/013/left_panel/images/side_alert.gif HTTP/1.1" 404 3193
+"GET /brokerpage/013/left_panel/images/side_interact.gif HTTP/1.1" 404 3202
+"GET /brokerpage/013/left_panel/images/side_mycorner.gif HTTP/1.1" 404 3202
+Not Found: /brokerpage/013/top_panel/images/nav_Contact.gif
+"GET /brokerpage/013/top_panel/images/nav_Contact.gif HTTP/1.1" 404 3193
+Not Found: /brokerpage/013/top_panel/images/bg_Language.gif
+"GET /brokerpage/013/top_panel/images/bg_Language.gif HTTP/1.1" 404 3193
+Not Found: /brokerpage/013/top_panel/images/bg_Menu.jpg
+"GET /dummy/image/SETIndex.gif?1534794662411 HTTP/1.1" 200 35131
+Not Found: /brokerpage/013/left_panel/images/side_market.gif
+"GET /brokerpage/013/top_panel/images/bg_Menu.jpg HTTP/1.1" 404 3181
+Not Found: /brokerpage/013/left_panel/images/side_decision.gif
+"GET /brokerpage/013/left_panel/images/side_market.gif HTTP/1.1" 404 3196
+"GET /brokerpage/013/left_panel/images/side_decision.gif HTTP/1.1" 404 3202
+Not Found: /brokerpage/013/top_panel/images/nav_Career.gif
+"GET /brokerpage/013/top_panel/images/nav_Career.gif HTTP/1.1" 404 3190
+Not Found: /brokerpage/013/left_panel/images/bullet.jpg
+"GET /brokerpage/013/left_panel/images/bullet.jpg HTTP/1.1" 404 3181
+Not Found: /brokerpage/013/top_panel/e_images/top_menu_research1.gif
+Not Found: /brokerpage/013/top_panel/e_images/top_menu_productservice1.gif
+"GET /brokerpage/013/top_panel/e_images/top_menu_research1.gif HTTP/1.1" 404 3220
+Not Found: /brokerpage/013/top_panel/e_images/top_menu_financial1.gif
+"GET /brokerpage/013/top_panel/e_images/top_menu_productservice1.gif HTTP/1.1" 404 3238
+Not Found: /brokerpage/013/top_panel/e_images/top_menu_olt1.gif
+"GET /brokerpage/013/top_panel/e_images/top_menu_financial1.gif HTTP/1.1" 404 3223
+"GET /brokerpage/013/top_panel/e_images/top_menu_olt1.gif HTTP/1.1" 404 3205
+Not Found: /brokerpage/013/top_panel/e_images/top_menu_tradepoint1.gif
+"GET /brokerpage/013/top_panel/e_images/top_menu_tradepoint1.gif HTTP/1.1" 404 3226
+Not Found: /brokerpage/013/top_panel/e_images/sub_menu_trading1.gif
+"GET /brokerpage/013/top_panel/e_images/sub_menu_trading1.gif HTTP/1.1" 404 3217
+Not Found: /brokerpage/013/top_panel/e_images/sub_menu_portfolio1.gif
+Not Found: /brokerpage/013/top_panel/e_images/sub_menu_preference1.gif
+"GET /brokerpage/013/top_panel/e_images/sub_menu_portfolio1.gif HTTP/1.1" 404 3223
+"GET /brokerpage/013/top_panel/e_images/sub_menu_preference1.gif HTTP/1.1" 404 3226
+"POST /dummysuccess/ HTTP/1.1" 200 75350
+Not Found: /brokerpage/default/default.css
+"GET /brokerpage/default/default.css HTTP/1.1" 404 3142
+Not Found: /brokerpage/013/website.css
+"GET /brokerpage/013/website.css?1060263496000 HTTP/1.1" 404 3144
+Not Found: /mylib.jsp
+Not Found: /webrealtime/css/webrealtime.css
+"GET /mylib.jsp?txtBrokerId=013 HTTP/1.1" 404 3095
+"GET /webrealtime/css/webrealtime.css HTTP/1.1" 404 3145
+Not Found: /brokerpage/013/top_panel/images/logo.gif
+Not Found: /mylib.js
+"GET /brokerpage/013/top_panel/images/logo.gif HTTP/1.1" 404 3172
+"GET /mylib.js HTTP/1.1" 404 3076
+Not Found: /mylib.jsp
+"GET /mylib.jsp?txtBrokerId=013 HTTP/1.1" 404 3095
+Not Found: /brokerpage/013/top_panel/images/nav_HowtoTrade.gif
+"GET /brokerpage/013/top_panel/images/nav_HowtoTrade.gif HTTP/1.1" 404 3202
+Not Found: /brokerpage/013/top_panel/images/bg_Language.gif
+Not Found: /brokerpage/013/top_panel/images/bg_Menu.jpg
+"GET /brokerpage/013/top_panel/images/bg_Language.gif HTTP/1.1" 404 3193
+"GET /brokerpage/013/top_panel/images/bg_Menu.jpg HTTP/1.1" 404 3181
+Not Found: /brokerpage/013/top_panel/images/nav_ProductandService.gif
+"GET /brokerpage/013/top_panel/images/nav_ProductandService.gif HTTP/1.1" 404 3223
+Not Found: /brokerpage/013/top_panel/images/nav_Corporate.gif
+Not Found: /brokerpage/013/top_panel/images/nav_ResearchPaper.gif
+"GET /brokerpage/013/top_panel/images/nav_Corporate.gif HTTP/1.1" 404 3199
+"GET /brokerpage/013/top_panel/images/nav_ResearchPaper.gif HTTP/1.1" 404 3211
+Not Found: /brokerpage/013/top_panel/images/nav_Career.gif
+"GET /brokerpage/013/top_panel/images/nav_Career.gif HTTP/1.1" 404 3190
+Not Found: /brokerpage/013/top_panel/images/nav_Contact.gif
+Not Found: /brokerpage/013/top_panel/images/nav_Home.gif
+"GET /brokerpage/013/top_panel/images/nav_Contact.gif HTTP/1.1" 404 3193
+"GET /brokerpage/013/top_panel/images/nav_Home.gif HTTP/1.1" 404 3184
+Not Found: /brokerpage/IPO/StaticPage/Home/images/newstreaming_light_bg.png
+"GET /brokerpage/IPO/StaticPage/Home/images/newstreaming_light_bg.png HTTP/1.1" 404 3241
+Not Found: /webrealtime/script/genKey.jsp
+Not Found: /javascript/jquery/jquery-core.js
+"GET /webrealtime/script/genKey.jsp?type=realtime&1534795064524 HTTP/1.1" 404 3171
+"GET /javascript/jquery/jquery-core.js HTTP/1.1" 404 3148
+Not Found: /webrealtime/css/webrealtime.css
+"GET /webrealtime/css/webrealtime.css HTTP/1.1" 404 3145
+Not Found: /javascript/jquery/jquery-core.js
+Not Found: /javascript/jquery/jquery.currency.js
+"GET /javascript/jquery/jquery-core.js HTTP/1.1" 404 3148
+"GET /javascript/jquery/jquery.currency.js HTTP/1.1" 404 3160
+Not Found: /webrealtime/DisplayIndexChart.jsp
+"GET /webrealtime/DisplayIndexChart.jsp?index=100&width=315&height=170 HTTP/1.1" 404 3190
+Not Found: /webrealtime/DisplayIndexChart.jsp
+Not Found: /webrealtime/S13_Futures.jsp
+"GET /webrealtime/DisplayIndexChart.jsp?index=200&width=315&height=170 HTTP/1.1" 404 3190
+"GET /webrealtime/S13_Futures.jsp?type=set50 HTTP/1.1" 404 3144
+Not Found: /webrealtime/S13_Futures.jsp
+"GET /webrealtime/S13_Futures.jsp?type=metal HTTP/1.1" 404 3144
+Not Found: /webrealtime/S13_Futures.jsp
+Not Found: /webrealtime/S13_Futures.jsp
+"GET /webrealtime/S13_Futures.jsp?type=energy HTTP/1.1" 404 3145
+"GET /webrealtime/S13_Futures.jsp?type=currency HTTP/1.1" 404 3147
+Not Found: /webrealtime/S13_Futures.jsp
+"GET /webrealtime/S13_Futures.jsp?type=interest HTTP/1.1" 404 3147
+Not Found: /webrealtime/S13_Futures.jsp
+"GET /webrealtime/S13_Futures.jsp?type=ssf HTTP/1.1" 404 3142
+Not Found: /webrealtime/S13_Futures.jsp
+"GET /webrealtime/S13_Futures.jsp?type=agricultural HTTP/1.1" 404 3151
+Not Found: /webrealtime/S13_Futures.jsp
+"GET /webrealtime/S13_Futures.jsp?type=physical HTTP/1.1" 404 3147
+Not Found: /webrealtime/S13_Options.jsp
+"GET /webrealtime/S13_Options.jsp HTTP/1.1" 404 3133
+Not Found: /webrealtime/images/loading.gif
+"GET /webrealtime/images/loading.gif HTTP/1.1" 404 3142
+Not Found: /webrealtime/script/marketsummary.js
+"GET /webrealtime/script/marketsummary.js HTTP/1.1" 404 3157
+Not Found: /brokerpage/013/top_panel/images/imgTxt_KGIHeadOffice.gif
+"GET /brokerpage/013/top_panel/images/imgTxt_KGIHeadOffice.gif HTTP/1.1" 404 3220
+Not Found: /brokerpage/013/top_panel/images/imgTxt_InternetTrading.gif
+"GET /brokerpage/013/top_panel/images/imgTxt_InternetTrading.gif HTTP/1.1" 404 3226
+Not Found: /brokerpage/IPO/StaticPage/Home/images/icon-new.gif
+"GET /brokerpage/IPO/StaticPage/Home/images/icon-new.gif HTTP/1.1" 404 3202
+Not Found: /brokerpage/013/images/TFEX_FreeTrial2.gif
+Not Found: /webrealtime/images/normal_arrow.png
+"GET /brokerpage/013/images/TFEX_FreeTrial2.gif HTTP/1.1" 404 3175
+"GET /webrealtime/images/normal_arrow.png HTTP/1.1" 404 3157
+Not Found: /webrealtime/images/fall.gif
+"GET /webrealtime/images/fall.gif HTTP/1.1" 404 3133
+Not Found: /brokerpage/013/top_panel/e_images/top_menu_research1.gif
+"GET /brokerpage/013/top_panel/e_images/top_menu_research1.gif HTTP/1.1" 404 3220
+Not Found: /brokerpage/013/top_panel/e_images/top_menu_productservice1.gif
+"GET /brokerpage/013/top_panel/e_images/top_menu_productservice1.gif HTTP/1.1" 404 3238
+Not Found: /brokerpage/013/top_panel/e_images/top_menu_tradepoint1.gif
+Not Found: /brokerpage/013/top_panel/e_images/top_menu_financial1.gif
+"GET /brokerpage/013/top_panel/e_images/top_menu_tradepoint1.gif HTTP/1.1" 404 3226
+Not Found: /brokerpage/013/top_panel/e_images/top_menu_olt1.gif
+"GET /brokerpage/013/top_panel/e_images/top_menu_financial1.gif HTTP/1.1" 404 3223
+"GET /brokerpage/013/top_panel/e_images/top_menu_olt1.gif HTTP/1.1" 404 3205
+Not Found: /brokerpage/013/top_panel/e_images/sub_menu_portfolio1.gif
+"GET /brokerpage/013/top_panel/e_images/sub_menu_portfolio1.gif HTTP/1.1" 404 3223
+Not Found: /brokerpage/013/top_panel/e_images/sub_menu_preference1.gif
+"GET /brokerpage/013/top_panel/e_images/sub_menu_preference1.gif HTTP/1.1" 404 3226
+Not Found: /brokerpage/013/top_panel/e_images/sub_menu_trading1.gif
+"GET /brokerpage/013/top_panel/e_images/sub_menu_trading1.gif HTTP/1.1" 404 3217
+"GET /dummyrt/ HTTP/1.1" 200 167736
+"GET /static/bootstrap.min.css HTTP/1.1" 200 121270
+"GET /static/porderfiles/jquery-ui-dialog.css HTTP/1.1" 200 27530
+"GET /static/color.css HTTP/1.1" 200 1950
+"GET /static/porderfiles/fastorder.css HTTP/1.1" 200 11274
+"GET /static/porderfiles/jquery-ui.css HTTP/1.1" 200 36435
+"GET /static/main-wide.css HTTP/1.1" 200 470717
+"GET /static/porderfiles/jquery.numeric.js HTTP/1.1" 200 8387
+"GET /static/porderfiles/jquery.dotdotdot.js HTTP/1.1" 200 2012
+"GET /static/porderfiles/streaming-core.js HTTP/1.1" 200 49282
+"GET /static/porderfiles/config-mm.jsp HTTP/1.1" 200 1633
+"GET /static/porderfiles/mylib.js HTTP/1.1" 200 50530
+"GET /static/porderfiles/jquery-ui-dialog-autocomplete.js HTTP/1.1" 200 173067
+"GET /static/porderfiles/jquery.watermark.min.js HTTP/1.1" 200 4629
+"GET /static/porderfiles/fastorder.js HTTP/1.1" 200 100520
+"GET /static/porderfiles/jquery-core.js HTTP/1.1" 200 94840
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3085
+"GET /static/porderfiles/jquery.bgiframe.js HTTP/1.1" 200 4880
+"GET /dummyrt/ HTTP/1.1" 200 167736
+Not Found: /assets/img/scroll_down.png
+"GET /assets/img/scroll_down.png HTTP/1.1" 404 3130
+Not Found: /fonts/OpenSans-Regular.ttf
+"GET /fonts/OpenSans-Regular.ttf HTTP/1.1" 404 3130
+Not Found: /fonts/OpenSans-Semibold.ttf
+"GET /fonts/OpenSans-Semibold.ttf HTTP/1.1" 404 3133
+"GET /static/porderfiles/images/thead.png HTTP/1.1" 404 1708
+"GET /static/porderfiles/images/menu_selected.png HTTP/1.1" 404 1732
+"GET /static/porderfiles/images/menu.png HTTP/1.1" 404 1705
+Not Found: /img/corner-green.png
+"GET /img/corner-green.png HTTP/1.1" 404 3112
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 4292
+Not Found: /assets/img/scroll_up.png
+"GET /assets/img/scroll_up.png HTTP/1.1" 404 3124
+"GET /static/porderfiles/images/ui-icons_222222_256x240.png HTTP/1.1" 404 1762
+"GET /static/porderfiles/images/ui-bg_flat_75_ffffff_40x100.png HTTP/1.1" 404 1774
+"GET /dummy/ HTTP/1.1" 200 35131
+Not Found: /brokerpage/013/website.css
+"GET /brokerpage/013/website.css HTTP/1.1" 404 3130
+Not Found: /mylib.js
+Not Found: /mylib.jsp
+"GET /mylib.js HTTP/1.1" 404 3076
+Not Found: /brokerpage/013/top_panel/images/logo.gif
+"GET /mylib.jsp?txtBrokerId=013 HTTP/1.1" 404 3095
+Not Found: /brokerpage/013/top_panel/images/imgTxt_KGIHeadOffice.gif
+"GET /brokerpage/013/top_panel/images/logo.gif HTTP/1.1" 404 3172
+"GET /brokerpage/013/top_panel/images/imgTxt_KGIHeadOffice.gif HTTP/1.1" 404 3220
+Not Found: /brokerpage/013/top_panel/images/imgTxt_InternetTrading.gif
+Not Found: /brokerpage/013/top_panel/images/nav_Home.gif
+Not Found: /brokerpage/013/top_panel/images/nav_ResearchPaper.gif
+"GET /brokerpage/013/top_panel/images/imgTxt_InternetTrading.gif HTTP/1.1" 404 3226
+"GET /brokerpage/013/top_panel/images/nav_Home.gif HTTP/1.1" 404 3184
+"GET /brokerpage/013/top_panel/images/nav_ResearchPaper.gif HTTP/1.1" 404 3211
+Not Found: /brokerpage/013/top_panel/images/nav_HowtoTrade.gif
+Not Found: /brokerpage/013/top_panel/images/bg_Menu.jpg
+Not Found: /brokerpage/013/top_panel/images/nav_Career.gif
+"GET /brokerpage/013/top_panel/images/nav_HowtoTrade.gif HTTP/1.1" 404 3202
+"GET /brokerpage/013/top_panel/images/bg_Menu.jpg HTTP/1.1" 404 3181
+"GET /brokerpage/013/top_panel/images/nav_Career.gif HTTP/1.1" 404 3190
+Not Found: /brokerpage/013/top_panel/images/nav_Corporate.gif
+"GET /brokerpage/013/top_panel/images/nav_Corporate.gif HTTP/1.1" 404 3199
+Not Found: /brokerpage/013/top_panel/images/nav_Contact.gif
+"GET /brokerpage/013/top_panel/images/nav_Contact.gif HTTP/1.1" 404 3193
+Not Found: /brokerpage/013/top_panel/images/bg_Language.gif
+"GET /dummy/image/SETIndex.gif?1534794662411 HTTP/1.1" 200 35131
+"GET /brokerpage/013/top_panel/images/bg_Language.gif HTTP/1.1" 404 3193
+Not Found: /brokerpage/013/left_panel/images/side_alert.gif
+"GET /dummy/image/Intraday_Chart_Logo.gif HTTP/1.1" 200 35131
+"GET /brokerpage/013/left_panel/images/side_alert.gif HTTP/1.1" 404 3193
+Not Found: /brokerpage/013/left_panel/images/side_market.gif
+"GET /brokerpage/013/left_panel/images/side_market.gif HTTP/1.1" 404 3196
+Not Found: /brokerpage/013/left_panel/images/side_decision.gif
+"GET /brokerpage/013/left_panel/images/side_decision.gif HTTP/1.1" 404 3202
+Not Found: /brokerpage/013/top_panel/images/nav_ProductandService.gif
+Not Found: /brokerpage/013/left_panel/images/side_interact.gif
+"GET /brokerpage/013/top_panel/images/nav_ProductandService.gif HTTP/1.1" 404 3223
+Not Found: /brokerpage/013/left_panel/images/side_mycorner.gif
+"GET /brokerpage/013/left_panel/images/side_interact.gif HTTP/1.1" 404 3202
+Not Found: /brokerpage/013/left_panel/images/side_news.gif
+"GET /brokerpage/013/left_panel/images/side_mycorner.gif HTTP/1.1" 404 3202
+"GET /brokerpage/013/left_panel/images/side_news.gif HTTP/1.1" 404 3190
+Not Found: /brokerpage/013/left_panel/images/side_stock.gif
+"GET /brokerpage/013/left_panel/images/side_stock.gif HTTP/1.1" 404 3193
+Not Found: /brokerpage/013/left_panel/images/bullet.jpg
+"GET /brokerpage/013/left_panel/images/bullet.jpg HTTP/1.1" 404 3181
+Not Found: /brokerpage/013/top_panel/e_images/top_menu_research1.gif
+"GET /brokerpage/013/top_panel/e_images/top_menu_research1.gif HTTP/1.1" 404 3220
+Not Found: /brokerpage/013/top_panel/e_images/top_menu_productservice1.gif
+Not Found: /brokerpage/013/top_panel/e_images/top_menu_tradepoint1.gif
+"GET /brokerpage/013/top_panel/e_images/top_menu_productservice1.gif HTTP/1.1" 404 3238
+"GET /brokerpage/013/top_panel/e_images/top_menu_tradepoint1.gif HTTP/1.1" 404 3226
+Not Found: /brokerpage/013/top_panel/e_images/top_menu_financial1.gif
+"GET /brokerpage/013/top_panel/e_images/top_menu_financial1.gif HTTP/1.1" 404 3223
+Not Found: /brokerpage/013/top_panel/e_images/sub_menu_preference1.gif
+"GET /brokerpage/013/top_panel/e_images/sub_menu_preference1.gif HTTP/1.1" 404 3226
+Not Found: /brokerpage/013/top_panel/e_images/top_menu_olt1.gif
+Not Found: /brokerpage/013/top_panel/e_images/sub_menu_trading1.gif
+"GET /brokerpage/013/top_panel/e_images/top_menu_olt1.gif HTTP/1.1" 404 3205
+"GET /brokerpage/013/top_panel/e_images/sub_menu_trading1.gif HTTP/1.1" 404 3217
+Not Found: /brokerpage/013/top_panel/e_images/sub_menu_portfolio1.gif
+"GET /brokerpage/013/top_panel/e_images/sub_menu_portfolio1.gif HTTP/1.1" 404 3223
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3085
+"POST /dummysuccess/ HTTP/1.1" 200 75350
+Not Found: /brokerpage/default/default.css
+"GET /brokerpage/default/default.css HTTP/1.1" 404 3142
+Not Found: /brokerpage/013/website.css
+Not Found: /mylib.js
+Not Found: /webrealtime/css/webrealtime.css
+Not Found: /mylib.jsp
+"GET /brokerpage/013/website.css?1060263496000 HTTP/1.1" 404 3144
+"GET /mylib.js HTTP/1.1" 404 3076
+"GET /webrealtime/css/webrealtime.css HTTP/1.1" 404 3145
+Not Found: /brokerpage/013/top_panel/images/logo.gif
+"GET /mylib.jsp?txtBrokerId=013 HTTP/1.1" 404 3095
+"GET /brokerpage/013/top_panel/images/logo.gif HTTP/1.1" 404 3172
+Not Found: /brokerpage/013/top_panel/images/nav_HowtoTrade.gif
+"GET /brokerpage/013/top_panel/images/nav_HowtoTrade.gif HTTP/1.1" 404 3202
+Not Found: /brokerpage/013/top_panel/images/nav_Career.gif
+"GET /brokerpage/013/top_panel/images/nav_Career.gif HTTP/1.1" 404 3190
+Not Found: /brokerpage/013/top_panel/images/bg_Menu.jpg
+Not Found: /brokerpage/013/top_panel/images/nav_ProductandService.gif
+Not Found: /brokerpage/013/top_panel/images/nav_Corporate.gif
+"GET /brokerpage/013/top_panel/images/bg_Menu.jpg HTTP/1.1" 404 3181
+"GET /brokerpage/013/top_panel/images/nav_ProductandService.gif HTTP/1.1" 404 3223
+Not Found: /brokerpage/013/top_panel/images/nav_ResearchPaper.gif
+"GET /brokerpage/013/top_panel/images/nav_Corporate.gif HTTP/1.1" 404 3199
+"GET /brokerpage/013/top_panel/images/nav_ResearchPaper.gif HTTP/1.1" 404 3211
+Not Found: /brokerpage/013/top_panel/images/nav_Home.gif
+"GET /brokerpage/013/top_panel/images/nav_Home.gif HTTP/1.1" 404 3184
+Not Found: /brokerpage/013/top_panel/images/bg_Language.gif
+"GET /brokerpage/013/top_panel/images/bg_Language.gif HTTP/1.1" 404 3193
+Not Found: /brokerpage/IPO/StaticPage/Home/images/newstreaming_light_bg.png
+"GET /brokerpage/IPO/StaticPage/Home/images/newstreaming_light_bg.png HTTP/1.1" 404 3241
+Not Found: /brokerpage/013/top_panel/images/nav_Contact.gif
+Not Found: /javascript/jquery/jquery-core.js
+Not Found: /webrealtime/script/genKey.jsp
+"GET /brokerpage/013/top_panel/images/nav_Contact.gif HTTP/1.1" 404 3193
+"GET /webrealtime/script/genKey.jsp?type=realtime&1534795064524 HTTP/1.1" 404 3171
+"GET /javascript/jquery/jquery-core.js HTTP/1.1" 404 3148
+Not Found: /webrealtime/css/webrealtime.css
+"GET /webrealtime/css/webrealtime.css HTTP/1.1" 404 3145
+Not Found: /javascript/jquery/jquery-core.js
+"GET /javascript/jquery/jquery-core.js HTTP/1.1" 404 3148
+Not Found: /javascript/jquery/jquery.currency.js
+"GET /javascript/jquery/jquery.currency.js HTTP/1.1" 404 3160
+Not Found: /webrealtime/DisplayIndexChart.jsp
+"GET /webrealtime/DisplayIndexChart.jsp?index=100&width=315&height=170 HTTP/1.1" 404 3190
+Not Found: /webrealtime/DisplayIndexChart.jsp
+Not Found: /webrealtime/S13_Futures.jsp
+"GET /webrealtime/S13_Futures.jsp?type=set50 HTTP/1.1" 404 3144
+"GET /webrealtime/DisplayIndexChart.jsp?index=200&width=315&height=170 HTTP/1.1" 404 3190
+Not Found: /webrealtime/S13_Futures.jsp
+"GET /webrealtime/S13_Futures.jsp?type=energy HTTP/1.1" 404 3145
+Not Found: /webrealtime/S13_Futures.jsp
+"GET /webrealtime/S13_Futures.jsp?type=currency HTTP/1.1" 404 3147
+Not Found: /webrealtime/S13_Futures.jsp
+"GET /webrealtime/S13_Futures.jsp?type=interest HTTP/1.1" 404 3147
+Not Found: /webrealtime/S13_Futures.jsp
+Not Found: /webrealtime/S13_Futures.jsp
+"GET /webrealtime/S13_Futures.jsp?type=ssf HTTP/1.1" 404 3142
+Not Found: /webrealtime/S13_Futures.jsp
+"GET /webrealtime/S13_Futures.jsp?type=agricultural HTTP/1.1" 404 3151
+"GET /webrealtime/S13_Futures.jsp?type=physical HTTP/1.1" 404 3147
+Not Found: /webrealtime/S13_Options.jsp
+"GET /webrealtime/S13_Options.jsp HTTP/1.1" 404 3133
+Not Found: /webrealtime/S13_Futures.jsp
+"GET /webrealtime/S13_Futures.jsp?type=metal HTTP/1.1" 404 3144
+Not Found: /webrealtime/images/loading.gif
+"GET /webrealtime/images/loading.gif HTTP/1.1" 404 3142
+Not Found: /webrealtime/script/marketsummary.js
+Not Found: /brokerpage/013/top_panel/images/imgTxt_KGIHeadOffice.gif
+"GET /webrealtime/script/marketsummary.js HTTP/1.1" 404 3157
+Not Found: /brokerpage/013/top_panel/images/imgTxt_InternetTrading.gif
+"GET /brokerpage/013/top_panel/images/imgTxt_KGIHeadOffice.gif HTTP/1.1" 404 3220
+"GET /brokerpage/013/top_panel/images/imgTxt_InternetTrading.gif HTTP/1.1" 404 3226
+Not Found: /brokerpage/013/images/TFEX_FreeTrial2.gif
+"GET /brokerpage/013/images/TFEX_FreeTrial2.gif HTTP/1.1" 404 3175
+Not Found: /webrealtime/images/normal_arrow.png
+"GET /webrealtime/images/normal_arrow.png HTTP/1.1" 404 3157
+Not Found: /webrealtime/images/fall.gif
+"GET /webrealtime/images/fall.gif HTTP/1.1" 404 3133
+Not Found: /brokerpage/IPO/StaticPage/Home/images/icon-new.gif
+"GET /brokerpage/IPO/StaticPage/Home/images/icon-new.gif HTTP/1.1" 404 3202
+Not Found: /brokerpage/013/top_panel/e_images/top_menu_research1.gif
+Not Found: /brokerpage/013/top_panel/e_images/top_menu_productservice1.gif
+"GET /brokerpage/013/top_panel/e_images/top_menu_research1.gif HTTP/1.1" 404 3220
+"GET /brokerpage/013/top_panel/e_images/top_menu_productservice1.gif HTTP/1.1" 404 3238
+Not Found: /brokerpage/013/top_panel/e_images/top_menu_olt1.gif
+"GET /brokerpage/013/top_panel/e_images/top_menu_olt1.gif HTTP/1.1" 404 3205
+Not Found: /brokerpage/013/top_panel/e_images/sub_menu_trading1.gif
+"GET /brokerpage/013/top_panel/e_images/sub_menu_trading1.gif HTTP/1.1" 404 3217
+Not Found: /brokerpage/013/top_panel/e_images/top_menu_tradepoint1.gif
+"GET /brokerpage/013/top_panel/e_images/top_menu_tradepoint1.gif HTTP/1.1" 404 3226
+Not Found: /brokerpage/013/top_panel/e_images/sub_menu_portfolio1.gif
+Not Found: /brokerpage/013/top_panel/e_images/top_menu_financial1.gif
+"GET /brokerpage/013/top_panel/e_images/sub_menu_portfolio1.gif HTTP/1.1" 404 3223
+Not Found: /brokerpage/013/top_panel/e_images/sub_menu_preference1.gif
+"GET /brokerpage/013/top_panel/e_images/top_menu_financial1.gif HTTP/1.1" 404 3223
+"GET /brokerpage/013/top_panel/e_images/sub_menu_preference1.gif HTTP/1.1" 404 3226
+"GET /dummyrt/ HTTP/1.1" 200 167736
+"GET /static/bootstrap.min.css HTTP/1.1" 200 121270
+"GET /static/porderfiles/jquery-ui-dialog.css HTTP/1.1" 200 27530
+"GET /static/color.css HTTP/1.1" 200 1950
+"GET /static/porderfiles/jquery-ui.css HTTP/1.1" 200 36435
+"GET /static/porderfiles/fastorder.css HTTP/1.1" 200 11274
+"GET /static/porderfiles/jquery-core.js HTTP/1.1" 200 94840
+"GET /static/main-wide.css HTTP/1.1" 200 470717
+"GET /static/porderfiles/jquery.bgiframe.js HTTP/1.1" 200 4880
+"GET /static/porderfiles/jquery.dotdotdot.js HTTP/1.1" 200 2012
+"GET /static/porderfiles/jquery.watermark.min.js HTTP/1.1" 200 4629
+"GET /static/porderfiles/config-mm.jsp HTTP/1.1" 200 1633
+"GET /static/porderfiles/streaming-core.js HTTP/1.1" 200 49282
+"GET /static/porderfiles/mylib.js HTTP/1.1" 200 50530
+"GET /static/porderfiles/fastorder.js HTTP/1.1" 200 100520
+"GET /static/porderfiles/jquery.numeric.js HTTP/1.1" 200 8387
+"GET /static/porderfiles/jquery-ui-dialog-autocomplete.js HTTP/1.1" 200 173067
+"GET /dummyrt/ HTTP/1.1" 200 167736
+"GET /static/porderfiles/images/thead.png HTTP/1.1" 404 1708
+Not Found: /fonts/OpenSans-Regular.ttf
+"GET /fonts/OpenSans-Regular.ttf HTTP/1.1" 404 3130
+Not Found: /fonts/OpenSans-Semibold.ttf
+"GET /fonts/OpenSans-Semibold.ttf HTTP/1.1" 404 3133
+Not Found: /img/corner-green.png
+"GET /img/corner-green.png HTTP/1.1" 404 3112
+"GET /static/porderfiles/images/menu.png HTTP/1.1" 404 1705
+"GET /static/porderfiles/images/menu_selected.png HTTP/1.1" 404 1732
+"GET /static/porderfiles/images/ui-bg_flat_75_ffffff_40x100.png HTTP/1.1" 404 1774
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 4292
+Not Found: /assets/img/scroll_up.png
+"GET /assets/img/scroll_up.png HTTP/1.1" 404 3124
+Not Found: /assets/img/scroll_down.png
+"GET /assets/img/scroll_down.png HTTP/1.1" 404 3130
+"GET /static/porderfiles/images/ui-icons_222222_256x240.png HTTP/1.1" 404 1762
+"POST /runlogic/ HTTP/1.1" 200 0
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 4292
+"GET /dummyrt/images/thead_buy.png HTTP/1.1" 200 167736
+"POST /dummyrt/ HTTP/1.1" 200 46
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 4624
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 4624
+"POST /runlogic/ HTTP/1.1" 200 0
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 4612
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 4612
+"POST /runlogic/ HTTP/1.1" 200 0
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 4624
+"GET /dummyrt/images/thead_sell.png HTTP/1.1" 200 167736
+"POST /dummyrt/ HTTP/1.1" 200 46
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 4956
+"POST /runlogic/ HTTP/1.1" 200 0
+"POST /dummyrt/ HTTP/1.1" 200 46
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 5312
+"POST /dummyrt/ HTTP/1.1" 200 46
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 5644
+"POST /dummyrt/ HTTP/1.1" 200 46
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 5976
+"POST /runlogic/ HTTP/1.1" 200 0
+"GET /dummyrt/images/thead_buy.png HTTP/1.1" 200 167736
+"POST /dummyrt/ HTTP/1.1" 200 46
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 6266
+"POST /dummyrt/ HTTP/1.1" 200 46
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 6598
+"POST /dummyrt/ HTTP/1.1" 200 46
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 6930
+"POST /runlogic/ HTTP/1.1" 200 0
+"POST /dummyrt/ HTTP/1.1" 200 46
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 7256
+"POST /dummyrt/ HTTP/1.1" 200 46
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 7588
+"POST /dummyrt/ HTTP/1.1" 200 46
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 7920
+"POST /runlogic/ HTTP/1.1" 200 0
+"POST /dummyrt/ HTTP/1.1" 200 46
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258
+"GET /dummyrt/?menu=refresh HTTP/1.1" 200 8258

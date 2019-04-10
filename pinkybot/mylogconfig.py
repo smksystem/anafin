@@ -5,22 +5,41 @@ class mylog():
 
 		print("initialize mylog")
 
-		logging.basicConfig(filename='applog.log', filemode='w',format='%(asctime)s,%(msecs)d %(levelname)-4s [%(filename)s:%(lineno)d] %(message)s',
-    	datefmt='%Y-%m-%d:%H:%M:%S',level=logging.DEBUG)
 
-		f_handler = logging.FileHandler('applog1.log')
+		applog = logging.FileHandler('applog.log')
+		# djangolog = logging.FileHandler('djangolog.log')
+		self.applog = logging.getLogger(__name__)
+		# self.djangolog = logging.getLogger(__name__)
+
+		# self.applog.Formatter('%(asctime)s,%(msecs)d %(levelname)-4s [%(filename)s:%(lineno)d] %(message)s')
+		formatter = logging.Formatter('%(asctime)s,%(msecs)d %(levelname)-4s [%(filename)s:%(lineno)d] %(message)s')
+		applog.setFormatter(formatter)
+
+		# self.djangolog.addHandler(djangolog)
+		self.applog.addHandler(applog)
+
+		# self.djangolog.setLevel(logging.INFO)
+		self.applog.setLevel(logging.DEBUG)
+		# self.applog.setFormatter(formatter)
+
+
+
+
+
+		# logging.basicConfig(filename='applog.log', filemode='w',format='%(asctime)s,%(msecs)d %(levelname)-4s [%(filename)s:%(lineno)d] %(message)s',
+  #   	datefmt='%Y-%m-%d:%H:%M:%S',level=logging.DEBUG)
+
+		# f_handler = logging.FileHandler('applog1.log')
 		# self.logger = logging.getLogger(__name__)
-		self.logger = logging.getLogger("mybot")
-		self.logger.addHandler(f_handler)
+		# # self.logger = logging.getLogger("mybot")
+		# self.logger.addHandler(f_handler)
 
-		console = logging.StreamHandler()
-		console.setLevel(logging.INFO)
-		formatter = logging.Formatter('%(name)-12s: %(levelname)-8s %(message)s')
-		console.setFormatter(formatter)
-		logging.getLogger('').addHandler(console)
+		# console = logging.StreamHandler()
+		# console.setLevel(logging.INFO)
+		# logging.getLogger('').addHandler(console)
 
-		self.logger1 = logging.getLogger('myapp.area1')
-		logger2 = logging.getLogger('myapp.area2')
+		# self.logger1 = logging.getLogger('django.request')
+		# self.logger1.setLevel(logging.INFO)
 
 
 

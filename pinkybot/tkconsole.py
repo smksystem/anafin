@@ -17,7 +17,7 @@ class outputlog(tk.Tk,mylog):
 		tk.Tk.__init__(self)
 		mylog.__init__(self)
 		
-		self.logger.info("Initialize and start to load plugin")
+		self.applog.info("Initialize and start to load plugin")
 
 
 		self.mybot=pinkybot(plugins=[fivesteps()])
