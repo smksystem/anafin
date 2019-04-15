@@ -1,4 +1,4 @@
-04-16 03:25,212 INFO [tkconsole.py:20] Initialize and start load plugin
-04-16 03:25,212 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
-04-16 03:25,359 DEBUG [plugin_fivesteps.py:34] Print initial All Stockname Parameter
-04-16 03:25,359 DEBUG [plugin_fivesteps.py:35] {'id': 2, 'planname': 'test', 'initinvest': '20000', 'volumestep': '100', 'profitstep': '2000', 'topvaluerange': '4.10', 'startvaluebuy': '200', 'floorvaluerange': '4.0', 'stopvaluerange': '200', 'monitorstock': 'wha', 'planselect': '200', 'pluginfile': 'plugin_fivesteps'}
+2019-04-16 04:28:29,773,773 INFO [tkconsole.py:20] Initialize and start load plugin
+2019-04-16 04:28:29,774,774 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
+2019-04-16 04:32:51,788,788 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
+2019-04-16 04:33:21,452,452 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps

@@ -17,8 +17,8 @@ class outputlog(tk.Tk,mylog):
 		tk.Tk.__init__(self)
 		mylog.__init__(self)
 		
-		self.log["applog"].info("Initialize and start load plugin")
-
+		self.log["console"].debug("Initialize and start load plugin")
+		self.log["console"].info("Initialize console")
 
 		self.mybot=pinkybot(plugins=[fivesteps(self.log)])
 		# self.mybot=pinkybot(plugins=[onestep()])
@@ -361,7 +361,7 @@ class outputlog(tk.Tk,mylog):
 		self.lablecomputetime.after(200, self.tkclock)
 
 	def executeSave(self):
-		print("saveAllvalue")
+		self.log["console"].info("SaveAllValue")
 
 	def executeLoad(self):
 		print("LoadAllValue")

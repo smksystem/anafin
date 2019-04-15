@@ -5,38 +5,25 @@ class mylog():
 
 
 
-		# set up logging to file - see previous section for more details
-		logging.basicConfig(format='%(asctime)s,%(msecs)d %(levelname)-4s [%(filename)s:%(lineno)d] %(message)s',
-                    datefmt='%m-%d %H:%M',
-                    filename='applog.log',
-                    filemode='w')
+		formatter = logging.Formatter('%(asctime)s,%(msecs)d %(levelname)-4s [%(filename)s:%(lineno)d] %(message)s')
+
+		console = logging.StreamHandler()
+		console.setFormatter(formatter)
+
+		myconsole = logging.getLogger("console")
+		myconsole.setLevel(logging.DEBUG)
+		myconsole.addHandler(console)
+		
+		fh = logging.FileHandler('applog.log')
+		fh.setFormatter(formatter)
 
 		applog = logging.getLogger(__name__)
-			
-		applog.setLevel(logging.DEBUG)
+		applog.setLevel(logging.INFO)
+		applog.addHandler(fh)
 
-		# define a Handler which writes INFO messages or higher to the sys.stderr
-		console = logging.StreamHandler()
-		console.setLevel(logging.INFO)
-
-		# set a format which is simpler for console use
-		formatter = logging.Formatter('%(name)-12s: %(levelname)-8s %(message)s')
-		
-		# tell the handler to use this format
-		console.setFormatter(formatter)
-		# add the handler to the root logger
-		logging.getLogger('').addHandler(console)
-
-		# Now, we can log to the root logger, or any other logger. First the root...
-		logging.info('Jackdaws love my big sphinx of quartz.')
-
-		# Now, define a couple of other loggers which might represent areas in your
-		# application:
-
-		console = logging.getLogger('console')
 
 		self.log={"applog":applog,
-				"console":console,
+				"console":myconsole,
 				}
 
 
