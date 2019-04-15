@@ -7,9 +7,10 @@ class fivesteps():
 
 
 	############# 3 parameter to configure value of label display , color of label display and text out 
-	def __init__(self):
+	def __init__(self,applog):
 		
-		print("initialization of plugin_fivesteps.py line 6 --------------")
+		self.log=applog
+		self.log["applog"].info("Initialize of plugin_fivesteps")
 		# self.waitconfirmfirstorder=""
 		self.matchedordermonitor=[]
 		self.firstbuyflag="FIRSTBUY"
@@ -29,8 +30,13 @@ class fivesteps():
 		
 
 		allparams=PackSelModel.loadparameter("plugin_fivesteps")
-		print("\n Print all stockname return from loadparameter in line 28 in def setparameter")
-		print(allparams)
+		# self.consolelog.info("test")
+		self.log["applog"].debug("Print initial All Stockname Parameter")
+		self.log["applog"].debug(allparams)
+		
+		# print("\n Print all stockname return from loadparameter in line 28 in def setparameter")
+		# print(allparams)
+
 		# for keyparams,valparams in allparams.items():
 		# 	print (keyparams,valparams)
 
