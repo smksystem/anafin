@@ -16,7 +16,9 @@ class packselenium():
 	def __init__(self,mode):
 		self.starttime=time.time()
 		self.mode=mode
-		print ("running mode=" + mode)
+		self.log["console"].info('Running Mode = '+mode)
+		# print ("running mode=" + mode)
+
 	def xpathreturn(self,xplace=""):
 
 		debugpath={

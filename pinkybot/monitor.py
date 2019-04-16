@@ -22,10 +22,10 @@ class pinkybot(packselenium):
 	def checkparams(self,params):
 		self.myplugins.checkparams(params)
 
-	def __init__(self, *, plugins: list=list()):
+	def __init__(self,applog,  plugins: list=list()):
 		# pass
 		# self.default_modules = [InternalPrinter()]
-
+		self.log=applog
 
 		# print(self.myplugins)
 

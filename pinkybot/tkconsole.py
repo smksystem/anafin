@@ -17,10 +17,10 @@ class outputlog(tk.Tk,mylog):
 		tk.Tk.__init__(self)
 		mylog.__init__(self)
 		
-		self.log["console"].debug("Initialize and start load plugin")
+		self.log["console"].info("Initialize and start load plugin")
 		self.log["console"].info("Initialize console")
 
-		self.mybot=pinkybot(plugins=[fivesteps(self.log)])
+		self.mybot=pinkybot(self.log,plugins=[fivesteps(self.log)])
 		# self.mybot=pinkybot(plugins=[onestep()])
 		self.title("Output Log")
 		# self.resizable(0,0)
