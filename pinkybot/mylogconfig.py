@@ -14,11 +14,16 @@ class mylog():
 		myconsole.setLevel(logging.DEBUG)
 		myconsole.addHandler(console)
 		
-		fh = logging.FileHandler('applog.log')
+		
+		# handler = logging.handlers.RotatingFileHandler(
+  #             LOG_FILENAME, maxBytes=20, backupCount=5)
+
+  		# default is a append , w is for overwritten
+		fh = logging.FileHandler('applog.log',mode='w')
 		fh.setFormatter(formatter)
 
 		applog = logging.getLogger(__name__)
-		applog.setLevel(logging.INFO)
+		applog.setLevel(logging.DEBUG)
 		applog.addHandler(fh)
 
 

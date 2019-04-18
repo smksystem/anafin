@@ -26,7 +26,6 @@ class fivesteps():
 	# 	self.sellbybot={}
 
 	def setparameter(self,conf_params,conf_labeldisplay,conf_textout):
-		print("set parameter of fivestep plugin_fivesteps.py line 3")
 		
 
 		allparams=PackSelModel.loadparameter("plugin_fivesteps")

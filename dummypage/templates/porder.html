@@ -39,6 +39,35 @@ $(document).ready(function() {
 	initStreamingLite();
 
 	// alert("ready")
+///////////////////////////////////////////////////////////////////////////////////////
+// Ready page to load initialization file from the beginning	
+	acc="1";
+	
+
+	var orders=PlaceDisplayEq.myorder;
+	// $.ajaxSetup({
+//   		cache: false
+// 		});
+
+	$.get("http://localhost:8000/dummyrt/",{"menu":"refresh"},function(data) {
+			
+			$.each(data,function(key,value){
+				// alert(value);
+				// PlaceDisplayEq.myorder.unshift(JSON.parse(value));
+				orders.unshift(JSON.parse(value));
+			});
+	OrderDisplayEq.replace(acc,orders);	
+	PlaceDisplayEq.myorder=orders;
+	},"json");
+
+	orders=[];
+///////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
 	var i=4.72;
 	var status_order=0;
 	// var orderids={};

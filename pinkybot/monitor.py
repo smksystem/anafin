@@ -110,7 +110,9 @@ class pinkybot(packselenium):
 		# self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshdb","refreshtype":"partial"}) 
 
 	def threadlogin(self,loginSet):
-		print ("thread login was called")
+
+		self.log["applog"].info("Start Login")
+		# print ("thread login was called")
 		
 
 		# from pinkybot.monitor import pinkybot
@@ -119,7 +121,9 @@ class pinkybot(packselenium):
 		  "myuser":loginSet[1].get(),
 		  "mypassword":loginSet[2].get(),
 		  }
-		print (LoginParams)
+		self.log["applog"].debug("Login Parameter")
+		self.log["applog"].debug(LoginParams)
+		# print (LoginParams)
 		# self.mypinkylogin(LoginParams)
 		
 		mthread=MyThread(self.mycollectqueues["qvalchange"],self.mypinkylogin,args=(LoginParams,))

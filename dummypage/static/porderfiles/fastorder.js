@@ -2211,9 +2211,10 @@ PlaceDisplayEq.bindUi = function() {
 	$('#placeEq .refreshBtn').click(function() {
 		
 
-		// alert("this is refresh button");	
+		// alert("this is refresh button work in here");	
 		acc="1";
 		
+
 		var orders=PlaceDisplayEq.myorder;
 		// $.ajaxSetup({
   //   		cache: false
@@ -2473,7 +2474,7 @@ PlaceDisplayEq.place = function(acc, form) {
 	if(this.validate(acc, form)) {
 		if(this.confirm(form)) {
 
-			// alert("Hi click ok to me");
+			// alert("Hi click ok to me not sure where to call this");
 			
 			var order = this.serializeForm(form);
 			var pin = form.txtPIN_new.value;

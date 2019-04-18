@@ -1,13 +1,16 @@
-2019-04-16 04:35:18,944,944 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
-2019-04-16 15:41:11,594,594 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
-2019-04-16 15:42:42,388,388 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
-2019-04-16 15:48:41,880,880 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
-2019-04-16 15:49:38,336,336 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
-2019-04-16 15:50:06,158,158 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
-2019-04-16 15:51:11,071,71 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
-2019-04-16 15:52:30,964,964 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
-2019-04-16 15:54:08,273,273 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
-2019-04-16 15:54:31,523,523 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
-2019-04-16 15:54:50,452,452 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
-2019-04-16 15:58:06,070,70 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
-2019-04-16 15:58:25,534,534 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
+2019-04-18 14:40:53,956,956 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
+2019-04-18 14:40:54,120,120 DEBUG [plugin_fivesteps.py:33] Print initial All Stockname Parameter
+2019-04-18 14:40:54,120,120 DEBUG [plugin_fivesteps.py:34] {'id': 2, 'planname': 'test', 'initinvest': '20000', 'volumestep': '100', 'profitstep': '2000', 'topvaluerange': '4.10', 'startvaluebuy': '200', 'floorvaluerange': '4.0', 'stopvaluerange': '200', 'monitorstock': 'wha', 'planselect': '200', 'pluginfile': 'plugin_fivesteps'}
+2019-04-18 14:40:55,489,489 INFO [monitor.py:114] Start Login
+2019-04-18 14:40:55,489,489 DEBUG [monitor.py:124] Login Parameter
+2019-04-18 14:40:55,489,489 DEBUG [monitor.py:125] {'mybrokeId': '013', 'myuser': '014xxxx', 'mypassword': ''}
+2019-04-18 14:41:06,268,268 DEBUG [tkconsole.py:758] Print data chkrefresh
+2019-04-18 14:41:06,268,268 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': [{'id': 1847, 'orderno': '702838', 'time': '14:39:58', 'symbole': 'WHA', 'side': 'S', 'price': '4.74', 'volume': '100', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Matched(M)', 'date': datetime.date(2019, 4, 18), 'matchedtime': '14:40:18', 'referorderno': '805575'}, {'id': 1846, 'orderno': '805575', 'time': '14:39:46', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '400', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Matched(M)', 'date': datetime.date(2019, 4, 18), 'matchedtime': '14:39:58', 'referorderno': 'None'}]}
+2019-04-18 14:41:11,303,303 DEBUG [tkconsole.py:758] Print data chkrefresh
+2019-04-18 14:41:11,303,303 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': [{'orderno': '805575', 'time': '14:39:46', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '400', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderno': 'None'}]}
+2019-04-18 14:41:14,019,19 DEBUG [tkconsole.py:758] Print data chkrefresh
+2019-04-18 14:41:14,019,19 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-18 14:41:17,081,81 DEBUG [tkconsole.py:758] Print data chkrefresh
+2019-04-18 14:41:17,081,81 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': [{'orderno': '805575', 'time': '14:39:46', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '400', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Open(O)', 'matchedtime': 'matchtime', 'referorderno': 'None'}]}
+2019-04-18 14:41:20,016,16 DEBUG [tkconsole.py:758] Print data chkrefresh
+2019-04-18 14:41:20,016,16 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
