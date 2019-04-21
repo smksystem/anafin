@@ -755,7 +755,7 @@ class outputlog(tk.Tk,mylog):
 				# print(chkrefresh)
 				if chkrefresh["qrefresh"]=="refreshtk" and chkrefresh["doupdatetk"] != None :
 
-					self.log["applog"].debug("Print data chkrefresh qrefresh=refreshtk and chkrefresh != None")
+					self.log["applog"].debug("Do update tk according to queue with qrefresh qrefresh=refreshtk and chkrefresh != None")
 					self.log["applog"].debug(chkrefresh)
 					# print ("\n !!! Print data to do update refresh tkinter here !!!!! tkconsole.py line 757 in def Refresher")
 					# print(chkrefresh)
