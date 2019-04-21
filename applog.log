@@ -1,24 +1,113 @@
-2019-04-18 21:35:36,607,607 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
-2019-04-18 21:35:36,727,727 DEBUG [plugin_fivesteps.py:33] Print initial All Stockname Parameter
-2019-04-18 21:35:36,727,727 DEBUG [plugin_fivesteps.py:34] {'id': 2, 'planname': 'test', 'initinvest': '20000', 'volumestep': '100', 'profitstep': '2000', 'topvaluerange': '4.10', 'startvaluebuy': '200', 'floorvaluerange': '4.0', 'stopvaluerange': '200', 'monitorstock': 'wha', 'planselect': '200', 'pluginfile': 'plugin_fivesteps'}
-2019-04-18 21:35:38,399,399 INFO [monitor.py:114] Start Login
-2019-04-18 21:35:38,399,399 DEBUG [monitor.py:124] Login Parameter
-2019-04-18 21:35:38,399,399 DEBUG [monitor.py:125] {'mybrokeId': '013', 'myuser': '014xxxx', 'mypassword': ''}
-2019-04-18 21:35:49,376,376 DEBUG [tkconsole.py:758] Print data chkrefresh
-2019-04-18 21:35:49,376,376 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': [{'id': 1872, 'orderno': '749516', 'time': '18:09:23', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '400', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Matched(M)', 'date': datetime.date(2019, 4, 18), 'matchedtime': '18:09:35', 'referorderno': 'None'}]}
-2019-04-18 21:35:58,916,916 DEBUG [tkconsole.py:758] Print data chkrefresh
-2019-04-18 21:35:58,917,917 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': [{'orderno': '749516', 'time': '18:09:23', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '400', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderno': 'None'}]}
-2019-04-18 21:36:06,872,872 DEBUG [tkconsole.py:758] Print data chkrefresh
-2019-04-18 21:36:06,872,872 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': [{'orderno': '749516', 'time': '18:09:23', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '400', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Matched(M)', 'matchedtime': 'matchtime', 'referorderno': 'None'}]}
-2019-04-18 21:36:07,480,480 DEBUG [tkconsole.py:758] Print data chkrefresh
-2019-04-18 21:36:07,480,480 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
-2019-04-18 21:36:08,076,76 DEBUG [tkconsole.py:758] Print data chkrefresh
-2019-04-18 21:36:08,076,76 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
-2019-04-18 21:36:10,913,913 DEBUG [tkconsole.py:758] Print data chkrefresh
-2019-04-18 21:36:10,914,914 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
-2019-04-18 21:36:13,914,914 DEBUG [tkconsole.py:758] Print data chkrefresh
-2019-04-18 21:36:13,914,914 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
-2019-04-18 21:36:16,912,912 DEBUG [tkconsole.py:758] Print data chkrefresh
-2019-04-18 21:36:16,912,912 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
-2019-04-18 21:36:22,835,835 DEBUG [tkconsole.py:758] Print data chkrefresh
-2019-04-18 21:36:22,835,835 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:33:45,150,150 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
+2019-04-22 06:33:45,462,462 DEBUG [plugin_fivesteps.py:33] Print initial All Stockname Parameter
+2019-04-22 06:33:45,462,462 DEBUG [plugin_fivesteps.py:34] {'id': 2, 'planname': 'test', 'initinvest': '20000', 'volumestep': '100', 'profitstep': '2000', 'topvaluerange': '4.10', 'startvaluebuy': '200', 'floorvaluerange': '4.0', 'stopvaluerange': '200', 'monitorstock': 'wha', 'planselect': '200', 'pluginfile': 'plugin_fivesteps'}
+2019-04-22 06:33:48,411,411 INFO [monitor.py:114] Start Login
+2019-04-22 06:33:48,411,411 DEBUG [monitor.py:124] Login Parameter
+2019-04-22 06:33:48,411,411 DEBUG [monitor.py:125] {'mybrokeId': '013', 'myuser': '014xxxx', 'mypassword': ''}
+2019-04-22 06:33:58,604,604 INFO [monitor.py:156] Login seem to be succeeded , start to refresh all data from database with refresh all condition
+2019-04-22 06:33:59,294,294 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:33:59,294,294 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': [{'id': 1872, 'orderno': '749516', 'time': '18:09:23', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '400', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Matched(M)', 'date': datetime.date(2019, 4, 18), 'matchedtime': '18:09:35', 'referorderno': 'None'}]}
+2019-04-22 06:34:04,143,143 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:34:04,143,143 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': [{'orderno': '749516', 'time': '18:09:23', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '400', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderno': 'None'}]}
+2019-04-22 06:34:07,232,232 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:34:07,232,232 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:34:10,270,270 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:34:10,270,270 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': [{'orderno': '749516', 'time': '18:09:23', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '400', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Open(O)', 'matchedtime': 'matchtime', 'referorderno': 'None'}]}
+2019-04-22 06:34:13,228,228 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:34:13,228,228 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:34:16,315,315 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:34:16,315,315 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': [{'orderno': '749516', 'time': '18:09:23', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '400', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Matched(M)', 'matchedtime': 'matchtime', 'referorderno': 'None'}]}
+2019-04-22 06:34:19,254,254 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:34:19,254,254 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:34:22,268,268 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:34:22,268,268 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:34:25,301,301 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:34:25,301,301 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:34:28,307,307 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:34:28,307,307 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:34:29,107,107 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:34:29,108,108 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:34:32,337,337 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:34:32,337,337 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:34:35,343,343 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:34:35,343,343 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:34:38,373,373 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:34:38,373,373 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:34:41,377,377 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:34:41,378,378 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:34:44,379,379 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:34:44,379,379 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:34:47,425,425 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:34:47,425,425 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:34:50,415,415 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:34:50,415,415 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:34:53,459,459 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:34:53,459,459 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:34:56,415,415 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:34:56,415,415 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:34:59,447,447 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:34:59,447,447 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:35:02,494,494 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:35:02,494,494 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:35:05,485,485 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:35:05,485,485 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:35:08,481,481 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:35:08,482,482 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:35:11,486,486 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:35:11,486,486 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:35:14,556,556 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:35:14,556,556 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:35:17,521,521 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:35:17,521,521 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:35:20,523,523 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:35:20,523,523 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:35:23,558,558 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:35:23,558,558 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:35:26,601,601 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:35:26,601,601 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:35:29,599,599 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:35:29,599,599 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:35:32,605,605 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:35:32,605,605 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:35:35,595,595 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:35:35,595,595 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:35:38,620,620 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:35:38,620,620 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:35:41,637,637 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:35:41,637,637 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:35:44,632,632 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:35:44,632,632 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:35:47,670,670 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:35:47,670,670 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:35:50,670,670 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:35:50,670,670 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:35:53,666,666 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:35:53,666,666 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:35:56,702,702 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:35:56,702,702 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:35:59,701,701 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:35:59,701,701 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:36:02,749,749 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:36:02,749,749 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:36:05,741,741 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:36:05,741,741 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:36:08,740,740 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:36:08,740,740 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:36:11,740,740 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:36:11,740,740 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:36:14,775,775 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:36:14,775,775 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:36:17,772,772 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:36:17,772,772 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:36:20,810,810 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:36:20,810,810 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:36:23,811,811 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:36:23,811,811 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:36:26,813,813 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:36:26,813,813 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:36:29,855,855 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:36:29,855,855 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:36:32,860,860 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:36:32,860,860 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-04-22 06:36:35,899,899 DEBUG [tkconsole.py:758] Print data chkrefresh qrefresh=refreshtk and chkrefresh != None
+2019-04-22 06:36:35,899,899 DEBUG [tkconsole.py:759] {'qrefresh': 'refreshtk', 'doupdatetk': []}

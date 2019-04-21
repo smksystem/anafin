@@ -497,11 +497,10 @@ class fivesteps():
 					self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk",
 												"doupdatetk":[chkresult]})
 
-					# print("\n Value now of matchedordermonitor is below plugin_fivesteps.py line 411 in def checkprocess2matchstatus")
-					# print(self.matchedordermonitor)
+					self.log["applog"].debug("Match found do remove matchedordermonitor below data")
+					self.log["applog"].debug(self.matchedordermonitor)
+
 					self.matchedordermonitor.remove(chkmatch)
-					# print("\nFinish remove chkmatch print matchedordermonitor again")
-					# print (self.matchedordermonitor)
 
 					print("\nSet commonvaluestep plugin_fivesteps.py line 304 def checkprocess2matchstatus")
 					print(self.conf_params)
