@@ -69,6 +69,12 @@ class keepconfig(models.Model):
 	monitorstock=models.CharField(max_length=10,unique=False,default="")
 	planselect=models.CharField(max_length=5,unique=False,default="")
 	pluginfile=	models.CharField(max_length=30,unique=False,default="")
+
+# class buysellrecord(models.Model):
+# 	orderno=models.CharField(max_length=10,unique=False,default="")
+# 	side=models.CharField(max_length=10,unique=False,default="")
+
+
 	 
 class updaterefresh(models.Model):
 	orderno=models.CharField(max_length=10,unique=False,default="")

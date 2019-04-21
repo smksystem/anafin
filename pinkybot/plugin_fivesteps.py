@@ -109,24 +109,27 @@ class fivesteps():
 
 
 		diffrange=round( stopvaluerange-startvaluebuy,2)
-		print("\n==== Difference between top value buy and start value buy below plugin_fivesteps.py line 74 in def setparameter")
-		print(diffrange)
+
+
+
+		# print("\n==== Difference between top value buy and start value buy below plugin_fivesteps.py line 74 in def setparameter")
+		# print(diffrange)
 
 		totalvolumebuy=int((diffrange/commonvaluestep)*volumestep)
 
-		print("\n==== Total volume to buy from the initial buy value is blow plugin_fivesteps.py line 78 in def setparameter")
-		print(totalvolumebuy)
+		# print("\n==== Total volume to buy from the initial buy value is blow plugin_fivesteps.py line 78 in def setparameter")
+		# print(totalvolumebuy)
 		# runvolumebuy=totalvolumebuy
 
 
 		totalcostbuy=totalvolumebuy * startvaluebuy
 
-		print("\n=== Total cost to buy from the initial value is below plugin_fivesteps.py line 90 in def setparameter")
-		print(totalcostbuy)
+		# print("\n=== Total cost to buy from the initial value is below plugin_fivesteps.py line 90 in def setparameter")
+		# print(totalcostbuy)
 
 		remaininvest=round(initinvest-totalcostbuy,2)
-		print("\n=== Remain cost buy from initial buy value is below plugin_fivesteps.py line 96 in def setparameter")
-		print(remaininvest)
+		# print("\n=== Remain cost buy from initial buy value is below plugin_fivesteps.py line 96 in def setparameter")
+		# print(remaininvest)
 ##################################################
 # To set upper range of initial buy value
 ##################################################
@@ -326,9 +329,9 @@ class fivesteps():
 	def order(self,controlorder="",orderdetail={},orderfn=""):
 
 
-		print("\naccess order process plugin_fivesteps.py line 159 ")
-		print(controlorder)
-		print(orderdetail)
+		# print("\naccess order process plugin_fivesteps.py line 159 ")
+		# print(controlorder)
+		# print(orderdetail)
 
 		
 
@@ -345,8 +348,10 @@ class fivesteps():
 			orderdetail["order"]="buy"
 			# self.params[""]
 
-			print("\n*** First volume to buy orderdetail plugin_fivesteps.py line 265 in def order")
-			print(orderdetail)
+			self.log["console"].debug("First volume to buy orderdetail in def order")
+			# print("\n*** First volume to buy orderdetail plugin_fivesteps.py line 265 in def order")
+			self.log["console"].debug(orderdetail)
+			# print(orderdetail)
 
 			result_order=orderfn(orderdetail)
 

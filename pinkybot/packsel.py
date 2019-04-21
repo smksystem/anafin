@@ -593,7 +593,10 @@ class packselenium():
 
 
 			print ("\n---mytable before update to database line 545 packsel.py in def refreshbtn")
+
 			print(mytable)			
+			
+
 			# if chkreferorderno != None:
 				# mytable.append({"referorderno":chkreferorderno})
 				# chkreferorderno=None
