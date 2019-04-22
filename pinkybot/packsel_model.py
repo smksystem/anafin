@@ -123,6 +123,7 @@ class PackSelModel:
 
 		
 	def updaterefresh(self,mytable,fullrefresh="partial",*params_referorderno):
+		# self.log("applog").warning("Notice this is updaterefresh")
 		# compare logic here to update table or not 
 		referorderno="None"
 		if len(params_referorderno) != 0 : 
@@ -157,16 +158,20 @@ class PackSelModel:
 			print("\n---Print myrow line 126 packsel_model.py def updaterefresh")
 			print(myrow)
 			chkorderno=updaterefresh.objects.filter(orderno=myrow[0]) # SQL filter for order no to find existing record.
-
+			
 			# No check for refresh type it's all refresh at the first time to sync all db and rt
 			if fullrefresh=="all": 
 				self.log["applog"].info("Refresh all database")
 				# print("fullrefresh each row packsel_model.py line 112")
 				if not chkorderno.exists():
 					
+					
 					newrow=updaterefresh(**dataparams)
 					newrow.save()
 					result_updaterefresh.append(dataparams)
+					
+
+
 
 				elif chkorderno.exists():
 
