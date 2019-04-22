@@ -158,10 +158,13 @@ class PackSelModel:
 			print("\n---Print myrow line 126 packsel_model.py def updaterefresh")
 			print(myrow)
 			chkorderno=updaterefresh.objects.filter(orderno=myrow[0]) # SQL filter for order no to find existing record.
-			
+			self.log["applog"].debug("Result from query database filter by orderno")
+			self.log["applog"].debug(chkorderno.values())
 			# No check for refresh type it's all refresh at the first time to sync all db and rt
+
+
 			if fullrefresh=="all": 
-				self.log["applog"].info("Refresh all database")
+				# self.log["applog"].info("Refresh all database case ")
 				# print("fullrefresh each row packsel_model.py line 112")
 				if not chkorderno.exists():
 					
@@ -169,15 +172,18 @@ class PackSelModel:
 					newrow=updaterefresh(**dataparams)
 					newrow.save()
 					result_updaterefresh.append(dataparams)
-					
+
 
 
 
 				elif chkorderno.exists():
 
 					refreshrow=chkorderno.values()
-					print ("\n-----Refresh each row packsel_model.py line 114")
-					print (refreshrow)
+
+
+					self.log["applog"].debug ("Refresh each row case chkorderno already existing in database and status")
+					self.log["applog"].debug (refreshrow)
+					self.log["applog"].debug (refreshrow[0]["status"])
 					result_updaterefresh.append(refreshrow[0])
 
 			# for case new row when buy or sell 
