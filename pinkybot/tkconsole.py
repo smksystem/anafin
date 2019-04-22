@@ -21,6 +21,7 @@ class outputlog(tk.Tk,mylog):
 		self.log["console"].info("Initialize console")
 
 		self.mybot=pinkybot(self.log,plugins=[fivesteps(self.log)])
+
 		# self.mybot=pinkybot(plugins=[onestep()])
 		self.title("Output Log")
 		# self.resizable(0,0)
@@ -755,7 +756,7 @@ class outputlog(tk.Tk,mylog):
 				# print(chkrefresh)
 				if chkrefresh["qrefresh"]=="refreshtk" and chkrefresh["doupdatetk"] != None :
 
-					self.log["applog"].debug("Do update tk according to queue with qrefresh qrefresh=refreshtk and chkrefresh != None")
+					self.log["applog"].debug("Do update refresh GUI tk according to queue with qrefresh qrefresh=refreshtk and chkrefresh != None")
 					self.log["applog"].debug(chkrefresh)
 					# print ("\n !!! Print data to do update refresh tkinter here !!!!! tkconsole.py line 757 in def Refresher")
 					# print(chkrefresh)
@@ -855,6 +856,8 @@ class outputlog(tk.Tk,mylog):
 					self.canvas.configure(scrollregion=self.canvas.bbox("all"))
 					
 				elif chkrefresh["qrefresh"]=="refreshdb":
+					self.log["applog"].debug("If not tk GUI do update back refresh DB according to queue with qrefresh qrefresh=refreshdb")
+					self.log["applog"].debug(chkrefresh)
 					self.mybot.mycollectqueues["qrefresh"].put(chkrefresh)
 
 				

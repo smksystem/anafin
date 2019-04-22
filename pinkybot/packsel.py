@@ -11,12 +11,13 @@ from datetime import datetime
 import time 
 
 # mydriver=0
-class packselenium():
+class packselenium(PackSelModel):
 	"""docstring for packselenium"""
 	def __init__(self,mode):
 		self.starttime=time.time()
 		self.mode=mode
 		self.log["console"].info('Running Mode = '+mode)
+		super().__init__() # configure xdebug or xlive
 		# print ("running mode=" + mode)
 
 	def xpathreturn(self,xplace=""):
@@ -606,13 +607,15 @@ class packselenium():
 
 			if allorpartial=="partial":
 				# print ("partial update refresh packsel.py line 427")
-				rowupdaterefresh=PackSelModel.updaterefresh(mytable,"partial",chkreferorderno)
+				rowupdaterefresh=self.updaterefresh(mytable,"partial",chkreferorderno)
 
 			elif allorpartial=="all":
-				rowupdaterefresh=PackSelModel.updaterefresh(mytable,"all")	
-			
-				# print("full update refresh packsel.py line 481")
-				# print(rowupdaterefresh)
+				self.log["applog"].debug("Do full update refresh all with below data in var mytable")
+				self.log["applog"].debug(mytable)
+				rowupdaterefresh=self.updaterefresh(mytable,"all")	
+				self.log["applog"].debug("Get all data from database in var rowupdaterefresh")
+				self.log["applog"].debug(rowupdaterefresh)
+				
 			
 			# print ("show update refresh packsel.py line 432")
 				# print(rowupdaterefresh)

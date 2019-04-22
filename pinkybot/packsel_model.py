@@ -6,12 +6,14 @@ class PackSelModel:
 	"""docstring for ClassName"""
 	createdFlag=""
 	def __init__(self):
-		pass
+		# self.log=applog
+		self.log["applog"].info("Initialize log of packsel_model")
 	# def initialupdatestockvalue():
 		
 
 	# 	print ( "initial update stock value")
 	def loadparameter(source=""):
+		# log["applog"].info("Initialize log of packsel_model")
 		print("\nStart Load parameter packsel_model.py line 15 in def PackSelModel")
 		currentconfig=keepconfig.objects.filter(pluginfile=source)
 
@@ -120,7 +122,7 @@ class PackSelModel:
 		updatecolumnval=updaterefresh.objects.filter(orderno=resultMatch["orderno"]).update(matchedtime= resultMatch["matchedtime"])
 
 		
-	def updaterefresh(mytable,fullrefresh="partial",*params_referorderno):
+	def updaterefresh(self,mytable,fullrefresh="partial",*params_referorderno):
 		# compare logic here to update table or not 
 		referorderno="None"
 		if len(params_referorderno) != 0 : 
@@ -158,6 +160,7 @@ class PackSelModel:
 
 			# No check for refresh type it's all refresh at the first time to sync all db and rt
 			if fullrefresh=="all": 
+				self.log["applog"].info("Refresh all database")
 				# print("fullrefresh each row packsel_model.py line 112")
 				if not chkorderno.exists():
 					
@@ -214,6 +217,7 @@ class PackSelModel:
 		# print ("\nprint mytable packsel_model.py line 103 def updaterefresh")
 		# print (mytable)
 		# 
+		
 		print("=!= result updaterefresh from realtime before return out from function packsel_model.py line 180")
 		print(result_updaterefresh)
 		return result_updaterefresh
