@@ -135,6 +135,9 @@ class outputlog(tk.Tk,mylog):
 		btnLoginRT=tk.Button(self.frameLoginRT,text="Start Login RT",command=self.executeLogin)
 		btnLoginRT.grid(row=3,column=2 )
 
+		self.btnUnitTest=tk.Button(self.frameLoginRT,text="Unit Test",command=self.unitTest)
+		self.btnUnitTest.grid(row=4,column=1 )
+
 		
 
 
@@ -701,7 +704,27 @@ class outputlog(tk.Tk,mylog):
 			self.mybot.threadlogin(self.loginSet)
 
 
+	def unitTest(self):
+		print("Unit Test")
+		unitform=tk.Toplevel(self)
+		# unitform.grid(row=6,column=1)
+		unitform.geometry("800x200")
+		self.btnUnitTest.configure(state='disabled')
 
+
+		unitframe = tk.Frame(unitform ,width=50, height =10,background = 'red')
+		unitframe.grid(row=0,column=1,sticky="e"+"n"+"s"+"w")
+		# unitframe.grid()
+
+
+		labelnamebrokeid=tk.Label(unitform, text="Broke ID")
+		labelnamebrokeid.grid(row=0,column=0)
+
+		frameSetValue=tk.Frame(unitform,width=50, height =10,background = 'blue')
+		frameSetValue.grid(row=2,column=1,sticky="e"+"n"+"s"+"w")      
+
+		btntestset=tk.Button(unitform,text="Test Set",command=self.buybyclick, width = 10,height=2)
+		btntestset.grid(row=2,column=0,sticky="w")
 
 
 			# return LoginParams

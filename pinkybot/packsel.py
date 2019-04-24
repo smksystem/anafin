@@ -610,11 +610,19 @@ class packselenium(PackSelModel):
 				rowupdaterefresh=self.updaterefresh(mytable,"partial",chkreferorderno)
 
 			elif allorpartial=="all":
+
+
 				self.log["applog"].debug("Do full update refresh all with below data in var mytable")
 				self.log["applog"].debug(mytable)
+				# rowupdaterefresh,notmatchmonitoring=self.updaterefresh(mytable,"all")	
 				rowupdaterefresh=self.updaterefresh(mytable,"all")	
+
+				self.myplugins.putordermonitoring(rowupdaterefresh)
+				
 				self.log["applog"].debug("Get all data from database in var rowupdaterefresh")
 				self.log["applog"].debug(rowupdaterefresh)
+				# self.log["applog"].debug("Print monitoring not match in var notmatchmonitoring")
+				# self.log["applog"].debug(notmatchmonitoring)
 				
 			
 			# print ("show update refresh packsel.py line 432")

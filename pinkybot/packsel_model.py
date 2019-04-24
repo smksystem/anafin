@@ -134,7 +134,8 @@ class PackSelModel:
 
 		
 		result_updaterefresh=[]
-		
+		notmatchmonitoring=[]
+
 		for myrow in mytable:
 			myrow.append("matchtime")
 			myrow.append(referorderno)
@@ -185,6 +186,9 @@ class PackSelModel:
 					self.log["applog"].debug (refreshrow)
 					self.log["applog"].debug (refreshrow[0]["status"])
 					result_updaterefresh.append(refreshrow[0])
+					
+					# if refreshrow[0]["status"] != "Matched(M)": notmatchmonitoring.append(refreshrow[0])
+
 
 			# for case new row when buy or sell 
 			elif not chkorderno.exists() and fullrefresh=="partial":
@@ -229,9 +233,11 @@ class PackSelModel:
 		# print (mytable)
 		# 
 		
-		print("=!= result updaterefresh from realtime before return out from function packsel_model.py line 180")
-		print(result_updaterefresh)
+		# print("=!= result updaterefresh from realtime before return out from function packsel_model.py line 180")
+		# print(result_updaterefresh)
+		# return result_updaterefresh,notmatchmonitoring
 		return result_updaterefresh
+
 
 	def test_mysql():
 		# pass
