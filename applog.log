@@ -1,4 +1,4 @@
-2019-04-24 23:43:38,969,969 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
-2019-04-24 23:43:38,985,985 INFO [packsel_model.py:10] Initialize log of packsel_model
-2019-04-24 23:43:39,094,94 DEBUG [plugin_fivesteps.py:33] Print initial All Stockname Parameter
-2019-04-24 23:43:39,094,94 DEBUG [plugin_fivesteps.py:34] {'id': 2, 'planname': 'test', 'initinvest': '20000', 'volumestep': '100', 'profitstep': '2000', 'topvaluerange': '4.10', 'startvaluebuy': '200', 'floorvaluerange': '4.0', 'stopvaluerange': '200', 'monitorstock': 'wha', 'planselect': '200', 'pluginfile': 'plugin_fivesteps'}
+2019-04-25 22:38:34,373,373 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
+2019-04-25 22:38:34,379,379 INFO [packsel_model.py:10] Initialize log of packsel_model
+2019-04-25 22:38:34,498,498 DEBUG [plugin_fivesteps.py:33] Print initial All Stockname Parameter
+2019-04-25 22:38:34,498,498 DEBUG [plugin_fivesteps.py:34] {'id': 2, 'planname': 'test', 'initinvest': '20000', 'volumestep': '100', 'profitstep': '2000', 'topvaluerange': '4.10', 'startvaluebuy': '200', 'floorvaluerange': '4.0', 'stopvaluerange': '200', 'monitorstock': 'wha', 'planselect': '200', 'pluginfile': 'plugin_fivesteps'}

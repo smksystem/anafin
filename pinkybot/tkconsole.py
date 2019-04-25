@@ -3,12 +3,16 @@ import tkinter as tk
 import datetime
 import sys
 import time
+import json
 from pinkybot.mylogconfig import mylog
 
 from pinkybot.monitor import pinkybot
 from pinkybot.packsel_model import PackSelModel
 from pinkybot.plugin_fivesteps import fivesteps
 from pinkybot.plugin_onestep import onestep
+from pinkybot.unitTest import unitTest
+# from pinkybot.unitTest 
+
 class outputlog(tk.Tk,mylog):
 # class outputlog(tk.Tk):
 
@@ -705,26 +709,23 @@ class outputlog(tk.Tk,mylog):
 
 
 	def unitTest(self):
-		print("Unit Test")
-		unitform=tk.Toplevel(self)
-		# unitform.grid(row=6,column=1)
-		unitform.geometry("800x200")
+
+
+		myunitTest=unitTest(self)
+		# exit()
+		# print("Unit Test")
+		
 		self.btnUnitTest.configure(state='disabled')
 
 
-		unitframe = tk.Frame(unitform ,width=50, height =10,background = 'red')
-		unitframe.grid(row=0,column=1,sticky="e"+"n"+"s"+"w")
-		# unitframe.grid()
+
+	# open('stockpost.txt', 'w').close()
 
 
-		labelnamebrokeid=tk.Label(unitform, text="Broke ID")
-		labelnamebrokeid.grid(row=0,column=0)
+	
 
-		frameSetValue=tk.Frame(unitform,width=50, height =10,background = 'blue')
-		frameSetValue.grid(row=2,column=1,sticky="e"+"n"+"s"+"w")      
 
-		btntestset=tk.Button(unitform,text="Test Set",command=self.buybyclick, width = 10,height=2)
-		btntestset.grid(row=2,column=0,sticky="w")
+
 
 
 			# return LoginParams
