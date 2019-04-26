@@ -92,7 +92,7 @@ class rangevalue():
 	def update():
 		pass
 		
-import numpy as np
+# import numpy as np
 if __name__=="__main__":
 
 	# c=np.arange(2,5,0.02)

@@ -1,5 +1,5 @@
 from pinkybot.models import monitorbidoffer,updaterefresh,valuechange,keepconfig
-from elasticsearch import Elasticsearch
+# from elasticsearch import Elasticsearch
 
 import pytz
 class PackSelModel:
