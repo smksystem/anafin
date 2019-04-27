@@ -1,4 +1,5 @@
 import tkinter as tk
+import json
 class unitTest(tk.Tk):
 	"""docstring for unitTest"""
 	def __init__(self, arg):
@@ -9,7 +10,10 @@ class unitTest(tk.Tk):
 		tk.Toplevel.__init__(self)
 		self.geometry("800x200")
 
+		rowunitframe = tk.Frame(self ,width=50, height =10,background = 'red')
+		rowunitframe.grid(row=0,column=1,sticky="e"+"n"+"s"+"w")
 
+		# postfile=open("stockpost.txt","r")
 
 		postfile=open("stockpost.txt","r+")
 	
@@ -19,19 +23,26 @@ class unitTest(tk.Tk):
 		for line in test:
 		# print ("each line of line views.py line 38")
 			mydic=json.loads(line)
-			tempwrite.append(mydic)
-			if (len(tempwrite)!= 0):
-				if numberid=='0' and tempwrite[-1]["price"]=="4.72":
-					tempwrite[-1]["status"]="Pending(S)"  # else False
+			# tempwrite.append(mydic)
+			if (len(mydic)!= 0):
+				print(mydic)
+				for myidx,(colid,colval) in enumerate(mydic.items()):
+					print(colid,colval)
+
+					lbl=tk.Label(self, text=colid + "=")
+					lblval=tk.Label(self,text=colval)
+
+					lbl.grid(row=0,column=myidx)
+					lblval.grid(row=0,column=myidx+2)
+
+				# tempwrite[-1]["price"]=="4.72":
+
+					# tempwrite[-1]["status"]="Pending(S)"  # else False
 
 
-		rowunitframe = tk.Frame(self ,width=50, height =10,background = 'red')
-		rowunitframe.grid(row=0,column=1,sticky="e"+"n"+"s"+"w")
 
-		lbl=tk.Label(self, text="test")
-		lbl.grid(row=0,column=0)
 
-		postfile.truncate(0)
+		# postfile.truncate(0) // empty file
 		postfile.close()
 
 		unitframectl=tk.Frame(self,width=50, height =10,background = 'blue')

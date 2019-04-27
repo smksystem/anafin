@@ -1,7 +1,4 @@
-2019-04-26 22:03:05,556,556 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
-2019-04-26 22:03:05,572,572 INFO [packsel_model.py:10] Initialize log of packsel_model
-2019-04-26 22:03:06,664,664 DEBUG [plugin_fivesteps.py:33] Print initial All Stockname Parameter
-2019-04-26 22:03:06,664,664 DEBUG [plugin_fivesteps.py:34] None
-2019-04-26 22:03:07,850,850 INFO [monitor.py:117] Start Login
-2019-04-26 22:03:07,850,850 DEBUG [monitor.py:127] Login Parameter
-2019-04-26 22:03:07,850,850 DEBUG [monitor.py:128] {'mybrokeId': '013', 'myuser': '014xxxx', 'mypassword': ''}
+2019-04-27 22:20:37,303,303 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
+2019-04-27 22:20:37,319,319 INFO [packsel_model.py:10] Initialize log of packsel_model
+2019-04-27 22:20:37,740,740 DEBUG [plugin_fivesteps.py:33] Print initial All Stockname Parameter
+2019-04-27 22:20:37,740,740 DEBUG [plugin_fivesteps.py:34] None
