@@ -39,14 +39,24 @@ class unitTest(tk.Tk):
 						txtout=str(colval)
 						textvar=tk.StringVar(value=txtout)
 						txtcol=tk.Entry(rowunitframe,state='disable',textvariable=textvar,width=len(txtout))
-						txtcol.grid(row=1,column=myidx,sticky="e"+"n"+"s"+"w")      
+						txtcol.grid(row=id+1,column=myidx,sticky="e"+"n"+"s"+"w")      
 
 						# enterbrokeid.grid_propagate(0)      
 					else:
-						pass
+
+						# pass
+
 						# textvar=tk.StringVar(value=colid)
 						# enterbrokeid=tk.Entry(self,text=colid,state='disable',textvariable=textvar,width=len(colval))
 						# enterbrokeid.grid_propagate(0)      
+
+						txtout=str(colval)
+						textvar=tk.StringVar(value=txtout)
+						txtcol=tk.Entry(rowunitframe,state='disable',textvariable=textvar,width=len(txtout))
+						txtcol.grid(row=id+2,column=myidx,sticky="e"+"n"+"s"+"w")      
+
+
+
 				# enterbrokeid.grid(row=0,column=myidx,sticky='e'+'w')
 					# enterbrokeid.grid(row=0,column=myidx)
 
@@ -57,8 +67,8 @@ class unitTest(tk.Tk):
 		# unitframectl=tk.Frame(self,width=50, height =10,background = 'blue')
 		# unitframectl.grid(row=2,column=1,sticky="e"+"n"+"s"+"w")      
 
-		# btnset=tk.Button(self,text="Set",command=self.btntestunit, width = 10,height=2)
-		# btnset.grid(row=2,column=0,sticky="w")
+		btnset=tk.Button(self,text="Set",command=self.btntestunit, width = 10,height=2)
+		btnset.grid(row=id+3,column=0,sticky="w")
 		
 	def btntestunit(self):
 		pass

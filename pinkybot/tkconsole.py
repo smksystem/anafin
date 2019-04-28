@@ -108,6 +108,8 @@ class outputlog(tk.Tk,mylog):
 		self.lablecomputetime=tk.Label(frameTime,text="time")
 		self.lablecomputetime.grid(row=0,column=0)
 
+		self.btnUnitTest=tk.Button(frameTime,text="Unit Test",command=self.unitTest)
+		self.btnUnitTest.grid(row=1,column=1 )
 
 		
 		self.frameLoginRT = tk.Frame(self ,background = 'green')
@@ -139,9 +141,7 @@ class outputlog(tk.Tk,mylog):
 		btnLoginRT=tk.Button(self.frameLoginRT,text="Start Login RT",command=self.executeLogin)
 		btnLoginRT.grid(row=3,column=2 )
 
-		self.btnUnitTest=tk.Button(self.frameLoginRT,text="Unit Test",command=self.unitTest)
-		self.btnUnitTest.grid(row=4,column=1 )
-
+		
 		
 
 
