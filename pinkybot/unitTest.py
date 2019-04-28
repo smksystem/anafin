@@ -36,23 +36,27 @@ class unitTest(tk.Tk):
 						lblval=tk.Label(rowunitframe,text=colid)
 						lblval.grid(row=0,column=myidx)
 
+						optionList=["1","2"]
+
+						self.rangeplanMenu1 = tk.OptionMenu(rowunitframe,"test", *optionList,command=self.setState)
+						self.rangeplanMenu1.grid(row=0,column=0,sticky="w")
+
 						txtout=str(colval)
 						textvar=tk.StringVar(value=txtout)
-						txtcol=tk.Entry(rowunitframe,state='disable',textvariable=textvar,width=len(txtout))
+						# txtcol=tk.Entry(rowunitframe,state='disable',textvariable=textvar,width=len(txtout))
+						txtcol=tk.Entry(rowunitframe,textvariable=textvar,width=len(txtout))
 						txtcol.grid(row=id+1,column=myidx,sticky="e"+"n"+"s"+"w")      
 
 						# enterbrokeid.grid_propagate(0)      
 					else:
 
-						# pass
-
-						# textvar=tk.StringVar(value=colid)
-						# enterbrokeid=tk.Entry(self,text=colid,state='disable',textvariable=textvar,width=len(colval))
-						# enterbrokeid.grid_propagate(0)      
+						self.rangeplanMenu1 = tk.OptionMenu(rowunitframe, self.rangeplanVar, *optionList,command=self.setState)
+						self.rangeplanMenu1.grid(row=0,column=0,sticky="w")
 
 						txtout=str(colval)
 						textvar=tk.StringVar(value=txtout)
-						txtcol=tk.Entry(rowunitframe,state='disable',textvariable=textvar,width=len(txtout))
+						# txtcol=tk.Entry(rowunitframe,state='disable',textvariable=textvar,width=len(txtout))
+						txtcol=tk.Entry(rowunitframe,textvariable=textvar,width=len(txtout))
 						txtcol.grid(row=id+2,column=myidx,sticky="e"+"n"+"s"+"w")      
 
 
@@ -64,11 +68,10 @@ class unitTest(tk.Tk):
 		# postfile.truncate(0) // empty file
 		postfile.close()
 
-		# unitframectl=tk.Frame(self,width=50, height =10,background = 'blue')
-		# unitframectl.grid(row=2,column=1,sticky="e"+"n"+"s"+"w")      
-
 		btnset=tk.Button(self,text="Set",command=self.btntestunit, width = 10,height=2)
 		btnset.grid(row=id+3,column=0,sticky="w")
 		
 	def btntestunit(self):
 		pass
+	def setState(self):
+		print("set state")
