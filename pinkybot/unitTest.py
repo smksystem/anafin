@@ -11,47 +11,46 @@ class unitTest(tk.Tk):
 		self.geometry("800x200")
 
 		rowunitframe = tk.Frame(self ,width=50, height =10,background = 'red')
-		rowunitframe.grid(row=0,column=1,sticky="e"+"n"+"s"+"w")
+		rowunitframe.grid(row=0,column=0,sticky="e"+"n"+"s"+"w")
 
 		# postfile=open("stockpost.txt","r")
 
 		postfile=open("stockpost.txt","r+")
 	
 		test= postfile.readlines()
-		id=1
+		id=0
 		tempwrite=[]	
 		numberid='0'
 		for line in test:
 		# print ("each line of line views.py line 38")
-			id=id+1
+			
 			mydic=json.loads(line)
 			print(id)
 			# tempwrite.append(mydic)
 			if (len(mydic)!= 0):
 				print(mydic)
 				for myidx,(colid,colval) in enumerate(mydic.items()):
-					print(colid,colval)
+					print(myidx,colid,colval)
+					if id==0:
+				
+						lblval=tk.Label(rowunitframe,text=colid)
+						lblval.grid(row=0,column=myidx)
 
-					textvar=tk.StringVar(value=colid)
-					enterbrokeid=tk.Entry(self,text=colid,state='disable',textvariable=textvar,width=len(colid))
-					enterbrokeid.grid_propagate(0)      
-					# enterbrokeid.grid(row=0,column=myidx,sticky='e'+'w')
-					enterbrokeid.grid(row=0,column=myidx)
+						txtout=str(colval)
+						textvar=tk.StringVar(value=txtout)
+						txtcol=tk.Entry(rowunitframe,state='disable',textvariable=textvar,width=len(txtout))
+						txtcol.grid(row=1,column=myidx,sticky="e"+"n"+"s"+"w")      
 
+						# enterbrokeid.grid_propagate(0)      
+					else:
+						pass
+						# textvar=tk.StringVar(value=colid)
+						# enterbrokeid=tk.Entry(self,text=colid,state='disable',textvariable=textvar,width=len(colval))
+						# enterbrokeid.grid_propagate(0)      
+				# enterbrokeid.grid(row=0,column=myidx,sticky='e'+'w')
+					# enterbrokeid.grid(row=0,column=myidx)
 
-					# lbl=tk.Label(self, text=colid + "=")
-					lblval=tk.Label(self,text=colval)
-
-					# lbl.grid(row=0,column=myidx)
-					lblval.grid(row=1,column=myidx+2)
-
-				# tempwrite[-1]["price"]=="4.72":
-
-					# tempwrite[-1]["status"]="Pending(S)"  # else False
-
-
-
-
+			id=id+1
 		# postfile.truncate(0) // empty file
 		postfile.close()
 
