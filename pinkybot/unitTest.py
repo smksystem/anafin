@@ -8,7 +8,7 @@ class unitTest(tk.Tk):
 		self.form = arg 
 
 		tk.Toplevel.__init__(self)
-		self.geometry("800x200")
+		self.geometry("800x700")
 
 		rowunitframe = tk.Frame(self ,width=50, height =10,background = 'red')
 		rowunitframe.grid(row=0,column=0,sticky="e"+"n"+"s"+"w")
