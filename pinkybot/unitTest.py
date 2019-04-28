@@ -18,11 +18,14 @@ class unitTest(tk.Tk):
 		postfile=open("stockpost.txt","r+")
 	
 		test= postfile.readlines()
+		id=1
 		tempwrite=[]	
 		numberid='0'
 		for line in test:
 		# print ("each line of line views.py line 38")
+			id=id+1
 			mydic=json.loads(line)
+			print(id)
 			# tempwrite.append(mydic)
 			if (len(mydic)!= 0):
 				print(mydic)
