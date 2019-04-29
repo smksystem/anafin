@@ -36,9 +36,11 @@ class unitTest(tk.Tk):
 						lblval=tk.Label(rowunitframe,text=colid)
 						lblval.grid(row=0,column=myidx)
 
+						# optionList={0:"1",1:"2"}
 						optionList=["1","2"]
 
-						self.rangeplanMenu1 = tk.OptionMenu(rowunitframe,"test", *optionList,command=self.setState)
+						choice_var = tk.StringVar()
+						self.rangeplanMenu1 = tk.OptionMenu(rowunitframe,choice_var,*optionList,command=self.setState)
 						self.rangeplanMenu1.grid(row=0,column=0,sticky="w")
 
 						txtout=str(colval)
@@ -50,7 +52,11 @@ class unitTest(tk.Tk):
 						# enterbrokeid.grid_propagate(0)      
 					else:
 
-						self.rangeplanMenu1 = tk.OptionMenu(rowunitframe, self.rangeplanVar, *optionList,command=self.setState)
+						optionList=["1","2"]
+
+						choice_var = tk.StringVar()
+
+						self.rangeplanMenu1 = tk.OptionMenu(rowunitframe, choice_var,*optionList,command=self.setState)
 						self.rangeplanMenu1.grid(row=0,column=0,sticky="w")
 
 						txtout=str(colval)
@@ -71,7 +77,13 @@ class unitTest(tk.Tk):
 		btnset=tk.Button(self,text="Set",command=self.btntestunit, width = 10,height=2)
 		btnset.grid(row=id+3,column=0,sticky="w")
 		
+	def setState(self,setvalue="1"):
+		print("set state")
+		print(setvalue)
+
+
 	def btntestunit(self):
 		pass
-	def setState(self):
-		print("set state")
+		
+
+
