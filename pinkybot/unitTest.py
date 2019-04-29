@@ -27,6 +27,11 @@ class unitTest(tk.Tk):
 			mydic=json.loads(line)
 			print(id)
 			# tempwrite.append(mydic)
+
+			optionList=["Pending (S)","Open(0)","Matched (M)"]
+
+
+
 			if (len(mydic)!= 0):
 				print(mydic)
 				for myidx,(colid,colval) in enumerate(mydic.items()):
@@ -37,33 +42,46 @@ class unitTest(tk.Tk):
 						lblval.grid(row=0,column=myidx)
 
 						# optionList={0:"1",1:"2"}
-						optionList=["1","2"]
 
-						choice_var = tk.StringVar()
-						self.rangeplanMenu1 = tk.OptionMenu(rowunitframe,choice_var,*optionList,command=self.setState)
-						self.rangeplanMenu1.grid(row=0,column=0,sticky="w")
+						if (colid=="status"):
 
-						txtout=str(colval)
-						textvar=tk.StringVar(value=txtout)
-						# txtcol=tk.Entry(rowunitframe,state='disable',textvariable=textvar,width=len(txtout))
-						txtcol=tk.Entry(rowunitframe,textvariable=textvar,width=len(txtout))
-						txtcol.grid(row=id+1,column=myidx,sticky="e"+"n"+"s"+"w")      
+
+							choice_var = tk.StringVar()
+							statusMenu = tk.OptionMenu(rowunitframe,choice_var,*optionList,command=self.setState)
+							statusMenu.grid(row=id+1,column=myidx,sticky="w")
+							choice_var.set(colval)
+
+						else:
+
+							txtout=str(colval)
+							textvar=tk.StringVar(value=txtout)
+							# txtcol=tk.Entry(rowunitframe,state='disable',textvariable=textvar,width=len(txtout))
+							txtcol=tk.Entry(rowunitframe,textvariable=textvar,width=len(txtout))
+							txtcol.grid(row=id+1,column=myidx,sticky="e"+"n"+"s"+"w")      
 
 						# enterbrokeid.grid_propagate(0)      
 					else:
+						if (colid=="status"):
 
-						optionList=["1","2"]
 
-						choice_var = tk.StringVar()
+							# optionList=["1","2"]
 
-						self.rangeplanMenu1 = tk.OptionMenu(rowunitframe, choice_var,*optionList,command=self.setState)
-						self.rangeplanMenu1.grid(row=0,column=0,sticky="w")
+							choice_var = tk.StringVar()
+							statusMenu = tk.OptionMenu(rowunitframe, choice_var,*optionList,command=self.setState)
+							statusMenu.grid(row=id+2,column=myidx,sticky="w")
+							choice_var.set(colval)
 
-						txtout=str(colval)
-						textvar=tk.StringVar(value=txtout)
-						# txtcol=tk.Entry(rowunitframe,state='disable',textvariable=textvar,width=len(txtout))
-						txtcol=tk.Entry(rowunitframe,textvariable=textvar,width=len(txtout))
-						txtcol.grid(row=id+2,column=myidx,sticky="e"+"n"+"s"+"w")      
+						else:
+
+
+
+							txtout=str(colval)
+							textvar=tk.StringVar(value=txtout)
+
+
+							# txtcol=tk.Entry(rowunitframe,state='disable',textvariable=textvar,width=len(txtout))
+							txtcol=tk.Entry(rowunitframe,textvariable=textvar,width=len(txtout))
+							txtcol.grid(row=id+2,column=myidx,sticky="e"+"n"+"s"+"w")      
 
 
 
