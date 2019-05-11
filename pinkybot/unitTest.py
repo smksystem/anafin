@@ -51,7 +51,7 @@ class unitTest(tk.Tk):
 			mydic=json.loads(line)
 			print(id)
 			# tempwrite.append(mydic)
-
+			self.stringdata.append(mydic)
 			optionList=["Pending (S)","Open(O)","Matched (M)"]
 
 
@@ -128,10 +128,14 @@ class unitTest(tk.Tk):
 	def btntestunit(self):
 
 
+		print("This is string data \n")
+		print(self.stringdata)
+
 		postfile=open("stockpost.txt","w+")
 
+		for i in self.stringdata:
 		# postfile.write(json.dumps(i)+"\n")
-		postfile.write(json.dumps(i)+"\n")
+			postfile.write(json.dumps(i)+"\n")
 
 		postfile.close()
 
