@@ -52,7 +52,7 @@ class unitTest(tk.Tk):
 			print(id)
 			# tempwrite.append(mydic)
 			self.stringdata.append(mydic)
-			optionList=["Pending (S)","Open(O)","Matched (M)"]
+			optionList=["Pending(S)","Open(O)","Matched(M)"]
 
 
 
@@ -76,7 +76,7 @@ class unitTest(tk.Tk):
 							choice_var = tk.StringVar()
 							statusMenu = tk.OptionMenu(self.rowunitframe,choice_var,*optionList,command=self.setState)
 							statusMenu.grid(row=id+1,column=myidx,sticky="w")
-							choice_var.set(colval)
+							# 
 
 						else:
 
@@ -96,7 +96,7 @@ class unitTest(tk.Tk):
 							choice_var = tk.StringVar()
 							statusMenu = tk.OptionMenu(self.rowunitframe, choice_var,*optionList,command=self.setState)
 							statusMenu.grid(row=id+2,column=myidx,sticky="w")
-							choice_var.set(colval)
+							# choice_var.set(colval)
 
 						else:
 
@@ -124,12 +124,13 @@ class unitTest(tk.Tk):
 	def setState(self,setvalue="1"):
 
 		print("Set value")
+		print("colvalue=" + choice_var.get() )
 
 	def btntestunit(self):
 
 
-		print("This is string data \n")
-		print(self.stringdata)
+		# print("This is string data \n")
+		# print(self.stringdata)
 
 		postfile=open("stockpost.txt","w+")
 
