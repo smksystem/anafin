@@ -372,7 +372,26 @@ class outputlog(tk.Tk,mylog):
 		self.log["console"].info("SaveAllValue")
 
 	def executeLoad(self):
-		print("LoadAllValue")
+		print("LoadTESTAllValue")
+		self.createrepeatinfo("4.98",0,
+			
+			{
+			'id': 2021, 'orderno': '500002', 'time': '20:46:20', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '100', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Matched(M)', 'date': datetime.date(2019, 5, 16), 'matchedtime': '20:57:08', 'referorderno': '580415'
+			}
+			)
+		self.createrepeatinfo("4.98",1,
+			
+			{
+			'id': 2022, 'orderno': '500001', 'time': '20:46:21', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '100', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Matched(M)', 'date': datetime.date(2019, 5, 16), 'matchedtime': '20:57:08', 'referorderno': '580415'
+			}
+			)
+		self.createrepeatinfo("4.98",2,
+			
+			{
+			'id': 2022, 'orderno': '500000', 'time': '20:46:22', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '100', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Matched(M)', 'date': datetime.date(2019, 5, 16), 'matchedtime': '20:57:08', 'referorderno': '580415'
+			}
+			)
+		self.canvas.configure(scrollregion=self.canvas.bbox("all"))
 
 	def setvaluebuy(self):
 		pass
@@ -529,6 +548,12 @@ class outputlog(tk.Tk,mylog):
 
 	def createrepeatinfo(self,varvalue,repeatidx,myvarinfo):
 
+		self.log["applog"].debug("Print from createrepeatinfo for myvarinfo")
+		
+		self.log["applog"].debug(myvarinfo)
+		self.log["applog"].debug(repeatidx)
+
+
 		datenow = datetime.datetime.now().strftime("%Y-%m-%d")
 		timenow = datetime.datetime.now().strftime("%H:%M:%S")
 
@@ -585,7 +610,16 @@ class outputlog(tk.Tk,mylog):
 					"state":"dodgerblue",
 					"symbole":"white",
 					}
+
 		
+
+
+
+
+
+
+
+
 		for j,varelement in enumerate(varinfo):
 
 			rowid=self.labeldisplay[varvalue][varvalue].grid_info()['row']
@@ -774,6 +808,8 @@ class outputlog(tk.Tk,mylog):
 
 
 
+
+
 			if not self.mybot.mycollectqueues["qrefresh"].empty() :
 				chkrefresh=self.mybot.mycollectqueues["qrefresh"].get()
 				# print("check refresh , line 710, tkconsole.py")
@@ -802,9 +838,9 @@ class outputlog(tk.Tk,mylog):
 						# print(self.myvarasso)
 						if len(self.myvarasso[rowupdata["price"]]) == 0:
 
-							repeatidx=len(self.myvarasso[rowupdata["price"]])
+							repeatidx = len(self.myvarasso[rowupdata["price"]])
 							self.myvarasso[rowupdata["price"]].append(self.createrepeatinfo(rowupdata["price"],
-																			repeatidx,rowupdata))
+																			repeatidx ,rowupdata))
 						else:
 							# check if lable already existing then no more create label 
 							for chklblorderno in self.myvarasso[rowupdata["price"]] :

@@ -44,15 +44,15 @@ class unitTest(tk.Tk):
 		tempwrite=[]	
 		numberid='0'
 		self.stringdata=[]
-
+		self.choice=[]
 		for line in test:
 		# print ("each line of line views.py line 38")
 			
 			mydic=json.loads(line)
 			print(id)
 			# tempwrite.append(mydic)
-
-			optionList=["Pending (S)","Open(O)","Matched (M)"]
+			self.stringdata.append(mydic)
+			optionList=["Pending(S)","Open(O)","Matched(M)"]
 
 
 
@@ -73,10 +73,13 @@ class unitTest(tk.Tk):
 						if (colid=="status"):
 
 
-							choice_var = tk.StringVar()
-							statusMenu = tk.OptionMenu(self.rowunitframe,choice_var,*optionList,command=self.setState)
+							stat_var = tk.StringVar()
+							self.choice.append({"status":stat_var})
+
+							statusMenu = tk.OptionMenu(self.rowunitframe,stat_var,*optionList,command=self.setState)
 							statusMenu.grid(row=id+1,column=myidx,sticky="w")
-							choice_var.set(colval)
+							# 
+							stat_var.set(colval)
 
 						else:
 
@@ -93,10 +96,14 @@ class unitTest(tk.Tk):
 
 							# optionList=["1","2"]
 
-							choice_var = tk.StringVar()
-							statusMenu = tk.OptionMenu(self.rowunitframe, choice_var,*optionList,command=self.setState)
+							# choice_var = tk.StringVar()
+							stat_var = tk.StringVar()
+							self.choice.append({"status":stat_var})
+
+
+							statusMenu = tk.OptionMenu(self.rowunitframe, stat_var,*optionList,command=self.setState)
 							statusMenu.grid(row=id+2,column=myidx,sticky="w")
-							choice_var.set(colval)
+							stat_var.set(colval)
 
 						else:
 
@@ -124,14 +131,25 @@ class unitTest(tk.Tk):
 	def setState(self,setvalue="1"):
 
 		print("Set value")
+		print(self.choice[0]["status"].get() )
+
+		print("stringdata")
+		print(self.stringdata[0]["status"])
+
+		for i,data in enumerate(self.stringdata):
+			data["status"]=self.choice[i]["status"].get() 
 
 	def btntestunit(self):
 
 
+		# print("This is string data \n")
+		# print(self.stringdata)
+
 		postfile=open("stockpost.txt","w+")
 
+		for i in self.stringdata:
 		# postfile.write(json.dumps(i)+"\n")
-		postfile.write(json.dumps(i)+"\n")
+			postfile.write(json.dumps(i)+"\n")
 
 		postfile.close()
 

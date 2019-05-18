@@ -1,4 +1,13 @@
-2019-04-30 14:31:01,214,214 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
-2019-04-30 14:31:01,219,219 INFO [packsel_model.py:10] Initialize log of packsel_model
-2019-04-30 14:31:01,337,337 DEBUG [plugin_fivesteps.py:33] Print initial All Stockname Parameter
-2019-04-30 14:31:01,337,337 DEBUG [plugin_fivesteps.py:34] {'id': 2, 'planname': 'test', 'initinvest': '20000', 'volumestep': '100', 'profitstep': '2000', 'topvaluerange': '4.10', 'startvaluebuy': '200', 'floorvaluerange': '4.0', 'stopvaluerange': '200', 'monitorstock': 'wha', 'planselect': '200', 'pluginfile': 'plugin_fivesteps'}
+2019-05-18 12:39:37,438,438 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
+2019-05-18 12:39:37,442,442 INFO [packsel_model.py:10] Initialize log of packsel_model
+2019-05-18 12:39:37,556,556 DEBUG [plugin_fivesteps.py:33] Print initial All Stockname Parameter
+2019-05-18 12:39:37,556,556 DEBUG [plugin_fivesteps.py:34] {'id': 2, 'planname': 'test', 'initinvest': '20000', 'volumestep': '100', 'profitstep': '2000', 'topvaluerange': '4.10', 'startvaluebuy': '200', 'floorvaluerange': '4.0', 'stopvaluerange': '200', 'monitorstock': 'wha', 'planselect': '200', 'pluginfile': 'plugin_fivesteps'}
+2019-05-18 12:39:39,255,255 DEBUG [tkconsole.py:551] Print from createrepeatinfo for myvarinfo
+2019-05-18 12:39:39,255,255 DEBUG [tkconsole.py:553] {'id': 2021, 'orderno': '500002', 'time': '20:46:20', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '100', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Matched(M)', 'date': datetime.date(2019, 5, 16), 'matchedtime': '20:57:08', 'referorderno': '580415'}
+2019-05-18 12:39:39,255,255 DEBUG [tkconsole.py:554] 0
+2019-05-18 12:39:39,263,263 DEBUG [tkconsole.py:551] Print from createrepeatinfo for myvarinfo
+2019-05-18 12:39:39,263,263 DEBUG [tkconsole.py:553] {'id': 2022, 'orderno': '500001', 'time': '20:46:21', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '100', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Matched(M)', 'date': datetime.date(2019, 5, 16), 'matchedtime': '20:57:08', 'referorderno': '580415'}
+2019-05-18 12:39:39,263,263 DEBUG [tkconsole.py:554] 1
+2019-05-18 12:39:39,270,270 DEBUG [tkconsole.py:551] Print from createrepeatinfo for myvarinfo
+2019-05-18 12:39:39,270,270 DEBUG [tkconsole.py:553] {'id': 2022, 'orderno': '500000', 'time': '20:46:22', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '100', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Matched(M)', 'date': datetime.date(2019, 5, 16), 'matchedtime': '20:57:08', 'referorderno': '580415'}
+2019-05-18 12:39:39,270,270 DEBUG [tkconsole.py:554] 2
