@@ -373,7 +373,7 @@ class outputlog(tk.Tk,mylog):
 
 	def executeLoad(self):
 		print("LoadTESTAllValue")
-		self.createrepeatinfo("4.98",0,
+		self.createrepeatinfo("4.98",2,
 			
 			{
 			'id': 2021, 'orderno': '500002', 'time': '20:46:20', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '100', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Matched(M)', 'date': datetime.date(2019, 5, 16), 'matchedtime': '20:57:08', 'referorderno': '580415'
@@ -385,7 +385,7 @@ class outputlog(tk.Tk,mylog):
 			'id': 2022, 'orderno': '500001', 'time': '20:46:21', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '100', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Matched(M)', 'date': datetime.date(2019, 5, 16), 'matchedtime': '20:57:08', 'referorderno': '580415'
 			}
 			)
-		self.createrepeatinfo("4.98",2,
+		self.createrepeatinfo("4.98",0,
 			
 			{
 			'id': 2022, 'orderno': '500000', 'time': '20:46:22', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '100', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Matched(M)', 'date': datetime.date(2019, 5, 16), 'matchedtime': '20:57:08', 'referorderno': '580415'
@@ -443,7 +443,11 @@ class outputlog(tk.Tk,mylog):
 		elif plansel=="PlanB":
 			print("planB selected")
 		elif plansel=="PlanC":
+
+
 			print("planC selected")
+
+
 
 		
 		children = self.winfo_children()
@@ -548,10 +552,10 @@ class outputlog(tk.Tk,mylog):
 
 	def createrepeatinfo(self,varvalue,repeatidx,myvarinfo):
 
-		self.log["applog"].debug("Print from createrepeatinfo for myvarinfo")
+		# self.log["applog"].debug("Print from createrepeatinfo for myvarinfo")
 		
-		self.log["applog"].debug(myvarinfo)
-		self.log["applog"].debug(repeatidx)
+		# self.log["applog"].debug(myvarinfo)
+		# self.log["applog"].debug(repeatidx)
 
 
 		datenow = datetime.datetime.now().strftime("%Y-%m-%d")
@@ -611,12 +615,28 @@ class outputlog(tk.Tk,mylog):
 					"symbole":"white",
 					}
 
-		
+		#################################################################################################################3333333			
+		# This procedure is created to ship all column to right hand side in order to show current block in left handside.
+		#################################################################################################################3333333			
 
+		if repeatidx > 0 :
+			repeatstep=0
+			print("enterto repeatidx ")
+			while (repeatidx>repeatstep):
+				print("repeatstep")
+				# print(repeatstep)
+				print(self.labeldisplay[varvalue][repeatstep]["orderno"].grid_info()['column'])
+				print(self.labeldisplay[varvalue][repeatstep]["startordertime"].grid_info()['column'])
 
+				for vname,valitem in self.labeldisplay[varvalue][repeatstep].items():
+					print(vname)
+					print(valitem.grid_info()['column'])
 
+				repeatstep=repeatstep+1
 
-
+		#########################################################
+		# End of procedure ship right hand side.
+		#########################################################
 
 
 
@@ -630,6 +650,9 @@ class outputlog(tk.Tk,mylog):
 														borderwidth=2, relief="groove",height=1,background=backgroudcolor[varelement])
 
 				self.labeldisplay[varvalue][repeatidx][varelement].grid(row=rowid,column=(j+1+int(repeatidx)*6),sticky="n"+"e"+"w",pady=5)
+
+
+
 
 				
 			if  varelement=="referorderno" or varelement=="orderside" or varelement=="volume" or varelement == "profit" or varelement=="state" :
@@ -839,6 +862,10 @@ class outputlog(tk.Tk,mylog):
 						if len(self.myvarasso[rowupdata["price"]]) == 0:
 
 							repeatidx = len(self.myvarasso[rowupdata["price"]])
+
+							self.log["applog"].debug("print repeatidx case of price == 0")
+							self.log["applog"].debug(repeatidx)
+							
 							self.myvarasso[rowupdata["price"]].append(self.createrepeatinfo(rowupdata["price"],
 																			repeatidx ,rowupdata))
 						else:
@@ -857,10 +884,20 @@ class outputlog(tk.Tk,mylog):
 								# else:
 							if ignoreadd==False:	
 								repeatidx=len(self.myvarasso[rowupdata["price"]])
-								self.myvarasso[rowupdata["price"]].append(self.createrepeatinfo(rowupdata["price"],
-																	repeatidx,
-																	rowupdata)
-																)
+
+
+								self.log["applog"].debug("print repeatidx case of ignoreadd == False")
+								self.log["applog"].debug(repeatidx)
+
+								resultcreate=self.createrepeatinfo(rowupdata["price"],repeatidx,rowupdata)
+
+								self.myvarasso[rowupdata["price"]].append(resultcreate)
+
+								self.log["applog"].debug("Check myvarasso in ignoreadd==FALSE")
+								self.log["applog"].debug(self.myvarasso[rowupdata["price"]])
+
+
+
 							elif ignoreadd==True: ### case already existing of order and need to update for parameter of realtime like status.
 
 								# print("+++++++need to update partial realtime table tkconsole.py line 790 !!!")
