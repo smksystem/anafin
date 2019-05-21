@@ -625,14 +625,23 @@ class outputlog(tk.Tk,mylog):
 			while (repeatidx>repeatstep):
 				print("repeatstep")
 				# print(repeatstep)
-				print(self.labeldisplay[varvalue][repeatstep]["orderno"].grid_info()['column'])
-				print(self.labeldisplay[varvalue][repeatstep]["startordertime"].grid_info()['column'])
+				# print(self.labeldisplay[varvalue][repeatstep]["orderno"].grid_info()['column'])
+				# print(self.labeldisplay[varvalue][repeatstep]["startordertime"].grid_info()['column'])
 
 				for vname,valitem in self.labeldisplay[varvalue][repeatstep].items():
 					print(vname)
 					print(valitem.grid_info()['column'])
 
+					# self.labeldisplay[varvalue][repeatidx][varelement].grid(row=rowid,column=(j-4+int(repeatidx)*6),sticky="s"+"e"+"w",pady=5)
+					# valiiem.grid_propagate(1)
+					# valitem.columnconfigure(valitem.grid_info()['column']+6,weight=12)
+					valitem.grid(row=valitem.grid_info()['row'],column=valitem.grid_info()['column']+6,sticky="n"+"e"+"w",pady=5)
+
+					# valitem.columnconfigure(valitem.grid_info()['column']+6,weight=2)
+
 				repeatstep=repeatstep+1
+			repeatidx=0
+			# self.canvas.update()
 
 		#########################################################
 		# End of procedure ship right hand side.
