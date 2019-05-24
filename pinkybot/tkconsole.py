@@ -619,28 +619,36 @@ class outputlog(tk.Tk,mylog):
 		# This procedure is created to ship all column to right hand side in order to show current block in left handside.
 		#################################################################################################################3333333			
 
-		if repeatidx > 0 :
-			repeatstep=0
-			print("enterto repeatidx ")
-			while (repeatidx>repeatstep):
-				print("repeatstep")
-				# print(repeatstep)
-				# print(self.labeldisplay[varvalue][repeatstep]["orderno"].grid_info()['column'])
-				# print(self.labeldisplay[varvalue][repeatstep]["startordertime"].grid_info()['column'])
+		# if repeatidx > 0 :
+		# 	repeatstep=0
+		# 	print("enterto repeatidx ")
+		# 	rowelement=0
+		# 	while (repeatidx>repeatstep):
+		# 		print("repeatstep")
 
-				for vname,valitem in self.labeldisplay[varvalue][repeatstep].items():
-					print(vname)
-					print(valitem.grid_info()['column'])
+		# 		for vname,valitem in self.labeldisplay[varvalue][repeatstep].items():
+		# 			print(vname)
+		# 			print(valitem.grid_info()['column'])
+		# 			print(valitem.grid_info()['row'])
 
-					# self.labeldisplay[varvalue][repeatidx][varelement].grid(row=rowid,column=(j-4+int(repeatidx)*6),sticky="s"+"e"+"w",pady=5)
-					# valiiem.grid_propagate(1)
-					# valitem.columnconfigure(valitem.grid_info()['column']+6,weight=12)
-					valitem.grid(row=valitem.grid_info()['row'],column=valitem.grid_info()['column']+6,sticky="n"+"e"+"w",pady=5)
+		# 			# self.labeldisplay[varvalue][repeatidx][varelement].grid(row=rowid,column=(j-4+int(repeatidx)*6),sticky="s"+"e"+"w",pady=5)
+		# 			# valiiem.grid_propagate(1)
+		# 			# valitem.columnconfigure(valitem.grid_info()['column']+6,weight=12)
+		# 			if rowelement==5:
+		# 				print("rowelement")
+		# 				print(rowelement)
+		# 				valitem.grid(row=valitem.grid_info()['row'],column=valitem.grid_info()['column']+5,sticky="n"+"e"+"w",pady=15)
 
-					# valitem.columnconfigure(valitem.grid_info()['column']+6,weight=2)
+		# 			else:	
+		# 				valitem.grid(row=valitem.grid_info()['row'],column=valitem.grid_info()['column']+5,sticky="n"+"e"+"w")
+		# 				rowelement=rowelement+1
+		# 				print("case else of rowelement")
+		# 				print(rowelement)
+		# 			# valitem.columnconfigure(valitem.grid_info()['column']+6,weight=2)
 
-				repeatstep=repeatstep+1
-			repeatidx=0
+		# 		repeatstep=repeatstep+1
+		# 	repeatidx=0
+			# exit()
 			# self.canvas.update()
 
 		#########################################################

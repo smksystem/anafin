@@ -6,7 +6,7 @@ sys.path.append('D:\workspace\anafin')
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'anafin.settings')
 django.setup()
 	
-from pinkybot.rangevalue import rangevalue
+from pinkybot.rangevalue import rangevalue	
 from pinkybot.tkconsole import outputlog
 from pinkybot.monitor import pinkybot
 
