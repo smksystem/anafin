@@ -28,8 +28,9 @@ class outputlog(tk.Tk,mylog):
 
 		# self.mybot=pinkybot(plugins=[onestep()])
 		self.title("Output Log")
+		# print()
 		# self.resizable(0,0)
-		self.geometry('780x620+20+20')
+		self.geometry(str(self.winfo_screenwidth())+'x700+0+0')
 		# self.grid_columnconfigure(1, weight=1)
 		# self.pack_propagate(0)
 		usertxt=tk.StringVar(value="014xxxx")
@@ -83,37 +84,43 @@ class outputlog(tk.Tk,mylog):
 
 		self.starttime =None
 
+		############################################################################################################################################
+		############################# Text output frame #########################################################################################
+		############################################################################################################################################
 
 
+		frameOutput = tk.Frame(self, width=1000, height =300,background = 'blue')
+		frameOutput.grid(row=0,column=0,rowspan = 1, columnspan = 1,sticky = "n"+"s" )
 
-		frameOutput = tk.Frame(self, width=500, height =200,background = 'blue')
-		# self.frameOutput.grid_propagate(0)
-		frameOutput.grid(row=0,column=0,rowspan = 2, columnspan = 1,sticky = "n"+"s" )
+		# self.output = tk.Text(frameOutput,wrap='word', width=60, height=14, background = 'black', fg='white')
+		self.output = tk.Text(frameOutput,wrap='word', background = 'black', fg='white')
 
-		self.output = tk.Text(frameOutput,wrap='word', width=60, height=14, background = 'black', fg='white')
-		# self.output.grid_propagate(0)
-		self.output.grid(row=0,column=0)
-		# self.output.pack(side=tk.LEFT)
+		self.output.grid(row=0,column=0,columnspan=1)
 
 		scrollbar = tk.Scrollbar(frameOutput,orient="vertical", command = self.output.yview)
-		# scrollbar.grid_propagate(0)
 		scrollbar.grid(row=0,column=1,sticky="n"+"s")
-		# scrollbar.pack(side=tk.RIGHT, fill="y")
+
 		self.output['yscrollcommand'] = scrollbar.set
 
 
+		############################################################################################################################################
+		############################# Time and unit test frame #########################################################################################
+		############################################################################################################################################
 
 		frameTime=tk.Frame(self,background="Blue")
 		frameTime.grid(row=0,column=1,sticky="e"+"n"+"s"+"w")
 		self.lablecomputetime=tk.Label(frameTime,text="time")
 		self.lablecomputetime.grid(row=0,column=0)
 
-		self.btnUnitTest=tk.Button(frameTime,text="Unit Test",command=self.unitTest)
-		self.btnUnitTest.grid(row=1,column=1 )
+		btnUnitTest=tk.Button(frameTime,text="Unit Test",command=self.unitTest)
+		btnUnitTest.grid(row=1,column=1 )
 
+		############################################################################################################################################
+		############################# Login frame #########################################################################################
+		############################################################################################################################################
 		
 		self.frameLoginRT = tk.Frame(self ,background = 'green')
-		self.frameLoginRT.grid(row=1,column=1,sticky="e"+"n"+"s"+"w")
+		self.frameLoginRT.grid(row=0,column=2,sticky="e"+"n"+"s"+"w")
 	
 		labelnamebrokeid=tk.Label(self.frameLoginRT, text="Broke ID")
 		labelnamebrokeid.grid(row=0,column=0)
@@ -143,12 +150,14 @@ class outputlog(tk.Tk,mylog):
 
 		
 		
-
+		############################################################################################################################################
+		############################# Value parameter set frame #########################################################################################
+		############################################################################################################################################
 
 
 
 		frameSetValue=tk.Frame(self,background = 'blue')
-		frameSetValue.grid(row=2,column=1,sticky="e"+"n"+"s"+"w")      
+		frameSetValue.grid(row=0,column=3,sticky="e"+"n"+"s"+"w")      
 
 
 		labelmonitor=tk.Label(frameSetValue,text="Monitor => ")
@@ -209,6 +218,8 @@ class outputlog(tk.Tk,mylog):
 		# self.btnStartvaluebuy=tk.Button(frameSetValue,text="Set Value Buy",command=self.setvaluebuy,state='disabled',)
 		# self.btnStartvaluebuy.grid(row=9,column=1 )
 
+		
+
 		labelvaluebuy=tk.Label(frameSetValue, text="Total Cost Buy:")
 		labelvaluebuy.grid(row=9,column=0,sticky="w")
 
@@ -228,9 +239,12 @@ class outputlog(tk.Tk,mylog):
 		labelvalumebuy=tk.Label(frameSetValue, textvariable=remaininvest)
 		labelvalumebuy.grid(row=11,column=0,sticky="e")
 		
+		############################################################################################################################################
+		############################# control buttom frame #########################################################################################
+		############################################################################################################################################
 
 		framePutValue=tk.Frame(self,background = 'yellow')
-		framePutValue.grid(row=3,column=1,sticky="e"+"n"+"s"+"w")      
+		framePutValue.grid(row=0,column=4,sticky="e"+"n"+"s"+"w")      
 
 
 		btnBuyCommand=tk.Button(framePutValue,text="Buy Now",command=self.buybyclick, width = 10,height=2)
@@ -249,17 +263,21 @@ class outputlog(tk.Tk,mylog):
 		radiomanual.grid(row=0,column=2,sticky="w")
 
 
+		############################################################################################################################################
+		############################# result buy/sell frame #########################################################################################
+		############################################################################################################################################
 
-		self.canvas=tk.Canvas(self,background="black")
-		self.canvas.grid(row=2,column=0,rowspan=2,sticky="nsew")
-
+		self.canvas=tk.Canvas(self,background="red")
+		# self.canvas.grid_propagate=1
+		self.canvas.grid(row=0,column=3,rowspan=2,columnspan=4,sticky="nsew")
 
 		self.frameGroupOutput = tk.Frame(self.canvas,background = 'gray')
 		self.frameGroupOutput.grid(row=0,column=0) # start row 2 since text output occupied 2 rows with 0,1.
 
-		vsbar = tk.Scrollbar(self,orient="vertical", command = self.canvas.yview)
-		vsbar.grid(row=2,column=0,rowspan=2,sticky="e"+"n"+"s")
-		self.canvas.configure(yscrollcommand=vsbar.set)
+		# vsbar = tk.Scrollbar(self,orient="vertical", command = self.canvas.yview)
+		# vsbar.grid_propagate=True
+		# vsbar.grid(row=2,column=2,rowspan=2,sticky="e"+"n"+"s")
+		# self.canvas.configure(yscrollcommand=vsbar.set)
 
 		hsbar = tk.Scrollbar(self,orient="horizontal", command = self.canvas.xview)
 		hsbar.grid(row=4,column=0,rowspan=1,sticky="e"+"s"+"w")
@@ -456,18 +474,20 @@ class outputlog(tk.Tk,mylog):
 			if (str(type(child)) == "<class 'tkinter.Canvas'>") :
 				child.destroy()
 
+				print("Start to create output group")
+
 				self.canvas=tk.Canvas(self,background="black")
-				self.canvas.grid(row=2,column=0,rowspan=2,sticky="nsew")
+				self.canvas.grid(row=2,column=0,rowspan=2,columnspan=5,sticky="nsew")
 
 				self.frameGroupOutput = tk.Frame(self.canvas,background = 'gray')
 				self.frameGroupOutput.grid(row=0,column=0,sticky="nsew") # start row 2 since text output occupied 2 rows with 0,1.
 
 
 				self.scrollbarYGroupOutPut = tk.Scrollbar(self,orient="vertical", command = self.canvas.yview)
+				self.scrollbarYGroupOutPut.grid(row=2,column=5,rowspan=2,sticky="e"+"n"+"s")
 
 				self.scrollbarXGroupOutPut = tk.Scrollbar(self,orient="horizontal", command = self.canvas.xview)
-				self.scrollbarYGroupOutPut.grid(row=2,column=0,rowspan=2,sticky="e"+"n"+"s")
-				self.scrollbarXGroupOutPut.grid(row=4,column=0,rowspan=1,sticky="e"+"s"+"w")
+				self.scrollbarXGroupOutPut.grid(row=4,column=0,rowspan=1,columnspan=5,sticky="e"+"s"+"w")
 
 
 				break		
