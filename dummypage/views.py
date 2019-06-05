@@ -29,85 +29,89 @@ def writedatatofile(writedata):
 
 
 @csrf_exempt
+
+# def runlogic(request):
 def runlogic(request):
-	print ("-------Running logic--------views.py dummypage runlogic")
-	# response="ok"
-	# print(request)
-	mytest=dict(request.POST)
-	# print(mytest)
-	numberid=mytest["data"].pop()
-	# a=dict(request.POST)
+	pass
+# 	print ("-------Running logic--------views.py dummypage runlogic")
+# 	# response="ok"
+# 	# print(request)
+# 	mytest=dict(request.POST)
+# 	# print(mytest)
+# 	numberid=mytest["data"].pop()
+# 	# a=dict(request.POST)
 
-	# print(a)
+# 	# print(a)
 
-	postfile=open("stockpost.txt","r+")
+# 	postfile=open("stockpost.txt","r+")
 	
-	test= postfile.readlines()
+# 	test= postfile.readlines()
 
-	tempwrite=[]	
+# 	tempwrite=[]	
 
-	for line in test:
-		# print ("each line of line views.py line 38")
-		mydic=json.loads(line)
-		# mydic ["status"]="matched(S)"
-		# print( mydic ["status"])
-		tempwrite.append(mydic)
+# 	for line in test:
+# 		# print ("each line of line views.py line 38")
+# 		mydic=json.loads(line)
+# 		# mydic ["status"]="matched(S)"
+# 		# print( mydic ["status"])
+# 		tempwrite.append(mydic)
 
-		if (len(tempwrite)!= 0):
-			if numberid=='0' and tempwrite[-1]["price"]=="4.72":
-				tempwrite[-1]["status"]="Pending(S)"  # else False
+# 		if (len(tempwrite)!= 0):
+# 			if numberid=='0' and tempwrite[-1]["price"]=="4.72":
+# 				tempwrite[-1]["status"]="Pending(S)"  # else False
 
-			if numberid=='1' and tempwrite[-1]["price"]=="4.72":
-				tempwrite[-1]["status"]="Open(O)"  # else False
+# 			if numberid=='1' and tempwrite[-1]["price"]=="4.72":
+# 				tempwrite[-1]["status"]="Open(O)"  # else False
 
-			if numberid=='2' and tempwrite[-1]["price"]=="4.72":
-				tempwrite[-1]["status"]="Matched(M)"  # else False
+# 			if numberid=='2' and tempwrite[-1]["price"]=="4.72":
+# 				tempwrite[-1]["status"]="Matched(M)"  # else False
 	
-			if numberid=='3' and tempwrite[-1]["price"]!="4.72":
-				tempwrite[-1]["status"]="Pending(S)"  # else False
+# 			if numberid=='3' and tempwrite[-1]["price"]!="4.72":
+# 				tempwrite[-1]["status"]="Pending(S)"  # else False
 
 
-			if numberid=='4' and tempwrite[-1]["price"]!="4.72":
+# 			if numberid=='4' and tempwrite[-1]["price"]!="4.72":
 
 				
-				tempwrite[-1]["status"]="Open(O)"  # else False
+# 				tempwrite[-1]["status"]="Open(O)"  # else False
 
 
-			if numberid=='5' and tempwrite[-1]["price"]=="4.74":
+# 			if numberid=='5' and tempwrite[-1]["price"]=="4.74":
 
 
-				for mystatus in tempwrite:
-					if mystatus["status"] != "Open(O)" and mystatus["status"]!="Matched(M)" :
-						mystatus["status"]="Open(O)"
+# 				for mystatus in tempwrite:
+# 					if mystatus["status"] != "Open(O)" and mystatus["status"]!="Matched(M)" :
+# 						mystatus["status"]="Open(O)"
 				
-				tempwrite[-1]["status"]="Matched(M)"  # else False	
+# 				tempwrite[-1]["status"]="Matched(M)"  # else False	
 
-			# if numberid=='5' and tempwrite[-1]["price"]!="4.72":
-			# 	tempwrite[-1]["status"]="Matched(M)"  # else False
-
-
-
-
-	postfile.truncate(0)
-	postfile.close()
-
-	# open('stockpost.txt', 'w').close()
-
-
-	outfile=open("stockpost.txt",'a')
-	for i in tempwrite:
-		# print (postarray[0])
-		outfile.write(json.dumps(i)+"\n")
-	outfile.close()
-
-
-
-	response=""
+# 			# if numberid=='5' and tempwrite[-1]["price"]!="4.72":
+# 			# 	tempwrite[-1]["status"]="Matched(M)"  # else False
 
 
 
 
-	return HttpResponse(response)
+# 	postfile.truncate(0)
+# 	postfile.close()
+
+# 	# open('stockpost.txt', 'w').close()
+
+
+# 	outfile=open("stockpost.txt",'a')
+# 	for i in tempwrite:
+# 		# print (postarray[0])
+# 		outfile.write(json.dumps(i)+"\n")
+# 	outfile.close()
+
+
+
+# 	response=""
+
+
+
+
+# 	return HttpResponse(response)
+
 @csrf_exempt
 def dummyrt(request):
 
