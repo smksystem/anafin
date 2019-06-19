@@ -30,7 +30,9 @@ class outputlog(tk.Tk,mylog):
 		self.title("Output Log")
 		# print()
 		# self.resizable(0,0)
-		self.geometry(str(self.winfo_screenwidth())+'x700+0+0')
+		# self.geometry(str(self.winfo_screenwidth())+'x700+0+0')
+		self.geometry('1020x700+0+0')
+
 		# self.grid_columnconfigure(1, weight=1)
 		# self.pack_propagate(0)
 		usertxt=tk.StringVar(value="014xxxx")
@@ -89,16 +91,22 @@ class outputlog(tk.Tk,mylog):
 		############################################################################################################################################
 
 
-		frameOutput = tk.Frame(self, width=1000, height =300,background = 'blue')
-		frameOutput.grid(row=0,column=0,rowspan = 1, columnspan = 1,sticky = "n"+"s" )
+		frameOutput = tk.Frame(self, width=450, height =300,background = 'blue')
+		# frameOutput.grid(row=0,column=0,rowspan = 1, columnspan = 1,sticky = "n"+"s" )
+		# frameOutput.grid(row=0,column=0) #,rowspan = 1, columnspan = 1,sticky = "n"+"s" )
+
+
+		frameOutput.grid(row=0,column=0,sticky = "n"+"s"+"w"+"e")
+		# frameOutput.grid_propagate(False)
 
 		# self.output = tk.Text(frameOutput,wrap='word', width=60, height=14, background = 'black', fg='white')
-		self.output = tk.Text(frameOutput,wrap='word', background = 'black', fg='white')
+		self.output = tk.Text(frameOutput,width=50, height=20,wrap='word', background = 'black', fg='white')
 
 		self.output.grid(row=0,column=0,columnspan=1)
 
 		scrollbar = tk.Scrollbar(frameOutput,orient="vertical", command = self.output.yview)
-		scrollbar.grid(row=0,column=1,sticky="n"+"s")
+		scrollbar.grid(row=0,column=1,sticky="ne"+"se")
+		scrollbar.grid_propagate(False)
 
 		self.output['yscrollcommand'] = scrollbar.set
 
@@ -107,13 +115,8 @@ class outputlog(tk.Tk,mylog):
 		############################# Time and unit test frame #########################################################################################
 		############################################################################################################################################
 
-		frameTime=tk.Frame(self,background="Blue")
-		frameTime.grid(row=0,column=1,sticky="e"+"n"+"s"+"w")
-		self.lablecomputetime=tk.Label(frameTime,text="time")
-		self.lablecomputetime.grid(row=0,column=0)
-
-		btnUnitTest=tk.Button(frameTime,text="Unit Test",command=self.unitTest)
-		btnUnitTest.grid(row=1,column=1 )
+		# frameTime=tk.Frame(self,background="Blue")
+		# frameTime.grid(row=0,column=1,sticky="e"+"n"+"s"+"w")
 
 		############################################################################################################################################
 		############################# Login frame #########################################################################################
@@ -121,6 +124,14 @@ class outputlog(tk.Tk,mylog):
 		
 		self.frameLoginRT = tk.Frame(self ,background = 'green')
 		self.frameLoginRT.grid(row=0,column=2,sticky="e"+"n"+"s"+"w")
+
+
+		self.lablecomputetime=tk.Label(self.frameLoginRT,text="time")
+		self.lablecomputetime.grid(row=0,column=2)
+
+		btnUnitTest=tk.Button(self.frameLoginRT,text="Unit Test",command=self.unitTest)
+		btnUnitTest.grid(row=1,column=2 )
+
 	
 		labelnamebrokeid=tk.Label(self.frameLoginRT, text="Broke ID")
 		labelnamebrokeid.grid(row=0,column=0)
@@ -239,29 +250,25 @@ class outputlog(tk.Tk,mylog):
 		labelvalumebuy=tk.Label(frameSetValue, textvariable=remaininvest)
 		labelvalumebuy.grid(row=11,column=0,sticky="e")
 		
-		############################################################################################################################################
-		############################# control buttom frame #########################################################################################
-		############################################################################################################################################
 
-		framePutValue=tk.Frame(self,background = 'yellow')
-		framePutValue.grid(row=0,column=4,sticky="e"+"n"+"s"+"w")      
+		btnBuyCommand=tk.Button(frameSetValue,text="Buy Now",command=self.buybyclick, width = 10,height=2)
+		btnBuyCommand.grid(row=12,column=0,sticky="e")
+
+		btnSellCommand=tk.Button(frameSetValue,text="Sell Now",command=self.sellbyclick, width = 10,height=2)
+		btnSellCommand.grid(row=12,column=1,sticky="w")
+		btnSellCommand.grid_propagate(False)
+
+		btnRefreshCmd=tk.Button(frameSetValue,text="Refresh",command=self.rtrefresh, width = 10,height=2)
+		btnRefreshCmd.grid(row=13,column=0)
 
 
-		btnBuyCommand=tk.Button(framePutValue,text="Buy Now",command=self.buybyclick, width = 10,height=2)
-		btnBuyCommand.grid(row=0,column=0,sticky="w")
+		radioauto=tk.Radiobutton(frameSetValue,text="auto",variable=runningmode,value="auto",indicatoron=0,command=self.chooserunningmode)
+		radioauto.grid(row=13,column=1,sticky="w")
 
-		btnSellCommand=tk.Button(framePutValue,text="Sell Now",command=self.sellbyclick, width = 10,height=2)
-		btnSellCommand.grid(row=0,column=0,sticky="e")
+		radiomanual=tk.Radiobutton(frameSetValue,text="manual",variable=runningmode,value="manual",indicatoron=0,command=self.chooserunningmode)
+		radiomanual.grid(row=13,column=1)
 
-		btnRefreshCmd=tk.Button(framePutValue,text="Refresh",command=self.rtrefresh, width = 25,height=3)
-		btnRefreshCmd.grid(row=1,column=0)
-
-		radioauto=tk.Radiobutton(framePutValue,text="auto",variable=runningmode,value="auto",indicatoron=0,command=self.chooserunningmode)
-		radioauto.grid(row=0,column=1,sticky="e")
-
-		radiomanual=tk.Radiobutton(framePutValue,text="manual",variable=runningmode,value="manual",indicatoron=0,command=self.chooserunningmode)
-		radiomanual.grid(row=0,column=2,sticky="w")
-
+		
 
 		############################################################################################################################################
 		############################# result buy/sell frame #########################################################################################
@@ -273,6 +280,7 @@ class outputlog(tk.Tk,mylog):
 
 		self.frameGroupOutput = tk.Frame(self.canvas,background = 'gray')
 		self.frameGroupOutput.grid(row=0,column=0) # start row 2 since text output occupied 2 rows with 0,1.
+
 
 		# vsbar = tk.Scrollbar(self,orient="vertical", command = self.canvas.yview)
 		# vsbar.grid_propagate=True
@@ -771,7 +779,8 @@ class outputlog(tk.Tk,mylog):
 			
 			# self.highlight_pattern("vol","red")
 
-			self.output.insert(tk.END,self.timenow.strftime("%Y-%m-%d %H:%M:%S ") + str(txtmsg + "\n"))
+			# self.output.insert(tk.END,self.timenow.strftime("%Y-%m-%d %H:%M:%S ") + str(txtmsg + "\n"))
+			self.output.insert(tk.END,self.timenow.strftime("%H:%M:%S ") + str(txtmsg + "\n"))
 			
 			# pos = self.output.search( "Vol","1.0",stopindex="end", count=countVar)
 			# print (pos)
@@ -806,21 +815,6 @@ class outputlog(tk.Tk,mylog):
 
 
 		myunitTest=unitTest(self)
-		# exit()
-		# print("Unit Test")
-		
-		self.btnUnitTest.configure(state='disabled')
-
-
-
-	# open('stockpost.txt', 'w').close()
-
-
-	
-
-
-
-
 
 			# return LoginParams
 	def highlight_text(self,word,color="white",backcolor="black"):

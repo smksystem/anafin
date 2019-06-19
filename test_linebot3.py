@@ -1,23 +1,21 @@
 from flask import Flask, request, abort
-
-from linebot import (
-    LineBotApi, WebhookHandler
-)
-from linebot.exceptions import (
-    InvalidSignatureError
-)
-from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,
-)
+from linebot import (LineBotApi, WebhookHandler)
+from linebot.exceptions import (InvalidSignatureError)
+from linebot.models import (MessageEvent, TextMessage, TextSendMessage,)
 
 app = Flask(__name__)
 
-line_bot_api = LineBotApi('LvQoS+P+ok7NNC3D63pz2w8873CQ3NGX/vyues85RDRBLM+/EetKf7LFcEcl8YV1wmEjIurpdmgbt1L0cU5Y7T4QKzrwY0/xUNH8rAbypH68sc9d3sw8t+znsNO2xlrMwUj2kj+5CIYqtrbOE/gK8AdB04t89/1O/w1cDnyilFU=')
-handler = WebhookHandler('c60544ef591611684da9813e562089a0')
+line_bot_api = LineBotApi('zustrj8yyUuP+hEnrk5j7FWvBvGUMaLoA9ZeokKF/cngUBt9h9V43j4+86JaNljMwmEjIurpdmgbt1L0cU5Y7T4QKzrwY0/xUNH8rAbypH6ayOfmPCwKa7b6a381mkRBVwOgWykoFJSZxSluPBZUagdB04t89/1O/w1cDnyilFU=')
+handler = WebhookHandler('a90085058c0bdcc4d9267265f3033440')
 
+@app.route("/")
+def hello():
+    return "Hello World!"
 
-@app.route("/callback", methods=['POST'])
-def callback():
+# @app.route("/webhook", methods=['POST'])
+@app.route("/webhook", methods=['POST'])
+
+def webhook():
     # get X-Line-Signature header value
     signature = request.headers['X-Line-Signature']
 
@@ -29,11 +27,10 @@ def callback():
     try:
         handler.handle(body, signature)
     except InvalidSignatureError:
-        print("Invalid signature. Please check your channel access token/channel secret.")
         abort(400)
 
     return 'OK'
-
+    
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -43,4 +40,4 @@ def handle_message(event):
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug="DEBUG")

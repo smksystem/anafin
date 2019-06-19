@@ -29,10 +29,14 @@ class unitTest(tk.Tk):
 		btnset=tk.Button(self.rowbtnframe,text="Set",command=self.btntestunit, width = 10,height=2)
 		btnset.grid(row=0,column=2,sticky="w")
 
+		btnset=tk.Button(self.rowbtnframe,text="StartTest",command=self.btnstart, width = 10,height=2)
+		btnset.grid(row=0,column=3,sticky="w")
 
 
 		self.refreshfile()
 
+	def btnstart(self):
+		print("Start unit test")
 		
 
 	def refreshfile(self):
@@ -130,11 +134,11 @@ class unitTest(tk.Tk):
 		
 	def setState(self,setvalue="1"):
 
-		print("Set value")
-		print(self.choice[0]["status"].get() )
+		# print("Set value")
+		# print(self.choice[0]["status"].get() )
 
-		print("stringdata")
-		print(self.stringdata[0]["status"])
+		# print("stringdata")
+		# print(self.stringdata[0]["status"])
 
 		for i,data in enumerate(self.stringdata):
 			data["status"]=self.choice[i]["status"].get() 
