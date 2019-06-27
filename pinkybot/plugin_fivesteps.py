@@ -14,16 +14,6 @@ class fivesteps():
 		# self.waitconfirmfirstorder=""
 		self.matchedordermonitor=[]
 		self.firstbuyflag="FIRSTBUY"
-		# self.conf_params={}
-
-	# def configlogic(self):
-		
-	# 	self.buybyclick={
-	# 					"ordermode":"buybyclick",
-
-	# 					}
-	# 	self.buybybot={}
-	# 	self.sellbybot={}
 
 	def setparameter(self,conf_params,conf_labeldisplay,conf_textout):
 		
@@ -130,9 +120,9 @@ class fivesteps():
 		remaininvest=round(initinvest-totalcostbuy,2)
 		# print("\n=== Remain cost buy from initial buy value is below plugin_fivesteps.py line 96 in def setparameter")
 		# print(remaininvest)
-##################################################
-# To set upper range of initial buy value
-##################################################
+		##################################################
+		# To set upper range of initial buy value
+		##################################################
 
 		while (runvalue<=stopvaluerange):	
 
@@ -175,9 +165,9 @@ class fivesteps():
 				break
 
 
-##################################################
-# To set under range of initial buy value
-##################################################
+		##################################################
+		# To set under range of initial buy value
+		##################################################
 		runvalue=floorvaluerange
 		while (runvalue<=startvaluebuy):
 			runvalue= round(runvalue,2)
@@ -272,7 +262,12 @@ class fivesteps():
 		notAllowTodd=None
 		for linetable in result_order:
 			if linetable["status"] == "Matched(M)":
-				notAllowTodd=True
+				notAllowTodd=True ### Flag for monitoring each order 
+
+
+
+
+
 				# break
 			elif linetable["status"] != "Matched(M)" and len(self.matchedordermonitor)>0:
 				# To check if already existing in matchedordermonitor or not
@@ -348,9 +343,9 @@ class fivesteps():
 			orderdetail["order"]="buy"
 			# self.params[""]
 
-			self.log["console"].debug("First volume to buy orderdetail in def order")
+			self.log["applog"].debug("def order: First volume to buy orderdetail in def order")
 			# print("\n*** First volume to buy orderdetail plugin_fivesteps.py line 265 in def order")
-			self.log["console"].debug(orderdetail)
+			self.log["applog"].debug(orderdetail)
 			# print(orderdetail)
 
 			result_order=orderfn(orderdetail)
@@ -424,6 +419,7 @@ class fivesteps():
 			# pass	
 
 	# called by change value
+
 	def checkprocess2order(self,rt_table,price_change,orderfn=""):
 		print ("\nprint price_change from checkprocess2order to order next plugin_fivesteps.py line 239")
 		print( price_change)
@@ -445,6 +441,9 @@ class fivesteps():
 			# params["order"]="buy"
 
 			# use self.order instead direct call orderfn
+
+			self.log["applog"].debug("### Access to buy first time ###")
+
 			resultbuy=self.order({'ordermode':'buybybot','firstbuy':'yes'},{},orderfn)
 			self.firstbuyflag="DONE"
 			# resultbuy=orderfn(params) # return result from refresh for all line.

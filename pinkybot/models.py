@@ -70,6 +70,8 @@ class keepconfig(models.Model):
 	planselect=models.CharField(max_length=5,unique=False,default="")
 	pluginfile=	models.CharField(max_length=30,unique=False,default="")
 
+	firstbuystate=models.CharField(max_length=3,unique=False,default="YES")
+
 # class buysellrecord(models.Model):
 # 	orderno=models.CharField(max_length=10,unique=False,default="")
 # 	side=models.CharField(max_length=10,unique=False,default="")
@@ -92,3 +94,7 @@ class updaterefresh(models.Model):
 	date=models.DateField(auto_now_add=True)
 	matchedtime=models.CharField(max_length=20,unique=False,default="-")
 	referorderno=models.CharField(max_length=15,unique=False,default="-")
+
+
+
+
