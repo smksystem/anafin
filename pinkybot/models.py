@@ -70,7 +70,7 @@ class keepconfig(models.Model):
 	planselect=models.CharField(max_length=5,unique=False,default="")
 	pluginfile=	models.CharField(max_length=30,unique=False,default="")
 
-	firstbuystate=models.CharField(max_length=3,unique=False,default="YES")
+	firstbuyflag=models.CharField(max_length=3,unique=False,default="YES")
 
 # class buysellrecord(models.Model):
 # 	orderno=models.CharField(max_length=10,unique=False,default="")

@@ -3,7 +3,8 @@ from pinkybot.models import monitorbidoffer,updaterefresh,valuechange,keepconfig
 
 import pytz
 class PackSelModel:
-	"""docstring for ClassName"""
+
+	
 	createdFlag=""
 	def __init__(self):
 		# self.log=applog
@@ -31,7 +32,16 @@ class PackSelModel:
 			print("**************")
 			print("\nError: with no any parameter configured please check database !!!")
 			print("**************")
+	def updatefirstorderbuy(dataupdate="NO"):
 
+		# self.log("applog")
+		updatekeepconfig=keepconfig.objects.filter(planname="test").update(firstbuyflag=dataupdate)
+
+		# updatefirstbuyflag=keepconfig(
+		# 		firstbuyflag=dataupdate
+
+		# 	)
+		# updatefirstbuyflag.save()
 	def updatestockvaluechange(stockdata):
 
 		# print("model of update value is called packsel_model.py line 16")

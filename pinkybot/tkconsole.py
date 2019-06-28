@@ -45,6 +45,7 @@ class outputlog(tk.Tk,mylog):
 						passtxt,
 						
 						]
+		planname=tk.StringVar(value="0")
 		
 		initinvest=tk.StringVar(value="0")
 		volumestep=tk.StringVar(value="0")
@@ -57,6 +58,7 @@ class outputlog(tk.Tk,mylog):
 		commonstep=tk.StringVar(value="0.00")  # step from range calculation
 		totalcostbuy=tk.StringVar(value="0000000000")
 		totalvolumebuy=tk.StringVar(value="000")
+
 		stockname=tk.StringVar(value="")
 		stockpin=tk.StringVar(value="3333")
 		remaininvest=tk.StringVar(value="0")
@@ -170,52 +172,59 @@ class outputlog(tk.Tk,mylog):
 		frameSetValue=tk.Frame(self,background = 'blue')
 		frameSetValue.grid(row=0,column=3,sticky="e"+"n"+"s"+"w")      
 
-
-		labelmonitor=tk.Label(frameSetValue,text="Monitor => ")
+		labelmonitor=tk.Label(frameSetValue,text="Planname ")
 		labelmonitor.grid(row=1,column=0)
 
-		labelstock=tk.Entry(frameSetValue,textvariable=stockname)
+		labelstock=tk.Entry(frameSetValue,textvariable=planname)
 		labelstock.grid(row=1,column=1)
 
 
 
+		labelmonitor=tk.Label(frameSetValue,text="Monitor => ")
+		labelmonitor.grid(row=2,column=0)
+
+		labelstock=tk.Entry(frameSetValue,textvariable=stockname)
+		labelstock.grid(row=2,column=1)
+
+
+
 		labelinitialvalue=tk.Label(frameSetValue, text="Invest")
-		labelinitialvalue.grid(row=2,column=0)
+		labelinitialvalue.grid(row=3,column=0)
 
 		enterInvest=tk.Entry(frameSetValue,textvariable=initinvest) #,textvariable=usertxt)
-		enterInvest.grid(row=2,column=1)
+		enterInvest.grid(row=3,column=1)
 
 
 		labelinitialvalue=tk.Label(frameSetValue, text="Volume Step")
-		labelinitialvalue.grid(row=3,column=0)
-
-		enterVolumn=tk.Entry(frameSetValue,textvariable=volumestep) #,textvariable=usertxt)
-		enterVolumn.grid(row=3,column=1)
-
-		labelinitialvalue=tk.Label(frameSetValue, text="Profit Step")
 		labelinitialvalue.grid(row=4,column=0)
 
-		enterVolumn=tk.Entry(frameSetValue,textvariable=profitstep) 
+		enterVolumn=tk.Entry(frameSetValue,textvariable=volumestep) #,textvariable=usertxt)
 		enterVolumn.grid(row=4,column=1)
+
+		labelinitialvalue=tk.Label(frameSetValue, text="Profit Step")
+		labelinitialvalue.grid(row=5,column=0)
+
+		enterVolumn=tk.Entry(frameSetValue,textvariable=profitstep) 
+		enterVolumn.grid(row=5,column=1)
 
 
 		labelinitialvalue=tk.Label(frameSetValue, text="Top Value Range")
-		labelinitialvalue.grid(row=5,column=0)
+		labelinitialvalue.grid(row=6,column=0)
 
 		enterVolumn=tk.Entry(frameSetValue,textvariable=topvaluerange) 
-		enterVolumn.grid(row=5,column=1)
+		enterVolumn.grid(row=6,column=1)
 
 		labelvaluebuy=tk.Label(frameSetValue, text="StartValueBuy")
-		labelvaluebuy.grid(row=6,column=0)
+		labelvaluebuy.grid(row=7,column=0)
 
 		entervaluebuy=tk.Entry(frameSetValue,textvariable=startvaluebuy) 
-		entervaluebuy.grid(row=6,column=1)
+		entervaluebuy.grid(row=7,column=1)
 
 		labelinitialvalue=tk.Label(frameSetValue, text="Floor Value Range")
-		labelinitialvalue.grid(row=7,column=0)
+		labelinitialvalue.grid(row=8,column=0)
 
 		enterVolumn=tk.Entry(frameSetValue,textvariable=floorvaluerange) 
-		enterVolumn.grid(row=7,column=1)
+		enterVolumn.grid(row=8,column=1)
 		
 
 

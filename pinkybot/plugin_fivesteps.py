@@ -13,14 +13,15 @@ class fivesteps():
 		self.log["applog"].info("Initialize of plugin_fivesteps")
 		# self.waitconfirmfirstorder=""
 		self.matchedordermonitor=[]
-		self.firstbuyflag="FIRSTBUY"
+		# self.firstbuyflag="YES" 
+
 
 	def setparameter(self,conf_params,conf_labeldisplay,conf_textout):
 		
 
 		allparams=PackSelModel.loadparameter("plugin_fivesteps")
 		# self.consolelog.info("test")
-		self.log["applog"].debug("Print initial All Stockname Parameter")
+		self.log["applog"].debug("def setparameter print initial All Stockname Parameter")
 		self.log["applog"].debug(allparams)
 		
 		# print("\n Print all stockname return from loadparameter in line 28 in def setparameter")
@@ -45,7 +46,11 @@ class fivesteps():
 		# profitstep=int(allparams["profitstep"])
 		# topvaluerange=float(allparams["topvaluerange"])
 		# stockname=allparams["monitorstock"]
+		planname=allparams["planname"]
 
+		self.firstbuyflag=allparams["firstbuyflag"]
+		self.log["applog"].debug("def setparameter load firstbuyflag value")
+		self.log["applog"].debug(self.firstbuyflag)
 
 
 
@@ -58,6 +63,7 @@ class fivesteps():
 		# floorvaluerange=24.00
 		# stopvaluerange=24.20		
 
+		# conf_params["planname"].set()
 
 		conf_params["initinvest"].set(str(initinvest))
 		conf_params["volumestep"].set(str(volumestep))
@@ -229,7 +235,9 @@ class fivesteps():
 		conf_textout("Remain Invest Cost = " + str_remaininvest)
 		conf_textout("StockName = " + stockname)
 		
-		self.conf_params={"initinvest":initinvest,
+		self.conf_params={
+							"planname":planname,
+							"initinvest":initinvest,
 							"volumestep":volumestep,
 							"profitstep":profitstep,
 							"commonvaluestep":commonvaluestep,
@@ -243,9 +251,11 @@ class fivesteps():
 							"stockpin":stockpin,
 		}
 		# conf_params
+		# print("\n---Config parameter is following plugin_fivesteps.py line 170")
+		self.log["console"].debug("def setparameter confirm self config parameter ")
+		# print(self.conf_params)
+		self.log["console"].debug(self.conf_params)
 
-		print("\n---Config parameter is following plugin_fivesteps.py line 170")
-		print(self.conf_params)
 		return self.conf_params
 
 	def process(self):
@@ -431,7 +441,7 @@ class fivesteps():
 		print(rt_table)
 
 
-		if not rt_table and price_change==self.conf_params["startvaluebuy"] and self.firstbuyflag=="FIRSTBUY":
+		if not rt_table and price_change==self.conf_params["startvaluebuy"] and self.firstbuyflag=="YES":
 			# print("start first buy plugin_fivesteps.py line 241")
 
 			# params["stockname"]=self.conf_params["stockname"]
@@ -445,12 +455,13 @@ class fivesteps():
 			self.log["applog"].debug("### Access to buy first time ###")
 
 			resultbuy=self.order({'ordermode':'buybybot','firstbuy':'yes'},{},orderfn)
-			self.firstbuyflag="DONE"
+			self.firstbuyflag="NO"
 			# resultbuy=orderfn(params) # return result from refresh for all line.
 			
 
 			# move append monitoring to order function.
-			
+
+			PackSelModel.updatefirstorderbuy("NO")
 
 		print("\nprint self.matchedordermonitor to monitor in plugin_fivesteps.py line 309 def checkprocess2order ")
 		print(self.matchedordermonitor)
