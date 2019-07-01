@@ -11,6 +11,7 @@ from pinkybot.packsel_model import PackSelModel
 from pinkybot.plugin_fivesteps import fivesteps
 from pinkybot.plugin_onestep import onestep
 from pinkybot.unitTest import unitTest
+from PIL import Image, ImageTk
 # from pinkybot.unitTest 
 
 class outputlog(tk.Tk,mylog):
@@ -20,7 +21,60 @@ class outputlog(tk.Tk,mylog):
 
 		tk.Tk.__init__(self)
 		mylog.__init__(self)
+
+		#############################TEST MENU PART########################################
+		menubar = tk.Menu()
+		# create a pulldown menu, and add it to the menu bar
+		filemenu = tk.Menu(menubar, tearoff=0)
+		editmenu = tk.Menu(menubar, tearoff=0)
+
+		menubar.add_cascade(label="File", menu=filemenu)
+		menubar.add_cascade(label="Edit", menu=editmenu)
+		filemenu.add_command(label="New")
+		filemenu.add_separator()
+		filemenu.add_command(label = 'Quit')
 		
+		self.config(menu = menubar)
+
+		########################## MENU button #########################################
+		toolbar = tk.Frame(self, borderwidth=2, relief='raised',bg='red')
+		toolbar.grid(row=0,column=0,sticky="we",columnspan=4)	
+		
+		img1 = Image.open('images/NewIcon.png')
+		self.useImg1 = ImageTk.PhotoImage(img1)
+
+		img2 = Image.open('images/LoadIcon.png')
+		self.useImg2 = ImageTk.PhotoImage(img2)
+		# newBtn = tk.Button(self.toolbar, image=self.useImg1, command=self.callback)
+
+		findbug=Image.open('images/findbug.png')
+		findbug=findbug.resize((20,20),Image.ANTIALIAS)
+		self.findbug=ImageTk.PhotoImage(findbug)
+
+		findbugBtn=tk.Button(toolbar,image=self.findbug,command=self.unitTest)
+		# findbugBtn.grid_propagate=False
+		findbugBtn.grid(column=2,row=0,sticky="e")
+
+		configparams=Image.open('images/config.png')
+		configparams=configparams.resize((20,20),Image.ANTIALIAS)
+		self.configparams=ImageTk.PhotoImage(configparams)
+
+		configparamsBtn=tk.Button(toolbar,image=self.configparams)
+		# findbugBtn.grid_propagate=False
+		configparamsBtn.grid(column=3,row=0,sticky="e")		
+
+
+
+		newBtn = tk.Button(toolbar,image=self.useImg1)
+		# newBtn.grid_propagate=False
+		newBtn.grid(column=0,row=0)
+
+		loadBtn = tk.Button(toolbar, image=self.useImg2)
+		loadBtn.grid(column=1,row=0)
+
+		
+        ##################################################################################
+
 		self.log["console"].info("Initialize and start load plugin")
 		self.log["console"].info("Initialize console")
 
@@ -98,7 +152,7 @@ class outputlog(tk.Tk,mylog):
 		# frameOutput.grid(row=0,column=0) #,rowspan = 1, columnspan = 1,sticky = "n"+"s" )
 
 
-		frameOutput.grid(row=0,column=0,sticky = "n"+"s"+"w"+"e")
+		frameOutput.grid(row=1,column=0,sticky = "n"+"s"+"w"+"e")
 		# frameOutput.grid_propagate(False)
 
 		# self.output = tk.Text(frameOutput,wrap='word', width=60, height=14, background = 'black', fg='white')
@@ -125,7 +179,7 @@ class outputlog(tk.Tk,mylog):
 		############################################################################################################################################
 		
 		self.frameLoginRT = tk.Frame(self ,background = 'green')
-		self.frameLoginRT.grid(row=0,column=2,sticky="e"+"n"+"s"+"w")
+		self.frameLoginRT.grid(row=1,column=2,sticky="e"+"n"+"s"+"w")
 
 
 		self.lablecomputetime=tk.Label(self.frameLoginRT,text="time")
@@ -170,68 +224,93 @@ class outputlog(tk.Tk,mylog):
 
 
 		frameSetValue=tk.Frame(self,background = 'blue')
-		frameSetValue.grid(row=0,column=3,sticky="e"+"n"+"s"+"w")      
+		frameSetValue.grid(row=1,column=3,sticky="e"+"n"+"s"+"w")      
+
+
+
+		############################################################################################################################################
+		############################# Value select plan #########################################################################################
+		############################################################################################################################################
+
+		optionList=[]
+		# for planName,myrange in enumerate(rangeData):
+		myrange={"test":"test"}
+		startfrom=str(myrange["test"])
+		# stopfrom=str(rangeData[myrange][1])
+		# stepfrom=str(rangeData[myrange][2])
+		# print (self.rangeData[myrange][0])
+		optionList.append(startfrom)
+
+		plannameVar=tk.StringVar()
+		plannameVar.set("Choose plan name") # default choice
+		self.rangeplanMenu1 = tk.OptionMenu(frameSetValue, plannameVar, *optionList,command=self.doMenuRange)
+		self.rangeplanMenu1.grid(row=1,column=0,sticky="w")
+
+
 
 		labelmonitor=tk.Label(frameSetValue,text="Planname ")
-		labelmonitor.grid(row=1,column=0)
+		labelmonitor.grid(row=2,column=0)
 
 		labelstock=tk.Entry(frameSetValue,textvariable=planname)
-		labelstock.grid(row=1,column=1)
+		labelstock.grid(row=2,column=1)
 
+		############################################################################################################################################
+		############################# Value parameter set frame #########################################################################################
+		############################################################################################################################################
 
 
 		labelmonitor=tk.Label(frameSetValue,text="Monitor => ")
-		labelmonitor.grid(row=2,column=0)
+		labelmonitor.grid(row=3,column=0)
 
 		labelstock=tk.Entry(frameSetValue,textvariable=stockname)
-		labelstock.grid(row=2,column=1)
+		labelstock.grid(row=3,column=1)
 
 
 
 		labelinitialvalue=tk.Label(frameSetValue, text="Invest")
-		labelinitialvalue.grid(row=3,column=0)
+		labelinitialvalue.grid(row=4,column=0)
 
 		enterInvest=tk.Entry(frameSetValue,textvariable=initinvest) #,textvariable=usertxt)
-		enterInvest.grid(row=3,column=1)
+		enterInvest.grid(row=4,column=1)
 
 
 		labelinitialvalue=tk.Label(frameSetValue, text="Volume Step")
-		labelinitialvalue.grid(row=4,column=0)
-
-		enterVolumn=tk.Entry(frameSetValue,textvariable=volumestep) #,textvariable=usertxt)
-		enterVolumn.grid(row=4,column=1)
-
-		labelinitialvalue=tk.Label(frameSetValue, text="Profit Step")
 		labelinitialvalue.grid(row=5,column=0)
 
-		enterVolumn=tk.Entry(frameSetValue,textvariable=profitstep) 
+		enterVolumn=tk.Entry(frameSetValue,textvariable=volumestep) #,textvariable=usertxt)
 		enterVolumn.grid(row=5,column=1)
+
+		labelinitialvalue=tk.Label(frameSetValue, text="Profit Step")
+		labelinitialvalue.grid(row=6,column=0)
+
+		enterVolumn=tk.Entry(frameSetValue,textvariable=profitstep) 
+		enterVolumn.grid(row=6,column=1)
 
 
 		labelinitialvalue=tk.Label(frameSetValue, text="Top Value Range")
-		labelinitialvalue.grid(row=6,column=0)
+		labelinitialvalue.grid(row=7,column=0)
 
 		enterVolumn=tk.Entry(frameSetValue,textvariable=topvaluerange) 
-		enterVolumn.grid(row=6,column=1)
+		enterVolumn.grid(row=7,column=1)
 
 		labelvaluebuy=tk.Label(frameSetValue, text="StartValueBuy")
-		labelvaluebuy.grid(row=7,column=0)
+		labelvaluebuy.grid(row=8,column=0)
 
 		entervaluebuy=tk.Entry(frameSetValue,textvariable=startvaluebuy) 
-		entervaluebuy.grid(row=7,column=1)
+		entervaluebuy.grid(row=8,column=1)
 
 		labelinitialvalue=tk.Label(frameSetValue, text="Floor Value Range")
-		labelinitialvalue.grid(row=8,column=0)
+		labelinitialvalue.grid(row=9,column=0)
 
 		enterVolumn=tk.Entry(frameSetValue,textvariable=floorvaluerange) 
-		enterVolumn.grid(row=8,column=1)
+		enterVolumn.grid(row=9,column=1)
 		
 
 
 
 
 		btnStartInitCal=tk.Button(frameSetValue,text="Set Parameters",command=self.setparameter)
-		btnStartInitCal.grid(row=9,column=1 )
+		btnStartInitCal.grid(row=10,column=1 )
 
 
 
@@ -241,41 +320,41 @@ class outputlog(tk.Tk,mylog):
 		
 
 		labelvaluebuy=tk.Label(frameSetValue, text="Total Cost Buy:")
-		labelvaluebuy.grid(row=9,column=0,sticky="w")
+		labelvaluebuy.grid(row=10,column=0,sticky="w")
 
 		labelvaluebuy=tk.Label(frameSetValue, textvariable=totalcostbuy)
-		labelvaluebuy.grid(row=9,column=0,sticky="e")
+		labelvaluebuy.grid(row=10,column=0,sticky="e")
 
 
 		labelvalumebuy=tk.Label(frameSetValue, text="Total Volume Buy:")
-		labelvalumebuy.grid(row=10,column=0,sticky="w")
-
-		labelvalumebuy=tk.Label(frameSetValue, textvariable=totalvolumebuy)
-		labelvalumebuy.grid(row=10,column=0,sticky="e")
-
-		labelvalumebuy=tk.Label(frameSetValue, text="Remain Invest:")
 		labelvalumebuy.grid(row=11,column=0,sticky="w")
 
-		labelvalumebuy=tk.Label(frameSetValue, textvariable=remaininvest)
+		labelvalumebuy=tk.Label(frameSetValue, textvariable=totalvolumebuy)
 		labelvalumebuy.grid(row=11,column=0,sticky="e")
+
+		labelvalumebuy=tk.Label(frameSetValue, text="Remain Invest:")
+		labelvalumebuy.grid(row=12,column=0,sticky="w")
+
+		labelvalumebuy=tk.Label(frameSetValue, textvariable=remaininvest)
+		labelvalumebuy.grid(row=12,column=0,sticky="e")
 		
 
 		btnBuyCommand=tk.Button(frameSetValue,text="Buy Now",command=self.buybyclick, width = 10,height=2)
-		btnBuyCommand.grid(row=12,column=0,sticky="e")
+		btnBuyCommand.grid(row=13,column=0,sticky="e")
 
 		btnSellCommand=tk.Button(frameSetValue,text="Sell Now",command=self.sellbyclick, width = 10,height=2)
-		btnSellCommand.grid(row=12,column=1,sticky="w")
+		btnSellCommand.grid(row=13,column=1,sticky="w")
 		btnSellCommand.grid_propagate(False)
 
 		btnRefreshCmd=tk.Button(frameSetValue,text="Refresh",command=self.rtrefresh, width = 10,height=2)
-		btnRefreshCmd.grid(row=13,column=0)
+		btnRefreshCmd.grid(row=14,column=0)
 
 
 		radioauto=tk.Radiobutton(frameSetValue,text="auto",variable=runningmode,value="auto",indicatoron=0,command=self.chooserunningmode)
-		radioauto.grid(row=13,column=1,sticky="w")
+		radioauto.grid(row=14,column=1,sticky="w")
 
 		radiomanual=tk.Radiobutton(frameSetValue,text="manual",variable=runningmode,value="manual",indicatoron=0,command=self.chooserunningmode)
-		radiomanual.grid(row=13,column=1)
+		radiomanual.grid(row=14,column=1)
 
 		
 

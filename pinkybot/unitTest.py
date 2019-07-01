@@ -1,6 +1,8 @@
 import tkinter as tk
 import json
 class unitTest(tk.Tk):
+# class unitTest():
+
 	"""docstring for unitTest"""
 	def __init__(self, arg):
 		# super(unitTest, self).__init__()
@@ -8,6 +10,8 @@ class unitTest(tk.Tk):
 		self.form = arg 
 
 		tk.Toplevel.__init__(self)
+		# self.Toplevel.__init__(self)
+
 		self.geometry("800x700")
 
 		self.unitframe={}
