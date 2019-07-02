@@ -46,7 +46,12 @@ class monitorbidoffer(models.Model):
 	bidvolumn5 = models.FloatField(unique=False)
 	offervolumn5 = models.FloatField(unique=False)
 
+class keeplogin(models.Model):
 
+	brokeId=models.CharField(max_length=3)
+	loginId=models.CharField(max_length=10,unique=True,default="")
+	passwordId=models.CharField(max_length=15,unique=True,default="")
+	pinId=models.CharField(max_length=10)
 
 class keepconfig(models.Model):
 

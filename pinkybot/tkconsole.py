@@ -11,6 +11,7 @@ from pinkybot.packsel_model import PackSelModel
 from pinkybot.plugin_fivesteps import fivesteps
 from pinkybot.plugin_onestep import onestep
 from pinkybot.unitTest import unitTest
+from pinkybot.loginconfig import loginconfig
 from PIL import Image, ImageTk
 # from pinkybot.unitTest 
 
@@ -26,10 +27,16 @@ class outputlog(tk.Tk,mylog):
 		menubar = tk.Menu()
 		# create a pulldown menu, and add it to the menu bar
 		filemenu = tk.Menu(menubar, tearoff=0)
-		editmenu = tk.Menu(menubar, tearoff=0)
+		configmenu = tk.Menu(menubar, tearoff=0)
+
 
 		menubar.add_cascade(label="File", menu=filemenu)
-		menubar.add_cascade(label="Edit", menu=editmenu)
+		menubar.add_cascade(label="Config", menu=configmenu)
+
+
+		configmenu.add_command(label = "Config Login",command=self.loginconfig)
+		configmenu.add_command(label = "Config Parameters")
+
 		filemenu.add_command(label="New")
 		filemenu.add_separator()
 		filemenu.add_command(label = 'Quit')
@@ -37,22 +44,15 @@ class outputlog(tk.Tk,mylog):
 		self.config(menu = menubar)
 
 		########################## MENU button #########################################
+
 		toolbar = tk.Frame(self, borderwidth=2, relief='raised',bg='red')
 		toolbar.grid(row=0,column=0,sticky="we",columnspan=4)	
 		
-		img1 = Image.open('images/NewIcon.png')
-		self.useImg1 = ImageTk.PhotoImage(img1)
-
-		img2 = Image.open('images/LoadIcon.png')
-		self.useImg2 = ImageTk.PhotoImage(img2)
-		# newBtn = tk.Button(self.toolbar, image=self.useImg1, command=self.callback)
-
 		findbug=Image.open('images/findbug.png')
 		findbug=findbug.resize((20,20),Image.ANTIALIAS)
 		self.findbug=ImageTk.PhotoImage(findbug)
 
 		findbugBtn=tk.Button(toolbar,image=self.findbug,command=self.unitTest)
-		# findbugBtn.grid_propagate=False
 		findbugBtn.grid(column=2,row=0,sticky="e")
 
 		configparams=Image.open('images/config.png')
@@ -60,18 +60,14 @@ class outputlog(tk.Tk,mylog):
 		self.configparams=ImageTk.PhotoImage(configparams)
 
 		configparamsBtn=tk.Button(toolbar,image=self.configparams)
-		# findbugBtn.grid_propagate=False
 		configparamsBtn.grid(column=3,row=0,sticky="e")		
 
+		startrun=Image.open('images/start.png')
+		startrun=startrun.resize((20,20),Image.ANTIALIAS)
+		self.startrun=ImageTk.PhotoImage(startrun)
 
-
-		newBtn = tk.Button(toolbar,image=self.useImg1)
-		# newBtn.grid_propagate=False
-		newBtn.grid(column=0,row=0)
-
-		loadBtn = tk.Button(toolbar, image=self.useImg2)
-		loadBtn.grid(column=1,row=0)
-
+		startrunBtn=tk.Button(toolbar,image=self.startrun)
+		startrunBtn.grid(column=4,row=0,sticky="e")		
 		
         ##################################################################################
 
@@ -211,6 +207,10 @@ class outputlog(tk.Tk,mylog):
 		labelpinpassword.grid(row=3,column=0)
 		enterpin=tk.Entry(self.frameLoginRT,show="*",textvariable=stockpin)
 		enterpin.grid(row=3,column=1)
+
+		####################################################################################################
+		####################################################################################################
+		####################################################################################################
 
 		btnLoginRT=tk.Button(self.frameLoginRT,text="Start Login RT",command=self.executeLogin)
 		btnLoginRT.grid(row=3,column=2 )
@@ -898,6 +898,8 @@ class outputlog(tk.Tk,mylog):
 			# exit()
 			self.mybot.threadlogin(self.loginSet)
 
+	def loginconfig(self):
+		myloginresult=loginconfig(self)
 
 	def unitTest(self):
 
