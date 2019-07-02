@@ -1,5 +1,6 @@
 import tkinter as tk
 import json
+from pinkybot.packsel_model import PackSelModel
 
 
 class loginconfig(tk.Tk):

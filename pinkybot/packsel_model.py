@@ -32,6 +32,14 @@ class PackSelModel:
 			print("**************")
 			print("\nError: with no any parameter configured please check database !!!")
 			print("**************")
+
+	def updateloginconfig(loginconfigparams):
+		chklogin=keeploginconfig.objects.filter(brokeId=loginconfigparams[0]) # SQL filter for order no to find existing record.
+		if not chkorderno.exists():
+			newrow=updaterefresh(**dataparams)
+			newrow.save()
+		
+		# updatekeepconfig=keeploginconfig.objects.filter(planname="test").update(firstbuyflag=dataupdate)
 	def updatefirstorderbuy(dataupdate="NO"):
 
 		# self.log("applog")
