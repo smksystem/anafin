@@ -1,4 +1,4 @@
-from pinkybot.models import monitorbidoffer,updaterefresh,valuechange,keepconfig
+from pinkybot.models import monitorbidoffer,updaterefresh,valuechange,keepconfig,keeplogin
 # from elasticsearch import Elasticsearch
 
 import pytz
@@ -33,11 +33,27 @@ class PackSelModel:
 			print("\nError: with no any parameter configured please check database !!!")
 			print("**************")
 
-	def updateloginconfig(loginconfigparams):
-		chklogin=keeploginconfig.objects.filter(brokeId=loginconfigparams[0]) # SQL filter for order no to find existing record.
-		if not chkorderno.exists():
-			newrow=updaterefresh(**dataparams)
-			newrow.save()
+	def updateloginModel(loginconfigparams):
+		
+		print("Access to update packsel_model.py")
+
+		obj, created = keeplogin.objects.update_or_create(
+		    brokeId='17',      													    ##### Search & insert if not found.
+		    defaults={'loginId':'9147501','passwordId':"1313",'pinId':"test111"},	##### if found from above search, Update to which field that need to be updated.
+		)
+		if created==True:
+			print("New record has been created")
+		else:
+			print("Update record")
+		# print (obj,created)
+
+		# chklogin=keeplogin.objects.filter(brokeId=loginconfigparams[0]) # SQL filter for order no to find existing record.
+
+
+
+		# if not chkorderno.exists():
+		# 	newrow=updaterefresh(**dataparams)
+		# 	newrow.save()
 		
 		# updatekeepconfig=keeploginconfig.objects.filter(planname="test").update(firstbuyflag=dataupdate)
 	def updatefirstorderbuy(dataupdate="NO"):

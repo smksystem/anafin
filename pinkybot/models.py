@@ -48,10 +48,10 @@ class monitorbidoffer(models.Model):
 
 class keeplogin(models.Model):
 
-	brokeId=models.CharField(max_length=3)
-	loginId=models.CharField(max_length=10,unique=True,default="")
-	passwordId=models.CharField(max_length=15,unique=True,default="")
-	pinId=models.CharField(max_length=10)
+	brokeId=models.CharField(max_length=3,unique=True)
+	loginId=models.CharField(max_length=10,unique=False,default="")
+	passwordId=models.CharField(max_length=15,unique=False,default="")
+	pinId=models.CharField(max_length=10,unique=False,default="")
 
 class keepconfig(models.Model):
 
