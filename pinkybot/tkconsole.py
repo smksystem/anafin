@@ -181,32 +181,10 @@ class outputlog(tk.Tk,mylog):
 		self.lablecomputetime=tk.Label(self.frameLoginRT,text="time")
 		self.lablecomputetime.grid(row=0,column=2)
 
-		btnUnitTest=tk.Button(self.frameLoginRT,text="Unit Test",command=self.unitTest)
-		btnUnitTest.grid(row=1,column=2 )
+		# btnUnitTest=tk.Button(self.frameLoginRT,text="Unit Test",command=self.unitTest)
+		# btnUnitTest.grid(row=1,column=2 )
 
 	
-		labelnamebrokeid=tk.Label(self.frameLoginRT, text="Broke ID")
-		labelnamebrokeid.grid(row=0,column=0)
-		enterbrokeid=tk.Entry(self.frameLoginRT,textvariable=broketxt)
-		enterbrokeid.grid(row=0,column=1)      
-
-
-
-
-		labelnamelogin=tk.Label(self.frameLoginRT, text="Login ID")
-		labelnamelogin.grid(row=1,column=0)
-		enterloginid=tk.Entry(self.frameLoginRT,textvariable=usertxt)
-		enterloginid.grid(row=1,column=1)
-
-		labelnamepassword=tk.Label(self.frameLoginRT, text="Password")
-		labelnamepassword.grid(row=2,column=0)
-		enterpassword=tk.Entry(self.frameLoginRT,show="*",textvariable=passtxt)
-		enterpassword.grid(row=2,column=1)
-
-		labelpinpassword=tk.Label(self.frameLoginRT, text="PIN")
-		labelpinpassword.grid(row=3,column=0)
-		enterpin=tk.Entry(self.frameLoginRT,show="*",textvariable=stockpin)
-		enterpin.grid(row=3,column=1)
 
 		####################################################################################################
 		####################################################################################################
@@ -512,15 +490,15 @@ class outputlog(tk.Tk,mylog):
 
 	def buybyclick(self):
 		pass
-	# 	print("Buy set value")
-	# 	# self.mybot.myorder("buybyclick",self.configval)
+		# 	print("Buy set value")
+		# 	# self.mybot.myorder("buybyclick",self.configval)
 
-	# 	buyparams={ "ordermode":"buybyclick",
+		# 	buyparams={ "ordermode":"buybyclick",
 
-	# 				}
+		# 				}
 
-	# 	self.mybot.mycollectqueues["qorder"].put(buyparams)
-	# 	print ("Buy finished ")
+		# 	self.mybot.mycollectqueues["qorder"].put(buyparams)
+		# 	print ("Buy finished ")
 
 	def sellbyclick(self):
 		print ("sell set value")	
@@ -896,6 +874,9 @@ class outputlog(tk.Tk,mylog):
 			for child in self.frameLoginRT.winfo_children():
 				child.configure(state='disable')
 			# exit()
+
+			self.loginset=PackSelModel.getloginModel("013")
+
 			self.mybot.threadlogin(self.loginSet)
 
 	def loginconfig(self):

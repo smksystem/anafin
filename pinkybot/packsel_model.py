@@ -32,14 +32,19 @@ class PackSelModel:
 			print("**************")
 			print("\nError: with no any parameter configured please check database !!!")
 			print("**************")
-
-	def updateloginModel(loginconfigparams):
+	def getloginModel(mybrokeId=""):
+		loginparams=keeplogin.objects.filter(brokeId=mybrokeId).values()
+		return loginparams[0]
+	def updateloginModel(loginparams):
 		
 		print("Access to update packsel_model.py")
+		print(loginparams)
 
 		obj, created = keeplogin.objects.update_or_create(
-		    brokeId='17',      													    ##### Search & insert if not found.
-		    defaults={'loginId':'9147501','passwordId':"1313",'pinId':"test111"},	##### if found from above search, Update to which field that need to be updated.
+		    brokeId=loginparams["brokeId"],      													    ##### Search & insert if not found.
+		    defaults={'loginId':loginparams["loginId"],
+		    		'passwordId':loginparams["passwordId"],
+		    		'pinId':loginparams["pinId"]},	##### if found from above search, Update to which field that need to be updated.
 		)
 		if created==True:
 			print("New record has been created")

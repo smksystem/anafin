@@ -14,10 +14,10 @@ class loginconfig(tk.Tk):
 		tk.Toplevel.__init__(self)
 		# print("login config is called")
 		# self.geometry("400x700+200+200")
-		broketxt=tk.StringVar(value="013")
-		usertxt=tk.StringVar(value="014xxxx")
-		passtxt=tk.StringVar()
-		pintxt=tk.StringVar(value="33")
+		self.broketxt=tk.StringVar(value="013")
+		self.usertxt=tk.StringVar(value="014xxxx")
+		self.passtxt=tk.StringVar()
+		self.pintxt=tk.StringVar(value="33")
 
 
 
@@ -46,22 +46,22 @@ class loginconfig(tk.Tk):
 	
 		labelnamebrokeid=tk.Label(self.frameLoginRT, text="Broke ID")
 		labelnamebrokeid.grid(row=0,column=0,sticky="w")
-		enterbrokeid=tk.Entry(self.frameLoginRT,textvariable=broketxt)
+		enterbrokeid=tk.Entry(self.frameLoginRT,textvariable=self.broketxt)
 		enterbrokeid.grid(row=0,column=1)      
 
 		labelnamelogin=tk.Label(self.frameLoginRT, text="Login ID")
 		labelnamelogin.grid(row=1,column=0,sticky="w")
-		enterloginid=tk.Entry(self.frameLoginRT,textvariable=usertxt)
+		enterloginid=tk.Entry(self.frameLoginRT,textvariable=self.usertxt)
 		enterloginid.grid(row=1,column=1)
 
 		labelnamepassword=tk.Label(self.frameLoginRT, text="Password")
 		labelnamepassword.grid(row=2,column=0,sticky="w")
-		enterpassword=tk.Entry(self.frameLoginRT,show="*",textvariable=passtxt)
+		enterpassword=tk.Entry(self.frameLoginRT,show="*",textvariable=self.passtxt)
 		enterpassword.grid(row=2,column=1)
 
 		labelpinpassword=tk.Label(self.frameLoginRT, text="PIN")
 		labelpinpassword.grid(row=3,column=0,sticky="w")
-		enterpin=tk.Entry(self.frameLoginRT,show="*",textvariable=pintxt)
+		enterpin=tk.Entry(self.frameLoginRT,show="*",textvariable=self.pintxt)
 		enterpin.grid(row=3,column=1)
 
 		btnSetLoginConfig=tk.Button(self.frameLoginRT,text="Set Login Config",command=self.setLoginConfig)
@@ -69,10 +69,24 @@ class loginconfig(tk.Tk):
 
 		btnCancel=tk.Button(self.frameLoginRT,text="Cancel",command=self.loginCancel)
 		btnCancel.grid(row=4,column=1,columnspan=2,sticky="w"+"e")
+		
+		self.getloginConfig()
 
 	def setLoginConfig(self):
 
 		print("access set login config button menu")
-		PackSelModel.updateloginModel("test")
+		loginparams={
+						"brokeId":self.broketxt.get(),
+						"loginId":self.usertxt.get(),
+						"passwordId":self.passtxt.get(),
+						"pinId":self.pintxt.get(),
+		}
+		PackSelModel.updateloginModel(loginparams)
+
 	def loginCancel(self):
 		self.destroy()
+	def getloginConfig(self):
+		print("load Login Config")
+		brokeId="013"
+		loginparams= PackSelModel.getloginModel(brokeId)
+		print(loginparams)
