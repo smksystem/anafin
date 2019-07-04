@@ -82,6 +82,11 @@ class fivesteps():
 		commonvaluestep=float(conf_params["commonstep"].get())
 		# stockname=conf_params["stockname"].get()
 		stockpin=conf_params["stockpin"].get()
+		print("stockpin")
+		print(stockpin)
+		self.log["applog"].debug("Print stock pin value")
+		self.log["applog"].debug(stockpin)
+
 		runvalue=startvaluebuy # change text to numbering.
 		stopvaluerange=topvaluerange
 		runinvest=initinvest

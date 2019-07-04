@@ -43,32 +43,54 @@ class loginconfig(tk.Tk):
 		# btnUnitTest=tk.Button(self.frameLoginRT,text="Unit Test",command=self.unitTest)
 		# btnUnitTest.grid(row=1,column=2 )
 
+		labelnamelogin=tk.Label(self.frameLoginRT, text="Login Profile")
+		labelnamelogin.grid(row=0,column=0,sticky="w")
+
+		#############################################################################3
+		var = tk.StringVar()
+		# initial value
+		var.set('red')
+
+		choices = ['red', 'green', 'blue', 'yellow','white', 'magenta']
+		brokeIdopt = tk.OptionMenu(self.frameLoginRT, var, *choices)
+		brokeIdopt.grid(row=0,column=1,sticky="w"+"e")
+		#############################################################################3
 	
+
 		labelnamebrokeid=tk.Label(self.frameLoginRT, text="Broke ID")
-		labelnamebrokeid.grid(row=0,column=0,sticky="w")
-		enterbrokeid=tk.Entry(self.frameLoginRT,textvariable=self.broketxt)
-		enterbrokeid.grid(row=0,column=1)      
+		labelnamebrokeid.grid(row=1,column=0,sticky="w")
+	
+		# enterbrokeid=tk.Entry(self.frameLoginRT,textvariable=self.broketxt)
+		# enterbrokeid.grid(row=0,column=1)      
+
+
+
+
+
+
+
+
 
 		labelnamelogin=tk.Label(self.frameLoginRT, text="Login ID")
-		labelnamelogin.grid(row=1,column=0,sticky="w")
+		labelnamelogin.grid(row=2,column=0,sticky="w")
 		enterloginid=tk.Entry(self.frameLoginRT,textvariable=self.usertxt)
-		enterloginid.grid(row=1,column=1)
+		enterloginid.grid(row=2,column=1)
 
 		labelnamepassword=tk.Label(self.frameLoginRT, text="Password")
-		labelnamepassword.grid(row=2,column=0,sticky="w")
+		labelnamepassword.grid(row=3,column=0,sticky="w")
 		enterpassword=tk.Entry(self.frameLoginRT,show="*",textvariable=self.passtxt)
-		enterpassword.grid(row=2,column=1)
+		enterpassword.grid(row=3,column=1)
 
 		labelpinpassword=tk.Label(self.frameLoginRT, text="PIN")
-		labelpinpassword.grid(row=3,column=0,sticky="w")
+		labelpinpassword.grid(row=4,column=0,sticky="w")
 		enterpin=tk.Entry(self.frameLoginRT,show="*",textvariable=self.pintxt)
-		enterpin.grid(row=3,column=1)
+		enterpin.grid(row=4,column=1)
 
 		btnSetLoginConfig=tk.Button(self.frameLoginRT,text="Set Login Config",command=self.setLoginConfig)
-		btnSetLoginConfig.grid(row=4,column=0,columnspan=1,sticky="w"+"e")
+		btnSetLoginConfig.grid(row=5,column=0,columnspan=1,sticky="w"+"e")
 
 		btnCancel=tk.Button(self.frameLoginRT,text="Cancel",command=self.loginCancel)
-		btnCancel.grid(row=4,column=1,columnspan=2,sticky="w"+"e")
+		btnCancel.grid(row=5,column=1,columnspan=2,sticky="w"+"e")
 		
 		self.getloginConfig()
 

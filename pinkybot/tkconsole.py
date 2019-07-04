@@ -83,18 +83,7 @@ class outputlog(tk.Tk,mylog):
 		# self.geometry(str(self.winfo_screenwidth())+'x700+0+0')
 		self.geometry('1020x700+0+0')
 
-		# self.grid_columnconfigure(1, weight=1)
-		# self.pack_propagate(0)
-		usertxt=tk.StringVar(value="014xxxx")
-		passtxt=tk.StringVar()
-		broketxt=tk.StringVar(value="013")
-		# global time1
-		self.loginSet=[
-						broketxt,
-						usertxt,
-						passtxt,
-						
-						]
+		
 		planname=tk.StringVar(value="0")
 		
 		initinvest=tk.StringVar(value="0")
@@ -110,7 +99,9 @@ class outputlog(tk.Tk,mylog):
 		totalvolumebuy=tk.StringVar(value="000")
 
 		stockname=tk.StringVar(value="")
-		stockpin=tk.StringVar(value="3333")
+		
+		stockpin=tk.StringVar()
+
 		remaininvest=tk.StringVar(value="0")
 		runningmode=tk.StringVar(value="auto")		
 
@@ -871,11 +862,23 @@ class outputlog(tk.Tk,mylog):
 	def executeLogin(self):
 
 			# print("hello button Login " + self.loginSet[0].get())
+			# self.loginSet=[
+			# 			broketxt,
+			# 			usertxt,
+			# 			passtxt,
+						
+			# 			]
 			for child in self.frameLoginRT.winfo_children():
 				child.configure(state='disable')
 			# exit()
 
-			self.loginset=PackSelModel.getloginModel("013")
+			self.loginSet=PackSelModel.getloginModel("013")
+			print(self.loginSet)
+			print("stockpin in executeLogin")
+
+			self.configval["stockpin"].set(self.loginSet["pinId"])
+			# print(self.configval["stockpin"].get())
+
 
 			self.mybot.threadlogin(self.loginSet)
 

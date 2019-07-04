@@ -119,17 +119,20 @@ class pinkybot(packselenium):
 		
 
 		# from pinkybot.monitor import pinkybot
-		LoginParams={
-		  "mybrokeId":loginSet[0].get(),
-		  "myuser":loginSet[1].get(),
-		  "mypassword":loginSet[2].get(),
-		  }
-		self.log["applog"].debug("Login Parameter")
-		self.log["applog"].debug(LoginParams)
+		# LoginParams=loginSet
+		# LoginParams={
+		#   # "mybrokeId":loginSet[0].get(),
+		#   "mybrokeId":loginSet["brokeId"],
+
+		#   "myuser":loginSet[1].get(),
+		#   "mypassword":loginSet[2].get(),
+		#   }
+		# self.log["applog"].debug("Login Parameter")
+		# self.log["applog"].debug(LoginParams)
 		# print (LoginParams)
 		# self.mypinkylogin(LoginParams)
 		
-		mthread=MyThread(self.mycollectqueues["qvalchange"],self.mypinkylogin,args=(LoginParams,))
+		mthread=MyThread(self.mycollectqueues["qvalchange"],self.mypinkylogin,args=(loginSet,))
 		mthread.setDaemon=True
 		mthread.start()
 		# mthread.join()

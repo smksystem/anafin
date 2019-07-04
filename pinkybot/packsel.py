@@ -135,7 +135,7 @@ class packselenium(PackSelModel):
 		if self.mode=="xdebug":
 			driver.get("http://localhost:8000/dummy/")
 		elif self.mode=="xlive":
-			driver.get("http://wen060.settrade.com/login.jsp?txtBrokerId="+loginParams["mybrokeId"])
+			driver.get("http://wen060.settrade.com/login.jsp?txtBrokerId="+loginParams["brokeId"])
 
 
 
@@ -154,12 +154,12 @@ class packselenium(PackSelModel):
 		elem = driver.find_element_by_name("txtLogin")
 		elem.clear()
 		# put user in key
-		elem.send_keys(loginParams["myuser"]) 
+		elem.send_keys(loginParams["loginId"]) 
 
 		elem = driver.find_element_by_name("txtPassword")
 		elem.clear()
 		# put password in key
-		elem.send_keys(loginParams["mypassword"])
+		elem.send_keys(loginParams["passwordId"])
 
 		elem.send_keys(Keys.RETURN)
 
