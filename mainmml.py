@@ -2,7 +2,7 @@ import django
 import sys
 import os
 	
-sys.path.append('D:\workspace\anafin')
+sys.path.append('D:\workspace\anafin')	
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'anafin.settings')
 django.setup()
 	
@@ -13,7 +13,7 @@ from pinkybot.monitor import pinkybot
 if __name__=="__main__":
 			
 	# print("--- Welcome Main Pinkybot by MML ---") 
-	console=outputlog()
+	console=outputlog()	
 	console.Refresher()
 	# console.attributes('-topmost', 'true') #### to make console on top level to other application.
 	console.mainloop()

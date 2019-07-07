@@ -12,6 +12,7 @@ from pinkybot.plugin_fivesteps import fivesteps
 from pinkybot.plugin_onestep import onestep
 from pinkybot.unitTest import unitTest
 from pinkybot.loginconfig import loginconfig
+from pinkybot.configparams import configparams
 from PIL import Image, ImageTk
 # from pinkybot.unitTest 
 
@@ -35,7 +36,8 @@ class outputlog(tk.Tk,mylog):
 
 
 		configmenu.add_command(label = "Config Login",command=self.loginconfig)
-		configmenu.add_command(label = "Config Parameters")
+
+		configmenu.add_command(label = "Config Parameters",command=self.configparams)
 
 		filemenu.add_command(label="New")
 		filemenu.add_separator()
@@ -55,11 +57,11 @@ class outputlog(tk.Tk,mylog):
 		findbugBtn=tk.Button(toolbar,image=self.findbug,command=self.unitTest)
 		findbugBtn.grid(column=2,row=0,sticky="e")
 
-		configparams=Image.open('images/config.png')
-		configparams=configparams.resize((20,20),Image.ANTIALIAS)
-		self.configparams=ImageTk.PhotoImage(configparams)
+		configImg=Image.open('images/config.png')
+		configImg=configImg.resize((20,20),Image.ANTIALIAS)
+		self.configPhoto=ImageTk.PhotoImage(configImg)
 
-		configparamsBtn=tk.Button(toolbar,image=self.configparams)
+		configparamsBtn=tk.Button(toolbar,image=self.configPhoto)
 		configparamsBtn.grid(column=3,row=0,sticky="e")		
 
 		startrun=Image.open('images/start.png')
@@ -881,6 +883,11 @@ class outputlog(tk.Tk,mylog):
 
 
 			self.mybot.threadlogin(self.loginSet)
+
+	def configparams(self):
+		print("############# config parameter ###################")
+		myconfigparamsresult = configparams(self)
+
 
 	def loginconfig(self):
 		myloginresult=loginconfig(self)

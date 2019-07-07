@@ -12,8 +12,15 @@ class loginconfig(tk.Tk):
 		# self.arg = arg
 		# self.form = arg 
 		tk.Toplevel.__init__(self)
+
+
+		allquery=self.getloginConfig("all")
+		print("Print query set after get all data")
+
+
 		# print("login config is called")
 		# self.geometry("400x700+200+200")
+		self.profiletxt=tk.StringVar(value="profile")
 		self.broketxt=tk.StringVar(value="013")
 		self.usertxt=tk.StringVar(value="014xxxx")
 		self.passtxt=tk.StringVar()
@@ -43,25 +50,34 @@ class loginconfig(tk.Tk):
 		# btnUnitTest=tk.Button(self.frameLoginRT,text="Unit Test",command=self.unitTest)
 		# btnUnitTest.grid(row=1,column=2 )
 
-		labelnamelogin=tk.Label(self.frameLoginRT, text="Login Profile")
-		labelnamelogin.grid(row=0,column=0,sticky="w")
+		# labelnamelogin=tk.Label(self.frameLoginRT, text="Login Profile")
+		# labelnamelogin.grid(row=0,column=0,sticky="w")
 
 		#############################################################################3
+
+		choices=[]
+		for brokechoices in range(len(allquery)):
+			print(allquery[brokechoices]["profileId"])
+			choices.append(allquery[brokechoices]["profileId"])
+		choices.append("New")
 		var = tk.StringVar()
-		# initial value
-		var.set('red')
+		var.set('Profile')
 
-		choices = ['red', 'green', 'blue', 'yellow','white', 'magenta']
-		brokeIdopt = tk.OptionMenu(self.frameLoginRT, var, *choices)
-		brokeIdopt.grid(row=0,column=1,sticky="w"+"e")
+		# choices = ['red', 'green', 'blue', 'yellow','white', 'magenta']
+		brokeIdopt = tk.OptionMenu(self.frameLoginRT, var, *choices,command=self.showloginconfig)
+		brokeIdopt.grid(row=0,column=0,sticky="w"+"e")
+		brokeIdopt['menu'].insert_separator(len(choices)-1)
+
 		#############################################################################3
-	
+		enterbrokeid=tk.Entry(self.frameLoginRT,textvariable=self.profiletxt)
+		enterbrokeid.grid(row=0,column=1)      
+
 
 		labelnamebrokeid=tk.Label(self.frameLoginRT, text="Broke ID")
 		labelnamebrokeid.grid(row=1,column=0,sticky="w")
 	
-		# enterbrokeid=tk.Entry(self.frameLoginRT,textvariable=self.broketxt)
-		# enterbrokeid.grid(row=0,column=1)      
+		enterbrokeid=tk.Entry(self.frameLoginRT,textvariable=self.broketxt)
+		enterbrokeid.grid(row=1,column=1)      
 
 
 
@@ -78,21 +94,51 @@ class loginconfig(tk.Tk):
 
 		labelnamepassword=tk.Label(self.frameLoginRT, text="Password")
 		labelnamepassword.grid(row=3,column=0,sticky="w")
-		enterpassword=tk.Entry(self.frameLoginRT,show="*",textvariable=self.passtxt)
+		# enterpassword=tk.Entry(self.frameLoginRT,show="*",textvariable=self.passtxt)
+		enterpassword=tk.Entry(self.frameLoginRT,textvariable=self.passtxt)
+
 		enterpassword.grid(row=3,column=1)
 
 		labelpinpassword=tk.Label(self.frameLoginRT, text="PIN")
 		labelpinpassword.grid(row=4,column=0,sticky="w")
-		enterpin=tk.Entry(self.frameLoginRT,show="*",textvariable=self.pintxt)
+		# enterpin=tk.Entry(self.frameLoginRT,show="*",textvariable=self.pintxt)
+		enterpin=tk.Entry(self.frameLoginRT,textvariable=self.pintxt)
+
 		enterpin.grid(row=4,column=1)
 
+		labelcurrentuse=tk.Label(self.frameLoginRT, text="CurrentUse")
+		labelcurrentuse.grid(row=5,column=0,sticky="w")
+
+		# enterpin=tk.Entry(self.frameLoginRT,show="*",textvariable=self.pintxt)
+		# enterpin.grid(row=5,column=1)
+		radioyes=tk.Radiobutton(self.frameLoginRT,text="YES",value="YES",indicatoron=1) #,command=self.chooserunningmode)
+		radioyes.grid(row=5,column=1,sticky="w")
+
+		radiono=tk.Radiobutton(self.frameLoginRT,text="NO",value="NO",indicatoron=1) #,command=self.chooserunningmode)
+		radiono.grid(row=5,column=1,sticky="e")
+
+
+
 		btnSetLoginConfig=tk.Button(self.frameLoginRT,text="Set Login Config",command=self.setLoginConfig)
-		btnSetLoginConfig.grid(row=5,column=0,columnspan=1,sticky="w"+"e")
+		btnSetLoginConfig.grid(row=6,column=0,columnspan=1,sticky="w"+"e")
 
 		btnCancel=tk.Button(self.frameLoginRT,text="Cancel",command=self.loginCancel)
-		btnCancel.grid(row=5,column=1,columnspan=2,sticky="w"+"e")
+		btnCancel.grid(row=6,column=1,columnspan=2,sticky="w"+"e")
 		
-		self.getloginConfig()
+	def showloginconfig(self,value):
+		# print(value)
+		# print(self.loginparams)
+		self.profiletxt.set(value)
+		for profilerun,profilename in enumerate(self.loginparams):
+			# print(profilerun,profilename)
+			# print(profilerun["profileId"])
+			if profilename["profileId"] == value:
+				self.broketxt.set(profilename["brokeId"])
+				self.usertxt.set(profilename["loginId"])
+				self.passtxt.set(profilename["passwordId"])
+				self.pintxt.set(profilename["pinId"])
+
+
 
 	def setLoginConfig(self):
 
@@ -102,13 +148,16 @@ class loginconfig(tk.Tk):
 						"loginId":self.usertxt.get(),
 						"passwordId":self.passtxt.get(),
 						"pinId":self.pintxt.get(),
+						"profileId":self.profiletxt.get(),
 		}
 		PackSelModel.updateloginModel(loginparams)
 
 	def loginCancel(self):
 		self.destroy()
-	def getloginConfig(self):
+		
+	def getloginConfig(self,brokeId='all'):
 		print("load Login Config")
-		brokeId="013"
-		loginparams= PackSelModel.getloginModel(brokeId)
-		print(loginparams)
+		# brokeId="013"
+		self.loginparams= PackSelModel.getloginModel(brokeId)
+		print(self.loginparams)
+		return self.loginparams
