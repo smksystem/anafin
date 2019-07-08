@@ -70,6 +70,7 @@ class PackSelModel:
 		    		'passwordId':loginparams["passwordId"],
 		    		'pinId':loginparams["pinId"],
 		    		'profileId':loginparams["profileId"],
+		    		'currentuseId':loginparams["currentuseId"],
 		    		},	##### if found from above search, Update to which field that need to be updated.
 		)
 		if created==True:

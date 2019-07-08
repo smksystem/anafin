@@ -182,18 +182,29 @@ class loginconfig(tk.Tk):
 					self.defaultprofile.set("NO")
 				else:
 					self.defaultprofile.set("UNCHECK")
+			elif value.strip()=="New":
+				self.profiletxt.set("")
+				self.broketxt.set("")
+				self.usertxt.set("")
+				self.passtxt.set("")
+				self.pintxt.set("")
+				self.defaultprofile.set("UNSET")
+				# print("New choices is selected")
+
 
 
 
 	def setLoginConfig(self):
 
 		# print("access set login config button menu")
+		
 		loginparams={
 						"brokeId":self.broketxt.get(),
 						"loginId":self.usertxt.get(),
 						"passwordId":self.passtxt.get(),
 						"pinId":self.pintxt.get(),
 						"profileId":self.profiletxt.get(),
+						"currentuseId":self.defaultprofile.get(),
 		}
 		PackSelModel.updateloginModel(loginparams)
 		self.getloginConfig()
