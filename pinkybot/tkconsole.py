@@ -890,7 +890,7 @@ class outputlog(tk.Tk,mylog):
 
 
 	def loginconfig(self):
-		myloginresult=loginconfig(self)
+		myloginresult=loginconfig(self.log)
 
 	def unitTest(self):
 

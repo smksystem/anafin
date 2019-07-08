@@ -4,34 +4,32 @@ from pinkybot.packsel_model import PackSelModel
 
 
 class loginconfig(tk.Tk):
-	"""docstring for loginconfig"""
-	def __init__(self, arg):
+	
+	def __init__(self, loginlog):
 
 		
 		# super(loginconfig, self).__init__()
 		# self.arg = arg
 		# self.form = arg 
 		tk.Toplevel.__init__(self)
-
-
-		allquery=self.getloginConfig("all")
-		print("Print query set after get all data")
+		self.log=loginlog
 
 
 		# print("login config is called")
 		# self.geometry("400x700+200+200")
-		self.profiletxt=tk.StringVar(value="profile")
-		self.broketxt=tk.StringVar(value="013")
-		self.usertxt=tk.StringVar(value="014xxxx")
+		self.profiletxt=tk.StringVar()
+		self.broketxt=tk.StringVar()
+		self.usertxt=tk.StringVar()
 		self.passtxt=tk.StringVar()
-		self.pintxt=tk.StringVar(value="33")
-
+		self.pintxt=tk.StringVar()
+		self.defaultprofile=tk.StringVar()
 
 
 		self.attributes('-topmost', 'true')
 		self.resizable(False, False)
 		self.attributes("-toolwindow",1)
 		self.update_idletasks()
+
 		# self.overrideredirect(1)
 		# self.wm_attributes('-fullscreen','true')
 
@@ -55,9 +53,14 @@ class loginconfig(tk.Tk):
 
 		#############################################################################3
 
+		allquery=self.getloginConfig("all")
+		self.log["applog"].debug("print query set of log in def __init__ after get all data")
+		self.log["applog"].debug(allquery)
+
+
 		choices=[]
 		for brokechoices in range(len(allquery)):
-			print(allquery[brokechoices]["profileId"])
+			# print(allquery[brokechoices]["profileId"])
 			choices.append(allquery[brokechoices]["profileId"])
 		choices.append("New")
 		var = tk.StringVar()
@@ -78,12 +81,6 @@ class loginconfig(tk.Tk):
 	
 		enterbrokeid=tk.Entry(self.frameLoginRT,textvariable=self.broketxt)
 		enterbrokeid.grid(row=1,column=1)      
-
-
-
-
-
-
 
 
 
@@ -111,38 +108,86 @@ class loginconfig(tk.Tk):
 
 		# enterpin=tk.Entry(self.frameLoginRT,show="*",textvariable=self.pintxt)
 		# enterpin.grid(row=5,column=1)
-		radioyes=tk.Radiobutton(self.frameLoginRT,text="YES",value="YES",indicatoron=1) #,command=self.chooserunningmode)
+		radioyes=tk.Radiobutton(self.frameLoginRT,text="YES",value="YES",variable=self.defaultprofile,indicatoron=1) #,command=self.chooserunningmode)
 		radioyes.grid(row=5,column=1,sticky="w")
 
-		radiono=tk.Radiobutton(self.frameLoginRT,text="NO",value="NO",indicatoron=1) #,command=self.chooserunningmode)
+		radiono=tk.Radiobutton(self.frameLoginRT,text="NO",value="NO",variable=self.defaultprofile,indicatoron=1) #,command=self.chooserunningmode)
 		radiono.grid(row=5,column=1,sticky="e")
 
+
+		#######################################################################
+		##################### Fill initial data from here #####################
+		#######################################################################
+	
+		print("start count database login")
+		print(len(allquery))
+
+		if len(allquery)>0:
+			self.profiletxt.set( allquery[0]["profileId"])
+			self.broketxt.set(allquery[0]["brokeId"])
+			self.usertxt.set(allquery[0]["loginId"])
+			self.passtxt.set(allquery[0]["passwordId"])
+			self.pintxt.set(allquery[0]["pinId"])
+			if allquery[0]["currentuseId"]=="YES":
+				self.defaultprofile.set("YES")
+
+			elif allquery[0]["currentuseId"]=="NO":
+				self.defaultprofile.set("NO")
+			else:
+				self.defaultprofile.set("UNCHECK")
+		#######################################################################
+		#######################################################################
+		#######################################################################
 
 
 		btnSetLoginConfig=tk.Button(self.frameLoginRT,text="Set Login Config",command=self.setLoginConfig)
 		btnSetLoginConfig.grid(row=6,column=0,columnspan=1,sticky="w"+"e")
 
+		btnDeleteConfig=tk.Button(self.frameLoginRT,text="DeleProfile",command=self.deleteConfig)
+		btnDeleteConfig.grid(row=6,column=1,columnspan=1,sticky="w"+"e")
+
+
 		btnCancel=tk.Button(self.frameLoginRT,text="Cancel",command=self.loginCancel)
-		btnCancel.grid(row=6,column=1,columnspan=2,sticky="w"+"e")
+		btnCancel.grid(row=6,column=2,columnspan=2,sticky="w"+"e")
 		
+
+
+
+
+
+	def deleteConfig(self):
+		brokeId=self.broketxt.get()
+		
+		# print("Delte Broke ID")
+
+		PackSelModel.deleteloginModel(brokeId)
+		self.getloginConfig()
+
 	def showloginconfig(self,value):
 		# print(value)
 		# print(self.loginparams)
 		self.profiletxt.set(value)
 		for profilerun,profilename in enumerate(self.loginparams):
-			# print(profilerun,profilename)
-			# print(profilerun["profileId"])
-			if profilename["profileId"] == value:
+			# print(value.strip())
+			# print(profilename["profileId"].strip())
+			if profilename["profileId"].strip() == value.strip():
 				self.broketxt.set(profilename["brokeId"])
 				self.usertxt.set(profilename["loginId"])
 				self.passtxt.set(profilename["passwordId"])
 				self.pintxt.set(profilename["pinId"])
+				if profilename["currentuseId"]=="YES":
+					self.defaultprofile.set("YES")
+
+				elif profilename["currentuseId"]=="NO":
+					self.defaultprofile.set("NO")
+				else:
+					self.defaultprofile.set("UNCHECK")
 
 
 
 	def setLoginConfig(self):
 
-		print("access set login config button menu")
+		# print("access set login config button menu")
 		loginparams={
 						"brokeId":self.broketxt.get(),
 						"loginId":self.usertxt.get(),
@@ -151,13 +196,14 @@ class loginconfig(tk.Tk):
 						"profileId":self.profiletxt.get(),
 		}
 		PackSelModel.updateloginModel(loginparams)
+		self.getloginConfig()
 
 	def loginCancel(self):
 		self.destroy()
 		
 	def getloginConfig(self,brokeId='all'):
-		print("load Login Config")
-		# brokeId="013"
+		
+		self.log["applog"].info ("login config is loaded from databases")
+
 		self.loginparams= PackSelModel.getloginModel(brokeId)
-		print(self.loginparams)
 		return self.loginparams

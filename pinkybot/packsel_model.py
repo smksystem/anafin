@@ -40,6 +40,24 @@ class PackSelModel:
 			loginparams=keeplogin.objects.all().values()
 		return loginparams
 
+	def deleteloginModel(brokeId):
+		print("Delete Profile Login")
+		# instance = keeplogin.objects.get(brokeId=brokeId)
+		brokeresult=keeplogin.objects.filter(brokeId=brokeId).delete()
+		print("\n\n")
+		print(brokeresult)
+		print("\n\n")
+		if brokeresult[0]==1:
+			print("delete succeded one record")
+		elif brokeresult[0]==0:
+			print("not found any record to delete")
+		elif brokeresult[0]>1:
+			print("delete error please check")
+			# print(brokeresult)
+		# if instance.exists():
+		# 	instance.delete()
+		# else:
+		# 	print("No record found to delete")
 
 	def updateloginModel(loginparams):
 		
@@ -69,6 +87,7 @@ class PackSelModel:
 		# 	newrow.save()
 		
 		# updatekeepconfig=keeploginconfig.objects.filter(planname="test").update(firstbuyflag=dataupdate)
+
 	def updatefirstorderbuy(dataupdate="NO"):
 
 		# self.log("applog")
