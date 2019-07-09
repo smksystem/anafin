@@ -32,26 +32,26 @@ class PackSelModel:
 			print("**************")
 			print("\nError: with no any parameter configured please check database !!!")
 			print("**************")
-	def getloginModel(mybrokeId=""):
+	def getloginModel(myprofileId=""):
 		
-		if mybrokeId!="all":
-			loginparams=keeplogin.objects.filter(brokeId=mybrokeId).values()
+		if myprofileId!="all":
+			loginparams=keeplogin.objects.filter(profileId=myprofileId).values()
 		else:
 			loginparams=keeplogin.objects.all().values()
 		return loginparams
 
-	def deleteloginModel(brokeId):
+	def deleteloginModel(profileId):
 		print("Delete Profile Login")
 		# instance = keeplogin.objects.get(brokeId=brokeId)
-		brokeresult=keeplogin.objects.filter(brokeId=brokeId).delete()
+		profileresult=keeplogin.objects.filter(profileId=profileId).delete()
 		print("\n\n")
-		print(brokeresult)
+		print(profileresult)
 		print("\n\n")
-		if brokeresult[0]==1:
+		if profileresult[0]==1:
 			print("delete succeded one record")
-		elif brokeresult[0]==0:
+		elif profileresult[0]==0:
 			print("not found any record to delete")
-		elif brokeresult[0]>1:
+		elif profileresult[0]>1:
 			print("delete error please check")
 			# print(brokeresult)
 		# if instance.exists():
@@ -65,18 +65,23 @@ class PackSelModel:
 		print(loginparams)
 
 		obj, created = keeplogin.objects.update_or_create(
-		    brokeId=loginparams["brokeId"],      													    ##### Search & insert if not found.
-		    defaults={'loginId':loginparams["loginId"],
+		    		profileId=loginparams["profileId"],
+		    defaults={
+
+		    		'brokeId':loginparams["brokeId"],      													    ##### Search & insert if not found.
+		    		'loginId':loginparams["loginId"],
 		    		'passwordId':loginparams["passwordId"],
 		    		'pinId':loginparams["pinId"],
-		    		'profileId':loginparams["profileId"],
+		    		# 'profileId':loginparams["profileId"],
 		    		'currentuseId':loginparams["currentuseId"],
 		    		},	##### if found from above search, Update to which field that need to be updated.
 		)
 		if created==True:
 			print("New record has been created")
+			return loginparams["profileId"]
 		else:
 			print("Update record")
+			return "UPDATED"
 		# print (obj,created)
 
 		# chklogin=keeplogin.objects.filter(brokeId=loginconfigparams[0]) # SQL filter for order no to find existing record.

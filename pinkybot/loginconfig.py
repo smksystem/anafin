@@ -58,18 +58,18 @@ class loginconfig(tk.Tk):
 		self.log["applog"].debug(allquery)
 
 
-		choices=[]
+		self.choices=[]
 		for brokechoices in range(len(allquery)):
 			# print(allquery[brokechoices]["profileId"])
-			choices.append(allquery[brokechoices]["profileId"])
-		choices.append("New")
-		var = tk.StringVar()
-		var.set('Profile')
+			self.choices.append(allquery[brokechoices]["profileId"])
+		self.choices.append("New")
+		self.var = tk.StringVar()
+		self.var.set('Profile')
 
 		# choices = ['red', 'green', 'blue', 'yellow','white', 'magenta']
-		brokeIdopt = tk.OptionMenu(self.frameLoginRT, var, *choices,command=self.showloginconfig)
-		brokeIdopt.grid(row=0,column=0,sticky="w"+"e")
-		brokeIdopt['menu'].insert_separator(len(choices)-1)
+		self.brokeIdopt = tk.OptionMenu(self.frameLoginRT, self.var, *self.choices,command=self.showloginconfig)
+		self.brokeIdopt.grid(row=0,column=0,sticky="w"+"e")
+		self.brokeIdopt['menu'].insert_separator(len(self.choices)-1)
 
 		#############################################################################3
 		enterbrokeid=tk.Entry(self.frameLoginRT,textvariable=self.profiletxt)
@@ -163,9 +163,12 @@ class loginconfig(tk.Tk):
 		PackSelModel.deleteloginModel(brokeId)
 		self.getloginConfig()
 
+
+
 	def showloginconfig(self,value):
 		# print(value)
 		# print(self.loginparams)
+		self.getloginConfig("all")
 		self.profiletxt.set(value)
 		for profilerun,profilename in enumerate(self.loginparams):
 			# print(value.strip())
@@ -206,15 +209,31 @@ class loginconfig(tk.Tk):
 						"profileId":self.profiletxt.get(),
 						"currentuseId":self.defaultprofile.get(),
 		}
-		PackSelModel.updateloginModel(loginparams)
-		self.getloginConfig()
+		updateresult=PackSelModel.updateloginModel(loginparams)
+		if updateresult=="UPDATED":
 
+			updateparams=self.getloginConfig()
+		else:
+
+		# print(self.choices)
+			self.brokeIdopt['menu'].insert_command(0,label=updateresult,command=self.showloginconfig(updateresult))
+		# self.brokeIdopt.addOption("hello")	
+
+		# self.choices.append("test")
+		# self.var.set(self.choices)
+		# self.brokeIdopt.update()
+		# self.var.set(("test","test2"))
+
+		# self.brokeIdopt.set_menu(["hello","ee"])
+	# def addOption(self, label):
+ #        self["menu"].add_command(label=label,
+ #            command=tk._setit(variable, label, self._command))
 	def loginCancel(self):
 		self.destroy()
 		
-	def getloginConfig(self,brokeId='all'):
+	def getloginConfig(self,profileId='all'):
 		
 		self.log["applog"].info ("login config is loaded from databases")
 
-		self.loginparams= PackSelModel.getloginModel(brokeId)
+		self.loginparams= PackSelModel.getloginModel(profileId)
 		return self.loginparams
