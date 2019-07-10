@@ -63,17 +63,18 @@ class loginconfig(tk.Tk):
 			# print(allquery[brokechoices]["profileId"])
 			self.choices.append(allquery[brokechoices]["profileId"])
 		self.choices.append("New")
-		self.var = tk.StringVar()
-		self.var.set('Profile')
+		
+		self.varmenutxt = tk.StringVar()
+		self.varmenutxt.set('Profile')
 
 		# choices = ['red', 'green', 'blue', 'yellow','white', 'magenta']
-		self.brokeIdopt = tk.OptionMenu(self.frameLoginRT, self.var, *self.choices,command=self.showloginconfig)
+		self.brokeIdopt = tk.OptionMenu(self.frameLoginRT, self.varmenutxt, *self.choices,command=self.showloginconfig)
 		self.brokeIdopt.grid(row=0,column=0,sticky="w"+"e")
 		self.brokeIdopt['menu'].insert_separator(len(self.choices)-1)
 
 		#############################################################################3
-		enterbrokeid=tk.Entry(self.frameLoginRT,textvariable=self.profiletxt)
-		enterbrokeid.grid(row=0,column=1)      
+		enterprofileid=tk.Entry(self.frameLoginRT,textvariable=self.profiletxt)
+		enterprofileid.grid(row=0,column=1)      
 
 
 		labelnamebrokeid=tk.Label(self.frameLoginRT, text="Broke ID")
@@ -123,7 +124,7 @@ class loginconfig(tk.Tk):
 		print(len(allquery))
 
 		if len(allquery)>0:
-			self.profiletxt.set( allquery[0]["profileId"])
+			self.profiletxt.set(allquery[0]["profileId"])
 			self.broketxt.set(allquery[0]["brokeId"])
 			self.usertxt.set(allquery[0]["loginId"])
 			self.passtxt.set(allquery[0]["passwordId"])
@@ -166,14 +167,33 @@ class loginconfig(tk.Tk):
 
 
 	def showloginconfig(self,value):
+		# print("showloginconfig got value below")
 		# print(value)
+		# print(value.strip())
 		# print(self.loginparams)
-		self.getloginConfig("all")
-		self.profiletxt.set(value)
+		# self.profiletxt.set(value)
+		
+
+
+		self.loginparams=self.getloginConfig("all")
+
+		# print(len(self.loginparams))
+
+		if len(self.loginparams)==0 and value.strip() == "New":
+			self.profiletxt.set("")
+			self.broketxt.set("")
+			self.usertxt.set("")
+			self.passtxt.set("")
+			self.pintxt.set("")
+			self.defaultprofile.set("UNSET")
+
 		for profilerun,profilename in enumerate(self.loginparams):
-			# print(value.strip())
+			# print("profileId got parameter below")
 			# print(profilename["profileId"].strip())
 			if profilename["profileId"].strip() == value.strip():
+				# print("found profileId")
+				self.varmenutxt.set(profilename["profileId"])
+				self.profiletxt.set(profilename["profileId"])
 				self.broketxt.set(profilename["brokeId"])
 				self.usertxt.set(profilename["loginId"])
 				self.passtxt.set(profilename["passwordId"])
@@ -186,6 +206,7 @@ class loginconfig(tk.Tk):
 				else:
 					self.defaultprofile.set("UNCHECK")
 			elif value.strip()=="New":
+				# print("New choices is selected.")
 				self.profiletxt.set("")
 				self.broketxt.set("")
 				self.usertxt.set("")
@@ -202,11 +223,11 @@ class loginconfig(tk.Tk):
 		# print("access set login config button menu")
 		
 		loginparams={
+						"profileId":self.profiletxt.get(),
 						"brokeId":self.broketxt.get(),
 						"loginId":self.usertxt.get(),
 						"passwordId":self.passtxt.get(),
 						"pinId":self.pintxt.get(),
-						"profileId":self.profiletxt.get(),
 						"currentuseId":self.defaultprofile.get(),
 		}
 		updateresult=PackSelModel.updateloginModel(loginparams)
@@ -216,7 +237,7 @@ class loginconfig(tk.Tk):
 		else:
 
 		# print(self.choices)
-			self.brokeIdopt['menu'].insert_command(0,label=updateresult,command=self.showloginconfig(updateresult))
+			self.brokeIdopt['menu'].insert_command(0,label=updateresult,command=lambda:self.showloginconfig(updateresult))	
 		# self.brokeIdopt.addOption("hello")	
 
 		# self.choices.append("test")

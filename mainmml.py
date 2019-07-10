@@ -6,7 +6,7 @@ sys.path.append('D:\workspace\anafin')
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'anafin.settings')
 django.setup()
 	
-from pinkybot.rangevalue import rangevalue	
+from pinkybot.rangevalue import rangevalue		
 from pinkybot.tkconsole import outputlog
 from pinkybot.monitor import pinkybot
 
@@ -24,6 +24,6 @@ if __name__=="__main__":
 		# work ok for hightlight
 	# for eachval,data in myrange.items():console.txtout("|"+eachval+" | Vol="+data["vol"] +  
 	# # login= pinkybot()
- #    login.mypinkylogin(LoginParams)	
+ #    login.mypinkylogin(LoginParams)		
  
 	# console.highlight_text("Vol")

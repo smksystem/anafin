@@ -1,47 +1,8 @@
-2019-07-09 22:03:03,459,459 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
-2019-07-09 22:03:03,459,459 INFO [packsel_model.py:11] Initialize log of packsel_model
-2019-07-09 22:03:03,568,568 DEBUG [plugin_fivesteps.py:24] def setparameter print initial All Stockname Parameter
-2019-07-09 22:03:03,568,568 DEBUG [plugin_fivesteps.py:25] {'id': 2, 'planname': 'test', 'initinvest': '20000', 'volumestep': '100', 'profitstep': '2000', 'topvaluerange': '4.10', 'startvaluebuy': '200', 'floorvaluerange': '4.0', 'stopvaluerange': '200', 'monitorstock': 'wha', 'planselect': '200', 'pluginfile': 'plugin_fivesteps', 'firstbuyflag': 'NO'}
-2019-07-09 22:03:03,568,568 DEBUG [plugin_fivesteps.py:52] def setparameter load firstbuyflag value
-2019-07-09 22:03:03,568,568 DEBUG [plugin_fivesteps.py:53] NO
-2019-07-09 22:03:03,568,568 DEBUG [plugin_fivesteps.py:87] Print stock pin value
-2019-07-09 22:03:03,568,568 DEBUG [plugin_fivesteps.py:88] 
-2019-07-09 22:03:04,442,442 INFO [loginconfig.py:236] login config is loaded from databases
-2019-07-09 22:03:04,442,442 DEBUG [loginconfig.py:57] print query set of log in def __init__ after get all data
-2019-07-09 22:03:04,442,442 DEBUG [loginconfig.py:58] <QuerySet [{'id': 50, 'profileId': 'New', 'brokeId': '1', 'loginId': '1', 'passwordId': '1', 'pinId': '', 'currentuseId': 'YES'}, {'id': 51, 'profileId': 'New1', 'brokeId': '11', 'loginId': '11', 'passwordId': '11', 'pinId': '11', 'currentuseId': 'YES'}, {'id': 52, 'profileId': '1', 'brokeId': '1', 'loginId': '1', 'passwordId': '1', 'pinId': '1', 'currentuseId': 'YES'}, {'id': 53, 'profileId': '2', 'brokeId': '2', 'loginId': '2', 'passwordId': '2', 'pinId': '2', 'currentuseId': 'YES'}]>
-2019-07-09 22:03:09,808,808 INFO [loginconfig.py:236] login config is loaded from databases
-2019-07-09 22:03:11,821,821 INFO [loginconfig.py:236] login config is loaded from databases
-2019-07-09 22:03:13,927,927 INFO [loginconfig.py:236] login config is loaded from databases
-2019-07-09 22:03:15,892,892 INFO [loginconfig.py:236] login config is loaded from databases
-2019-07-09 22:03:18,965,965 INFO [loginconfig.py:236] login config is loaded from databases
-2019-07-09 22:03:27,155,155 INFO [loginconfig.py:236] login config is loaded from databases
-2019-07-09 22:03:36,406,406 INFO [loginconfig.py:236] login config is loaded from databases
-2019-07-09 22:03:40,649,649 INFO [loginconfig.py:236] login config is loaded from databases
-2019-07-09 22:03:41,944,944 INFO [loginconfig.py:236] login config is loaded from databases
-2019-07-09 22:03:45,158,158 INFO [loginconfig.py:236] login config is loaded from databases
-2019-07-09 22:03:46,343,343 INFO [loginconfig.py:236] login config is loaded from databases
-2019-07-09 22:03:50,165,165 INFO [loginconfig.py:236] login config is loaded from databases
-2019-07-09 22:03:53,785,785 INFO [loginconfig.py:236] login config is loaded from databases
-2019-07-09 22:03:53,785,785 DEBUG [loginconfig.py:57] print query set of log in def __init__ after get all data
-2019-07-09 22:03:53,785,785 DEBUG [loginconfig.py:58] <QuerySet [{'id': 50, 'profileId': 'New', 'brokeId': '1', 'loginId': '1', 'passwordId': '1', 'pinId': '', 'currentuseId': 'YES'}, {'id': 51, 'profileId': 'New1', 'brokeId': '11', 'loginId': '11', 'passwordId': '11', 'pinId': '11', 'currentuseId': 'YES'}, {'id': 53, 'profileId': '2', 'brokeId': '2', 'loginId': '2', 'passwordId': '2', 'pinId': '2', 'currentuseId': 'YES'}, {'id': 54, 'profileId': '3', 'brokeId': '3', 'loginId': '3', 'passwordId': '3', 'pinId': '3', 'currentuseId': 'YES'}]>
-2019-07-09 22:03:56,936,936 INFO [loginconfig.py:236] login config is loaded from databases
-2019-07-09 22:03:58,153,153 INFO [loginconfig.py:236] login config is loaded from databases
-2019-07-09 22:04:00,227,227 INFO [loginconfig.py:236] login config is loaded from databases
-2019-07-09 22:04:01,475,475 INFO [loginconfig.py:236] login config is loaded from databases
-2019-07-09 22:04:03,722,722 INFO [loginconfig.py:236] login config is loaded from databases
-2019-07-09 22:04:04,985,985 INFO [loginconfig.py:236] login config is loaded from databases
-2019-07-09 22:04:07,107,107 INFO [loginconfig.py:236] login config is loaded from databases
-2019-07-09 22:04:08,121,121 INFO [loginconfig.py:236] login config is loaded from databases
-2019-07-09 22:04:12,676,676 INFO [loginconfig.py:236] login config is loaded from databases
-2019-07-09 22:04:12,676,676 DEBUG [loginconfig.py:57] print query set of log in def __init__ after get all data
-2019-07-09 22:04:12,676,676 DEBUG [loginconfig.py:58] <QuerySet [{'id': 50, 'profileId': 'New', 'brokeId': '1', 'loginId': '1', 'passwordId': '1', 'pinId': '', 'currentuseId': 'YES'}, {'id': 51, 'profileId': 'New1', 'brokeId': '11', 'loginId': '11', 'passwordId': '11', 'pinId': '11', 'currentuseId': 'YES'}]>
-2019-07-09 22:04:15,656,656 INFO [loginconfig.py:236] login config is loaded from databases
-2019-07-09 22:04:20,585,585 INFO [loginconfig.py:236] login config is loaded from databases
-2019-07-09 22:04:22,114,114 INFO [loginconfig.py:236] login config is loaded from databases
-2019-07-09 22:04:28,963,963 INFO [loginconfig.py:236] login config is loaded from databases
-2019-07-09 22:04:28,963,963 DEBUG [loginconfig.py:57] print query set of log in def __init__ after get all data
-2019-07-09 22:04:28,963,963 DEBUG [loginconfig.py:58] <QuerySet [{'id': 50, 'profileId': 'New', 'brokeId': '1', 'loginId': '1', 'passwordId': '1', 'pinId': '', 'currentuseId': 'YES'}, {'id': 51, 'profileId': 'New1', 'brokeId': '11', 'loginId': '11', 'passwordId': '11', 'pinId': '11', 'currentuseId': 'YES'}]>
-2019-07-09 22:04:32,551,551 INFO [loginconfig.py:236] login config is loaded from databases
-2019-07-09 22:04:34,158,158 INFO [loginconfig.py:236] login config is loaded from databases
-2019-07-09 22:04:38,245,245 INFO [loginconfig.py:236] login config is loaded from databases
-2019-07-09 22:04:39,571,571 INFO [loginconfig.py:236] login config is loaded from databases
+2019-07-10 18:12:58,694,694 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
+2019-07-10 18:12:58,697,697 INFO [packsel_model.py:11] Initialize log of packsel_model
+2019-07-10 18:12:58,830,830 DEBUG [plugin_fivesteps.py:24] def setparameter print initial All Stockname Parameter
+2019-07-10 18:12:58,830,830 DEBUG [plugin_fivesteps.py:25] {'id': 2, 'planname': 'test', 'initinvest': '20000', 'volumestep': '100', 'profitstep': '2000', 'topvaluerange': '4.10', 'startvaluebuy': '200', 'floorvaluerange': '4.0', 'stopvaluerange': '200', 'monitorstock': 'wha', 'planselect': '200', 'pluginfile': 'plugin_fivesteps', 'firstbuyflag': 'NO'}
+2019-07-10 18:12:58,830,830 DEBUG [plugin_fivesteps.py:52] def setparameter load firstbuyflag value
+2019-07-10 18:12:58,831,831 DEBUG [plugin_fivesteps.py:53] NO
+2019-07-10 18:12:58,831,831 DEBUG [plugin_fivesteps.py:87] Print stock pin value
+2019-07-10 18:12:58,831,831 DEBUG [plugin_fivesteps.py:88] 
