@@ -39,6 +39,15 @@ class PackSelModel:
 		else:
 			loginparams=keeplogin.objects.all().values()
 		return loginparams
+	def getConfigModel(myconfigId=""):
+		if myconfigId!="all":
+			configparams=keepconfig.objects.filter(planname=myconfigId).values()
+		else:
+			configparams=keepconfig.objects.all().values()
+		return configparams
+	def deleteconfigModel(planname):
+		deleteresult=keepconfig.objects.filter(planname=planname).delete()
+		return deleteresult[0]
 
 	def deleteloginModel(profileId):
 		print("Delete Profile Login")
@@ -58,6 +67,32 @@ class PackSelModel:
 		# 	instance.delete()
 		# else:
 		# 	print("No record found to delete")
+	def	updateconfigModel(configparams):
+		obj, created = keepconfig.objects.update_or_create(
+		    		planname=configparams["planname"],
+		    defaults={
+
+		    		'rangeselect':configparams["rangeselect"],
+		    		'monitorstock':configparams["monitorstock"],
+
+   					"initinvest":configparams["initinvest"],
+					"volumestep":configparams["volumestep"],
+					"profitstep":configparams["profitstep"],
+					"topvaluerange":configparams["topvaluerange"],
+					"startvaluebuy":configparams["startvaluebuy"],
+					"stopvaluebuy":configparams["stopvaluebuy"],
+					"floorvaluerange":configparams["floorvaluerange"],
+
+		    		},	##### if found from above search, Update to which field that need to be updated.
+		)
+		print(obj,created)
+		if created==True:
+			# print("New record has been created")
+			# print(obj.planname)
+			return obj.planname
+		else:
+			return "__UpDated__"
+
 
 	def updateloginModel(loginparams):
 		
@@ -82,17 +117,6 @@ class PackSelModel:
 		else:
 			print("Update record")
 			return "UPDATED"
-		# print (obj,created)
-
-		# chklogin=keeplogin.objects.filter(brokeId=loginconfigparams[0]) # SQL filter for order no to find existing record.
-
-
-
-		# if not chkorderno.exists():
-		# 	newrow=updaterefresh(**dataparams)
-		# 	newrow.save()
-		
-		# updatekeepconfig=keeploginconfig.objects.filter(planname="test").update(firstbuyflag=dataupdate)
 
 	def updatefirstorderbuy(dataupdate="NO"):
 

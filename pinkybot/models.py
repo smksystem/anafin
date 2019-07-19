@@ -65,19 +65,21 @@ class keepconfig(models.Model):
 	# 	floorvaluerange=4.60
 	# 	stopvaluerange=4.70
 	# stockname=
-	planname=models.CharField(max_length=30,unique=False,default="")
+	planname=models.CharField(max_length=30,unique=True,default="")
+	rangeselect=models.CharField(max_length=5,unique=False,default="")
+	monitorstock=models.CharField(max_length=10,unique=False,default="")
 	initinvest=models.CharField(max_length=10,unique=False,default="")
 	volumestep=models.CharField(max_length=5,unique=False,default="")
 	profitstep=models.CharField(max_length=10,unique=False,default="")
 	topvaluerange=models.CharField(max_length=5,unique=False,default="")
 	startvaluebuy=models.CharField(max_length=5,unique=False,default="")
+	stopvaluebuy=models.CharField(max_length=5,unique=False,default="")
 	floorvaluerange=models.CharField(max_length=5,unique=False,default="")
-	stopvaluerange=models.CharField(max_length=5,unique=False,default="")
-	monitorstock=models.CharField(max_length=10,unique=False,default="")
-	planselect=models.CharField(max_length=5,unique=False,default="")
-	pluginfile=	models.CharField(max_length=30,unique=False,default="")
-
 	firstbuyflag=models.CharField(max_length=3,unique=False,default="YES")
+	currentuseId=models.CharField(max_length=5,unique=False,default="")
+	pluginfile=	models.CharField(max_length=30,unique=False,default="")
+	
+
 
 # class buysellrecord(models.Model):
 # 	orderno=models.CharField(max_length=10,unique=False,default="")

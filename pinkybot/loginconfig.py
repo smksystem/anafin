@@ -236,19 +236,8 @@ class loginconfig(tk.Tk):
 			updateparams=self.getloginConfig()
 		else:
 
-		# print(self.choices)
 			self.brokeIdopt['menu'].insert_command(0,label=updateresult,command=lambda:self.showloginconfig(updateresult))	
-		# self.brokeIdopt.addOption("hello")	
 
-		# self.choices.append("test")
-		# self.var.set(self.choices)
-		# self.brokeIdopt.update()
-		# self.var.set(("test","test2"))
-
-		# self.brokeIdopt.set_menu(["hello","ee"])
-	# def addOption(self, label):
- #        self["menu"].add_command(label=label,
- #            command=tk._setit(variable, label, self._command))
 	def loginCancel(self):
 		self.destroy()
 		

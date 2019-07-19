@@ -15,8 +15,9 @@ if __name__=="__main__":
 	# print("--- Welcome Main Pinkybot by MML ---") 
 	console=outputlog()	
 	console.Refresher()
-	# console.attributes('-topmost', 'true') #### to make console on top level to other application.
 	console.mainloop()
+	
+	# console.attributes('-topmost', 'true') #### to make console on top level to other application.
 
 
 
