@@ -7,14 +7,15 @@ class fivesteps():
 
 
 	############# 3 parameter to configure value of label display , color of label display and text out 
-	def __init__(self,applog):
+	def __init__(self,applog,configval):
 		
 		self.log=applog
 		self.log["applog"].info("Initialize of plugin_fivesteps")
 		# self.waitconfirmfirstorder=""
 		self.matchedordermonitor=[]
 		# self.firstbuyflag="YES" 
-
+		self.configval=configval
+		print(self.configval)
 
 	def setparameter(self,conf_params,conf_labeldisplay,conf_textout):
 		
@@ -39,7 +40,7 @@ class fivesteps():
 		startvaluebuy=4.72
 		floorvaluerange=4.60
 		stopvaluerange=4.70
-		stockname="WHA"
+		# stockname="WHA"
 
 		# initinvest=int(allparams["initinvest"])
 		# volumestep=int(allparams["volumestep"])
@@ -70,16 +71,16 @@ class fivesteps():
 
 		conf_params["profitstep"].set(str(profitstep))
 
-		conf_params["topvaluerange"].set(str(topvaluerange))
+		# conf_params["topvaluebuy"].set(str(topvaluebuy))
 
 		conf_params["startvaluebuy"].set(str(startvaluebuy))
-		conf_params["floorvaluerange"].set(str(floorvaluerange))
+		# conf_params["floorvaluebuy"].set(str(floorvaluebuy))
 
-		conf_params["stopvaluerange"].set(str(stopvaluerange))	# stop loss not to buy more	
-		conf_params["stockname"].set (stockname)
+		# conf_params["stopvaluebuy"].set(str(stopvaluebuy))	# stop loss not to buy more	
+		# conf_params["stockname"].set (stockname)
 
 
-		commonvaluestep=float(conf_params["commonstep"].get())
+		commonvaluestep=float(conf_params["commonvaluestep"].get())
 		# stockname=conf_params["stockname"].get()
 		stockpin=conf_params["stockpin"].get()
 		print("stockpin")
@@ -226,7 +227,7 @@ class fivesteps():
 		print ("Total Cost Buy ====>>" + str(totalcostbuy))
 		print ("Total Volume Buy =======>>" + str(totalvolumebuy))
 		print ("Remain Invest Cost =========>>" + str(remaininvest))
-		print("StockName =========>>" + (stockname))  # get value from login function in pacsel.py self.stockdata.
+		# print("StockName =========>>" + (stockname))  # get value from login function in pacsel.py self.stockdata.
 
 		conf_textout("Set Invest = " + str_initinvest ,"yellow","gray")
 		conf_textout("Set Volume Step = " + str_volumestep ,"yellow","gray")
@@ -238,8 +239,9 @@ class fivesteps():
 		conf_textout("Set Total Price to Pay = " + str_totalcostbuy)
 		conf_textout("Set Total Volume = " + str_totalvolumebuy,"white","peru")
 		conf_textout("Remain Invest Cost = " + str_remaininvest)
-		conf_textout("StockName = " + stockname)
+		# conf_textout("StockName = " + stockname)
 		
+
 		self.conf_params={
 							"planname":planname,
 							"initinvest":initinvest,
@@ -252,7 +254,7 @@ class fivesteps():
 							"totalcostbuy":str_totalcostbuy,
 							"totalvolumebuy":str_totalvolumebuy,
 							"remaininvest":str_remaininvest,
-							"stockname":stockname,
+							# "stockname":stockname,
 							"stockpin":stockpin,
 		}
 		# conf_params

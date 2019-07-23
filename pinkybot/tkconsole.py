@@ -13,6 +13,7 @@ from pinkybot.plugin_onestep import onestep
 from pinkybot.unitTest import unitTest
 from pinkybot.loginconfig import loginconfig
 from pinkybot.configparams import configparams
+from pinkybot.viewconfig import viewconfig
 from PIL import Image, ImageTk
 # from pinkybot.unitTest 
 
@@ -29,21 +30,24 @@ class outputlog(tk.Tk,mylog):
 		# create a pulldown menu, and add it to the menu bar
 		filemenu = tk.Menu(menubar, tearoff=0)
 		configmenu = tk.Menu(menubar, tearoff=0)
+		viewmenu= tk.Menu(menubar,tearoff=0)
 
-
-		menubar.add_cascade(label="File", menu=filemenu)
+		# menubar.add_cascade(label="File", menu=filemenu)
 		menubar.add_cascade(label="Config", menu=configmenu)
+		menubar.add_cascade(label="View", menu=viewmenu)
 
-
+		# filemenu.add_command(label="New")
+		# filemenu.add_separator()
+		# filemenu.add_command(label = 'Quit')
+		
 		configmenu.add_command(label = "Config Login",command=self.loginconfig)
-
 		configmenu.add_command(label = "Config Parameters",command=self.configparams)
 
-		filemenu.add_command(label="New")
-		filemenu.add_separator()
-		filemenu.add_command(label = 'Quit')
-		
+		viewmenu.add_command(label="Show default config",command=self.tkviewconfig)
+
 		self.config(menu = menubar)
+
+
 
 		########################## MENU button #########################################
 
@@ -76,7 +80,12 @@ class outputlog(tk.Tk,mylog):
 		self.log["console"].info("Initialize and start load plugin")
 		self.log["console"].info("Initialize console")
 
-		self.mybot=pinkybot(self.log,plugins=[fivesteps(self.log)])
+
+		##################################################################################
+		############ Query default database for parameter ################################
+		configparams= PackSelModel.getDefaultConfig()
+		##################################################################################
+
 
 		# self.mybot=pinkybot(plugins=[onestep()])
 		self.title("Output Log")
@@ -86,44 +95,71 @@ class outputlog(tk.Tk,mylog):
 		self.geometry('1020x700+0+0')
 
 		
-		planname=tk.StringVar(value="0")
-		
-		initinvest=tk.StringVar(value="0")
-		volumestep=tk.StringVar(value="0")
-		profitstep=tk.StringVar(value="0")
-		topvaluerange=tk.StringVar(value="0")
-		floorvaluerange=tk.StringVar(value="0")
-		startvaluebuy=tk.StringVar(value="0")
-
-		stopvaluerange=tk.StringVar(value="0.00")
-		commonstep=tk.StringVar(value="0.00")  # step from range calculation
-		totalcostbuy=tk.StringVar(value="0000000000")
-		totalvolumebuy=tk.StringVar(value="000")
-
-		stockname=tk.StringVar(value="")
-		
-		stockpin=tk.StringVar()
-
-		remaininvest=tk.StringVar(value="0")
-		runningmode=tk.StringVar(value="auto")		
-
+		print(configparams)
 		self.configval={
-			"initinvest":initinvest,
-			"volumestep":volumestep,
-			"profitstep":profitstep,
-			"topvaluerange":topvaluerange,	
-			"floorvaluerange":floorvaluerange,	
-			"commonstep":commonstep,
-			"startvaluebuy":startvaluebuy,
-			# "startvolumebuy":startvolumebuy,
-			"stopvaluerange":stopvaluerange,
-			"totalcostbuy":totalcostbuy,
-			"totalvolumebuy":totalvolumebuy,
-			"stockname":stockname,
-			"stockpin":stockpin,
-			"remaininvest":remaininvest,
-			"runningmode": runningmode,
+			"planname":tk.StringVar(value=configparams["planname"]),
+			"rangeselect":tk.StringVar(value=configparams["rangeselect"]),
+			"stockname":tk.StringVar(value=configparams["monitorstock"]),
+			"initinvest":tk.StringVar(value=configparams["initinvest"]),
+
+			"volumestep":tk.StringVar(value=configparams["volumestep"]),
+			"profitstep":tk.StringVar(value=configparams["profitstep"]),
+			"topvaluebuy":tk.StringVar(value=configparams["topvaluebuy"]),
+			"startvaluebuy":tk.StringVar(value=configparams["startvaluebuy"]),
+			"stopvaluebuy":tk.StringVar(value=configparams["stopvaluebuy"]),
+			"floorvaluebuy":tk.StringVar(value=configparams["floorvaluebuy"]),
+			"firstbuyflag":tk.StringVar(value=configparams["firstbuyflag"]),
+			"pluginfile":tk.StringVar(value=configparams["pluginfile"]),
+			"floorvaluerange":tk.StringVar(value=configparams["floorvaluerange"]),
+			"topvaluerange":tk.StringVar(value=configparams["topvaluerange"]),
+			"commonvaluestep":tk.StringVar(value=configparams["commonvaluestep"]),
+			"runningmode":tk.StringVar(value=configparams["runningmode"]),
+			"totalcostbuy":tk.StringVar(value="pluginvalue"),
+			"totalvolumebuy":tk.StringVar(value="pluginvalue"),
+
+			# commonstep=tk.StringVar(value=configparams["step"])  # step from range calculation
+			
+			"stockpin":tk.StringVar(),
+
+			"remaininvest":tk.StringVar(value="pluginvalue"),
 		}
+
+		self.mybot=pinkybot(self.log,plugins=[fivesteps(self.log,self.configval)])
+		
+		# stopvaluerange=tk.StringVar(value=configparams["stopvaluerange"])
+
+		# rangeData={
+		# "A":[0,1.99,0.01],  # 0 to 2 step 0.01
+		# "B":[2,4.98,0.02], # 2 up to less than 5  0.02
+		# "C":[5,9.95,0.05],
+		# "D":[10,24.9,0.10],
+		# "E":[25,99.75,0.25],
+		# "F":[100,199.5,0.5],
+		# "G":[200,399,1],
+		# "H":[400,1000,2],
+		# }
+
+
+		# self.configval={
+		# 	"planname":planname,
+		# 	"rangeselect":rangeselect,
+		# 	"stockname":stockname,
+
+		# 	"initinvest":initinvest,
+		# 	"volumestep":volumestep,
+		# 	"profitstep":profitstep,
+		# 	"topvaluebuy":topvaluebuy,	
+		# 	"floorvaluebuy":floorvaluebuy,	
+		# 	"commonstep":commonvaluestep,
+		# 	"startvaluebuy":startvaluebuy,
+		# 	# "startvolumebuy":startvolumebuy,
+		# 	"stopvaluebuy":stopvaluebuy,
+		# 	"totalcostbuy":totalcostbuy,
+		# 	"totalvolumebuy":totalvolumebuy,
+		# 	"stockpin":stockpin,
+		# 	"remaininvest":remaininvest,
+		# 	"runningmode": runningmode,
+		# }
 
 		self.myvarasso={}
 
@@ -222,8 +258,8 @@ class outputlog(tk.Tk,mylog):
 		labelmonitor=tk.Label(frameSetValue,text="Planname ")
 		labelmonitor.grid(row=2,column=0)
 
-		labelstock=tk.Entry(frameSetValue,textvariable=planname)
-		labelstock.grid(row=2,column=1)
+		# labelstock=tk.Entry(frameSetValue,textvariable=planname)
+		# labelstock.grid(row=2,column=1)
 
 		############################################################################################################################################
 		############################# Value parameter set frame #########################################################################################
@@ -233,48 +269,48 @@ class outputlog(tk.Tk,mylog):
 		labelmonitor=tk.Label(frameSetValue,text="Monitor => ")
 		labelmonitor.grid(row=3,column=0)
 
-		labelstock=tk.Entry(frameSetValue,textvariable=stockname)
-		labelstock.grid(row=3,column=1)
+		# labelstock=tk.Entry(frameSetValue,textvariable=stockname)
+		# labelstock.grid(row=3,column=1)
 
 
 
 		labelinitialvalue=tk.Label(frameSetValue, text="Invest")
 		labelinitialvalue.grid(row=4,column=0)
 
-		enterInvest=tk.Entry(frameSetValue,textvariable=initinvest) #,textvariable=usertxt)
-		enterInvest.grid(row=4,column=1)
+		# enterInvest=tk.Entry(frameSetValue,textvariable=initinvest) #,textvariable=usertxt)
+		# enterInvest.grid(row=4,column=1)
 
 
 		labelinitialvalue=tk.Label(frameSetValue, text="Volume Step")
 		labelinitialvalue.grid(row=5,column=0)
 
-		enterVolumn=tk.Entry(frameSetValue,textvariable=volumestep) #,textvariable=usertxt)
-		enterVolumn.grid(row=5,column=1)
+		# enterVolumn=tk.Entry(frameSetValue,textvariable=volumestep) #,textvariable=usertxt)
+		# enterVolumn.grid(row=5,column=1)
 
 		labelinitialvalue=tk.Label(frameSetValue, text="Profit Step")
 		labelinitialvalue.grid(row=6,column=0)
 
-		enterVolumn=tk.Entry(frameSetValue,textvariable=profitstep) 
-		enterVolumn.grid(row=6,column=1)
+		# enterVolumn=tk.Entry(frameSetValue,textvariable=profitstep) 
+		# enterVolumn.grid(row=6,column=1)
 
 
 		labelinitialvalue=tk.Label(frameSetValue, text="Top Value Range")
 		labelinitialvalue.grid(row=7,column=0)
 
-		enterVolumn=tk.Entry(frameSetValue,textvariable=topvaluerange) 
-		enterVolumn.grid(row=7,column=1)
+		# enterVolumn=tk.Entry(frameSetValue,textvariable=topvaluebuy) 
+		# enterVolumn.grid(row=7,column=1)
 
 		labelvaluebuy=tk.Label(frameSetValue, text="StartValueBuy")
 		labelvaluebuy.grid(row=8,column=0)
 
-		entervaluebuy=tk.Entry(frameSetValue,textvariable=startvaluebuy) 
-		entervaluebuy.grid(row=8,column=1)
+		# entervaluebuy=tk.Entry(frameSetValue,textvariable=startvaluebuy) 
+		# entervaluebuy.grid(row=8,column=1)
 
 		labelinitialvalue=tk.Label(frameSetValue, text="Floor Value Range")
 		labelinitialvalue.grid(row=9,column=0)
 
-		enterVolumn=tk.Entry(frameSetValue,textvariable=floorvaluerange) 
-		enterVolumn.grid(row=9,column=1)
+		# enterVolumn=tk.Entry(frameSetValue,textvariable=floorvaluebuy) 
+		# enterVolumn.grid(row=9,column=1)
 		
 
 
@@ -293,21 +329,21 @@ class outputlog(tk.Tk,mylog):
 		labelvaluebuy=tk.Label(frameSetValue, text="Total Cost Buy:")
 		labelvaluebuy.grid(row=10,column=0,sticky="w")
 
-		labelvaluebuy=tk.Label(frameSetValue, textvariable=totalcostbuy)
-		labelvaluebuy.grid(row=10,column=0,sticky="e")
+		# labelvaluebuy=tk.Label(frameSetValue, textvariable=totalcostbuy)
+		# labelvaluebuy.grid(row=10,column=0,sticky="e")
 
 
 		labelvalumebuy=tk.Label(frameSetValue, text="Total Volume Buy:")
 		labelvalumebuy.grid(row=11,column=0,sticky="w")
 
-		labelvalumebuy=tk.Label(frameSetValue, textvariable=totalvolumebuy)
-		labelvalumebuy.grid(row=11,column=0,sticky="e")
+		# labelvalumebuy=tk.Label(frameSetValue, textvariable=totalvolumebuy)
+		# labelvalumebuy.grid(row=11,column=0,sticky="e")
 
 		labelvalumebuy=tk.Label(frameSetValue, text="Remain Invest:")
 		labelvalumebuy.grid(row=12,column=0,sticky="w")
 
-		labelvalumebuy=tk.Label(frameSetValue, textvariable=remaininvest)
-		labelvalumebuy.grid(row=12,column=0,sticky="e")
+		# labelvalumebuy=tk.Label(frameSetValue, textvariable=remaininvest)
+		# labelvalumebuy.grid(row=12,column=0,sticky="e")
 		
 
 		btnBuyCommand=tk.Button(frameSetValue,text="Buy Now",command=self.buybyclick, width = 10,height=2)
@@ -321,11 +357,11 @@ class outputlog(tk.Tk,mylog):
 		btnRefreshCmd.grid(row=14,column=0)
 
 
-		radioauto=tk.Radiobutton(frameSetValue,text="auto",variable=runningmode,value="auto",indicatoron=0,command=self.chooserunningmode)
-		radioauto.grid(row=14,column=1,sticky="w")
+		# radioauto=tk.Radiobutton(frameSetValue,text="auto",variable=runningmode,value="auto",indicatoron=0,command=self.chooserunningmode)
+		# radioauto.grid(row=14,column=1,sticky="w")
 
-		radiomanual=tk.Radiobutton(frameSetValue,text="manual",variable=runningmode,value="manual",indicatoron=0,command=self.chooserunningmode)
-		radiomanual.grid(row=14,column=1)
+		# radiomanual=tk.Radiobutton(frameSetValue,text="manual",variable=runningmode,value="manual",indicatoron=0,command=self.chooserunningmode)
+		# radiomanual.grid(row=14,column=1)
 
 		
 
@@ -633,7 +669,8 @@ class outputlog(tk.Tk,mylog):
 		# print ("Range step="+str(rangeData[idx][2]))
 		
 		# print(series)
-		self.configval["commonstep"].set(str(rangeData[idx][2]))
+	
+		self.configval["commonvaluestep"].set(str(rangeData[idx][2]))
 
 		return self.rangeline(series)
 
@@ -887,7 +924,9 @@ class outputlog(tk.Tk,mylog):
 	def configparams(self):
 		print("############# config parameter ###################")
 		myconfigparamsresult = configparams(self)
-
+	def tkviewconfig(self):
+		# print("view manue is pressed")
+		viewresult=viewconfig(self.configval)
 
 	def loginconfig(self):
 		myloginresult=loginconfig(self.log)

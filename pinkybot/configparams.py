@@ -15,16 +15,17 @@ class configparams(tk.Tk):
 		self.investtxt=tk.StringVar()
 		self.volumesteptxt=tk.StringVar()
 		self.profitsteptxt=tk.StringVar()
-		self.topvaluerangetxt=tk.StringVar()
+		self.topvaluebuytxt=tk.StringVar()
 		self.startvaluebuytxt=tk.StringVar()
 		self.stopvaluebuytxt=tk.StringVar()
 
-		self.floorvaluerangetxt=tk.StringVar()
+		self.floorvaluebuytxt=tk.StringVar()
+		self.pluginfiletxt=tk.StringVar()
 
 		self.defaultplanname=tk.StringVar()
-		self.checkbuy=tk.StringVar()
-		self.checkdefault=tk.StringVar()
-		
+		self.varcheckbuy=tk.StringVar()
+		self.varcheckdefault=tk.StringVar()
+
 
 		self.attributes('-topmost', 'true')
 		self.resizable(False, False)
@@ -37,21 +38,21 @@ class configparams(tk.Tk):
 		self.frameConfig.grid(row=0,column=0)
 
 
-		self.configvar=self.getparamsConfig()
-		# print(self.configvar)
+		initconfigvar=self.getparamsConfig()
+		# print(initconfigvar)
 
 		#############################################################################3
 
 		choices=[]
-		# self.configvar
-		for planchoices in range(len(self.configvar)):
+		# initconfigvar
+		for planchoices in range(len(initconfigvar)):
 			# print(allquery)
-			choices.append(self.configvar[planchoices]["planname"])
+			choices.append(initconfigvar[planchoices]["planname"])
 
 			# choices.append(allquery)
 		choices.append("New")
 		self.var = tk.StringVar()
-		self.var.set(self.configvar[0]["planname"])
+		self.var.set(initconfigvar[0]["planname"])
 
 		# choices = ['red', 'green', 'blue', 'yellow','white', 'magenta']
 		# brokeIdopt = tk.OptionMenu(self.frameConfig, var, *choices,command=self.showloginconfig)
@@ -125,7 +126,7 @@ class configparams(tk.Tk):
 		labelmonitor=tk.Label(self.frameConfig, text="Top Value Range")
 		labelmonitor.grid(row=6,column=0,sticky="w")
 
-		entermonitor=tk.Entry(self.frameConfig,textvariable=self.topvaluerangetxt)
+		entermonitor=tk.Entry(self.frameConfig,textvariable=self.topvaluebuytxt)
 		entermonitor.grid(row=6,column=1)
 		#######################################################################
 		labelmonitor=tk.Label(self.frameConfig, text="Start Value Buy")
@@ -143,25 +144,38 @@ class configparams(tk.Tk):
 		labelmonitor=tk.Label(self.frameConfig, text="Floor Value Range")
 		labelmonitor.grid(row=9,column=0,sticky="w")
 
-		entermonitor=tk.Entry(self.frameConfig,textvariable=self.floorvaluerangetxt)
+		entermonitor=tk.Entry(self.frameConfig,textvariable=self.floorvaluebuytxt)
 		entermonitor.grid(row=9,column=1)
+
+		#######################################################################
+		labelpluginfile=tk.Label(self.frameConfig, text="plugin file")
+		labelpluginfile.grid(row=10,column=0,sticky="w")
+
+		enterpluginfile=tk.Entry(self.frameConfig,textvariable=self.pluginfiletxt)
+		enterpluginfile.grid(row=10,column=1)
+
 		#######################################################################
 
-		checkdefault = tk.Checkbutton(self.frameConfig, text="Default", variable=self.checkdefault)
-		checkdefault.grid(row=10,column=1)
+		self.checkdefault = tk.Checkbutton(self.frameConfig, text="Default", variable=self.varcheckdefault,offvalue="NO",onvalue="YES")
+		self.checkdefault.grid(row=11,column=1)
 
-		# labeldefault=tk.Label(self.frameConfig, text="Default")
-		# labeldefault.grid(row=10,column=1,sticky="w")
+		if initconfigvar[0]["currentuseId"]=="YES":
+			self.checkdefault.select()
+		elif initconfigvar[0]["currentuseId"]=="NO":
+			self.checkdefault.deselect()
 
-		# radioyes=tk.Radiobutton(self.frameConfig,text="YES",value="YES",variable=self.defaultplanname,indicatoron=1) #,command=self.chooserunningmode)
-		# radioyes.grid(row=10,column=1,sticky="e")
 
-		# radiono=tk.Radiobutton(self.frameConfig,text="NO",value="NO",variable=self.defaultplanname,indicatoron=1) #,command=self.chooserunningmode)
-		# radiono.grid(row=10,column=2,sticky="e")
 		#######################################################################
 
-		checkbuy = tk.Checkbutton(self.frameConfig, text="BuyFlag", variable=self.checkbuy)
-		checkbuy.grid(row=10,column=0)
+		self.checkbuy = tk.Checkbutton(self.frameConfig, text="BuyFlag", variable=self.varcheckbuy,offvalue="NO",onvalue="YES")
+		self.checkbuy.grid(row=11,column=0)
+		# print(self.checkbuy.get())
+		if initconfigvar[0]["firstbuyflag"]=="YES":
+			self.checkbuy.select()
+		elif initconfigvar[0]["firstbuyflag"]=="NO":
+			self.checkbuy.deselect()
+
+
 
 		#######################################################################
 		##################### Fill initial data from here #####################
@@ -170,27 +184,19 @@ class configparams(tk.Tk):
 		# print("start count database login")
 		# print(len(allquery))
 
-		if len(self.configvar)>0:
-			self.plannametxt.set(self.configvar[0]["planname"])
-			self.rangeseltxt.set(self.configvar[0]["rangeselect"])
-			self.monitortxt.set(self.configvar[0]["monitorstock"])
-			self.investtxt.set(self.configvar[0]["initinvest"])
-			self.volumesteptxt.set(self.configvar[0]["volumestep"])
-			self.profitsteptxt.set(self.configvar[0]["profitstep"])
-			self.topvaluerangetxt.set(self.configvar[0]["topvaluerange"])
-			self.startvaluebuytxt.set(self.configvar[0]["startvaluebuy"])
-			self.stopvaluebuytxt.set(self.configvar[0]["stopvaluebuy"])
+		if len(initconfigvar)>0:
+			self.plannametxt.set(initconfigvar[0]["planname"])
+			self.rangeseltxt.set(initconfigvar[0]["rangeselect"])
+			self.monitortxt.set(initconfigvar[0]["monitorstock"])
+			self.investtxt.set(initconfigvar[0]["initinvest"])
+			self.volumesteptxt.set(initconfigvar[0]["volumestep"])
+			self.profitsteptxt.set(initconfigvar[0]["profitstep"])
+			self.topvaluebuytxt.set(initconfigvar[0]["topvaluebuy"])
+			self.startvaluebuytxt.set(initconfigvar[0]["startvaluebuy"])
+			self.stopvaluebuytxt.set(initconfigvar[0]["stopvaluebuy"])
 
-			self.floorvaluerangetxt.set(self.configvar[0]["floorvaluerange"])
-
-			# if self.configvar[0]["currentuseId"]=="YES":
-			# 	self.defaultprofile.set("YES")
-
-			# elif self.configvar[0]["currentuseId"]=="NO":
-			# 	self.defaultprofile.set("NO")
-			# else:
-			# 	self.defaultprofile.set("UNCHECK")
-		
+			self.floorvaluebuytxt.set(initconfigvar[0]["floorvaluebuy"])
+			self.pluginfiletxt.set(initconfigvar[0]["pluginfile"])
 
 		#######################################################################
 		#######################################################################
@@ -207,7 +213,9 @@ class configparams(tk.Tk):
 
 		btnCancel=tk.Button(self.frameConfig,text="Cancel",command=self.ConfigCancel)
 		btnCancel.grid(row=12,column=2,columnspan=2,sticky="w"+"e")
-	
+
+	# def checkcommand(self):
+	# 	print(self.checkbuy.get())
 	def selectlistrange(self,value):
 		# print("def selectlistrange enter")
 		# print(value)
@@ -216,10 +224,15 @@ class configparams(tk.Tk):
 		self.rangeseltxt.set(valueparams[0])
 
 	def showitemconfig(self,value):
+
 		confitemparams=self.getparamsConfig(value)
 		self.var.set(value)
+		
+
+		# print(value,idxm,entry)
+
 		# print("config item parameter")
-		# print(len(confitemparams))
+		# print(confitemparams)
 		if len(confitemparams) == 1 :
 			self.plannametxt.set(confitemparams[0]["planname"])
 			self.rangeseltxt.set(confitemparams[0]["rangeselect"])
@@ -227,10 +240,24 @@ class configparams(tk.Tk):
 			self.investtxt.set(confitemparams[0]["initinvest"])
 			self.volumesteptxt.set(confitemparams[0]["volumestep"])
 			self.profitsteptxt.set(confitemparams[0]["profitstep"])
-			self.topvaluerangetxt.set(confitemparams[0]["topvaluerange"])
+			self.topvaluebuytxt.set(confitemparams[0]["topvaluebuy"])
 			self.startvaluebuytxt.set(confitemparams[0]["startvaluebuy"])
 			self.stopvaluebuytxt.set(confitemparams[0]["stopvaluebuy"])
-			self.floorvaluerangetxt.set(confitemparams[0]["floorvaluerange"])
+			self.floorvaluebuytxt.set(confitemparams[0]["floorvaluebuy"])
+			
+			self.pluginfiletxt.set(confitemparams[0]["pluginfile"])
+
+			if confitemparams[0]["firstbuyflag"]=="YES":
+				self.checkbuy.select()
+			elif confitemparams[0]["firstbuyflag"]=="NO":
+				self.checkbuy.deselect()
+
+			if confitemparams[0]["currentuseId"]=="YES":
+				self.checkdefault.select()
+			elif confitemparams[0]["currentuseId"]=="NO":
+				self.checkdefault.deselect()
+	
+
 
 		elif len(confitemparams)==0 and value=="New":
 			# print("This is new for configuration parameter")
@@ -240,10 +267,16 @@ class configparams(tk.Tk):
 			self.investtxt.set("")
 			self.volumesteptxt.set("")
 			self.profitsteptxt.set("")
-			self.topvaluerangetxt.set("")
+			self.topvaluebuytxt.set("")
 			self.startvaluebuytxt.set("")
 			self.stopvaluebuytxt.set("")
-			self.floorvaluerangetxt.set("")
+			self.floorvaluebuytxt.set("")
+			self.pluginfiletxt.set("")
+
+			self.checkdefault.deselect()
+			self.checkbuy.deselect()
+
+
 	def setparamsConfig(self):
 		# print("put parameter config to database")
 		confparams={
@@ -254,10 +287,14 @@ class configparams(tk.Tk):
 					"initinvest":self.investtxt.get(),
 					"volumestep":self.volumesteptxt.get(),
 					"profitstep":self.profitsteptxt.get(),
-					"topvaluerange":self.topvaluerangetxt.get(),
+					"topvaluebuy":self.topvaluebuytxt.get(),
 					"startvaluebuy":self.startvaluebuytxt.get(),
 					"stopvaluebuy":self.stopvaluebuytxt.get(),
-					"floorvaluerange":self.floorvaluerangetxt.get(),
+					"floorvaluebuy":self.floorvaluebuytxt.get(),
+					"pluginfile":self.pluginfiletxt.get(),
+
+					"firstbuyflag":self.varcheckbuy.get(),
+					"currentuseId":self.varcheckdefault.get(),
 		}
 		updateresult=PackSelModel.updateconfigModel(confparams)
 		# print(updateresult)
@@ -280,7 +317,26 @@ class configparams(tk.Tk):
 		planname=self.plannametxt.get()
 		resultdelete=PackSelModel.deleteconfigModel(planname)
 		if resultdelete==1:
+			# print("plan name =1 ")
+			# self.plannameIdopt['menu'].delete(planname)
+			# self.showitemconfig(self.plannameIdopt['menu'].index('end')-1)
 			self.showitemconfig(0)
+
+			idxm=self.plannameIdopt['menu'].index("end")
+		# print(idxm)
+			for iplan in range(idxm-1):
+				# print(i)
+				entry= self.plannameIdopt['menu'].entrycget(iplan, "label")
+				print("entry")
+				print(entry)
+				if entry==planname:
+					print("found!")
+					idxm=self.plannameIdopt['menu'].delete(iplan)
+					break
+
+			# print(idxm)
+			# self.plannameIdopt['menu'].delete(idxm-1)
+
 		# self.getloginConfig()
 
 	def ConfigCancel(self):

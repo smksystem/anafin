@@ -71,14 +71,14 @@ class keepconfig(models.Model):
 	initinvest=models.CharField(max_length=10,unique=False,default="")
 	volumestep=models.CharField(max_length=5,unique=False,default="")
 	profitstep=models.CharField(max_length=10,unique=False,default="")
-	topvaluerange=models.CharField(max_length=5,unique=False,default="")
+	topvaluebuy=models.CharField(max_length=5,unique=False,default="")
 	startvaluebuy=models.CharField(max_length=5,unique=False,default="")
 	stopvaluebuy=models.CharField(max_length=5,unique=False,default="")
-	floorvaluerange=models.CharField(max_length=5,unique=False,default="")
+	floorvaluebuy=models.CharField(max_length=5,unique=False,default="")
 	firstbuyflag=models.CharField(max_length=3,unique=False,default="YES")
 	currentuseId=models.CharField(max_length=5,unique=False,default="")
 	pluginfile=	models.CharField(max_length=30,unique=False,default="")
-	
+	runningmode=models.CharField(max_length=8,unique=False,default="auto")
 
 
 # class buysellrecord(models.Model):

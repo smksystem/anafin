@@ -9,7 +9,7 @@ django.setup()
 from pinkybot.rangevalue import rangevalue		
 from pinkybot.tkconsole import outputlog
 from pinkybot.monitor import pinkybot
-
+# print(__name__)
 if __name__=="__main__":
 			
 	# print("--- Welcome Main Pinkybot by MML ---") 

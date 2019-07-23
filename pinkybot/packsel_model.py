@@ -32,6 +32,7 @@ class PackSelModel:
 			print("**************")
 			print("\nError: with no any parameter configured please check database !!!")
 			print("**************")
+			exit()
 	def getloginModel(myprofileId=""):
 		
 		if myprofileId!="all":
@@ -39,6 +40,31 @@ class PackSelModel:
 		else:
 			loginparams=keeplogin.objects.all().values()
 		return loginparams
+	def getDefaultConfig():
+		# if myconfigId!="all":
+		def_configparams=keepconfig.objects.filter(currentuseId="YES").values()
+		rangeData={
+		"A":[0,1.99,0.01],  # 0 to 2 step 0.01
+		"B":[2,4.98,0.02], # 2 up to less than 5  0.02
+		"C":[5,9.95,0.05],
+		"D":[10,24.9,0.10],
+		"E":[25,99.75,0.25],
+		"F":[100,199.5,0.5],
+		"G":[200,399,1],
+		"H":[400,1000,2],
+		}
+		print(def_configparams)
+		myrange=def_configparams[0]["rangeselect"]
+		print(myrange)
+
+		return_def_configparams=def_configparams[0]
+		return_def_configparams['floorvaluerange']=rangeData[myrange][0]
+		return_def_configparams['topvaluerange']=rangeData[myrange][1]
+		return_def_configparams['commonvaluestep']=rangeData[myrange][2]
+
+		print(return_def_configparams)
+		return return_def_configparams
+
 	def getConfigModel(myconfigId=""):
 		if myconfigId!="all":
 			configparams=keepconfig.objects.filter(planname=myconfigId).values()
@@ -78,11 +104,13 @@ class PackSelModel:
    					"initinvest":configparams["initinvest"],
 					"volumestep":configparams["volumestep"],
 					"profitstep":configparams["profitstep"],
-					"topvaluerange":configparams["topvaluerange"],
+					"topvaluebuy":configparams["topvaluebuy"],
 					"startvaluebuy":configparams["startvaluebuy"],
 					"stopvaluebuy":configparams["stopvaluebuy"],
-					"floorvaluerange":configparams["floorvaluerange"],
-
+					"floorvaluebuy":configparams["floorvaluebuy"],
+					"pluginfile":configparams["pluginfile"],
+					"firstbuyflag":configparams["firstbuyflag"],
+					"currentuseId":configparams["currentuseId"],
 		    		},	##### if found from above search, Update to which field that need to be updated.
 		)
 		print(obj,created)
@@ -118,10 +146,10 @@ class PackSelModel:
 			print("Update record")
 			return "UPDATED"
 
-	def updatefirstorderbuy(dataupdate="NO"):
+	# def updatefirstorderbuy(dataupdate="NO"):
 
-		# self.log("applog")
-		updatekeepconfig=keepconfig.objects.filter(planname="test").update(firstbuyflag=dataupdate)
+	# 	# self.log("applog")
+	# 	updatekeepconfig=keepconfig.objects.filter(planname="test").update(firstbuyflag=dataupdate)
 
 		# updatefirstbuyflag=keepconfig(
 		# 		firstbuyflag=dataupdate

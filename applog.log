@@ -1,8 +1,8 @@
-2019-07-18 21:04:32,102,102 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
-2019-07-18 21:04:32,104,104 INFO [packsel_model.py:11] Initialize log of packsel_model
-2019-07-18 21:04:32,209,209 DEBUG [plugin_fivesteps.py:24] def setparameter print initial All Stockname Parameter
-2019-07-18 21:04:32,209,209 DEBUG [plugin_fivesteps.py:25] {'id': 2, 'planname': 'test', 'rangeselect': 'E', 'monitorstock': 'wha', 'initinvest': '20000', 'volumestep': '100', 'profitstep': '2033', 'topvaluerange': '4.10', 'startvaluebuy': '333', 'stopvaluebuy': '222', 'floorvaluerange': '4.0', 'firstbuyflag': 'NO', 'currentuseId': 'YES', 'pluginfile': 'plugin_fivesteps'}
-2019-07-18 21:04:32,209,209 DEBUG [plugin_fivesteps.py:52] def setparameter load firstbuyflag value
-2019-07-18 21:04:32,209,209 DEBUG [plugin_fivesteps.py:53] NO
-2019-07-18 21:04:32,209,209 DEBUG [plugin_fivesteps.py:87] Print stock pin value
-2019-07-18 21:04:32,209,209 DEBUG [plugin_fivesteps.py:88] 
+2019-07-23 14:12:36,173,173 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
+2019-07-23 14:12:36,176,176 INFO [packsel_model.py:11] Initialize log of packsel_model
+2019-07-23 14:12:36,303,303 DEBUG [plugin_fivesteps.py:25] def setparameter print initial All Stockname Parameter
+2019-07-23 14:12:36,303,303 DEBUG [plugin_fivesteps.py:26] {'id': 75, 'planname': '1', 'rangeselect': 'D', 'monitorstock': 'MYSTOCK', 'initinvest': '10000', 'volumestep': '1', 'profitstep': '1', 'topvaluebuy': '1', 'startvaluebuy': '1', 'stopvaluebuy': '1', 'floorvaluebuy': '1', 'firstbuyflag': 'NO', 'currentuseId': 'YES', 'pluginfile': 'plugin_fivesteps', 'runningmode': 'auto'}
+2019-07-23 14:12:36,303,303 DEBUG [plugin_fivesteps.py:53] def setparameter load firstbuyflag value
+2019-07-23 14:12:36,303,303 DEBUG [plugin_fivesteps.py:54] NO
+2019-07-23 14:12:36,303,303 DEBUG [plugin_fivesteps.py:88] Print stock pin value
+2019-07-23 14:12:36,303,303 DEBUG [plugin_fivesteps.py:89] 
