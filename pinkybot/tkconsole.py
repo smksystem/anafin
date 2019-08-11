@@ -72,8 +72,12 @@ class outputlog(tk.Tk,mylog):
 		startrun=startrun.resize((20,20),Image.ANTIALIAS)
 		self.startrun=ImageTk.PhotoImage(startrun)
 
-		startrunBtn=tk.Button(toolbar,image=self.startrun)
+		startrunBtn=tk.Button(toolbar,image=self.startrun,command=self.executeLogin)
 		startrunBtn.grid(column=4,row=0,sticky="e")		
+
+
+		self.lblcomputetime=tk.Label(toolbar,text="time")
+		self.lblcomputetime.grid(row=0,column=5,sticky="e")
 		
         ##################################################################################
 
@@ -82,8 +86,8 @@ class outputlog(tk.Tk,mylog):
 
 
 		##################################################################################
-		############ Query default database for parameter ################################
-		configparams= PackSelModel.getDefaultConfig()
+		############ Query default database for parameter to initialize configvalue ######
+		self.configval= PackSelModel.getDefaultConfig()
 		##################################################################################
 
 
@@ -95,71 +99,41 @@ class outputlog(tk.Tk,mylog):
 		self.geometry('1020x700+0+0')
 
 		
-		print(configparams)
-		self.configval={
-			"planname":tk.StringVar(value=configparams["planname"]),
-			"rangeselect":tk.StringVar(value=configparams["rangeselect"]),
-			"stockname":tk.StringVar(value=configparams["monitorstock"]),
-			"initinvest":tk.StringVar(value=configparams["initinvest"]),
+		# print(configparams)
+		# self.configval={
+		# 	"planname":tk.StringVar(value=configparams["planname"]),
+		# 	"rangeselect":tk.StringVar(value=configparams["rangeselect"]),
+		# 	"stockname":tk.StringVar(value=configparams["monitorstock"]),
+		# 	"initinvest":tk.StringVar(value=configparams["initinvest"]),
 
-			"volumestep":tk.StringVar(value=configparams["volumestep"]),
-			"profitstep":tk.StringVar(value=configparams["profitstep"]),
-			"topvaluebuy":tk.StringVar(value=configparams["topvaluebuy"]),
-			"startvaluebuy":tk.StringVar(value=configparams["startvaluebuy"]),
-			"stopvaluebuy":tk.StringVar(value=configparams["stopvaluebuy"]),
-			"floorvaluebuy":tk.StringVar(value=configparams["floorvaluebuy"]),
-			"firstbuyflag":tk.StringVar(value=configparams["firstbuyflag"]),
-			"pluginfile":tk.StringVar(value=configparams["pluginfile"]),
-			"floorvaluerange":tk.StringVar(value=configparams["floorvaluerange"]),
-			"topvaluerange":tk.StringVar(value=configparams["topvaluerange"]),
-			"commonvaluestep":tk.StringVar(value=configparams["commonvaluestep"]),
-			"runningmode":tk.StringVar(value=configparams["runningmode"]),
-			"totalcostbuy":tk.StringVar(value="pluginvalue"),
-			"totalvolumebuy":tk.StringVar(value="pluginvalue"),
+		# 	"volumestep":tk.StringVar(value=configparams["volumestep"]),
+		# 	"profitstep":tk.StringVar(value=configparams["profitstep"]),
+		# 	"topvaluebuy":tk.StringVar(value=configparams["topvaluebuy"]),
+		# 	"startvaluebuy":tk.StringVar(value=configparams["startvaluebuy"]),
+		# 	"stopvaluebuy":tk.StringVar(value=configparams["stopvaluebuy"]),
+		# 	"floorvaluebuy":tk.StringVar(value=configparams["floorvaluebuy"]),
+		# 	"firstbuyflag":tk.StringVar(value=configparams["firstbuyflag"]),
+		# 	"pluginfile":tk.StringVar(value=configparams["pluginfile"]),
+		# 	"floorvaluerange":tk.StringVar(value=configparams["floorvaluerange"]),
+		# 	"topvaluerange":tk.StringVar(value=configparams["topvaluerange"]),
+		# 	"commonvaluestep":tk.StringVar(value=configparams["commonvaluestep"]),
+		# 	"runningmode":tk.StringVar(value=configparams["runningmode"]),
+		# 	"totalcostbuy":tk.StringVar(value="pluginvalue"),
+		# 	"totalvolumebuy":tk.StringVar(value="pluginvalue"),
 
-			# commonstep=tk.StringVar(value=configparams["step"])  # step from range calculation
+		# 	# commonstep=tk.StringVar(value=configparams["step"])  # step from range calculation
 			
-			"stockpin":tk.StringVar(),
+		# 	"stockpin":tk.StringVar(),
 
-			"remaininvest":tk.StringVar(value="pluginvalue"),
-		}
+		# 	"remaininvest":tk.StringVar(value="pluginvalue"),
+		# }
 
-		self.mybot=pinkybot(self.log,plugins=[fivesteps(self.log,self.configval)])
+		############# ATTENTIOIN ################################################################
+		# Pinkybot is in monitor.py file and send parameter plugin with fivesteps to this bot.
+		#########################################################################################
+		self.mybot=pinkybot(self.log,plugins=[fivesteps(self.log)])
 		
 		# stopvaluerange=tk.StringVar(value=configparams["stopvaluerange"])
-
-		# rangeData={
-		# "A":[0,1.99,0.01],  # 0 to 2 step 0.01
-		# "B":[2,4.98,0.02], # 2 up to less than 5  0.02
-		# "C":[5,9.95,0.05],
-		# "D":[10,24.9,0.10],
-		# "E":[25,99.75,0.25],
-		# "F":[100,199.5,0.5],
-		# "G":[200,399,1],
-		# "H":[400,1000,2],
-		# }
-
-
-		# self.configval={
-		# 	"planname":planname,
-		# 	"rangeselect":rangeselect,
-		# 	"stockname":stockname,
-
-		# 	"initinvest":initinvest,
-		# 	"volumestep":volumestep,
-		# 	"profitstep":profitstep,
-		# 	"topvaluebuy":topvaluebuy,	
-		# 	"floorvaluebuy":floorvaluebuy,	
-		# 	"commonstep":commonvaluestep,
-		# 	"startvaluebuy":startvaluebuy,
-		# 	# "startvolumebuy":startvolumebuy,
-		# 	"stopvaluebuy":stopvaluebuy,
-		# 	"totalcostbuy":totalcostbuy,
-		# 	"totalvolumebuy":totalvolumebuy,
-		# 	"stockpin":stockpin,
-		# 	"remaininvest":remaininvest,
-		# 	"runningmode": runningmode,
-		# }
 
 		self.myvarasso={}
 
@@ -203,12 +177,12 @@ class outputlog(tk.Tk,mylog):
 		############################# Login frame #########################################################################################
 		############################################################################################################################################
 		
-		self.frameLoginRT = tk.Frame(self ,background = 'green')
-		self.frameLoginRT.grid(row=1,column=2,sticky="e"+"n"+"s"+"w")
+		# self.frameLoginRT = tk.Frame(self ,background = 'green')
+		# self.frameLoginRT.grid(row=1,column=2,sticky="e"+"n"+"s"+"w")
 
 
-		self.lablecomputetime=tk.Label(self.frameLoginRT,text="time")
-		self.lablecomputetime.grid(row=0,column=2)
+		# self.lablecomputetime=tk.Label(self.frameLoginRT,text="time")
+		# self.lablecomputetime.grid(row=0,column=2)
 
 		# btnUnitTest=tk.Button(self.frameLoginRT,text="Unit Test",command=self.unitTest)
 		# btnUnitTest.grid(row=1,column=2 )
@@ -219,8 +193,8 @@ class outputlog(tk.Tk,mylog):
 		####################################################################################################
 		####################################################################################################
 
-		btnLoginRT=tk.Button(self.frameLoginRT,text="Start Login RT",command=self.executeLogin)
-		btnLoginRT.grid(row=3,column=2 )
+		# btnLoginRT=tk.Button(self.frameLoginRT,text="Start Login RT",command=self.executeLogin)
+		# btnLoginRT.grid(row=3,column=2 )
 
 		
 		
@@ -255,8 +229,8 @@ class outputlog(tk.Tk,mylog):
 
 
 
-		labelmonitor=tk.Label(frameSetValue,text="Planname ")
-		labelmonitor.grid(row=2,column=0)
+		# labelmonitor=tk.Label(frameSetValue,text="Planname ")
+		# labelmonitor.grid(row=2,column=0)
 
 		# labelstock=tk.Entry(frameSetValue,textvariable=planname)
 		# labelstock.grid(row=2,column=1)
@@ -266,58 +240,9 @@ class outputlog(tk.Tk,mylog):
 		############################################################################################################################################
 
 
-		labelmonitor=tk.Label(frameSetValue,text="Monitor => ")
-		labelmonitor.grid(row=3,column=0)
 
-		# labelstock=tk.Entry(frameSetValue,textvariable=stockname)
-		# labelstock.grid(row=3,column=1)
-
-
-
-		labelinitialvalue=tk.Label(frameSetValue, text="Invest")
-		labelinitialvalue.grid(row=4,column=0)
-
-		# enterInvest=tk.Entry(frameSetValue,textvariable=initinvest) #,textvariable=usertxt)
-		# enterInvest.grid(row=4,column=1)
-
-
-		labelinitialvalue=tk.Label(frameSetValue, text="Volume Step")
-		labelinitialvalue.grid(row=5,column=0)
-
-		# enterVolumn=tk.Entry(frameSetValue,textvariable=volumestep) #,textvariable=usertxt)
-		# enterVolumn.grid(row=5,column=1)
-
-		labelinitialvalue=tk.Label(frameSetValue, text="Profit Step")
-		labelinitialvalue.grid(row=6,column=0)
-
-		# enterVolumn=tk.Entry(frameSetValue,textvariable=profitstep) 
-		# enterVolumn.grid(row=6,column=1)
-
-
-		labelinitialvalue=tk.Label(frameSetValue, text="Top Value Range")
-		labelinitialvalue.grid(row=7,column=0)
-
-		# enterVolumn=tk.Entry(frameSetValue,textvariable=topvaluebuy) 
-		# enterVolumn.grid(row=7,column=1)
-
-		labelvaluebuy=tk.Label(frameSetValue, text="StartValueBuy")
-		labelvaluebuy.grid(row=8,column=0)
-
-		# entervaluebuy=tk.Entry(frameSetValue,textvariable=startvaluebuy) 
-		# entervaluebuy.grid(row=8,column=1)
-
-		labelinitialvalue=tk.Label(frameSetValue, text="Floor Value Range")
-		labelinitialvalue.grid(row=9,column=0)
-
-		# enterVolumn=tk.Entry(frameSetValue,textvariable=floorvaluebuy) 
-		# enterVolumn.grid(row=9,column=1)
-		
-
-
-
-
-		btnStartInitCal=tk.Button(frameSetValue,text="Set Parameters",command=self.setparameter)
-		btnStartInitCal.grid(row=10,column=1 )
+		# btnStartInitCal=tk.Button(frameSetValue,text="Set Parameters",command=self.setparameter)
+		# btnStartInitCal.grid(row=10,column=1 )
 
 
 
@@ -326,32 +251,26 @@ class outputlog(tk.Tk,mylog):
 
 		
 
-		labelvaluebuy=tk.Label(frameSetValue, text="Total Cost Buy:")
-		labelvaluebuy.grid(row=10,column=0,sticky="w")
+		# labelvaluebuy=tk.Label(frameSetValue, text="Total Cost Buy:")
+		# labelvaluebuy.grid(row=10,column=0,sticky="w")
 
 		# labelvaluebuy=tk.Label(frameSetValue, textvariable=totalcostbuy)
 		# labelvaluebuy.grid(row=10,column=0,sticky="e")
 
 
-		labelvalumebuy=tk.Label(frameSetValue, text="Total Volume Buy:")
-		labelvalumebuy.grid(row=11,column=0,sticky="w")
+		# labelvalumebuy=tk.Label(frameSetValue, text="Total Volume Buy:")
+		# labelvalumebuy.grid(row=11,column=0,sticky="w")
 
 		# labelvalumebuy=tk.Label(frameSetValue, textvariable=totalvolumebuy)
 		# labelvalumebuy.grid(row=11,column=0,sticky="e")
 
-		labelvalumebuy=tk.Label(frameSetValue, text="Remain Invest:")
-		labelvalumebuy.grid(row=12,column=0,sticky="w")
+		# labelvalumebuy=tk.Label(frameSetValue, text="Remain Invest:")
+		# labelvalumebuy.grid(row=12,column=0,sticky="w")
 
 		# labelvalumebuy=tk.Label(frameSetValue, textvariable=remaininvest)
 		# labelvalumebuy.grid(row=12,column=0,sticky="e")
 		
 
-		btnBuyCommand=tk.Button(frameSetValue,text="Buy Now",command=self.buybyclick, width = 10,height=2)
-		btnBuyCommand.grid(row=13,column=0,sticky="e")
-
-		btnSellCommand=tk.Button(frameSetValue,text="Sell Now",command=self.sellbyclick, width = 10,height=2)
-		btnSellCommand.grid(row=13,column=1,sticky="w")
-		btnSellCommand.grid_propagate(False)
 
 		btnRefreshCmd=tk.Button(frameSetValue,text="Refresh",command=self.rtrefresh, width = 10,height=2)
 		btnRefreshCmd.grid(row=14,column=0)
@@ -392,43 +311,46 @@ class outputlog(tk.Tk,mylog):
 
 
 
-		rangeData={
-		"A":[0,1.99,0.01],  # 0 to 2 step 0.01
-		"B":[2,4.98,0.02], # 2 up to less than 5  0.02
-		"C":[5,9.95,0.05],
-		"D":[10,24.9,0.10],
-		"E":[25,99.75,0.25],
-		"F":[100,199.5,0.5],
-		"G":[200,399,1],
-		"H":[400,1000,2],
-		}
-		optionList=[]
-		for planName,myrange in enumerate(rangeData):
-			startfrom=str(rangeData[myrange][0])
-			stopfrom=str(rangeData[myrange][1])
-			stepfrom=str(rangeData[myrange][2])
-			# print (self.rangeData[myrange][0])
-			optionList.append("Plan" + myrange +" "+ startfrom+"-"+stopfrom + " step " +stepfrom)
+		# rangeData={
+		# "A":[0,1.99,0.01],  # 0 to 2 step 0.01
+		# "B":[2,4.98,0.02], # 2 up to less than 5  0.02
+		# "C":[5,9.95,0.05],
+		# "D":[10,24.9,0.10],
+		# "E":[25,99.75,0.25],
+		# "F":[100,199.5,0.5],
+		# "G":[200,399,1],
+		# "H":[400,1000,2],
+		# }
+		# optionList=[]
+		# for planName,myrange in enumerate(rangeData):
+		# 	startfrom=str(rangeData[myrange][0])
+		# 	stopfrom=str(rangeData[myrange][1])
+		# 	stepfrom=str(rangeData[myrange][2])
+		# 	# print (self.rangeData[myrange][0])
+		# 	optionList.append("Plan" + myrange +" "+ startfrom+"-"+stopfrom + " step " +stepfrom)
 
-		self.rangeplanVar=tk.StringVar()
-		self.rangeplanVar.set("Select range plan") # default choice
-		self.rangeplanMenu1 = tk.OptionMenu(frameSetValue, self.rangeplanVar, *optionList,command=self.doMenuRange)
-		self.rangeplanMenu1.grid(row=0,column=0,sticky="w")
+		# self.rangeplanVar=tk.StringVar()
+		# self.rangeplanVar.set("Select range plan") # default choice
+		# self.rangeplanMenu1 = tk.OptionMenu(frameSetValue, self.rangeplanVar, *optionList,command=self.doMenuRange)
+		# self.rangeplanMenu1.grid(row=0,column=0,sticky="w")
 
-		self.btnSave=tk.Button(frameSetValue,text="Save",command=self.executeSave)
-		self.btnSave.grid(row=0,column=1,sticky="w")
-		self.btnSave.update()
+		# self.btnSave=tk.Button(frameSetValue,text="Save",command=self.executeSave)
+		# self.btnSave.grid(row=0,column=1,sticky="w")
+		# self.btnSave.update()
 
-		self.btnLoad=tk.Button(frameSetValue,text="Load",command=self.executeLoad)
-		self.btnLoad.grid(row=0,column=1,sticky="w",padx=self.btnSave.winfo_width())
+		# self.btnLoad=tk.Button(frameSetValue,text="Load",command=self.executeLoad)
+		# self.btnLoad.grid(row=0,column=1,sticky="w",padx=self.btnSave.winfo_width())
 
 		self.alreadyputback=False # To make put back into queue one time and sync to DB.
 
 
 		
 # when start up to set automatic 
-		self.doMenuRange("PlanB")
-		self.setparameter()
+		# self.doMenuRange("Plan"+self.configval["rangeselect"])
+
+		self.doMenuRange(self.configval["rangeselect"].get())
+
+		self.setlabeldisplay() ### refer to plugin_fivesteps.py
 
 
 		self.update_idletasks()
@@ -446,7 +368,7 @@ class outputlog(tk.Tk,mylog):
 
 		# if self.time2 != time1:
 			# time1 = self.time2
-		self.lablecomputetime.config(text=self.time2)
+		self.lblcomputetime.config(text=self.time2)
 		
 
 		if not self.mybot.mycollectqueues["qtimerefresh"].empty(): 
@@ -487,12 +409,12 @@ class outputlog(tk.Tk,mylog):
 		# calls itself every 200 milliseconds
 		# to update the time display as needed
 		# could use >200 ms, but display gets jerky
-		self.lablecomputetime.after(200, self.tkclock)
+		self.lblcomputetime.after(200, self.tkclock)
 
-	def executeSave(self):
-		self.log["console"].info("SaveAllValue")
+	# def executeSave(self):
+	# 	self.log["console"].info("SaveAllValue")
 
-	def executeLoad(self):
+	def TESTexecuteLoad(self):
 		print("LoadTESTAllValue")
 		self.createrepeatinfo("4.98",2,
 			
@@ -514,38 +436,27 @@ class outputlog(tk.Tk,mylog):
 			)
 		self.canvas.configure(scrollregion=self.canvas.bbox("all"))
 
-	def setvaluebuy(self):
-		pass
-
-	def buybyclick(self):
-		pass
-		# 	print("Buy set value")
-		# 	# self.mybot.myorder("buybyclick",self.configval)
-
-		# 	buyparams={ "ordermode":"buybyclick",
-
-		# 				}
-
-		# 	self.mybot.mycollectqueues["qorder"].put(buyparams)
-		# 	print ("Buy finished ")
-
-	def sellbyclick(self):
-		print ("sell set value")	
-
-		# self.mybot.threadorderbuy("test")
+	
 	def rtrefresh(self):
 		print ("refresh button press")
 		self.mybot.botrtrefresh()
+
 		# self.mybot.myorder("rtrefresh",self.configval)
 
 	def chooserunningmode(self):
 		print("run mode = "+ self.configval["runningmode"].get())
-	def setparameter(self):
+	def setlabeldisplay(self):
 
 		# print(self.mybot)
 		# print("setting necessary parameter tkconsole.py line 344")
 		# print(self.configval)
-		self.mybot.setparameter(self.configval,self.labeldisplay,self.txtout) # set default parameter for each plugins.
+		
+		##################################################
+		# labeldisplay from doMenuRange call via bot
+		##################################################
+		self.mybot.pinkymonitordisplay(self.configval,self.labeldisplay,self.txtout) # set default parameter for each plugins.
+
+
 
 		return (0)
 
@@ -553,20 +464,24 @@ class outputlog(tk.Tk,mylog):
 	def doMenuRange(self,value):
 
 
-		plansel=value.split(' ')[0]
-		self.myvarasso=self.initRangeValue(plansel[-1])
+		# plansel=value.split(' ')[0]
+		# plansel=value
+
+		# self.myvarasso=self.initRangeValue(plansel[-1])
+		self.myvarasso=self.initRangeValue(value)
+
 
 		# print(self.myvarasso["4.00"])
 		# exit()
 
-		if plansel=="PlanA":
-			print("planA selected")
-		elif plansel=="PlanB":
-			print("planB selected")
-		elif plansel=="PlanC":
+		# if plansel=="PlanA":
+		# 	print("planA selected")
+		# elif plansel=="PlanB":
+		# 	print("planB selected")
+		# elif plansel=="PlanC":
 
 
-			print("planC selected")
+		# 	print("planC selected")
 
 
 
@@ -642,35 +557,23 @@ class outputlog(tk.Tk,mylog):
 
 
 	def initRangeValue(self,idx):
-		rangeData={
-		"A":[0,2,0.01],  # 0 to 2 step 0.01
-		"B":[2,4.98,0.02], # 2 up to less than 5  0.02
-		"C":[5,10,0.05],
-		"D":[10,25,0.10],
-		"E":[25,100,0.25],
-		"F":[100,200,0.5],
-		"G":[200,400,1],
-		"H":[400,1000,2],
-		}
+		#### Get data from config value which from packsel_model
+		i=float(self.configval["floorvaluerange"].get())
+		my_topvaluerange=float(self.configval["topvaluerange"].get())
+
 		series=[]
-		i=rangeData[idx][0]
-		while i < rangeData[idx][1]:
+		while i <= my_topvaluerange:
+
 			chkpad=str(round(i,2)).split(".")
-			# print(len(chkpad))
 			if len(chkpad)==1:
 				stval=str(round(i,2))+".00"
 			elif len(chkpad)==2:
 				tempval=chkpad[1]+"0"
 				stval=chkpad[0]+"." +tempval[:2]
 
+			i+=float(self.configval["commonvaluestep"].get())
+			i = round(i,2)
 			series.append(stval)
-			i+=rangeData[idx][2]
-		
-		# print ("Range step="+str(rangeData[idx][2]))
-		
-		# print(series)
-	
-		self.configval["commonvaluestep"].set(str(rangeData[idx][2]))
 
 		return self.rangeline(series)
 
@@ -820,10 +723,10 @@ class outputlog(tk.Tk,mylog):
 
 		return varasso
 
-	def getRangeData(self):
-		print("print rangedata")
+	# def getRangeData(self):
+	# 	print("print rangedata")
 
-		return self.rangeData
+	# 	return self.rangeData
 	def update():
 		pass
 
@@ -907,13 +810,14 @@ class outputlog(tk.Tk,mylog):
 			# 			passtxt,
 						
 			# 			]
-			for child in self.frameLoginRT.winfo_children():
-				child.configure(state='disable')
-			# exit()
+			# for child in self.frameLoginRT.winfo_children():
+			# 	child.configure(state='disable')
+			# # exit()
 
-			self.loginSet=PackSelModel.getloginModel("013")
-			print(self.loginSet)
-			print("stockpin in executeLogin")
+			self.loginSet=PackSelModel.getloginDefault()
+			self.log["console"].debug(self.loginSet)
+			# print(self.loginSet)
+			self.log["applog"].info("Execute Login")
 
 			self.configval["stockpin"].set(self.loginSet["pinId"])
 			# print(self.configval["stockpin"].get())
@@ -923,7 +827,10 @@ class outputlog(tk.Tk,mylog):
 
 	def configparams(self):
 		print("############# config parameter ###################")
-		myconfigparamsresult = configparams(self)
+		myconfigparamsresult = configparams(self.configval,self.log)
+		
+
+
 	def tkviewconfig(self):
 		# print("view manue is pressed")
 		viewresult=viewconfig(self.configval)

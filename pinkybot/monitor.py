@@ -18,8 +18,8 @@ class pinkybot(packselenium):
 	 #    self.myplugins = plugins
 	 #    print (self.myplugins)
 	
-	def setparameter(self,params,labeldisplay,textout):
-		self.myplugins.setparameter(params,labeldisplay,textout)
+	def pinkymonitordisplay(self,params,labeldisplay,textout):
+		self.myplugins.setlabeldisplay(params,labeldisplay,textout)
 
 	def checkparams(self,params):
 		self.myplugins.checkparams(params)
@@ -53,7 +53,8 @@ class pinkybot(packselenium):
 
 
 		super().__init__("xdebug") # configure xdebug or xlive
-
+		self.log["console"].info("Initialize Pinkybot")
+		# self.log.console("Pickybot initial")
 
 	def myorder(self,orderside,configparams):
 		if orderside=="buybyclick":

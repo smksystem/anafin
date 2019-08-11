@@ -1,6 +1,6 @@
 from pinkybot.models import monitorbidoffer,updaterefresh,valuechange,keepconfig,keeplogin
 # from elasticsearch import Elasticsearch
-
+import tkinter as tk
 import pytz
 class PackSelModel:
 
@@ -33,6 +33,11 @@ class PackSelModel:
 			print("\nError: with no any parameter configured please check database !!!")
 			print("**************")
 			exit()
+	def getloginDefault():
+		def_loginparams=keeplogin.objects.filter(currentuseId="YES").values()
+		# print(def_loginparams[0])
+		return def_loginparams[0]
+
 	def getloginModel(myprofileId=""):
 		
 		if myprofileId!="all":
@@ -43,6 +48,7 @@ class PackSelModel:
 	def getDefaultConfig():
 		# if myconfigId!="all":
 		def_configparams=keepconfig.objects.filter(currentuseId="YES").values()
+
 		rangeData={
 		"A":[0,1.99,0.01],  # 0 to 2 step 0.01
 		"B":[2,4.98,0.02], # 2 up to less than 5  0.02
@@ -53,17 +59,57 @@ class PackSelModel:
 		"G":[200,399,1],
 		"H":[400,1000,2],
 		}
-		print(def_configparams)
+		# print(def_configparams)
 		myrange=def_configparams[0]["rangeselect"]
-		print(myrange)
+		# print(myrange)
 
-		return_def_configparams=def_configparams[0]
-		return_def_configparams['floorvaluerange']=rangeData[myrange][0]
-		return_def_configparams['topvaluerange']=rangeData[myrange][1]
-		return_def_configparams['commonvaluestep']=rangeData[myrange][2]
+		# return_def_configparams=def_configparams[0]
 
-		print(return_def_configparams)
-		return return_def_configparams
+		# return_def_configparams['floorvaluerange']=rangeData[myrange][0]
+		# return_def_configparams['topvaluerange']=rangeData[myrange][1]
+		# return_def_configparams['commonvaluestep']=rangeData[myrange][2]
+
+		#################################################################################
+		############ Initial value of configuration here from database + config value
+		#################################################################################
+
+		configval={
+			"planname":tk.StringVar(value=def_configparams[0]["planname"]),
+			"rangeselect":tk.StringVar(value=def_configparams[0]["rangeselect"]),
+			"monitorstock":tk.StringVar(value=def_configparams[0]["monitorstock"]),
+			"initinvest":tk.StringVar(value=def_configparams[0]["initinvest"]),
+
+			"volumestep":tk.StringVar(value=def_configparams[0]["volumestep"]),
+			"profitstep":tk.StringVar(value=def_configparams[0]["profitstep"]),
+			"topvaluebuy":tk.StringVar(value=def_configparams[0]["topvaluebuy"]),
+			"startvaluebuy":tk.StringVar(value=def_configparams[0]["startvaluebuy"]),
+			"stopvaluebuy":tk.StringVar(value=def_configparams[0]["stopvaluebuy"]),
+			"floorvaluebuy":tk.StringVar(value=def_configparams[0]["floorvaluebuy"]),
+			"firstbuyflag":tk.StringVar(value=def_configparams[0]["firstbuyflag"]),
+			"pluginfile":tk.StringVar(value=def_configparams[0]["pluginfile"]),
+			"currentuseId":tk.StringVar(value=def_configparams[0]["currentuseId"]),
+
+			"floorvaluerange":tk.StringVar(value=rangeData[myrange][0]),
+			"topvaluerange":tk.StringVar(value=rangeData[myrange][1]),
+			"commonvaluestep":tk.StringVar(value=rangeData[myrange][2]),
+			
+			"runningmode":tk.StringVar(value=def_configparams[0]["runningmode"]),
+			"totalcostbuy":tk.StringVar(value=def_configparams[0]["totalcostbuy"]),
+			"totalvolumebuy":tk.StringVar(value=def_configparams[0]["totalvolumebuy"]),
+			# "totalvolumebuy":tk.StringVar(value="pluginvalue"),
+
+			# commonstep=tk.StringVar(value=configparams["step"])  # step from range calculation
+			
+			"stockpin":tk.StringVar(),
+
+			"remaininvest":tk.StringVar(value=def_configparams[0]["remaininvest"]),
+		}
+
+
+
+
+		# print(return_def_configparams)
+		return configval
 
 	def getConfigModel(myconfigId=""):
 		if myconfigId!="all":
@@ -93,26 +139,56 @@ class PackSelModel:
 		# 	instance.delete()
 		# else:
 		# 	print("No record found to delete")
-	def	updateconfigModel(configparams):
-		obj, created = keepconfig.objects.update_or_create(
-		    		planname=configparams["planname"],
-		    defaults={
+	def	updateconfigModel(configparams,mode="Dict"):
+		if mode=="GetValue":
+			obj, created = keepconfig.objects.update_or_create(
+			    		planname=configparams["planname"].get(),
+			    defaults={
 
-		    		'rangeselect':configparams["rangeselect"],
-		    		'monitorstock':configparams["monitorstock"],
+			    		'rangeselect':configparams["rangeselect"].get(),
+			    		'monitorstock':configparams["monitorstock"].get(),
 
-   					"initinvest":configparams["initinvest"],
-					"volumestep":configparams["volumestep"],
-					"profitstep":configparams["profitstep"],
-					"topvaluebuy":configparams["topvaluebuy"],
-					"startvaluebuy":configparams["startvaluebuy"],
-					"stopvaluebuy":configparams["stopvaluebuy"],
-					"floorvaluebuy":configparams["floorvaluebuy"],
-					"pluginfile":configparams["pluginfile"],
-					"firstbuyflag":configparams["firstbuyflag"],
-					"currentuseId":configparams["currentuseId"],
-		    		},	##### if found from above search, Update to which field that need to be updated.
-		)
+	   					"initinvest":configparams["initinvest"].get(),
+						"volumestep":configparams["volumestep"].get(),
+						"profitstep":configparams["profitstep"].get(),
+						"topvaluebuy":configparams["topvaluebuy"].get(),
+						"startvaluebuy":configparams["startvaluebuy"].get(),
+						"stopvaluebuy":configparams["stopvaluebuy"].get(),
+						"floorvaluebuy":configparams["floorvaluebuy"].get(),
+						"pluginfile":configparams["pluginfile"].get(),
+						"firstbuyflag":configparams["firstbuyflag"].get(),
+						"currentuseId":configparams["currentuseId"].get(),
+						"totalvolumebuy":configparams["totalvolumebuy"].get(),
+						"totalcostbuy":configparams["totalcostbuy"].get(),
+						"remaininvest":configparams["remaininvest"].get(),
+
+			    		},	##### if found from above search, Update to which field that need to be updated.
+			)
+		elif mode=="Dict":
+			
+			obj, created = keepconfig.objects.update_or_create(
+			    		planname=configparams["planname"],
+			    defaults={
+
+			    		'rangeselect':configparams["rangeselect"],
+			    		'monitorstock':configparams["monitorstock"],
+
+	   					"initinvest":configparams["initinvest"],
+						"volumestep":configparams["volumestep"],
+						"profitstep":configparams["profitstep"],
+						"topvaluebuy":configparams["topvaluebuy"],
+						"startvaluebuy":configparams["startvaluebuy"],
+						"stopvaluebuy":configparams["stopvaluebuy"],
+						"floorvaluebuy":configparams["floorvaluebuy"],
+						"pluginfile":configparams["pluginfile"],
+						"firstbuyflag":configparams["firstbuyflag"],
+						"currentuseId":configparams["currentuseId"],
+						# "totalvolumebuy":configparams["totalvolumebuy"],
+						# "totalcostbuy":configparams["totalcostbuy"],
+						# "remaininvest":configparams["remaininvest"],
+
+			    		},	##### if found from above search, Update to which field that need to be updated.
+			)
 		print(obj,created)
 		if created==True:
 			# print("New record has been created")

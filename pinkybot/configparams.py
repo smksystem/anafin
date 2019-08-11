@@ -2,17 +2,25 @@ import tkinter as tk
 from pinkybot.packsel_model import PackSelModel
 class configparams(tk.Tk):
 	"""docstring for parameterconfigclass"""
-	def __init__(self,arg):
+	def __init__(self,configval,mylog):
 		# super(parameterconfigclass, self).__init__()
-		self.arg = arg
-		print("Access to config params")
+		self.configval = configval
+		self.log=mylog
+		self.log["console"].debug(configval)
+
+		# print("Access to config params")
 		tk.Toplevel.__init__(self)
 
 
-		self.plannametxt=tk.StringVar()
+		####################################################################################################
+		############### define later if need to reuse this parameter or not by pass parameter from database packsel_model.py ?????????? #####################
+		####################################################################################################
+
+		self.plannametxt=tk.StringVar()  #### can use self.configval[""]
 		self.rangeseltxt=tk.StringVar()
 		self.monitortxt=tk.StringVar()
 		self.investtxt=tk.StringVar()
+		# self.remaininvest=tk.StringVar()
 		self.volumesteptxt=tk.StringVar()
 		self.profitsteptxt=tk.StringVar()
 		self.topvaluebuytxt=tk.StringVar()
@@ -123,7 +131,7 @@ class configparams(tk.Tk):
 		entermonitor=tk.Entry(self.frameConfig,textvariable=self.profitsteptxt)
 		entermonitor.grid(row=5,column=1)
 		#######################################################################
-		labelmonitor=tk.Label(self.frameConfig, text="Top Value Range")
+		labelmonitor=tk.Label(self.frameConfig, text="Top Value Buy")
 		labelmonitor.grid(row=6,column=0,sticky="w")
 
 		entermonitor=tk.Entry(self.frameConfig,textvariable=self.topvaluebuytxt)
@@ -141,7 +149,7 @@ class configparams(tk.Tk):
 		entermonitor=tk.Entry(self.frameConfig,textvariable=self.stopvaluebuytxt)
 		entermonitor.grid(row=8,column=1)
 		#######################################################################
-		labelmonitor=tk.Label(self.frameConfig, text="Floor Value Range")
+		labelmonitor=tk.Label(self.frameConfig, text="Floor Value Buy")
 		labelmonitor.grid(row=9,column=0,sticky="w")
 
 		entermonitor=tk.Entry(self.frameConfig,textvariable=self.floorvaluebuytxt)
@@ -295,6 +303,7 @@ class configparams(tk.Tk):
 
 					"firstbuyflag":self.varcheckbuy.get(),
 					"currentuseId":self.varcheckdefault.get(),
+
 		}
 		updateresult=PackSelModel.updateconfigModel(confparams)
 		# print(updateresult)

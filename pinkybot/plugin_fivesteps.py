@@ -7,142 +7,144 @@ class fivesteps():
 
 
 	############# 3 parameter to configure value of label display , color of label display and text out 
-	def __init__(self,applog,configval):
+	def __init__(self,applog):
 		
 		self.log=applog
 		self.log["applog"].info("Initialize of plugin_fivesteps")
 		# self.waitconfirmfirstorder=""
 		self.matchedordermonitor=[]
-		# self.firstbuyflag="YES" 
-		self.configval=configval
-		print(self.configval)
+		# self.firstbuyflag="YES"
 
-	def setparameter(self,conf_params,conf_labeldisplay,conf_textout):
+		# self.configval=configval
+		# print(self.configval)
+
+	def setlabeldisplay(self,configval,conf_labeldisplay,conf_textout):
+
+		############# this method Also calculate totalcostbuy,totoalvolumebuy,....
+		self.log["console"].debug(configval)
+		# print(confival)
+		# exit()
+
+		# configval=PackSelModel.loadparameter("plugin_fivesteps")
+
 		
-
-		allparams=PackSelModel.loadparameter("plugin_fivesteps")
 		# self.consolelog.info("test")
 		self.log["applog"].debug("def setparameter print initial All Stockname Parameter")
-		self.log["applog"].debug(allparams)
+		self.log["applog"].debug(configval)
 		
-		# print("\n Print all stockname return from loadparameter in line 28 in def setparameter")
-		# print(allparams)
-
-		# for keyparams,valparams in allparams.items():
-		# 	print (keyparams,valparams)
-
-		
-
-		initinvest=20000
-		volumestep	=100
-		profitstep=1
-		topvaluerange=4.80
-		startvaluebuy=4.72
-		floorvaluerange=4.60
-		stopvaluerange=4.70
-		# stockname="WHA"
-
-		# initinvest=int(allparams["initinvest"])
-		# volumestep=int(allparams["volumestep"])
-		# profitstep=int(allparams["profitstep"])
-		# topvaluerange=float(allparams["topvaluerange"])
-		# stockname=allparams["monitorstock"]
-		planname=allparams["planname"]
-
-		self.firstbuyflag=allparams["firstbuyflag"]
-		self.log["applog"].debug("def setparameter load firstbuyflag value")
-		self.log["applog"].debug(self.firstbuyflag)
-
-
-
-
 		# initinvest=20000
-		# volumestep	=100
-		# profitstep=1
-		# topvaluerange=24.80
-		# startvaluebuy=24.40
-		# floorvaluerange=24.00
-		# stopvaluerange=24.20		
 
-		# conf_params["planname"].set()
+		planname=configval["planname"].get()
+		conf_textout("Plan Name = " + planname ,"red","white")
 
-		conf_params["initinvest"].set(str(initinvest))
-		conf_params["volumestep"].set(str(volumestep))
+		rangeselect=configval["rangeselect"].get()
+		conf_textout("Range Select = " + rangeselect ,"orange","green")
 
-		conf_params["profitstep"].set(str(profitstep))
+		monitorstock=configval["monitorstock"].get()
+		conf_textout("Monitor Stock = " + monitorstock ,"orange","green")
 
-		# conf_params["topvaluebuy"].set(str(topvaluebuy))
+		initinvest=configval["initinvest"].get()
+		conf_textout("Set Invest = " + initinvest ,"yellow","gray")
 
-		conf_params["startvaluebuy"].set(str(startvaluebuy))
-		# conf_params["floorvaluebuy"].set(str(floorvaluebuy))
+		volumestep	=configval["volumestep"].get()
+		conf_textout("Set Volume Step = " + volumestep ,"yellow","gray")
 
-		# conf_params["stopvaluebuy"].set(str(stopvaluebuy))	# stop loss not to buy more	
-		# conf_params["stockname"].set (stockname)
+		profitstep=configval["profitstep"].get()
+		conf_textout("Set Profit Step = " + profitstep ,"yellow","gray")
+
+		topvaluerange=configval["topvaluerange"].get()
+		conf_textout("Set Top Value Range = " + topvaluerange ,"yellow","gray")
+		
+		topvaluebuy=configval["topvaluebuy"].get()
+		conf_textout("Set Top Value Buy = " + topvaluebuy ,"red","white")
+
+		startvaluebuy=configval["startvaluebuy"].get()
+		conf_textout("Set Start Value Buy = " + startvaluebuy ,"yellow","gray")
 
 
-		commonvaluestep=float(conf_params["commonvaluestep"].get())
-		# stockname=conf_params["stockname"].get()
-		stockpin=conf_params["stockpin"].get()
+		stopvaluebuy=configval["stopvaluebuy"].get()
+		conf_textout("Set Stop Value Buy = " + stopvaluebuy ,"yellow","gray")
+
+		floorvaluebuy=configval["floorvaluebuy"].get()
+		conf_textout("Set Floor Value Buy = " + floorvaluebuy ,"yellow","gray")
+
+
+		floorvaluerange=configval["floorvaluerange"].get()
+		conf_textout("Set Floor Value Range = " + floorvaluerange ,"yellow","gray")
+		
+		commonvaluestep=configval["commonvaluestep"].get()
+		conf_textout("Set Common Value Step = " + commonvaluestep ,"red","white")
+
+		firstbuyflag=configval["firstbuyflag"].get()
+		conf_textout("First Buy Flag = " + firstbuyflag,"green","red")
+
+
+		stockpin=configval["stockpin"].get()
+
+		# self.firstbuyflag=configval["firstbuyflag"].get()
+		# self.log["applog"].debug("def setparameter load firstbuyflag value")
+		# self.log["applog"].debug(runfirstbuyflag)
+
+
+
+
 		print("stockpin")
 		print(stockpin)
 		self.log["applog"].debug("Print stock pin value")
 		self.log["applog"].debug(stockpin)
 
-		runvalue=startvaluebuy # change text to numbering.
-		stopvaluerange=topvaluerange
-		runinvest=initinvest
+		runvalue=float(startvaluebuy) # change text to numbering.
+		# runstartvalueragne=float(startvaluerange)
+		runstopvaluerange=float(topvaluerange)
+		runstopvaluebuy=float(stopvaluebuy)
+		runstartvaluebuy=float(startvaluebuy)
+		runtopvaluebuy=float(topvaluebuy)
+		runfloorvaluebuy=float(floorvaluebuy)
+		# runinvest=initinvest
+		runinitinvest=float(initinvest)
+		runcommonvaluestep=float(commonvaluestep)
+		runvolumestep=float(volumestep)
+		runfloorvaluerange=float(floorvaluerange)
 
-
-		totalcostbuy=0 #### purpose variable to calculate in below.
-		totalvolumebuy=0
+		runtotalcostbuy=0 #### purpose variable to calculate in below.
+		runtotalvolumebuy=0
 		# runconfig=floorvaluerange
 
 
-		str_initinvest=str(initinvest)
-		str_volumestep	=str(volumestep)
-		str_profitstep= str(profitstep)
-		str_topvaluerange= str(topvaluerange)
-		str_startvaluebuy= str(startvaluebuy)
-		str_floorvaluerange= str(floorvaluerange)
-		str_stopvaluerange= str(stopvaluerange)
-		str_commonvaluestep=str(commonvaluestep)
 
 
+		###############################################################################
+		# diffrange=round( runstopvaluerange-runstartvaluebuy,2)
 
+		# runtotalcostbuy=runtotalvolumebuy * runstartvaluebuy
+		###############################################################################
 
-		diffrange=round( stopvaluerange-startvaluebuy,2)
-
-
-
-		# print("\n==== Difference between top value buy and start value buy below plugin_fivesteps.py line 74 in def setparameter")
-		# print(diffrange)
-
-		totalvolumebuy=int((diffrange/commonvaluestep)*volumestep)
-
-		# print("\n==== Total volume to buy from the initial buy value is blow plugin_fivesteps.py line 78 in def setparameter")
-		# print(totalvolumebuy)
-		# runvolumebuy=totalvolumebuy
-
-
-		totalcostbuy=totalvolumebuy * startvaluebuy
-
-		# print("\n=== Total cost to buy from the initial value is below plugin_fivesteps.py line 90 in def setparameter")
-		# print(totalcostbuy)
-
-		remaininvest=round(initinvest-totalcostbuy,2)
 		# print("\n=== Remain cost buy from initial buy value is below plugin_fivesteps.py line 96 in def setparameter")
 		# print(remaininvest)
 		##################################################
 		# To set upper range of initial buy value
 		##################################################
 
-		while (runvalue<=stopvaluerange):	
+		# runtotalvolumebuy=int((diffrange/runcommonvaluestep)*runvolumestep)
+		remaininvest=round(runinitinvest,2)
+		# return 0
+		
 
-				
-			if runinvest > (runvalue*volumestep): #### check not to give -294, -xxx
+		while (runvalue<=runtopvaluebuy):	
 
+			# print(runvalue)				
+			if remaininvest > (runvalue*runvolumestep): #### check not to give -294, -xxx
 				# print("run value range = " + str(runvalue))
-				stepcost=round((runvalue*volumestep),2)
+				stepcostdeduct=round((runvalue*runvolumestep),2)
+				# print(stepcostdeduct)
+				runtotalcostbuy=runtotalcostbuy+stepcostdeduct
+				# print("Run total cost buy=")
+				# print(runtotalcostbuy)
+				# print(runinitinvest)
+				# print("remaininvest=")
+				runtotalvolumebuy=runtotalvolumebuy+runvolumestep
+				remaininvest= remaininvest-stepcostdeduct
+				# print(remaininvest)
 
 				##############################################################################
 				###### Check padding to avoid key not found with only "4.0" not "4.00" for label
@@ -157,33 +159,43 @@ class fivesteps():
 					valuelabel=str(runvalue)
 				conf_labeldisplay[valuelabel][valuelabel].configure(background="lightgreen")
 
-				# runcost=runvalue*volumestep
 				# runcostbuy +=runcost ### accume initial cost value to buy
 				# print("initial cost to buy =" , str(runcostbuy))
 				
 				# runvolumebuy+=volumestep
-
-				
-				runvalue+=commonvaluestep
+				runvalue+=runcommonvaluestep
 				runvalue=round(runvalue,2)
-			
 
 				# runinvest -=runcost #### resul is 293.99999999999999994
 				# runinvest=round(runinvest,2)
 				# print (runinvest)
 
-			elif runinvest < (runvalue*volumestep):
-				print ("run invest is not enough break to exit tkconsole.py line 435")
+			elif remaininvest < (runvalue*runvolumestep):
+				configval["totalvolumebuy"].set(runtotalvolumebuy)
+				configval["totalcostbuy"].set(runtotalcostbuy)
+				configval["remaininvest"].set(remaininvest)
+
+				conf_textout("Set Total Cost Buy = " + str(runtotalcostbuy) ,"red","white")
+				conf_textout("Set Total Volume Buy=" + str(runtotalvolumebuy),"black","yellow")
+				conf_textout("Set Remain Invest to Buy = " + str(remaininvest) ,"red","white")
+				PackSelModel.updateconfigModel(configval,"GetValue")
+
+				# configval["totalcostbuy"].set(totalcostbuy)
+				self.log["console"].debug("Case runvalue*runvolumestep > remain invest.")
 				break
 
+		conf_labeldisplay[startvaluebuy][startvaluebuy].configure(background="yellow")
+
+		# return 0
 
 		##################################################
-		# To set under range of initial buy value
+		# To set down range of initial buy value
 		##################################################
-		runvalue=floorvaluerange
-		while (runvalue<=startvaluebuy):
+		runvalue=runfloorvaluebuy
+		# print(runvalue)
+		while (runvalue<=runstartvaluebuy):
 			runvalue= round(runvalue,2)
-
+			# print(runvalue)
 			# print("run config plugin_fivesteps.py line 58")
 			# print(runvalue)
 			##############################################################################
@@ -203,67 +215,26 @@ class fivesteps():
 			
 			conf_labeldisplay[valuelabel][valuelabel].configure(background="orangered")
 			
-			runvalue+=commonvaluestep
+			runvalue+=runcommonvaluestep
 
 
 		
+		######################## mark Start value to buy #######################
+		# valuelabel=startvaluebuy
+		conf_labeldisplay[startvaluebuy][startvaluebuy].configure(background="yellow")
+		# conf_labeldisplay[valuelabel][valuelabel].configure(background="yellow")
+		##############################################################################
 
-		conf_labeldisplay[str_startvaluebuy][str_startvaluebuy].configure(background="yellow")
+		str_totalcostbuy=str(runtotalcostbuy)
+		configval["totalcostbuy"].set(str_totalcostbuy)
 
-		conf_params["totalcostbuy"].set(totalcostbuy)
-		str_totalcostbuy=str(totalcostbuy)
-		conf_params["totalvolumebuy"].set(totalvolumebuy)
-		str_totalvolumebuy=str(totalvolumebuy)
-		conf_params["remaininvest"].set(remaininvest)
+		str_totalvolumebuy=str(runtotalvolumebuy)
+		configval["totalvolumebuy"].set(str_totalvolumebuy)
+
 		str_remaininvest=str(remaininvest)
-
-		print ("Initial Invest ====>>" + str(initinvest))
-		print ("Volume Step =====>>" + str(volumestep))
-		print ("Profit Step ====>>" + str(profitstep))
-		print("Common Value Step ====>>" + str(commonvaluestep))
-		print ("Top Value Range ====>>" + str(topvaluerange))
-		print ("Start Value Buy ====>>" + str(startvaluebuy))
-		print ("Floor Value Range ====>>" + str(floorvaluerange))
-		print ("Total Cost Buy ====>>" + str(totalcostbuy))
-		print ("Total Volume Buy =======>>" + str(totalvolumebuy))
-		print ("Remain Invest Cost =========>>" + str(remaininvest))
-		# print("StockName =========>>" + (stockname))  # get value from login function in pacsel.py self.stockdata.
-
-		conf_textout("Set Invest = " + str_initinvest ,"yellow","gray")
-		conf_textout("Set Volume Step = " + str_volumestep ,"yellow","gray")
-		conf_textout("Set Profit Step = " + str_profitstep ,"yellow","gray")
-		conf_textout("Set Common Value Step = " + str_commonvaluestep ,"red","white")
-		conf_textout("Set Top Value Range = " + str_topvaluerange ,"yellow","gray")
-		conf_textout("Set Start Value Buy = " + str_startvaluebuy ,"yellow","gray")
-		conf_textout("Set Floor Value Range = " + str_floorvaluerange ,"yellow","gray")
-		conf_textout("Set Total Price to Pay = " + str_totalcostbuy)
-		conf_textout("Set Total Volume = " + str_totalvolumebuy,"white","peru")
-		conf_textout("Remain Invest Cost = " + str_remaininvest)
-		# conf_textout("StockName = " + stockname)
-		
-
-		self.conf_params={
-							"planname":planname,
-							"initinvest":initinvest,
-							"volumestep":volumestep,
-							"profitstep":profitstep,
-							"commonvaluestep":commonvaluestep,
-							"topvaluerange":topvaluerange,
-							"startvaluebuy":str_startvaluebuy,
-							"floorvaluerange":floorvaluerange,
-							"totalcostbuy":str_totalcostbuy,
-							"totalvolumebuy":str_totalvolumebuy,
-							"remaininvest":str_remaininvest,
-							# "stockname":stockname,
-							"stockpin":stockpin,
-		}
-		# conf_params
-		# print("\n---Config parameter is following plugin_fivesteps.py line 170")
-		self.log["console"].debug("def setparameter confirm self config parameter ")
-		# print(self.conf_params)
-		self.log["console"].debug(self.conf_params)
-
-		return self.conf_params
+		configval["remaininvest"].set(str_remaininvest)
+		# print(configval)
+		# return self.configval
 
 	def process(self):
 		print("Hello World")
@@ -353,10 +324,10 @@ class fivesteps():
 
 		if controlorder["ordermode"]=="buybybot" and controlorder["firstbuy"]=="yes":
 
-			orderdetail["stockname"]=self.conf_params["stockname"]
-			orderdetail["volume"]=self.conf_params["totalvolumebuy"]
-			orderdetail["price"]=self.conf_params["startvaluebuy"]
-			orderdetail["stockpin"]=self.conf_params["stockpin"]
+			orderdetail["stockname"]=self.configval["stockname"]
+			orderdetail["volume"]=self.configval["totalvolumebuy"]
+			orderdetail["price"]=self.configval["startvaluebuy"]
+			orderdetail["stockpin"]=self.configval["stockpin"]
 			orderdetail["order"]="buy"
 			# self.params[""]
 
@@ -448,13 +419,13 @@ class fivesteps():
 		print(rt_table)
 
 
-		if not rt_table and price_change==self.conf_params["startvaluebuy"] and self.firstbuyflag=="YES":
+		if not rt_table and price_change==self.configval["startvaluebuy"] and self.firstbuyflag=="YES":
 			# print("start first buy plugin_fivesteps.py line 241")
 
-			# params["stockname"]=self.conf_params["stockname"]
-			# params["startvolume"]=self.conf_params["totalvolumebuy"]
-			# params["startvalue"]=self.conf_params["startvaluebuy"]
-			# params["stockpin"]=self.conf_params["stockpin"]
+			# params["stockname"]=self.configval["stockname"]
+			# params["startvolume"]=self.configval["totalvolumebuy"]
+			# params["startvalue"]=self.configval["startvaluebuy"]
+			# params["stockpin"]=self.configval["stockpin"]
 			# params["order"]="buy"
 
 			# use self.order instead direct call orderfn
@@ -520,11 +491,11 @@ class fivesteps():
 					self.matchedordermonitor.remove(chkmatch)
 
 					print("\nSet commonvaluestep plugin_fivesteps.py line 304 def checkprocess2matchstatus")
-					print(self.conf_params)
+					print(self.configval)
 
-					commonvaluestep=float(self.conf_params["commonvaluestep"])
-					profitstep=float(self.conf_params["profitstep"])
-					startvaluebuy=float(self.conf_params["startvaluebuy"])
+					commonvaluestep=float(self.configval["commonvaluestep"])
+					profitstep=float(self.configval["profitstep"])
+					startvaluebuy=float(self.configval["startvaluebuy"])
 
 					
 					allvol=int(chkresult["volume"])
@@ -532,9 +503,9 @@ class fivesteps():
 					print("\n!!!Print allvol to order in line 450 file plugin_fivesteps.py in def checkprocess2matchstatus")
 					print (allvol)
 
-					stepvol=int(self.conf_params["volumestep"])
-					floorvaluerange=float(self.conf_params["floorvaluerange"])
-					topvaluerange=float(self.conf_params["topvaluerange"])
+					stepvol=int(self.configval["volumestep"])
+					floorvaluerange=float(self.configval["floorvaluerange"])
+					topvaluerange=float(self.configval["topvaluerange"])
 
 					difvaluerange=round((topvaluerange - floorvaluerange),2)
 					
@@ -598,7 +569,7 @@ class fivesteps():
 											"order":orderside,
 											"stockname":stockname,
 											"referorderno":orderno,
-											"stockpin":self.conf_params["stockpin"],
+											"stockpin":self.configval["stockpin"],
 								}]
 
 
@@ -643,7 +614,7 @@ class fivesteps():
 											"order":orderside,
 											"stockname":stockname,
 											"referorderno":orderno,
-											"stockpin":self.conf_params["stockpin"],
+											"stockpin":self.configval["stockpin"],
 								}]
 
 								ordercontrol={'ordermode':'buybybot','firstbuy':'no'}
@@ -693,7 +664,7 @@ class fivesteps():
 											"order":orderside,
 											"stockname":chkresult["symbole"],
 											"referorderno":chkresult["orderno"],
-											"stockpin":self.conf_params["stockpin"],
+											"stockpin":self.configval["stockpin"],
 								}]					
 						print("\n!!!Print orderlist in line 644 plugin_fivesteps.py in def checkprocess2matchstatus")
 						print(orderlist)	

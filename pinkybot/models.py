@@ -79,7 +79,9 @@ class keepconfig(models.Model):
 	currentuseId=models.CharField(max_length=5,unique=False,default="")
 	pluginfile=	models.CharField(max_length=30,unique=False,default="")
 	runningmode=models.CharField(max_length=8,unique=False,default="auto")
-
+	remaininvest=models.CharField(max_length=10,unique=False,default="auto")
+	totalcostbuy=models.CharField(max_length=10,unique=False,default="auto")
+	totalvolumebuy=models.CharField(max_length=10,unique=False,default="auto")
 
 # class buysellrecord(models.Model):
 # 	orderno=models.CharField(max_length=10,unique=False,default="")
