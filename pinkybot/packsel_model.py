@@ -222,11 +222,16 @@ class PackSelModel:
 			print("Update record")
 			return "UPDATED"
 
-	# def updatefirstorderbuy(dataupdate="NO"):
+	def updatefirstorderbuy(planname,dataupdate="NO"):
 
-	# 	# self.log("applog")
-	# 	updatekeepconfig=keepconfig.objects.filter(planname="test").update(firstbuyflag=dataupdate)
+		# self.log("applog")
+		# self.log["applog"].debug("PlanName to update is below")
+		# self.log["applog"].debug(planname)
+		print("Planname to update is below")
+		print(planname)
 
+		updatekeepconfig=keepconfig.objects.filter(planname=planname).update(firstbuyflag=dataupdate)
+		# print(updatekeepconfig)
 		# updatefirstbuyflag=keepconfig(
 		# 		firstbuyflag=dataupdate
 

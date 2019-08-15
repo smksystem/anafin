@@ -24,12 +24,12 @@ class fivesteps():
 		self.log["console"].debug(configval)
 		# print(confival)
 		# exit()
-
+		self.configval=configval
 		# configval=PackSelModel.loadparameter("plugin_fivesteps")
 
 		
 		# self.consolelog.info("test")
-		self.log["applog"].debug("def setparameter print initial All Stockname Parameter")
+		self.log["applog"].debug("def setparameter print initial All monitorstock Parameter")
 		self.log["applog"].debug(configval)
 		
 		# initinvest=20000
@@ -75,8 +75,8 @@ class fivesteps():
 		commonvaluestep=configval["commonvaluestep"].get()
 		conf_textout("Set Common Value Step = " + commonvaluestep ,"red","white")
 
-		firstbuyflag=configval["firstbuyflag"].get()
-		conf_textout("First Buy Flag = " + firstbuyflag,"green","red")
+		self.firstbuyflag=configval["firstbuyflag"].get()
+		conf_textout("First Buy Flag = " + self.firstbuyflag,"green","red")
 
 
 		stockpin=configval["stockpin"].get()
@@ -88,8 +88,6 @@ class fivesteps():
 
 
 
-		print("stockpin")
-		print(stockpin)
 		self.log["applog"].debug("Print stock pin value")
 		self.log["applog"].debug(stockpin)
 
@@ -143,6 +141,7 @@ class fivesteps():
 				# print(runinitinvest)
 				# print("remaininvest=")
 				runtotalvolumebuy=runtotalvolumebuy+runvolumestep
+				# print(runtotalvolumebuy)
 				remaininvest= remaininvest-stepcostdeduct
 				# print(remaininvest)
 
@@ -171,18 +170,39 @@ class fivesteps():
 				# print (runinvest)
 
 			elif remaininvest < (runvalue*runvolumestep):
-				configval["totalvolumebuy"].set(runtotalvolumebuy)
+				self.log["applog"].debug("Round set int runtotalvolumebuy result")
+				self.log["applog"].debug(round(int(runtotalvolumebuy),0))
+
+				totalvolumebuy=round(int(runtotalvolumebuy),0)
+				configval["totalvolumebuy"].set(totalvolumebuy)
 				configval["totalcostbuy"].set(runtotalcostbuy)
 				configval["remaininvest"].set(remaininvest)
-
-				conf_textout("Set Total Cost Buy = " + str(runtotalcostbuy) ,"red","white")
-				conf_textout("Set Total Volume Buy=" + str(runtotalvolumebuy),"black","yellow")
-				conf_textout("Set Remain Invest to Buy = " + str(remaininvest) ,"red","white")
+				conf_textout("Runvalue less than TotalvalueBuy=" + str(runvalue),"red")
+				conf_textout("Total Cost Buy = " + str(runtotalcostbuy) ,"red","white")
+				conf_textout("Total Volume Buy =" + str(totalvolumebuy),"black","yellow")
+				conf_textout("Remain Invest to Buy = " + str(remaininvest) ,"red","white")
 				PackSelModel.updateconfigModel(configval,"GetValue")
 
 				# configval["totalcostbuy"].set(totalcostbuy)
 				self.log["console"].debug("Case runvalue*runvolumestep > remain invest.")
 				break
+
+		####### if case runvalue is not reach to topvaluebuy and not enter remaininvest < (runvalue*runvolumestep)
+		####### for example buy at 4.72 top value at 4.80
+		# print(runvalue,runtopvaluebuy,runtotalvolumebuy)
+		if runvalue>runtopvaluebuy: 
+
+			totalvolumebuy=round(int(runtotalvolumebuy),0)
+			configval["totalvolumebuy"].set(totalvolumebuy)
+			configval["remaininvest"].set(remaininvest)
+			configval["totalcostbuy"].set(runtotalcostbuy)
+			conf_textout("Runvalue MORE than TotalvalueBuy=" + str(runvalue),"red")
+			conf_textout("Total Cost Buy =" + str(runtotalcostbuy),"green")
+			conf_textout("Total Volume Buy ="+str(totalvolumebuy),"red")
+			conf_textout("Remain Invest =" + str(remaininvest),"orange")
+			PackSelModel.updateconfigModel(configval,"GetValue")
+
+			print(remaininvest)
 
 		conf_labeldisplay[startvaluebuy][startvaluebuy].configure(background="yellow")
 
@@ -225,19 +245,17 @@ class fivesteps():
 		# conf_labeldisplay[valuelabel][valuelabel].configure(background="yellow")
 		##############################################################################
 
-		str_totalcostbuy=str(runtotalcostbuy)
-		configval["totalcostbuy"].set(str_totalcostbuy)
+		# str_totalcostbuy=str(runtotalcostbuy)
+		# configval["totalcostbuy"].set(str_totalcostbuy)
 
-		str_totalvolumebuy=str(runtotalvolumebuy)
-		configval["totalvolumebuy"].set(str_totalvolumebuy)
+		# str_totalvolumebuy=str(runtotalvolumebuy)
+		# configval["totalvolumebuy"].set(str_totalvolumebuy)
 
-		str_remaininvest=str(remaininvest)
-		configval["remaininvest"].set(str_remaininvest)
+		# str_remaininvest=str(remaininvest)
+		# configval["remaininvest"].set(str_remaininvest)
 		# print(configval)
 		# return self.configval
 
-	def process(self):
-		print("Hello World")
 
 	def putordermonitoring(self,result_order):
 
@@ -316,7 +334,8 @@ class fivesteps():
 		# print(controlorder)
 		# print(orderdetail)
 
-		
+		self.log["applog"].debug("===== def order =====")
+		self.log["applog"].debug(controlorder)
 
 
 		# if params["buycount"]=="1buy":
@@ -324,10 +343,13 @@ class fivesteps():
 
 		if controlorder["ordermode"]=="buybybot" and controlorder["firstbuy"]=="yes":
 
-			orderdetail["stockname"]=self.configval["stockname"]
-			orderdetail["volume"]=self.configval["totalvolumebuy"]
-			orderdetail["price"]=self.configval["startvaluebuy"]
-			orderdetail["stockpin"]=self.configval["stockpin"]
+			orderdetail["monitorstock"]=self.configval["monitorstock"].get()
+
+			orderdetail["volume"]=self.configval["totalvolumebuy"].get()
+
+
+			orderdetail["price"]=self.configval["startvaluebuy"].get()
+			orderdetail["stockpin"]=self.configval["stockpin"].get()
 			orderdetail["order"]="buy"
 			# self.params[""]
 
@@ -380,8 +402,8 @@ class fivesteps():
 
 		elif controlorder["ordermode"]=="sellbybot" and controlorder["firstbuy"]=="no":
 			# monitor_return
-			print("\n!!! print of orderdetail case sellbybot firstbuy==no before for order idx plugin_fivesteps.py line 285 in def order ")
-			print(orderdetail)
+			self.log["applog"].debug("!!! print of orderdetail case sellbybot firstbuy==no before for order idx in def order ")
+			self.log["applog"].debug(orderdetail)
 
 			for orderidx in orderdetail:
 				# print("\n ==! order idx before orderfn line 286 plugin_fivesteps.py def order")
@@ -409,17 +431,19 @@ class fivesteps():
 	# called by change value
 
 	def checkprocess2order(self,rt_table,price_change,orderfn=""):
-		print ("\nprint price_change from checkprocess2order to order next plugin_fivesteps.py line 239")
-		print( price_change)
+		self.log["applog"].debug("print price_change from checkprocess2order to order next plugin_fivesteps.py line 239")
+		self.log["applog"].debug(price_change)
 		# params={}
 		
 		# if table of realtime empty do execute below...
 
-		print("\nprint rt_table this value should be empty for first time buy")
-		print(rt_table)
+		self.log["applog"].debug("Print rt_table this value should be empty for first time buy")
+		self.log["applog"].debug(rt_table)
 
+		self.log["applog"].debug("Print configval from def checkprocess2order before fist buy order")
+		self.log["applog"].debug(self.configval)
 
-		if not rt_table and price_change==self.configval["startvaluebuy"] and self.firstbuyflag=="YES":
+		if not rt_table and price_change==self.configval["startvaluebuy"].get() and self.firstbuyflag=="YES":
 			# print("start first buy plugin_fivesteps.py line 241")
 
 			# params["stockname"]=self.configval["stockname"]
@@ -430,7 +454,8 @@ class fivesteps():
 
 			# use self.order instead direct call orderfn
 
-			self.log["applog"].debug("### Access to buy first time ###")
+			self.log["applog"].debug("Update first time to planname below ###")
+			self.log["applog"].debug(self.configval["planname"].get())
 
 			resultbuy=self.order({'ordermode':'buybybot','firstbuy':'yes'},{},orderfn)
 			self.firstbuyflag="NO"
@@ -439,7 +464,7 @@ class fivesteps():
 
 			# move append monitoring to order function.
 
-			PackSelModel.updatefirstorderbuy("NO")
+			PackSelModel.updatefirstorderbuy(self.configval["planname"].get(),"NO")
 
 		print("\nprint self.matchedordermonitor to monitor in plugin_fivesteps.py line 309 def checkprocess2order ")
 		print(self.matchedordermonitor)
@@ -447,9 +472,11 @@ class fivesteps():
 
 
 	def checkprocess2matchstatus(self,chk_params,orderfn=""):
-		print("\n=== Print check params , self.matchedordermonitor from plugin_fivesteps.py line 166 in def checkprocess2matchstatus")
-		print(chk_params)
-		print(self.matchedordermonitor)
+
+		self.log["applog"].debug("=== Print check_params , self.matchedordermonitor in def checkprocess2matchstatus")
+		self.log["applog"].debug(chk_params)
+		self.log["applog"].debug("=== Print self.matchedordermonitor , self.matchedordermonitor in def checkprocess2matchstatus")
+		self.log["applog"].debug(self.matchedordermonitor)
 
 		return_params=[]
 		orderlist=[]
@@ -490,12 +517,13 @@ class fivesteps():
 
 					self.matchedordermonitor.remove(chkmatch)
 
-					print("\nSet commonvaluestep plugin_fivesteps.py line 304 def checkprocess2matchstatus")
-					print(self.configval)
+					self.log["applog"].debug("Set commonvaluestep from def checkprocess2matchstatus")
+					self.log["applog"].debug(self.configval["commonvaluestep"].get())
 
-					commonvaluestep=float(self.configval["commonvaluestep"])
-					profitstep=float(self.configval["profitstep"])
-					startvaluebuy=float(self.configval["startvaluebuy"])
+
+					commonvaluestep=float(self.configval["commonvaluestep"].get())
+					profitstep=float(self.configval["profitstep"].get())
+					startvaluebuy=float(self.configval["startvaluebuy"].get())
 
 					
 					allvol=int(chkresult["volume"])
@@ -503,9 +531,9 @@ class fivesteps():
 					print("\n!!!Print allvol to order in line 450 file plugin_fivesteps.py in def checkprocess2matchstatus")
 					print (allvol)
 
-					stepvol=int(self.configval["volumestep"])
-					floorvaluerange=float(self.configval["floorvaluerange"])
-					topvaluerange=float(self.configval["topvaluerange"])
+					stepvol=int(self.configval["volumestep"].get())
+					floorvaluerange=float(self.configval["floorvaluerange"].get())
+					topvaluerange=float(self.configval["topvaluerange"].get())
 
 					difvaluerange=round((topvaluerange - floorvaluerange),2)
 					
@@ -520,7 +548,7 @@ class fivesteps():
 
 
 					orderno=chkresult["orderno"]
-					stockname=chkresult["symbole"]
+					monitorstock=chkresult["symbole"]
 					sellprice= startvaluebuy
 					buyprice= startvaluebuy
 
@@ -550,6 +578,8 @@ class fivesteps():
 
 								allvol= allvol-stepvol
 								# sell price order
+								# define profit step is step of price to get profit
+								# such as 0.2 *1 or 0.2 *2
 								sellprice=  round(((profitstep * commonvaluestep) + sellprice),2)
 								chkpad=str(sellprice).split(".") 
 
@@ -561,15 +591,19 @@ class fivesteps():
 									strprice=str(sellprice)
 								
 								orderside="sell"
-								print("\n--- summary sell price runvolidx,sellprice,buyprice,allvol")
-								print(runvolidx,sellprice,buyprice,allvol)
+								self.log["applog"].debug("--- summary sell price runvolidx,sellprice,buyprice,allvol,strprice")
+								self.log["applog"].debug(runvolidx)
+								self.log["applog"].debug(sellprice)
+								self.log["applog"].debug(buyprice)
+								self.log["applog"].debug(allvol)
+								self.log["applog"].debug(strprice)
 								
 								orderlist=[{"price":strprice,
 											"volume":str(stepvol),
 											"order":orderside,
-											"stockname":stockname,
+											"monitorstock":monitorstock,
 											"referorderno":orderno,
-											"stockpin":self.configval["stockpin"],
+											"stockpin":self.configval["stockpin"].get(),
 								}]
 
 
@@ -612,9 +646,9 @@ class fivesteps():
 								orderlist=[{"price":strprice,
 											"volume":str(stepvol),
 											"order":orderside,
-											"stockname":stockname,
+											"monitorstock":monitorstock,
 											"referorderno":orderno,
-											"stockpin":self.configval["stockpin"],
+											"stockpin":self.configval["stockpin"].get(),
 								}]
 
 								ordercontrol={'ordermode':'buybybot','firstbuy':'no'}
@@ -637,12 +671,17 @@ class fivesteps():
 						if chkside=="B" :
 							ordermode="sellbybot"
 							orderside="sell"
+							self.log["applog"].debug("Bot price to order buy and chkresult[price]")
+							self.log["applog"].debug(botprice,chkresult["price"])
 							botprice=round(float(chkresult["price"])+commonvaluestep,2)
 
 						elif chkside=="S":
 							ordermode="buybybot"
 							orderside="buy"
+							
 							botprice=round(float(chkresult["price"])-commonvaluestep,2)
+							self.log["applog"].debug("Bot price to order sell")
+							self.log["applog"].debug(botprice)
 
 						chkpad=str(botprice).split(".") 
 
@@ -662,9 +701,9 @@ class fivesteps():
 						orderlist=[{"price":strprice,
 											"volume":chkresult["volume"],
 											"order":orderside,
-											"stockname":chkresult["symbole"],
+											"monitorstock":chkresult["symbole"],
 											"referorderno":chkresult["orderno"],
-											"stockpin":self.configval["stockpin"],
+											"stockpin":self.configval["stockpin"].get(),
 								}]					
 						print("\n!!!Print orderlist in line 644 plugin_fivesteps.py in def checkprocess2matchstatus")
 						print(orderlist)	

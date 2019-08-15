@@ -429,8 +429,8 @@ class packselenium(PackSelModel):
 				
 
 	def order(self,orderparams):
-		print(" \norder params packsel.py line 334 in def order")
-		print (orderparams)
+		self.log["applog"].debug("Order params def order")
+		self.log["applog"].debug(orderparams)
 		# stockvalue = driver.find_elements_by_xpath(self.xpathreturn("xbuyradio"))[0].text
 		# print(self.mydriver)
 		driver=self.mydriver
@@ -448,7 +448,7 @@ class packselenium(PackSelModel):
 		elem = driver.find_element_by_xpath(self.xpathreturn("xstockorder"))
 		elem.clear()
 		# put user in key
-		elem.send_keys(orderparams["stockname"]) 
+		elem.send_keys(orderparams["monitorstock"]) 
 
 		elem = driver.find_element_by_xpath(self.xpathreturn("xstockvolumnorder"))
 		elem.clear()

@@ -75,9 +75,15 @@ class outputlog(tk.Tk,mylog):
 		startrunBtn=tk.Button(toolbar,image=self.startrun,command=self.executeLogin)
 		startrunBtn.grid(column=4,row=0,sticky="e")		
 
+		resetrun=Image.open('images/reset.png')
+		resetrun=resetrun.resize((20,20),Image.ANTIALIAS)
+		self.resetrun=ImageTk.PhotoImage(resetrun)
+
+		resetrunBtn=tk.Button(toolbar,image=self.resetrun)#,command=self.executeLogin)
+		resetrunBtn.grid(column=5,row=0,sticky="e")		
 
 		self.lblcomputetime=tk.Label(toolbar,text="time")
-		self.lblcomputetime.grid(row=0,column=5,sticky="e")
+		self.lblcomputetime.grid(row=0,column=6,sticky="e")
 		
         ##################################################################################
 
@@ -881,11 +887,11 @@ class outputlog(tk.Tk,mylog):
 						if lblstockvalue in self.labeldisplay:
 							self.flash(self.labeldisplay[lblstockvalue][lblstockvalue],9,"green")
 				# self.mybot.myqueue.join()
-				if "stockname" in tempdict:
+				if "monitorstock" in tempdict:
 						print("\n Monitor the following tempdict and self.configval")
-						print ( tempdict["stockname"].upper(),self.configval["stockname"].get().upper())
-						if tempdict["stockname"].upper()==self.configval["stockname"].get().upper():
-							self.configval["stockname"].set(tempdict["stockname"].upper())
+						print ( tempdict["monitorstock"].upper(),self.configval["monitorstock"].get().upper())
+						if tempdict["monitorstock"].upper()==self.configval["monitorstock"].get().upper():
+							self.configval["monitorstock"].set(tempdict["monitorstock"].upper())
 
 
 

@@ -212,7 +212,7 @@ class configparams(tk.Tk):
 
 
 
-		btnSetLoginConfig=tk.Button(self.frameConfig,text="Set Login Config",command=self.setparamsConfig)
+		btnSetLoginConfig=tk.Button(self.frameConfig,text="Set Config",command=self.setparamsConfig)
 		btnSetLoginConfig.grid(row=12,column=0,columnspan=1,sticky="w"+"e")
 
 		btnDeleteConfig=tk.Button(self.frameConfig,text="DeleProfile",command=self.deleteConfig)
