@@ -227,8 +227,8 @@ class PackSelModel:
 		# self.log("applog")
 		# self.log["applog"].debug("PlanName to update is below")
 		# self.log["applog"].debug(planname)
-		print("Planname to update is below")
-		print(planname)
+		# print("Planname to update is below")
+		# print(planname)
 
 		updatekeepconfig=keepconfig.objects.filter(planname=planname).update(firstbuyflag=dataupdate)
 		# print(updatekeepconfig)

@@ -79,7 +79,7 @@ class outputlog(tk.Tk,mylog):
 		resetrun=resetrun.resize((20,20),Image.ANTIALIAS)
 		self.resetrun=ImageTk.PhotoImage(resetrun)
 
-		resetrunBtn=tk.Button(toolbar,image=self.resetrun)#,command=self.executeLogin)
+		resetrunBtn=tk.Button(toolbar,image=self.resetrun,command=self.testreset)
 		resetrunBtn.grid(column=5,row=0,sticky="e")		
 
 		self.lblcomputetime=tk.Label(toolbar,text="time")
@@ -241,42 +241,6 @@ class outputlog(tk.Tk,mylog):
 		# labelstock=tk.Entry(frameSetValue,textvariable=planname)
 		# labelstock.grid(row=2,column=1)
 
-		############################################################################################################################################
-		############################# Value parameter set frame #########################################################################################
-		############################################################################################################################################
-
-
-
-		# btnStartInitCal=tk.Button(frameSetValue,text="Set Parameters",command=self.setparameter)
-		# btnStartInitCal.grid(row=10,column=1 )
-
-
-
-		# self.btnStartvaluebuy=tk.Button(frameSetValue,text="Set Value Buy",command=self.setvaluebuy,state='disabled',)
-		# self.btnStartvaluebuy.grid(row=9,column=1 )
-
-		
-
-		# labelvaluebuy=tk.Label(frameSetValue, text="Total Cost Buy:")
-		# labelvaluebuy.grid(row=10,column=0,sticky="w")
-
-		# labelvaluebuy=tk.Label(frameSetValue, textvariable=totalcostbuy)
-		# labelvaluebuy.grid(row=10,column=0,sticky="e")
-
-
-		# labelvalumebuy=tk.Label(frameSetValue, text="Total Volume Buy:")
-		# labelvalumebuy.grid(row=11,column=0,sticky="w")
-
-		# labelvalumebuy=tk.Label(frameSetValue, textvariable=totalvolumebuy)
-		# labelvalumebuy.grid(row=11,column=0,sticky="e")
-
-		# labelvalumebuy=tk.Label(frameSetValue, text="Remain Invest:")
-		# labelvalumebuy.grid(row=12,column=0,sticky="w")
-
-		# labelvalumebuy=tk.Label(frameSetValue, textvariable=remaininvest)
-		# labelvalumebuy.grid(row=12,column=0,sticky="e")
-		
-
 
 		btnRefreshCmd=tk.Button(frameSetValue,text="Refresh",command=self.rtrefresh, width = 10,height=2)
 		btnRefreshCmd.grid(row=14,column=0)
@@ -419,6 +383,13 @@ class outputlog(tk.Tk,mylog):
 
 	# def executeSave(self):
 	# 	self.log["console"].info("SaveAllValue")
+
+	def testreset(self):
+		self.log["applog"].debug("Reset file test and database Testing done!")
+		# print("reset back to begining")
+		open('stockpost.txt', 'w').close()
+		# print()
+		PackSelModel.updatefirstorderbuy(self.configval["planname"].get(),"YES")
 
 	def TESTexecuteLoad(self):
 		print("LoadTESTAllValue")
