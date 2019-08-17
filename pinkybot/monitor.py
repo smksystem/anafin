@@ -168,8 +168,10 @@ class pinkybot(packselenium):
 
 		while True:
 			# i=0
-			self.monitoring(mydriver,return_login)
-
+			try:
+				self.monitoring(mydriver,return_login)
+			except Exception as e:
+  				self.log["applog"].error("Exception occurred", exc_info=True)
 
 class MyThread(threading.Thread):
 	def __init__(self, queue,fnrun, args=(), kwargs=None):

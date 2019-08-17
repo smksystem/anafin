@@ -533,12 +533,12 @@ class fivesteps():
 
 					stepvol=int(self.configval["volumestep"].get())
 					floorvaluerange=float(self.configval["floorvaluerange"].get())
-					topvaluerange=float(self.configval["topvaluerange"].get())
+					topvaluebuy=float(self.configval["topvaluebuy"].get())
 
-					difvaluerange=round((topvaluerange - floorvaluerange),2)
+					difvaluerange=round((topvaluebuy - floorvaluerange),2)
 					
-					print("\n---Print difvaluerange for topvaluerange - floorvaluerange in plugin_fivesteps.py line 445 def checkprocess2matchstatus")
-					print(difvaluerange)
+					self.log["applog"].debug("---Print difvaluerange for topvaluerange - floorvaluerange in def checkprocess2matchstatus")
+					self.log["applog"].debug(difvaluerange)
 					# halfvolidx=int((((allvol/stepvol)/2)))
 
 					
@@ -563,18 +563,20 @@ class fivesteps():
 					if allvol >100 :
 						allvalueidx=int(difvaluerange/commonvaluestep) + 1
 						
-						print("\n---Print allvalueidx in case of alvol >100 for step value with difvaluerange/commonvaluestep in plugin_fivesteps.py line 449 def checkprocess2matchstatus")
-						print(allvalueidx)
+						self.log["applog"].debug("---Print allvalueidx in case of alvol >100 for step value with difvaluerange/commonvaluestep def checkprocess2matchstatus")
+						self.log["applog"].debug(allvalueidx)
 
 						for runvolidx in range(allvalueidx):
 
 							# runvol=
-							print("\n!!! Loop to print allvol volume plugin_fivesteps.py line 448 in def checkprocess2matchstatus")
-							print(allvol)
+							self.log["applog"].debug("!!! Loop to print allvol volume in def checkprocess2matchstatus")
+							self.log["applog"].debug(allvol)
 
 							
 							# if runvolidx < halfvolidx:
-							if sellprice < topvaluerange:
+							# sellprice= startvaluebuy
+
+							if sellprice < topvaluebuy:
 
 								allvol= allvol-stepvol
 								# sell price order
@@ -612,8 +614,8 @@ class fivesteps():
 
 								ordertomonitor=self.order(ordercontrol,orderlist,orderfn)
 
-								print("\n@@@ ordertomonitor sell after def order line 447 plugin_fivesteps.py def order")
-								print(ordertomonitor)
+								self.log["applog"].debug("@@@ ordertomonitor sell after def order def order")
+								self.log["applog"].debug(ordertomonitor)
 								
 								# self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk",
 													# "doupdatetk":ordertomonitor})
@@ -626,8 +628,8 @@ class fivesteps():
 								# buyprice=  round((buyprice),2)
 
 
-								print("\nprint buy value before processing line 462 plugin_fivesteps.py in def checkprocess2matchstatus")
-								print (buyprice)
+								self.log["applog"].debug("print buy value before processing in def checkprocess2matchstatus")
+								self.log["applog"].debug (buyprice)
 
 
 								chkpad=str(buyprice).split(".") 
@@ -640,8 +642,10 @@ class fivesteps():
 									strprice=str(buyprice)
 
 								orderside="buy"
-								print("\n--- summary buy price runvolidx,sellprice,buyprice")
-								print(runvolidx,sellprice,buyprice)
+								self.log["applog"].debug("--- summary buy price runvolidx,sellprice,buyprice")
+								self.log["applog"].debug(runvolidx)
+								self.log["applog"].debug(sellprice)
+								self.log["applog"].debug(buyprice)
 								
 								orderlist=[{"price":strprice,
 											"volume":str(stepvol),
@@ -655,8 +659,8 @@ class fivesteps():
 
 								ordertomonitor=self.order(ordercontrol,orderlist,orderfn)
 
-								print("\n@@@ ordertomonitor buy after def order line 447 plugin_fivesteps.py def order")
-								print(ordertomonitor)
+								self.log["applog"].debug("@@@ ordertomonitor buy after def order def order")
+								self.log["applog"].debug(ordertomonitor)
 
 								self.mycollectqueues["qvalchange"].put({"textout":"ORDER BUY==>>" + strprice + " VOLUME ==>>" + str(stepvol) })
 						
@@ -664,9 +668,9 @@ class fivesteps():
 
 						return ordertomonitor	
 					elif allvol==100:
-						print("\n---allvol == 100 to sell or buy by bot plugin_fivesteps.py line 610 def checkprocess2matchstatus")
-						print("\n+++print buy or sell in plugin_fivesteps.py line 611 def checkprocess2matchstatus")
-						print(chkresult["side"])
+						self.log["applog"].debug("---allvol == 100 to sell or buy by bot def checkprocess2matchstatus")
+						self.log["applog"].debug("+++print buy or sell in def checkprocess2matchstatus")
+						self.log["applog"].debug(chkresult["side"])
 						chkside=chkresult["side"]
 						if chkside=="B" :
 							ordermode="sellbybot"
