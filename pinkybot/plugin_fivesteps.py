@@ -21,7 +21,7 @@ class fivesteps():
 	def setlabeldisplay(self,configval,conf_labeldisplay,conf_textout):
 
 		############# this method Also calculate totalcostbuy,totoalvolumebuy,....
-		self.log["console"].debug(configval)
+		self.log["applog"].debug(configval)
 		# print(confival)
 		# exit()
 		self.configval=configval
@@ -244,7 +244,7 @@ class fivesteps():
 		conf_labeldisplay[startvaluebuy][startvaluebuy].configure(background="yellow")
 		# conf_labeldisplay[valuelabel][valuelabel].configure(background="yellow")
 		##############################################################################
-
+		self.log["applog"].debug("Finish Prepare")
 		# str_totalcostbuy=str(runtotalcostbuy)
 		# configval["totalcostbuy"].set(str_totalcostbuy)
 
@@ -259,11 +259,10 @@ class fivesteps():
 
 	def putordermonitoring(self,result_order):
 
-		print("\n!!! Now Monitoring before data plugin_fivesteps.py line 254 in def putordermonitoring")
-		print(self.matchedordermonitor)
-
-		print("\n!!! Print result_order in line 235 plugin_fivesteps.py in def putordermonitoring")
-		print(result_order)
+		self.log["applog"].debug("!!! Now Monitoring before data in def putordermonitoring")
+		self.log["applog"].debug(self.matchedordermonitor)
+		self.log["applog"].debug(result_order)
+		
 		tempadd=None
 		notAllowTodd=None
 		for linetable in result_order:
@@ -280,9 +279,10 @@ class fivesteps():
 				for i,matchcheck in enumerate(self.matchedordermonitor):
 					# print("\n ### Number of enumberate plugin_fivesteps.py line 246 in def putordermonitoring")
 					# print((i+1),len(self.matchedordermonitor))
-					print("\n---Order No of linetable and matchcheck plugin_fivesteps.py line 248 in def putordermonitoring")
-					print(linetable["orderno"],matchcheck["orderno"])
-
+					self.log["applog"].debug("---Order No of linetable and matchcheck in def putordermonitoring")
+					self.log["applog"].debug(linetable["orderno"])
+					self.log["applog"].debug(matchcheck["orderno"])
+					# compare to existing order
 					if linetable["orderno"] == matchcheck["orderno"]:
 						notAllowTodd=True
 						print("\n +++Found orderno update status below plugin_fivesteps.py line 251 in def updatematchstatus")
@@ -696,11 +696,12 @@ class fivesteps():
 						else:
 							strprice=str(botprice)
 
-						print("\n***Prepare to order side in plugin_fivesteps.py line 618 in def checkprocess2matchstatus")
-						print(ordermode,strprice)
+						self.log["applog"].debug("***Prepare ordermode,strprice to order side in def checkprocess2matchstatus")
+						self.log["applog"].debug(ordermode)
+						self.log["applog"].debug(strprice)
 
-						print("\n@@@ Print check result in plugin_fivesteps.py line 621 in def checkprocess2matchstatus")
-						print(chkresult)
+						self.log["applog"].debug("@@@ Print check result in def checkprocess2matchstatus")
+						self.log["applog"].debug(chkresult)
 
 						orderlist=[{"price":strprice,
 											"volume":chkresult["volume"],
@@ -709,22 +710,22 @@ class fivesteps():
 											"referorderno":chkresult["orderno"],
 											"stockpin":self.configval["stockpin"].get(),
 								}]					
-						print("\n!!!Print orderlist in line 644 plugin_fivesteps.py in def checkprocess2matchstatus")
-						print(orderlist)	
+						self.log["applog"].debug("!!!Print orderlist in def checkprocess2matchstatus")
+						self.log["applog"].debug(orderlist)	
 						ordercontrol={'ordermode':ordermode,'firstbuy':'no'}
 
 						ordertomonitor=self.order(ordercontrol,orderlist,orderfn)
-						print("\n@@@ ordertomonitor bot order after def order line 447 plugin_fivesteps.py def matchedordermonitor")
-						print(ordertomonitor)
+						self.log["applog"].debug("@@@ ordertomonitor bot order after def order def matchedordermonitor")
+						self.log["applog"].debug(ordertomonitor)
 					# return ordertomonitor
 
 				# chk_params ==> result from check refresh_btn chkresult
 				# chkmatch ==> from self.matchedordermonitor
 				elif chkresult["orderno"]==chkmatch["orderno"] and chkresult["status"]!= "Matched(M)": 
 					# return chk_params
-					print("\n+++ Case else with not match but order match plugin_fivesteps.py def checkprocess2matchstatus line 414")
-					print(chk_params)
-					print(self.matchedordermonitor)
+					self.log["applog"].debug("+++ Case else with not match but order match def checkprocess2matchstatus")
+					self.log["applog"].debug(chk_params)
+					self.log["applog"].debug(self.matchedordermonitor)
 
 
 					# if not match update status instead.

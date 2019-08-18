@@ -16,7 +16,7 @@ class packselenium(PackSelModel):
 	def __init__(self,mode):
 		self.starttime=time.time()
 		self.mode=mode
-		self.log["console"].info('Running Mode = '+mode)
+		self.log["applog"].info('Running Mode = '+mode)
 		super().__init__() # configure xdebug or xlive
 		# print ("running mode=" + mode)
 

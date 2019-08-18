@@ -87,8 +87,8 @@ class outputlog(tk.Tk,mylog):
 		
         ##################################################################################
 
-		self.log["console"].info("Initialize and start load plugin")
-		self.log["console"].info("Initialize console")
+		# self.log["console"].info("Initialize and start load plugin")
+		# self.log["console"].info("Initialize console")
 
 
 		##################################################################################
@@ -152,7 +152,7 @@ class outputlog(tk.Tk,mylog):
 		############################################################################################################################################
 
 
-		frameOutput = tk.Frame(self, width=450, height =300,background = 'blue')
+		frameOutput = tk.Frame(self, width=150, height =300,background = 'blue')
 		# frameOutput.grid(row=0,column=0,rowspan = 1, columnspan = 1,sticky = "n"+"s" )
 		# frameOutput.grid(row=0,column=0) #,rowspan = 1, columnspan = 1,sticky = "n"+"s" )
 
@@ -161,7 +161,7 @@ class outputlog(tk.Tk,mylog):
 		# frameOutput.grid_propagate(False)
 
 		# self.output = tk.Text(frameOutput,wrap='word', width=60, height=14, background = 'black', fg='white')
-		self.output = tk.Text(frameOutput,width=50, height=20,wrap='word', background = 'black', fg='white')
+		self.output = tk.Text(frameOutput,width=120, height=20,wrap='word', background = 'black', fg='white')
 
 		self.output.grid(row=0,column=0,columnspan=1)
 
@@ -210,8 +210,8 @@ class outputlog(tk.Tk,mylog):
 
 
 
-		frameSetValue=tk.Frame(self,background = 'blue')
-		frameSetValue.grid(row=1,column=3,sticky="e"+"n"+"s"+"w")      
+		# frameSetValue=tk.Frame(self,background = 'blue')
+		# frameSetValue.grid(row=1,column=3,sticky="e"+"n"+"s"+"w")      
 
 
 
@@ -228,10 +228,10 @@ class outputlog(tk.Tk,mylog):
 		# print (self.rangeData[myrange][0])
 		optionList.append(startfrom)
 
-		plannameVar=tk.StringVar()
-		plannameVar.set("Choose plan name") # default choice
-		self.rangeplanMenu1 = tk.OptionMenu(frameSetValue, plannameVar, *optionList,command=self.doMenuRange)
-		self.rangeplanMenu1.grid(row=1,column=0,sticky="w")
+		# plannameVar=tk.StringVar()
+		# plannameVar.set("Choose plan name") # default choice
+		# self.rangeplanMenu1 = tk.OptionMenu(frameSetValue, plannameVar, *optionList,command=self.doMenuRange)
+		# self.rangeplanMenu1.grid(row=1,column=0,sticky="w")
 
 
 
@@ -242,8 +242,8 @@ class outputlog(tk.Tk,mylog):
 		# labelstock.grid(row=2,column=1)
 
 
-		btnRefreshCmd=tk.Button(frameSetValue,text="Refresh",command=self.rtrefresh, width = 10,height=2)
-		btnRefreshCmd.grid(row=14,column=0)
+		# btnRefreshCmd=tk.Button(frameSetValue,text="Refresh",command=self.rtrefresh, width = 10,height=2)
+		# btnRefreshCmd.grid(row=14,column=0)
 
 
 		# radioauto=tk.Radiobutton(frameSetValue,text="auto",variable=runningmode,value="auto",indicatoron=0,command=self.chooserunningmode)
@@ -388,6 +388,8 @@ class outputlog(tk.Tk,mylog):
 		self.log["applog"].debug("Reset file test and database Testing done!")
 		# print("reset back to begining")
 		open('stockpost.txt', 'w').close()
+		open('applog.log', 'w').close()
+
 		# print()
 		PackSelModel.updatefirstorderbuy(self.configval["planname"].get(),"YES")
 
@@ -792,7 +794,8 @@ class outputlog(tk.Tk,mylog):
 			# # exit()
 
 			self.loginSet=PackSelModel.getloginDefault()
-			self.log["console"].debug(self.loginSet)
+			
+			# self.log["console"].debug(self.loginSet)
 			# print(self.loginSet)
 			self.log["applog"].info("Execute Login")
 
@@ -803,9 +806,9 @@ class outputlog(tk.Tk,mylog):
 			self.mybot.threadlogin(self.loginSet)
 
 	def configparams(self):
-		print("############# config parameter ###################")
+		# print("############# config parameter ###################")
 		myconfigparamsresult = configparams(self.configval,self.log)
-		
+		# pass
 
 
 	def tkviewconfig(self):
@@ -859,8 +862,9 @@ class outputlog(tk.Tk,mylog):
 							self.flash(self.labeldisplay[lblstockvalue][lblstockvalue],9,"green")
 				# self.mybot.myqueue.join()
 				if "monitorstock" in tempdict:
-						print("\n Monitor the following tempdict and self.configval")
-						print ( tempdict["monitorstock"].upper(),self.configval["monitorstock"].get().upper())
+						self.log["applog"].debug("Monitor the following tempdict and self.configval")
+						self.log["applog"].debug( tempdict["monitorstock"].upper())
+						self.log["applog"].debug(self.configval["monitorstock"].get().upper())
 						if tempdict["monitorstock"].upper()==self.configval["monitorstock"].get().upper():
 							self.configval["monitorstock"].set(tempdict["monitorstock"].upper())
 

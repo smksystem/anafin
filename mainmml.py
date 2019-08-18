@@ -18,13 +18,10 @@ if __name__=="__main__":
 	console.mainloop()
 	
 	# console.attributes('-topmost', 'true') #### to make console on top level to other application.
-
-
-
 	
-		# work ok for hightlight	
+	# work ok for hightlight	
 	# for eachval,data in myrange.items():console.txtout("|"+eachval+" | Vol="+data["vol"] +  
 	# # login= pinkybot()
- #    login.mypinkylogin(LoginParams)		
+ 	# login.mypinkylogin(LoginParams)		
  
 	# console.highlight_text("Vol")

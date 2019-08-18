@@ -53,7 +53,7 @@ class pinkybot(packselenium):
 
 
 		super().__init__("xdebug") # configure xdebug or xlive
-		self.log["console"].info("Initialize Pinkybot")
+		self.log["applog"].info("Initialize Pinkybot")
 		# self.log.console("Pickybot initial")
 
 	def myorder(self,orderside,configparams):
