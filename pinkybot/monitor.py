@@ -172,20 +172,21 @@ class pinkybot(packselenium):
 				self.monitoring(mydriver,return_login)
 			except Exception as e:
   				self.log["applog"].error("Exception occurred", exc_info=True)
-
+  				exit()
+  				
 class MyThread(threading.Thread):
 	def __init__(self, queue,fnrun, args=(), kwargs=None):
 		threading.Thread.__init__(self, args=(), kwargs=None)
 		self.queue = queue
 		self.daemon = True
-		print(args)
+		# print(args)
 		self.parameter=args[0]
 		self.receive_messages=args[0]
 		self.fnrun=fnrun
 
 	def run(self):
-		print("start run monitor.py line 164")
-		print (threading.currentThread().getName(),self.receive_messages)
+		# print("start run monitor.py line 164")
+		# print (threading.currentThread().getName(),self.receive_messages)
 
 		# self.queue.put("hello1",block=True)
 		# self.queue.put("hello2",block=True)
@@ -194,8 +195,8 @@ class MyThread(threading.Thread):
 		self.fnrun(self.parameter,self.queue)
 
 		val = self.queue.get()
-		print ("value queue in run function monitor.py line 174")
-		print(val)
+		# print ("value queue in run function monitor.py line 174")
+		# print(val)
 		# self.do_thing_with_message(val)
 
 	def do_thing_with_message(self, message):

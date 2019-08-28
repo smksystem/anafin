@@ -360,10 +360,12 @@ class outputlog(tk.Tk,mylog):
 
 				self.mybot.mycollectqueues["qtimerefresh"].put({"command":"monitoring"})			
 				# if elapsedtime >= 10 :
-				if elapsedtime >= 3 :
+				if elapsedtime >= 1 : ### test 1 second.
 
 					print("refresh time more than 3 seconds packsel.py line 281 def monitoring")
-					self.txtout("Put Queue refresh time at : " + self.time2)
+
+					# self.txtout("Put Queue refresh time at : " + self.time2)
+					
 					# self.mybot.mycollectqueues["qrefresh"].put({"qrefresh":"refreshdb","refreshtype":"all"})
 					self.mybot.mycollectqueues["qrefresh"].put({"qrefresh":"refreshdb","refreshtype":"partial"}) 
 					self.starttime=time.time()
@@ -807,6 +809,7 @@ class outputlog(tk.Tk,mylog):
 
 	def configparams(self):
 		# print("############# config parameter ###################")
+		# self.log=log
 		myconfigparamsresult = configparams(self.configval,self.log)
 		# pass
 
@@ -992,11 +995,13 @@ class outputlog(tk.Tk,mylog):
 					self.canvas.configure(scrollregion=self.canvas.bbox("all"))
 					
 				elif chkrefresh["qrefresh"]=="refreshdb":
-					self.log["applog"].debug("If not tk GUI do update back refresh DB according to queue with qrefresh qrefresh=refreshdb")
-					self.log["applog"].debug(chkrefresh)
+					# self.log["applog"].debug("If not tk GUI do update back refresh DB according to queue with qrefresh qrefresh=refreshdb")
+					# self.log["applog"].debug(chkrefresh)
 					self.mybot.mycollectqueues["qrefresh"].put(chkrefresh)
 
 				
 			# self.output.tag_config("testb", background="white", foreground="red")
 			# self.output.tag_add('testb', 10.0, step)
-			self.after(5, self.Refresher) # every second...
+			# self.after(5, self.Refresher) # every second...
+			self.after(250, self.Refresher) # every second...
+

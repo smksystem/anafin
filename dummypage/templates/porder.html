@@ -35,6 +35,7 @@ $(document).ready(function() {
 	//console.log("settrade.com");
 	
 	// Global.etfSymbols = [];
+	// var runprice="4.70";
 	
 	initStreamingLite();
 
@@ -73,14 +74,19 @@ $(document).ready(function() {
 	// var orderids={};
 	var data="data";
 	var stepcontrol="step1";
-
 	var intervalID = setInterval(function(){
 		// alert("Interval reached");
-		$.post("http://localhost:8000/runlogic/",{"data":status_order},function(data) {
-			// alert(1)
+		$.post("http://localhost:8000/runlogic/",{"data":runprice},function(data) {
+			// $(".last").html(data)
+			
+			alert(data);
+			// status_order="test"
 		});
+		// alert(data);
 		// alert(orderid);
-		$(".last").html(i.toFixed(2));
+
+		// $(".last").html(i.toFixed(2));
+		
 		// i+=0.02;
 
 		// if (status_order==2)  {

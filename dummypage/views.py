@@ -4,7 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.http import QueryDict
 # Create your views here.
-
+pricerun=4.70
 def dummypage(request):
 	print("dummypage")
 	context={}
@@ -32,16 +32,16 @@ def writedatatofile(writedata):
 
 # def runlogic(request):
 def runlogic(request):
-	pass
-# 	print ("-------Running logic--------views.py dummypage runlogic")
+	# pass
+	print ("-------Running logic--------views.py dummypage runlogic")
 # 	# response="ok"
-# 	# print(request)
-# 	mytest=dict(request.POST)
+	# print(request)
+	myrequest=dict(request.POST)
 # 	# print(mytest)
-# 	numberid=mytest["data"].pop()
-# 	# a=dict(request.POST)
+	runprice=myrequest["data"].pop()
+	# a=dict(request.POST)
 
-# 	# print(a)
+	# print(numberid)
 
 # 	postfile=open("stockpost.txt","r+")
 	
@@ -102,15 +102,21 @@ def runlogic(request):
 # 		# print (postarray[0])
 # 		outfile.write(json.dumps(i)+"\n")
 # 	outfile.close()
+	price=float(runprice)
+	price=price+0.02
+	response=str(price) #"okokokokokokokok"
+	# data="test"	
+	# # mytest={"result" : result, "data" : data }
+	# response = json.dumps({"result" : result, "data" : data })
+	# # stocklist="viewtest"	
 
+	# response=json.dumps(stocklist)
 
+	# print(response)
+	# response=str(response)
+	print(HttpResponse(response))
 
-# 	response=""
-
-
-
-
-# 	return HttpResponse(response)
+	return HttpResponse(response)
 
 @csrf_exempt
 def dummyrt(request):

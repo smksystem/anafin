@@ -19,7 +19,9 @@ class mylog():
 		fh.setFormatter(formatter)
 
 		applog = logging.getLogger(__name__)
+		# applog.setLevel(logging.INFO)
 		applog.setLevel(logging.DEBUG)
+
 		applog.addHandler(fh)
 
 

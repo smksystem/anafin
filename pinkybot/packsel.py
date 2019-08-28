@@ -149,7 +149,7 @@ class packselenium(PackSelModel):
 
 
 		print("super selenium class is called")
-
+		driver.maximize_window()
 
 		elem = driver.find_element_by_name("txtLogin")
 		elem.clear()
@@ -192,7 +192,7 @@ class packselenium(PackSelModel):
 		# element = wait.until(EC.presence_of_element_located((By.XPATH, "//*[@id='place-order-form']/refresh-ui-component/button/span[1]")))
 		element = wait.until(EC.presence_of_element_located((By.XPATH, self.xpathreturn("xrtrefresh")))) 
 
-		print("detect web load success")
+		self.log["applog"].debug("Web load success")
 
 		# stock = driver.find_elements_by_xpath("//*[@id='favourite-0']/ul/li[1]/editable-symbol-input/p")[0].text
 
@@ -203,8 +203,9 @@ class packselenium(PackSelModel):
 			stockname=stock.get_attribute('value')
 		elif self.mode=="xlive":
 			stockname=stock.text
-		print("debug: packsel.py line 203 def login ")
-		print ("stockname found is " + stockname)
+		
+		# self.log["applog"].debug("debug: packsel.py line 203 def login ")
+		# print ("stockname found is " + stockname)
 		# exit()
 		# stockname=stock.get_attribute("value")
 		self.stockdata["stockname"]=stockname
@@ -497,9 +498,9 @@ class packselenium(PackSelModel):
 
 
 		if len(params_referorderno) != 0 : 
-				print("\nRefer order no is sent in refreshbtn packsel.py line 488")
-				print(params_referorderno)
-				print(params_referorderno[0])
+				# print("\nRefer order no is sent in refreshbtn packsel.py line 488")
+				# print(params_referorderno)
+				# print(params_referorderno[0])
 
 				chkreferorderno=params_referorderno[0]
 				# chkreferorderno=referorderno
@@ -514,6 +515,7 @@ class packselenium(PackSelModel):
 		WebElement = wait.until(EC.presence_of_element_located((By.XPATH, self.xpathreturn("xoutputderivordertable"))));
 
 		time.sleep(0.5)
+		# time.sleep(2)
 
 		# print("wait finished packsel.py line 372")
 		doupdatetk=""
@@ -573,12 +575,19 @@ class packselenium(PackSelModel):
 			tablerow = table_id.find_elements_by_xpath(".//tr")
 
 			mytable=[]
+			self.log["applog"].debug("Print tablerow before loop")
+			self.log["applog"].debug(tablerow)
+			# exit()
+			# return None
+
 			for row in tablerow:
-				# print(row.text)
+				self.log["applog"].debug(row.text)
+				# print(rowid)
 				if row.text:
 					myrow = row.text.split(" ")
 					myrow = myrow[2:]		
 					mytable.append(myrow)
+			self.log["applog"].info("Number rows of Table Track = " + str(len(tablerow)))
 
 					# print(myrow)
 			# print (mytable)
@@ -593,10 +602,10 @@ class packselenium(PackSelModel):
 
 
 
-			print ("\n---mytable before update to database line 545 packsel.py in def refreshbtn")
+			self.log["applog"].debug("raw data for mytable before update to database in def refreshbtn")
 
-			print(mytable)			
-			
+			self.log["applog"].debug(mytable)			
+			# exit()
 
 			# if chkreferorderno != None:
 				# mytable.append({"referorderno":chkreferorderno})

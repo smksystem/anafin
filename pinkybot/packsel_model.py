@@ -15,7 +15,7 @@ class PackSelModel:
 	# 	print ( "initial update stock value")
 	def loadparameter(source=""):
 		# log["applog"].info("Initialize log of packsel_model")
-		print("\nStart Load parameter packsel_model.py line 15 in def PackSelModel")
+		# print("\nStart Load parameter packsel_model.py line 15 in def PackSelModel")
 		currentconfig=keepconfig.objects.filter(pluginfile=source)
 
 		# tochk=currentconfig.values()
@@ -141,6 +141,7 @@ class PackSelModel:
 		# 	print("No record found to delete")
 	def	updateconfigModel(configparams,mode="Dict"):
 		if mode=="GetValue":
+			print("Get value with mode = GetValue")
 			obj, created = keepconfig.objects.update_or_create(
 			    		planname=configparams["planname"].get(),
 			    defaults={
@@ -183,6 +184,7 @@ class PackSelModel:
 						"pluginfile":configparams["pluginfile"],
 						"firstbuyflag":configparams["firstbuyflag"],
 						"currentuseId":configparams["currentuseId"],
+						"runningmode":configparams["runningmode"],
 						# "totalvolumebuy":configparams["totalvolumebuy"],
 						# "totalcostbuy":configparams["totalcostbuy"],
 						# "remaininvest":configparams["remaininvest"],
@@ -332,8 +334,8 @@ class PackSelModel:
 		# compare logic here to update table or not 
 		referorderno="None"
 		if len(params_referorderno) != 0 : 
-				print("\nRefer order no is sent in refreshbtn packsel_model.py line 113 in def updaterefresh")
-				print(params_referorderno[0])
+				# print("\nRefer order no is sent in refreshbtn packsel_model.py line 113 in def updaterefresh")
+				# print(params_referorderno[0])
 
 				referorderno=params_referorderno[0]
 
@@ -361,8 +363,8 @@ class PackSelModel:
 
 
 			}
-			print("\n---Print myrow line 126 packsel_model.py def updaterefresh")
-			print(myrow)
+			# print("\n---Print myrow line 126 packsel_model.py def updaterefresh")
+			# print(myrow)
 			chkorderno=updaterefresh.objects.filter(orderno=myrow[0]) # SQL filter for order no to find existing record.
 			self.log["applog"].debug("Result from query database filter by orderno")
 			self.log["applog"].debug(chkorderno.values())

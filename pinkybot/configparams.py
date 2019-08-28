@@ -6,7 +6,7 @@ class configparams(tk.Tk):
 		# super(parameterconfigclass, self).__init__()
 		self.configval = configval
 		self.log=mylog
-		self.log["console"].debug(configval)
+		# self.log["console"].debug(configval)
 
 		# print("Access to config params")
 		tk.Toplevel.__init__(self)
@@ -33,6 +33,7 @@ class configparams(tk.Tk):
 		self.defaultplanname=tk.StringVar()
 		self.varcheckbuy=tk.StringVar()
 		self.varcheckdefault=tk.StringVar()
+		self.varcheckmode=tk.StringVar()
 
 
 		self.attributes('-topmost', 'true')
@@ -166,12 +167,10 @@ class configparams(tk.Tk):
 
 		self.checkdefault = tk.Checkbutton(self.frameConfig, text="Default", variable=self.varcheckdefault,offvalue="NO",onvalue="YES")
 		self.checkdefault.grid(row=11,column=1)
-
 		if initconfigvar[0]["currentuseId"]=="YES":
 			self.checkdefault.select()
 		elif initconfigvar[0]["currentuseId"]=="NO":
 			self.checkdefault.deselect()
-
 
 		#######################################################################
 
@@ -184,11 +183,27 @@ class configparams(tk.Tk):
 			self.checkbuy.deselect()
 
 
+		###########################################################################
+		# var = IntVar()
+		self.checkmode = tk.Radiobutton(self.frameConfig, text = "Auto", variable = self.varcheckmode, value = "auto") #,command = sel)
+		self.checkmode.grid(row=12,column=0) # anchor = W )
+
+		self.checkmode = tk.Radiobutton(self.frameConfig, text = "Monitor", variable = self.varcheckmode, value = "monitor" ) #,command = sel)
+		self.checkmode.grid(row=12,column=1 ) # anchor = W )
+
+		# print(initconfigvar[0]["runningmode"])
+		self.varcheckmode.set(initconfigvar[0]["runningmode"])
 
 		#######################################################################
 		##################### Fill initial data from here #####################
 		#######################################################################
-	
+
+		
+
+		##########################################################################
+		##########################################################################
+		##########################################################################
+
 		# print("start count database login")
 		# print(len(allquery))
 
@@ -213,14 +228,14 @@ class configparams(tk.Tk):
 
 
 		btnSetLoginConfig=tk.Button(self.frameConfig,text="Set Config",command=self.setparamsConfig)
-		btnSetLoginConfig.grid(row=12,column=0,columnspan=1,sticky="w"+"e")
+		btnSetLoginConfig.grid(row=13,column=0,columnspan=1,sticky="w"+"e")
 
 		btnDeleteConfig=tk.Button(self.frameConfig,text="DeleProfile",command=self.deleteConfig)
-		btnDeleteConfig.grid(row=12,column=1,columnspan=1,sticky="w"+"e")
+		btnDeleteConfig.grid(row=13,column=1,columnspan=1,sticky="w"+"e")
 
 
 		btnCancel=tk.Button(self.frameConfig,text="Cancel",command=self.ConfigCancel)
-		btnCancel.grid(row=12,column=2,columnspan=2,sticky="w"+"e")
+		btnCancel.grid(row=13,column=2,columnspan=2,sticky="w"+"e")
 
 	# def checkcommand(self):
 	# 	print(self.checkbuy.get())
@@ -303,6 +318,7 @@ class configparams(tk.Tk):
 
 					"firstbuyflag":self.varcheckbuy.get(),
 					"currentuseId":self.varcheckdefault.get(),
+					"runningmode":self.varcheckmode.get()
 
 		}
 		updateresult=PackSelModel.updateconfigModel(confparams)
