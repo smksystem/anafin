@@ -4,7 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.http import QueryDict
 # Create your views here.
-pricerun=4.70
+# pricerun=4.70
 def dummypage(request):
 	print("dummypage")
 	context={}
@@ -33,16 +33,16 @@ def writedatatofile(writedata):
 # def runlogic(request):
 def runlogic(request):
 	# pass
-	print ("-------Running logic--------views.py dummypage runlogic")
+	# print ("-------Running logic--------views.py dummypage runlogic")
 # 	# response="ok"
 	# print(request)
 	myrequest=dict(request.POST)
 # 	# print(mytest)
 	runprice=myrequest["data"].pop()
+	checkflag=myrequest["revert"].pop()
 	# a=dict(request.POST)
 
-	# print(numberid)
-
+	# print(runprice)
 # 	postfile=open("stockpost.txt","r+")
 	
 # 	test= postfile.readlines()
@@ -102,19 +102,42 @@ def runlogic(request):
 # 		# print (postarray[0])
 # 		outfile.write(json.dumps(i)+"\n")
 # 	outfile.close()
+	# print(checkflag)	
 	price=float(runprice)
-	price=price+0.02
-	response=str(price) #"okokokokokokokok"
+	if checkflag=="up":
+
+		price=round(price+0.02,2)
+		if price == 4.82:
+			checkflag="down"
+
+	elif checkflag=="down":
+		price=round(price-0.02,2)
+		if price ==4.52:
+			checkflag="up"
+
+	# print(checkturn)
+
+	# response=str(price) #"okokokokokokokok"
+	chkpad=str(price).split(".") 
+
+	if len(chkpad[1])==1:
+		tempval=chkpad[1]+"0"
+		valuelabel=chkpad[0]+"." +tempval
+
+	else:
+		valuelabel=str(price)
 	# data="test"	
 	# # mytest={"result" : result, "data" : data }
-	# response = json.dumps({"result" : result, "data" : data })
+	response = json.dumps({"result" : valuelabel, "checkflag" : checkflag })
 	# # stocklist="viewtest"	
 
 	# response=json.dumps(stocklist)
 
 	# print(response)
 	# response=str(response)
-	print(HttpResponse(response))
+	# print(HttpResponse(valuelabel))
+
+	# response={"valuelabel":valuelabel,"checkflag":checkflag}
 
 	return HttpResponse(response)
 

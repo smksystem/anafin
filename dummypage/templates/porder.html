@@ -72,16 +72,44 @@ $(document).ready(function() {
 	var i=4.72;
 	var status_order=0;
 	// var orderids={};
-	var data="data";
+	// var runprice="Test Run PRice";
+
 	var stepcontrol="step1";
+	// var runprice=$("span.last").text().trim();
+	// alert(runprice)
+	var runprice;
+	// alert(runprice)
+	var	checkflag;
+	
 	var intervalID = setInterval(function(){
+
+
+		// alert(runprice)
 		// alert("Interval reached");
-		$.post("http://localhost:8000/runlogic/",{"data":runprice},function(data) {
-			// $(".last").html(data)
-			
-			alert(data);
+		runprice="";
+		checkflag="";
+		// runprice=$("span.last").text().trim();
+		// runprice=""
+		// runprice=$("span.last").text().trim();
+		runprice=$("span.last").html();
+		checkflag=$("td.close.bgwhite").html();
+
+		// alert(checkflag)
+		// alert(runprice)
+
+		$.post("http://localhost:8000/runlogic/",{"data":runprice,"revert":checkflag},function(returndata) {
+			// alert(returndata.checkflag)
+			$("span.last").html(returndata.result)
+			$("td.close.bgwhite").html(returndata.checkflag);
+			// alert($("span.last").html(data.toFixed(2)))
+			// $("span.last").text(data)
+
+			// data=""
+			// runprice=""
+
+			// alert(data);
 			// status_order="test"
-		});
+		},'json');
 		// alert(data);
 		// alert(orderid);
 
@@ -90,42 +118,43 @@ $(document).ready(function() {
 		// i+=0.02;
 
 		// if (status_order==2)  {
-		if (stepcontrol=="step1"){
-			status_order=status_order+1;
-			if (status_order==2){
-				stepcontrol="step2"
-			}
-		}else if (stepcontrol=="step2"){
-			status_order=status_order+1;
-
-			if (status_order==4){
-				stepcontrol="stepvalue"
-			}	
-
-		}else if  (stepcontrol=="stepvalue") {
-			i+=0.02;
-			if (i.toFixed(2)==4.74){
-				stepcontrol="step3"
-			}
 		
-		}else if  (stepcontrol=="step3") {
-			status_order=status_order+1;
-			if (i.toFixed(2)==4.74){
-				stepcontrol="stepend"
-			}	
+		// if (stepcontrol=="step1"){
+		// 	status_order=status_order+1;
+		// 	if (status_order==2){
+		// 		stepcontrol="step2"
+		// 	}
+		// }else if (stepcontrol=="step2"){
+		// 	status_order=status_order+1;
 
-		}else if (stepcontrol=="stepend") {
+		// 	if (status_order==4){
+		// 		stepcontrol="stepvalue"
+		// 	}	
 
-			clearInterval(intervalID);
+		// }else if  (stepcontrol=="stepvalue") {
+		// 	i+=0.02;
+		// 	if (i.toFixed(2)==4.74){
+		// 		stepcontrol="step3"
+		// 	}
 		
-		};
+		// }else if  (stepcontrol=="step3") {
+		// 	status_order=status_order+1;
+		// 	if (i.toFixed(2)==4.74){
+		// 		stepcontrol="stepend"
+		// 	}	
+
+		// }else if (stepcontrol=="stepend") {
+
+		// 	clearInterval(intervalID);
+		
+		// };
 
 		// status_order=2
 		// orderids=orderids+{"dataid":orderid}
 	// 	// $(".status0").html("Matched(M)");
 
 	// }, 8000);
-	}, 5000);
+	}, 2000);
 
 
 
@@ -379,7 +408,7 @@ function setLogicOrderType(val){
 			<table id="instInfoEq" class="instInfo">
 				<tbody><tr>
 					<td rowspan="3" class="symbol"><input class="symbol ui-autocomplete-input" id="eqQuoteSymbol" type="text" name="symbol" value="WHA" style="color: rgb(0, 0, 0); font-weight: bold;" autocomplete="off"><br><span class="loading" style="visibility: hidden;"></span><br><input class="refreshQuoteBtn" type="button" value="Get Quotes"></td>
-					<td rowspan="2" class="price bgwhite"><h2><span class="last">0.00</span></h2></td>
+					<td rowspan="2" class="price bgwhite"><h2><span class="last">4.72</span></h2></td>
 					<th>Vol./Value(K)</th>
 					<th class="bgwhite">High/Low</th>
 					<th>Ceil./Floor</th>
@@ -389,7 +418,7 @@ function setLogicOrderType(val){
 				<tr>
 					<td class="volume">0</td>
 					<td class="high bgwhite">0.00</td>
-					<td class="ceil" style="color: rgb(61, 125, 60);">4.94</td>
+					<td class="ceil" style="color: rgb(61, 125, 60);">4.80</td>
 					<td class="avg bgwhite">0.00</td>
 					<td class="stateVal">0.00</td>
 				</tr>
@@ -397,8 +426,8 @@ function setLogicOrderType(val){
 					<td class="bgwhite"><span class="chgGrp" style="visibility: visible; color: rgb(51, 51, 51);"><span class="chg" style="color: rgb(51, 51, 51);">0.00</span>(<span class="pChg" style="color: rgb(51, 51, 51);">0.00</span>%)</span></td>
 					<td class="val">0</td>
 					<td class="low bgwhite">0.00</td>
-					<td class="floor" style="color: rgb(225, 30, 45);">2.66</td>
-					<td class="close bgwhite">3.80</td>
+					<td class="floor" style="color: rgb(225, 30, 45);">4.20</td>
+					<td class="close bgwhite">up</td>
 					<td class="stateVol"></td>
 				</tr>
 			</tbody></table>
