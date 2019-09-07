@@ -1,0 +1,321 @@
+2019-09-07 03:28:23,342,342 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
+2019-09-07 03:28:23,344,344 INFO [packsel.py:24] Running Mode = xdebug
+2019-09-07 03:28:23,344,344 INFO [packsel_model.py:11] Initialize log of packsel_model
+2019-09-07 03:28:23,345,345 INFO [monitor.py:56] Initialize Pinkybot
+2019-09-07 03:28:23,436,436 DEBUG [plugin_fivesteps.py:24] {'planname': <tkinter.StringVar object at 0x03C526B0>, 'rangeselect': <tkinter.StringVar object at 0x03C529D0>, 'monitorstock': <tkinter.StringVar object at 0x03C52B10>, 'initinvest': <tkinter.StringVar object at 0x03C52BB0>, 'volumestep': <tkinter.StringVar object at 0x03C52B70>, 'profitstep': <tkinter.StringVar object at 0x03C526D0>, 'topvaluebuy': <tkinter.StringVar object at 0x03C52710>, 'startvaluebuy': <tkinter.StringVar object at 0x04F93FD0>, 'stopvaluebuy': <tkinter.StringVar object at 0x04F93E70>, 'floorvaluebuy': <tkinter.StringVar object at 0x04F9C5D0>, 'firstbuyflag': <tkinter.StringVar object at 0x04F9C650>, 'pluginfile': <tkinter.StringVar object at 0x04F9C250>, 'currentuseId': <tkinter.StringVar object at 0x04F9C1B0>, 'floorvaluerange': <tkinter.StringVar object at 0x04F9C0F0>, 'topvaluerange': <tkinter.StringVar object at 0x04F9C530>, 'commonvaluestep': <tkinter.StringVar object at 0x04F9C110>, 'runningmode': <tkinter.StringVar object at 0x04F9C7D0>, 'totalcostbuy': <tkinter.StringVar object at 0x04F9C690>, 'totalvolumebuy': <tkinter.StringVar object at 0x04F9C770>, 'stockpin': <tkinter.StringVar object at 0x04F9C6D0>, 'remaininvest': <tkinter.StringVar object at 0x04F9C910>}
+2019-09-07 03:28:23,436,436 DEBUG [plugin_fivesteps.py:32] def setparameter print initial All monitorstock Parameter
+2019-09-07 03:28:23,436,436 DEBUG [plugin_fivesteps.py:33] {'planname': <tkinter.StringVar object at 0x03C526B0>, 'rangeselect': <tkinter.StringVar object at 0x03C529D0>, 'monitorstock': <tkinter.StringVar object at 0x03C52B10>, 'initinvest': <tkinter.StringVar object at 0x03C52BB0>, 'volumestep': <tkinter.StringVar object at 0x03C52B70>, 'profitstep': <tkinter.StringVar object at 0x03C526D0>, 'topvaluebuy': <tkinter.StringVar object at 0x03C52710>, 'startvaluebuy': <tkinter.StringVar object at 0x04F93FD0>, 'stopvaluebuy': <tkinter.StringVar object at 0x04F93E70>, 'floorvaluebuy': <tkinter.StringVar object at 0x04F9C5D0>, 'firstbuyflag': <tkinter.StringVar object at 0x04F9C650>, 'pluginfile': <tkinter.StringVar object at 0x04F9C250>, 'currentuseId': <tkinter.StringVar object at 0x04F9C1B0>, 'floorvaluerange': <tkinter.StringVar object at 0x04F9C0F0>, 'topvaluerange': <tkinter.StringVar object at 0x04F9C530>, 'commonvaluestep': <tkinter.StringVar object at 0x04F9C110>, 'runningmode': <tkinter.StringVar object at 0x04F9C7D0>, 'totalcostbuy': <tkinter.StringVar object at 0x04F9C690>, 'totalvolumebuy': <tkinter.StringVar object at 0x04F9C770>, 'stockpin': <tkinter.StringVar object at 0x04F9C6D0>, 'remaininvest': <tkinter.StringVar object at 0x04F9C910>}
+2019-09-07 03:28:23,441,441 DEBUG [plugin_fivesteps.py:91] Print stock pin value
+2019-09-07 03:28:23,441,441 DEBUG [plugin_fivesteps.py:92] 
+2019-09-07 03:28:23,507,507 DEBUG [plugin_fivesteps.py:247] Finish Prepare in def setlabeldisplay
+2019-09-07 03:28:26,273,273 INFO [tkconsole.py:808] Execute Login
+2019-09-07 03:28:26,273,273 INFO [monitor.py:118] Start Login
+2019-09-07 03:28:36,004,4 DEBUG [packsel.py:207] Web load success
+2019-09-07 03:28:36,127,127 INFO [monitor.py:166] Login seem to be succeeded , start to refresh all data from database with refresh all condition
+2019-09-07 03:28:37,381,381 DEBUG [packsel.py:603] Print tablerow before loop
+2019-09-07 03:28:37,381,381 INFO [packsel.py:618] Number rows of Table Track = 0
+2019-09-07 03:28:37,381,381 DEBUG [packsel.py:638] raw data for mytable before update to database in def refreshbtn
+2019-09-07 03:28:37,381,381 DEBUG [packsel.py:639] []
+2019-09-07 03:28:37,381,381 DEBUG [packsel.py:649] Do partial update refresh with below data in var mytable
+2019-09-07 03:28:37,381,381 DEBUG [packsel.py:650] []
+2019-09-07 03:28:37,381,381 DEBUG [plugin_fivesteps.py:454] print price_change from checkprocess2order to order next plugin_fivesteps.py line 239
+2019-09-07 03:28:37,381,381 DEBUG [plugin_fivesteps.py:455] 4.72
+2019-09-07 03:28:37,381,381 DEBUG [plugin_fivesteps.py:460] Print rt_table this value should be empty for first time buy
+2019-09-07 03:28:37,381,381 DEBUG [plugin_fivesteps.py:461] []
+2019-09-07 03:28:37,381,381 DEBUG [plugin_fivesteps.py:463] Print configval from def checkprocess2order before fist buy order
+2019-09-07 03:28:37,381,381 DEBUG [plugin_fivesteps.py:464] {'planname': <tkinter.StringVar object at 0x03C526B0>, 'rangeselect': <tkinter.StringVar object at 0x03C529D0>, 'monitorstock': <tkinter.StringVar object at 0x03C52B10>, 'initinvest': <tkinter.StringVar object at 0x03C52BB0>, 'volumestep': <tkinter.StringVar object at 0x03C52B70>, 'profitstep': <tkinter.StringVar object at 0x03C526D0>, 'topvaluebuy': <tkinter.StringVar object at 0x03C52710>, 'startvaluebuy': <tkinter.StringVar object at 0x04F93FD0>, 'stopvaluebuy': <tkinter.StringVar object at 0x04F93E70>, 'floorvaluebuy': <tkinter.StringVar object at 0x04F9C5D0>, 'firstbuyflag': <tkinter.StringVar object at 0x04F9C650>, 'pluginfile': <tkinter.StringVar object at 0x04F9C250>, 'currentuseId': <tkinter.StringVar object at 0x04F9C1B0>, 'floorvaluerange': <tkinter.StringVar object at 0x04F9C0F0>, 'topvaluerange': <tkinter.StringVar object at 0x04F9C530>, 'commonvaluestep': <tkinter.StringVar object at 0x04F9C110>, 'runningmode': <tkinter.StringVar object at 0x04F9C7D0>, 'totalcostbuy': <tkinter.StringVar object at 0x04F9C690>, 'totalvolumebuy': <tkinter.StringVar object at 0x04F9C770>, 'stockpin': <tkinter.StringVar object at 0x04F9C6D0>, 'remaininvest': <tkinter.StringVar object at 0x04F9C910>}
+2019-09-07 03:28:37,386,386 DEBUG [plugin_fivesteps.py:483] Update first time to planname below ###
+2019-09-07 03:28:37,386,386 DEBUG [plugin_fivesteps.py:484] 1
+2019-09-07 03:28:37,386,386 DEBUG [plugin_fivesteps.py:348] ===== def order =====
+2019-09-07 03:28:37,386,386 DEBUG [plugin_fivesteps.py:349] {'ordermode': 'buybybot', 'firstbuy': 'yes'}
+2019-09-07 03:28:37,386,386 DEBUG [plugin_fivesteps.py:350] auto
+2019-09-07 03:28:37,386,386 DEBUG [plugin_fivesteps.py:370] def order: First volume to buy orderdetail in def order
+2019-09-07 03:28:37,386,386 DEBUG [plugin_fivesteps.py:372] {'monitorstock': 'WHA', 'volume': '1000', 'price': '4.72', 'stockpin': '44444444', 'order': 'buy'}
+2019-09-07 03:28:37,386,386 DEBUG [packsel.py:451] Order params def order
+2019-09-07 03:28:37,386,386 DEBUG [packsel.py:452] {'monitorstock': 'WHA', 'volume': '1000', 'price': '4.72', 'stockpin': '44444444', 'order': 'buy'}
+2019-09-07 03:28:37,778,778 DEBUG [tkconsole.py:890] Do update refresh GUI tk according to queue with qrefresh qrefresh=refreshtk and chkrefresh != None
+2019-09-07 03:28:37,778,778 DEBUG [tkconsole.py:891] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-09-07 03:28:38,971,971 DEBUG [packsel.py:603] Print tablerow before loop
+2019-09-07 03:28:38,976,976 DEBUG [packsel.py:610]  	629346	03:28:37	WHA	B	4.72	1000	0	0	0	Pending(S)
+2019-09-07 03:28:38,989,989 INFO [packsel.py:618] Number rows of Table Track = 1
+2019-09-07 03:28:38,989,989 DEBUG [packsel.py:638] raw data for mytable before update to database in def refreshbtn
+2019-09-07 03:28:38,989,989 DEBUG [packsel.py:639] [['629346', '03:28:37', 'WHA', 'B', '4.72', '1000', '0', '0', '0', 'Pending(S)']]
+2019-09-07 03:28:38,989,989 DEBUG [packsel_model.py:369] Result from query database filter by orderno
+2019-09-07 03:28:38,990,990 DEBUG [packsel_model.py:370] <QuerySet []>
+2019-09-07 03:28:38,992,992 DEBUG [packsel_model.py:402] NO SQL Found Enter case checkorderno NOT existing and partial refresh
+2019-09-07 03:28:39,036,36 DEBUG [packsel.py:649] Do partial update refresh with below data in var mytable
+2019-09-07 03:28:39,037,37 DEBUG [packsel.py:650] [{'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderno': 'None'}]
+2019-09-07 03:28:39,037,37 DEBUG [plugin_fivesteps.py:380] [{'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderno': 'None'}]
+2019-09-07 03:28:39,037,37 DEBUG [plugin_fivesteps.py:271] Print result_order for def putordermonitoring before process function
+2019-09-07 03:28:39,037,37 DEBUG [plugin_fivesteps.py:272] [{'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderno': 'None'}]
+2019-09-07 03:28:39,037,37 DEBUG [plugin_fivesteps.py:337] !!! Now Monitor self.matchedordermonitor and print result_order in def putordermonitoring
+2019-09-07 03:28:39,037,37 DEBUG [plugin_fivesteps.py:338] [{'orderno': '629346', 'price': '4.72', 'status': 'Pending(S)', 'referorderno': 'None'}]
+2019-09-07 03:28:39,092,92 DEBUG [packsel.py:341] *** result from value of resultvaluemonitor def monitoring
+2019-09-07 03:28:39,092,92 DEBUG [packsel.py:342] [{'orderno': '629346', 'price': '4.72', 'status': 'Pending(S)', 'referorderno': 'None'}]
+2019-09-07 03:28:39,092,92 DEBUG [packsel.py:366] Qrefresh is not empty
+2019-09-07 03:28:39,092,92 DEBUG [packsel.py:367] {'qrefresh': 'refreshdb', 'refreshtype': 'all'}
+2019-09-07 03:28:39,132,132 DEBUG [tkconsole.py:370] Refresh time for partial with put into queue for refreshdb
+2019-09-07 03:28:39,280,280 DEBUG [tkconsole.py:890] Do update refresh GUI tk according to queue with qrefresh qrefresh=refreshtk and chkrefresh != None
+2019-09-07 03:28:39,280,280 DEBUG [tkconsole.py:891] {'qrefresh': 'refreshtk', 'doupdatetk': [{'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderno': 'None'}]}
+2019-09-07 03:28:39,281,281 DEBUG [tkconsole.py:914] print repeatidx case of price == 0
+2019-09-07 03:28:39,281,281 DEBUG [tkconsole.py:915] 0
+2019-09-07 03:28:40,134,134 DEBUG [tkconsole.py:370] Refresh time for partial with put into queue for refreshdb
+2019-09-07 03:28:40,238,238 DEBUG [packsel.py:603] Print tablerow before loop
+2019-09-07 03:28:40,243,243 DEBUG [packsel.py:610]  	629346	03:28:37	WHA	B	4.72	1000	0	0	0	Pending(S)
+2019-09-07 03:28:40,250,250 INFO [packsel.py:618] Number rows of Table Track = 1
+2019-09-07 03:28:40,251,251 DEBUG [packsel.py:638] raw data for mytable before update to database in def refreshbtn
+2019-09-07 03:28:40,251,251 DEBUG [packsel.py:639] [['629346', '03:28:37', 'WHA', 'B', '4.72', '1000', '0', '0', '0', 'Pending(S)']]
+2019-09-07 03:28:40,251,251 DEBUG [packsel_model.py:369] Result from query database filter by orderno
+2019-09-07 03:28:40,251,251 DEBUG [packsel_model.py:370] <QuerySet [{'id': 3683, 'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'date': datetime.date(2019, 9, 7), 'matchedtime': 'matchtime', 'referorderno': 'None'}]>
+2019-09-07 03:28:40,253,253 DEBUG [packsel_model.py:392] Refresh each row case chkorderno already existing in database and status
+2019-09-07 03:28:40,253,253 DEBUG [packsel_model.py:393] <QuerySet [{'id': 3683, 'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'date': datetime.date(2019, 9, 7), 'matchedtime': 'matchtime', 'referorderno': 'None'}]>
+2019-09-07 03:28:40,254,254 DEBUG [packsel_model.py:394] Pending(S)
+2019-09-07 03:28:40,254,254 DEBUG [packsel.py:657] Do ALL full update refresh ALL before putordermonitoring
+2019-09-07 03:28:40,254,254 DEBUG [packsel.py:658] [{'id': 3683, 'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'date': datetime.date(2019, 9, 7), 'matchedtime': 'matchtime', 'referorderno': 'None'}]
+2019-09-07 03:28:40,254,254 DEBUG [plugin_fivesteps.py:271] Print result_order for def putordermonitoring before process function
+2019-09-07 03:28:40,254,254 DEBUG [plugin_fivesteps.py:272] [{'id': 3683, 'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'date': datetime.date(2019, 9, 7), 'matchedtime': 'matchtime', 'referorderno': 'None'}]
+2019-09-07 03:28:40,255,255 DEBUG [plugin_fivesteps.py:291] ---Order No of linetable and matchcheck in def putordermonitoring
+2019-09-07 03:28:40,255,255 DEBUG [plugin_fivesteps.py:292] 629346
+2019-09-07 03:28:40,255,255 DEBUG [plugin_fivesteps.py:293] 629346
+2019-09-07 03:28:40,255,255 DEBUG [plugin_fivesteps.py:337] !!! Now Monitor self.matchedordermonitor and print result_order in def putordermonitoring
+2019-09-07 03:28:40,255,255 DEBUG [plugin_fivesteps.py:338] [{'orderno': '629346', 'price': '4.72', 'status': 'Pending(S)', 'referorderno': 'None'}]
+2019-09-07 03:28:40,255,255 DEBUG [plugin_fivesteps.py:504] === Print check_params , self.matchedordermonitor in def checkprocess2matchstatus
+2019-09-07 03:28:40,255,255 DEBUG [plugin_fivesteps.py:505] [{'id': 3683, 'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'date': datetime.date(2019, 9, 7), 'matchedtime': 'matchtime', 'referorderno': 'None'}]
+2019-09-07 03:28:40,255,255 DEBUG [plugin_fivesteps.py:506] === Print self.matchedordermonitor , self.matchedordermonitor in def checkprocess2matchstatus
+2019-09-07 03:28:40,255,255 DEBUG [plugin_fivesteps.py:507] [{'orderno': '629346', 'price': '4.72', 'status': 'Pending(S)', 'referorderno': 'None'}]
+2019-09-07 03:28:40,255,255 DEBUG [plugin_fivesteps.py:762] +++ Case else with not match but order match def checkprocess2matchstatus
+2019-09-07 03:28:40,255,255 DEBUG [plugin_fivesteps.py:763] [{'id': 3683, 'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'date': datetime.date(2019, 9, 7), 'matchedtime': 'matchtime', 'referorderno': 'None'}]
+2019-09-07 03:28:40,256,256 DEBUG [plugin_fivesteps.py:764] [{'orderno': '629346', 'price': '4.72', 'status': 'Pending(S)', 'referorderno': 'None'}]
+2019-09-07 03:28:40,790,790 DEBUG [tkconsole.py:890] Do update refresh GUI tk according to queue with qrefresh qrefresh=refreshtk and chkrefresh != None
+2019-09-07 03:28:40,790,790 DEBUG [tkconsole.py:891] {'qrefresh': 'refreshtk', 'doupdatetk': [{'id': 3683, 'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'date': datetime.date(2019, 9, 7), 'matchedtime': 'matchtime', 'referorderno': 'None'}]}
+2019-09-07 03:28:41,472,472 DEBUG [packsel.py:603] Print tablerow before loop
+2019-09-07 03:28:41,477,477 DEBUG [packsel.py:610]  	629346	03:28:37	WHA	B	4.72	1000	0	0	0	Pending(S)
+2019-09-07 03:28:41,484,484 INFO [packsel.py:618] Number rows of Table Track = 1
+2019-09-07 03:28:41,484,484 DEBUG [packsel.py:638] raw data for mytable before update to database in def refreshbtn
+2019-09-07 03:28:41,485,485 DEBUG [packsel.py:639] [['629346', '03:28:37', 'WHA', 'B', '4.72', '1000', '0', '0', '0', 'Pending(S)']]
+2019-09-07 03:28:41,485,485 DEBUG [packsel_model.py:369] Result from query database filter by orderno
+2019-09-07 03:28:41,485,485 DEBUG [packsel_model.py:370] <QuerySet [{'id': 3683, 'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'date': datetime.date(2019, 9, 7), 'matchedtime': 'matchtime', 'referorderno': 'None'}]>
+2019-09-07 03:28:41,487,487 DEBUG [packsel_model.py:414] SQL Found Enter case checkorderno.existing and partial refresh order below
+2019-09-07 03:28:41,487,487 DEBUG [packsel_model.py:415] <QuerySet [{'id': 3683, 'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'date': datetime.date(2019, 9, 7), 'matchedtime': 'matchtime', 'referorderno': 'None'}]>
+2019-09-07 03:28:41,488,488 DEBUG [packsel.py:649] Do partial update refresh with below data in var mytable
+2019-09-07 03:28:41,488,488 DEBUG [packsel.py:650] []
+2019-09-07 03:28:41,488,488 DEBUG [plugin_fivesteps.py:454] print price_change from checkprocess2order to order next plugin_fivesteps.py line 239
+2019-09-07 03:28:41,488,488 DEBUG [plugin_fivesteps.py:455] 4.74
+2019-09-07 03:28:41,488,488 DEBUG [plugin_fivesteps.py:460] Print rt_table this value should be empty for first time buy
+2019-09-07 03:28:41,488,488 DEBUG [plugin_fivesteps.py:461] []
+2019-09-07 03:28:41,488,488 DEBUG [plugin_fivesteps.py:463] Print configval from def checkprocess2order before fist buy order
+2019-09-07 03:28:41,488,488 DEBUG [plugin_fivesteps.py:464] {'planname': <tkinter.StringVar object at 0x03C526B0>, 'rangeselect': <tkinter.StringVar object at 0x03C529D0>, 'monitorstock': <tkinter.StringVar object at 0x03C52B10>, 'initinvest': <tkinter.StringVar object at 0x03C52BB0>, 'volumestep': <tkinter.StringVar object at 0x03C52B70>, 'profitstep': <tkinter.StringVar object at 0x03C526D0>, 'topvaluebuy': <tkinter.StringVar object at 0x03C52710>, 'startvaluebuy': <tkinter.StringVar object at 0x04F93FD0>, 'stopvaluebuy': <tkinter.StringVar object at 0x04F93E70>, 'floorvaluebuy': <tkinter.StringVar object at 0x04F9C5D0>, 'firstbuyflag': <tkinter.StringVar object at 0x04F9C650>, 'pluginfile': <tkinter.StringVar object at 0x04F9C250>, 'currentuseId': <tkinter.StringVar object at 0x04F9C1B0>, 'floorvaluerange': <tkinter.StringVar object at 0x04F9C0F0>, 'topvaluerange': <tkinter.StringVar object at 0x04F9C530>, 'commonvaluestep': <tkinter.StringVar object at 0x04F9C110>, 'runningmode': <tkinter.StringVar object at 0x04F9C7D0>, 'totalcostbuy': <tkinter.StringVar object at 0x04F9C690>, 'totalvolumebuy': <tkinter.StringVar object at 0x04F9C770>, 'stockpin': <tkinter.StringVar object at 0x04F9C6D0>, 'remaininvest': <tkinter.StringVar object at 0x04F9C910>}
+2019-09-07 03:28:41,493,493 DEBUG [packsel.py:341] *** result from value of resultvaluemonitor def monitoring
+2019-09-07 03:28:41,493,493 DEBUG [packsel.py:342] [{'orderno': '629346', 'price': '4.72', 'status': 'Pending(S)', 'referorderno': 'None'}]
+2019-09-07 03:28:41,493,493 DEBUG [packsel.py:366] Qrefresh is not empty
+2019-09-07 03:28:41,493,493 DEBUG [packsel.py:367] {'qrefresh': 'refreshdb', 'refreshtype': 'partial'}
+2019-09-07 03:28:41,537,537 DEBUG [tkconsole.py:370] Refresh time for partial with put into queue for refreshdb
+2019-09-07 03:28:41,792,792 DEBUG [tkconsole.py:890] Do update refresh GUI tk according to queue with qrefresh qrefresh=refreshtk and chkrefresh != None
+2019-09-07 03:28:41,793,793 DEBUG [tkconsole.py:891] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-09-07 03:28:42,541,541 DEBUG [tkconsole.py:370] Refresh time for partial with put into queue for refreshdb
+2019-09-07 03:28:42,640,640 DEBUG [packsel.py:603] Print tablerow before loop
+2019-09-07 03:28:42,645,645 DEBUG [packsel.py:610]  	629346	03:28:37	WHA	B	4.72	1000	0	0	0	Pending(S)
+2019-09-07 03:28:42,652,652 INFO [packsel.py:618] Number rows of Table Track = 1
+2019-09-07 03:28:42,652,652 DEBUG [packsel.py:638] raw data for mytable before update to database in def refreshbtn
+2019-09-07 03:28:42,652,652 DEBUG [packsel.py:639] [['629346', '03:28:37', 'WHA', 'B', '4.72', '1000', '0', '0', '0', 'Pending(S)']]
+2019-09-07 03:28:42,653,653 DEBUG [packsel_model.py:369] Result from query database filter by orderno
+2019-09-07 03:28:42,653,653 DEBUG [packsel_model.py:370] <QuerySet [{'id': 3683, 'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'date': datetime.date(2019, 9, 7), 'matchedtime': 'matchtime', 'referorderno': 'None'}]>
+2019-09-07 03:28:42,654,654 DEBUG [packsel_model.py:414] SQL Found Enter case checkorderno.existing and partial refresh order below
+2019-09-07 03:28:42,654,654 DEBUG [packsel_model.py:415] <QuerySet [{'id': 3683, 'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'date': datetime.date(2019, 9, 7), 'matchedtime': 'matchtime', 'referorderno': 'None'}]>
+2019-09-07 03:28:42,656,656 DEBUG [packsel.py:649] Do partial update refresh with below data in var mytable
+2019-09-07 03:28:42,656,656 DEBUG [packsel.py:650] []
+2019-09-07 03:28:42,656,656 DEBUG [plugin_fivesteps.py:504] === Print check_params , self.matchedordermonitor in def checkprocess2matchstatus
+2019-09-07 03:28:42,656,656 DEBUG [plugin_fivesteps.py:505] []
+2019-09-07 03:28:42,656,656 DEBUG [plugin_fivesteps.py:506] === Print self.matchedordermonitor , self.matchedordermonitor in def checkprocess2matchstatus
+2019-09-07 03:28:42,656,656 DEBUG [plugin_fivesteps.py:507] [{'orderno': '629346', 'price': '4.72', 'status': 'Pending(S)', 'referorderno': 'None'}]
+2019-09-07 03:28:43,632,632 DEBUG [tkconsole.py:890] Do update refresh GUI tk according to queue with qrefresh qrefresh=refreshtk and chkrefresh != None
+2019-09-07 03:28:43,632,632 DEBUG [tkconsole.py:891] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-09-07 03:28:43,940,940 DEBUG [packsel.py:603] Print tablerow before loop
+2019-09-07 03:28:43,946,946 DEBUG [packsel.py:610]  	629346	03:28:37	WHA	B	4.72	1000	0	0	0	Pending(S)
+2019-09-07 03:28:43,954,954 INFO [packsel.py:618] Number rows of Table Track = 1
+2019-09-07 03:28:43,954,954 DEBUG [packsel.py:638] raw data for mytable before update to database in def refreshbtn
+2019-09-07 03:28:43,954,954 DEBUG [packsel.py:639] [['629346', '03:28:37', 'WHA', 'B', '4.72', '1000', '0', '0', '0', 'Pending(S)']]
+2019-09-07 03:28:43,954,954 DEBUG [packsel_model.py:369] Result from query database filter by orderno
+2019-09-07 03:28:43,954,954 DEBUG [packsel_model.py:370] <QuerySet [{'id': 3683, 'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'date': datetime.date(2019, 9, 7), 'matchedtime': 'matchtime', 'referorderno': 'None'}]>
+2019-09-07 03:28:43,956,956 DEBUG [packsel_model.py:414] SQL Found Enter case checkorderno.existing and partial refresh order below
+2019-09-07 03:28:43,956,956 DEBUG [packsel_model.py:415] <QuerySet [{'id': 3683, 'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'date': datetime.date(2019, 9, 7), 'matchedtime': 'matchtime', 'referorderno': 'None'}]>
+2019-09-07 03:28:43,958,958 DEBUG [packsel.py:649] Do partial update refresh with below data in var mytable
+2019-09-07 03:28:43,958,958 DEBUG [packsel.py:650] []
+2019-09-07 03:28:43,958,958 DEBUG [plugin_fivesteps.py:454] print price_change from checkprocess2order to order next plugin_fivesteps.py line 239
+2019-09-07 03:28:43,958,958 DEBUG [plugin_fivesteps.py:455] 4.78
+2019-09-07 03:28:43,958,958 DEBUG [plugin_fivesteps.py:460] Print rt_table this value should be empty for first time buy
+2019-09-07 03:28:43,958,958 DEBUG [plugin_fivesteps.py:461] []
+2019-09-07 03:28:43,958,958 DEBUG [plugin_fivesteps.py:463] Print configval from def checkprocess2order before fist buy order
+2019-09-07 03:28:43,958,958 DEBUG [plugin_fivesteps.py:464] {'planname': <tkinter.StringVar object at 0x03C526B0>, 'rangeselect': <tkinter.StringVar object at 0x03C529D0>, 'monitorstock': <tkinter.StringVar object at 0x03C52B10>, 'initinvest': <tkinter.StringVar object at 0x03C52BB0>, 'volumestep': <tkinter.StringVar object at 0x03C52B70>, 'profitstep': <tkinter.StringVar object at 0x03C526D0>, 'topvaluebuy': <tkinter.StringVar object at 0x03C52710>, 'startvaluebuy': <tkinter.StringVar object at 0x04F93FD0>, 'stopvaluebuy': <tkinter.StringVar object at 0x04F93E70>, 'floorvaluebuy': <tkinter.StringVar object at 0x04F9C5D0>, 'firstbuyflag': <tkinter.StringVar object at 0x04F9C650>, 'pluginfile': <tkinter.StringVar object at 0x04F9C250>, 'currentuseId': <tkinter.StringVar object at 0x04F9C1B0>, 'floorvaluerange': <tkinter.StringVar object at 0x04F9C0F0>, 'topvaluerange': <tkinter.StringVar object at 0x04F9C530>, 'commonvaluestep': <tkinter.StringVar object at 0x04F9C110>, 'runningmode': <tkinter.StringVar object at 0x04F9C7D0>, 'totalcostbuy': <tkinter.StringVar object at 0x04F9C690>, 'totalvolumebuy': <tkinter.StringVar object at 0x04F9C770>, 'stockpin': <tkinter.StringVar object at 0x04F9C6D0>, 'remaininvest': <tkinter.StringVar object at 0x04F9C910>}
+2019-09-07 03:28:43,964,964 DEBUG [packsel.py:341] *** result from value of resultvaluemonitor def monitoring
+2019-09-07 03:28:43,964,964 DEBUG [packsel.py:342] [{'orderno': '629346', 'price': '4.72', 'status': 'Pending(S)', 'referorderno': 'None'}]
+2019-09-07 03:28:43,964,964 DEBUG [packsel.py:366] Qrefresh is not empty
+2019-09-07 03:28:43,964,964 DEBUG [packsel.py:367] {'qrefresh': 'refreshdb', 'refreshtype': 'partial'}
+2019-09-07 03:28:44,192,192 DEBUG [tkconsole.py:370] Refresh time for partial with put into queue for refreshdb
+2019-09-07 03:28:44,635,635 DEBUG [tkconsole.py:890] Do update refresh GUI tk according to queue with qrefresh qrefresh=refreshtk and chkrefresh != None
+2019-09-07 03:28:44,635,635 DEBUG [tkconsole.py:891] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-09-07 03:28:45,155,155 DEBUG [packsel.py:603] Print tablerow before loop
+2019-09-07 03:28:45,160,160 DEBUG [packsel.py:610]  	629346	03:28:37	WHA	B	4.72	1000	0	0	0	Pending(S)
+2019-09-07 03:28:45,167,167 INFO [packsel.py:618] Number rows of Table Track = 1
+2019-09-07 03:28:45,167,167 DEBUG [packsel.py:638] raw data for mytable before update to database in def refreshbtn
+2019-09-07 03:28:45,167,167 DEBUG [packsel.py:639] [['629346', '03:28:37', 'WHA', 'B', '4.72', '1000', '0', '0', '0', 'Pending(S)']]
+2019-09-07 03:28:45,167,167 DEBUG [packsel_model.py:369] Result from query database filter by orderno
+2019-09-07 03:28:45,167,167 DEBUG [packsel_model.py:370] <QuerySet [{'id': 3683, 'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'date': datetime.date(2019, 9, 7), 'matchedtime': 'matchtime', 'referorderno': 'None'}]>
+2019-09-07 03:28:45,169,169 DEBUG [packsel_model.py:414] SQL Found Enter case checkorderno.existing and partial refresh order below
+2019-09-07 03:28:45,169,169 DEBUG [packsel_model.py:415] <QuerySet [{'id': 3683, 'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'date': datetime.date(2019, 9, 7), 'matchedtime': 'matchtime', 'referorderno': 'None'}]>
+2019-09-07 03:28:45,170,170 DEBUG [packsel.py:649] Do partial update refresh with below data in var mytable
+2019-09-07 03:28:45,170,170 DEBUG [packsel.py:650] []
+2019-09-07 03:28:45,170,170 DEBUG [plugin_fivesteps.py:504] === Print check_params , self.matchedordermonitor in def checkprocess2matchstatus
+2019-09-07 03:28:45,170,170 DEBUG [plugin_fivesteps.py:505] []
+2019-09-07 03:28:45,170,170 DEBUG [plugin_fivesteps.py:506] === Print self.matchedordermonitor , self.matchedordermonitor in def checkprocess2matchstatus
+2019-09-07 03:28:45,171,171 DEBUG [plugin_fivesteps.py:507] [{'orderno': '629346', 'price': '4.72', 'status': 'Pending(S)', 'referorderno': 'None'}]
+2019-09-07 03:28:45,194,194 DEBUG [tkconsole.py:370] Refresh time for partial with put into queue for refreshdb
+2019-09-07 03:28:46,136,136 DEBUG [tkconsole.py:890] Do update refresh GUI tk according to queue with qrefresh qrefresh=refreshtk and chkrefresh != None
+2019-09-07 03:28:46,136,136 DEBUG [tkconsole.py:891] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-09-07 03:28:46,440,440 DEBUG [packsel.py:603] Print tablerow before loop
+2019-09-07 03:28:46,445,445 DEBUG [packsel.py:610]  	629346	03:28:37	WHA	B	4.72	1000	0	0	0	Matched(M)
+2019-09-07 03:28:46,452,452 INFO [packsel.py:618] Number rows of Table Track = 1
+2019-09-07 03:28:46,452,452 DEBUG [packsel.py:638] raw data for mytable before update to database in def refreshbtn
+2019-09-07 03:28:46,452,452 DEBUG [packsel.py:639] [['629346', '03:28:37', 'WHA', 'B', '4.72', '1000', '0', '0', '0', 'Matched(M)']]
+2019-09-07 03:28:46,452,452 DEBUG [packsel_model.py:369] Result from query database filter by orderno
+2019-09-07 03:28:46,453,453 DEBUG [packsel_model.py:370] <QuerySet [{'id': 3683, 'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'date': datetime.date(2019, 9, 7), 'matchedtime': 'matchtime', 'referorderno': 'None'}]>
+2019-09-07 03:28:46,454,454 DEBUG [packsel_model.py:414] SQL Found Enter case checkorderno.existing and partial refresh order below
+2019-09-07 03:28:46,454,454 DEBUG [packsel_model.py:415] <QuerySet [{'id': 3683, 'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'date': datetime.date(2019, 9, 7), 'matchedtime': 'matchtime', 'referorderno': 'None'}]>
+2019-09-07 03:28:46,455,455 DEBUG [packsel_model.py:432] SQL Update below column into updaterefresh table
+2019-09-07 03:28:46,455,455 DEBUG [packsel_model.py:433] {'status': 'Matched(M)'}
+2019-09-07 03:28:46,553,553 DEBUG [packsel.py:649] Do partial update refresh with below data in var mytable
+2019-09-07 03:28:46,553,553 DEBUG [packsel.py:650] [{'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Matched(M)', 'matchedtime': 'matchtime', 'referorderno': 'None'}]
+2019-09-07 03:28:46,553,553 DEBUG [plugin_fivesteps.py:454] print price_change from checkprocess2order to order next plugin_fivesteps.py line 239
+2019-09-07 03:28:46,553,553 DEBUG [plugin_fivesteps.py:455] 4.80
+2019-09-07 03:28:46,553,553 DEBUG [plugin_fivesteps.py:460] Print rt_table this value should be empty for first time buy
+2019-09-07 03:28:46,553,553 DEBUG [plugin_fivesteps.py:461] [{'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Matched(M)', 'matchedtime': 'matchtime', 'referorderno': 'None'}]
+2019-09-07 03:28:46,553,553 DEBUG [plugin_fivesteps.py:463] Print configval from def checkprocess2order before fist buy order
+2019-09-07 03:28:46,554,554 DEBUG [plugin_fivesteps.py:464] {'planname': <tkinter.StringVar object at 0x03C526B0>, 'rangeselect': <tkinter.StringVar object at 0x03C529D0>, 'monitorstock': <tkinter.StringVar object at 0x03C52B10>, 'initinvest': <tkinter.StringVar object at 0x03C52BB0>, 'volumestep': <tkinter.StringVar object at 0x03C52B70>, 'profitstep': <tkinter.StringVar object at 0x03C526D0>, 'topvaluebuy': <tkinter.StringVar object at 0x03C52710>, 'startvaluebuy': <tkinter.StringVar object at 0x04F93FD0>, 'stopvaluebuy': <tkinter.StringVar object at 0x04F93E70>, 'floorvaluebuy': <tkinter.StringVar object at 0x04F9C5D0>, 'firstbuyflag': <tkinter.StringVar object at 0x04F9C650>, 'pluginfile': <tkinter.StringVar object at 0x04F9C250>, 'currentuseId': <tkinter.StringVar object at 0x04F9C1B0>, 'floorvaluerange': <tkinter.StringVar object at 0x04F9C0F0>, 'topvaluerange': <tkinter.StringVar object at 0x04F9C530>, 'commonvaluestep': <tkinter.StringVar object at 0x04F9C110>, 'runningmode': <tkinter.StringVar object at 0x04F9C7D0>, 'totalcostbuy': <tkinter.StringVar object at 0x04F9C690>, 'totalvolumebuy': <tkinter.StringVar object at 0x04F9C770>, 'stockpin': <tkinter.StringVar object at 0x04F9C6D0>, 'remaininvest': <tkinter.StringVar object at 0x04F9C910>}
+2019-09-07 03:28:46,559,559 DEBUG [packsel.py:341] *** result from value of resultvaluemonitor def monitoring
+2019-09-07 03:28:46,559,559 DEBUG [packsel.py:342] [{'orderno': '629346', 'price': '4.72', 'status': 'Pending(S)', 'referorderno': 'None'}]
+2019-09-07 03:28:46,559,559 DEBUG [packsel.py:366] Qrefresh is not empty
+2019-09-07 03:28:46,559,559 DEBUG [packsel.py:367] {'qrefresh': 'refreshdb', 'refreshtype': 'partial'}
+2019-09-07 03:28:46,796,796 DEBUG [tkconsole.py:370] Refresh time for partial with put into queue for refreshdb
+2019-09-07 03:28:47,388,388 DEBUG [tkconsole.py:890] Do update refresh GUI tk according to queue with qrefresh qrefresh=refreshtk and chkrefresh != None
+2019-09-07 03:28:47,388,388 DEBUG [tkconsole.py:891] {'qrefresh': 'refreshtk', 'doupdatetk': [{'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Matched(M)', 'matchedtime': 'matchtime', 'referorderno': 'None'}]}
+2019-09-07 03:28:47,672,672 DEBUG [packsel.py:603] Print tablerow before loop
+2019-09-07 03:28:47,677,677 DEBUG [packsel.py:610]  	629346	03:28:37	WHA	B	4.72	1000	0	0	0	Matched(M)
+2019-09-07 03:28:47,684,684 INFO [packsel.py:618] Number rows of Table Track = 1
+2019-09-07 03:28:47,684,684 DEBUG [packsel.py:638] raw data for mytable before update to database in def refreshbtn
+2019-09-07 03:28:47,684,684 DEBUG [packsel.py:639] [['629346', '03:28:37', 'WHA', 'B', '4.72', '1000', '0', '0', '0', 'Matched(M)']]
+2019-09-07 03:28:47,685,685 DEBUG [packsel_model.py:369] Result from query database filter by orderno
+2019-09-07 03:28:47,685,685 DEBUG [packsel_model.py:370] <QuerySet [{'id': 3683, 'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Matched(M)', 'date': datetime.date(2019, 9, 7), 'matchedtime': 'matchtime', 'referorderno': 'None'}]>
+2019-09-07 03:28:47,687,687 DEBUG [packsel_model.py:414] SQL Found Enter case checkorderno.existing and partial refresh order below
+2019-09-07 03:28:47,687,687 DEBUG [packsel_model.py:415] <QuerySet [{'id': 3683, 'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Matched(M)', 'date': datetime.date(2019, 9, 7), 'matchedtime': 'matchtime', 'referorderno': 'None'}]>
+2019-09-07 03:28:47,688,688 DEBUG [packsel.py:649] Do partial update refresh with below data in var mytable
+2019-09-07 03:28:47,688,688 DEBUG [packsel.py:650] []
+2019-09-07 03:28:47,688,688 DEBUG [plugin_fivesteps.py:504] === Print check_params , self.matchedordermonitor in def checkprocess2matchstatus
+2019-09-07 03:28:47,688,688 DEBUG [plugin_fivesteps.py:505] []
+2019-09-07 03:28:47,688,688 DEBUG [plugin_fivesteps.py:506] === Print self.matchedordermonitor , self.matchedordermonitor in def checkprocess2matchstatus
+2019-09-07 03:28:47,688,688 DEBUG [plugin_fivesteps.py:507] [{'orderno': '629346', 'price': '4.72', 'status': 'Pending(S)', 'referorderno': 'None'}]
+2019-09-07 03:28:47,798,798 DEBUG [tkconsole.py:370] Refresh time for partial with put into queue for refreshdb
+2019-09-07 03:28:48,891,891 DEBUG [tkconsole.py:890] Do update refresh GUI tk according to queue with qrefresh qrefresh=refreshtk and chkrefresh != None
+2019-09-07 03:28:48,891,891 DEBUG [tkconsole.py:891] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-09-07 03:28:49,040,40 DEBUG [packsel.py:603] Print tablerow before loop
+2019-09-07 03:28:49,045,45 DEBUG [packsel.py:610]  	629346	03:28:37	WHA	B	4.72	1000	0	0	0	Matched(M)
+2019-09-07 03:28:49,052,52 INFO [packsel.py:618] Number rows of Table Track = 1
+2019-09-07 03:28:49,052,52 DEBUG [packsel.py:638] raw data for mytable before update to database in def refreshbtn
+2019-09-07 03:28:49,052,52 DEBUG [packsel.py:639] [['629346', '03:28:37', 'WHA', 'B', '4.72', '1000', '0', '0', '0', 'Matched(M)']]
+2019-09-07 03:28:49,052,52 DEBUG [packsel_model.py:369] Result from query database filter by orderno
+2019-09-07 03:28:49,052,52 DEBUG [packsel_model.py:370] <QuerySet [{'id': 3683, 'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Matched(M)', 'date': datetime.date(2019, 9, 7), 'matchedtime': 'matchtime', 'referorderno': 'None'}]>
+2019-09-07 03:28:49,054,54 DEBUG [packsel_model.py:414] SQL Found Enter case checkorderno.existing and partial refresh order below
+2019-09-07 03:28:49,054,54 DEBUG [packsel_model.py:415] <QuerySet [{'id': 3683, 'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Matched(M)', 'date': datetime.date(2019, 9, 7), 'matchedtime': 'matchtime', 'referorderno': 'None'}]>
+2019-09-07 03:28:49,055,55 DEBUG [packsel.py:649] Do partial update refresh with below data in var mytable
+2019-09-07 03:28:49,055,55 DEBUG [packsel.py:650] []
+2019-09-07 03:28:49,055,55 DEBUG [plugin_fivesteps.py:454] print price_change from checkprocess2order to order next plugin_fivesteps.py line 239
+2019-09-07 03:28:49,055,55 DEBUG [plugin_fivesteps.py:455] 4.82
+2019-09-07 03:28:49,055,55 DEBUG [plugin_fivesteps.py:460] Print rt_table this value should be empty for first time buy
+2019-09-07 03:28:49,056,56 DEBUG [plugin_fivesteps.py:461] []
+2019-09-07 03:28:49,056,56 DEBUG [plugin_fivesteps.py:463] Print configval from def checkprocess2order before fist buy order
+2019-09-07 03:28:49,056,56 DEBUG [plugin_fivesteps.py:464] {'planname': <tkinter.StringVar object at 0x03C526B0>, 'rangeselect': <tkinter.StringVar object at 0x03C529D0>, 'monitorstock': <tkinter.StringVar object at 0x03C52B10>, 'initinvest': <tkinter.StringVar object at 0x03C52BB0>, 'volumestep': <tkinter.StringVar object at 0x03C52B70>, 'profitstep': <tkinter.StringVar object at 0x03C526D0>, 'topvaluebuy': <tkinter.StringVar object at 0x03C52710>, 'startvaluebuy': <tkinter.StringVar object at 0x04F93FD0>, 'stopvaluebuy': <tkinter.StringVar object at 0x04F93E70>, 'floorvaluebuy': <tkinter.StringVar object at 0x04F9C5D0>, 'firstbuyflag': <tkinter.StringVar object at 0x04F9C650>, 'pluginfile': <tkinter.StringVar object at 0x04F9C250>, 'currentuseId': <tkinter.StringVar object at 0x04F9C1B0>, 'floorvaluerange': <tkinter.StringVar object at 0x04F9C0F0>, 'topvaluerange': <tkinter.StringVar object at 0x04F9C530>, 'commonvaluestep': <tkinter.StringVar object at 0x04F9C110>, 'runningmode': <tkinter.StringVar object at 0x04F9C7D0>, 'totalcostbuy': <tkinter.StringVar object at 0x04F9C690>, 'totalvolumebuy': <tkinter.StringVar object at 0x04F9C770>, 'stockpin': <tkinter.StringVar object at 0x04F9C6D0>, 'remaininvest': <tkinter.StringVar object at 0x04F9C910>}
+2019-09-07 03:28:49,060,60 DEBUG [packsel.py:341] *** result from value of resultvaluemonitor def monitoring
+2019-09-07 03:28:49,060,60 DEBUG [packsel.py:342] [{'orderno': '629346', 'price': '4.72', 'status': 'Pending(S)', 'referorderno': 'None'}]
+2019-09-07 03:28:49,060,60 DEBUG [packsel.py:366] Qrefresh is not empty
+2019-09-07 03:28:49,060,60 DEBUG [packsel.py:367] {'qrefresh': 'refreshdb', 'refreshtype': 'partial'}
+2019-09-07 03:28:49,608,608 DEBUG [tkconsole.py:370] Refresh time for partial with put into queue for refreshdb
+2019-09-07 03:28:50,142,142 DEBUG [tkconsole.py:890] Do update refresh GUI tk according to queue with qrefresh qrefresh=refreshtk and chkrefresh != None
+2019-09-07 03:28:50,143,143 DEBUG [tkconsole.py:891] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-09-07 03:28:50,174,174 DEBUG [packsel.py:603] Print tablerow before loop
+2019-09-07 03:28:50,179,179 DEBUG [packsel.py:610]  	629346	03:28:37	WHA	B	4.72	1000	0	0	0	Matched(M)
+2019-09-07 03:28:50,187,187 INFO [packsel.py:618] Number rows of Table Track = 1
+2019-09-07 03:28:50,187,187 DEBUG [packsel.py:638] raw data for mytable before update to database in def refreshbtn
+2019-09-07 03:28:50,187,187 DEBUG [packsel.py:639] [['629346', '03:28:37', 'WHA', 'B', '4.72', '1000', '0', '0', '0', 'Matched(M)']]
+2019-09-07 03:28:50,188,188 DEBUG [packsel_model.py:369] Result from query database filter by orderno
+2019-09-07 03:28:50,188,188 DEBUG [packsel_model.py:370] <QuerySet [{'id': 3683, 'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Matched(M)', 'date': datetime.date(2019, 9, 7), 'matchedtime': 'matchtime', 'referorderno': 'None'}]>
+2019-09-07 03:28:50,189,189 DEBUG [packsel_model.py:414] SQL Found Enter case checkorderno.existing and partial refresh order below
+2019-09-07 03:28:50,190,190 DEBUG [packsel_model.py:415] <QuerySet [{'id': 3683, 'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Matched(M)', 'date': datetime.date(2019, 9, 7), 'matchedtime': 'matchtime', 'referorderno': 'None'}]>
+2019-09-07 03:28:50,191,191 DEBUG [packsel.py:649] Do partial update refresh with below data in var mytable
+2019-09-07 03:28:50,191,191 DEBUG [packsel.py:650] []
+2019-09-07 03:28:50,191,191 DEBUG [plugin_fivesteps.py:504] === Print check_params , self.matchedordermonitor in def checkprocess2matchstatus
+2019-09-07 03:28:50,191,191 DEBUG [plugin_fivesteps.py:505] []
+2019-09-07 03:28:50,191,191 DEBUG [plugin_fivesteps.py:506] === Print self.matchedordermonitor , self.matchedordermonitor in def checkprocess2matchstatus
+2019-09-07 03:28:50,191,191 DEBUG [plugin_fivesteps.py:507] [{'orderno': '629346', 'price': '4.72', 'status': 'Pending(S)', 'referorderno': 'None'}]
+2019-09-07 03:28:50,609,609 DEBUG [tkconsole.py:370] Refresh time for partial with put into queue for refreshdb
+2019-09-07 03:28:51,574,574 DEBUG [packsel.py:603] Print tablerow before loop
+2019-09-07 03:28:51,579,579 DEBUG [packsel.py:610]  	629346	03:28:37	WHA	B	4.72	1000	0	0	0	Matched(M)
+2019-09-07 03:28:51,586,586 INFO [packsel.py:618] Number rows of Table Track = 1
+2019-09-07 03:28:51,586,586 DEBUG [packsel.py:638] raw data for mytable before update to database in def refreshbtn
+2019-09-07 03:28:51,586,586 DEBUG [packsel.py:639] [['629346', '03:28:37', 'WHA', 'B', '4.72', '1000', '0', '0', '0', 'Matched(M)']]
+2019-09-07 03:28:51,586,586 DEBUG [packsel_model.py:369] Result from query database filter by orderno
+2019-09-07 03:28:51,586,586 DEBUG [packsel_model.py:370] <QuerySet [{'id': 3683, 'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Matched(M)', 'date': datetime.date(2019, 9, 7), 'matchedtime': 'matchtime', 'referorderno': 'None'}]>
+2019-09-07 03:28:51,588,588 DEBUG [packsel_model.py:414] SQL Found Enter case checkorderno.existing and partial refresh order below
+2019-09-07 03:28:51,588,588 DEBUG [packsel_model.py:415] <QuerySet [{'id': 3683, 'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Matched(M)', 'date': datetime.date(2019, 9, 7), 'matchedtime': 'matchtime', 'referorderno': 'None'}]>
+2019-09-07 03:28:51,589,589 DEBUG [packsel.py:649] Do partial update refresh with below data in var mytable
+2019-09-07 03:28:51,589,589 DEBUG [packsel.py:650] []
+2019-09-07 03:28:51,589,589 DEBUG [plugin_fivesteps.py:454] print price_change from checkprocess2order to order next plugin_fivesteps.py line 239
+2019-09-07 03:28:51,589,589 DEBUG [plugin_fivesteps.py:455] 4.80
+2019-09-07 03:28:51,589,589 DEBUG [plugin_fivesteps.py:460] Print rt_table this value should be empty for first time buy
+2019-09-07 03:28:51,589,589 DEBUG [plugin_fivesteps.py:461] []
+2019-09-07 03:28:51,589,589 DEBUG [plugin_fivesteps.py:463] Print configval from def checkprocess2order before fist buy order
+2019-09-07 03:28:51,589,589 DEBUG [plugin_fivesteps.py:464] {'planname': <tkinter.StringVar object at 0x03C526B0>, 'rangeselect': <tkinter.StringVar object at 0x03C529D0>, 'monitorstock': <tkinter.StringVar object at 0x03C52B10>, 'initinvest': <tkinter.StringVar object at 0x03C52BB0>, 'volumestep': <tkinter.StringVar object at 0x03C52B70>, 'profitstep': <tkinter.StringVar object at 0x03C526D0>, 'topvaluebuy': <tkinter.StringVar object at 0x03C52710>, 'startvaluebuy': <tkinter.StringVar object at 0x04F93FD0>, 'stopvaluebuy': <tkinter.StringVar object at 0x04F93E70>, 'floorvaluebuy': <tkinter.StringVar object at 0x04F9C5D0>, 'firstbuyflag': <tkinter.StringVar object at 0x04F9C650>, 'pluginfile': <tkinter.StringVar object at 0x04F9C250>, 'currentuseId': <tkinter.StringVar object at 0x04F9C1B0>, 'floorvaluerange': <tkinter.StringVar object at 0x04F9C0F0>, 'topvaluerange': <tkinter.StringVar object at 0x04F9C530>, 'commonvaluestep': <tkinter.StringVar object at 0x04F9C110>, 'runningmode': <tkinter.StringVar object at 0x04F9C7D0>, 'totalcostbuy': <tkinter.StringVar object at 0x04F9C690>, 'totalvolumebuy': <tkinter.StringVar object at 0x04F9C770>, 'stockpin': <tkinter.StringVar object at 0x04F9C6D0>, 'remaininvest': <tkinter.StringVar object at 0x04F9C910>}
+2019-09-07 03:28:51,594,594 DEBUG [packsel.py:341] *** result from value of resultvaluemonitor def monitoring
+2019-09-07 03:28:51,594,594 DEBUG [packsel.py:342] [{'orderno': '629346', 'price': '4.72', 'status': 'Pending(S)', 'referorderno': 'None'}]
+2019-09-07 03:28:51,594,594 DEBUG [packsel.py:366] Qrefresh is not empty
+2019-09-07 03:28:51,594,594 DEBUG [packsel.py:367] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-09-07 03:28:52,211,211 DEBUG [tkconsole.py:370] Refresh time for partial with put into queue for refreshdb
+2019-09-07 03:28:52,810,810 DEBUG [packsel.py:603] Print tablerow before loop
+2019-09-07 03:28:52,815,815 DEBUG [packsel.py:610]  	629346	03:28:37	WHA	B	4.72	1000	0	0	0	Matched(M)
+2019-09-07 03:28:52,822,822 INFO [packsel.py:618] Number rows of Table Track = 1
+2019-09-07 03:28:52,822,822 DEBUG [packsel.py:638] raw data for mytable before update to database in def refreshbtn
+2019-09-07 03:28:52,822,822 DEBUG [packsel.py:639] [['629346', '03:28:37', 'WHA', 'B', '4.72', '1000', '0', '0', '0', 'Matched(M)']]
+2019-09-07 03:28:52,823,823 DEBUG [packsel_model.py:369] Result from query database filter by orderno
+2019-09-07 03:28:52,823,823 DEBUG [packsel_model.py:370] <QuerySet [{'id': 3683, 'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Matched(M)', 'date': datetime.date(2019, 9, 7), 'matchedtime': 'matchtime', 'referorderno': 'None'}]>
+2019-09-07 03:28:52,824,824 DEBUG [packsel_model.py:414] SQL Found Enter case checkorderno.existing and partial refresh order below
+2019-09-07 03:28:52,825,825 DEBUG [packsel_model.py:415] <QuerySet [{'id': 3683, 'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Matched(M)', 'date': datetime.date(2019, 9, 7), 'matchedtime': 'matchtime', 'referorderno': 'None'}]>
+2019-09-07 03:28:52,826,826 DEBUG [packsel.py:649] Do partial update refresh with below data in var mytable
+2019-09-07 03:28:52,826,826 DEBUG [packsel.py:650] []
+2019-09-07 03:28:52,826,826 DEBUG [plugin_fivesteps.py:454] print price_change from checkprocess2order to order next plugin_fivesteps.py line 239
+2019-09-07 03:28:52,826,826 DEBUG [plugin_fivesteps.py:455] 4.78
+2019-09-07 03:28:52,826,826 DEBUG [plugin_fivesteps.py:460] Print rt_table this value should be empty for first time buy
+2019-09-07 03:28:52,826,826 DEBUG [plugin_fivesteps.py:461] []
+2019-09-07 03:28:52,826,826 DEBUG [plugin_fivesteps.py:463] Print configval from def checkprocess2order before fist buy order
+2019-09-07 03:28:52,826,826 DEBUG [plugin_fivesteps.py:464] {'planname': <tkinter.StringVar object at 0x03C526B0>, 'rangeselect': <tkinter.StringVar object at 0x03C529D0>, 'monitorstock': <tkinter.StringVar object at 0x03C52B10>, 'initinvest': <tkinter.StringVar object at 0x03C52BB0>, 'volumestep': <tkinter.StringVar object at 0x03C52B70>, 'profitstep': <tkinter.StringVar object at 0x03C526D0>, 'topvaluebuy': <tkinter.StringVar object at 0x03C52710>, 'startvaluebuy': <tkinter.StringVar object at 0x04F93FD0>, 'stopvaluebuy': <tkinter.StringVar object at 0x04F93E70>, 'floorvaluebuy': <tkinter.StringVar object at 0x04F9C5D0>, 'firstbuyflag': <tkinter.StringVar object at 0x04F9C650>, 'pluginfile': <tkinter.StringVar object at 0x04F9C250>, 'currentuseId': <tkinter.StringVar object at 0x04F9C1B0>, 'floorvaluerange': <tkinter.StringVar object at 0x04F9C0F0>, 'topvaluerange': <tkinter.StringVar object at 0x04F9C530>, 'commonvaluestep': <tkinter.StringVar object at 0x04F9C110>, 'runningmode': <tkinter.StringVar object at 0x04F9C7D0>, 'totalcostbuy': <tkinter.StringVar object at 0x04F9C690>, 'totalvolumebuy': <tkinter.StringVar object at 0x04F9C770>, 'stockpin': <tkinter.StringVar object at 0x04F9C6D0>, 'remaininvest': <tkinter.StringVar object at 0x04F9C910>}
+2019-09-07 03:28:52,830,830 DEBUG [packsel.py:341] *** result from value of resultvaluemonitor def monitoring
+2019-09-07 03:28:52,830,830 DEBUG [packsel.py:342] [{'orderno': '629346', 'price': '4.72', 'status': 'Pending(S)', 'referorderno': 'None'}]
+2019-09-07 03:28:52,830,830 DEBUG [packsel.py:366] Qrefresh is not empty
+2019-09-07 03:28:52,831,831 DEBUG [packsel.py:367] {'qrefresh': 'refreshdb', 'refreshtype': 'partial'}
+2019-09-07 03:28:52,896,896 DEBUG [tkconsole.py:890] Do update refresh GUI tk according to queue with qrefresh qrefresh=refreshtk and chkrefresh != None
+2019-09-07 03:28:52,896,896 DEBUG [tkconsole.py:891] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-09-07 03:28:53,147,147 DEBUG [tkconsole.py:890] Do update refresh GUI tk according to queue with qrefresh qrefresh=refreshtk and chkrefresh != None
+2019-09-07 03:28:53,147,147 DEBUG [tkconsole.py:891] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-09-07 03:28:53,945,945 DEBUG [packsel.py:603] Print tablerow before loop
+2019-09-07 03:28:53,949,949 DEBUG [packsel.py:610]  	629346	03:28:37	WHA	B	4.72	1000	0	0	0	Matched(M)
+2019-09-07 03:28:53,955,955 INFO [packsel.py:618] Number rows of Table Track = 1
+2019-09-07 03:28:53,956,956 DEBUG [packsel.py:638] raw data for mytable before update to database in def refreshbtn
+2019-09-07 03:28:53,956,956 DEBUG [packsel.py:639] [['629346', '03:28:37', 'WHA', 'B', '4.72', '1000', '0', '0', '0', 'Matched(M)']]
+2019-09-07 03:28:53,956,956 DEBUG [packsel_model.py:369] Result from query database filter by orderno
+2019-09-07 03:28:53,956,956 DEBUG [packsel_model.py:370] <QuerySet [{'id': 3683, 'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Matched(M)', 'date': datetime.date(2019, 9, 7), 'matchedtime': 'matchtime', 'referorderno': 'None'}]>
+2019-09-07 03:28:53,958,958 DEBUG [packsel_model.py:414] SQL Found Enter case checkorderno.existing and partial refresh order below
+2019-09-07 03:28:53,958,958 DEBUG [packsel_model.py:415] <QuerySet [{'id': 3683, 'orderno': '629346', 'time': '03:28:37', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Matched(M)', 'date': datetime.date(2019, 9, 7), 'matchedtime': 'matchtime', 'referorderno': 'None'}]>
+2019-09-07 03:28:53,959,959 DEBUG [packsel.py:649] Do partial update refresh with below data in var mytable
+2019-09-07 03:28:53,959,959 DEBUG [packsel.py:650] []
+2019-09-07 03:28:53,959,959 DEBUG [plugin_fivesteps.py:504] === Print check_params , self.matchedordermonitor in def checkprocess2matchstatus
+2019-09-07 03:28:53,959,959 DEBUG [plugin_fivesteps.py:505] []
+2019-09-07 03:28:53,959,959 DEBUG [plugin_fivesteps.py:506] === Print self.matchedordermonitor , self.matchedordermonitor in def checkprocess2matchstatus
+2019-09-07 03:28:53,959,959 DEBUG [plugin_fivesteps.py:507] [{'orderno': '629346', 'price': '4.72', 'status': 'Pending(S)', 'referorderno': 'None'}]
+2019-09-07 03:28:53,977,977 DEBUG [tkconsole.py:370] Refresh time for partial with put into queue for refreshdb

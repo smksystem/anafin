@@ -10,6 +10,11 @@ from django.utils import timezone
 from datetime import datetime
 import time 
 
+
+from selenium import webdriver
+from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
 # mydriver=0
 class packselenium(PackSelModel):
 	"""docstring for packselenium"""
@@ -129,6 +134,13 @@ class packselenium(PackSelModel):
 		# exit()
 
 		driver = webdriver.Chrome()
+##################### Firefox #############################
+		# # cap = DesiredCapabilities().FIREFOX
+		# # cap["marionette"] = False
+
+		# # binary = FirefoxBinary(r'C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe')
+		# driver = webdriver.Firefox(capabilities=cap,firefox_binary=binary)
+#############################################################
 		# put url here
 		# exit()
 
@@ -235,6 +247,10 @@ class packselenium(PackSelModel):
 		self.mydriver=driver
 		return self.stockdata , driver
 
+
+############################################################
+# Main def to monitor infinity loop
+############################################################
 	def monitoring(self,handlewin,return_login):
 
 		# for test data
@@ -322,8 +338,8 @@ class packselenium(PackSelModel):
 			# print("\nstart to check process to order packsel.py line 317 def monitoring")
 			
 			resultvaluemonitor=self.myplugins.checkprocess2order(resultvaluechange,stockvalue,self.order)
-			print("\n*** result from value of monitoring packsel.py line 321 def monitoring")
-			print(resultvaluemonitor)
+			self.log["applog"].debug("*** result from value of resultvaluemonitor def monitoring")
+			self.log["applog"].debug(resultvaluemonitor)
 
 
 			# To send to tkconsole.py update status of value change.			# continue refresh TKInter
@@ -347,6 +363,8 @@ class packselenium(PackSelModel):
 		if not self.mycollectqueues["qrefresh"].empty(): 
 
 			refreshparams = self.mycollectqueues["qrefresh"].get()
+			self.log["applog"].debug("Qrefresh is not empty")
+			self.log["applog"].debug(refreshparams)
 			# print ("Print refreshparams packsel.py line 291")
 			# print(refreshparams)
 			# print(refreshparams["refreshtype"])
@@ -511,11 +529,17 @@ class packselenium(PackSelModel):
 
 		elem = driver.find_element_by_xpath(self.xpathreturn("xrtrefresh")).click()
 
-		wait = WebDriverWait(driver, 30)
+		wait = WebDriverWait(driver, 10)
 		WebElement = wait.until(EC.presence_of_element_located((By.XPATH, self.xpathreturn("xoutputderivordertable"))));
 
 		time.sleep(0.5)
-		# time.sleep(2)
+
+		elem = driver.find_element_by_xpath(self.xpathreturn("xrtrefresh")).click()
+
+		wait = WebDriverWait(driver, 10)
+		WebElement = wait.until(EC.presence_of_element_located((By.XPATH, self.xpathreturn("xoutputderivordertable"))));
+
+		time.sleep(0.5)
 
 		# print("wait finished packsel.py line 372")
 		doupdatetk=""
@@ -558,10 +582,6 @@ class packselenium(PackSelModel):
 				# PackSelModel.updaterefresh(mytable)
 
 				mytable=[]
-				
-
-
-
 				# col_dict=[]
 			else:
 				print("=========No found any row of order to record=========")
@@ -574,23 +594,39 @@ class packselenium(PackSelModel):
 			table_id = driver.find_element_by_xpath( self.xpathreturn("xoutputordertable"))
 			tablerow = table_id.find_elements_by_xpath(".//tr")
 
+
+			# //*[@id="orderBodyEq"]/tbody/tr[1]
+			# //*[@id="orderBodyEq"]/tbody/tr[2]
+			# //*[@id="orderBodyEq"]/tbody/tr[12]
+
 			mytable=[]
 			self.log["applog"].debug("Print tablerow before loop")
-			self.log["applog"].debug(tablerow)
+			# self.log["applog"].debug(tablerow) print raw selenium output
 			# exit()
 			# return None
 
 			for row in tablerow:
-				self.log["applog"].debug(row.text)
-				# print(rowid)
-				if row.text:
-					myrow = row.text.split(" ")
-					myrow = myrow[2:]		
+				# self.log["applog"].debug(row.text)
+				self.log["applog"].debug(row.get_attribute('innerText'))
+
+				if row.get_attribute('innerText'):
+					myrow = row.get_attribute('innerText').split("\t")
+					# self.log["applog"].debug("output from split with space")
+					# self.log["applog"].debug(myrow)
+					myrow = myrow[1:]		
 					mytable.append(myrow)
 			self.log["applog"].info("Number rows of Table Track = " + str(len(tablerow)))
+			
+			# for testing purpose....
+			# for tr_id in range(len(tablerow)):
+			# 	trout = driver.find_element_by_xpath("//*[@id='orderBodyEq']/tbody/tr["+str(tr_id+1)+"]/td[11]")
+			# 	self.log["applog"].debug("Test print trid no " + str(tr_id+1))
+			# 	self.log["applog"].debug(trout.get_attribute('innerText'))
+				
+			# for ele_trid in tr_id:
+			# 	self.log["applog"].debug(ele_trid.text)
+			# tr_row=table_id
 
-					# print(myrow)
-			# print (mytable)
 			#remove first element of array to be the same as xlive
 			# ['', '71911327', '14:42:59', 'WHA', 'B', '4.08', '700', '0', '0', '700', 'Cancel(X)', '', 'Detail', '']
 			# ['', '', '232558', '23:19:57', 'WHA', 'B', '0.00', '000', '0', '0', '0', 'Pending(S)']	
@@ -599,11 +635,7 @@ class packselenium(PackSelModel):
 			# print(mytable)
 			# print ("=========================")
 
-
-
-
 			self.log["applog"].debug("raw data for mytable before update to database in def refreshbtn")
-
 			self.log["applog"].debug(mytable)			
 			# exit()
 
@@ -611,36 +643,26 @@ class packselenium(PackSelModel):
 				# mytable.append({"referorderno":chkreferorderno})
 				# chkreferorderno=None
 
-			# print(mytable)
-
-
 			if allorpartial=="partial":
 				# print ("partial update refresh packsel.py line 427")
 				rowupdaterefresh=self.updaterefresh(mytable,"partial",chkreferorderno)
+				self.log["applog"].debug("Do partial update refresh with below data in var mytable")
+				self.log["applog"].debug(rowupdaterefresh)
 
 			elif allorpartial=="all":
+				###### In case of restart, will retrieve all data from database include putordermonitoring
 
-
-				self.log["applog"].debug("Do full update refresh all with below data in var mytable")
-				self.log["applog"].debug(mytable)
 				# rowupdaterefresh,notmatchmonitoring=self.updaterefresh(mytable,"all")	
 				rowupdaterefresh=self.updaterefresh(mytable,"all")	
-
+				self.log["applog"].debug("Do ALL full update refresh ALL before putordermonitoring")
+				self.log["applog"].debug(rowupdaterefresh)
 				self.myplugins.putordermonitoring(rowupdaterefresh)
 				
-				self.log["applog"].debug("Get all data from database in var rowupdaterefresh")
-				self.log["applog"].debug(rowupdaterefresh)
 				# self.log["applog"].debug("Print monitoring not match in var notmatchmonitoring")
 				# self.log["applog"].debug(notmatchmonitoring)
 				
-			
-			# print ("show update refresh packsel.py line 432")
-				# print(rowupdaterefresh)
-				# exit()
 			mytable=[]
 
-		print("\nprint data for rowupdaterefresh after got from database before sent to tkconsole.py line 588 in def refreshbtn")
-		print(rowupdaterefresh)
 		# this is ok to work like this check process nad then send to update data
 		# rowupdaterefresh=self.myplugins.checkprocess2matchstatus(rowupdaterefresh)
 		self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk",

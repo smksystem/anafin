@@ -43,3 +43,4 @@ JavaScript error: , line 0: uncaught exception: out of memory
 1529475705834	geckodriver	INFO	geckodriver 0.21.0 (c7d3022be6420de1ca4076d932aa32b299f3ea10 2018-06-14)
 1529475705883	geckodriver	INFO	Listening on 127.0.0.1:58695
 1529475706445	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\T876187\\AppData\\Local\\Temp\\rust_mozprofile.wVQgTQUJNtqw"
+1567610581891	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Firefox Developer Edition\\firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\MK\\AppData\\Local\\Temp\\rust_mozprofile.Nw4tsPDUegCG"

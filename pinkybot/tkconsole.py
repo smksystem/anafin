@@ -330,6 +330,10 @@ class outputlog(tk.Tk,mylog):
 		self.txtout("!!! Welcome , Please login !!!")
 		self.tkclock()
 
+
+######################################################
+######## Loop to click refresh all the time ##########
+######################################################
 	def tkclock(self):
 		
 		# get the current local time from the PC
@@ -362,8 +366,8 @@ class outputlog(tk.Tk,mylog):
 				# if elapsedtime >= 10 :
 				if elapsedtime >= 1 : ### test 1 second.
 
-					print("refresh time more than 3 seconds packsel.py line 281 def monitoring")
-
+					# print("refresh time more than 3 seconds packsel.py line 281 def monitoring")
+					self.log["applog"].debug("Refresh time for partial with put into queue for refreshdb")
 					# self.txtout("Put Queue refresh time at : " + self.time2)
 					
 					# self.mybot.mycollectqueues["qrefresh"].put({"qrefresh":"refreshdb","refreshtype":"all"})
@@ -373,6 +377,8 @@ class outputlog(tk.Tk,mylog):
 					# self.starttime=time.time()
 			else:
 				self.mybot.mycollectqueues["qtimerefresh"].put(timeparams)
+			
+
 			# resultvaluechange=self.refreshbtn(driver,"partial")
 			# print(self.starttime)
 

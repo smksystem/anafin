@@ -22,6 +22,8 @@ from django.contrib.auth.decorators import login_required
 from dummypage import views as dummyviews
 # from anafin import anaform
 # admin.autodiscover()
+# MEDIA_ROOT = '/images/'    
+# MEDIA_URL = '/localhost:8000/images/'  
 urlpatterns = [
 	path('protodashboard/', include('dashboard.urls')),
 	url(r'^login/$', auth_views.LoginView.as_view(template_name='register/login.html'), name='login'),

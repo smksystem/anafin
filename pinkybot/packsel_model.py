@@ -326,6 +326,8 @@ class PackSelModel:
 # [['71913646', '17:09:57', 'WHA', 'B', '4.10', '600', '0', '600', '0', 'Pending(OF)', 'Detail', 'Cancel'], 
 # ['71911327', '14:42:59', 'WHA', 'B', '4.08', '700', '0', '0', '700', 'Cancel(X)', 'Detail']]
 	def updatematchstatus(resultMatch):
+		print("Enter SQL Update match time with resultMatch below")
+		print(resultMatch)
 		updatecolumnval=updaterefresh.objects.filter(orderno=resultMatch["orderno"]).update(matchedtime= resultMatch["matchedtime"])
 
 		
@@ -358,10 +360,7 @@ class PackSelModel:
 					"cancelled":myrow[8],
 					"status":myrow[9],
 					"matchedtime":myrow[10],
-
 					"referorderno":myrow[11],
-
-
 			}
 			# print("\n---Print myrow line 126 packsel_model.py def updaterefresh")
 			# print(myrow)
@@ -399,6 +398,7 @@ class PackSelModel:
 
 			# for case new row when buy or sell 
 			elif not chkorderno.exists() and fullrefresh=="partial":
+				self.log["applog"].debug("NO SQL Found Enter case checkorderno NOT existing and partial refresh")
 				# print("Insert new row with chkorderno.exists and partial refresh of order below packsel_model.py line 144 ")
 				
 				# print(myrow)
@@ -409,17 +409,20 @@ class PackSelModel:
 
 
 			elif chkorderno.exists() and fullrefresh=="partial":
-
-				# print ("\n===Order already existing and fullrefresh = partial packsel_model.py line 158")
 				tochk=chkorderno.values()
-				
+				self.log["applog"].debug("SQL Found Enter case checkorderno.existing and partial refresh order below")
+				self.log["applog"].debug(tochk)
+
 
 				# to check if database and rt table has the same data or not ?
 
 				for index, (column,myvalue) in enumerate(tochk[0].items()):
 					# index-=index
 					# to exclude check below column
+
 					if column != "id" and column != "date" and column !="matchedtime" and column != "referorderno":
+					# if column != "id" and column != "date" and column != "referorderno":
+
 						# print("--- index of myrow packsel_model.py line 170")
 						# print (index,myvalue,myrow[index-1])
 						updaterow=True if (myvalue != myrow[index-1]) else False
@@ -428,9 +431,18 @@ class PackSelModel:
 						if updaterow==True:
 							# print("///////// data params in result updaterefresh packsel_model.py line 169")
 							# print (dataparams in result_updaterefresh)
+							self.log["applog"].debug("SQL Update below column into updaterefresh table")
+							self.log["applog"].debug({column:myrow[index-1]})
+
 							updatecolumnval=updaterefresh.objects.filter(orderno=myrow[0]).update(**{column:myrow[index-1]})
 							result_updaterefresh.append(dataparams) if (dataparams not in result_updaterefresh) else False
 							updaterow=False
+							# break
+					elif column =="matchedtime":
+						self.log["applog"].debug("Still found column = matchedtime and no any update SQL column return below data")
+						self.log["applog"].debug(dataparams)
+						result_updaterefresh.append(dataparams)
+						# break
 						# else:
 						# 	updaterow=False
 							# print ("--------------update row into table with existing and partial packsel_model.py line 172")

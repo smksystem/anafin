@@ -257,18 +257,20 @@ class fivesteps():
 		# print(configval)
 		# return self.configval
 
-
+	########################################################################
+	############# Recheck this method carefully..... #######################
+	########################################################################
 	def putordermonitoring(self,result_order):
 
-		self.log["applog"].debug("!!! Now Monitoring before data in def putordermonitoring")
-		self.log["applog"].debug(self.matchedordermonitor)
-		self.log["applog"].debug(result_order)
 		if self.configval["runningmode"].get()=="monitor":
 			self.log["applog"].info("Current mode is 'Monitoring only no auto sell or buy' ")
 			return None
 
 		tempadd=None
 		notAllowTodd=None
+		self.log["applog"].debug("Print result_order for def putordermonitoring before process function")
+		self.log["applog"].debug(result_order)
+		
 		for linetable in result_order:
 			if linetable["status"] == "Matched(M)":
 				self.log["applog"].debug("Found matched detect")
@@ -292,7 +294,7 @@ class fivesteps():
 					# compare to existing order
 					if linetable["orderno"] == matchcheck["orderno"]:
 						notAllowTodd=True
-						print("\n +++Found orderno update status below plugin_fivesteps.py line 251 in def updatematchstatus")
+						# print("\n +++Found orderno update status below plugin_fivesteps.py line 251 in def updatematchstatus")
 						matchcheck["status"]=linetable["status"]
 
 						break
@@ -330,8 +332,10 @@ class fivesteps():
 			# notAllowTodd=False
 					# self.matchedordermonitor.append(linetable)
 					
-		print("\n!!! Now Monitoring data after plugin_fivesteps.py line 254 in def putordermonitoring")
-		print(self.matchedordermonitor)
+		# print("\n!!! Now Monitoring data after plugin_fivesteps.py line 254 in def putordermonitoring")
+		# print(self.matchedordermonitor)
+		self.log["applog"].debug("!!! Now Monitor self.matchedordermonitor and print result_order in def putordermonitoring")
+		self.log["applog"].debug(self.matchedordermonitor)
 
 
 	def order(self,controlorder="",orderdetail={},orderfn=""):
@@ -456,8 +460,8 @@ class fivesteps():
 		self.log["applog"].debug("Print rt_table this value should be empty for first time buy")
 		self.log["applog"].debug(rt_table)
 
-		self.log["applog"].debug("Print configval from def checkprocess2order before fist buy order")
-		self.log["applog"].debug(self.configval)
+		# self.log["applog"].debug("Print configval from def checkprocess2order before fist buy order")
+		# self.log["applog"].debug(self.configval)
 
 		self.txtout("Order with first buy = " + self.firstbuyflag)
 		# self.txtout("")
@@ -501,7 +505,7 @@ class fivesteps():
 		self.log["applog"].debug(chk_params)
 		self.log["applog"].debug("=== Print self.matchedordermonitor , self.matchedordermonitor in def checkprocess2matchstatus")
 		self.log["applog"].debug(self.matchedordermonitor)
-
+		######## Case set config = monitor
 		if self.configval["runningmode"].get()=="monitor":
 			# self.log["applog"].info("Current mode is 'Monitoring only no auto sell or buy' ")
 			return None
@@ -533,18 +537,21 @@ class fivesteps():
 					# print("\n @@@ Check Matched chkmatch=chkresult before put into database ")
 					# print(chkmatch)
 					
-					PackSelModel.updatematchstatus(chkresult)
+					if len(chkresult) > 0:
+						self.log["applog"].debug("Update database if match with date and matchtime")
+						self.log["applog"].debug(chkresult)
+						PackSelModel.updatematchstatus(chkresult)
 
 					# remove match index after add into database
 
 
-					self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk",
+						self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk",
 												"doupdatetk":[chkresult]})
 
-					self.log["applog"].debug("Match found do remove matchedordermonitor below data")
-					self.log["applog"].debug(self.matchedordermonitor)
+						self.log["applog"].debug("Match found do remove array matchedordermonitor below data")
+						self.log["applog"].debug(self.matchedordermonitor)
 
-					self.matchedordermonitor.remove(chkmatch)
+						self.matchedordermonitor.remove(chkmatch)
 
 					self.log["applog"].debug("Set commonvaluestep from def checkprocess2matchstatus")
 					self.log["applog"].debug(self.configval["commonvaluestep"].get())

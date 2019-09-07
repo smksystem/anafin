@@ -1,3 +1,5 @@
+{# {% extends "base.html" %} #}
+{% load staticfiles %}
 <html>
 <head>
 	<title>Market Summary</title>
@@ -475,7 +477,7 @@ a:hover .head {
 			<div id="trading" style="display: block;">
 			<table border="0" cellspacing="0" cellpadding="0" width="100%">
 				<tr>
-					<td bgcolor="#EFEFEF" class="bottomLine paddingSubMenuText THsub"><a href="http://localhost:8000/dummyrt/" target="_blank"><img src="/brokerpage/IPO/StaticPage/Home/images/newstreaming_light_bg.png" width="111" border="0" align="absbottom" alt=""></a></td>
+					<td bgcolor="#EFEFEF" class="bottomLine paddingSubMenuText THsub"><a href="http://localhost:8000/dummyrt/" target="_blank"><img src="{% static 'images/findbugX.png'%}" width="111" border="0" align="absbottom" alt=""></a></td>
 				</tr>
 				<tr>
 					<td bgcolor="#EFEFEF" class="bottomLine paddingSubMenuText THsub"><a href="javascript:openFastOrder('mm');">Place Order (Pop-up)</a></td>

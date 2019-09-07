@@ -352,10 +352,10 @@ class configparams(tk.Tk):
 			for iplan in range(idxm-1):
 				# print(i)
 				entry= self.plannameIdopt['menu'].entrycget(iplan, "label")
-				print("entry")
-				print(entry)
+				# print("entry")
+				# print(entry)
 				if entry==planname:
-					print("found!")
+					# print("found!")
 					idxm=self.plannameIdopt['menu'].delete(iplan)
 					break
 

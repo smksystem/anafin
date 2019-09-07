@@ -133,10 +133,13 @@ class pinkybot(packselenium):
 		# print (LoginParams)
 		# self.mypinkylogin(LoginParams)
 		
-		mthread=MyThread(self.mycollectqueues["qvalchange"],self.mypinkylogin,args=(loginSet,))
+		mthread=MyThread(self.mycollectqueues,self.mypinkylogin,args=(loginSet,))
 		mthread.setDaemon=True
 		mthread.start()
-		# mthread.join()
+		# mthread.join() to make thread until finish first.
+
+
+
 
    
 
@@ -175,9 +178,12 @@ class pinkybot(packselenium):
   				exit()
   				
 class MyThread(threading.Thread):
-	def __init__(self, queue,fnrun, args=(), kwargs=None):
+	# def __init__(self, queue,fnrun, args=(), kwargs=None):
+	def __init__(self, queuecollection,fnrun, args=(), kwargs=None):
+
 		threading.Thread.__init__(self, args=(), kwargs=None)
 		self.queue = queue
+		self.queuecollection=queuecollection
 		self.daemon = True
 		# print(args)
 		self.parameter=args[0]
@@ -194,12 +200,12 @@ class MyThread(threading.Thread):
 		
 		self.fnrun(self.parameter,self.queue)
 
-		val = self.queue.get()
+		# val = self.queue.get()
 		# print ("value queue in run function monitor.py line 174")
 		# print(val)
 		# self.do_thing_with_message(val)
 
-	def do_thing_with_message(self, message):
-		if self.receive_messages:
-			with print_lock:
-				print (threading.currentThread().getName(), "Received {}".format(message))
+	# def do_thing_with_message(self, message):
+	# 	if self.receive_messages:
+	# 		with print_lock:
+	# 			print (threading.currentThread().getName(), "Received {}".format(message))
