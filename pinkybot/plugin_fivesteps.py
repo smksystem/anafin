@@ -501,10 +501,18 @@ class fivesteps():
 
 	def checkprocess2matchstatus(self,chk_params,orderfn=""):
 
-		self.log["applog"].debug("=== Print check_params , self.matchedordermonitor in def checkprocess2matchstatus")
-		self.log["applog"].debug(chk_params)
-		self.log["applog"].debug("=== Print self.matchedordermonitor , self.matchedordermonitor in def checkprocess2matchstatus")
-		self.log["applog"].debug(self.matchedordermonitor)
+		self.log["applog"].debug("\n=== Print check_params , self.matchedordermonitor in def checkprocess2matchstatus")
+		for row in chk_params:
+			self.log["applog"].debug(row)
+
+		# self.log["applog"].debug(chk_params)
+		
+		self.log["applog"].debug("=== Print Matchedordermonitor in def checkprocess2matchstatus")
+		# self.log["applog"].debug(self.matchedordermonitor)
+		for row in self.matchedordermonitor:
+			self.log["applog"].debug(row)
+		row=""
+		self.log["applog"].debug("#################################")
 		######## Case set config = monitor
 		if self.configval["runningmode"].get()=="monitor":
 			# self.log["applog"].info("Current mode is 'Monitoring only no auto sell or buy' ")
@@ -761,14 +769,25 @@ class fivesteps():
 				# chkmatch ==> from self.matchedordermonitor
 				elif chkresult["orderno"]==chkmatch["orderno"] and chkresult["status"]!= "Matched(M)": 
 					# return chk_params
-					self.log["applog"].debug("+++ Case else with not match but order match def checkprocess2matchstatus")
+					self.log["applog"].debug("==>> Enter Case else with not match for matchedordermonitor but found orderno in def checkprocess2matchstatus")
+					self.log["applog"].debug("Print chkmatch from matchedordermonitor")
+					self.log["applog"].debug(chkmatch)
+					self.log["applog"].debug("Print chkresult in parameter chk_params from table")
+					self.log["applog"].debug(chkresult)
+					self.log["applog"].debug("Print input this def for parameter chk_params from table")
 					self.log["applog"].debug(chk_params)
-					self.log["applog"].debug(self.matchedordermonitor)
+					# self.log["applog"].debug(chk_params)
+					self.log["applog"].debug("Print chk_params for each row")
+					for row in chk_params:
+						self.log["applog"].debug(row)
+					self.log["applog"].debug("Print monitor in matchedordermonitor ")
+					for row in self.matchedordermonitor:
+						self.log["applog"].debug(row)
+					# self.log["applog"].debug(self.matchedordermonitor)
 
 
 					# if not match update status instead.
-					chkmatch["status"]=chkresult["status"] 
-					# chkresult["refreorderno"]=chkmatch["referorderno"]
-
-					return chk_params
+					if chkmatch["status"]!=chkresult["status"]:
+						chkmatch["status"]=chkresult["status"] 
+		return chk_params
 				# result_order=orderfn(params)

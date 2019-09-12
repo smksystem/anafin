@@ -479,7 +479,7 @@ class outputlog(tk.Tk,mylog):
 			if (str(type(child)) == "<class 'tkinter.Canvas'>") :
 				child.destroy()
 
-				print("Start to create output group")
+				# print("Start to create output group")
 
 				self.canvas=tk.Canvas(self,background="black")
 				self.canvas.grid(row=2,column=0,rowspan=2,columnspan=5,sticky="nsew")
@@ -739,8 +739,8 @@ class outputlog(tk.Tk,mylog):
 			Label.configure(background="silver")
 
 	def monomatch(self,label,orderno,color="lightgray"):
-		print("\n$$$Print label orderno line 627 tkconsole.py in def monomatch")
-		print(label,orderno)
+		# print("\n$$$Print label orderno line 627 tkconsole.py in def monomatch")
+		# print(label,orderno)
 		changecolor=False
 		for labelidx,labelcontent in label.items():
 			print("\n!!! Check loop for label in tkconsole.py line 628 in def monomatch")
@@ -922,7 +922,7 @@ class outputlog(tk.Tk,mylog):
 								# print (chklblorderno["orderno"].get())
 								chkorderno=chklblorderno["orderno"].get()
 								
-								print ("\ntkconsole.py line 775 compare orderno=" + chkorderno,rowupdata["orderno"])
+								# print ("\ntkconsole.py line 775 compare orderno=" + chkorderno,rowupdata["orderno"])
 
 								if chkorderno == rowupdata["orderno"] :
 									ignoreadd=True

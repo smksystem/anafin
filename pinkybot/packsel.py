@@ -14,6 +14,7 @@ import time
 from selenium import webdriver
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from selenium.webdriver.chrome.options import Options 
 
 # mydriver=0
 class packselenium(PackSelModel):
@@ -129,11 +130,18 @@ class packselenium(PackSelModel):
 
 		# for job in iter(self.qvalchange.get, None):
 			# print (job)
-		
 
-		# exit()
+###################### Head Less Chrome ##################
+		chrome_options = Options()  
+		chrome_options.add_argument("--headless")  
+		# chrome_options.binary_location = '/Applications/Google Chrome   Canary.app/Contents/MacOS/Google Chrome Canary'`    
 
-		driver = webdriver.Chrome()
+		# driver = webdriver.Chrome(executable_path=os.path.abspath("chromedriver"),   chrome_options=chrome_options)
+		driver = webdriver.Chrome(chrome_options=chrome_options)
+
+###################### Head Show ##########################
+		# driver = webdriver.Chrome()
+
 ##################### Firefox #############################
 		# # cap = DesiredCapabilities().FIREFOX
 		# # cap["marionette"] = False
@@ -534,13 +542,6 @@ class packselenium(PackSelModel):
 
 		time.sleep(0.5)
 
-		elem = driver.find_element_by_xpath(self.xpathreturn("xrtrefresh")).click()
-
-		wait = WebDriverWait(driver, 10)
-		WebElement = wait.until(EC.presence_of_element_located((By.XPATH, self.xpathreturn("xoutputderivordertable"))));
-
-		time.sleep(0.5)
-
 		# print("wait finished packsel.py line 372")
 		doupdatetk=""
 		if self.mode=="xlive":
@@ -600,23 +601,37 @@ class packselenium(PackSelModel):
 			# //*[@id="orderBodyEq"]/tbody/tr[12]
 
 			mytable=[]
+			realtable={}
 			self.log["applog"].debug("Print tablerow before loop")
 			# self.log["applog"].debug(tablerow) print raw selenium output
 			# exit()
 			# return None
-
 			for row in tablerow:
 				# self.log["applog"].debug(row.text)
 				self.log["applog"].debug(row.get_attribute('innerText'))
 
 				if row.get_attribute('innerText'):
 					myrow = row.get_attribute('innerText').split("\t")
-					# self.log["applog"].debug("output from split with space")
-					# self.log["applog"].debug(myrow)
+					self.log["applog"].debug("output from split with space")
+					self.log["applog"].debug(myrow)
 					myrow = myrow[1:]		
+					realtable[myrow[0]]={
+								"time":myrow[1],
+								"stockname":myrow[2],
+								"orderside":myrow[3],
+								"price":myrow[4],
+								"volume":myrow[5],
+								"matched":myrow[6],
+								"balance":myrow[7], 
+								"cancelled":myrow[8],
+								"status":myrow[9],
+
+								}
+					self.log["applog"].debug("new real table to be format")
+					self.log["applog"].debug(realtable)
 					mytable.append(myrow)
 			self.log["applog"].info("Number rows of Table Track = " + str(len(tablerow)))
-			
+			self.log["applog"].debug(realtable["998158"]["status"])
 			# for testing purpose....
 			# for tr_id in range(len(tablerow)):
 			# 	trout = driver.find_element_by_xpath("//*[@id='orderBodyEq']/tbody/tr["+str(tr_id+1)+"]/td[11]")
