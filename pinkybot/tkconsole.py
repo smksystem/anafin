@@ -353,9 +353,10 @@ class outputlog(tk.Tk,mylog):
 
 			if timeparams["command"]=="starttime":
 				self.starttime=time.time()
-				print("\nstart time count is called tkconsitole.py line 307 def tkclock")
-				print(self.starttime)
-				print("\n\n")
+				self.log["applog"].debug("Start time count is called def tkclock")
+				self.log["applog"].debug(self.starttime)
+				# print("\n\n")
+				self.mybot.mycollectqueues["qtimerefresh"].put({"command":"monitoring"})			
 
 			elif timeparams["command"]=="monitoring" and self.starttime is not None:
 				# print("monitoring value is called tkconsole.py line 314 def tkclock")
@@ -429,6 +430,7 @@ class outputlog(tk.Tk,mylog):
 		self.mybot.botrtrefresh()
 
 		# self.mybot.myorder("rtrefresh",self.configval)
+	
 
 	def chooserunningmode(self):
 		print("run mode = "+ self.configval["runningmode"].get())
@@ -439,8 +441,9 @@ class outputlog(tk.Tk,mylog):
 		# print(self.configval)
 		
 		##################################################
-		# labeldisplay from doMenuRange call via bot
+		# labeldisplay from doMenuRange call via bot keep in both packsel and plugin
 		##################################################
+		self.mybot.putconfigval(self.configval)
 		self.mybot.pinkymonitordisplay(self.configval,self.labeldisplay,self.txtout) # set default parameter for each plugins.
 
 
@@ -821,7 +824,6 @@ class outputlog(tk.Tk,mylog):
 
 
 	def tkviewconfig(self):
-		# print("view manue is pressed")
 		viewresult=viewconfig(self.configval)
 
 	def loginconfig(self):
@@ -985,12 +987,12 @@ class outputlog(tk.Tk,mylog):
 												print(targetlabelprice)
 
 												for labelidx,(findlabel,labelcontent) in enumerate(targetlabelprice.items()):
-													print("\n @@@ print labelidx , findlabel,labelcontent line 810 tkconsole.py in def Refresher")
-													print( labelidx,findlabel,labelcontent)
+													# print("\n @@@ print labelidx , findlabel,labelcontent line 810 tkconsole.py in def Refresher")
+													# print( labelidx,findlabel,labelcontent)
 													if labelidx> 0:
 														# if labelcontent["orderno"]["text"]=grayorderno:
-														print("\n### print findlabel[labelidx] in line 821 tkconsole.py in def Refresher")
-														print(labelcontent["orderno"])
+														# print("\n### print findlabel[labelidx] in line 821 tkconsole.py in def Refresher")
+														# print(labelcontent["orderno"])
 														self.monomatch(labelcontent,grayorderno)
 
 

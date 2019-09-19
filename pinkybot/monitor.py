@@ -165,7 +165,8 @@ class pinkybot(packselenium):
 		
 		self.log["applog"].info("Login seem to be succeeded , start to refresh all data from database with refresh all condition")
 		# print("\ncontinue monitoring after login with refresh once monitor.py line 146 def threading")
-
+		
+		self.mycollectqueues["qtimerefresh"].put({"command":"starttime"}) 
 		self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshdb","refreshtype":"all"})		
 		# Monitor loop here
 

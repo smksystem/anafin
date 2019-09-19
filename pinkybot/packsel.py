@@ -26,6 +26,9 @@ class packselenium(PackSelModel):
 		super().__init__() # configure xdebug or xlive
 		# print ("running mode=" + mode)
 
+	def putconfigval(self,configval):
+		self.configval=configval
+
 	def xpathreturn(self,xplace=""):
 
 		debugpath={
@@ -131,16 +134,16 @@ class packselenium(PackSelModel):
 		# for job in iter(self.qvalchange.get, None):
 			# print (job)
 
-###################### Head Less Chrome ##################
-		chrome_options = Options()  
-		chrome_options.add_argument("--headless")  
-		# chrome_options.binary_location = '/Applications/Google Chrome   Canary.app/Contents/MacOS/Google Chrome Canary'`    
 
-		# driver = webdriver.Chrome(executable_path=os.path.abspath("chromedriver"),   chrome_options=chrome_options)
-		driver = webdriver.Chrome(chrome_options=chrome_options)
+
+
+###################### Head Less Chrome ##################
+		# chrome_options = Options()  
+		# chrome_options.add_argument("--headless")  
+		# driver = webdriver.Chrome(chrome_options=chrome_options)
 
 ###################### Head Show ##########################
-		# driver = webdriver.Chrome()
+		driver = webdriver.Chrome()
 
 ##################### Firefox #############################
 		# # cap = DesiredCapabilities().FIREFOX
@@ -261,21 +264,6 @@ class packselenium(PackSelModel):
 ############################################################
 	def monitoring(self,handlewin,return_login):
 
-		# for test data
-		# stock='TEST'
-		# timestamp= datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-		# bid={'bid1':1,'bid2':2,'bid3':3,'bid4':4,'bid5':5}
-		# offer={'offer1':6,'offer2':7,'offer3':8,'offer4':9,'offer10':10}
-		# offervolumn={'offervolumn1':11,'offervolumn2':12,'offervolumn3':13,'offervolumn4':14,'offervolumn5':15}
-		# bidvolumn={'bidvolumn1':16,'bidvolumn2':17,'bidvolumn3':18,'bidvolumn4':19,'bidvolumn5':20}
-
-		# bidvolumn={}
-		# for line in range(1,6):
-			# bidvolumn["bidvolumn"+str(line)]="00004"
-
-	
-		# print("return login in monitoring pacsel.py line 239")
-		# print(return_login)
 
 		driver=handlewin
 
@@ -335,10 +323,43 @@ class packselenium(PackSelModel):
 
 
 		if (self.stockcompare=="0.00" and stockvalue !="0.00") or (self.stockcompare!=stockvalue) and (self.stockcompare!="0.00"):
+
+
+			self.log["applog"].debug("Print configvalue")
+			self.log["applog"].debug("StartValuebuy")
+			# self.log["applog"].debug(self.configval)
+			self.log["applog"].debug(self.configval["startvaluebuy"].get())
+
+			flstartvaluebuy=float(self.configval["startvaluebuy"].get())
+			flcommonvaluestep=float(self.configval["commonvaluestep"].get())
+			flstockvalue=float(stockvalue)
+
+			if flstockvalue<flstartvaluebuy :
+				self.log["applog"].debug("found value less than stockvalue")
+				self.log["applog"].debug(stockvalue)
+
+				self.log["applog"].debug("Common Value Step")
+				self.log["applog"].debug(str(flcommonvaluestep))
+				self.myplugins.checkdownsidebuy(flstockvalue,flstartvaluebuy)
+
 			# print("first stockvalue updated=" + stockvalue)
 			# print("first stockcompare updated=" + self.stockcompare)
 			# self.mycollectqueues["qvalchange"].put({"stockvalue":stockvalue})
-			self.mycollectqueues["qtimerefresh"].put({"command":"starttime"})			
+			# if stockvalue =="0.00":
+
+			#########################################################
+			############ Check time refresh every 3 seconds.
+			#########################################################
+
+			# if not self.mycollectqueues["qtimerefresh"].empty(): 
+			# 	timechkstart = self.mycollectqueues["qtimerefresh"].get()
+			# 	if timechkstart["command"]!="monitoring":
+			# 		self.mycollectqueues["qtimerefresh"].put({"command":"starttime"}) 
+			# 	else:
+			# 		self.mycollectqueues["qtimerefresh"].put(timechkstart) 
+
+			##########################################################
+
 
 			PackSelModel.updatestockvaluechange(self.stockdata)
 			# print("\nstart to refersh partial from packsel.py line 315 def monitoring")
@@ -354,9 +375,13 @@ class packselenium(PackSelModel):
 			self.mycollectqueues["qvalchange"].put({"stockvalue":stockvalue})   # to send blink at value.
 			# self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshdb",
 												# "refreshtype":"all"}) 
-			self.mycollectqueues["qtimerefresh"].put({"command":"monitoring"})			
 
-			
+			# self.mycollectqueues["qtimerefresh"].put({"command":"monitoring"})			
+
+			##################################################################################
+			# Do check order base on  value
+			##################################################################################
+
 			self.stockcompare=stockvalue
 			# print(self.stockdata)
 			# starttime=self.stockdata["timestamp"]		
@@ -379,7 +404,7 @@ class packselenium(PackSelModel):
 			# # To continue re arrange below.
 			if refreshparams["qrefresh"]=="refreshdb":
 				if refreshparams["refreshtype"]=="all":
-					print("+++++++++++Begin start to refresh all order")
+					# print("+++++++++++Begin start to refresh all order")
 					# result_refreshbtn,result_chkprocess =self.refreshbtn(driver,"all")
 					result_refreshbtn =self.refreshbtn(driver,"all")
 
@@ -389,8 +414,8 @@ class packselenium(PackSelModel):
 				elif refreshparams["refreshtype"]=="partial":
 
 					result_refreshbtn=self.refreshbtn(driver,"partial")
-					print ("\n--- Partial refresh result from refreshbtn packsel.py line 363 def monitoring")
-					print(result_refreshbtn)
+					self.log["applog"].debug ("\n--- Partial refresh result from refreshbtn packsel.py line 363 def monitoring")
+					self.log["applog"].debug(result_refreshbtn)
 				
 				resultMatch =self.myplugins.checkprocess2matchstatus(result_refreshbtn,self.order)
 
@@ -630,8 +655,8 @@ class packselenium(PackSelModel):
 					self.log["applog"].debug("new real table to be format")
 					self.log["applog"].debug(realtable)
 					mytable.append(myrow)
-			self.log["applog"].info("Number rows of Table Track = " + str(len(tablerow)))
-			self.log["applog"].debug(realtable["998158"]["status"])
+			# self.log["applog"].info("Number rows of Table Track = " + str(len(tablerow)))
+			# self.log["applog"].debug(realtable["998158"]["status"])
 			# for testing purpose....
 			# for tr_id in range(len(tablerow)):
 			# 	trout = driver.find_element_by_xpath("//*[@id='orderBodyEq']/tbody/tr["+str(tr_id+1)+"]/td[11]")

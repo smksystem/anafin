@@ -21,10 +21,13 @@ class fivesteps():
 	def setlabeldisplay(self,configval,conf_labeldisplay,conf_textout):
 
 		############# this method Also calculate totalcostbuy,totoalvolumebuy,....
-		self.log["applog"].debug(configval)
 		# print(confival)
 		# exit()
+
 		self.configval=configval
+		# self.log["applog"].debug(self.configval)
+
+
 		# configval=PackSelModel.loadparameter("plugin_fivesteps")
 
 		
@@ -449,6 +452,12 @@ class fivesteps():
 			# pass	
 
 	# called by change value
+	def checkdownsidebuy(self):
+		self.log["applog"].debug("check down side buy")
+		flcomparediff=round(flstartvaluebuy-flstockvalue,2)
+		flcommonvaluestep=float(self.configval["commonvaluestep"].get())
+		self.log["applog"].debug("commonvaluestep")
+		self.log["applog"].debug(flcommonvaluestep)
 
 	def checkprocess2order(self,rt_table,price_change,orderfn=""):
 		self.log["applog"].debug("print price_change from checkprocess2order to order next plugin_fivesteps.py line 239")
