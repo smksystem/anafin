@@ -452,12 +452,24 @@ class fivesteps():
 			# pass	
 
 	# called by change value
-	def checkdownsidebuy(self):
-		self.log["applog"].debug("check down side buy")
-		flcomparediff=round(flstartvaluebuy-flstockvalue,2)
-		flcommonvaluestep=float(self.configval["commonvaluestep"].get())
-		self.log["applog"].debug("commonvaluestep")
-		self.log["applog"].debug(flcommonvaluestep)
+	def checkdownsidebuy(self,stockvalue):
+
+		flstockvalue=float(stockvalue)
+		flstartvaluebuy=float(self.configval["startvaluebuy"].get())
+		# flcommonvaluestep=float(self.configval["commonvaluestep"].get())
+
+
+		if flstockvalue<flstartvaluebuy :
+			self.log["applog"].debug("check down side buy")
+			flcomparediff=round(flstartvaluebuy-flstockvalue,2)
+			flcommonvaluestep=float(self.configval["commonvaluestep"].get())
+			
+			self.log["applog"].debug("commonvaluestep")
+			self.log["applog"].debug(flcommonvaluestep)
+
+			if flcomparediff==flcommonvaluestep:
+				self.log["applog"].debug("Start follow buy with below value")
+				self.log["applog"].debug(stockvalue)	
 
 	def checkprocess2order(self,rt_table,price_change,orderfn=""):
 		self.log["applog"].debug("print price_change from checkprocess2order to order next plugin_fivesteps.py line 239")
@@ -489,7 +501,7 @@ class fivesteps():
 
 			# use self.order instead direct call orderfn
 
-			self.log["applog"].debug("Update first time to planname below ###")
+			self.log["applog"].debug("Update first time to planname below ##git#")
 			self.log["applog"].debug(self.configval["planname"].get())
 
 			resultbuy=self.order({'ordermode':'buybybot','firstbuy':'yes'},{},orderfn)
@@ -502,6 +514,13 @@ class fivesteps():
 			# move append monitoring to order function.
 
 			PackSelModel.updatefirstorderbuy(self.configval["planname"].get(),"NO")
+
+		elif self.firstbuyflag=="NO":
+			#####################################################################################
+			# Check process when first buy already done and follow to buy when price is down.
+			#####################################################################################
+
+			self.checkdownsidebuy(price_change)
 
 		# print("\nprint self.matchedordermonitor to monitor in plugin_fivesteps.py line 309 def checkprocess2order ")
 		# print(self.matchedordermonitor)

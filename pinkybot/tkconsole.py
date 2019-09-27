@@ -443,7 +443,7 @@ class outputlog(tk.Tk,mylog):
 		##################################################
 		# labeldisplay from doMenuRange call via bot keep in both packsel and plugin
 		##################################################
-		self.mybot.putconfigval(self.configval)
+		# self.mybot.putconfigval(self.configval)
 		self.mybot.pinkymonitordisplay(self.configval,self.labeldisplay,self.txtout) # set default parameter for each plugins.
 
 

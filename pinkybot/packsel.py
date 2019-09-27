@@ -26,8 +26,8 @@ class packselenium(PackSelModel):
 		super().__init__() # configure xdebug or xlive
 		# print ("running mode=" + mode)
 
-	def putconfigval(self,configval):
-		self.configval=configval
+	# def putconfigval(self,configval):
+	# 	self.configval=configval
 
 	def xpathreturn(self,xplace=""):
 
@@ -138,18 +138,18 @@ class packselenium(PackSelModel):
 
 
 ###################### Head Less Chrome ##################
-		# chrome_options = Options()  
-		# chrome_options.add_argument("--headless")  
-		# driver = webdriver.Chrome(chrome_options=chrome_options)
+		chrome_options = Options()  
+		chrome_options.add_argument("--headless")  
+		driver = webdriver.Chrome(chrome_options=chrome_options)
 
 ###################### Head Show ##########################
-		driver = webdriver.Chrome()
+		# driver = webdriver.Chrome()
 
 ##################### Firefox #############################
-		# # cap = DesiredCapabilities().FIREFOX
-		# # cap["marionette"] = False
+		# cap = DesiredCapabilities().FIREFOX
+		# cap["marionette"] = False
 
-		# # binary = FirefoxBinary(r'C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe')
+		# binary = FirefoxBinary(r'C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe')
 		# driver = webdriver.Firefox(capabilities=cap,firefox_binary=binary)
 #############################################################
 		# put url here
@@ -325,22 +325,8 @@ class packselenium(PackSelModel):
 		if (self.stockcompare=="0.00" and stockvalue !="0.00") or (self.stockcompare!=stockvalue) and (self.stockcompare!="0.00"):
 
 
-			self.log["applog"].debug("Print configvalue")
-			self.log["applog"].debug("StartValuebuy")
-			# self.log["applog"].debug(self.configval)
-			self.log["applog"].debug(self.configval["startvaluebuy"].get())
-
-			flstartvaluebuy=float(self.configval["startvaluebuy"].get())
-			flcommonvaluestep=float(self.configval["commonvaluestep"].get())
-			flstockvalue=float(stockvalue)
-
-			if flstockvalue<flstartvaluebuy :
-				self.log["applog"].debug("found value less than stockvalue")
-				self.log["applog"].debug(stockvalue)
-
-				self.log["applog"].debug("Common Value Step")
-				self.log["applog"].debug(str(flcommonvaluestep))
-				self.myplugins.checkdownsidebuy(flstockvalue,flstartvaluebuy)
+			
+			# self.myplugins.checkdownsidebuy(stockvalue)
 
 			# print("first stockvalue updated=" + stockvalue)
 			# print("first stockcompare updated=" + self.stockcompare)
