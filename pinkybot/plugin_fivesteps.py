@@ -342,12 +342,6 @@ class fivesteps():
 
 
 	def order(self,controlorder="",orderdetail={},orderfn=""):
-
-
-		# print("\naccess order process plugin_fivesteps.py line 159 ")
-		# print(controlorder)
-		# print(orderdetail)
-
 		self.log["applog"].debug("===== def order =====")
 		self.log["applog"].debug(controlorder)
 		self.log["applog"].debug(self.configval["runningmode"].get())
@@ -453,12 +447,9 @@ class fivesteps():
 
 	# called by change value
 	def checkdownsidebuy(self,stockvalue):
-
 		flstockvalue=float(stockvalue)
 		flstartvaluebuy=float(self.configval["startvaluebuy"].get())
 		# flcommonvaluestep=float(self.configval["commonvaluestep"].get())
-
-
 		if flstockvalue<flstartvaluebuy :
 			self.log["applog"].debug("check down side buy")
 			flcomparediff=round(flstartvaluebuy-flstockvalue,2)
@@ -470,6 +461,17 @@ class fivesteps():
 			if flcomparediff==flcommonvaluestep:
 				self.log["applog"].debug("Start follow buy with below value")
 				self.log["applog"].debug(stockvalue)	
+				
+				# resultbuy=self.order({'ordermode':'buybybot','firstbuy':'yes'},{},orderfn)
+				orderlist=[{"price":strprice,
+											"volume":str(stepvol),
+											"order":orderside,
+											"monitorstock":monitorstock,
+											"referorderno":orderno,
+											"stockpin":self.configval["stockpin"].get(),
+								}]
+				return {'ordermode':'buybybot','firstbuy':'no'}
+
 
 	def checkprocess2order(self,rt_table,price_change,orderfn=""):
 		self.log["applog"].debug("print price_change from checkprocess2order to order next plugin_fivesteps.py line 239")
@@ -552,15 +554,11 @@ class fivesteps():
 		matchedtime = datetime.datetime.now().strftime("%H:%M:%S")
 		# currentdatetime=datenow+"_"+timenow
 
+		# To change as link list later.
 		# chk_params ==> result from check refresh_btn
 		for chkresult in chk_params:
-			# for matchindex,chkmatch in enumerate(self.matchedordermonitor):
 			for chkmatch in self.matchedordermonitor:
-
-
-				# print("\nindex of enumerate for monitoring plugin_fivesteps.py line 338 def checkprocess2matchstatus")
-				# print (matchindex)
-
+				# case of match found and exactly order.
 				if chkresult["orderno"]==chkmatch["orderno"] and chkresult["status"]=="Matched(M)":
 					self.txtout("Found Matched for orderno=" + chkresult["orderno"]+" at value="+chkresult["price"],"red","yellow")
 
@@ -569,29 +567,16 @@ class fivesteps():
 									"matcheddate":datenow,
 									"matchedtime":matchedtime,
 						})
-
-					# print("\n @@@ Check Matched chkmatch=chkresult before put into database ")
-					# print(chkmatch)
-					
 					if len(chkresult) > 0:
 						self.log["applog"].debug("Update database if match with date and matchtime")
 						self.log["applog"].debug(chkresult)
 						PackSelModel.updatematchstatus(chkresult)
-
-					# remove match index after add into database
-
-
-						self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk",
-												"doupdatetk":[chkresult]})
-
+						self.mycollectqueues["qrefresh"].put({"qrefresh":"refreshtk","doupdatetk":[chkresult]})
 						self.log["applog"].debug("Match found do remove array matchedordermonitor below data")
 						self.log["applog"].debug(self.matchedordermonitor)
-
 						self.matchedordermonitor.remove(chkmatch)
-
 					self.log["applog"].debug("Set commonvaluestep from def checkprocess2matchstatus")
 					self.log["applog"].debug(self.configval["commonvaluestep"].get())
-
 
 					commonvaluestep=float(self.configval["commonvaluestep"].get())
 					profitstep=float(self.configval["profitstep"].get())
@@ -599,39 +584,20 @@ class fivesteps():
 
 					
 					allvol=int(chkresult["volume"])
-
-					# print("\n!!!Print allvol to order in line 450 file plugin_fivesteps.py in def checkprocess2matchstatus")
-					# print (allvol)
-
 					stepvol=int(self.configval["volumestep"].get())
 					floorvaluerange=float(self.configval["floorvaluerange"].get())
 					topvaluebuy=float(self.configval["topvaluebuy"].get())
-
 					difvaluerange=round((topvaluebuy - floorvaluerange),2)
 					
 					self.log["applog"].debug("---Print difvaluerange for topvaluerange - floorvaluerange in def checkprocess2matchstatus")
 					self.log["applog"].debug(difvaluerange)
-					# halfvolidx=int((((allvol/stepvol)/2)))
-
-					
-
-
-					# print(allvolidx)
-
 
 					orderno=chkresult["orderno"]
 					monitorstock=chkresult["symbole"]
 					sellprice= startvaluebuy
 					buyprice= startvaluebuy
 
-					
-					# for runvolidx in range(allvolidx):
-
-					# print("!!! Check chkresult,chkmatch buy or sell in case elif allvol==100 line 563 plugin_fivesteps.py in def checkprocess2matchstatus")
-					# print(chkresult)
-					# print(chkmatch)
-
-
+					# Get allvol from chkresult["volume"]
 					if allvol >100 :
 						allvalueidx=int(difvaluerange/commonvaluestep) + 1
 						
@@ -650,7 +616,7 @@ class fivesteps():
 
 							if sellprice < topvaluebuy:
 
-								allvol= allvol-stepvol
+								allvol=allvol-stepvol
 								# sell price order
 								# define profit step is step of price to get profit
 								# such as 0.2 *1 or 0.2 *2
@@ -697,9 +663,6 @@ class fivesteps():
 
 							elif (buyprice >=floorvaluerange) and (allvol==0) :
 								# buy price order
-								# buyprice=  round((buyprice),2)
-
-
 								self.log["applog"].debug("print buy value before processing in def checkprocess2matchstatus")
 								self.log["applog"].debug (buyprice)
 
@@ -709,7 +672,6 @@ class fivesteps():
 								if len(chkpad[1])==1:
 									tempval=chkpad[1]+"0"
 									strprice=chkpad[0]+"." +tempval
-
 								else:
 									strprice=str(buyprice)
 
@@ -740,15 +702,16 @@ class fivesteps():
 
 						return ordertomonitor	
 					elif allvol==100:
+					# Case of order buy by bot and order sell by bybot.
 						self.log["applog"].debug("---allvol == 100 to sell or buy by bot def checkprocess2matchstatus")
 						self.log["applog"].debug("+++print buy or sell in def checkprocess2matchstatus")
 						self.log["applog"].debug(chkresult["side"])
 						chkside=chkresult["side"]
+						
 						if chkside=="B" :
 							ordermode="sellbybot"
 							orderside="sell"
 							botprice=round(float(chkresult["price"])+commonvaluestep,2)
-
 							self.log["applog"].debug("Bot price to order buy with print chkresult[price] and botprice")
 							self.log["applog"].debug(chkresult["price"])
 							self.log["applog"].debug(botprice)
@@ -756,7 +719,6 @@ class fivesteps():
 						elif chkside=="S":
 							ordermode="buybybot"
 							orderside="buy"
-							
 							botprice=round(float(chkresult["price"])-commonvaluestep,2)
 							self.log["applog"].debug("Bot price to order sell")
 							self.log["applog"].debug(botprice)
