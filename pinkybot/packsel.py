@@ -138,12 +138,12 @@ class packselenium(PackSelModel):
 
 
 ###################### Head Less Chrome ##################
-		chrome_options = Options()  
-		chrome_options.add_argument("--headless")  
-		driver = webdriver.Chrome(chrome_options=chrome_options)
+		# chrome_options = Options()  
+		# chrome_options.add_argument("--headless")  
+		# driver = webdriver.Chrome(chrome_options=chrome_options)
 
 ###################### Head Show ##########################
-		# driver = webdriver.Chrome()
+		driver = webdriver.Chrome()
 
 ##################### Firefox #############################
 		# cap = DesiredCapabilities().FIREFOX

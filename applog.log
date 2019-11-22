@@ -1,11 +1,1148 @@
-2019-10-24 23:29:23,539,539 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
-2019-10-24 23:29:23,564,564 INFO [packsel.py:25] Running Mode = xdebug
-2019-10-24 23:29:23,564,564 INFO [packsel_model.py:11] Initialize log of packsel_model
-2019-10-24 23:29:23,566,566 INFO [monitor.py:56] Initialize Pinkybot
-2019-10-24 23:29:23,744,744 DEBUG [plugin_fivesteps.py:35] def setparameter print initial All monitorstock Parameter
-2019-10-24 23:29:23,744,744 DEBUG [plugin_fivesteps.py:36] {'planname': <tkinter.StringVar object at 0x03C12690>, 'rangeselect': <tkinter.StringVar object at 0x03C129B0>, 'monitorstock': <tkinter.StringVar object at 0x03C12AF0>, 'initinvest': <tkinter.StringVar object at 0x03C12B90>, 'volumestep': <tkinter.StringVar object at 0x03C12B50>, 'profitstep': <tkinter.StringVar object at 0x03C126B0>, 'topvaluebuy': <tkinter.StringVar object at 0x03C126F0>, 'startvaluebuy': <tkinter.StringVar object at 0x040C3FD0>, 'stopvaluebuy': <tkinter.StringVar object at 0x040C3E50>, 'floorvaluebuy': <tkinter.StringVar object at 0x040CC5B0>, 'firstbuyflag': <tkinter.StringVar object at 0x040CC630>, 'pluginfile': <tkinter.StringVar object at 0x040CC230>, 'currentuseId': <tkinter.StringVar object at 0x040CC190>, 'floorvaluerange': <tkinter.StringVar object at 0x040CC0B0>, 'topvaluerange': <tkinter.StringVar object at 0x040CC510>, 'commonvaluestep': <tkinter.StringVar object at 0x040CC0F0>, 'runningmode': <tkinter.StringVar object at 0x040CC7B0>, 'totalcostbuy': <tkinter.StringVar object at 0x040CC670>, 'totalvolumebuy': <tkinter.StringVar object at 0x040CC750>, 'stockpin': <tkinter.StringVar object at 0x040CC6B0>, 'remaininvest': <tkinter.StringVar object at 0x040CC8F0>}
-2019-10-24 23:29:23,749,749 DEBUG [plugin_fivesteps.py:94] Print stock pin value
-2019-10-24 23:29:23,749,749 DEBUG [plugin_fivesteps.py:95] 
-2019-10-24 23:29:24,309,309 DEBUG [plugin_fivesteps.py:250] Finish Prepare in def setlabeldisplay
-2019-10-24 23:29:29,045,45 INFO [tkconsole.py:811] Execute Login
-2019-10-24 23:29:29,045,45 INFO [monitor.py:118] Start Login
+2019-11-22 23:32:41,352,352 INFO [plugin_fivesteps.py:13] Initialize of plugin_fivesteps
+2019-11-22 23:32:41,352,352 INFO [packsel.py:25] Running Mode = xdebug
+2019-11-22 23:32:41,352,352 INFO [packsel_model.py:11] Initialize log of packsel_model
+2019-11-22 23:32:41,352,352 INFO [monitor.py:56] Initialize Pinkybot
+2019-11-22 23:32:41,430,430 DEBUG [plugin_fivesteps.py:35] def setparameter print initial All monitorstock Parameter
+2019-11-22 23:32:41,430,430 DEBUG [plugin_fivesteps.py:36] {'planname': <tkinter.StringVar object at 0x03C56670>, 'rangeselect': <tkinter.StringVar object at 0x03C56990>, 'monitorstock': <tkinter.StringVar object at 0x03C56AD0>, 'initinvest': <tkinter.StringVar object at 0x03C56B70>, 'volumestep': <tkinter.StringVar object at 0x03C56B30>, 'profitstep': <tkinter.StringVar object at 0x03C56690>, 'topvaluebuy': <tkinter.StringVar object at 0x03C566D0>, 'startvaluebuy': <tkinter.StringVar object at 0x04613E30>, 'stopvaluebuy': <tkinter.StringVar object at 0x04613FD0>, 'floorvaluebuy': <tkinter.StringVar object at 0x0461C590>, 'firstbuyflag': <tkinter.StringVar object at 0x0461C610>, 'pluginfile': <tkinter.StringVar object at 0x0461C210>, 'currentuseId': <tkinter.StringVar object at 0x0461C410>, 'floorvaluerange': <tkinter.StringVar object at 0x0461C150>, 'topvaluerange': <tkinter.StringVar object at 0x0461C4F0>, 'commonvaluestep': <tkinter.StringVar object at 0x0461C0D0>, 'runningmode': <tkinter.StringVar object at 0x0461C790>, 'totalcostbuy': <tkinter.StringVar object at 0x0461C650>, 'totalvolumebuy': <tkinter.StringVar object at 0x0461C730>, 'stockpin': <tkinter.StringVar object at 0x0461C690>, 'remaininvest': <tkinter.StringVar object at 0x0461C8D0>}
+2019-11-22 23:32:41,430,430 DEBUG [plugin_fivesteps.py:94] Print stock pin value
+2019-11-22 23:32:41,430,430 DEBUG [plugin_fivesteps.py:95] 
+2019-11-22 23:32:41,477,477 DEBUG [plugin_fivesteps.py:250] Finish Prepare in def setlabeldisplay
+2019-11-22 23:32:43,599,599 INFO [tkconsole.py:811] Execute Login
+2019-11-22 23:32:43,599,599 INFO [monitor.py:118] Start Login
+2019-11-22 23:32:53,830,830 DEBUG [packsel.py:218] Web load success
+2019-11-22 23:32:53,934,934 INFO [monitor.py:166] Login seem to be succeeded , start to refresh all data from database with refresh all condition
+2019-11-22 23:32:53,941,941 DEBUG [tkconsole.py:356] Start time count is called def tkclock
+2019-11-22 23:32:53,941,941 DEBUG [tkconsole.py:357] 1574440373.9417167
+2019-11-22 23:32:54,841,841 DEBUG [packsel.py:616] Print tablerow before loop
+2019-11-22 23:32:54,841,841 DEBUG [packsel.py:664] raw data for mytable before update to database in def refreshbtn
+2019-11-22 23:32:54,841,841 DEBUG [packsel.py:665] []
+2019-11-22 23:32:54,841,841 DEBUG [packsel.py:675] Do partial update refresh with below data in var mytable
+2019-11-22 23:32:54,841,841 DEBUG [packsel.py:676] []
+2019-11-22 23:32:54,841,841 DEBUG [plugin_fivesteps.py:477] print price_change from checkprocess2order to order next plugin_fivesteps.py line 239
+2019-11-22 23:32:54,841,841 DEBUG [plugin_fivesteps.py:478] 4.72
+2019-11-22 23:32:54,841,841 DEBUG [plugin_fivesteps.py:483] Print rt_table this value should be empty for first time buy
+2019-11-22 23:32:54,841,841 DEBUG [plugin_fivesteps.py:484] []
+2019-11-22 23:32:54,846,846 DEBUG [plugin_fivesteps.py:506] Update first time to planname below ##git#
+2019-11-22 23:32:54,846,846 DEBUG [plugin_fivesteps.py:507] 1
+2019-11-22 23:32:54,846,846 DEBUG [plugin_fivesteps.py:345] ===== def order =====
+2019-11-22 23:32:54,847,847 DEBUG [plugin_fivesteps.py:346] {'ordermode': 'buybybot', 'firstbuy': 'yes'}
+2019-11-22 23:32:54,847,847 DEBUG [plugin_fivesteps.py:347] auto
+2019-11-22 23:32:54,847,847 DEBUG [plugin_fivesteps.py:367] def order: First volume to buy orderdetail in def order
+2019-11-22 23:32:54,847,847 DEBUG [plugin_fivesteps.py:369] {'monitorstock': 'WHA', 'volume': '1000', 'price': '4.72', 'stockpin': '44444444', 'order': 'buy'}
+2019-11-22 23:32:54,847,847 DEBUG [packsel.py:470] Order params def order
+2019-11-22 23:32:54,847,847 DEBUG [packsel.py:471] {'monitorstock': 'WHA', 'volume': '1000', 'price': '4.72', 'stockpin': '44444444', 'order': 'buy'}
+2019-11-22 23:32:54,943,943 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:32:55,270,270 DEBUG [tkconsole.py:892] Do update refresh GUI tk according to queue with qrefresh qrefresh=refreshtk and chkrefresh != None
+2019-11-22 23:32:55,270,270 DEBUG [tkconsole.py:893] {'qrefresh': 'refreshtk', 'doupdatetk': []}
+2019-11-22 23:32:55,896,896 DEBUG [packsel.py:616] Print tablerow before loop
+2019-11-22 23:32:55,901,901 DEBUG [packsel.py:622]  	273491	23:32:55	WHA	B	4.72	1000	0	0	0	Pending(S)
+2019-11-22 23:32:55,909,909 DEBUG [packsel.py:626] output from split with space
+2019-11-22 23:32:55,909,909 DEBUG [packsel.py:627] ['\xa0', '273491', '23:32:55', 'WHA', 'B', '4.72', '1000', '0', '0', '0', 'Pending(S)']
+2019-11-22 23:32:55,909,909 DEBUG [packsel.py:641] new real table to be format
+2019-11-22 23:32:55,909,909 DEBUG [packsel.py:642] {'273491': {'time': '23:32:55', 'stockname': 'WHA', 'orderside': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)'}}
+2019-11-22 23:32:55,909,909 DEBUG [packsel.py:664] raw data for mytable before update to database in def refreshbtn
+2019-11-22 23:32:55,909,909 DEBUG [packsel.py:665] [['273491', '23:32:55', 'WHA', 'B', '4.72', '1000', '0', '0', '0', 'Pending(S)']]
+2019-11-22 23:32:55,909,909 DEBUG [packsel_model.py:368] Result from query database filter by orderno
+2019-11-22 23:32:55,910,910 DEBUG [packsel_model.py:369] <QuerySet []>
+2019-11-22 23:32:55,911,911 DEBUG [packsel_model.py:401] NO SQL Found Enter case checkorderno NOT existing and partial refresh
+2019-11-22 23:32:55,944,944 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:32:55,959,959 DEBUG [packsel.py:675] Do partial update refresh with below data in var mytable
+2019-11-22 23:32:55,959,959 DEBUG [packsel.py:676] [{'orderno': '273491', 'time': '23:32:55', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderno': 'None'}]
+2019-11-22 23:32:55,959,959 DEBUG [plugin_fivesteps.py:377] [{'orderno': '273491', 'time': '23:32:55', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderno': 'None'}]
+2019-11-22 23:32:55,960,960 DEBUG [plugin_fivesteps.py:274] Print result_order for def putordermonitoring before process function
+2019-11-22 23:32:55,960,960 DEBUG [plugin_fivesteps.py:275] [{'orderno': '273491', 'time': '23:32:55', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderno': 'None'}]
+2019-11-22 23:32:55,960,960 DEBUG [plugin_fivesteps.py:340] !!! Now Monitor self.matchedordermonitor and print result_order in def putordermonitoring
+2019-11-22 23:32:55,960,960 DEBUG [plugin_fivesteps.py:341] [{'orderno': '273491', 'price': '4.72', 'status': 'Pending(S)', 'referorderno': 'None'}]
+2019-11-22 23:32:55,988,988 DEBUG [packsel.py:356] *** result from value of resultvaluemonitor def monitoring
+2019-11-22 23:32:55,988,988 DEBUG [packsel.py:357] [{'orderno': '273491', 'price': '4.72', 'status': 'Pending(S)', 'referorderno': 'None'}]
+2019-11-22 23:32:55,988,988 DEBUG [packsel.py:385] Qrefresh is not empty
+2019-11-22 23:32:55,988,988 DEBUG [packsel.py:386] {'qrefresh': 'refreshdb', 'refreshtype': 'partial'}
+2019-11-22 23:32:56,522,522 DEBUG [tkconsole.py:892] Do update refresh GUI tk according to queue with qrefresh qrefresh=refreshtk and chkrefresh != None
+2019-11-22 23:32:56,522,522 DEBUG [tkconsole.py:893] {'qrefresh': 'refreshtk', 'doupdatetk': [{'orderno': '273491', 'time': '23:32:55', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderno': 'None'}]}
+2019-11-22 23:32:56,522,522 DEBUG [tkconsole.py:916] print repeatidx case of price == 0
+2019-11-22 23:32:56,522,522 DEBUG [tkconsole.py:917] 0
+2019-11-22 23:32:56,546,546 DEBUG [packsel.py:616] Print tablerow before loop
+2019-11-22 23:32:56,551,551 DEBUG [packsel.py:622]  	273491	23:32:55	WHA	B	4.72	1000	0	0	0	Pending(S)
+2019-11-22 23:32:56,560,560 DEBUG [packsel.py:626] output from split with space
+2019-11-22 23:32:56,560,560 DEBUG [packsel.py:627] ['\xa0', '273491', '23:32:55', 'WHA', 'B', '4.72', '1000', '0', '0', '0', 'Pending(S)']
+2019-11-22 23:32:56,560,560 DEBUG [packsel.py:641] new real table to be format
+2019-11-22 23:32:56,560,560 DEBUG [packsel.py:642] {'273491': {'time': '23:32:55', 'stockname': 'WHA', 'orderside': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)'}}
+2019-11-22 23:32:56,561,561 DEBUG [packsel.py:664] raw data for mytable before update to database in def refreshbtn
+2019-11-22 23:32:56,561,561 DEBUG [packsel.py:665] [['273491', '23:32:55', 'WHA', 'B', '4.72', '1000', '0', '0', '0', 'Pending(S)']]
+2019-11-22 23:32:56,561,561 DEBUG [packsel_model.py:368] Result from query database filter by orderno
+2019-11-22 23:32:56,561,561 DEBUG [packsel_model.py:369] <QuerySet [{'id': 3981, 'orderno': '273491', 'time': '23:32:55', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'date': datetime.date(2019, 11, 22), 'matchedtime': 'matchtime', 'referorderno': 'None'}]>
+2019-11-22 23:32:56,563,563 DEBUG [packsel_model.py:413] SQL Found Enter case checkorderno.existing and partial refresh order below
+2019-11-22 23:32:56,563,563 DEBUG [packsel_model.py:414] <QuerySet [{'id': 3981, 'orderno': '273491', 'time': '23:32:55', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'date': datetime.date(2019, 11, 22), 'matchedtime': 'matchtime', 'referorderno': 'None'}]>
+2019-11-22 23:32:56,565,565 DEBUG [packsel_model.py:442] Still found column = matchedtime and no any update SQL column return below data
+2019-11-22 23:32:56,565,565 DEBUG [packsel_model.py:443] {'orderno': '273491', 'time': '23:32:55', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderno': 'None'}
+2019-11-22 23:32:56,565,565 DEBUG [packsel.py:675] Do partial update refresh with below data in var mytable
+2019-11-22 23:32:56,565,565 DEBUG [packsel.py:676] [{'orderno': '273491', 'time': '23:32:55', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderno': 'None'}]
+2019-11-22 23:32:56,565,565 DEBUG [packsel.py:403] 
+--- Partial refresh result from refreshbtn packsel.py line 363 def monitoring
+2019-11-22 23:32:56,565,565 DEBUG [packsel.py:404] [{'orderno': '273491', 'time': '23:32:55', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderno': 'None'}]
+2019-11-22 23:32:56,566,566 DEBUG [plugin_fivesteps.py:534] 
+=== Print check_params , self.matchedordermonitor in def checkprocess2matchstatus
+2019-11-22 23:32:56,566,566 DEBUG [plugin_fivesteps.py:536] {'orderno': '273491', 'time': '23:32:55', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderno': 'None'}
+2019-11-22 23:32:56,566,566 DEBUG [plugin_fivesteps.py:540] === Print Matchedordermonitor in def checkprocess2matchstatus
+2019-11-22 23:32:56,566,566 DEBUG [plugin_fivesteps.py:543] {'orderno': '273491', 'price': '4.72', 'status': 'Pending(S)', 'referorderno': 'None'}
+2019-11-22 23:32:56,566,566 DEBUG [plugin_fivesteps.py:545] #################################
+2019-11-22 23:32:56,566,566 DEBUG [plugin_fivesteps.py:762] ==>> Enter Case else with not match for matchedordermonitor but found orderno in def checkprocess2matchstatus
+2019-11-22 23:32:56,566,566 DEBUG [plugin_fivesteps.py:763] Print chkmatch from matchedordermonitor
+2019-11-22 23:32:56,566,566 DEBUG [plugin_fivesteps.py:764] {'orderno': '273491', 'price': '4.72', 'status': 'Pending(S)', 'referorderno': 'None'}
+2019-11-22 23:32:56,566,566 DEBUG [plugin_fivesteps.py:765] Print chkresult in parameter chk_params from table
+2019-11-22 23:32:56,566,566 DEBUG [plugin_fivesteps.py:766] {'orderno': '273491', 'time': '23:32:55', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderno': 'None'}
+2019-11-22 23:32:56,566,566 DEBUG [plugin_fivesteps.py:767] Print input this def for parameter chk_params from table
+2019-11-22 23:32:56,566,566 DEBUG [plugin_fivesteps.py:768] [{'orderno': '273491', 'time': '23:32:55', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderno': 'None'}]
+2019-11-22 23:32:56,566,566 DEBUG [plugin_fivesteps.py:770] Print chk_params for each row
+2019-11-22 23:32:56,567,567 DEBUG [plugin_fivesteps.py:772] {'orderno': '273491', 'time': '23:32:55', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderno': 'None'}
+2019-11-22 23:32:56,567,567 DEBUG [plugin_fivesteps.py:773] Print monitor in matchedordermonitor 
+2019-11-22 23:32:56,567,567 DEBUG [plugin_fivesteps.py:775] {'orderno': '273491', 'price': '4.72', 'status': 'Pending(S)', 'referorderno': 'None'}
+2019-11-22 23:32:56,946,946 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:32:57,176,176 DEBUG [packsel.py:616] Print tablerow before loop
+2019-11-22 23:32:57,181,181 DEBUG [packsel.py:622]  	273491	23:32:55	WHA	B	4.72	1000	0	0	0	Pending(S)
+2019-11-22 23:32:57,189,189 DEBUG [packsel.py:626] output from split with space
+2019-11-22 23:32:57,189,189 DEBUG [packsel.py:627] ['\xa0', '273491', '23:32:55', 'WHA', 'B', '4.72', '1000', '0', '0', '0', 'Pending(S)']
+2019-11-22 23:32:57,189,189 DEBUG [packsel.py:641] new real table to be format
+2019-11-22 23:32:57,189,189 DEBUG [packsel.py:642] {'273491': {'time': '23:32:55', 'stockname': 'WHA', 'orderside': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)'}}
+2019-11-22 23:32:57,189,189 DEBUG [packsel.py:664] raw data for mytable before update to database in def refreshbtn
+2019-11-22 23:32:57,189,189 DEBUG [packsel.py:665] [['273491', '23:32:55', 'WHA', 'B', '4.72', '1000', '0', '0', '0', 'Pending(S)']]
+2019-11-22 23:32:57,189,189 DEBUG [packsel_model.py:368] Result from query database filter by orderno
+2019-11-22 23:32:57,189,189 DEBUG [packsel_model.py:369] <QuerySet [{'id': 3981, 'orderno': '273491', 'time': '23:32:55', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'date': datetime.date(2019, 11, 22), 'matchedtime': 'matchtime', 'referorderno': 'None'}]>
+2019-11-22 23:32:57,191,191 DEBUG [packsel_model.py:413] SQL Found Enter case checkorderno.existing and partial refresh order below
+2019-11-22 23:32:57,191,191 DEBUG [packsel_model.py:414] <QuerySet [{'id': 3981, 'orderno': '273491', 'time': '23:32:55', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'date': datetime.date(2019, 11, 22), 'matchedtime': 'matchtime', 'referorderno': 'None'}]>
+2019-11-22 23:32:57,193,193 DEBUG [packsel_model.py:442] Still found column = matchedtime and no any update SQL column return below data
+2019-11-22 23:32:57,193,193 DEBUG [packsel_model.py:443] {'orderno': '273491', 'time': '23:32:55', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderno': 'None'}
+2019-11-22 23:32:57,193,193 DEBUG [packsel.py:675] Do partial update refresh with below data in var mytable
+2019-11-22 23:32:57,193,193 DEBUG [packsel.py:676] [{'orderno': '273491', 'time': '23:32:55', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderno': 'None'}]
+2019-11-22 23:32:57,193,193 DEBUG [plugin_fivesteps.py:477] print price_change from checkprocess2order to order next plugin_fivesteps.py line 239
+2019-11-22 23:32:57,193,193 DEBUG [plugin_fivesteps.py:478] 4.70
+2019-11-22 23:32:57,193,193 DEBUG [plugin_fivesteps.py:483] Print rt_table this value should be empty for first time buy
+2019-11-22 23:32:57,194,194 DEBUG [plugin_fivesteps.py:484] [{'orderno': '273491', 'time': '23:32:55', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderno': 'None'}]
+2019-11-22 23:32:57,198,198 DEBUG [plugin_fivesteps.py:454] check down side buy
+2019-11-22 23:32:57,198,198 DEBUG [plugin_fivesteps.py:458] commonvaluestep
+2019-11-22 23:32:57,198,198 DEBUG [plugin_fivesteps.py:459] 0.02
+2019-11-22 23:32:57,198,198 DEBUG [plugin_fivesteps.py:462] Start follow buy with below value
+2019-11-22 23:32:57,198,198 DEBUG [plugin_fivesteps.py:463] 4.70
+2019-11-22 23:32:57,198,198 ERROR [monitor.py:178] Exception occurred
+Traceback (most recent call last):
+  File "D:\workspace\anafin\pinkybot\monitor.py", line 176, in mypinkylogin
+    self.monitoring(mydriver,return_login)
+  File "D:\workspace\anafin\pinkybot\packsel.py", line 355, in monitoring
+    resultvaluemonitor=self.myplugins.checkprocess2order(resultvaluechange,stockvalue,self.order)
+  File "D:\workspace\anafin\pinkybot\plugin_fivesteps.py", line 525, in checkprocess2order
+    self.checkdownsidebuy(price_change)
+  File "D:\workspace\anafin\pinkybot\plugin_fivesteps.py", line 466, in checkdownsidebuy
+    orderlist=[{"price":strprice,
+NameError: name 'strprice' is not defined
+2019-11-22 23:32:57,279,279 DEBUG [tkconsole.py:892] Do update refresh GUI tk according to queue with qrefresh qrefresh=refreshtk and chkrefresh != None
+2019-11-22 23:32:57,280,280 DEBUG [tkconsole.py:893] {'qrefresh': 'refreshtk', 'doupdatetk': [{'orderno': '273491', 'time': '23:32:55', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderno': 'None'}]}
+2019-11-22 23:32:57,947,947 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:32:58,282,282 DEBUG [tkconsole.py:892] Do update refresh GUI tk according to queue with qrefresh qrefresh=refreshtk and chkrefresh != None
+2019-11-22 23:32:58,282,282 DEBUG [tkconsole.py:893] {'qrefresh': 'refreshtk', 'doupdatetk': [{'orderno': '273491', 'time': '23:32:55', 'symbole': 'WHA', 'side': 'B', 'price': '4.72', 'volume': '1000', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderno': 'None'}]}
+2019-11-22 23:32:58,950,950 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:32:59,957,957 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:00,968,968 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:01,969,969 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:02,971,971 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:03,973,973 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:04,998,998 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:06,001,1 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:07,002,2 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:08,141,141 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:09,466,466 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:10,468,468 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:11,604,604 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:12,606,606 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:13,607,607 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:14,608,608 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:15,610,610 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:16,613,613 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:17,614,614 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:18,615,615 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:19,617,617 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:20,618,618 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:21,620,620 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:22,622,622 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:23,623,623 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:24,625,625 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:25,626,626 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:26,628,628 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:27,629,629 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:28,631,631 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:29,632,632 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:30,634,634 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:31,635,635 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:32,637,637 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:33,638,638 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:34,641,641 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:35,642,642 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:36,644,644 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:37,645,645 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:38,647,647 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:39,648,648 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:40,650,650 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:41,651,651 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:42,653,653 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:43,654,654 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:44,656,656 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:45,657,657 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:46,659,659 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:47,661,661 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:48,662,662 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:49,664,664 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:50,665,665 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:51,667,667 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:52,669,669 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:53,671,671 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:54,672,672 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:55,674,674 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:56,675,675 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:57,676,676 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:58,678,678 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:33:59,679,679 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:00,681,681 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:01,682,682 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:02,684,684 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:03,685,685 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:04,687,687 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:05,688,688 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:06,690,690 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:07,691,691 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:08,692,692 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:09,695,695 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:10,696,696 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:11,698,698 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:12,699,699 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:13,701,701 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:14,702,702 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:15,704,704 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:16,706,706 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:17,707,707 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:18,709,709 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:19,710,710 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:20,712,712 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:21,713,713 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:22,715,715 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:23,716,716 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:24,717,717 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:25,719,719 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:26,722,722 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:27,723,723 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:28,725,725 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:29,726,726 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:30,728,728 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:31,729,729 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:32,731,731 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:33,732,732 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:34,734,734 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:35,735,735 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:36,737,737 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:37,739,739 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:38,740,740 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:39,742,742 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:40,744,744 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:41,745,745 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:42,747,747 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:43,748,748 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:44,751,751 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:45,752,752 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:46,754,754 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:47,755,755 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:48,757,757 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:49,758,758 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:50,775,775 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:51,777,777 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:52,778,778 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:53,780,780 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:54,787,787 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:55,788,788 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:56,790,790 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:57,791,791 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:58,792,792 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:34:59,794,794 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:00,795,795 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:01,798,798 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:02,799,799 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:03,801,801 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:04,803,803 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:05,804,804 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:06,805,805 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:07,807,807 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:08,808,808 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:09,810,810 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:10,811,811 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:11,813,813 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:12,814,814 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:13,816,816 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:14,817,817 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:15,819,819 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:16,820,820 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:17,822,822 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:18,824,824 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:19,825,825 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:20,827,827 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:21,828,828 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:22,830,830 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:23,831,831 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:24,833,833 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:25,834,834 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:26,836,836 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:27,837,837 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:28,839,839 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:29,841,841 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:30,842,842 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:31,844,844 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:32,846,846 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:33,847,847 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:34,848,848 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:35,850,850 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:36,853,853 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:37,854,854 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:38,856,856 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:39,857,857 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:40,859,859 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:41,861,861 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:42,863,863 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:43,864,864 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:44,866,866 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:45,868,868 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:46,869,869 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:47,870,870 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:48,872,872 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:49,873,873 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:50,875,875 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:51,876,876 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:52,878,878 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:53,880,880 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:54,881,881 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:55,883,883 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:56,884,884 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:57,886,886 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:58,887,887 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:35:59,889,889 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:00,891,891 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:01,892,892 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:02,893,893 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:03,895,895 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:04,896,896 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:05,898,898 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:06,899,899 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:07,901,901 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:08,902,902 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:09,904,904 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:10,905,905 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:11,908,908 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:12,909,909 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:13,910,910 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:14,912,912 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:15,913,913 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:16,915,915 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:17,916,916 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:18,918,918 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:19,919,919 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:20,921,921 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:21,922,922 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:22,924,924 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:23,925,925 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:24,927,927 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:25,929,929 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:26,930,930 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:27,932,932 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:28,934,934 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:29,936,936 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:30,937,937 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:31,938,938 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:32,940,940 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:33,941,941 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:34,943,943 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:35,944,944 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:36,946,946 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:37,948,948 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:38,949,949 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:39,951,951 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:40,952,952 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:41,954,954 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:42,955,955 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:43,957,957 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:44,959,959 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:45,961,961 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:46,963,963 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:47,965,965 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:48,966,966 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:49,967,967 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:50,969,969 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:51,971,971 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:52,972,972 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:53,974,974 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:54,975,975 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:55,977,977 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:56,978,978 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:57,980,980 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:58,982,982 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:36:59,983,983 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:00,984,984 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:01,986,986 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:02,987,987 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:03,990,990 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:04,992,992 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:05,993,993 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:06,995,995 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:07,996,996 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:08,998,998 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:09,999,999 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:11,001,1 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:12,003,3 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:13,004,4 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:14,006,6 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:15,007,7 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:16,009,9 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:17,010,10 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:18,012,12 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:19,013,13 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:20,015,15 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:21,017,17 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:22,019,19 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:23,021,21 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:24,022,22 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:25,024,24 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:26,025,25 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:27,026,26 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:28,028,28 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:29,029,29 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:30,031,31 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:31,032,32 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:32,034,34 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:33,036,36 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:34,037,37 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:35,039,39 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:36,041,41 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:37,042,42 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:38,044,44 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:39,046,46 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:40,048,48 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:41,049,49 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:42,051,51 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:43,052,52 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:44,054,54 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:45,055,55 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:46,057,57 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:47,059,59 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:48,060,60 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:49,062,62 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:50,063,63 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:51,065,65 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:52,066,66 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:53,068,68 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:54,069,69 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:55,071,71 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:56,072,72 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:57,075,75 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:58,076,76 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:37:59,078,78 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:00,079,79 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:01,081,81 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:02,083,83 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:03,084,84 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:04,086,86 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:05,087,87 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:06,089,89 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:07,090,90 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:08,092,92 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:09,093,93 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:10,094,94 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:11,096,96 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:12,097,97 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:13,099,99 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:14,101,101 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:15,103,103 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:16,105,105 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:17,106,106 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:18,107,107 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:19,109,109 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:20,111,111 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:21,112,112 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:22,114,114 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:23,115,115 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:24,117,117 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:25,118,118 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:26,120,120 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:27,122,122 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:28,123,123 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:29,125,125 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:30,126,126 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:31,129,129 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:32,130,130 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:33,132,132 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:34,134,134 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:35,135,135 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:36,137,137 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:37,138,138 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:38,139,139 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:39,141,141 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:40,142,142 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:41,144,144 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:42,146,146 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:43,147,147 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:44,149,149 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:45,150,150 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:46,152,152 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:47,153,153 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:48,155,155 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:49,157,157 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:50,158,158 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:51,160,160 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:52,161,161 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:53,163,163 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:54,165,165 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:55,166,166 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:56,168,168 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:57,169,169 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:58,171,171 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:38:59,173,173 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:00,174,174 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:01,175,175 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:02,177,177 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:03,179,179 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:04,180,180 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:05,182,182 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:06,184,184 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:07,186,186 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:08,187,187 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:09,189,189 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:10,190,190 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:11,192,192 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:12,193,193 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:13,195,195 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:14,196,196 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:15,198,198 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:16,200,200 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:17,201,201 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:18,202,202 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:19,204,204 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:20,205,205 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:21,207,207 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:22,208,208 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:23,210,210 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:24,213,213 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:25,214,214 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:26,216,216 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:27,217,217 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:28,219,219 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:29,220,220 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:30,222,222 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:31,223,223 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:32,225,225 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:33,227,227 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:34,228,228 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:35,229,229 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:36,231,231 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:37,233,233 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:38,235,235 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:39,236,236 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:40,238,238 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:41,241,241 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:42,242,242 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:43,244,244 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:44,245,245 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:45,247,247 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:46,248,248 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:47,250,250 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:48,251,251 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:49,253,253 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:50,254,254 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:51,256,256 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:52,257,257 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:53,259,259 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:54,260,260 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:55,262,262 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:56,263,263 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:57,265,265 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:58,266,266 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:39:59,269,269 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:00,270,270 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:01,272,272 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:02,274,274 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:03,275,275 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:04,277,277 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:05,278,278 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:06,280,280 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:07,281,281 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:08,283,283 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:09,284,284 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:10,286,286 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:11,287,287 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:12,289,289 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:13,290,290 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:14,292,292 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:15,293,293 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:16,296,296 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:17,298,298 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:18,299,299 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:19,301,301 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:20,302,302 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:21,304,304 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:22,305,305 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:23,307,307 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:24,308,308 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:25,310,310 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:26,311,311 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:27,313,313 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:28,315,315 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:29,316,316 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:30,318,318 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:31,319,319 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:32,321,321 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:33,322,322 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:34,325,325 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:35,326,326 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:36,328,328 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:37,330,330 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:38,331,331 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:39,333,333 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:40,334,334 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:41,336,336 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:42,338,338 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:43,339,339 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:44,341,341 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:45,342,342 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:46,344,344 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:47,346,346 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:48,347,347 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:49,349,349 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:50,350,350 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:51,353,353 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:52,354,354 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:53,356,356 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:54,358,358 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:55,359,359 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:56,361,361 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:57,362,362 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:58,364,364 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:40:59,365,365 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:00,367,367 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:01,369,369 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:02,370,370 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:03,372,372 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:04,373,373 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:05,375,375 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:06,377,377 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:07,378,378 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:08,379,379 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:09,382,382 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:10,384,384 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:11,385,385 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:12,387,387 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:13,388,388 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:14,390,390 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:15,391,391 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:16,393,393 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:17,394,394 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:18,396,396 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:19,397,397 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:20,399,399 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:21,400,400 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:22,402,402 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:23,404,404 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:24,406,406 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:25,408,408 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:26,410,410 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:27,412,412 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:28,413,413 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:29,415,415 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:30,417,417 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:31,418,418 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:32,420,420 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:33,421,421 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:34,423,423 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:35,425,425 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:36,426,426 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:37,427,427 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:38,429,429 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:39,431,431 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:40,432,432 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:41,434,434 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:42,436,436 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:43,438,438 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:44,440,440 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:45,442,442 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:46,443,443 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:47,445,445 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:48,446,446 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:49,448,448 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:50,449,449 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:51,451,451 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:52,453,453 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:53,454,454 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:54,456,456 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:55,457,457 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:56,459,459 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:57,460,460 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:58,462,462 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:41:59,463,463 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:00,465,465 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:01,467,467 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:02,469,469 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:03,470,470 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:04,472,472 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:05,474,474 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:06,475,475 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:07,477,477 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:08,478,478 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:09,480,480 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:10,481,481 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:11,483,483 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:12,484,484 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:13,486,486 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:14,487,487 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:15,489,489 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:16,491,491 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:17,492,492 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:18,495,495 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:19,496,496 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:20,498,498 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:21,500,500 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:22,501,501 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:23,503,503 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:24,504,504 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:25,506,506 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:26,507,507 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:27,509,509 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:28,510,510 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:29,512,512 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:30,513,513 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:31,515,515 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:32,517,517 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:33,518,518 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:34,520,520 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:35,521,521 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:36,524,524 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:37,525,525 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:38,527,527 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:39,528,528 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:40,530,530 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:41,532,532 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:42,533,533 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:43,535,535 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:44,537,537 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:45,538,538 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:46,539,539 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:47,541,541 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:48,542,542 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:49,544,544 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:50,545,545 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:51,547,547 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:52,548,548 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:53,551,551 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:54,552,552 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:55,554,554 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:56,555,555 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:57,557,557 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:58,559,559 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:42:59,560,560 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:00,562,562 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:01,563,563 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:02,565,565 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:03,566,566 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:04,568,568 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:05,569,569 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:06,571,571 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:07,572,572 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:08,574,574 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:09,575,575 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:10,577,577 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:11,579,579 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:12,581,581 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:13,582,582 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:14,584,584 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:15,585,585 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:16,587,587 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:17,589,589 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:18,590,590 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:19,592,592 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:20,594,594 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:21,595,595 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:22,597,597 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:23,598,598 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:24,599,599 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:25,601,601 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:26,603,603 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:27,604,604 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:28,607,607 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:29,608,608 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:30,610,610 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:31,612,612 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:32,613,613 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:33,615,615 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:34,616,616 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:35,618,618 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:36,619,619 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:37,621,621 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:38,622,622 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:39,624,624 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:40,625,625 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:41,627,627 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:42,628,628 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:43,630,630 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:44,632,632 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:45,633,633 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:46,636,636 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:47,637,637 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:48,639,639 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:49,641,641 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:50,642,642 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:51,644,644 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:52,645,645 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:53,647,647 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:54,648,648 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:55,650,650 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:56,651,651 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:57,653,653 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:58,654,654 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:43:59,656,656 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:00,657,657 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:01,659,659 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:02,660,660 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:03,663,663 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:04,664,664 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:05,667,667 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:06,668,668 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:07,670,670 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:08,671,671 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:09,673,673 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:10,674,674 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:11,675,675 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:12,677,677 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:13,679,679 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:14,680,680 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:15,682,682 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:16,683,683 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:17,685,685 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:18,687,687 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:19,689,689 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:20,690,690 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:21,693,693 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:22,695,695 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:23,696,696 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:24,698,698 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:25,699,699 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:26,701,701 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:27,703,703 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:28,704,704 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:29,706,706 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:30,707,707 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:31,709,709 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:32,711,711 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:33,712,712 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:34,714,714 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:35,715,715 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:36,717,717 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:37,718,718 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:38,721,721 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:39,722,722 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:40,724,724 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:41,725,725 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:42,727,727 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:43,728,728 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:44,730,730 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:45,731,731 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:46,733,733 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:47,734,734 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:48,736,736 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:49,737,737 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:50,739,739 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:51,740,740 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:52,742,742 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:53,751,751 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:54,753,753 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:55,756,756 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:56,757,757 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:57,759,759 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:58,760,760 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:44:59,762,762 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:00,763,763 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:01,765,765 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:02,766,766 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:03,768,768 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:04,770,770 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:05,772,772 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:06,773,773 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:07,775,775 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:08,776,776 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:09,778,778 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:10,779,779 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:11,781,781 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:12,782,782 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:13,785,785 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:14,786,786 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:15,788,788 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:16,790,790 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:17,791,791 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:18,793,793 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:19,794,794 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:20,796,796 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:21,797,797 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:22,799,799 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:23,800,800 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:24,802,802 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:25,803,803 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:26,805,805 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:27,806,806 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:28,808,808 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:29,810,810 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:30,812,812 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:31,814,814 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:32,816,816 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:33,817,817 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:34,818,818 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:35,820,820 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:36,821,821 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:37,823,823 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:38,824,824 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:39,826,826 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:40,828,828 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:41,829,829 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:42,831,831 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:43,832,832 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:44,833,833 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:45,835,835 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:46,837,837 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:47,838,838 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:48,841,841 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:49,842,842 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:50,844,844 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:51,845,845 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:52,847,847 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:53,849,849 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:54,850,850 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:55,851,851 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:56,853,853 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:57,854,854 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:58,856,856 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:45:59,858,858 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:00,860,860 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:01,861,861 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:02,863,863 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:03,864,864 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:04,866,866 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:05,868,868 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:06,870,870 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:07,871,871 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:08,873,873 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:09,875,875 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:10,876,876 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:11,878,878 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:12,879,879 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:13,881,881 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:14,883,883 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:15,884,884 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:16,885,885 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:17,887,887 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:18,888,888 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:19,890,890 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:20,891,891 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:21,893,893 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:22,894,894 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:23,897,897 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:24,899,899 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:25,900,900 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:26,902,902 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:27,904,904 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:28,905,905 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:29,907,907 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:30,908,908 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:31,910,910 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:32,911,911 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:33,913,913 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:34,914,914 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:35,916,916 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:36,917,917 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:37,919,919 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:38,920,920 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:39,922,922 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:40,925,925 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:41,926,926 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:42,928,928 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:43,929,929 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:44,931,931 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:45,932,932 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:46,934,934 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:47,935,935 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:48,937,937 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:49,938,938 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:50,940,940 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:51,941,941 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:52,943,943 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:53,945,945 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:54,946,946 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:55,947,947 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:56,949,949 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:57,950,950 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:58,953,953 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:46:59,954,954 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:00,956,956 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:01,957,957 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:02,959,959 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:03,961,961 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:04,962,962 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:05,964,964 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:06,966,966 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:07,967,967 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:08,969,969 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:09,970,970 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:10,972,972 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:11,973,973 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:12,975,975 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:13,976,976 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:14,978,978 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:15,980,980 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:16,982,982 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:17,984,984 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:18,986,986 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:19,988,988 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:20,989,989 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:21,990,990 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:22,992,992 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:23,993,993 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:24,995,995 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:25,996,996 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:26,998,998 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:27,999,999 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:29,001,1 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:30,002,2 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:31,004,4 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:32,005,5 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:33,007,7 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:34,009,9 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:35,011,11 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:36,012,12 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:37,014,14 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:38,015,15 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:39,017,17 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:40,018,18 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:41,020,20 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:42,021,21 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:43,023,23 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:44,025,25 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:45,026,26 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:46,028,28 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:47,029,29 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:48,031,31 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:49,033,33 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:50,034,34 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:51,037,37 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:52,038,38 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:53,040,40 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:54,041,41 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:55,043,43 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:56,045,45 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:57,046,46 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:58,048,48 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:47:59,049,49 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:00,051,51 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:01,052,52 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:02,054,54 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:03,055,55 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:04,057,57 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:05,059,59 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:06,060,60 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:07,062,62 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:08,064,64 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:09,066,66 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:10,068,68 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:11,069,69 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:12,071,71 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:13,072,72 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:14,074,74 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:15,076,76 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:16,077,77 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:17,079,79 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:18,080,80 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:19,082,82 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:20,083,83 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:21,085,85 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:22,086,86 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:23,088,88 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:24,090,90 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:25,091,91 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:26,094,94 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:27,096,96 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:28,097,97 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:29,099,99 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:30,100,100 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:31,102,102 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:32,103,103 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:33,105,105 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:34,106,106 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:35,108,108 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:36,109,109 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:37,111,111 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:38,112,112 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:39,114,114 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:40,116,116 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:41,117,117 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:42,119,119 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:43,121,121 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:44,123,123 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:45,124,124 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:46,126,126 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:47,128,128 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:48,129,129 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:49,131,131 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:50,132,132 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:51,134,134 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:52,135,135 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:53,137,137 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:54,139,139 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:55,140,140 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:56,142,142 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:57,143,143 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:58,145,145 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:48:59,146,146 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:00,148,148 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:01,150,150 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:02,152,152 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:03,153,153 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:04,155,155 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:05,156,156 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:06,158,158 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:07,160,160 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:08,161,161 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:09,163,163 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:10,164,164 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:11,166,166 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:12,167,167 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:13,169,169 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:14,170,170 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:15,172,172 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:16,173,173 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:17,175,175 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:18,177,177 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:19,179,179 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:20,181,181 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:21,182,182 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:22,184,184 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:23,185,185 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:24,187,187 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:25,189,189 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:26,190,190 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:27,192,192 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:28,193,193 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:29,195,195 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:30,196,196 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:31,198,198 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:32,199,199 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:33,201,201 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:34,202,202 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:35,204,204 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:36,206,206 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:37,208,208 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:38,209,209 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:39,211,211 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:40,212,212 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:41,214,214 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:42,215,215 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:43,217,217 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:44,218,218 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:45,220,220 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:46,222,222 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb
+2019-11-22 23:49:47,223,223 DEBUG [tkconsole.py:371] Refresh time for partial with put into queue for refreshdb

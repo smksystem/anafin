@@ -397,8 +397,8 @@ class fivesteps():
 		elif controlorder["ordermode"]=="buybybot" and controlorder["firstbuy"]=="no":
 
 			for orderidx in orderdetail:
-				print("\n ==! order idx buybybot before orderfn line 286 plugin_fivesteps.py def order")
-				print(orderidx)
+				self.log["applog"].debug(" == order idx buybybot before orderfn def order")
+				self.log["applog"].debug(orderidx)
 
 				result_order=orderfn(orderidx) ### got result from refreshbtn output.
 				# [{'orderno': '174766', 'time': '14:03:56', 'symbole': 'WHA', 'side': 'S', 'price': '4.76', 'volume': '100', 'matched': '0', 'balance': '0', 'cancelled': '0', 'status': 'Pending(S)', 'matchedtime': 'matchtime', 'referorderfrom': 'refodfrm'}]
@@ -436,8 +436,8 @@ class fivesteps():
 				# This is function to add monitoring
 					self.putordermonitoring(result_order) 
 
-			print("\nresult_order from sellbybot and firstbuy no plugin_fivesteps.py line 277 in def order")
-			print(result_order)
+			self.log["applog"].debug("result_order from sellbybot and firstbuy in def order")
+			self.log["applog"].debug(result_order)
 			
 			return result_order
 
@@ -459,7 +459,7 @@ class fivesteps():
 			self.log["applog"].debug(flcommonvaluestep)
 
 			if flcomparediff==flcommonvaluestep:
-				self.log["applog"].debug("Start follow buy with below value")
+				self.log["applog"].debug("Start follow buy with below 'stockvalue' in def checkdownsidebuy")
 				self.log["applog"].debug(stockvalue)	
 				
 				# resultbuy=self.order({'ordermode':'buybybot','firstbuy':'yes'},{},orderfn)
@@ -521,11 +521,11 @@ class fivesteps():
 			#####################################################################################
 			# Check process when first buy already done and follow to buy when price is down.
 			#####################################################################################
+			self.log["applog"].debug("\n self.matchedordermonitor to monitor def checkprocess2order ")
+			self.log["applog"].debug(self.matchedordermonitor)
 
 			self.checkdownsidebuy(price_change)
 
-		# print("\nprint self.matchedordermonitor to monitor in plugin_fivesteps.py line 309 def checkprocess2order ")
-		# print(self.matchedordermonitor)
 		return self.matchedordermonitor
 
 
