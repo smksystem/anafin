@@ -524,7 +524,7 @@ class fivesteps():
 			self.log["applog"].debug("\n self.matchedordermonitor to monitor def checkprocess2order ")
 			self.log["applog"].debug(self.matchedordermonitor)
 
-			self.checkdownsidebuy(price_change)
+			# self.checkdownsidebuy(price_change)
 
 		return self.matchedordermonitor
 
@@ -648,8 +648,6 @@ class fivesteps():
 
 
 								ordercontrol={'ordermode':'sellbybot','firstbuy':'no'}
-
-
 								ordertomonitor=self.order(ordercontrol,orderlist,orderfn)
 
 								self.log["applog"].debug("@@@ ordertomonitor sell after def order def order")
